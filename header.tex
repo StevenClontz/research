@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0.2in}
+\setlength\textheight{8in}
+\setlength\textwidth{6in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0.25in}
+\setlength\parskip{0.1in} 
+ 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{example}[theorem]{Example}
+      
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+\newcommand{\limitwin}{\uparrow_{\text{limit}}}
+
+\newcommand{\oneptcomp}[1]{#1\cup\{\infty\}}
+
+\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
+\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
+
+\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
+
+\newcommand{\mengame}[1]{Cov_{C,S}(#1)}
+
+\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
+
+\newcommand{\concat}{^\frown}
+\newcommand{\rest}{\restriction}
+
+\newcommand{\ds}{\displaystyle}

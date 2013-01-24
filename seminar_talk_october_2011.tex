@@ -1,0 +1,473 @@
+\documentclass[11pt]{article}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0.2in}
+\setlength\textheight{8in}
+\setlength\textwidth{6in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0.25in}
+\setlength\parskip{0.1in} 
+ 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+% Strategy uparrow shortcuts
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+
+
+\begin{document}
+
+\centerline{\bf Topology Seminar Talk - Late October / Early Novemeber 2011}
+\centerline{Steven Clontz}
+
+\begin{definition} Some notation on games of length $\omega$:
+
+\begin{itemize}
+\item A \textbf{game of length $\omega$} consists of two \textbf{Players} I and II. On \textbf{round} $n$ of $\omega$, Player I first takes a \textbf{turn} choosing an element of some set $X$, followed by Player II taking a turn choosing an element from some set $Y$.
+
+\item A \textbf{move} by a player is the selection that player makes during a particular round. 
+
+\item A \textbf{rule} for a Player in a game is a condition on that player's move during each round. A move is said to be \textbf{legal} if it doesn't violate the rule.
+
+\item A \textbf{play} by Player I is a sequence $\left<x_0,x_1,\dots\right> \in X^\omega$ (and similar for Player II). It is said to be \textbf{legal} if each move is legal. A finite initial sequence of a play is called a \textbf{partial play}.
+
+\item A \textbf{strategy} for a Player is a function which has all possible partial plays by the opposing player as its domain. It denotes the choice for that Player on each turn. It is said to be \textbf{legal} if it yields only legal moves when the opposing player makes only legal moves.
+
+\item A \textbf{counter} to a legal strategy by a Player is a function which has as its domain the turn number and the other player's strategy. It is said to be \textbf{legal} if it only yields legal moves.
+
+\item A \textbf{winning condition} is some condition on the plays made by both players.
+
+\item At the conclusion of a game, if all moves are legal, then Player I \textbf{wins} the game if the winning condition is satisfied, and Player II wins the game otherwise. (Should any move be illegal, then the first player to make an illegal move loses the game to the other player.)
+\end{itemize}
+\end{definition}
+
+When the sets $X,Y$ are related to a topological space, it is said to be a \textbf{topological game}. The presence or absense of a ``winning'' strategy for one player or another characterizes a property of the space.
+
+\begin{definition}
+A strategy for Player A is said to be a \textbf{winning strategy} if there does not exist a counter which allows the other player to win the game. If Player Z has a winning strategy for the game $G$, this can be denoted $Z \uparrow G$.
+\end{definition}
+
+Proofs showing the existance of a winning strategy typically define the winning strategy, and then show that it defeats every possible play by the opponent. Proofs showing the nonexistance of a winning strategy typically define the counter to any arbitrary strategy.
+
+In the mid 1980s, Dr. Gary Gruenhage defined the following topological games.
+
+\begin{definition}
+The \textbf{compact-point game on a topological space $X$} is denoted $G_{K,P}(X)$. During round $n$, Player I (called $K$) chooses a compact set $K_n\in K[X]$, and Player II (called $P$) chooses a point $x_n\in X$. $K$ must follow the rule that $K_{n+1}\supseteq K_n$, while $P$ must follow the rule that $x_n\not\in K_n$. The winning condition for $K$ is that the collection of singletons chosen by $P$, $\{\{x_n\} : n<\omega\}$, must be locally finite everywhere in the space. (This is equivalent to the set $\{x_n : n<\omega\}$ lacking a cluster point.)
+\end{definition}
+
+\begin{definition}
+The \textbf{compact-compact game on a topological space $X$} is denoted $G_{K,L}(X)$. During round $n$, Player I (called $K$) chooses a compact set $K_n\in K[X]$, and Player II (called $L$) also chooses a compact set $L_n\in K[X]$. $K$ must follow the rule that $K_{n+1}\supseteq K_n$, while $P$ must follow the rule that $L_n\cap K_n=\emptyset$. The winning condition for $K$ is that the collection of compact sets chosen by $L$, $\{L_n : n<\omega\}$, must be locally finite everywhere in the space.
+\end{definition}
+
+An interesting property of the game $G_{K,L}(X)$ is the following result, proven by Gruenhage in his paper \textit{Games Covering Properties and Eberlein Compacts}.
+
+\begin{theorem}
+The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+    \item $X$ is paracompact
+    \item $K \uparrow G_{K,L}(X)$.
+    \end{itemize}
+\end{theorem}
+
+However, often it is the presence of ``limited information'' strategies which can characterize interesting properties of a space.
+
+\begin{definition}
+A \textbf{limited information strategy} for a game is a function whose domain is restricted to less information than all previous moves by the opposing player.
+\end{definition}
+
+In the above mentioned paper, Gruenhage used the following limited information strategies to prove some interesting characterizations based on the game $G_{K,P}(X)$.
+
+\begin{definition}
+A \textbf{tactical strategy} considers only the most recent move by the opposing player. If Player $Z$ has a winning tactical strategy for a game $G$, this may be denoted $Z \uparrow_{\text{tact}} G$.
+\end{definition}
+
+\begin{definition}
+A \textbf{Markov strategy} considers only the most recent move by the opposing player and the turn number. If Player $Z$ has a winning Markov strategy for a game $G$, this may be denoted $Z \uparrow_{\text{mark}} G$.
+\end{definition}
+
+\begin{theorem}
+The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+    \item $X$ is metacompact
+    \item $K \uparrow_{\text{tact}}G_{K,P}(X)$.
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+    \item $X$ is $\sigma$-metacompact
+    \item $K \uparrow_{\text{mark}}G_{K,P}(X)$.
+    \end{itemize}
+\end{theorem}
+
+Upon learning these results, one might wonder the consequences of the existence of this type of limited information strategy:
+
+\begin{definition}
+A \textbf{predetermined strategy} considers only the turn number. If Player $Z$ has a winning predetermined strategy for a game $G$, this may be denoted $Z \prewin G$.
+\end{definition}
+
+Intuitively, if a player is using a predetermined strategy, then that player decides every move he or she will make before the game even begins, ignoring the other player's moves.
+
+Consider the following trivial result:
+
+\begin{definition}
+A \textbf{button-mashing strategy} is a constant function. If Player $Z$ has a winning button-mashing strategy for a game $G$, this may be denoted $Z \uparrow_{\text{mash}} G$.
+\end{definition}
+
+\begin{proposition}
+The following are equivalent for any space $X$:
+    \begin{itemize}
+    \item $X$ is compact
+    \item $K \uparrow_{\text{mash}}G_{K,P}(X)$.
+    \end{itemize}
+\end{proposition}
+
+Observing that giving $K$ the added information of turn number to a tactical strategy (making it Markov) changed the characterization of a metacompact space into a $\sigma$-metacompact space, it would be very convenient if adding that same information to a button-mashing strategy (making it predetermined) would similarly change the characterization of a compact space into $\sigma$-compact.
+
+\begin{proposition}
+If $K \prewin G_{K,P}(X)$, then $X$ is $\sigma$-compact.
+\end{proposition}
+
+\begin{proof}
+Let $K_n$ be the sets given by the winning predetermined strategy. If they did not union to $X$, then the counter play $p_n=p$ for some $p\in X\setminus \bigcup_n K_n$ would defeat the ``winning'' strategy.
+\end{proof}
+
+\begin{theorem}
+If $Y$ is a locally compact, Lindel\"of space, then $K \prewin G_{K,P}(X)$.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal{K}$ be a collection of compact neighborhoods whose interiors cover $X$. By Lindel\"of, let $\{K_n : n<\omega\}$ be a countable subcollection whose interiors cover $X$. We then define the predetermined strategy $\sigma(n)=\bigcup_{m\leq n} K_n$.
+
+Let $p_n$ give a play by $P$. If $p$ is a cluster point of the $p_n$, then every open set about $p$ contains infinitely many $p_n$. Let $K_N$ be some compact neighborhood in $\{K_n : n<\omega\}$ which covers $p$. Then $K_N$ contains infinitely many $p_n$, which means sometime after round $N$, $P$ played in a set already covered by the strategy $\sigma$, which is an illegal move. Thus $\sigma$ is a winning predetermined strategy.
+\end{proof}
+
+\begin{corollary}
+The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+    \item $X$ is $\sigma$-compact
+    \item $X$ is Lindel\"of
+    \item $K \prewin G_{K,P}(X)$.
+    \end{itemize}
+\end{corollary}
+
+We now turn our attention to an example of a $\sigma$-compact space for which no predetermined strategy exists (which must, of course, not be locally compact). In fact, $P$ will instead have a winning tactical strategy.
+
+\begin{definition}
+Let $M=\omega^2\cup\{\infty\}$ denote the \textbf{metric fan space} with the topology generated by the singletons in $\omega^2$ and sets of the form $((\omega\setminus n)\times\omega) \cup \{\infty\}$ for $n<\omega$.
+\end{definition}
+
+\begin{proposition}
+For each compact set $C$ in $M$, there exists a minimal dominating function $f_C$ such that for each $(x,y)\in C\setminus\{\infty\}$, $f(x)> y$.
+\end{proposition}
+
+\begin{lemma}
+$P \markwin G_{K,P}(M)$ where $M$ is the metric fan space. (This implies $K\not\uparrow G_{K,P}(M)$.)
+\end{lemma}
+
+\begin{proof}
+Let $P$ respond to the move $C\in K[X]$ by $K$ on round $n$ with the point $p=(n,s_C)$ such that $s_C = \min(\{y<\omega : f_C(n) < y\}$. It is easy to see that either $p_n\rightarrow \infty$, so $P$ has a winning tactical strategy.
+\end{proof}
+
+Furthermore, by a theorem due to Eric van Douwen...
+
+\begin{theorem}
+Every first-countable non-locally countably compact space has the metric fan space $M$ as a closed subspace.
+\end{theorem}
+
+... we have the following corollary:
+
+\begin{corollary}
+$P \markwin G_{K,P}(X)$ where $X$ is a first-countable non-locally countably compact space. (This implies $K\not\uparrow G_{K,P}(X)$.)
+\end{corollary}
+
+(Open question: does $P \tactwin G_{K,P}(X)$?)
+
+While $K\prewin G_{K,P}(X)$ implies $X$ is $\sigma$-compact, it in fact implies something stronger.
+
+\begin{definition}
+A space $X$ is \textbf{hemicompact} if there exists a chain of increasing compact sets $K_0\subseteq K_1 \subseteq \dots$ such that every compact set in $X$ is a subset of some $K_n$.
+\end{definition}
+
+\begin{lemma}
+If $K\prewin G_{K,P}(X)$, then $X$ is hemicompact. Furthermore, any predetermined winning strategy for $K$ witnesses hemicompactness.
+\end{lemma}
+
+\begin{proof}
+Let $\sigma$ be a predetermined strategy for $K$ in the game $G_{K,P}(Y)$ such that there exists a compact set $C$ with $C \not\subseteq \sigma(n)$ for all $n$. On each turn, have $P$ play some $y_n\in C \setminus \sigma(n)$. Then the $y_n$ are an infinite subset of the compact set $C$ and must have a cluster point in $C$, showing $\sigma$ is not a winning strategy.
+
+Thus if $K$ has a winning predetermined strategy, it witnesses that $Y$ is hemicompact.
+\end{proof}
+
+In fact, for locally compact spaces, finding winning predetermined strategies for $G_{K,P}(X)$ and $G_{K,L}(X)$ are equivalent problems.
+
+\begin{theorem}
+The following are equivalent for any locally compact space $X$:
+  \begin{itemize}
+  \item $X$ is hemicompact.
+  \item $K \prewin G_{K,L}(X)$.
+  \item $K \prewin G_{K,P}(X)$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+Let $Y$ be hemicompact, witnessed by $K_n=\sigma(n)$. Let $L_0,L_1,\dots$ be a play by $L$ in $G_{K,L}(X)$. Suppose that this play defeats $\sigma$. Then let $x\in X$ be the point such that for all neighborhoods $U$ of $x$, $U$ hits infinite $L_n$. Let $C$ be a compact neighborhood of $x$, which must hit infinite $L_n$. As $K_n$ witnesses hemicompactness, $C \subseteq K_N = \sigma(N)$ for some $N$. But then $C\subset K_N$ intersects infinitely many $L_n$, which shows that the play $L_0,L_1,\dots$ was illegal. Thus $\sigma$ defeats every legal play by $L$ and is thus a winning predetermined strategy for $K$ in $G_{K,L}(X)$.
+
+We conclude by noting that any winning strategy for $G_{K,L}(X)$ is a winning strategy for $G_{K,P}(X)$, and the existence of a winning predetermined strategy for $G_{K,P}(X)$ implies hemicompact by the previous lemma.
+\end{proof}
+
+\begin{corollary}
+The following are equivalent for any locally compact space $X$:
+  \begin{itemize}
+  \item $X$ is Lindel\"of.
+  \item $X$ is $\sigma$-compact.
+  \item $X$ is hemicompact.
+  \item $K \prewin G_{K,L}(X)$.
+  \item $K \prewin G_{K,P}(X)$.
+  \end{itemize}
+\end{corollary}
+
+The compact-point and compact-compact games are also useful in inspecting compactly generated ``k''-spaces.
+
+\begin{definition}
+A topological space is called a \textbf{$k$-space} if the following condition is satisfied: \[C \subseteq X \text{ is closed in } X\, \Leftrightarrow \, C\cap K \text{ is closed in } K \text{ for all compact sets } K\in K[X]\]
+\end{definition}
+
+\begin{definition}
+A topological space is called a \textbf{$k_\omega$-space} if there exist $K_0,K_1,\dots \in K[X]$ that satisfy the following condition: \[C \subseteq X \text{ is closed in } X\, \Leftrightarrow \, C \cap K_n \text{ is closed in } K_n \text{ for all } n\]
+\end{definition}
+
+\begin{theorem}
+The following are equivalent for any Hausdorff $k$-space $X$:
+  \begin{itemize}
+  \item $X$ is hemicompact.
+  \item $X$ is $k_{\omega}$.
+  \item $K \prewin G_{K,P}(X)$.
+  \end{itemize}
+Furthermore, all predetermined strategies for $K$ witness hemicompact and $k_\omega$, and any witness to hemicompact/$k_\omega$ witnesses the other and serves as a predetermined strategy for $K$.
+\end{theorem}
+
+\begin{proof}
+If $X$ is hemicompact, then let it be witnessed by $K_n$. We claim $K_n$ also witnesses $k_\omega$. Note that the forward implication of $k_\omega$ always holds for $T_1$ spaces as $C\cap K_n$ is closed in $X$, and thus in every $K_n$. So assume $C\cap K_n$ is closed in $K_n$ for all $n$. Let $H$ be any compact set. As $X$ is hemicompact, $H\subseteq K_n$ for some $n$. Note $C\cap H = (C\cap K_n)\cap H$. As both $C \cap K_n$ and $H$ are closed in $K_n$, $C\cap H$ is closed in $K_n$, and thus $C\cap H$ is closed in $H$. As $Y$ is $k$ and $C\cap H$ is closed in $H$ for all compact $H$, $C$ is closed, showing the backwards implication.
+
+Now if $Y$ is $k_\omega$, let it be witnessed by $K_n$. Give $K$ the predeterined strategy $\sigma(n)=K_n$ for the game $G_{K,P}(X)$, and let $p_n$ be the result of a legal counter by $P$. Suppose by way of contradiction that $p$ is a cluster point of the $p_n$. Note $p\in \sigma(N)$ for some $N$. $p$ is a cluster point of $\{p_n : n\geq N\}$ but $p\not\in \{p_n : n \geq N\}$. Also, $\{p_n : n \geq N\} \cap \sigma(m)$ is finite for all $m$, and thus closed, so as $\sigma(n)$ witnesses $k_\omega$, $\{p_n : n\geq N\}$ is closed and must contain its cluster point $p$, which is a contradiction. Thus $\sigma$ is a winning predetermined strategy for $K$ in $G_{K,P}(Y)$.
+
+Finally, if $K \prewin G_{K,P}(X)$, $X$ is hemicompact by the previous lemma.
+\end{proof}
+
+For $k$-spaces, it turns out that finding winning predetermined strategies for $G_{K,P}(X)$ and $G_{K,L}(X)$ are also equivalent problems.
+
+\begin{theorem}
+For any hemicompact Hausdorff $k$-space $X$, $K \prewin G_{K,L}(X)$.
+\end{theorem}
+
+\begin{proof}
+Let $X$'s hemicompactness be witnessed by $K_n=\sigma(n)$. Note that this also witnesses $k_\omega$ by the proof of the previous theorem. Let $H_0,H_1,\dots$ be a counter by $H$ for the game $G_{K,L}(X)$ in response to $\sigma$. Suppose by way of contradiction the counter was legal and defeats $\sigma$. Then there is a point $x$ such that every neighborhood of $x$ hits infinitely many of the $H_n$.
+
+Now, $x\in\sigma(N)$ for some $N$, and since the play $H_0,H_1,\dots$ is legal, $x\not\in H_n$ for all $n\geq N$. Consider the set $H_\omega=\bigcup_{n\geq N} H_n$. Note that as the $K_n$ witness $k_\omega$, $H_\omega$ is closed if and only if $H_\omega \cap \sigma(m)$ is closed in $\sigma(m)$ for all $m$. In fact, since every $H_n$ is a subset of some $\sigma(m)$ (by hemicompactness), $H_\omega \cap \sigma(m)$ is a finite union of some $H_n$, and is thus closed in $Y$.
+
+We thus have that $H_\omega$ is a closed set not containing $x$. But since every neighborhood of $x$ intersects $H_\omega$, $x$ is a limit point of the closed set $H_\omega$ and should be included, demonstrating our contradiction. Thus $\sigma$ is a winning predetermined strategy for $K$ in the game $G_{K,L}(X)$.
+\end{proof}
+
+\begin{corollary}
+The following are equivalent for any Hausdorff $k$-space $X$:
+  \begin{itemize}
+  \item $X$ is hemicompact.
+  \item $X$ is $k_{\omega}$.
+  \item $K$ has a winning predetermined strategy in $G_{K,L}(X)$.
+  \item $K$ has a winning predetermined strategy in $G_{K,P}(X)$.
+  \end{itemize}
+\end{corollary}
+
+It's natural to question whethere there is ever any difference between finding winning predetermined strategies for $G_{K,P}(X)$ and $G_{K,L}(X)$. We now look to a (non-locally compact, non-$k$) Hausdorff space where the distinction arises:
+
+\begin{definition}
+Given a set $X$, an ultrafilter on $X$ is a collection $\mathcal{F}\subseteq\mathcal{P}(X)$ such that
+    \begin{enumerate}
+    \item $\emptyset\not\in \mathcal{F}$
+    \item $A,B\in\mathcal{F} \Rightarrow A\cap B \in \mathcal{F}$
+    \item $A\in\mathcal{F}$ and $A \subseteq B$ $\Rightarrow$ $B\in\mathcal{F}$
+    \item $\forall A \subseteq X(A\in\mathcal{F}$ or $X\setminus A \in \mathcal{F})$
+    \end{enumerate}
+As a result, ultrafilters which contain a finite set contain only one singleton (and are called \textbf{principal}). Otherwise, ultrafilters which contain no finite sets are called \textbf{free}.
+\end{definition}
+
+\begin{definition}
+The \textbf{Stone-Cech compactification} $\beta\omega$ of $\omega$ is the collection of ultrafilters on $\omega$. The principal ultrafilters containing a singleton $\{n\}$ are each identified with $n$ itself and are isolated. Free ultrafilters $\mathcal{F}$ are given neighborhoods of the form \[\{\mathcal{G} : \mathcal{G} \text{ is an ultrafilter on } \omega \text{ and } A \in \mathcal{G}\} = A \cup \{\mathcal{G}: \mathcal{G} \text{ is a free ultrafilter on } \omega \text{ and } A \in \mathcal{G}\}\] for each $A\in\mathcal{F}$.
+
+Alternately $\beta\omega=\omega\cup\{\mathcal{F} : \mathcal{F}$ is a free ultrafilter on $\omega\}$ where $\omega$ is discrete and the free ultrafilters have the local base described above.
+\end{definition}
+
+\begin{definition}
+A \textbf{single-ultrafilter space} is a subset of $\beta\omega$ containing all elements of $\omega$ and a single ultrafilter $\mathcal{F}$.
+\end{definition}
+
+\begin{proposition}
+The compact sets of a single-ultrafilter space are exactly the finite subsets of the space. Thus a single-ultrafilter space is neither locally compact nor $k$.
+\end{proposition}
+
+Regardless of the ultrafilter chosen, we can see that $K$ has no hope of having a winning predetermined strategy for $G_{K,L}$ played on a single-ultrafilter space.
+
+\begin{proposition}
+If $X$ is any single-ultrafilter space with the ultrafilter $\mathcal{F}$, then $K\not\prewin G_{K,L}(X)$.
+\end{proposition}
+
+\begin{proof}
+Compact sets are exactly finite sets in this space. Therefore, the difference of any two compact sets is compact.
+
+Give $K$ the predetermined strategy $\sigma(n)$. $H$ counters with \[H_n=(n\cup\sigma(n+1))\setminus\sigma(n)\] on turn $n$. Since any free ultrafilter contains only unbounded sets, every neighborhood $A\cup\{\mathcal{F}\}$ of $\mathcal{F}$ must intersect infinitely many $H_n$, defeating $\sigma$.
+\end{proof}
+
+However, while it is consistant that there is an ultrafilter which defies the existance of a predetermined winning strategy for $K$ in $G_{K,P}$...
+
+\begin{proposition} 
+If a selective ultrafilter $\mathcal{F}$ exists (this is independent of ZFC), then $K$ has no winning predetermined strategy in the compact-point game $G_{K,P}(Y)$ for the single selective ultrafilter space $Y=\omega \cup \{\mathcal{F}\}$.
+\end{proposition}
+
+\begin{proof}
+Let $\sigma$ be a predetermined strategy for $K$. By the definition of a selective ultrafilter, for every partition $\{B_n : n < \omega\}$ of subsets of $\omega$ such that $B_n \not\in \mathcal{F}$ for all $n$, there exists $A \in \mathcal{F}$ such that $|A \cap B_n|=1$ for all $n$. So then let \[B_n = \omega \cap \sigma(n) \setminus \sigma(n-1)\]
+  
+Note that $B_n$ is finite and thus $B_n \not\in \mathcal{F}$, so there exists $A\in \mathcal{F}$ such that $|A \cap B_n|=1$. Let $p_n$ be the singleton in $A \cap B_{n+1}$, so $\{p_n : n < \omega\}$ is cofinite in $A$, and thus is also a member of $\mathcal{F}$. Thus $p_n$ converges to $\mathcal{F}$, and counters the strategy $\sigma$.
+\end{proof}
+
+... in general we can find many ultrafilters for which $K\prewin G_{K,P}$.
+
+\begin{theorem}
+Let $a_n$ be a sequence such that the sequence $\frac{a_n}{n}$ is unbounded above. Then there is an ultrafilter $\mathcal{F}$ such that $\sigma(n)=(\sum_{m\leq n} a_m )\cup \{\mathcal{F}\}$ is a winning predetermined strategy for $K$ in $G_{K,P}(\omega\cup\{\mathcal{F}\})$.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal{P}$ be the collection of all legal plays by $P$ against the strategy $\sigma$. Consider a finite collection of plays $P_0,\dots,P_{n-1}\in \mathcal{P}$. As $\frac{a_m}{m}$ is unbounded above, we may find infinitely many $m$ such that $\frac{a_m}{m}>n \Rightarrow mn<a_m$. As the $a_m$ partition $\omega$ such that $P$ may only play at most $m$ points in each part, there are infinitely many parts which are not filled, and thus $\bigcup_{m<n} P_m$ is not cofinite.
+
+It then follows that the closure of $\mathcal{P}$ under finite unions and subsets is an ideal. Its dual filter may then be extended to an ultrafilter $\mathcal{F}$ such that every possible play by $P$ is the complement of some member of $\mathcal{F}$.
+\end{proof}
+
+So we can see that there are non-$k$ spaces $X$ for which $K\prewin G_{K,P}(X)$. However, we have found no such spaces for the game $G_{K,L}(X)$. So we conclude with this open question:
+
+\begin{question}
+$K \prewin G_{K,L}(X) \Rightarrow X$ is a $k$-space?
+\end{question}
+
+\centerline{\bf Another game: $G_{O,P}(X,x)$}
+
+\begin{definition} 
+Gruenhage's open-point convergence game $G_{O,P}(X,x)$ has $O$ choosing nested open sets and $P$ choosing a point within the last chosen open set by $O$. $O$ wins if the points chosen by $P$ converge to $x$.
+\end{definition}
+
+\begin{definition}
+The one-point compactification of a space $X$ is $X\cup\{\infty\}$, where neighborhoods of points in $X$ are the same as they were originally, and neighborhoods of $\infty$ are sets $X\cup\{\infty\}\setminus K$ for compact $K$. If $X$ is discrete then neighborhoods of $\infty$ are cofinite sets containing $\infty$. 
+\end{definition}
+
+\begin{proposition}
+$O\not\prewin G_{O,P}(\omega_1\cup\{\infty\},\infty)$, where $\omega_1\cup\{\infty\}$ is the one-point compactification of discrete $\omega_1$.
+\end{proposition}
+
+\begin{proof}
+Given a predetermined strategy $\sigma(n)$ for $O$, $P$ simply chooses any ordinal in $\bigcup_n \sigma(n)$ to play on every turn.
+\end{proof}
+
+\begin{definition}
+A \textbf{coding strategy} considers only the most recent move by each player. If Player $Z$ has a winning coding strategy for a game $G$, this may be denoted $Z \codewin G$.
+\end{definition}
+
+\begin{proposition}
+$O\codewin G_{O,P}(\omega_1\cup\{\infty\},\infty)$. 
+\end{proposition}
+
+\begin{proof}
+Define $\sigma(U,p)=U\setminus\{p\}$. A legal play by $P$ must never repeat the same point, so legal plays by $P$ converge to $\infty$.
+\end{proof}
+
+\begin{theorem}
+$O\not\tactwin G_{O,P}(\omega_1\cup\{\infty\},\infty)$.
+\end{theorem}
+
+\begin{proof}
+Let $\sigma(\alpha)$ be a tactical strategy for $O$ and $F(\alpha)=\omega_1\setminus\sigma(\alpha)$. Suppose by way of contradiction that for all $\alpha_0,\alpha_1<\omega_1$, if $\alpha_1 \not\in F(\alpha_0)$ then it follows that $\alpha_0\in F(\alpha_1)$. Then for all $\alpha<\omega_1$, $\alpha\in F(\beta)$ for all $\beta\not\in F(\alpha)$.
+
+So $0\in F(\beta)$ for all $\beta\not\in F(0)$, $1\in F(\beta)$ for all $\beta \not\in F(1)$, and so on. Then $0,1,2,\dots\in F(\beta)$ for all $\beta\not\in\bigcup_n F(n)\not=\omega_1$, contradiction.
+
+Thus there exist a pair $\alpha_0,\alpha_1$ such that $\alpha_1\not\in F(\alpha_0)$ and $\alpha_0\not\in F(\alpha_1)$. $P$ beats $\sigma$ by playing this pair repeatedly.
+\end{proof}
+
+\begin{definition}
+A \textbf{$k$-tactical strategy} considers only the last $k$ moves by the opposing player. If Player $Z$ has a winning $k$-tactical strategy for a game $G$, this may be denoted $Z \ktactwin{k} G$.
+\end{definition}
+
+\begin{theorem}
+$O\not\ktactwin{k}G_{O,P}(\omega_1\cup\{\infty\},\infty)$.
+\end{theorem}
+
+\begin{proof}
+Let $\sigma:[\omega_1]^{\leq k}\to[\omega_1]^{<\omega}$ be a $k$-tactical strategy for $O$ and $F(S)=\omega_1\setminus\sigma(S)$.
+
+Let $W_0=\omega_1$. We define $W_\alpha$ recursively as follows:
+    \begin{itemize}
+    \item For successor ordinals $\alpha+1$, let $\beta$ be the least element of $W_\alpha$ such that $[\beta+1,\omega_1) \cap \bigcup_{S\leq \beta} F(S)$ is nonempty, where $S \leq \beta$ is shorthand for $\{S \in [\omega_1]^{\leq k} : \forall \gamma \in S(\gamma < \beta)\}$. If no such $\beta$ exists, let $W_{\alpha+1}=W_\alpha$ and otherwise let $W_{\alpha+1}=W_\alpha \setminus \left([\beta+1,\omega_1) \cap \bigcup_{S\leq \beta} F(S)\right)$.
+    \item For limit ordinals $\alpha$, let $W_\alpha = \bigcap_{\beta<\alpha} W_\beta$.
+    \end{itemize}
+
+Finally let $W=\bigcap_{\alpha<\omega_1}W_\alpha$ and observe that it is unbounded. Let $R$ collect all ordinals $\alpha\in W$ such that there is an ordinal $\beta$ where for all $S\in[W\cap(\beta,\omega_1)]^{\leq k}$, $\alpha \in F(S)$. It is easily seen that $R$ is finite. Let $0^*$ be the least element of $W\setminus R$.
+
+Now, define a strictly increasing sequence of ordinals $\left<\alpha_1,\alpha_2,\alpha_3,\alpha_4,\dots\right>$ such that $\alpha_i \in W$ and $0^* \not\in F(\{\alpha_{2i+1},\dots,\alpha_{2i+k}\})$ for all $i$. The play $\left<0^*,\alpha_1,\dots,\alpha_k,0^*,\alpha_{k+1},\dots,\alpha_{2k},0^*,\dots\right>$ then defeats the strategy $\sigma$.
+\end{proof}
+
+Dr. Gruenhage tells me Peter J. Nyikos has shown the following:
+
+\begin{theorem}
+$O\not\markwin G_{O,P}(\omega_1\cup\{\infty\},\infty)$.
+\end{theorem}
+
+It is natural to ask:
+
+\begin{question}
+Does $O$ have a winning strategy which uses only the turn number and the last $k$ moves of $P$ for the game $G_{O,P}(\omega_1\cup\{\infty\},\infty)$? (Probably not.)
+\end{question}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

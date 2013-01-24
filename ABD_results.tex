@@ -1,0 +1,345 @@
+\documentclass[11pt]{article}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0.2in}
+\setlength\textheight{8in}
+\setlength\textwidth{6in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0.25in}
+\setlength\parskip{0.1in} 
+ 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{example}[theorem]{Example}
+      
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+\newcommand{\limitwin}{\uparrow_{\text{limit}}}
+
+\newcommand{\oneptcomp}[1]{#1^*}
+
+\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
+\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
+
+\newcommand{\lfkpgame}[1]{LF_{K,P}(#1)}
+\newcommand{\lfklgame}[1]{LF_{K,L}(#1)}
+
+\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
+
+\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\newcommand{\rest}{\restriction}
+
+\newcommand{\largecomment}[1]{}
+
+
+
+\begin{document}
+
+%%%%%%%%%
+%COMMENT%
+%%%%%%%%%
+\largecomment{
+Assume all spaces are locally compact.
+
+\begin{proposition}
+The following are all equivalent winning conditions for $\congame{\oneptcomp{X}}{\infty}$:
+\begin{itemize}
+\item The points chosen by $P$ converge to $\infty$.
+\item All compact subsets of $X$ contain finitely many points chosen by $P$.
+\item No compact subset of $X$ contains infinite points chosen by $P$.
+\end{itemize}
+
+The following are all equivalent winning conditions for $\clusgame{\oneptcomp{X}}{\infty}$:
+\begin{itemize}
+\item The points chosen by $P$ cluster about $\infty$.
+\item All compact subsets of $X$ miss infinitely many points chosen by $P$.
+\item No compact subset of $X$ contains cofinite points chosen by $P$.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+The winning condition for $\congame{\oneptcomp{X}}{\infty}$ is equivalent to the winning condition of $\lfkpgame{X}$.
+\end{proposition}
+
+\begin{proof}
+First, suppose that the points chosen by $P$ have a limit point $l$, the contradiction of $\lfkpgame{\oneptcomp{X}}$'s winning condition. Every open set about $l$ contains infinitely many points, including a compact neighborhood of $l$. This contradicts the winning condition of $\congame{\oneptcomp{X}}{\infty}$.
+
+Then, suppose that there was a compact subset of $X$ containing infinite points chosen by $P$, the contradiction of $\congame{\oneptcomp{X}}{\infty}$'s winning condition. Every infinite subset of a compact set has a limit point, contradicting $\lfkpgame{\oneptcomp{X}}$'s winning condition.
+\end{proof}
+
+\begin{theorem}
+The following are all equivalent.
+\begin{itemize}
+\item $X$ is metacompact.
+\item $O\tactwin\congame{\oneptcomp{X}}{\infty}$.
+\item $O\tactwin\clusgame{\oneptcomp{X}}{\infty}$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Gruenhage has shown $X$ is metacompact $\Rightarrow$ $K\tactwin\lfkpgame{X}$ (which is equivalent to $O\tactwin\congame{\oneptcomp{X}}{\infty}$), and obviously $O\tactwin\congame{\oneptcomp{X}}{\infty}$ $\Rightarrow$ $O\tactwin\clusgame{\oneptcomp{X}}{\infty}$. We proceed by modifying Gruenhage's proof that $K\tactwin\lfkpgame{X}$ implies $X$ is metacompact to show $O\tactwin\clusgame{\oneptcomp{X}}{\infty}$ does also.
+
+Let $\mathcal{U}$ be a cover of $X$, and refine it to open $F_\sigma$ sets with compact closures. Let $K:\oneptcomp{X}\to K[X]$ be the complement of a winning clustering strategy for $O$ such that $K(x)$ is a compact neighborhood of $x$ for all $x\in X$.
+
+Let $A(x)=\{p:x\not\in K(p)\}$.
+
+For each $x$, we claim $x$ is not even a limit point of $A(x)$. To see this, suppose there was such an $x$, and choose any compact neighborhood $N$ of $x$. If $x$ was a limit of $A(x)$, then $N\cap A(x)\not=\emptyset$. We choose $x_0\in N\cap A(x)$, and note $x\not\in K(x_0)$ since $x_0\in A(x)$.
+
+This makes $N\setminus K(x_0)$ a neighborhood of $x$, which must then intersect $A(x)$. We may then pick an $x_1$ in $N\cap A(x)\setminus K(x_0)$. By continuing this process inductively we find $x_n$ in $N\cap A(x) \setminus \bigcup_{0\leq i < n} K(x_i)$. Since the $x_n$ are all in the compact set $N$, the winning condition for $\clusgame{\oneptcomp{X}}{\infty}$ is not met for the play $\left<x_0,\oneptcomp{X}\setminus K(x_0),x_1,\oneptcomp{X}\setminus K(x_1),\dots\right>$, contradicting the fact that $K$ is the complement of a winning strategy.
+
+Let $K'(x)=Int(K(x)\setminus A(x))$. We note that $x\in K'(x)$ since $x$ was not a limit point or member of $A(x)$. So for each $K$ let $\{K'(x):x\in K\}$ be an open cover, and take a finite subset $F(K)\subset K$ which yields the subcover $\{K'(x):x\in F(K)\}$.
+
+Enumerate $\mathcal{U}=\{U_\alpha: \alpha < \lambda\}$. We define $\mathcal{U}_\alpha$ for $\alpha<\lambda$ to fulfill the following:
+
+\begin{itemize}
+\item $\mathcal{U}_\alpha$ is countable
+\item $\{U_\beta: \beta<\alpha\} \subseteq \bigcup_{\beta\leq\alpha} \mathcal{U}_\beta$
+\item If \[N_\alpha = \left(\bigcup \mathcal{U}_\alpha\right) \setminus \bigcup_{\beta<\alpha} \left( \bigcup \mathcal{U}_\beta \right)\]
+
+(that is, $N_\alpha$ contains the points covered by $\mathcal{U}_\alpha$ and not covered by a previous $\mathcal{U}_\beta$)
+
+then there exists a countable $S_\alpha\subseteq N_\alpha$ where \[ N_\alpha \subseteq \bigcup_{x\in S_\alpha} K'(x) \subseteq \bigcup_{x\in S_\alpha} K(x) \subseteq \bigcup \mathcal{U}_\alpha\]
+\end{itemize}
+
+To start, let $\mathcal{U}_0$ and $\mathcal{U}_\alpha$ for every limit $\alpha$ be the empty set. For the successor ordinal $\alpha+1$, let $\mathcal{U}_{\alpha+1,0}=\{U_\alpha\}$ and $S_{\alpha+1,0}=\emptyset$. Then let $O_{\alpha+1}=\bigcup_{\beta\leq\alpha}\bigcup\mathcal{U}_\beta$, the points covered by previous $\mathcal{U}_\beta$.
+
+We then define \[S_{\alpha+1,n+1}=\bigcup_{U\in\mathcal{U}_{\alpha+1,n}} F(Cl(U)\setminus O_{\alpha+1})\] and let $\mathcal{U}_{\alpha+1,n+1}\subseteq \mathcal{U}$ be a finite cover of $\bigcup_{x \in S_{\alpha+1,n+1}} K(x)$. Note that $S_{\alpha,n}$ and $U_{\alpha,n}$ are finite at every step $n$, so we may define $S_\alpha = \bigcup_{n<\omega} S_{\alpha,n}$ and $U_\alpha=\bigcup_{n<\omega} U_{\alpha,n}$.
+
+Such $\mathcal{U}_\alpha$ may be seen to fulfill the above requirements.
+
+Let $W_\alpha = \bigcup_{x\in S_\alpha} K'(x)$. Note $W_\alpha$ contains everything in $\mathcal{U}_\alpha$ not covered by lower $\mathcal{U}_\beta$.
+
+We now show the collection of $W_\alpha$ is point-finite. Suppose it wasn't: if $x \in W_{\alpha_n}$ for $\alpha_0<\alpha_1<\dots$, then for each $n$ choose some $x_n \in S_{\alpha_n}$ where $x \in K'(x_n)$.
+
+FINISH THIS
+
+\end{proof}
+
+}
+%%%%%%%%%%%%
+%ENDCOMMENT%
+%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{example}
+Let $X$ be a zero-dimensional, compact L-space (hereditarally Lindeloff and non-separable). It is a fact that there exists a point-countable collection $\mathcal{U}=\{U_\alpha : \alpha<\omega_1\}$ of clopen sets in $X$, and it is also true that any point-finite subcollection of $\mathcal{U}$ is countable. %That is, if we let $A_x = \{\alpha : x \in U_\alpha\}$, then $|A_x|\leq\omega$ for all $x\in X$.
+
+Let $C = \{c_\alpha : \alpha <\omega_1\}$ be any uncountable subset of the Cantor space $2^\omega$. Let $X_s = X \times \{s\}$ for each $s \in 2^{<\omega}$, and $U_{\alpha,s} = U_\alpha \times \{s\}$.
+
+Finally, let \[\mathbb{X} = C \cup \bigcup_{s\in 2^{<\omega}} X_s\] be a tree of $2^{<\omega}$ copies of $X$, and where \[c_\alpha \cup \bigcup_{n < \omega} U_{\alpha, x_\alpha \restriction n}\] is an open set about each $c_\alpha$.
+\end{example}
+
+
+
+\begin{definition}
+Let $S\in[\omega_1]^{<\omega}$ and $m<\omega$. Define 
+    \[K_S = \bigcup_{\alpha \in S} \left( c_\alpha \cup \left(\bigcup_{s < c_\alpha} U_{\alpha,s}\right)\right)\] 
+    \[ A = \{z^\frown \<1\> : z \in 1^{<\omega}\}\] 
+    \[ K^*_S = K_S \setminus \bigcup_{s \in A} X_s \] 
+and 
+    \[L_m = \bigcup_{s \in 2^{<m}} X_s\] 
+and observe that every compact set is dominated by $K^*_S \cup L_m$ for some $S,m$. Intuitively, $K^*_S$ collects the branches of $U_\alpha$ converging up to $c_\alpha$ for each $\alpha \in S$ while avoiding copies $X_s$ of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies $X_s$ of $X$ with $|s| < m$ at the base of the tree.
+\end{definition}
+
+\begin{proposition}
+Without loss of generality, $P$ always plays points in $\bigcup_{s \in 2^{<\omega}} X_s$.
+\end{proposition}
+
+\begin{proposition}
+$K \win \lfkpgame{\mathbb{X}}$.
+\end{proposition}
+
+\begin{proof}
+In response to a point $\<x,s\>$, $K$ observes that there are only countably many $\alpha$ such that $U_\alpha \times \{s\}$ contains $\<x,s\>$ (by point-countability of $X$). Enumerate these as $\alpha_n$. $K$ makes a promise that during round $m$, $K$ will forbid some superset of $K_{\{\alpha_n : n\leq m\}}$. Finally, $K$ also always forbids a superset of $L_{|s|+1}$.
+
+Suppose $P$'s moves clustered at some point. Since $K$ forbade $L_{|s|+1}$ during each round, that point must be $c_\alpha$ for some $\alpha$. $P$'s play then must have included a subsequence of points $\<x_0,s_0\>,\<x_1,s_1\>,\<x_2,s_2\>\dots$ such that $x_n \in U_\alpha$ and $s_n \leq s_{n+1} \leq c_\alpha$. However, in response to $\<x_0,s_0\>$, $K$ made a promise to eventually forbid a superset of $K_{\{\alpha\}}$, making every $\<x_n,t_n\>$ illegal after that round.
+\end{proof}
+
+
+
+
+%%%%%%%%%
+%COMMENT%
+%%%%%%%%%
+\largecomment{
+\begin{lemma}
+$K$ lacks a "simple" 2-tactic which is a winning strategy in $\lfkpgame{\mathbb{X}}$.
+\end{lemma}
+
+\begin{proof}
+Let $a_n = \<0,\dots,0,1\>$ with $n$ zeros We define a simple 2-tactic as one which is dominated by a compact set of the form $K^*_S\cup L_{n+1}$, where $n$ is equal to the height of the highest observable move by $P$, and where $K^*_S = K_S \setminus \bigcup_{n} X_{a_n}$.
+
+Considering a simple 2-tactic $\sigma(\<x,s\>,\<y,t\>)$, we note it is dominated by $K^*_{S(x,y,n(s,t))}\cup L_{n(s,t)+1}$, where $n(s,t)=\max(|s|,|t|)$, and $$S(x,y,n) = \bigcup_{s,t\in 2^{\leq n}} S(\<x,s\>,\<y,t\>)$$ Strengthen $\sigma$ accordingly.
+
+But $K$ could, for fixed $x^*\in X$, define the 1-tactic $\tau(\<x,s\>) = \sigma(\<x,s\>,\<x^*,a_{|s|}\>)$. Since no winning $1$-tactic exists, let $\<x_0,s_0\>,\<x_1,s_1\>,\dots$ be a legal counter to $\tau$ clustering at $c\in C$.
+
+We claim $\<x_0,s_0\>, \<x^*,a_{|s_0|}\>, \<x_1,s_1\>, \<x^*,a_{|s_1|}\>, \dots$ is a counter to the 2-tactic. Since $\<x_0,s_0\>, \<x_1, s_1\>, \dots$ clusters at $c$, we need only show it is legal. By the definition of simple, each $\<x^*, a_{|s_i|}\>$ is a legal move. We note that since $\<x_{i+1},s_{i+1}\>$ was not forbidden by any $\tau(\<x_j,s_j\>)= K^*_{S(x_j,x^*,|s_j|+1)}\cup L_{|s_j|+2}$ for $j\leq i$, it could not be forbidden by $$\sigma(\<x_j,s_j\>,\<x^*,a_{|s_{j-1}|}\>) \subseteq \sigma(\<x_j,s_j\>,\<x^*,a_{|s_j|}\>) = K^*_{S(x_j,x^*,|s_j|+1)}\cup L_{|s_j|+2} $$
+\end{proof}
+
+\begin{theorem}
+$K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+\end{theorem}
+
+\begin{proof}
+Take the 2-tactic $\sigma(\<x,s\>,\<y,t\>)$. We define $S(x,y,n)$ and $m(x,y,n)$ so that \[ \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq K_{S(x,y,n)} \cup L_{m(x,y,n)}\] and $|S(x,y,n)|, n < m(x,y,n)$. We've shown that every 2-tactial strategy can be improved so that it only considers $x$, $y$, and $\max(|s|,|t|)$. In addition, as there are $2^{m(x,y,\max(|s|,|t|))}$ copies of $X$ not forbidden by such an improved strategy, and at most \[\sum_{i=1}^{m(x,y,\max(|s|,|t|))-1} i < 2^{m(x,y,\max(|s|,|t|))}\] branches forbidden by this strategy, there is always some copy of $X$ at height $m(x,y,\max(|s|,|t|))$ completely legal to play within by $P$ after each move by $K$ according to this strategy.
+
+Now, define the simple 2-tactic $\tau(\<x,s\>,\<y,t\>)=K^*_{S(x,y,m(x,y,n(s,t))+1)} \cup L_{n(s,t)+1}$. Since there are no winning simple 2-tactics, let $\<x_0,s_0\>,\<x_1,s_1\>,\dots$ be a successful counter to $\tau$ clustering at $c$.
+
+We claim $\<x_0,t_0\>, \<x_1,t_1\>, \dots$ where $t_0=c\rest 0$, $t_1=c\rest 1$, and
+$$
+t_{i+2} = \left\{
+\begin{array}{ll}
+\text{arbitrary provided } |t_{i+2}| = m(x_i,x_{i+1},|t_{i+1}|) & x_{i+2}= x^* \text{ and } s_{i+2} \in \{a_n : n < \omega\} \text{ (1) } \\
+c\rest m(x_i,x_{i+1},|t_{i+1}|) & \text{otherwise and } s_{i+2} < c  \text{ (2) }\\
+\text{arbitrary extension of } s_{i+2} \text{ of length } m(x_i,x_{i+1},|t_{i+1}|) & \text{otherwise} \text{ (3) }
+\end{array}
+\right.
+$$
+is a legal counter to $\sigma$. It certainly clusters at $c$, so we need only show it is legal.
+
+Suppose $\<x_{i+2}, t_{i+2}\>$ were an illegal move. Then it must have been forbidden by some $K_{S(x_i,x_{i+1},|t_{i+1}|)}\cup L_{m(x_i,x_{i+1},|t_{i+1}|)}$. In case (1), we strengthened $m$ to ensure that $x^*$ was always legal somewhere on the first level not forbidden by $L_m$. In either case (2) or (3), $s_{i+2}<t_{i+2}$, keeping the move legal.
+
+\end{proof}
+}
+%%%%%%%%%%%%
+%ENDCOMMENT%
+%%%%%%%%%%%%
+
+
+\begin{theorem}
+$K\not\tactwin\lfkpgame{\mathbb{X}}$.
+\end{theorem}
+
+\begin{proof}
+(Vanished somewhere during my editing... looking for it now!)
+\end{proof}
+
+
+
+\begin{theorem}
+$K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+\end{theorem}
+
+\begin{proof}
+Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. We may define $S(x,y,n)$ and $m(x,y,n)$ such that for each $(x,y)$,
+\[
+\bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq K^*_{S(x,y,n)} \cup L_{m(x,y,n)}
+\]
+
+Select an arbitrary point $x' \in X$. We define a tactical strategy 
+\[
+\tau(x,s) = K^*_{S(x,x',m(x,x',|s|)+1)} \cup L_{m(x,x',m(x,x',|s|)+1)}
+\]
+We complete the proof by showing $\tau$ is a winning tactical strategy (a contradiction).
+
+Suppose
+\[
+\<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
+\]
+successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+\[
+\<x_0, s_0\>, \<x', {z_{m(x_0,x_0,|s_0|)}}^\frown\<1\>\>, \<x_1, s_1\>, \<x', {z_{m(x_1,x',|s_1|)}}^\frown\<1\>\>,  \<x_2, s_2\>, \<x', {z_{m(x_2,x',|s_2|)}}^\frown\<1\>\>, \dots
+\]
+is a successful counter to $\sigma$.
+
+Obviously it also clusters at $c$, so we need only show that it is a legal counter to $\sigma$. Note that \[\sigma(\<x', {z_{m(x_i,x',|s_i|)}}^\frown\<1\>\>, \<x_{i+1}, s_{i+1}\>) \subseteq \sigma(\<x_{i+1}, s_{i+1}\>, \<x', {z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>\>)\] since the only difference in input is a higher copy of $x'\in X$.
+
+Suppose $\<x_{i}, s_{i}\>$ was an illegal move. Then for some $j<i$, that move was forbidden by 
+\[
+\sigma(\<x_{j}, s_{j}\>, \<x', {z_{m(x_{j},x',|s_{j}|)}}^\frown\<1\>\>)
+\]
+\[
+\subseteq 
+K^*_{S(x_{j},x',m(x_{j},x',|s_{j}|)+1)} \cup L_{m(x_{j},x',m(x_{j},x',|s_{j}|)+1)}
+= \tau(x_j,s_j)
+\]
+which is a contradiction as it was a legal move against $\tau$.
+
+Finally, consider $\<x',{z_{m(x_i,x',|s_i|)}}^\frown\<1\>\>$. Since the length of ${z_{m(x_i,x',|s_i|)}}^\frown\<1\>$ is longer than $m(x_i,x',|s_i|)$, it's not forbidden by any $L_m$ played by $K$. And since ${z_{m(x_i,x',|s_i|)}}^\frown\<1\>$ is on the antichain $A$ avoided by the $K^*_S$s, it could never have been forbidden at all.
+\end{proof}
+
+\begin{proposition}
+The above proof can be adapted to prove $K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
+\end{proposition}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

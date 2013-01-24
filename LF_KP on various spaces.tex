@@ -1,0 +1,165 @@
+\documentclass[11pt]{article}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0.2in}
+\setlength\textheight{8in}
+\setlength\textwidth{6in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0.25in}
+\setlength\parskip{0.1in} 
+ 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{example}[theorem]{Example}
+      
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+\newcommand{\limitwin}{\uparrow_{\text{limit}}}
+
+\newcommand{\oneptcomp}[1]{#1^*}
+
+\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
+\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
+
+\newcommand{\lfkpgame}[1]{LF_{K,P}(#1)}
+\newcommand{\lfklgame}[1]{LF_{K,L}(#1)}
+
+\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
+
+\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+
+
+\begin{document}
+
+\begin{example}
+If $\mathcal{F}$ is a free ultrafilter on $\omega$, let $L(\mathcal{F})=\omega \cup \{\mathcal{F}\}$ as a subspace of the Stone-Cech compactification $\beta\omega$ be the \textbf{single ultrafilter line}. There is some ultrafilter $\mathcal{F}$ such that $K \prewin \lfkpgame{L(\mathcal{F})}$ and $K \tactwin \lfkpgame{L(\mathcal{F})}$.
+
+($L(\mathcal{F})$ is not compactly generated, and thus not locally compact.)
+\end{example}
+
+\begin{proof}
+Let $a_n$ be a sequence such that the sequence $\frac{a_n}{n}$ is unbounded above. Then there is an ultrafilter $\mathcal{F}$ such that $\sigma(n)=(\sum_{m\leq n} a_m )\cup \{\mathcal{F}\}$ is a winning predetermined strategy for $K$ in $\lfkpgame{L(\mathcal{F})}$.
+
+Let $\mathcal{P}$ be the collection of all legal plays by $P$ against the strategy $\sigma$. Consider a finite collection of plays $P_0,\dots,P_{n-1}\in \mathcal{P}$. As $\frac{a_m}{m}$ is unbounded above, we may find infinitely many $m$ such that $\frac{a_m}{m}>n \Rightarrow mn<a_m$. As the $a_m$ partition $\omega$ such that $P$ may only play at most $m$ points in each part, there are infinitely many parts which are not filled, and thus $\bigcup_{m<n} P_m$ is not cofinite.
+
+It then follows that the closure of $\mathcal{P}$ under finite unions and subsets, along with all finite sets, is an ideal. Its dual filter may then be extended to an ultrafilter $\mathcal{F}$ such that every possible play by $P$ is the complement of some member of $\mathcal{F}$, making $\sigma$ a winning predetermined strategy.
+
+A winning tactic can then be easily constructed by using the moves by $P$ as the round number in the predetermined strategy.
+\end{proof}
+
+\begin{example}
+Let $T(\mathcal{F}) = 2^{\leq\omega}$ where $2^{<\omega}$ is discrete and for each $c\in 2^\omega$, $\{c \restriction \alpha : \alpha \leq \omega\}$ is homeomorphic to $L(\mathcal{F})$. This is called the \textbf{single ultrafilter tree}. There is some ultrafilter $\mathcal{F}$ such that $K \prewin \lfkpgame{L(\mathcal{F})}$ and $K \tactwin \lfkpgame{L(\mathcal{F})}$.
+
+($T(\mathcal{F})$ is not compactly generated, and thus not locally compact.)
+\end{example}
+
+\begin{proof}
+Assume without loss of generality that $P$ does not play points in $2^\omega$.
+
+We use a winning predetermined strategy $\sigma^*(n)$ for $L(\mathcal{F})$ and let $\sigma(n) = \bigcup_{m \in \sigma^*(n)} 2^m$. Note that if $P$ has a counter which converges to some $c\in \,^\omega2$, then $P$ would have a counter within a single branch. Since each branch is homeomorphic to $L(\mathcal{F})$; this is impossible.
+
+A winning tactic can then be easily constructed by using the moves by $P$, taking the level of the tree played upon as the round number in the predetermined strategy.
+\end{proof}
+
+\begin{example}
+Let $M = \omega^2 \cup \{\infty\}$ be the \textbf{metric fan} where $\omega^2$ is discrete and $\infty$ has neighborhoods of the form $M \setminus (n\times\omega)$ for any $n<\omega$. Then $K \not\win \lfkpgame{M}$. (In fact, $P \markwin \lfkpgame{M}$.)
+
+($M$ is not locally compact, but is compactly generated.)
+\end{example}
+
+\begin{proof}
+For each compact set $C$ in $M$, there exists a minimal dominating function $f_C$ such that for each $(x,y)\in C\setminus\{\infty\}$, $f(x)> y$.
+
+So let $P$ respond to the move $C\in K[X]$ by $K$ on round $n$ with the point $p=(n,s_C)$ such that $s_C = \min(\{y<\omega : f_C(n) < y\}$. It is easy to see that $p_n\rightarrow \infty$, so $P$ has a winning Markov strategy.
+\end{proof}
+
+\begin{example}
+Let $S = \omega^2 \cup \{\infty\}$ be the \textbf{sequential fan} where $\omega^2$ is discrete and $\infty$ has neighborhoods of the form $M \setminus \{(x,y) : x<f(y)\}$ for any $f:\omega\to\omega$. Then $K \prewin \lfkpgame{S}$ and $K\tactwin \lfkpgame{S}$.
+
+($S$ is not locally compact, but is compactly generated.)
+
+
+\end{example}
+
+\begin{proof}
+Let $\sigma(n)=\omega\times(n+1) \cup \{\infty\}$. By defining $f(y)$ to be greater than the $x$-coordinate of all $P$'s plays through round $y$, we see that $M\setminus\{(x,y): x<f(y)\}$ misses every move by $P$, so $P$ cannot converge to $\infty$.
+
+A winning tactic can be easily constructed by using the $y$-coordinate of $P$'s moves as the round number in the predetermined strategy.
+\end{proof}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

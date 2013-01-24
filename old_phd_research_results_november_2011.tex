@@ -1,0 +1,454 @@
+\documentclass[11pt]{article}
+% \usepackage{aums}       % For Master's papers
+% \usepackage{ulem}       % underlining on style-page; see \normalem below
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0.2in}
+\setlength\textheight{8in}
+\setlength\textwidth{6in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0.25in}
+\setlength\parskip{0.1in} 
+ 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+
+% Strategy uparrow shortcuts
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+
+\begin{document}
+
+%   \author{Steven Clontz}
+%   \address{Auburn University}
+%   \email{steven.clontz@auburn.edu}
+
+\begin{proposition}
+K has a winning strategy in $G_{KP}(Y)$ ($G_{KL}(Y)$) if and only if K has a strictly increasing winning strategy.  The same holds for winning predetermined strategies.
+\end{proposition}
+
+\begin{proposition}
+For any space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is compact.
+  \item $K$ has a winning button-mashing strategy for $G_{KP}(Y)$.
+  \end{itemize}
+\end{proposition}
+
+\begin{proposition}
+If $K$ has a winning predetermined strategy in $G_{KP}(Y)$, then $Y$ is $\sigma$-compact.
+\end{proposition}
+
+\begin{theorem}
+If $Y$ is a locally compact, $\sigma$-compact space, then $K$ has a winning predetermined strategy for $G_{KP}(Y)$.
+\end{theorem}
+
+\begin{proof}
+Let $Y_n$ be a compact set for $n<\omega$ such that $Y=\bigcup_{n<\omega}Y_n$. As $Y$ is locally compact, there is a cover of $Y$ by open sets with compact closures. For each $Y_n$, let $\mathcal{U}_n$ be a finite cover of $Y_n$ by open sets with compact closures.
+
+Define a predetermined strategy $\sigma$ for $K$ by \[\sigma(n)=\bigcup \{\overline{U}: U\in \bigcup_{m\leq n} \mathcal{U}_m\}\]
+
+Let $y_n$ give a play by $P$. If $y$ is a cluster point of the $y_n$, then every open set about $y$ contains infinitely many $y_n$. Let $U$ be some open set in $\bigcup_{n<\omega} \mathcal{U}_n$ which covers $y$. Then $\overline{U}$ contains infinitely many $y_n$, which means $P$ played in a set already played by the strategy $\sigma$. Thus $\sigma$ is a winning strategy.
+\end{proof}
+
+\begin{corollary}
+For any locally compact space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is $\sigma$-compact.
+  \item $K$ has a winning predetermined strategy for $G_{KP}(Y)$.
+  \end{itemize}
+\end{corollary}
+
+\begin{lemma}
+$K$ does not have a winning predetermined strategy for $G_{KP}(M)$ where $M$ is the metric fan space.
+\end{lemma}
+
+\begin{proof}
+Let $\sigma(n)$ be a predetermined strategy for $K$. Note that any compact set cannot contain every point $(a,b)$ for fixed $a$ and every $b\in \omega$, as that would require it be a compact set containing a closed infinite discrete space.
+
+So on turn $n$, let $P$ respond to $\sigma(n)$ with a point $y_n=(a_n,n)$ such that $(a_n,n)$ is not covered by $\bigcup_{m\leq n} \sigma(n)$ (a compact set). It is easy to see that $y_n\rightarrow \infty$, so $P$ beats $\sigma$.
+\end{proof}
+
+\begin{corollary}
+$K$ does not have a winning predetermined strategy for $G_{KP}(Y)$ where $Y$ is a first-countable non-locally countably compact space.
+\end{corollary}
+
+\begin{proof}
+By Lemma 8.3 of [E. van Douwen, The integers and Topology, in: K.Kunen, J.E.Vaughan (eds.), Handbook of Set-Theoretic Topology, North-Holland, Amsterdam, 1984, 111-167], the metric fan $M$ is a closed subspace of $Y$.
+\end{proof}
+
+\begin{theorem}
+For any first-countable \textbf{regular} space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is $\sigma$-compact and locally compact.
+  \item $K$ has a winning predetermined strategy for $G_{KP}(Y)$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+The forward implication was proved earlier.
+
+Suppose $K$ has a winning predetermined strategy. Then $Y$ is certainly $\sigma$-compact, and by the corollary, it must also be locally compact.
+\end{proof}
+
+While a winning predetermined strategy for $K$ obviously implies the space is $\sigma$-compact, it further implies that the space is hemicompact (it can be broken into $\omega$ increasing compact portions such that every compact set is a subset of some portion).
+
+\begin{lemma}
+If $K$ has a winning predetermined strategy for $G_{KP}(Y)$, then $Y$ is hemicompact.
+\end{lemma}
+
+\begin{proof}
+Let $\sigma$ be an increasing predetermined strategy for $K$ in the game $G_{KL}(Y)$ such that there exists a compact set $C$ such that $C \not\subseteq \sigma(n)$. On each turn, have $P$ play $y_n\in C \setminus \sigma(n)$. Then the $y_n$ are an infinite subset of the compact set $C$ and must have a cluster point in $C$, showing $\sigma$ is not a winning strategy.
+
+Thus if $K$ has a winning predetermined strategy, it witnesses that $Y$ is hemicompact.
+\end{proof}
+
+\begin{theorem}
+For any locally compact space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is hemicompact.
+  \item $K$ has a winning predetermined strategy in $G_{KL}(Y)$.
+  \item $K$ has a winning predetermined strategy in $G_{KP}(Y)$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+Let $Y$ be hemicompact, witnessed by $K_n=\sigma(n)$. Let $H_0,H_1,\dots$ be a play by $H$ in $G_{KL}(Y)$. Suppose by way of contradiction that this play beats $\sigma$. Then let $y\in Y$ be the point such that for all neighborhoods $U$ of $y$, $U$ hits infinite $H_n$. Let $C$ be a compact neighborhood of $y$. As $K_n$ witnesses hemicompactness, $C \subseteq K_N = \sigma(N)$ for some $N$. But then $H_n$ intersects $\sigma(N)$ for infinitely many $n$, contradiction.
+
+Any winning strategy for $G_{KL}(Y)$ is a winning strategy for $G_{KP}(Y)$, and winning predetermined strategies for $G_{KP}(Y)$ implies hemicompact by the previous lemma.
+\end{proof}
+
+\begin{corollary}
+For any locally compact space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is $\sigma$-compact.
+  \item $Y$ is hemicompact.
+  \item $K$ has a winning predetermined strategy in $G_{KL}(Y)$.
+  \item $K$ has a winning predetermined strategy in $G_{KP}(Y)$.
+  \end{itemize}
+\end{corollary}
+
+\begin{theorem}
+For any Hausdorff $k$-space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is hemicompact.
+  \item $Y$ is $k_{\omega}$.
+  \item $K$ has a winning predetermined strategy in $G_{KP}(Y)$.
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+If $Y$ is hemicompact, then let it be witnessed by $K_n$. We claim $K_n$ also witnesses $k_{\omega}$, that is, a set $C$ is closed if and only if, $C\cap K_n$ is closed in $K_n$ for all $n$. Note the forward implication always holds for Hausdorff spaces as $C\cap K_n$ is closed in $Y$, and thus in every $K_n$.
+
+Assume $C\cap K_n$ is closed in $K_n$ for all $n$. Let $H$ be any compact set. As $Y$ is hemicompact, $H\subseteq K_n$ for some $n$. Note $C\cap H = (C\cap K_n)\cap H$. As both $C \cap K_n$ and $H$ are closed in $K_n$, $C\cap H$ is closed in $K_n$, and thus $C\cap H$ is closed in $H$. As $Y$ is $k$ and $C\cap H$ is closed in $H$ for all compact $H$, $C$ is closed, showing the backwards implication.
+
+Now if $Y$ is $k_\omega$, let it be witnessed by $K_n$. Give $K$ the strategy $\sigma(n)=K_n$ for the game $G_{KP}(Y)$, and let $y_n$ be a play by $P$ such that $y_n \not\in \sigma(n)$. Suppose by way of contradiction that $y$ is a cluster point of the $y_n$. Note $y\in \sigma(N)$ for some $N$. $y$ is a cluster point of $\{y_n : n\geq N\}$ but $y\not\in \{y_n : n \geq N\}$. Also, $\{y_n : n \geq N\} \cap \sigma(m)$ is finite for all $m$, and thus closed, so as $\sigma(n)$ witnesses $k_\omega$, $\{y_n : n\geq N\}$ is closed and contains its cluster point $y$, contradiction. Thus $\sigma$ is a winning predetermined strategy for $K$ in $G_{KP}(Y)$.
+
+Finally, if $K$ has a winning predetermined strategy for $G_{KP}(Y)$, $Y$ is hemicompact by the previous lemma.
+\end{proof}
+
+\begin{theorem}
+For any hemicompact Hausdorff k-space $Y$, $K$ has a winning predetermined strategy in $G_{KL}(Y)$.
+\end{theorem}
+
+\begin{proof}
+Let $Y$'s hemicompactness be witnessed by $K_n=\sigma(n)$ (which also witnesses $k_\omega$ by the previous theorem). Let $H_0,H_1,\dots$ be a play by $H$ in $G_{KL}(Y)$, and suppose this play defeats $\sigma$. Then there is a point $y$ such that every neighborhood of $y$ hits infinitely many of the $H_n$.
+
+Now, $y\in\sigma(N)$ for some $N$, and since $H_0,H_1,\dots$ is a winning play for $H$, $y\not\in H_n$ for all $n\geq N$. Consider the set $H_\omega=\bigcup_{n\geq N} H_n$. Note $H_\omega$ is closed if and only if $H_\omega \cap \sigma(m)$ is closed in $\sigma(m)$ for all $m$ (by $k_\omega$). In fact, since every $H_n$ is a subset of some $\sigma(m)$ (by hemicompactness), $H_\omega \cap \sigma(m)$ is a finite union of some $H_n$, and is thus closed in $Y$.
+
+We thus have that $H_\omega$ is a closed set not containing $y$. But since every neighborhood of $y$ intersects $H_\omega$, we have a contradiction. Thus $\sigma$ is a winning predetermined strategy for $K$ in the game $G_{KL}(Y)$.
+\end{proof}
+
+\begin{corollary}
+For any Hausdorff $k$-space $Y$, TFAE
+  \begin{itemize}
+  \item $Y$ is hemicompact.
+  \item $Y$ is $k_{\omega}$.
+  \item $K$ has a winning predetermined strategy in $G_{KL}(Y)$.
+  \item $K$ has a winning predetermined strategy in $G_{KP}(Y)$.
+  \end{itemize}
+\end{corollary}
+
+We now consider the subspace of $\beta\omega$ consisting of $\omega$ and a single ultrafilter $\mathcal{F}$. (Needs more info on behavior).
+
+\begin{proposition}
+$K$ has no predetermined winning strategy in the compact-compact game $G_{K,L}(Y)$ for the single ultrafilter space $Y=\omega \cup \{\mathcal{F}\}$ where $\mathcal{F}\in \beta\omega\setminus\omega$.
+\end{proposition}
+
+\begin{proof}
+Compact sets are exactly finite sets in this space. Therefore, the difference of any two compact sets is compact.
+
+Give $K$ the predetermined strategy $\sigma(n)$. Have $H$ play \[H_n=(n\cup\sigma(n+1))\setminus\sigma(n)\] on turn $n$. The resulting union of $K$'s play is the cofinite set $Y\setminus\sigma(0)$, for which any ultrafilter would be a limit point.
+\end{proof}
+
+\begin{proposition} 
+If a selective ultrafilter $\mathcal{F}$ exists, then $K$ has no winning predetermined strategy in the compact-point game $G_{KP}(Y)$ for the single selective ultrafilter space $Y=\omega \cup \{\mathcal{F}\}$.
+\end{proposition}
+
+\begin{proof}
+Let $\sigma$ be a strictly increasing predetermined strategy for $K$. For every partition $\{B_n : n < \omega\}$ of subsets of $\omega$ such that $B_n \not\in \mathcal{F}$ for all $n$, there exists $A \in \mathcal{F}$ such that $|A \cap B_n|=1$ for all $n$. So then let \[B_n = \omega \cap \sigma(n) \setminus \left(\bigcup_{m<n} \sigma(m)\right)\]
+  
+  Note that $B_n$ is finite and thus $B_n \not\in \mathcal{F}$, so there exists $A\in \mathcal{F}$ such that $|A \cap B_n|=1$. Let $y_n$ be the singleton in $A \cap B_{n+1}$, so $\{y_n : n < \omega\}$ is cofinite in $A$, and thus is also in $\mathcal{F}$. Thus $y_n$ has $\mathcal{F}$ as a cluster point, and $\sigma$ is not a  winning predetermined strategy.
+\end{proof}
+
+\begin{theorem}
+Let $a_n$ be a sequence such that the sequence $\frac{a_n}{n}$ is unbounded above. Then there is an ultrafilter $\mathcal{F}$ such that $\sigma(n)=(\sum_{m\leq n} a_m )\cup \{\mathcal{F}\}$ is a winning predetermined strategy for $K$ in $G_{K,P}(\omega\cup\{\mathcal{F}\})$.
+\end{theorem}
+
+\begin{proof}
+Let $\mathcal{P}$ be the collection of all legal plays by $P$ against the strategy $\sigma$. Consider a finite collection of plays $P_0,\dots,P_{n-1}\in \mathcal{P}$. As $\frac{a_m}{m}$ is unbounded above, we may find infinitely many $m$ such that $\frac{a_m}{m}>n \Rightarrow mn<a_m$. As the $a_m$ partition $\omega$ such that $P$ may only play at most $m$ points in each part, there are infinitely many parts which are not filled, and thus $\bigcup_{m<n} P_m$ is not cofinite.
+
+It then follows that the closure of $\mathcal{P}$ under finite unions and subsets is an ideal. Its dual filter may then be extended to an ultrafilter $\mathcal{F}$ such that every possible play by $P$ is the complement of some member of $\mathcal{F}$.
+\end{proof}
+
+\begin{proposition}
+Let $a_n$ be a sequence bounded above by $k$. Then $\sigma(n)=(\sum_{m\leq n} a_m )\cup \{\mathcal{F}\}$ is not a winning predetermined strategy for $K$ in $G_{K,P}(Y)$ for any single ultrafilter space $Y$.
+\end{proposition}
+
+\begin{proof}
+For any ultrafilter, there exists some $a<k$ such that $P_{a,k}=\{z : a = z\mod k\} \in \mathcal{F}$. Thus for such $\sigma(n)$, have $P$ respond with $y_n = a + (n+1)k$, giving a cofinite subset of $P_{a,k}$ (also in $\mathcal{F}$).
+\end{proof}
+
+
+\begin{conjecture}
+If $K$ has a predetermined winning strategy in $G_{K,L}(Y)$ then $Y$ is a $k$-space.
+\end{conjecture}
+
+\begin{proof}
+Some ideas:
+
+Let $K_n$ be a winning predetermined strategy for $K$. For all sequences $L_n$ of compact sets, if every neighborhood of a point hits infinitely many of the $L_n$, then there is some $N$ such that $L_N \cap K_N \not= \emptyset$.
+
+Aiming for a contradiction, let $C \cap K$ be closed in $K$ for all compact $K$, while for some $l\in C'$, $l \not\in C$. Assume without loss of generality that $l\in K_0$.
+
+For each $n$, there exists an open $U_n$ where $U_n \cap K_n$ is a $K_n$-neighborhood of $l$ but $U_n \cap K_n \cap C = \emptyset$. But since $l\in C'$, each $U_n$ meets $C$ at some point $p_n \not\in K_n$.
+
+There is an open neighborhood $V$ of $l$ which only hits finitely many of the $p_n$. What is $V \cap \bigcup_n U_n$?
+\end{proof}
+
+
+
+
+
+
+
+
+\centerline{\bf $G_{O,P}(X,x)$}
+
+\begin{proposition}
+$G_{OP}(X,x)$ is order-inspecific.
+\end{proposition}
+
+
+
+
+
+
+
+
+
+\centerline{\bf $G_{O,P}(X,x)$ for the one-point comapctification of $\omega_1$}
+
+\begin{proposition}
+Let $X=\omega_1\cup\{\infty\}$ be the one-point compactification of discrete $\omega_1$. $O$ has a winning limited-information strategy for $G_{OP}(X,\infty)$ if she may derive a finite superset of all points played so far by $P$.
+\end{proposition}
+
+\begin{proposition}
+If $O$ has a winning strategy, then $O$ has a winning strategy $\sigma$ which only considers the set of previous moves by $P$ (ignoring order) such that $\sigma(A)\subseteq \sigma(B)$ for $B\subseteq A$.
+\end{proposition}
+
+\begin{proposition}
+$O$ has no winning predetermined strategy for $G_{OP}(X,\infty)$.
+\end{proposition}
+
+\begin{proof}
+Given a predetermined strategy $\sigma(n)$ for $O$, $P$ simply chooses any ordinal in $\bigcup_n \sigma(n)$ to play on every turn.
+\end{proof}
+
+\begin{proposition}
+$O$ has a winning coding strategy for $G_{O,P}(X,\infty)$. 
+\end{proposition}
+
+\begin{proof}
+Define $\sigma(U,p)=U\setminus\{p\}$. A legal play by $P$ must never repeat the same point, so the play converges to $\infty$.
+\end{proof}
+
+%\begin{theorem}
+%$O$ has no winning tactical strategy for $G_{OP}(X,\infty)$.
+%\end{theorem}
+
+%\begin{proof}
+%Let $\sigma(\alpha)$ be a tactical strategy for $O$ and $F(\alpha)=\omega_1\setminus\sigma(\alpha)$. Suppose by way of contradiction that for all% $\alpha_0,\alpha_1<\omega_1$, if $\alpha_1 \not\in F(\alpha_0)$ then it follows that $\alpha_0\in F(\alpha_1)$. Then for all $\alpha<\omega_1$, $\alpha\in F(\beta)$ for all $\beta\not\in F(\alpha)$.
+
+%So $0\in F(\beta)$ for all $\beta\not\in F(0)$, $1\in F(\beta)$ for all $\beta \not\in F(1)$, and so on. Then $0,1,2,\dots\in F(\beta)$ for all $\beta\not\in\bigcup_n F(n)\not=\omega_1$, contradiction.
+
+%Thus there exist a pair $\alpha_0,\alpha_1$ such that $\alpha_1\not\in F(\alpha_0)$ and $\alpha_0\not\in F(\alpha_1)$. $P$ beats $\sigma$ by playing this pair repeatedly.
+%\end{proof}
+
+\begin{proposition}
+$O \not\markwin{k} G_{O,P}(\omega_1\cup\{\infty\},\infty)$. (Due to P. Nyikos)
+\end{proposition}
+
+\begin{proof}
+Let $F(\alpha,n)$ be the complement of $O$'s Markov strategy in response to $\alpha$ in round $n$. Let \[ p\in \omega_1 \setminus \bigcup_{(m,n)\in\omega^2} F(m,n)\] and \[q_n \in \omega \setminus F(p,2n+1)\] The play $\left<p,q_0,p,q_1,\dots\right>$ is a counter to $O$'s Markov strategy.
+\end{proof}
+
+%\begin{theorem}
+%$O$ has no winning $k$-tactical strategy of $G_{O,P}(X,\infty)$.
+%\end{theorem}
+%
+%\begin{proof}
+%Let $\sigma:[\omega_1]^{\leq k}\to[\omega_1]^{<\omega}$ be a $k$-tactical strategy for $O$ and $F(S)=\omega_1\setminus\sigma(S)$.
+%
+%Let $W_0=\omega_1$. We define $W_\alpha$ recursively as follows:
+%    \begin{itemize}
+%    \item For successor ordinals $\alpha+1$, let $\beta$ be the least element of $W_\alpha$ such that $[\beta+1,\omega_1) \cap \bigcup_{S\in [\beta]^{\leq k}} F(S)$ is nonempty, where $S \leq \beta$ is shorthand for $\{S \in [\omega_1]^{\leq k} : \forall \gamma \in S(\gamma < \beta)\}$. If no such $\beta$ exists, let $W_{\alpha+1}=W_\alpha$ and otherwise let $W_{\alpha+1}=W_\alpha \setminus \left([\beta+1,\omega_1) \cap \bigcup_{S\leq \beta} F(S)\right)$.
+%    \item For limit ordinals $\alpha$, let $W_\alpha = \bigcap_{\beta<\alpha} W_\beta$.
+%    \end{itemize}
+%
+%Finally let $W=\bigcap_{\alpha<\omega_1}W_\alpha$ and observe that it is unbounded. Let $R$ collect all ordinals $\alpha\in W$ such that there is an ordinal $\beta$ where for all $S\in[W\cap(\beta,\omega_1)]^{\leq k}$, $\alpha \in F(S)$. It is easily seen that $R$ is finite. Let $0^*$ be the least element of $W\setminus R$.
+%
+%Now, define a strictly increasing sequence of ordinals $\left<\alpha_1,\alpha_2,\alpha_3,\alpha_4,\dots\right>$ such that $\alpha_i \in W$ and $0^* \not\in F(\{\alpha_{2i+1},\dots,\alpha_{2i+k}\})$ for all $i$. The play $\left<0^*,\alpha_1,\dots,\alpha_k,0^*,\alpha_{k+1},\dots,\alpha_{2k},0^*,\dots\right>$ then defeats the strategy $\sigma$.
+%\end{proof}
+
+
+\begin{theorem}
+$O\not\kmarkwin{k}G_{O,P}(\omega_1\cup\{\infty\},\infty)$.
+\end{theorem}
+
+\begin{proof}
+Let $F:[\omega_1]^{\leq k}\times\omega\to[\omega_1]^{<\omega}$ be the complement of a $k$-Markov strategy for $O$.
+
+Let $W_0=\omega_1$. We define $W_\alpha$ recursively as follows:
+    \begin{itemize}
+    \item For successor ordinals $\alpha+1$, let $\beta$ be the least element of $W_\alpha$ such that \[(\beta,\omega_1) \cap \bigcup_{S\in [\beta]^{\leq k}, n<\omega} F(S,n)\] is nonempty. If no such $\beta$ exists, let $W_{\alpha+1}=W_\alpha$ and otherwise let \[W_{\alpha+1}=W_\alpha \setminus \left((\beta,\omega_1) \cap \bigcup_{S\in[\beta]^{\leq k}, n<\omega} F(S,n)\right)\]
+    \item For limit ordinals $\alpha$, let $W_\alpha = \bigcap_{\beta<\alpha} W_\beta$.
+    \end{itemize}
+
+Finally let $W=\bigcap_{\alpha<\omega_1}W_\alpha$ and observe that it is unbounded. Let $R$ collect all ordinals $\alpha\in W$ such that there is an ordinal $\beta_\alpha$ and number $n_\alpha<\omega$ where for all $S\in[W\cap(\beta_\alpha,\omega_1)]^{\leq k}$, $\alpha \in F(S,n_\alpha)$.
+
+If $R$ was infinite, then there is $\alpha_i\in R$ for each $i<\omega$ and some $N<\omega$ where for all $S\in[W\cap(\beta_{\alpha_i},\omega_1)]^{\leq k}$, $\alpha_i \in F(S,N)$, and thus for all $S\in[W\cap(\sup \beta_{\alpha_i},\omega_1)]^{\leq k}$,  $\{\alpha_i : i<\omega\} \subset F(S,N)$, a contradiction. So let $0^*$ be the least element of $W\setminus R$.
+
+Now, define a strictly increasing sequence of ordinals $\left<\alpha_1,\alpha_2,\alpha_3,\alpha_4,\dots\right>$ such that $\alpha_i \in W$ and $0^* \not\in F(\{\alpha_{2i+1},\dots,\alpha_{2i+k}\})$ for all $i$. The play $\left<0^*,\alpha_1,\dots,\alpha_k,0^*,\alpha_{k+1},\dots,\alpha_{2k},0^*,\dots\right>$ then defeats the Markov strategy.
+\end{proof}
+
+
+
+
+
+\centerline{\bf $G_{O,P}(X,x)$ for Sigma Product}
+
+\begin{proposition}
+The player $O$ has a winning strategy for $G_{O,P}(X,x)$ where \[X=\{x\in \mathbb{R}^{\omega_1}: x_\alpha = 0 \text{ for all but countably many } \alpha<\omega_1\}\]
+\end{proposition}
+
+\begin{proof}
+Without loss of generality we may assume that $x$ is the zero function. Let $y_n$ be the move by $P$ on turn $n$. For each $y_n$, let $l_n\in \omega_1^{\omega}$ enumerate the nonzero coordinates in $y_n$. Give $O$ the strategy $\sigma(y_0,\dots,y_{n-1}) = \prod_{\alpha<\omega_1} O_\alpha$ where if $\alpha$ is listed in the first $n$ coordinates of any term in $\left<l_k\right>_{k<n}$, then $O_\alpha=(-2^{-n},2^{-n})$, and $O_\alpha=\mathbb{R}$ otherwise.
+\end{proof}
+
+%\begin{theorem}
+%The player $O$ has a winning coding (see Open Problems in Topology II) strategy for $G_{O,P}(X,x)$ where \[X=\{x\in \mathbb{R}^{\omega_1}: x_\alpha = 0 %\text{ for all but countably many } \alpha<\omega_1\}\]
+%\end{theorem}
+%
+%\begin{proof}
+%Encode every finite sequence $s$ of functions in $\Sigma\mathbb{R}^{\omega_1}$ as a positive real number $E(s)$. Let $L(U)$ be the function which, for each basic open set $O$ in $\mathbb{R}^{\omega_1}$ (besides $\mathbb{R}^{\omega_1}$ itself), returns the last non-$\mathbb{R}$ factor (a bounded open interval) in the product. Then let $D(I)$ be the function which, for each open interval $I=(-\epsilon,\epsilon)$, returns the sequence $E^{-1}(\epsilon)$.
+%
+%Finally, give $O$ the strategy $\sigma(U,y) = \prod_{\alpha<\omega_1} U_\alpha$ where, letting $n-1$ be the length of $D(L(U))$, if $\alpha$ is listed in the first $n$ coordinates of any term in the finite sequence $D(L(U))^\frown\left<y\right>$, then $U_\alpha=(-2^{-n},2^{-n})$, and if $\alpha$ is the first ordinal greater than all of the first $n$ coordinates of any term in $D(L(U))^\frown\left<y\right>$, then $U_\alpha=(-E(D(L(U))^\frown\left<y\right>),E(D(L(U))^\frown\left<y\right>))$, and $U_\alpha=\mathbb{R}$ otherwise.
+%\end{proof}
+
+\begin{theorem}
+For all cardinals $\kappa\leq 2^\omega$, the player $O$ has a winning coding strategy for $G_{O,P}(X,x)$ where \[X=\Sigma\mathbb{R}^{\kappa}=\{x\in \mathbb{R}^{\kappa}: x_\alpha = 0 \text{ for all but countably many } \alpha<\omega_1\}\]
+\end{theorem}
+
+\begin{proof}
+Note that $|\Sigma\mathbb{R}^\kappa| \leq 2^\omega = |\mathbb{R}|$. Define the following:
+
+    \begin{itemize}
+    \item Encode every finite sequence $s$ of functions in $\Sigma\mathbb{R}^{\kappa}$ as a real number $0<r(s)<1$. 
+    \item Let $\gamma(U)$ be the function which, for basic open sets $U=\prod_{\alpha<\kappa}U_\alpha$ where $U_0=(-\frac{1}{R},\frac{1}{R})$ for some positive noninteger real number $R$, returns the sequence $r^{-1}(R-\lfloor R\rfloor)$.
+    \item Let $n(U)$ be the length of $\epsilon^{-1}(\gamma(U))$.
+    \item Let $\psi(U,y)=\epsilon^{-1}(\gamma(U))^\frown\left<y\right>$.
+    \item Define $\sigma_0(U,y)$ to be $\left(-\frac{1}{n(U)+r(\psi(U,y))},\frac{1}{n(U)+r(\psi(U,y))}\right)$.
+    \item For each $0<\alpha<\kappa$, define the interval $\sigma_\alpha(U,y)$ about $0$ as follows:
+        \begin{itemize}
+        \item If $\alpha$ is listed in the first $n(U)$ coordinates of any term in the finite sequence $\psi(U,y)$, then $\sigma_\alpha(U,y)=(-\frac{1}{n(U)+1},\frac{1}{n(U)+1})$.
+        \item Otherwise, then $\sigma_\alpha(U,y)=\mathbb{R}$.
+        \end{itemize}
+    \end{itemize}
+
+It follows that $\sigma(U,y)=\prod_{\alpha<\kappa} \sigma_\alpha(U,y)$ is a winning coding strategy.
+\end{proof}
+
+\begin{theorem}
+For all cardinals $\kappa>2^\omega$ such that $\kappa^\omega = \kappa$, the player $O$ has a winning coding strategy for $G_{O,P}(X,x)$ where \[X=\Sigma\mathbb{R}^{\kappa}=\{x\in \mathbb{R}^{\kappa}: x_\alpha = 0 \text{ for all but countably many } \alpha<\omega_1\}\]
+\end{theorem}
+
+\begin{proof}
+Note that $|\Sigma\mathbb{R}^\kappa| = \kappa^\omega = \kappa$. Define the following:
+
+    \begin{itemize}
+    \item Encode every finite sequence $s$ of functions in $\Sigma\mathbb{R}^{\kappa}$ as an ordinal $\epsilon(s)<\kappa$. 
+    \item Let $\gamma(U)$ be the function which, for basic open sets $U=\prod_{\alpha<\kappa}U_\alpha$ with a unique factor $U_{\alpha^*}$, returns $\alpha^*$.
+    \item Let $n(U)$ be the length of $\epsilon^{-1}(\gamma(U))$.
+    \item Let $\psi(U,y)=\epsilon^{-1}(\gamma(U))^\frown\left<y\right>$.
+    \item For each $\alpha<\kappa$, define the interval $\sigma_\alpha(U,y)$ about $0$ as follows:
+        \begin{itemize}
+        \item If $\alpha$ is listed in the first $n(U)$ coordinates of any term in the finite sequence $\psi(U,y)$ and is not equal to $\epsilon(\psi(U,y))$, then $\sigma_\alpha(U,y)=(-\frac{1}{n(U)+1},\frac{1}{n(U)+1})$.
+        \item If $\alpha=\epsilon(\psi(U,y))$, then $\sigma_\alpha(U,y)=(-\frac{1}{n(U)+2},\frac{1}{n(U)+2})$.
+        \item Otherwise, then $\sigma_\alpha(U,y)=\mathbb{R}$.
+        \end{itemize}
+    \end{itemize}
+
+It follows that $\sigma(U,y)=\prod_{\alpha<\kappa} \sigma_\alpha(U,y)$ is a winning coding strategy.
+\end{proof}
+
+Note: Look at $G_{O,P}(X,x)$ where $x$ has weight $\omega_1$.
+
+Also look at the clustering game $G^{cl}_{O,P}(\omega_1\cup\infty,\infty)$.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,580 @@
+% $Header: /home/vedranm/bitbucket/beamer/solutions/generic-talks/generic-ornate-15min-45min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\usepackage{marvosym} % For /Smiley
+
+\title[Limited Information Strategies for Topological Games] % (optional, use only with long paper titles)
+{Limited Information Strategies for Topological Games}
+
+\subtitle
+{PhD Preliminary Oral Defense} % (optional)
+
+\author%[Author, Another] % (optional, use only with lots of authors)
+{Steven~Clontz}%\inst{1} \and S.~Another\inst{2}}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Auburn University] % (optional, but mostly needed)
+{
+  %\inst{1}%
+  Department of Mathematics and Statistics\\
+  Auburn University}
+  %\and
+  %\inst{2}%
+  %Department of Theoretical Philosophy\\
+  %University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[5-21-2012] % (optional)
+{May 21, 2012}
+
+\subject{Steven Clontz's PhD Preliminary Defense}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=1cm]{university-logo}{au.gif}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+
+%One point compactification
+\newcommand{\oneptcomp}[1]{#1^*}
+
+%Open-point convergence/clustering games
+\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
+\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
+
+%Compact-point/compact locally finite games
+\newcommand{\lfkpgame}[1]{LF_{K,P}(#1)}
+\newcommand{\lfklgame}[1]{LF_{K,L}(#1)}
+
+%Point-finite game on cardinals
+\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
+
+%Sigma Product on R and 2
+\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
+
+%Single Ultrafilter Space on \omega
+\newcommand{\sus}{\mathcal{F}\omega}
+\newcommand{\uF}{\mathcal{F}}
+
+% Vectors are bold
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+%Comments!
+\newcommand{\comment}[1]{}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Table of Contents}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+
+% Since this a solution template for a generic talk, very little can
+% be said about how it should be structured. However, the talk length
+% of between 15min and 45min and the theme suggest that you stick to
+% the following rules:  
+
+% - Exactly two or three sections (other than the summary).
+% - At *most* three subsections per section.
+% - Talk about 30s to 2min per frame. So there should be between about
+%   15 and 30 frames, all told.
+
+\section{Introduction}
+
+\begin{frame}
+\centerline{Let's get started!}
+\end{frame}
+
+\subsection[Definitions and Notation]{Definitions}
+
+\begin{frame}{Definition of a Game of Length $\omega$}%{Subtitles are optional.}
+  % - A title should summarize the slide in an understandable fashion
+  %   for anyone how does not follow everything on the slide itself.
+
+\begin{itemize}
+\item A \textbf{game of length $\omega$} consists of two \textbf{Players} I and II. On \textbf{round} $n$ of $\omega$, Player I first takes a \textbf{turn} choosing an element of some set $X$ (her \textbf{move}), followed by Player II taking a turn choosing an element from some set $Y$.
+\pause
+\item Example: Gruenhage's open-point convergence game on $\mathbb{R}^2$,$\vec{0}$ with players $O,P$ ($X=\tau$, $Y=\mathbb{R}^2$)
+\[
+\begin{array}{r|r|l}
+\text{Round} & O & P \\\hline\hline
+0 & B(1,\vec{0}) & \left<0.5,-0.8\right> \\\hline
+1 & B(0.25,\vec{0}) & \left<-0.1,0.1\right> \\\hline
+2 & B(0.05,\vec{0}) & \left<-0.01,-0.02\right> \\\hline
+\dots & \dots & \dots
+\end{array}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Definition of a Game of Length $\omega$ (cont)}
+\begin{itemize}
+\item A \textbf{rule} for a Player in a game is a condition on that player's move during each round. A move is said to be \textbf{legal} if it doesn't violate the rule. (Ex: $P$ must choose a point inside of the set previously chosen by $O$)
+\pause
+\item A \textbf{play} of the game is a sequence $\left<x_0,y_0,x_1,y_1,\dots\right> \in (X\times Y)^\omega$. It is said to be \textbf{legal} if each move is legal. A finite initial sequence of a play is called a \textbf{partial play}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Definition of a Game of Length $\omega$ (cont)}
+\begin{itemize}
+\item A \textbf{winning condition} is some condition on the play resulting from the game. (Ex: the points chosen by $P$ converge to $\vec{0}$)
+\pause
+\item Player I \textbf{wins} a legal play if this condition is satisfied. If not, Player II wins.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Definition of a Game of Length $\omega$ (cont)}
+\begin{itemize}
+\item A \textbf{strategy} for a Player is a function which has all legal partial plays as its domain and yields legal moves for that Player.
+\pause
+\item A \textbf{counter} to a Player's strategy is a play of the game for which the Player follows her strategy, but the play results in a loss for that Player.
+\pause
+\item A strategy is called a \textbf{winning strategy} if there does not exist a counter for it.
+\pause
+\item The notation for player $P$ having a winning strategy for game $G$ is $P\win G$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{But why?}
+\begin{itemize}
+\item For games defined in terms of arbitrary topological spaces, the existence of a winning strategy for a Player characterizes a property of that space.
+\pause
+\item For example, one of the earliest such games studied was the Banach Mazur game $MB(X)$.
+\pause
+\item Both players alternate choosing nonempty open sets $W_n,V_n\in\mathcal{W}$, with the rule that $W_n\supseteq V_n\supseteq W_{n+1}$. $I$ wins the game if $\bigcap_{n<\omega}W_n\not=\emptyset$. As it turns out:
+\pause
+\item \textbf{Theorem:} $II\win MB(X)$ if and only if $X$ is first-category/meager ($X$ is the countable union of nowhere dense subsets). [Oxtoby 1957]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Game naming conventions}
+For readabily, we adopt the following conventions for naming games.
+  \begin{itemize}
+  \item
+    Games are named according to the following format: \[Clus_{O,P}(X,p)\]
+  \pause
+  \item
+    The subscript letters ($\,_{O,P}$ in the example) name the first and second players based on the moves they make in the game. ($O$ choses open subsets of $X$, $P$ choses points in $X$)
+  \pause
+  \item
+    The leading letters ($Clus$ in the example) refer to the game's winning condition. (The points chosen by $P$ cluster around $p$.)
+  \pause
+  \item
+    The interior of the parentheses ($X,p$ in the example) denotes the topological space and other information about the ``game board''.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Limited Information Strategies}
+  \begin{itemize}
+  \item
+    The presence or absence of a winning strategy characterizes a topological property on the space the game is played on.
+  \pause
+  \item
+    The presence or absence of a winning \textbf{limited information strategy}, a strategy with a restricted domain, also characterizes a property of the space.
+  \pause
+  \item
+    For example, when we consider only locally compact spaces, the presence of a winning strategy for player $K$ in the locally-finite game $LF_{K,L}(X)$ characterizes paracompactness, but the presence of a winning strategy \textit{which only uses the round number} characterizes hemicompactness.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Limited Info Strats}
+  \begin{itemize}
+  \item
+    A \textbf{tactical strategy} (sometimes called a \textit{stationary strategy} or \textit{tactic}) uses only the most recent move by the opponent. (Notation: $P\tactwin G$)
+  \pause
+  \item
+    A \textbf{$k$-tactical strategy} uses only the previous $k$ moves by the opponent. (Notation: $P\ktactwin{k}G$)
+  \pause
+  \item
+    A \textbf{predetermined strategy} uses only the round number. (Notation: $P\prewin G$)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Limited Info Strats (cont)}
+  \begin{itemize}
+  \item
+    A \textbf{Markov strategy} uses only the most recent move of the opponent and the round number (i.e. the current ``state'' of the game). (Notation: $P\markwin G$)
+  \pause
+  \item
+    A \textbf{$k$-Markov strategy} uses only the previous $k$ moves of the opponent and the round number. (Notation: $P\kmarkwin{k}G$)
+  \pause
+  \item
+    A \textbf{coding strategy} uses only the most recent move of the opponent and the player's own most recent move (it ``encodes'' any extra needed information into its own moves). (Notation: $P\codewin G$)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Types of Limited Info Strats (cont)}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+\textbf{Name} & \textbf{Notation} & \textbf{Info Used} \\\hline
+tactical & $P\tactwin G$ & \shortstack{most recent move \\ of opponent} \\\hline
+$k$-tactical & $P\ktactwin{k} G$ & \shortstack{$k$ most recent moves \\ of opponent} \\\hline
+predetermined & $P\prewin G$ & round number \\\hline
+Markov & $P\markwin G$ & \shortstack{most recent move of \\ opponent \& round \#} \\\hline
+$k$-Markov & $P\kmarkwin{k} G$ & \shortstack{$k$ most recent moves of \\ opponent \& round \#} \\\hline
+coding & $P\codewin G$ & \shortstack{most recent moves of \\ both players} \\\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\section{Some Results}
+
+\begin{frame}
+\centerline{Some Results!}
+\end{frame}
+
+\subsection[Compact-Point/Compact Locally Finite Games]{Compact-Point/Compact Locally Finite Games}
+
+\begin{frame}{Compact-Point/Compact Locally Finite Game}
+The following two games are due to Gary Gruenhage:
+\begin{itemize}
+\item $\lfkpgame{X}$ is a game in which $K$ chooses compact subsets of $X$ and $P$ chooses points in $X$ with the rule that chosen points must lay outside of all previously chosen compact sets. $K$ wins if the points chosen by $P$ are locally finite in $X$.
+\pause
+\item $\lfklgame{X}$ is defined similarly, with $L$ choosing compact sets instead of points.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\lfkpgame{X}$ and $\lfklgame{X}$ for locally compact $X$}
+Gruenhage proved the following results in 1985 for locally compact $X$:
+\pause
+\begin{itemize}
+\item $K\tactwin\lfkpgame{X}$ iff $X$ is metacompact
+\pause
+\item $K\markwin\lfkpgame{X}$ iff $X$ is $\sigma$-metacompact
+\pause
+\item $K\win\lfklgame{X}$ iff $X$ is paracompact
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\lfkpgame{X}$ and $\lfklgame{X}$ for locally compact $X$ (cont)}
+Using the idea of a predetermined strategy, I found that the following are all equivalent for locally compact $X$:
+\pause
+\begin{itemize}
+\item $K\prewin\lfkpgame{X}$
+\item $K\prewin\lfklgame{X}$
+\pause
+\item $X$ is Lindelof
+\pause
+\item $X$ is $\sigma$-compact
+\pause
+\item $X$ is hemicompact
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\lfkpgame{X}$ and $\lfklgame{X}$ for $T_2$ $k$-spaces $X$}
+The following equivalancies are found when generalizing locally compact to $k$, provided $X$ is $T_2$:
+\pause
+\begin{itemize}
+\item $K\prewin\lfkpgame{X}$
+\item $K\prewin\lfklgame{X}$
+\pause
+\item $X$ is hemicompact
+\pause
+\item $X$ is a $k_\omega$ space
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Single Ultrafilter Space}
+We say a \textbf{single ultrafilter space} $\sus$ is a countable subspace of the Stone-Cech compactification $\beta\omega$ consisting of $\omega$ and a single ultrafilter $\uF$. (Any $\sus$ is not a $k$-space.)
+\pause
+\begin{itemize}
+\item $K \not\prewin \lfklgame{\sus}$ for any $\uF$.
+\pause
+\item It is consistent that there exist ultrafilters $\uF$ such that $K \not\prewin \lfkpgame{\sus}$
+\pause
+\item There exist ultrafilters $\uF$ such that $K\prewin \lfkpgame{\sus}$
+\end{itemize}
+\end{frame}
+
+\subsection[Open-Point Convergence/Clustering Games]{Open-Point Convergence/Clustering Games}
+
+\begin{frame}{Open-Point Convergence/Clustering Games}
+The following two games are also due to Gary Gruenhage:
+\pause
+\begin{itemize}
+\item $\congame{X}{p}$ is a game in which $O$ chooses neighborhoods of $p$ and $P$ chooses points in $X$ with the rule that chosen points must lay inside of all previously chosen neighborhoods. $O$ wins if the points chosen by $P$ converge to $p$.
+\pause
+\item $\clusgame{X}{p}$ is defined similarly, but $O$ wins if the points chosen by $P$ just cluster around $p$.
+\end{itemize}
+\pause
+Note that $\congame{\oneptcomp{X}}{\infty}$ is an equivalent game to $\lfkpgame{X}$, where $\oneptcomp{X}=X\cup\{\infty\}$ is the one-point compactification of $X$.
+\end{frame}
+
+\begin{frame}{$\congame{\oneptcomp{\kappa}}{\infty}$ and $\clusgame{\oneptcomp{\kappa}}{\infty}$}
+For discrete $X$, the existence of winning limited information strategies for $\congame{\oneptcomp{X}}{\infty}$ and $\clusgame{\oneptcomp{X}}{\infty}$ depends on the cardinality of $X$.
+\pause
+\begin{itemize}
+\item For $\kappa<\omega_1$:
+    \begin{itemize}
+    \item $O\prewin\congame{\oneptcomp{\kappa}}{\infty}$
+    \item $O\tactwin\congame{\oneptcomp{\kappa}}{\infty}$
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\congame{\oneptcomp{\kappa}}{\infty}$ and $\clusgame{\oneptcomp{\kappa}}{\infty}$ (cont)}
+\begin{itemize}
+\item For $\kappa=\omega_1$:
+    \begin{itemize}
+    \item $O\not\prewin\clusgame{\oneptcomp{\kappa}}{\infty}$
+    \item $O\not\ktactwin{k}\clusgame{\oneptcomp{\kappa}}{\infty}$
+    \item $O\markwin\clusgame{\oneptcomp{\kappa}}{\infty}$
+    \item $O\not\kmarkwin{k}\congame{\oneptcomp{\kappa}}{\infty}$
+    \end{itemize}
+\pause
+\item For $\kappa>\omega_1$:
+    \begin{itemize}
+    \item $O\not\kmarkwin{k}\clusgame{\oneptcomp{\kappa}}{\infty}$
+    \item $O\codewin\congame{\oneptcomp{\kappa}}{\infty}$
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of No Tactical Strat for Clustering on $\oneptcomp{\omega_1}$}
+\begin{itemize}
+\item \textbf{Theorem:} $O\not\ktactwin{k}\clusgame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
+\end{itemize}
+\pause
+\textbf{Proof:} Let $F:[\kappa]^{\leq k} \to [\kappa]^{<\omega}$ be a forbidding strategy by $O$ against $P$ which is downward on $\omega_1$.
+\end{frame}
+
+\begin{frame}{Proof of No Tactical Strat for Clustering on $\oneptcomp{\omega_1}$ (cont)}
+We define $n_i$ for $0\leq i < k$ to be a finite ordinal such that
+\[
+n_i \in \omega_1 \setminus F(\{n_0,\dots,n_{i-1}\})
+\]
+\[
+\setminus F(\{n_0,\dots,n_{i-1},\omega+i,\dots,\omega+k-1\})
+\]
+\pause
+and note that
+\[
+\left<n_0,n_1,\dots,n_{k-1},\omega,\omega+1,\dots,\omega+k-1,\right.
+\]
+\[
+\left.n_0,n_1,\dots,n_{k-1},\omega,\omega+1,\dots,\omega+k-1,\dots\right>
+\]
+counters $F$. \qed
+\end{frame}
+
+\begin{frame}{Proof of Markov Strat for Clustering on $\oneptcomp{\omega_1}$}
+While clustering is impossible with a tactic, clustering is possible if you also know the round number:
+\begin{itemize}
+\item \textbf{Theorem:} $O\markwin \clusgame{\oneptcomp{\omega_1}}{\infty}$.
+\end{itemize}
+\pause
+\textbf{Proof} For $\alpha<\omega_1$ let $A_{\alpha,n}$ be a sequence of finite sets such that $A_{\alpha,n}\subset A_{\alpha,n+1}$ and $\bigcup_{n<\omega}A_{\alpha,n}=\alpha+1$.
+
+\pause\,
+
+Give $O$ the Markov forbidding strategy $F(n,\alpha)=A_{\alpha,n}$ and observe that any sequence of legal moves by $P$ against the strategy $F$ has an image of infinite cardinality.\qed
+\end{frame}
+
+\begin{frame}{Sigma Product space $\sigmaprodr{\kappa}$}
+The sigma product space of $\mathbb{R}$ is \[\sigmaprodr{\kappa}=\{p\in\mathbb{R}^\kappa:|\{\alpha<\kappa:p(\alpha)\not=0\}|\leq\omega\}\]
+\pause
+\begin{itemize}
+\item Note that $\oneptcomp{\kappa}$ is homeomorphic to the subspace \[\{p\in\mathbb{R}^\kappa:|\{\alpha<\kappa:p(\alpha)\not=0\}|\leq 1\}\subseteq\sigmaprodtwo{\kappa}\]
+\pause
+\item Thus $O\not\kmarkwin{k}\clusgame{\sigmaprodr{\kappa}}{\vec{0}}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\congame{\sigmaprodr{\kappa}}{\vec{0}}$}
+The obvious winning strategy for $O$ in $\congame{\sigmaprodr{\kappa}}{\vec{0}}$ uses all the previous moves of the opponent and the turn number.
+\begin{itemize}
+\item $O\win\congame{\sigmaprodr{\kappa}}{\vec{0}}$
+\end{itemize}
+\pause
+These moves can be encoded so that a coding strategy is sufficient.
+\begin{itemize}
+\item $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proof of a Winning Strategy for $\congame{\sigmaprodr{\kappa}}{\vec{0}}$}
+\begin{itemize}
+\item \textbf{Theorem:} $O\win\congame{\sigmaprodr{\kappa}}{\vec{0}}$
+\end{itemize}
+\pause
+\textbf{Proof} The strategy:
+\[
+\sigma(s_0,\dots,s_{n-1})=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa}\sigma_\alpha(s_0,\dots,s_{n-1})
+\]
+\pause
+where
+\[
+\sigma_\alpha(s_0,\dots,s_{n-1})=\left(-\frac{1}{n},\frac{1}{n}\right)
+\]
+when $\alpha$ is ``one of the first $n$ nonzero coordinates'' of some $s_i$, and $\sigma_\alpha(s_0,\dots,s_{n-1})=\mathbb{R}$ otherwise.\qed
+\end{frame}
+
+\begin{frame}{Proof Sketch of a Winning Coding Strategy for $\congame{\sigmaprodr{\kappa}}{\vec{0}}$}
+\begin{itemize}
+\item \textbf{Theorem:} $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$
+\end{itemize}
+\pause
+\textbf{Sketch Proof} by transfinite induction:
+\pause
+\begin{itemize}
+\item Consider $\kappa^+$. For $\alpha<\kappa^+$, $O$ has a coding strategy for $\congame{\sigmaprodr{\alpha}}{\vec{0}}$.
+\pause
+\item Let $\sigma(U,p)=U \cap \bigcup_{\alpha\in N(U)}\sigma_{\alpha+1}(U\cap(\alpha+1),p\restriction (\alpha+1))$ where $N(U)$ is every coordinate restricted by $U$.\qed
+\end{itemize}
+\pause
+The proof is similar for limit cardinals $\kappa$.
+\end{frame}
+
+\section{Questions}
+
+\begin{frame}
+\centerline{Things to do...}
+\end{frame}
+
+\subsection[Compact-Compact Game and $k$ Property]{Compact-Compact Game and $k$ Property}
+
+\begin{frame}{Question about $K\prewin\lfklgame{X}$}
+So far, every examined non-$k$-space examined has failed to reveal a predetermined strategy for $\lfklgame{X}$. Similarly, every examined space which has a predetermined strategy for $\lfklgame{X}$ has been a $k$-space.
+\pause
+\begin{itemize}
+\item Does $K\prewin\lfklgame{X}$ imply $X$ is a $k$-space?
+\end{itemize}
+\end{frame}
+
+\subsection[Tactical and Markov strategies in $\lfkpgame{X}$]{Tactical and Markov strategies in $\lfkpgame{X}$}
+
+\begin{frame}{Questions about $\lfkpgame{X}$ and $\congame{\oneptcomp{X}}{\infty}$}
+For locally compact, $T_2$ $X$: 
+\begin{itemize}
+\item $K\tactwin\lfkpgame{X}$ iff $O\tactwin\congame{\oneptcomp{X}}{\infty}$ iff $X$ is metacompact
+\item $K\markwin\lfkpgame{X}$ iff $O\markwin\congame{\oneptcomp{X}}{\infty}$ iff $X$ is $\sigma$-metacompact
+\end{itemize}
+\pause
+What happens if we make these changes?
+\pause
+\begin{itemize}
+\item Instead of $X$ locally compact, let $X$ be a $k$-space.
+\pause
+\item Instead of $\congame{\oneptcomp{X}}{\infty}$, consider $\clusgame{\oneptcomp{X}}{\infty}$
+\end{itemize}
+\end{frame}
+
+\subsection[Convergence Game on Sigma Product and other spaces]{Convergence Game on Sigma Product and other spaces}
+
+\begin{frame}{Questions about $\congame{X}{p}$}
+We've seen that $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$ and $O\not\kmarkwin{k}\clusgame{\sigmaprodr{\kappa}}{\vec{0}}$.
+\pause
+\begin{itemize}
+\item What does the existence of these strategies characterize for an arbitrary space $X$?
+\end{itemize}
+\end{frame}
+
+\subsection{General Questions}
+
+\begin{frame}{Other ideas...}
+\begin{itemize}
+\item Investigate other known games (Banach-Mazur, Sierpenski, Menger...)
+\pause
+\item Anything from the crowd? :-)
+\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Thanks!}
+Thanks as always for all your support and instruction.
+\pause
+\begin{itemize}
+\item Questions?
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+
