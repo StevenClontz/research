@@ -29,24 +29,76 @@
 
     (Insert figure here.)
 
-    Note that for $a,b,c\in\omega^{<\omega}$ and $m\leq n$, we know $U_{a\concat m}\subseteq U_{a\concat n}$ and $U_a \subseteq U_{a\concat b}$. Also, if $a=b\concat n \concat c$, then \[U_{a\concat m} = U_{b\concat n \concat c \concat m} \supseteq U_{b\concat n} \supseteq U_{b\concat m}\] (for example: $U_{48397}\supseteq U_{4837} \supseteq U_{47}$).
+    Note that for $a,b\in\omega^{<\omega}$ and $m\leq n$, we know:
+      \begin{enumerate}[(a)]
+        \item $U_{a\concat m}\subseteq U_{a\concat n}$ \\ (for example, $U_{1627} \subseteq U_{1629}$ - increasing the final digit yields supersets)
+        \item $U_a \subseteq U_{a\concat b}$ \\ (for example, $U_{1627}\subseteq U_{162789}$ - appending any sequence to the end yields supersets)
+        \item $U_{a\concat m} \subseteq U_{a\concat n} \subseteq U_{a\concat n\concat b} \subseteq U_{a\concat n\concat b\concat m}$ \\ (for example: $U_{1627} \subseteq U_{1629283287}$ - injecting a subseqence with initial number larger than the original's final number, prior to the final number, yields supersets) 
+      \end{enumerate}
 
-    We may observe that if $S$ can find an $f:\omega\to\omega$ such that $\bigcup_{n<\omega}U_{f\rest n} = X$, she can use $\{U_{f\rest 0}\}, \{U_{f\rest 1}\}, \dots$ to counter $C$'s strategy.
+    We may observe that if $S$ can find an $f:\omega\to\omega$ such that $\bigcup_{n<\omega}U_{f\rest (n+1)} = X$, she can use $\{U_{f\rest 0}\}, \{U_{f\rest 1}\}, \dots$ to counter $C$'s strategy.
 
     Let $\ds V_k^n = \bigcap_{a\in\omega^{\leq n}} U_{a\concat k}$. We claim that (1) $V_k^n$ is open, (2) $\mathcal{V}^n=\{V_0^n,V_1^n,\dots\}$ is increasing, and (3) $\mathcal{V}^n$ is a cover. Proofs:
 
     \begin{enumerate}
       \item
-      $\ds V_k^n = \bigcap_{a\in\omega^{\leq n}} U_{a\concat k} = \bigcap_{a\in k^{\leq n}} U_{a\concat k}$
+      Since due to (c) for each $b\in \omega^{\leq n} \setminus k^{\leq n}$, there is an $a\in k^{\leq n}$ with $U_{a\concat k} \subseteq U_{b\concat k}$: \[\ds V_k^n = \bigcap_{a\in\omega^{\leq n}} U_{a\concat k} = \bigcap_{a\in k^{\leq n}} U_{a\concat k} \cap \bigcap_{b\in \omega^{\leq n} \setminus k^{\leq n}} U_{b\concat k} = \bigcap_{a\in k^{\leq n}} U_{a\concat k}\] making $V_k^n$ a finite intersection of open sets.
 
       \item
-      $\ds V_{k+1}^n = \bigcap_{a\in{k+1}^{\leq n}} U_{a\concat (k+1)} \supseteq \bigcap_{a\in{k+1}^{\leq n}} U_{a\concat k} \supseteq \bigcap_{a\in{k}^{\leq n}} U_{a\concat k} = V_k^n$
+      We show $V_k^0\subseteq V_{k+1}^0$:
+      \[
+        V_k^0 = U_k \subseteq U_{k+1} = V_{k+1}^0
+      \]
+      and then assume $V_k^{n}\subseteq V_{k+1}^{n}$:
+      \[
+        V_k^{n+1} = 
+        \bigcap_{a\in{\omega}^{\leq n+1}} U_{a\concat k} = 
+        V_k^{n} \cap \bigcap_{a\in{\omega}^{n+1}} U_{a\concat k} \subseteq
+        V_{k+1}^{n} \cap \bigcap_{a\in{\omega}^{n+1}} U_{a\concat (k+1)} =
+        V_{k+1}^{n+1}
+      \]
 
       \item
-      Let $x\in X$ and pick $l<\omega$ such that $x\in U_l$. Then for $a\in l^{\leq n}$, choose $l_a$ such that $x\in U_{a\concat l_a}$. Then let $k>l_a$ for all $a$. It follows that \[x \in \bigcap_{a\in k^{\leq n}} U_{a\concat l_a} \subseteq \bigcap_{a\in k^{\leq n}} U_{a\concat k} = V_k^n\] THIS ISN'T QUITE RIGHT SHOULD FIX THIS
+      We easily see that $\mathcal{V}^0=\{U_0,U_1,\dots\}$ is a cover, and then assume $\mathcal{V}^n$ is a cover.
+
+      Let $x\in X$ and pick $l<\omega$ such that $x \in V^n_l$. For $a \in l^{n+1}$ choose $l_a$ such that $x\in U_{a\concat l_a}$, giving
+      \[ x \in \bigcap_{a\in l^{n+1}} U_{a\concat l_a} \]
+      
+      We will assume $k>l,l_a$ for all $a\in l^{\leq n+1}$. 
+
+      For any $a\in k^{n+1}\setminus l^{n+1}$ note that $a = b\concat c$ where $b\in l^{\leq n}$ and $c$ begins with a number $l$ or greater:
+      \[
+        V^n_l \subseteq 
+        U_{b\concat l} \subseteq 
+        U_{b\concat c} \subseteq
+        U_{b\concat c\concat l_a} = 
+        U_{a\concat l_a}
+      \]
+
+      Thus:
+      \[ 
+        x \in 
+        V^n_l \cap \left(\bigcap_{a\in l^{n+1}} U_{a\concat l_a}\right) 
+      \]
+      \[
+        =
+        V^n_l \cap \left(\bigcap_{a\in k^{n+1}\setminus l^{n+1}} U_{a\concat l_a}\right) \cap \left(\bigcap_{a\in l^{n+1}} U_{a\concat l_a}\right)
+      \]
+      \[
+        =
+        V^n_l \cap \left(\bigcap_{a\in k^{n+1}} U_{a\concat l_a}\right)
+      \]
+      \[
+        \subseteq
+        V^n_k \cap \left(\bigcap_{a\in k^{n+1}} U_{a\concat k}\right)
+      \]
+      \[
+        =
+        V^{n+1}_k
+      \]
     \end{enumerate}
 
-    Finally, apply Menger to $\mathcal{V}^n$, resulting in the cover $\{V_{f(0)}^0, V_{f(1)}^1, \dots\}$, noting \[X = \bigcup_{n<\omega}V_{f(n)}^n \subseteq \bigcup_{n<\omega} U_{(f\rest n)\concat f(n)} = \bigcup_{n<\omega} U_{f\rest n+1}\]
+    Finally, apply Menger to $\mathcal{V}^n$, resulting in the cover $\{V_{f(0)}^0, V_{f(1)}^1, \dots\}$, noting \[X = \bigcup_{n<\omega}V_{f(n)}^n \subseteq \bigcup_{n<\omega} U_{(f\rest n)\concat f(n)} = \bigcup_{n<\omega} U_{f\rest (n+1)}\]
   \end{proof}
 
 \end{document}
