@@ -15,7 +15,7 @@
   \end{definition}
 
   \begin{theorem}
-    $X$ is Menger if and only if $S \win \mengame{X}$.
+    $X$ is Menger if and only if $C \not\win \mengame{X}$.
   \end{theorem}
 
   \begin{proof}
@@ -100,5 +100,29 @@
 
     Finally, apply Menger to $\mathcal{V}^n$, resulting in the cover $\{V_{f(0)}^0, V_{f(1)}^1, \dots\}$, noting \[X = \bigcup_{n<\omega}V_{f(n)}^n \subseteq \bigcup_{n<\omega} U_{(f\rest n)\concat f(n)} = \bigcup_{n<\omega} U_{f\rest (n+1)}\]
   \end{proof}
+
+  \begin{proposition}
+    $X$ is compact if and only if $S \tactwin \mengame{X}$
+  \end{proposition}
+
+  \begin{proof}
+    Assume $X$ is compact. For each open cover played by $C$, pick the finite subcover.
+
+    Assume $S$ has a winning tactical strategy. For any open cover, have $C$ play only it during the entire game. $S$'s only choice must be a finite subcover.
+  \end{proof}
+
+  \begin{proposition}
+    If $X$ is $\sigma$-compact then $S \markwin \mengame{X}$
+  \end{proposition}
+
+  \begin{proof}
+    Let $X=\bigcup_{n<\omega} X_n$ for compact $X_n$. On round $n$, $S$ picks the finite subcover of $C$'s open cover of $X_n$.
+  \end{proof}
+
+  \begin{question}
+    Does $S \markwin \mengame{X}$ imply $X$ is $\sigma$-compact?
+  \end{question}
+
+  Let $\sigma(\mathcal{U},n)$ be $S$'s winning Markov strategy.
 
 \end{document}
