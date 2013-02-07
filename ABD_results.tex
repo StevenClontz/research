@@ -286,7 +286,7 @@ successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially 
 \]
 is a successful counter to $\sigma$.
 
-We will need the fact that:
+We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
   \[
     |s_i| <
     m(x_i,x',|s_i|)+1 =
@@ -299,20 +299,40 @@ We will need the fact that:
     |s_{i+1}|
   \]
 
-Note that $m(x,y,\max(|s|,|t|))$ is increasing throughout this play of the game:
+Note that $m(x,y,\max(|s|,|t|))$ is increasing throughout this play of the game versus $\sigma$:
   \[
     m(x_i,x',\max(|s_i|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    m(x_i,x',|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|)
+  \]
+  \[
     \leq
     |s_{i+1}| 
   \]
   \[
     <
+    m(x_{i+1},x',|s_{i+1}|)
+  \]
+  \[
+    =
     m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))
-    \leq
+  \]
+  \[
+    =
+    |{z_{m(x_{i+1},x',|s_{i+1}|)}}|
+  \]
+  \[
+    <
     |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
   \]
   \[
     <
+    m(x_{i+1},x',|{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
     m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|))
   \]
 
@@ -340,17 +360,17 @@ since
 
 Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
   \[
-    K^*_{S(x_j,x',m(x_j,x',|s_j|)+1)} = 
-    K^*_{S(x_j,x',\max(|s_j|,|{z_{m(x_j,x',|s_j|)}}^\frown\<1\>|))}
+    K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} = 
+    K^*_{S(x_h,x',\max(|s_h|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))}
   \]
-for $j\leq i$. And when $j<i$,
+for $h\leq i$. And when $h<i$, we see it avoids:
   \[
-    K^*_{S(x_{j+1},x',\max(|s_{j+1}|,|{z_{m(x_j,x',|s_j|)}}^\frown\<1\>|))} =
-    K^*_{S(x_{j+1},x',|s_{j+1}|)}
+    K^*_{S(x_{h+1},x',\max(|s_{h+1}|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))} =
+    K^*_{S(x_{h+1},x',|s_{h+1}|)}
   \]
   \[
     \subseteq
-    K^*_{S(x_{j+1},x',m(x_{j+1},x',|s_{j+1}|)+1)}
+    K^*_{S(x_{h+1},x',m(x_{h+1},x',|s_{h+1}|)+1)}
   \]
 
 This concludes the proof.
@@ -361,23 +381,22 @@ $K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-The proof proceeds similarly to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
 
-Suppose $\sigma(\<\overline{x},\overline{s}\>,\<y,t\>)$ was a winning $k+1$-tactical strategy, where $\<\overline{x},\overline{s}\>$ represents $\<x_0,s_0\>,\dots,\<x_{k-1},s_{k-1}\>$. We may define $S(\overline{x},y,n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(\overline{x},y,n)<\omega$ such that for each $(\overline{x},y)$,
+Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. We may define $S(x_0,\dots,x_{k},n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
   \[
-    \bigcup_{\overline{s},t \in 2^{\leq n}} \sigma(\<\overline{x},\overline{s}\>,\<y,t\>) \subseteq 
-    K^*_{S(\overline{x},y,n)} \cup L_{m(\overline{x},y,n)}
+    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq 
+    K^*_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
   \]
 and so we assume
   \[
-    \sigma(\<x,s\>,\<y,t\>) =
-    K^*_{S(x,y,\max(|s|,|t|))} \cup L_{m(x,y,\max(|s|,|t|))}
+    \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) =
+    K^*_{S(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))} \cup L_{m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
   \]
 
-Select an arbitrary point $x' \in X$. We define a tactical strategy 
+Select an arbitrary point $x' \in X$. Let $M^0(x,n)=m(x,x',\dots,x',n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$. We define a tactical strategy 
   \[
-  \tau(x,s) = 
-  K^*_{S(x,x',m(x,x',|s|)+1)} \cup L_{m(x,x',m(x,x',|s|)+1)}
+  \tau(x,s) = K^*_{S(x,x',\dots,x',M^{k-1}(x,|s|)+1)} \cup L_{m(x,x',\dots,x',M^{k-1}(x,|s|)+1)}
   \]
 We complete the proof by showing $\tau$ is a winning tactical strategy (a contradiction).
 
@@ -387,79 +406,192 @@ Suppose
 \]
 successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
-\<x_0, s_0\>, \<x', {z_{m(x_0,x',|s_0|)}}^\frown\<1\>\>, \<x_1, s_1\>, \<x', {z_{m(x_1,x',|s_1|)}}^\frown\<1\>\>,  \<x_2, s_2\>, \<x', {z_{m(x_2,x',|s_2|)}}^\frown\<1\>\>, \dots
+  \<x_0, s_0\>, 
+  \<x', {z_{M^0(x_0,|s_0|)}}^\frown\<1\>\>,
+  \<x', {z_{M^1(x_0,|s_0|)}}^\frown\<1\>\>, 
+  \dots, 
+  \<x', {z_{M^{k-1}(x_0,|s_0|)}}^\frown\<1\>\>,
+\]
+\[
+  \<x_1, s_1\>, 
+  \<x', {z_{M^0(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \<x', {z_{M^1(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \dots, 
+  \<x', {z_{M^{k-1}(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \dots
 \]
 is a successful counter to $\sigma$.
 
-We will need the fact that:
+We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
   \[
     |s_i| <
-    m(x_i,x',|s_i|)+1 =
-    |{z_{m(x_i,x',|s_i|)}}^\frown\<1\>| 
+    M^0(x_i,|s_i|)+1 =
+    |{z_{M^0(x_i,|s_i|)}}^\frown\<1\>| <
+    M^0(x_i,M^0(x_i,|s_i|)+1)+1 
   \]
   \[
-    <
-    m(x_i,x',m(x_i,x',|s_i|)+1) =
-    m(x_i,x',|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|) \leq
+    =
+    M^1(x_i,|s_i|)+1 =
+    |{z_{M^1(x_i,|s_i|)}}^\frown\<1\>| <
+    \dots <
+    |{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>| 
+  \]
+  \[
+    =
+    M^{k-1}(x_i,|s_i|) + 1 <
+    m(x_i,x',\dots,x',M^{k-1}(x_i,|s_i|)+1) \leq
     |s_{i+1}|
   \]
 
-Note that $m(x,y,\max(|s|,|t|))$ is increasing throughout this play of the game:
+Note that $m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))$ is increasing throughout this play of the game versus $\sigma$:
   \[
-    m(x_i,x',\max(|s_i|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))
+    m(x_i,x',\dots,x',\max(|s_i|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    m(x_i,x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_i,x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
+  \]
+  \[
     \leq
     |s_{i+1}| 
   \]
   \[
     <
-    m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))
-    \leq
-    |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
+    M^0(x_{i+1},|s_{i+1}|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',|s_{i+1}|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    |{z_{m(x_{i+1},x',\dots,x',|s_{i+1}|)}}|
+  \]
+  \[
+    =
+    |{z_{M^0(x_{i+1},|s_{i+1}|)}}|
   \]
   \[
     <
-    m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|))
+    |{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
+  \]
+  \[
+    <
+    m(x_{i+1},x',\dots,x',|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^1(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i},|s_{i}|)}}^\frown\<1\>|))
+  \]
+  \[
+    \vdots
+  \]
+  \[
+    <
+    m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|))
   \]
 
-We turn to showing that $\<x', {z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>\>$ is always a legal move. Since ${z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>$ is on the antichain avoided by any $K^*$, the problem is reduced to showing that this move isn't forbidden by
+We turn to showing that $\<x', {z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>\>$ is always a legal move. Since ${z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>$ is on the antichain avoided by any $K^*$, the problem is reduced to showing that this move isn't forbidden by
   \[
-  L_{m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))}
+    L_{m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{i},|s_{i}|)}}^\frown\<1\>|))}
+  \]
+  \[
+    =
+    L_{m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)}
   \]
 which we can see here:
   \[
-    m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|)) =
-    m(x_{i+1},x',|s_{i+1}|) <
-    |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
+    m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',M^{j-1}(x_{i+1},|s_{i+1}|)+1)
+  \]
+  \[
+    =
+    M^0(x_{i+1},M^{j-1}(x_{i+1},|s_{i+1}|)+1)
+  \]
+  \[
+    =
+    M^j(x_{i+1},s_{i+1})
+  \]
+  \[
+    <
+    |{z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
   \]
 
 We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
   \[
-  L_{m(x_{i},x',\max(|s_{i}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))}
+  L_{m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))}
   \]
 since
   \[
-    m(x_{i},x',\max(|s_{i}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|)) =
-    m(x_{i},x',|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|) \leq
+    m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    m(x_{i},x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i},x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
+  \]
+  \[
+    \leq
     |s_{i+1}|
   \]
 
+
+
 Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
   \[
-    K^*_{S(x_j,x',m(x_j,x',|s_j|)+1)} = 
-    K^*_{S(x_j,x',\max(|s_j|,|{z_{m(x_j,x',|s_j|)}}^\frown\<1\>|))}
+    K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)} 
   \]
-for $j\leq i$. And when $j<i$,
   \[
-    K^*_{S(x_{j+1},x',\max(|s_{j+1}|,|{z_{m(x_j,x',|s_j|)}}^\frown\<1\>|))} =
-    K^*_{S(x_{j+1},x',|s_{j+1}|)}
+    = 
+    K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
+  \]
+for $h\leq i$. And when $h<i$, we see it avoids both:
+  \[
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+  \]
+  \[
+    =
+    K^*_{S(x_{h+1},x',\dots,x',|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|)}
+  \]
+  \[
+    =
+    K^*_{S(x_{h+1},x',\dots,x',M^{j-1}(x_{h+1},|s_{h+1}|)+1)}
   \]
   \[
     \subseteq
-    K^*_{S(x_{j+1},x',m(x_{j+1},x',|s_{j+1}|)+1)}
+    K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
   \]
+and:
+  \[
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+  \]
+  \[
+    =
+    K^*_{S(x_{h+1},x',\dots,x',|s_{k+1}|)}
+  \]
+  \[
+    \subseteq
+    K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
+  \]
+
 
 This concludes the proof.
 \end{proof}
+
 
 \end{document}
 
