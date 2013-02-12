@@ -1,0 +1,478 @@
+\documentclass[11pt]{article}
+
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+
+\setlength\topmargin{0in}
+\setlength\headheight{0in}
+\setlength\headsep{0.2in}
+\setlength\textheight{8in}
+\setlength\textwidth{6in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
+\setlength\parindent{0.25in}
+\setlength\parskip{0.1in} 
+ 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{example}[theorem]{Example}
+      
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+\newcommand{\limitwin}{\uparrow_{\text{limit}}}
+
+\newcommand{\oneptcomp}[1]{#1^*}
+
+\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
+\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
+
+\newcommand{\lfkpgame}[1]{LF_{K,P}(#1)}
+\newcommand{\lfklgame}[1]{LF_{K,L}(#1)}
+
+\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
+
+\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\newcommand{\rest}{\restriction}
+
+\newcommand{\largecomment}[1]{}
+
+
+
+\begin{document}
+
+\begin{example}
+Let $X$ be a zero-dimensional, compact L-space (hereditarally Lindeloff and non-separable). It is a fact that there exists a point-countable collection $\mathcal{U}=\{U_\alpha : \alpha<\omega_1\}$ of clopen sets in $X$, and it is also true that any point-finite subcollection of $\mathcal{U}$ is countable. %That is, if we let $A_x = \{\alpha : x \in U_\alpha\}$, then $|A_x|\leq\omega$ for all $x\in X$.
+
+Let $C = \{c_\alpha : \alpha <\omega_1\}$ be any uncountable subset of the Cantor space $2^\omega$. Let $X_s = X \times \{s\}$ for each $s \in 2^{<\omega}$, and $U_{\alpha,s} = U_\alpha \times \{s\}$.
+
+Finally, let \[\mathbb{X} = C \cup \bigcup_{s\in 2^{<\omega}} X_s\] be a tree of $2^{<\omega}$ copies of $X$, and where \[c_\alpha \cup \bigcup_{n < \omega} U_{\alpha, x_\alpha \restriction n}\] is an open set about each $c_\alpha$.
+\end{example}
+
+
+
+\begin{definition}
+Let $S\in[\omega_1]^{<\omega}$ and $m<\omega$. Define 
+    \[K_S = \bigcup_{\alpha \in S} \left( c_\alpha \cup \left(\bigcup_{s < c_\alpha} U_{\alpha,s}\right)\right)\] 
+    \[ A = \{z^\frown \<1\> : z \in 1^{<\omega}\}\] 
+    \[ K^*_S = K_S \setminus \bigcup_{s \in A} X_s \] 
+and 
+    \[L_m = \bigcup_{s \in 2^{<m}} X_s\] 
+and observe that every compact set is dominated by $K^*_S \cup L_m$ for some $S,m$. Intuitively, $K^*_S$ collects the branches of $U_\alpha$ converging up to $c_\alpha$ for each $\alpha \in S$ while avoiding copies $X_s$ of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies $X_s$ of $X$ with $|s| < m$ at the base of the tree.
+\end{definition}
+
+\begin{proposition}
+Without loss of generality, $P$ always plays points in $\bigcup_{s \in 2^{<\omega}} X_s$.
+\end{proposition}
+
+\begin{proposition}
+$K \win \lfkpgame{\mathbb{X}}$.
+\end{proposition}
+
+\begin{proof}
+In response to a point $\<x,s\>$, $K$ observes that there are only countably many $\alpha$ such that $U_\alpha \times \{s\}$ contains $\<x,s\>$ (by point-countability of $X$). Enumerate these as $\alpha_n$. $K$ makes a promise that during round $m$, $K$ will forbid some superset of $K_{\{\alpha_n : n\leq m\}}$. Finally, $K$ also always forbids a superset of $L_{|s|+1}$.
+
+Suppose $P$'s moves clustered at some point. Since $K$ forbade $L_{|s|+1}$ during each round, that point must be $c_\alpha$ for some $\alpha$. $P$'s play then must have included a subsequence of points $\<x_0,s_0\>,\<x_1,s_1\>,\<x_2,s_2\>\dots$ such that $x_n \in U_\alpha$ and $s_n \leq s_{n+1} \leq c_\alpha$. However, in response to $\<x_0,s_0\>$, $K$ made a promise to eventually forbid a superset of $K_{\{\alpha\}}$, making every $\<x_n,t_n\>$ illegal after that round.
+\end{proof}
+
+
+
+
+\begin{theorem}
+$K\not\tactwin\lfkpgame{\mathbb{X}}$.
+\end{theorem}
+
+\begin{proof}
+This is actually a corollary of G's theorem in [?]. The following is a direct game-theoretic proof.
+
+Suppose that $\sigma(\<x,s\>)$ was a winning strategy for $K$ and assume 
+  \[
+    \sigma(\<x,s\>) = \bigcup_{|t|\leq |s|} \sigma(\<x,t\>) = \sigma'(x,|s|)
+  \]
+Thus there exists some $f: \omega_1 \to \omega$ such that $\sigma'(x,f(\alpha))$ covers every neighborhood of $c_\alpha$ for all $x\in U_\alpha$. (If not, $P$ wins by taking the $\alpha$ for which $f$ is not defined, and may always play $\<x,s\>$ in a neighborhood of $c_\alpha$ for which $\sigma'(x,|s|)$ doesn't cover a neighborhood of $c_\alpha$.) Fix $n$ for which $f(\alpha)=n$ for $\alpha$ in an uncountable set $A$.
+
+Since the collection $\{U_\alpha : \alpha \in A\}$ is uncountable, it is not point-finite. Fix $x$ so that $x$ belongs to $U_\alpha$ for all $\alpha$ in an infinite $B \subseteq A$. Finally, consider $\sigma'(x,n)$. For each $\alpha\in B$, $\sigma'(x,f(\alpha))=\sigma'(x,n)$ covers $c_\alpha$. Since $\{c_\alpha : \alpha \in B\}$ is a closed infinite discrete set, we have a contradiction to the compactness of $\sigma'(x,n)$.
+\end{proof}
+
+
+
+\begin{theorem}
+$K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+\end{theorem}
+
+\begin{proof}
+Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. We may define $S(x,y,n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
+  \[
+    \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq 
+    K^*_{S(x,y,n)} \cup L_{m(x,y,n)}
+  \]
+and so we assume
+  \[
+    \sigma(\<x,s\>,\<y,t\>) =
+    K^*_{S(x,y,\max(|s|,|t|))} \cup L_{m(x,y,\max(|s|,|t|))}
+  \]
+
+Select an arbitrary point $x' \in X$. We define a tactical strategy 
+  \[
+  \tau(x,s) = 
+  K^*_{S(x,x',m(x,x',|s|)+1)} \cup L_{m(x,x',m(x,x',|s|)+1)}
+  \]
+We complete the proof by showing $\tau$ is a winning tactical strategy (a contradiction).
+
+Suppose
+\[
+\<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
+\]
+successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+\[
+\<x_0, s_0\>, \<x', {z_{m(x_0,x',|s_0|)}}^\frown\<1\>\>, \<x_1, s_1\>, \<x', {z_{m(x_1,x',|s_1|)}}^\frown\<1\>\>,  \<x_2, s_2\>, \<x', {z_{m(x_2,x',|s_2|)}}^\frown\<1\>\>, \dots
+\]
+is a successful counter to $\sigma$.
+
+We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
+  \[
+    |s_i| <
+    m(x_i,x',|s_i|)+1 =
+    |{z_{m(x_i,x',|s_i|)}}^\frown\<1\>| 
+  \]
+  \[
+    <
+    m(x_i,x',m(x_i,x',|s_i|)+1) =
+    m(x_i,x',|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|) \leq
+    |s_{i+1}|
+  \]
+
+Note that $m(x,y,\max(|s|,|t|))$ is increasing throughout this play of the game versus $\sigma$:
+  \[
+    m(x_i,x',\max(|s_i|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    m(x_i,x',|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|)
+  \]
+  \[
+    \leq
+    |s_{i+1}| 
+  \]
+  \[
+    <
+    m(x_{i+1},x',|s_{i+1}|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    |{z_{m(x_{i+1},x',|s_{i+1}|)}}|
+  \]
+  \[
+    <
+    |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
+  \]
+  \[
+    <
+    m(x_{i+1},x',|{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|))
+  \]
+
+We turn to showing that $\<x', {z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>\>$ is always a legal move. Since ${z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>$ is on the antichain avoided by any $K^*$, the problem is reduced to showing that this move isn't forbidden by
+  \[
+  L_{m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))}
+  \]
+which we can see here:
+  \[
+    m(x_{i+1},x',\max(|s_{i+1}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|)) =
+    m(x_{i+1},x',|s_{i+1}|) <
+    |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
+  \]
+
+We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
+  \[
+  L_{m(x_{i},x',\max(|s_{i}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))}
+  \]
+since
+  \[
+    m(x_{i},x',\max(|s_{i}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|)) =
+    m(x_{i},x',|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|) \leq
+    |s_{i+1}|
+  \]
+
+Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
+  \[
+    K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} = 
+    K^*_{S(x_h,x',\max(|s_h|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))}
+  \]
+for $h\leq i$. And when $h<i$, we see it avoids:
+  \[
+    K^*_{S(x_{h+1},x',\max(|s_{h+1}|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))} =
+    K^*_{S(x_{h+1},x',|s_{h+1}|)}
+  \]
+  \[
+    \subseteq
+    K^*_{S(x_{h+1},x',m(x_{h+1},x',|s_{h+1}|)+1)}
+  \]
+
+This concludes the proof.
+\end{proof}
+
+\begin{theorem}
+$K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
+\end{theorem}
+
+\begin{proof}
+The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+
+Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. We may define $S(x_0,\dots,x_{k},n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
+  \[
+    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq 
+    K^*_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
+  \]
+and so we assume
+  \[
+    \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) =
+    K^*_{S(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))} \cup L_{m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
+  \]
+
+Select an arbitrary point $x' \in X$. Let $M^0(x,n)=m(x,x',\dots,x',n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$. We define a tactical strategy 
+  \[
+  \tau(x,s) = K^*_{S(x,x',\dots,x',M^{k-1}(x,|s|)+1)} \cup L_{m(x,x',\dots,x',M^{k-1}(x,|s|)+1)}
+  \]
+We complete the proof by showing $\tau$ is a winning tactical strategy (a contradiction).
+
+Suppose
+\[
+\<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
+\]
+successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+\[
+  \<x_0, s_0\>, 
+  \<x', {z_{M^0(x_0,|s_0|)}}^\frown\<1\>\>,
+  \<x', {z_{M^1(x_0,|s_0|)}}^\frown\<1\>\>, 
+  \dots, 
+  \<x', {z_{M^{k-1}(x_0,|s_0|)}}^\frown\<1\>\>,
+\]
+\[
+  \<x_1, s_1\>, 
+  \<x', {z_{M^0(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \<x', {z_{M^1(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \dots, 
+  \<x', {z_{M^{k-1}(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \dots
+\]
+is a successful counter to $\sigma$.
+
+We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
+  \[
+    |s_i| <
+    M^0(x_i,|s_i|)+1 =
+    |{z_{M^0(x_i,|s_i|)}}^\frown\<1\>| <
+    M^0(x_i,M^0(x_i,|s_i|)+1)+1 
+  \]
+  \[
+    =
+    M^1(x_i,|s_i|)+1 =
+    |{z_{M^1(x_i,|s_i|)}}^\frown\<1\>| <
+    \dots <
+    |{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>| 
+  \]
+  \[
+    =
+    M^{k-1}(x_i,|s_i|) + 1 <
+    m(x_i,x',\dots,x',M^{k-1}(x_i,|s_i|)+1) \leq
+    |s_{i+1}|
+  \]
+
+Note that $m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))$ is increasing throughout this play of the game versus $\sigma$:
+  \[
+    m(x_i,x',\dots,x',\max(|s_i|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    m(x_i,x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_i,x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
+  \]
+  \[
+    \leq
+    |s_{i+1}| 
+  \]
+  \[
+    <
+    M^0(x_{i+1},|s_{i+1}|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',|s_{i+1}|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    |{z_{m(x_{i+1},x',\dots,x',|s_{i+1}|)}}|
+  \]
+  \[
+    =
+    |{z_{M^0(x_{i+1},|s_{i+1}|)}}|
+  \]
+  \[
+    <
+    |{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
+  \]
+  \[
+    <
+    m(x_{i+1},x',\dots,x',|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^1(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i},|s_{i}|)}}^\frown\<1\>|))
+  \]
+  \[
+    \vdots
+  \]
+  \[
+    <
+    m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|))
+  \]
+
+We turn to showing that $\<x', {z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>\>$ is always a legal move. Since ${z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>$ is on the antichain avoided by any $K^*$, the problem is reduced to showing that this move isn't forbidden by
+  \[
+    L_{m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{i},|s_{i}|)}}^\frown\<1\>|))}
+  \]
+  \[
+    =
+    L_{m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)}
+  \]
+which we can see here:
+  \[
+    m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i+1},x',\dots,x',M^{j-1}(x_{i+1},|s_{i+1}|)+1)
+  \]
+  \[
+    =
+    M^0(x_{i+1},M^{j-1}(x_{i+1},|s_{i+1}|)+1)
+  \]
+  \[
+    =
+    M^j(x_{i+1},s_{i+1})
+  \]
+  \[
+    <
+    |{z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
+  \]
+
+We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
+  \[
+  L_{m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))}
+  \]
+since
+  \[
+    m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+  \]
+  \[
+    =
+    m(x_{i},x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
+  \]
+  \[
+    =
+    m(x_{i},x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
+  \]
+  \[
+    \leq
+    |s_{i+1}|
+  \]
+
+
+
+Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
+  \[
+    K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)} 
+  \]
+  \[
+    = 
+    K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
+  \]
+for $h\leq i$. And when $h<i$, we see it avoids both:
+  \[
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+  \]
+  \[
+    =
+    K^*_{S(x_{h+1},x',\dots,x',|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|)}
+  \]
+  \[
+    =
+    K^*_{S(x_{h+1},x',\dots,x',M^{j-1}(x_{h+1},|s_{h+1}|)+1)}
+  \]
+  \[
+    \subseteq
+    K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
+  \]
+and:
+  \[
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+  \]
+  \[
+    =
+    K^*_{S(x_{h+1},x',\dots,x',|s_{k+1}|)}
+  \]
+  \[
+    \subseteq
+    K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
+  \]
+
+
+This concludes the proof.
+\end{proof}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
