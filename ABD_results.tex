@@ -248,7 +248,15 @@ $K\not\tactwin\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-(Vanished somewhere during my editing... looking for it now!)
+This is actually a corollary of G's theorem in [?]. The following is a direct game-theoretic proof.
+
+Suppose that $\sigma(\<x,s\>)$ was a winning strategy for $K$ and assume 
+  \[
+    \sigma(\<x,s\>) = \bigcup_{|t|\leq |s|} \sigma(\<x,t\>) = \sigma'(x,|s|)
+  \]
+Thus there exists some $f: \omega_1 \to \omega$ such that $\sigma'(x,f(\alpha))$ covers every neighborhood of $c_\alpha$ for all $x\in U_\alpha$. (If not, $P$ wins by taking the $\alpha$ for which $f$ is not defined, and may always play $\<x,s\>$ in a neighborhood of $c_\alpha$ for which $\sigma'(x,|s|)$ doesn't cover a neighborhood of $c_\alpha$.) Fix $n$ for which $f(\alpha)=n$ for $\alpha$ in an uncountable set $A$.
+
+Since the collection $\{U_\alpha : \alpha \in A\}$ is uncountable, it is not point-finite. Fix $x$ so that $x$ belongs to $U_\alpha$ for all $\alpha$ in an infinite $B \subseteq A$. Finally, consider $\sigma'(x,n)$. For each $\alpha\in B$, $\sigma'(x,f(\alpha))=\sigma'(x,n)$ covers $c_\alpha$. Since $\{c_\alpha : \alpha \in B\}$ is a closed infinite discrete set, we have a contradiction to the compactness of $\sigma'(x,n)$.
 \end{proof}
 
 
