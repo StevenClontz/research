@@ -19,6 +19,8 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 
+\usepackage{graphicx}
+
       \theoremstyle{plain}
       \newtheorem{theorem}{Theorem}
       \newtheorem{lemma}[theorem]{Lemma}
@@ -69,67 +71,115 @@
 
 \begin{document}
 
+\centerline{\bf An Example of Gruenhage's Compact-Point Game for which $K$ has }
+\centerline{\bf a winning strategy, but no winning $k$-tactical strategy}
+
+We construct a ZFC example given by Gary Gruenhage, inpsired by a ZFC+$\lnot$SH example due to Stephen Watson \cite{Watson}.
+
+\begin{theorem}\label{basic_x}
+There exists a compact, zero-dimensional topological space $X$ which has a point-countable cover $\mathcal{U} = \{U_c : c \in 2^\omega\}$ which is not the union of countably-many point-finite collections.
+\end{theorem}
+
+\begin{proof}
+Take a zero-dimensional Corson compact $Y$ of weight $2^\omega$, which is not Eberlein compact. It follows by \cite{G1} that $Y^2 \setminus \Delta = \{(y_1,y_2): y_1,y_2 \in Y, y_1\not=y_2\}$ is metalindelof, but not $\sigma$-metacompact. So every cover has a point-countable refinement of cardinality $2^\omega$, but no open refinement composed of the union of countably-many point-finite collections.
+\end{proof}
+
 \begin{example}
-Let $X$ be a zero-dimensional, compact L-space (hereditarally Lindeloff and non-separable). It is a fact that there exists a point-countable collection $\mathcal{U}=\{U_\alpha : \alpha<\omega_1\}$ of clopen sets in $X$, and it is also true that any point-finite subcollection of $\mathcal{U}$ is countable. %That is, if we let $A_x = \{\alpha : x \in U_\alpha\}$, then $|A_x|\leq\omega$ for all $x\in X$.
-
-Let $C = \{c_\alpha : \alpha <\omega_1\}$ be any uncountable subset of the Cantor space $2^\omega$. Let $X_s = X \times \{s\}$ for each $s \in 2^{<\omega}$, and $U_{\alpha,s} = U_\alpha \times \{s\}$.
-
-Finally, let \[\mathbb{X} = C \cup \bigcup_{s\in 2^{<\omega}} X_s\] be a tree of $2^{<\omega}$ copies of $X$, and where \[c_\alpha \cup \bigcup_{n < \omega} U_{\alpha, x_\alpha \restriction n}\] is an open set about each $c_\alpha$.
+Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a disjoint union of $2^{<\omega}$ copies of $X$ along with a discrete copy of the Cantor Set $2^\omega$, and add open neighborhoods of the form: 
+  \[
+    B_c = c \cup (U_c \times \{c\rest n : n < \omega\})
+  \]
+as seen in Figure \ref{fig:cantor_tree}.
 \end{example}
 
-
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=6in]{cantor_tree_open.pdf}
+  \caption{The Cantor Tree space $\mathbb{X}$}
+  \label{fig:cantor_tree}
+\end{figure}
 
 \begin{definition}
-Let $S\in[\omega_1]^{<\omega}$ and $m<\omega$. Define 
-    \[K_S = \bigcup_{\alpha \in S} \left( c_\alpha \cup \left(\bigcup_{s < c_\alpha} U_{\alpha,s}\right)\right)\] 
-    \[ A = \{z^\frown \<1\> : z \in 1^{<\omega}\}\] 
-    \[ K^*_S = K_S \setminus \bigcup_{s \in A} X_s \] 
-and 
-    \[L_m = \bigcup_{s \in 2^{<m}} X_s\] 
-and observe that every compact set is dominated by $K^*_S \cup L_m$ for some $S,m$. Intuitively, $K^*_S$ collects the branches of $U_\alpha$ converging up to $c_\alpha$ for each $\alpha \in S$ while avoiding copies $X_s$ of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies $X_s$ of $X$ with $|s| < m$ at the base of the tree.
+Let $S\in[2^\omega]^{<\omega}$ and $m<\omega$. Define 
+  \[
+    K_S = \bigcup_{c \in S} B_c
+  \] 
+  \[ 
+    A = \{z^\frown \<1\> : z \in 1^{<\omega}\}
+  \] 
+  \[ 
+    K^*_S = K_S \setminus (X \times A)
+  \] 
+  \[
+    L_m = X \times 2^{<m}
+  \] 
+and observe that every compact set is dominated by $K^*_S \cup L_m$ for some $S,m$.
+
+Intuitively, $K^*_S$ collects the branches of $U_c$ converging up to each $c \in S$ while avoiding the copy of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies of $X$ with $|s| < m$ at the base of the tree. (See Figure \ref{fig:cantor_tree_compact})
+\end{definition}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=6in]{cantor_tree_compact.pdf}
+  \caption{$K^*_S$ and $L_m$}
+  \label{fig:cantor_tree_compact}
+\end{figure}
+
+\begin{definition}
+$\lfkpgame{\mathbb{X}}$ is a topological game consisting of players $K$ and $P$. During each round, $K$ chooses a compact subset of $\mathbb{X}$, and $P$ chooses a point outside of any compact set previously played by $K$. $K$ wins the game if the set of points chosen by $P$ throughout all rounds of the game are locally finite in the space.
 \end{definition}
 
 \begin{proposition}
-Without loss of generality, $P$ always plays points in $\bigcup_{s \in 2^{<\omega}} X_s$.
+Without loss of generality, we may assume $P$ always plays points in $X \times 2^{<\omega}$ throughout $\lfkpgame{\mathbb{X}}$.
 \end{proposition}
 
 \begin{proposition}
-$K \win \lfkpgame{\mathbb{X}}$.
+$K \win \lfkpgame{\mathbb{X}}$
 \end{proposition}
 
 \begin{proof}
-In response to a point $\<x,s\>$, $K$ observes that there are only countably many $\alpha$ such that $U_\alpha \times \{s\}$ contains $\<x,s\>$ (by point-countability of $X$). Enumerate these as $\alpha_n$. $K$ makes a promise that during round $m$, $K$ will forbid some superset of $K_{\{\alpha_n : n\leq m\}}$. Finally, $K$ also always forbids a superset of $L_{|s|+1}$.
+Let $x\in X$. $C^x = \{c \in C : x \in U_c\}$ is a countable collection by the point-countability of $\mathcal{U}$, so label its elements as $\{c^x_n: n<\omega\}$.
 
-Suppose $P$'s moves clustered at some point. Since $K$ forbade $L_{|s|+1}$ during each round, that point must be $c_\alpha$ for some $\alpha$. $P$'s play then must have included a subsequence of points $\<x_0,s_0\>,\<x_1,s_1\>,\<x_2,s_2\>\dots$ such that $x_n \in U_\alpha$ and $s_n \leq s_{n+1} \leq c_\alpha$. However, in response to $\<x_0,s_0\>$, $K$ made a promise to eventually forbid a superset of $K_{\{\alpha\}}$, making every $\<x_n,t_n\>$ illegal after that round.
+$K$ may use the strategy 
+  \[
+    \sigma(\<x_0,s_0\>,\dots,\<x_{n-1},s_{n-1}\>) = 
+    \bigcup_{i < n} K_{\{c^{x_i}_0,\dots,c^{x_i}_{n-1}\}} \cup L_{|s_i|+1}
+  \]
+
+This is a winning strategy because each point $\<x_i,s_i\>$ played by $P$ cannot be a part of a sequence converging to some $c^{x_i}_n$, since a $K_{\{c^{x_i}_0,\dots,c^{x_i}_n\}} \supseteq B_{c^{x_i}_n}$ was forbidden during round $n$.
 \end{proof}
-
-
-
 
 \begin{theorem}
 $K\not\tactwin\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-This is actually a corollary of G's theorem in [?]. The following is a direct game-theoretic proof.
+This is actually a corollary of Gruenhage's theorem in \cite{G2} by proving $\mathbb{X}$ is not metacompact. The following is a direct game-theoretic proof.
 
-Suppose that $\sigma(\<x,s\>)$ was a winning strategy for $K$ and assume 
+Suppose that $\sigma(\<x,s\>)$ was a winning tactical strategy for $K$ and define the compact set 
   \[
-    \sigma(\<x,s\>) = \bigcup_{|t|\leq |s|} \sigma(\<x,t\>) = \sigma'(x,|s|)
+    \sigma'(x,n) = \bigcup_{|s|\leq n} \sigma(\<x,s\>)
   \]
-Thus there exists some $f: \omega_1 \to \omega$ such that $\sigma'(x,f(\alpha))$ covers every neighborhood of $c_\alpha$ for all $x\in U_\alpha$. (If not, $P$ wins by taking the $\alpha$ for which $f$ is not defined, and may always play $\<x,s\>$ in a neighborhood of $c_\alpha$ for which $\sigma'(x,|s|)$ doesn't cover a neighborhood of $c_\alpha$.) Fix $n$ for which $f(\alpha)=n$ for $\alpha$ in an uncountable set $A$.
 
-Since the collection $\{U_\alpha : \alpha \in A\}$ is uncountable, it is not point-finite. Fix $x$ so that $x$ belongs to $U_\alpha$ for all $\alpha$ in an infinite $B \subseteq A$. Finally, consider $\sigma'(x,n)$. For each $\alpha\in B$, $\sigma'(x,f(\alpha))=\sigma'(x,n)$ covers $c_\alpha$. Since $\{c_\alpha : \alpha \in B\}$ is a closed infinite discrete set, we have a contradiction to the compactness of $\sigma'(x,n)$.
+There exists some $f: 2^\omega \to \omega$ such that for all $x\in U_c$, $\sigma'(x,f(c))$ covers some $B_c \setminus L_m$. (If not, $P$ counters by simply always playing in $B_c \setminus L_m$.)
+
+Recall that $\mathcal{U}$ is not the union of the countably-many point-finite collections, and 
+  \[
+    \mathcal{U} = \bigcup_{n<\omega} \{U_c : f(c) = n\}
+  \]
+so we may find choose $n$ where $\mathcal{U}_n = \{U_c : f(c) = n\}$ is not point-finite. Fix $x$ so that $x$ belongs to each of $\{U_{c_0},U_{c_1},\dots\} \subseteq \mathcal{U}_n$.
+
+For each $c_i$, $\sigma'(x,f(c_i))=\sigma'(x,n)$ covers $c_i$. Thus $\sigma'(x,n) \supseteq \{c_0,c_1,\dots\}$ is not compact, a contradiction.
 \end{proof}
 
-
+\newpage
 
 \begin{theorem}
 $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. We may define $S(x,y,n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
+Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x,y,n)\in [2^\omega]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
   \[
     \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq 
     K^*_{S(x,y,n)} \cup L_{m(x,y,n)}
@@ -151,7 +201,7 @@ Suppose
 \[
 \<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
 \]
-successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+successfully countered $\tau$ by clustering at $c\in 2^\omega$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
 \<x_0, s_0\>, \<x', {z_{m(x_0,x',|s_0|)}}^\frown\<1\>\>, \<x_1, s_1\>, \<x', {z_{m(x_1,x',|s_1|)}}^\frown\<1\>\>,  \<x_2, s_2\>, \<x', {z_{m(x_2,x',|s_2|)}}^\frown\<1\>\>, \dots
 \]
@@ -252,9 +302,9 @@ $K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$, and in fact is just a generalization of said proof (at the cost of simplicity).
 
-Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. We may define $S(x_0,\dots,x_{k},n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
+Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x_0,\dots,x_{k},n)\in [2^\omega]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
   \[
     \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq 
     K^*_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
@@ -275,7 +325,7 @@ Suppose
 \[
 \<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
 \]
-successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+successfully countered $\tau$ by clustering at $c\in 2^\omega$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
   \<x_0, s_0\>, 
   \<x', {z_{M^0(x_0,|s_0|)}}^\frown\<1\>\>,
@@ -463,6 +513,25 @@ and:
 This concludes the proof.
 \end{proof}
 
+\begin{thebibliography}{9}
+
+\bibitem{G1}
+  G. Gruenhage,
+  \emph{Covering Properties on $X^2\setminus\Delta$, $W$-sets, and Compact Subsets of $\Sigma$-Products}.
+  Topology Appl. 17 (1984), 287-304
+
+\bibitem{G2}
+  G. Gruenhage,
+  \emph{Games, Covering Properites, and Eberlein Compacts}.
+  Topology Appl. 23 (1986), 291-297
+
+\bibitem{Watson}
+  S. Watson,
+  \emph{Locally compact normal meta-Lindelöf spaces may not be paracompact: 
+  an application of uniformization and Suslin lines}. 
+  Proc. Amer. Math. Soc. 98 (1986), no. 4, 676–680.
+
+\end{thebibliography}
 
 \end{document}
 
