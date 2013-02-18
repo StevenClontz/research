@@ -72,25 +72,27 @@
 \begin{document}
 
 \centerline{\bf An Example of Gruenhage's Compact-Point Game for which $K$ has }
-\centerline{\bf a winning strategy, but no winning $k$-tactical strategy}
+\centerline{\bf a winning strategy, but no winning $k$-Markov strategy}
 
 We construct a ZFC example given by Gary Gruenhage, inpsired by a ZFC+$\lnot$SH example due to Stephen Watson \cite{Watson}.
 
 \begin{theorem}\label{basic_x}
-There exists a compact, zero-dimensional topological space $X$ which has a point-countable cover $\mathcal{U} = \{U_c : c \in 2^\omega\}$ which is not the union of countably-many point-finite collections.
+There exists a compact, zero-dimensional topological space $X$ which has a point-countable cover $\mathcal{U} = \{U_c : c \in 2^\omega\}$ of clopen sets which is not the union of countably-many point-finite collections.
 \end{theorem}
 
 \begin{proof}
-Take a zero-dimensional Corson compact $Y$ of weight $2^\omega$, which is not Eberlein compact. It follows by \cite{G1} that $Y^2 \setminus \Delta = \{(y_1,y_2): y_1,y_2 \in Y, y_1\not=y_2\}$ is metalindelof, but not $\sigma$-metacompact. So every cover has a point-countable refinement of cardinality $2^\omega$, but no open refinement composed of the union of countably-many point-finite collections.
+Take a zero-dimensional Corson compact $Y$ of weight $2^\omega$, which is not Eberlein compact. It follows by \cite{G1} that $Y^2 \setminus \Delta = \{(y_1,y_2): y_1,y_2 \in Y, y_1\not=y_2\}$ is metalindel\"of, but not $\sigma$-metacompact.
+
+Let $X = Y^2$, and let $\mathcal{V}$ be an open cover of $X$ by $2^\omega$ clopen sets. Since $Y^2 \setminus \Delta$ is metalindel\"of and $\Delta$ is compact, let $\mathcal{V}'$ be a refinement of $\mathcal{U}$ such that it is a point-countable cover of $Y^2 \setminus \Delta$, and let $\mathcal{V}''$ be a refinement of $\mathcal{U}$ such that it is finite cover of $\Delta$. Then $\mathcal{U} = \mathcal{V}'\cup\mathcal{V}''$ is point-countable on $Y^2$, and if it was the union of countably-many point-finite collections, so would $\mathcal{V}'$ (making $Y^2\setminus \Delta$ $\sigma$-metacompact, contradiction).
 \end{proof}
 
-\begin{example}
-Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a disjoint union of $2^{<\omega}$ copies of $X$ along with a discrete copy of the Cantor Set $2^\omega$, and add open neighborhoods of the form: 
+\begin{definition}
+Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a topological sum of $2^{<\omega}$ copies of $X$ along with a discrete copy of the Cantor Set $2^\omega$, and add open (in fact, compact) neighborhoods of the form: 
   \[
     B_c = c \cup (U_c \times \{c\rest n : n < \omega\})
   \]
 as seen in Figure \ref{fig:cantor_tree}.
-\end{example}
+\end{definition}
 
 \begin{figure}[p]
   \centering
@@ -113,7 +115,7 @@ Let $S\in[2^\omega]^{<\omega}$ and $m<\omega$. Define
   \[
     L_m = X \times 2^{<m}
   \] 
-and observe that every compact set is dominated by $K^*_S \cup L_m$ for some $S,m$.
+and observe that every compact set is dominated by the compact set $K^*_S \cup L_m$ for some $S,m$.
 
 Intuitively, $K^*_S$ collects the branches of $U_c$ converging up to each $c \in S$ while avoiding the copy of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies of $X$ with $|s| < m$ at the base of the tree. (See Figure \ref{fig:cantor_tree_compact})
 \end{definition}
@@ -127,6 +129,14 @@ Intuitively, $K^*_S$ collects the branches of $U_c$ converging up to each $c \in
 
 \begin{definition}
 $\lfkpgame{\mathbb{X}}$ is a topological game consisting of players $K$ and $P$. During each round, $K$ chooses a compact subset of $\mathbb{X}$, and $P$ chooses a point outside of any compact set previously played by $K$. $K$ wins the game if the set of points chosen by $P$ throughout all rounds of the game are locally finite in the space.
+\end{definition}
+
+\begin{definition}
+We say $I \win G$ if Player $I$ has a winning strategy in the game $G$.
+
+We say $I \tactwin G$ (resp. $I \ktactwin{k} G$) if Player $I$ has a winning tactical (resp. $k$-tactical) strategy in the game $G$, a strategy depending on only the ($k$) most recent move(s) of the opponent.
+
+We say $I \markwin G$ (resp. $I \kmarkwin{k} G$) if Player $I$ has a winning Markov (resp. $k$-Markov) strategy in the game $G$, a strategy depending on only the ($k$) most recent move(s) of the opponent and the current round number.
 \end{definition}
 
 \begin{proposition}
@@ -146,7 +156,7 @@ $K$ may use the strategy
     \bigcup_{i < n} K_{\{c^{x_i}_0,\dots,c^{x_i}_{n-1}\}} \cup L_{|s_i|+1}
   \]
 
-This is a winning strategy because each point $\<x_i,s_i\>$ played by $P$ cannot be a part of a sequence converging to some $c^{x_i}_n$, since a $K_{\{c^{x_i}_0,\dots,c^{x_i}_n\}} \supseteq B_{c^{x_i}_n}$ was forbidden during round $n$.
+This is a winning strategy because each move $\<x_i,s_i\>$ by $P$ cannot be a part of a subsequence of the play converging to any $c^{x_i}_n$, since $K_{\{c^{x_i}_0,\dots,c^{x_i}_n\}} \supseteq B_{c^{x_i}_n}$ was forbidden during round $n$.
 \end{proof}
 
 \begin{theorem}
@@ -154,7 +164,7 @@ $K\not\tactwin\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-This is actually a corollary of Gruenhage's theorem in \cite{G2} by proving $\mathbb{X}$ is not metacompact. The following is a direct game-theoretic proof.
+This is actually a corollary of Gruenhage's theorem in \cite{G2}: $\mathbb{X}$ is locally compact (each point is either in some $X$ or in some $B_c$) but not metacompact (any cover of $2^\omega$ necessarily will have infinite overlap at some $X \times \{s\}$). However, we proceed with a direct game-theoretic proof.
 
 Suppose that $\sigma(\<x,s\>)$ was a winning tactical strategy for $K$ and define the compact set 
   \[
@@ -167,12 +177,10 @@ Recall that $\mathcal{U}$ is not the union of the countably-many point-finite co
   \[
     \mathcal{U} = \bigcup_{n<\omega} \{U_c : f(c) = n\}
   \]
-so we may find choose $n$ where $\mathcal{U}_n = \{U_c : f(c) = n\}$ is not point-finite. Fix $x$ so that $x$ belongs to each of $\{U_{c_0},U_{c_1},\dots\} \subseteq \mathcal{U}_n$.
+so we may choose $n$ where $\mathcal{U}_n = \{U_c : f(c) = n\}$ is not point-finite. Fix $x$ so that $x$ belongs to each of $\{U_{c_0},U_{c_1},\dots\} \subseteq \mathcal{U}_n$.
 
-For each $c_i$, $\sigma'(x,f(c_i))=\sigma'(x,n)$ covers $c_i$. Thus $\sigma'(x,n) \supseteq \{c_0,c_1,\dots\}$ is not compact, a contradiction.
+For each $c_i$, $\sigma'(x,f(c_i))=\sigma'(x,n)$ covers $c_i$. Thus $\sigma'(x,n) \supseteq \{c_0,c_1,\dots\}$ is a compact set covering a closed discrete subset, a contradiction.
 \end{proof}
-
-\newpage
 
 \begin{theorem}
 $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
@@ -279,12 +287,12 @@ since
     |s_{i+1}|
   \]
 
-Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
+Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, for $h\leq i$ it avoided
   \[
     K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} = 
     K^*_{S(x_h,x',\max(|s_h|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))}
   \]
-for $h\leq i$. And when $h<i$, we see it avoids:
+and when $h<i$, we see it avoids:
   \[
     K^*_{S(x_{h+1},x',\max(|s_{h+1}|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))} =
     K^*_{S(x_{h+1},x',|s_{h+1}|)}
@@ -296,6 +304,8 @@ for $h\leq i$. And when $h<i$, we see it avoids:
 
 This concludes the proof.
 \end{proof}
+
+\newpage
 
 \begin{theorem}
 $K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
@@ -472,7 +482,7 @@ since
 
 
 
-Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
+Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, for $h\leq i$ it avoided
   \[
     K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)} 
   \]
@@ -480,7 +490,7 @@ Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
     = 
     K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
   \]
-for $h\leq i$. And when $h<i$, we see it avoids both:
+and when $h<i$, we see it avoids both:
   \[
     K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
   \]
@@ -513,6 +523,18 @@ and:
 This concludes the proof.
 \end{proof}
 
+\begin{corollary}
+$K\not\kmarkwin{k}\lfkpgame{\mathbb{X}}$.
+\end{corollary}
+
+\begin{proof}
+Let $\sigma(\<x_0,s_0\>,\dots,\<x_{k-1},s_{k-1}\>,n)$ be a winning $k$-Markov strategy for $K$ increasing on $n$. We define a $k$-tactical strategy
+  \[
+    \tau(\<x_0,s_0\>,\dots,\<x_{k-1},s_{k-1}\>) = \sigma(\<x_0,s_0\>,\dots,\<x_{k-1},s_{k-1}\>,\max_{i<k}(|s_i|)) \cup L_{\max_{i<k}(|s_i|)+1}
+  \]
+and observe that since for any legal play of the game, the round number $n \leq \max_{i<k}(|s_i|)$, we know $\tau$ always yields supersets of $\sigma$, and is thus also a winning strategy, contradiction.
+\end{proof}
+
 \begin{thebibliography}{9}
 
 \bibitem{G1}
@@ -527,7 +549,7 @@ This concludes the proof.
 
 \bibitem{Watson}
   S. Watson,
-  \emph{Locally compact normal meta-Lindelöf spaces may not be paracompact: 
+  \emph{Locally compact normal meta-Lindel\"of spaces may not be paracompact: 
   an application of uniformization and Suslin lines}. 
   Proc. Amer. Math. Soc. 98 (1986), no. 4, 676–680.
 
