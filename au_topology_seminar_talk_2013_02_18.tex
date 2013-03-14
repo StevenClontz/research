@@ -1,71 +1,4 @@
-\documentclass[11pt]{article}
-
-\pdfpagewidth 8.5in
-\pdfpageheight 11in
-
-\setlength\topmargin{0in}
-\setlength\headheight{0in}
-\setlength\headsep{0.2in}
-\setlength\textheight{8in}
-\setlength\textwidth{6in}
-\setlength\oddsidemargin{0in}
-\setlength\evensidemargin{0in}
-\setlength\parindent{0.25in}
-\setlength\parskip{0.1in} 
- 
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{mathtools}
-\usepackage{amsthm}
-
-\usepackage{graphicx}
-
-      \theoremstyle{plain}
-      \newtheorem{theorem}{Theorem}
-      \newtheorem{lemma}[theorem]{Lemma}
-      \newtheorem{corollary}[theorem]{Corollary}
-      \newtheorem{proposition}[theorem]{Proposition}
-      \newtheorem{conjecture}[theorem]{Conjecture}
-      \newtheorem{question}[theorem]{Question}
-      \newtheorem{example}[theorem]{Example}
-      
-      \theoremstyle{definition}
-      \newtheorem{definition}[theorem]{Definition}
-      
-      \theoremstyle{remark}
-      \newtheorem{remark}[theorem]{Remark}
-
-
-% Strategy uparrow shortcuts
-\newcommand{\win}{\uparrow}
-\newcommand{\prewin}{\uparrow_{\text{pre}}}
-\newcommand{\markwin}{\uparrow_{\text{mark}}}
-\newcommand{\tactwin}{\uparrow_{\text{tact}}}
-\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
-\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
-\newcommand{\codewin}{\uparrow_{\text{code}}}
-\newcommand{\limitwin}{\uparrow_{\text{limit}}}
-
-\newcommand{\oneptcomp}[1]{#1^*}
-
-\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
-\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
-
-\newcommand{\lfkpgame}[1]{LF_{K,P}(#1)}
-\newcommand{\lfklgame}[1]{LF_{K,L}(#1)}
-
-\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
-
-\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
-\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
-
-\newcommand{\<}{\langle}
-\renewcommand{\>}{\rangle}
-
-\newcommand{\rest}{\restriction}
-
-\newcommand{\largecomment}[1]{}
+\input{./header.tex}
 
 
 
@@ -74,16 +7,24 @@
 \centerline{\bf An Example of Gruenhage's Compact-Point Game for which $K$ has }
 \centerline{\bf a winning strategy, but no winning $k$-Markov strategy}
 
-We construct a ZFC example given by Gary Gruenhage, inpsired by a ZFC+$\lnot$SH example due to Stephen Watson \cite{Watson}.
+We construct a ZFC example given by Gary Gruenhage, inpsired by a ZFC+$\lnot$SH example due to Stephen Watson \cite{Watson}. We require a slight modification of a result of Gruenhage and Michael \cite{Michael}:
 
-\begin{theorem}\label{basic_x}
-There exists a compact, zero-dimensional topological space $X$ which has a point-countable cover $\mathcal{U} = \{U_c : c \in 2^\omega\}$ of clopen sets which is not the union of countably-many point-finite collections.
+\begin{theorem}\label{michael}
+Let $X$ be a meta-Lindel\"of, locally Lindel\"of regular space, and let $\mc{B}$ be a base of cardinality $\kappa$ for $X$. Then $X$ has a cover $\mc{B}'\subseteq\mc{B}$ of cardinality $\kappa$ such that $\{\close{B}:B\in\mc{B}'\}$ is point-countable.
 \end{theorem}
 
 \begin{proof}
-Take a zero-dimensional Corson compact $Y$ of weight $2^\omega$, which is not Eberlein compact. It follows by \cite{G1} that $Y^2 \setminus \Delta = \{(y_1,y_2): y_1,y_2 \in Y, y_1\not=y_2\}$ is metalindel\"of, but not $\sigma$-metacompact.
+asdf?
+\end{proof}
 
-Let $X = Y^2$, and let $\mathcal{V}$ be an open cover of $X$ by $2^\omega$ clopen sets. Since $Y^2 \setminus \Delta$ is metalindel\"of and $\Delta$ is compact, let $\mathcal{V}'$ be a refinement of $\mathcal{U}$ such that it is a point-countable cover of $Y^2 \setminus \Delta$, and let $\mathcal{V}''$ be a refinement of $\mathcal{U}$ such that it is finite cover of $\Delta$. Then $\mathcal{U} = \mathcal{V}'\cup\mathcal{V}''$ is point-countable on $Y^2$, and if it was the union of countably-many point-finite collections, so would $\mathcal{V}'$ (making $Y^2\setminus \Delta$ $\sigma$-metacompact, contradiction).
+\begin{theorem}\label{basic_x}
+There exists a compact, zero-dimensional topological space $X$ which has a point-countable cover $\mc{U} = \{U_c : c \in 2^\omega\}$ of clopen sets which is not $\sigma$-point-finite (the union of countably-many point-finite collections).
+\end{theorem}
+
+\begin{proof}
+Take a zero-dimensional Corson compact $Y$ of weight $2^\omega$, which is not Eberlein compact. (See Todercevic \cite{Todercevic} for an example.) It follows by \cite{G1} that $Y^2$ is hereditarily metaLindel\"of, but not hereditarily $\sigma$-metacompact. Let $X$ be a non-$\sigma$-metacompact subset of $Y^2$, and let $\mc{V}$ be an open cover of $X$ such that no $\sigma$-point-finite open refinement exists.
+
+Let $\mc{B}$ be a clopen base for $X$ of cardinality $2^\omega$ which is a refinement of $\mc{V}$.  Then as $X$ is metaLindel\"of, locally Lindel\"of, and regular, by Thm \ref{michael}, let $\mc{U}\subseteq \mc{B}$ be a point-countable clopen refinement of $\mc{V}$ of cardinality $2^\omega$, which cannot be $\sigma$-point-finite.
 \end{proof}
 
 \begin{definition}
@@ -148,7 +89,7 @@ $K \win \lfkpgame{\mathbb{X}}$
 \end{proposition}
 
 \begin{proof}
-Let $x\in X$. $C^x = \{c \in C : x \in U_c\}$ is a countable collection by the point-countability of $\mathcal{U}$, so label its elements as $\{c^x_n: n<\omega\}$.
+Let $x\in X$. $C^x = \{c \in C : x \in U_c\}$ is a countable collection by the point-countability of $\mc{U}$, so label its elements as $\{c^x_n: n<\omega\}$.
 
 $K$ may use the strategy 
   \[
@@ -173,11 +114,11 @@ Suppose that $\sigma(\<x,s\>)$ was a winning tactical strategy for $K$ and defin
 
 There exists some $f: 2^\omega \to \omega$ such that for all $x\in U_c$, $\sigma'(x,f(c))$ covers some $B_c \setminus L_m$. (If not, $P$ counters by simply always playing in $B_c \setminus L_m$.)
 
-Recall that $\mathcal{U}$ is not the union of the countably-many point-finite collections, and 
+Recall that $\mc{U}$ is not the union of the countably-many point-finite collections, and 
   \[
-    \mathcal{U} = \bigcup_{n<\omega} \{U_c : f(c) = n\}
+    \mc{U} = \bigcup_{n<\omega} \{U_c : f(c) = n\}
   \]
-so we may choose $n$ where $\mathcal{U}_n = \{U_c : f(c) = n\}$ is not point-finite. Fix $x$ so that $x$ belongs to each of $\{U_{c_0},U_{c_1},\dots\} \subseteq \mathcal{U}_n$.
+so we may choose $n$ where $\mc{U}_n = \{U_c : f(c) = n\}$ is not point-finite. Fix $x$ so that $x$ belongs to each of $\{U_{c_0},U_{c_1},\dots\} \subseteq \mc{U}_n$.
 
 For each $c_i$, $\sigma'(x,f(c_i))=\sigma'(x,n)$ covers $c_i$. Thus $\sigma'(x,n) \supseteq \{c_0,c_1,\dots\}$ is a compact set covering a closed discrete subset, a contradiction.
 \end{proof}
@@ -546,6 +487,16 @@ and observe that since for any legal play of the game, the round number $n \leq 
   G. Gruenhage,
   \emph{Games, Covering Properites, and Eberlein Compacts}.
   Topology Appl. 23 (1986), 291-297
+
+\bibitem{Michael}
+  G. Gruenhage and E. Michael, 
+  \emph{A result on shrinkable open covers}.
+  Proceedings of the 1983 topology conference (Houston, Tex., 1983), 1983, pp. 37–43.
+
+\bibitem{Todercevic}
+  S. Todercevic,
+  \emph{Trees and linearly ordered sets}.
+  Handbook of Set-theoretic Topology (North-Holland, Amsterdam, 1984), pp. 235-293
 
 \bibitem{Watson}
   S. Watson,
