@@ -9,6 +9,7 @@ My repo of research results.
     * Does Markov strategy imply sigma-compact?
 * Find class of spaces where a 2-tactic in LFKP characterizes metacompact (aka implies 1-tactic)
     * Start with zero-dimensional perhaps.
+* Look at Lutzer paper with questions.
 
 ## REPO TODOs
 
