@@ -11,7 +11,7 @@
   \end{proposition}
 
   \begin{definition}
-    In the two-player game $\mengame{X}$ player $C$ chooses open covers $\mathcal{U}_n$ of $X$, followed by player $S$ choosing a finite subcollection $\mathcal{F}_n\subseteq\mathcal{U}_n$. $S$ wins if $\bigcup_{n<\omega} \mathcal{F}_n$ is a cover of $X$.
+    In the two-player game $\mengame{X}$ player $C$ chooses open covers $\mathcal{U}_n$ of $X$, followed by player $F$ choosing a finite subcollection $\mathcal{F}_n\subseteq\mathcal{U}_n$. $F$ wins if $\bigcup_{n<\omega} \mathcal{F}_n$ is a cover of $X$.
   \end{definition}
 
   \begin{theorem}
@@ -23,7 +23,7 @@
 
     The other direction is based upon Gruenhage's topological game presentation. Assume $X$ is Menger, and consider a strategy for $C$ in $\mengame{X}$.
 
-    Since $X$ is Lindelof, we can assume $C$ plays only countable covers of $X$. Then, since $S$ is choosing finite subsets, we may assume $S$ chooses some initial segement of the countable cover. In turn, we can assume $C$ plays an increasing open cover $\{U_0,U_1,\dots\}$ where $U_n\subseteq U_{n+1}$. And in that case, it's suffient to assume $S$ simply chooses a singleton subset of each cover. And finally, since choices made by $S$ are already covered, we can assume that every open set in a cover played by $C$ covers the sets chosen by $S$ previously.
+    Since $X$ is Lindelof, we can assume $C$ plays only countable covers of $X$. Then, since $F$ is choosing finite subsets, we may assume $F$ chooses some initial segement of the countable cover. In turn, we can assume $C$ plays an increasing open cover $\{U_0,U_1,\dots\}$ where $U_n\subseteq U_{n+1}$. And in that case, it's suffient to assume $F$ simply chooses a singleton subset of each cover. And finally, since choices made by $F$ are already covered, we can assume that every open set in a cover played by $C$ covers the sets chosen by $F$ previously.
 
     As a result, we have the following figure of a tree of plays which I need to draw:
 
@@ -36,7 +36,7 @@
         \item $U_{a\concat m} \subseteq U_{a\concat n} \subseteq U_{a\concat n\concat b} \subseteq U_{a\concat n\concat b\concat m}$ \\ (for example: $U_{1627} \subseteq U_{1629283287}$ - injecting a subseqence with initial number larger than the original's final number, prior to the final number, yields supersets) 
       \end{enumerate}
 
-    We may observe that if $S$ can find an $f:\omega\to\omega$ such that $\bigcup_{n<\omega}U_{f\rest (n+1)} = X$, she can use $\{U_{f\rest 0}\}, \{U_{f\rest 1}\}, \dots$ to counter $C$'s strategy.
+    We may observe that if $F$ can find an $f:\omega\to\omega$ such that $\bigcup_{n<\omega}U_{f\rest (n+1)} = X$, she can use $\{U_{f\rest 0}\}, \{U_{f\rest 1}\}, \dots$ to counter $C$'s strategy.
 
     Let $\ds V_k^n = \bigcap_{a\in\omega^{\leq n}} U_{a\concat k}$. We claim that (1) $V_k^n$ is open, (2) $\mathcal{V}^n=\{V_0^n,V_1^n,\dots\}$ is increasing, and (3) $\mathcal{V}^n$ is a cover. Proofs:
 
@@ -102,27 +102,59 @@
   \end{proof}
 
   \begin{proposition}
-    $X$ is compact if and only if $S \tactwin \mengame{X}$
+    $X$ is compact if and only if $F \tactwin \mengame{X}$
   \end{proposition}
 
   \begin{proof}
     Assume $X$ is compact. For each open cover played by $C$, pick the finite subcover.
 
-    Assume $S$ has a winning tactical strategy. For any open cover, have $C$ play only it during the entire game. $S$'s only choice must be a finite subcover.
+    Assume $F$ has a winning tactical strategy. For any open cover, have $C$ play only it during the entire game. $F$'s only choice must be a finite subcover.
   \end{proof}
 
   \begin{proposition}
-    If $X$ is $\sigma$-compact then $S \markwin \mengame{X}$
+    If $X$ is $\sigma$-compact then $F \markwin \mengame{X}$
   \end{proposition}
 
   \begin{proof}
-    Let $X=\bigcup_{n<\omega} X_n$ for compact $X_n$. On round $n$, $S$ picks the finite subcover of $C$'s open cover of $X_n$.
+    Let $X=\bigcup_{n<\omega} X_n$ for compact $X_n$. On round $n$, $F$ picks the finite subcover of $C$'s open cover of $X_n$.
   \end{proof}
 
+  Due to Telgarski in ``On Games of Topsoe'':
+
+  \begin{theorem}
+    For metrizable $X$, $X$ is $\sigma$-compact if and only if $F \win \mengame{X}$.
+  \end{theorem}
+
+  In a question I posed to G, he answered:
+
+  \begin{lemma}
+    For all $\alpha_0, \alpha_1, \dots < \omega_1$ and functions $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$, $\{\tau(\alpha_n,n): n<\omega\}$ is not a cover for $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$.
+  \end{lemma} 
+
+  \begin{proof}
+    Let $P_n = \{\beta: \beta < \alpha \Rightarrow \beta \in \tau(\alpha, n)\}$. Observe that each $P_n$ is finite; else there is some $\alpha$ larger than every member of $P_n$ such that $P_n \subseteq \tau(\alpha, n)$.
+
+    Choose $\beta \not\in \bigcup_{n<\omega} P_n$. Then for each $n<\omega$, pick $\alpha_n>\beta$ such that $\beta \not\in \tau(\alpha_n, n)$.
+  \end{proof}
+
+  Note that the one-point Lindel\"ofication of discrete $\omega_1$, $\oneptlind{\omega_1}$, is not $\sigma$-compact. With the above lemma, we may see that:
+
+  \begin{example}
+    $F \win \mengame{\oneptlind{\omega_1}}$ but $F \not\markwin \mengame{\oneptlind{\omega_1}}$.
+  \end{example}
+
+  \begin{proof}
+    First, we see $F$ has a simple perfect information strategy: in response to the initial cover of $\oneptlind{\omega_1}$, $F$ chooses a co-countable neighborhood of $\infty$. On successive turns she may pick a single set from $C$'s covers to cover the countable remainder.
+
+    Now, suppose that $\sigma(\mc{U}, n)$ was a winning Markov strategy and aim for a contradiction. Consider the covers \[\mc{U}(\alpha) = \{[\alpha,\omega_1)\cup\{\infty\}\} \cup \{\{\beta\}:\beta < \alpha\}\] and define $\tau(\alpha,n)$ to be the union of singletons chosen by $\sigma(\mathcal{U}(\alpha),n)$. As $\sigma$ was a winning strategy, for all $\alpha_0, \alpha_1, \dots < \omega_1$, $\{\sigma(\mathcal{U}(\alpha_n),n): n<\omega\}$ must cover $\oneptlind{\omega_1}$, and thus $\{\tau(\alpha_n,n): n<\omega\}$ must cover $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$, contradiction.
+  \end{proof}
+
+  The question remains:
+
   \begin{question}
-    Does $S \markwin \mengame{X}$ imply $X$ is $\sigma$-compact?
+    Does $F \markwin \mengame{X}$ imply $X$ is $\sigma$-compact?
   \end{question}
 
-  Let $\sigma(\mathcal{U},n)$ be $S$'s winning Markov strategy.
+  % Let $\sigma(\mathcal{U},n)$ be $F$'s winning Markov strategy.
 
 \end{document}
