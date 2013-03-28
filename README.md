@@ -5,7 +5,6 @@ My repo of research results.
 ## RESEARCH TODOs
 
 * Investigate Menger property/game
-    * Lusin Set may not provide a Markov strategy for S.
     * Does Markov strategy imply sigma-compact?
 * Find class of spaces where a 2-tactic in LFKP characterizes metacompact (aka implies 1-tactic)
     * Start with zero-dimensional perhaps.

@@ -7,30 +7,24 @@
 \centerline{\bf An Example of Gruenhage's Compact-Point Game for which $K$ has }
 \centerline{\bf a winning strategy, but no winning $k$-Markov strategy}
 
-We construct a ZFC example given by Gary Gruenhage, inpsired by a ZFC+$\lnot$SH example due to Stephen Watson \cite{Watson}. We require a slight modification of a result of Gruenhage and Michael \cite{Michael}:
+We construct a ZFC example given by Gary Gruenhage, inpsired by a ZFC+$\lnot$SH example due to Stephen Watson \cite{Watson}. We require a result of Gruenhage and Michael \cite{Michael}:
 
 \begin{theorem}\label{michael}
-Let $X$ be a meta-Lindel\"of, locally Lindel\"of regular space, and let $\mc{B}$ be a base of cardinality $\kappa$ for $X$. Then $X$ has a cover $\mc{B}'\subseteq\mc{B}$ of cardinality $\kappa$ such that $\{\close{B}:B\in\mc{B}'\}$ is point-countable.
+Let $X$ be a meta-Lindel\"of, locally Lindel\"of regular space, and let $\mc{B}$ be a base for $X$. Then $X$ has a cover $\mc{B}'\subseteq\mc{B}$ such that $\{\close{B}:B\in\mc{B}'\}$ is point-countable.
 \end{theorem}
 
-\begin{proof}
-asdf?
-\end{proof}
-
 \begin{theorem}\label{basic_x}
-There exists a compact, zero-dimensional topological space $X$ which has a point-countable cover $\mc{U} = \{U_c : c \in 2^\omega\}$ of clopen sets which is not $\sigma$-point-finite (the union of countably-many point-finite collections).
+There exists a compact, zero-dimensional topological space $X$ and an uncountable subspace $C\subseteq 2^\omega$ of the Cantor Set, such that $X$ has a point-countable cover $\mc{U} = \{U_c : c \in C\}$ of clopen sets which is not $\sigma$-point-finite (the union of countably-many point-finite collections).
 \end{theorem}
 
 \begin{proof}
 Take a zero-dimensional Corson compact $Y$ of weight $2^\omega$, which is not Eberlein compact. (See Todercevic \cite{Todercevic} for an example.) It follows by \cite{G1} that $Y^2$ is hereditarily metaLindel\"of, but not hereditarily $\sigma$-metacompact. Note $X=Y^2\setminus \Delta$ is an open non-$\sigma$-metacompact subspace of $Y^2$, and thus locally compact, and let $\mc{V}$ be an open cover of $X$ such that no $\sigma$-point-finite open refinement exists.
 
-Let $\mc{B}$ be a clopen base for $X$ of cardinality $\leq 2^\omega$ which is a refinement of $\mc{V}$.  Then as $X$ is metaLindel\"of, locally Lindel\"of, and regular, by Thm \ref{michael}, let $\mc{U}\subseteq \mc{B}$ be a point-countable clopen refinement of $\mc{V}$ of cardinality $2^\omega$, which cannot be $\sigma$-point-finite.
-
-% TODO finish this for \leq 2^\omega
+Let $\mc{B}$ be a clopen base for $X$ of cardinality $2^\omega$ which is a refinement of $\mc{V}$.  Then as $X$ is metaLindel\"of, locally Lindel\"of, and regular, by Thm \ref{michael}, let $\mc{U}\subseteq \mc{B}$ be a point-countable clopen refinement of $\mc{V}$ of cardinality $\leq 2^\omega$, which cannot be $\sigma$-point-finite (and is thus uncountable).
 \end{proof}
 
 \begin{definition}
-Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a topological sum of $2^{<\omega}$ copies of $X$ along with a discrete copy of the Cantor Set $\leq 2^\omega$, and add open (in fact, compact) neighborhoods of the form: 
+Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a topological sum of $2^{<\omega}$ copies of $X$ along with a discrete copy of a subspace $C \subseteq 2^\omega$ of the Cantor Set, and add open (in fact, compact) neighborhoods of the form: 
   \[
     B_c = c \cup (U_c \times \{c\rest n : n < \omega\})
   \]
@@ -45,7 +39,7 @@ as seen in Figure \ref{fig:cantor_tree}.
 \end{figure}
 
 \begin{definition}
-Let $S\in[2^\omega]^{<\omega}$ and $m<\omega$. Define 
+Let $S\in[C]^{<\omega}$ and $m<\omega$. Define 
   \[
     K_S = \bigcup_{c \in S} B_c
   \] 
@@ -107,14 +101,14 @@ $K\not\tactwin\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-This is actually a corollary of Gruenhage's theorem in \cite{G2}: $\mathbb{X}$ is locally compact (each point is either in some $X$ or in some $B_c$) but not metacompact (any cover of $2^\omega$ necessarily will have infinite overlap at some $X \times \{s\}$). However, we proceed with a direct game-theoretic proof.
+This is actually a corollary of Gruenhage's theorem in \cite{G2}: $\mathbb{X}$ is locally compact (each point is either in some $X$ or in some $B_c$) but not metacompact (any cover of $C$ necessarily will have infinite overlap at some $X \times \{s\}$). However, we proceed with a direct game-theoretic proof.
 
 Suppose that $\sigma(\<x,s\>)$ was a winning tactical strategy for $K$ and define the compact set 
   \[
     \sigma'(x,n) = \bigcup_{|s|\leq n} \sigma(\<x,s\>)
   \]
 
-There exists some $f: 2^\omega \to \omega$ such that for all $x\in U_c$, $\sigma'(x,f(c))$ covers some $B_c \setminus L_m$. (If not, $P$ counters by simply always playing in $B_c \setminus L_m$.)
+There exists some $f: C \to \omega$ such that for all $x\in U_c$, $\sigma'(x,f(c))$ covers some $B_c \setminus L_m$. (If not, $P$ counters by simply always playing in $B_c \setminus L_m$.)
 
 Recall that $\mc{U}$ is not the union of the countably-many point-finite collections, and 
   \[
@@ -130,7 +124,7 @@ $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
 \end{theorem}
 
 \begin{proof}
-Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x,y,n)\in [2^\omega]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
+Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x,y,n)\in [C]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
   \[
     \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq 
     K^*_{S(x,y,n)} \cup L_{m(x,y,n)}
@@ -152,7 +146,7 @@ Suppose
 \[
 \<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
 \]
-successfully countered $\tau$ by clustering at $c\in 2^\omega$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
 \<x_0, s_0\>, \<x', {z_{m(x_0,x',|s_0|)}}^\frown\<1\>\>, \<x_1, s_1\>, \<x', {z_{m(x_1,x',|s_1|)}}^\frown\<1\>\>,  \<x_2, s_2\>, \<x', {z_{m(x_2,x',|s_2|)}}^\frown\<1\>\>, \dots
 \]
@@ -257,7 +251,7 @@ $K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
 \begin{proof}
 The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$, and in fact is just a generalization of said proof (at the cost of simplicity).
 
-Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x_0,\dots,x_{k},n)\in [2^\omega]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
+Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x_0,\dots,x_{k},n)\in [C]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
   \[
     \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq 
     K^*_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
@@ -278,7 +272,7 @@ Suppose
 \[
 \<x_0, s_0\>, \<x_1, s_1\>, \<x_2, s_2\>, \dots
 \]
-successfully countered $\tau$ by clustering at $c\in 2^\omega$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
+successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
   \<x_0, s_0\>, 
   \<x', {z_{M^0(x_0,|s_0|)}}^\frown\<1\>\>,
