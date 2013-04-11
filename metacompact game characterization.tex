@@ -474,6 +474,55 @@ and observe that since for any legal play of the game, the round number $n \leq 
 
 \newpage
 
+\centerline{\bf Ladder Space Stuff}
+
+\begin{proposition}
+It is consistant that there exists a compact, zero-dimensional topological space $X$ such that $X$ has a point-countable cover $\mc{U} = \{U_\alpha : \alpha\in\omega_1^L\}$ of clopen sets such that no uncountable subset of $\mc{U}$ is point-finite.
+\end{proposition}
+
+\begin{definition}
+For each $\alpha\in\omega_1^L$, define successor ordinals $\alpha_0<\alpha_1<\dots\to\alpha$ such that each successor ordinal $\beta$ equals $\alpha_n$ for some $\alpha, n$. Using the $X$ from the previous lemma, let \[\mathbb{X} = (X \times \omega_1^S) \cup \omega_1^L\] compose a topological sum of copies of $X$ for each countable successor ordinal, along with a discrete copy of the countable limit ordinals, and add open (in fact, compact) neighborhoods of the form: 
+  \[
+    B(\alpha) = \{\alpha\} \cup (U_\alpha \times \{\alpha_n : n < \omega\})
+  \]
+\end{definition}
+
+\begin{definition}
+Define these things as I need them:
+\end{definition}
+
+\begin{proposition}
+Without loss of generality, we may assume $P$ always plays points in $X \times \omega_1^S$ throughout $\lfkpgame{\mathbb{X}}$.
+\end{proposition}
+
+\begin{proposition}
+$K \win \lfkpgame{\mathbb{X}}$
+\end{proposition}
+
+\begin{proof}
+Sketch of proof: For each point $\<x,\beta\>$ played by $P$, $K$ makes a promise to eventually cover $B(\alpha)$ for each of the countably-many $\alpha$ where $x\in U_\alpha$.
+\end{proof}
+
+\begin{theorem}
+$K \not\tactwin \lfkpgame{\mathbb{X}}$
+\end{theorem}
+
+\begin{proof}
+Follows from G: $\mathbb{X}$ is locally compact, but not metacompact. A game-theoretic proof follows.
+
+Suppose $\sigma(x,\beta)$ was a winning strategy for $K$. We claim that for each $\alpha\in\omega_1^L$, there exists some $f(\alpha)<\omega$ such that $\bigcap_{x\in U_\alpha} \sigma(x,\alpha_{f(\alpha)}) \supseteq B(\alpha)$. If not, choose $\alpha$ for which $f(\alpha)$ cannot exist. Then there exists some $x_0\in U_\alpha$ where $\sigma(x,\alpha_{m_0})$ misses $B(\alpha)$ for sufficiently large $m_0$. In general, choose $x_n\in U_\alpha$ in round $n$ where $\sigma(x,\alpha_{m_n})$ misses $B(\alpha)$ for sufficiently large $m_n$, and the play 
+  \[
+    \<x_0,\alpha_{m_0}\>, \<x_1,\alpha_{m_1}\>, \<x_2,\alpha_{m_2}\>, \dots
+  \]
+counters $\sigma$ by converging to $\alpha$, contradiction.
+
+So, define a function $f:\omega_1^L\to\omega$ where $\bigcap_{x\in U_\alpha} \sigma(x,\alpha_{f(\alpha)}) \supseteq B(\alpha)$, and let $g:\omega_1^L\to\omega_1^S$ be defined such that $g(\alpha)=\alpha_{f(\alpha)}$. By the pressing down lemma, there exists an uncountable $A\subseteq\omega_1^L$ and $\beta\in\omega_1^S$ such that $g(\alpha)=\alpha_{f(\alpha)}=\beta$ for all $\alpha \in A$.
+
+Since no uncountable subset of $\mc{U}=\{U_\alpha : \alpha \in \omega_1^L\}$ is point-finite, there exists a point $x\in X$ such that $x$ belongs to $U_\alpha$ for each $\alpha$ in some infinite $A'\subseteq A$. Then note that $\sigma(x,g(\alpha))=\sigma(x,\beta)\supseteq B(\alpha)$ for each $\alpha\in A'$, and thus $\sigma(x,\beta)$ is not compact, contradiction.
+\end{proof}
+
+\newpage
+
 \begin{thebibliography}{9}
 
 \bibitem{G1}
