@@ -9,7 +9,6 @@ My repo of research results.
     * Countably compact is equivalent in T_1 to there does not exist an infinite closed discrete subset.
     * Show secound countable T_1: Markov strategy implies sigma-compact.
     * Look at sigma-compact in X?
-    * Try to find/disprove a 2-Markov in omega_1^dagger
 * Find class of spaces where a 2-tactic in LFKP characterizes metacompact (aka implies 1-tactic)
     * Start with zero-dimensional perhaps.
     * Investigate the ladder space suggested by G.
