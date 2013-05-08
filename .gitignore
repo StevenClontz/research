@@ -1,6 +1,6 @@
-*
-!sorgenfrey*
-!.gitignore
-!*.tex
-!*.pdf
-!README.md
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.thm
