@@ -104,13 +104,13 @@
   \end{proof}
 
   \begin{proposition}
-    $X$ is compact if and only if $F \tactwin \mengame{X}$
+    $X$ is compact if and only if $F \tactwin \mengame{X}$ if and only if $F \ktactwin{k} \mengame{X}$
   \end{proposition}
 
   \begin{proof}
-    Assume $X$ is compact. For each open cover played by $C$, pick the finite subcover.
+    Assume $X$ is compact. For each open cover played by $C$, pick a finite subcover, and this yields a winning tactical strategy.
 
-    Assume $F$ has a winning tactical strategy. For any open cover, have $C$ play only it during the entire game. $F$'s only choice must be a finite subcover.
+    Assume $F$ has a winning $k$-tactical strategy. For any open cover, have $C$ play only it during the entire game. $F$'s only choice must be a finite subcover.
   \end{proof}
 
   \begin{proposition}
@@ -121,11 +121,51 @@
     Let $X=\bigcup_{n<\omega} X_n$ for compact $X_n$. On round $n$, $F$ picks the finite subcover of $C$'s open cover of $X_n$.
   \end{proof}
 
-  Due to Telgarski in ``On Games of Topsoe'':
+  For Menger's game, there is no useful distinction between a $k$-Markov strategy for $F$, and a $2$-Markov strategy.
 
   \begin{theorem}
-    For metrizable $X$, $X$ is $\sigma$-compact if and only if $F \win \mengame{X}$.
+  For any topological space $X$ and all $k \geq 2$, $F \kmarkwin{k} \mengame{X}$ if and only if $F \kmarkwin{2} \mengame{X}$.
   \end{theorem}
+
+  \begin{proof}
+  Assume $\sigma(\mc{U}_0,\dots,\mc{U}_{k-1},n)$ is a winning $k$-Markov strategy. Define the $2$-Markov strategy $\tau(\mc{U},\mc{V},n)$ so that it contains $\sigma(\mc{W}_0,\dots,\mc{W}_{k-1},m)$ for the following conditions on $(\mc{W}_0,\dots,\mc{W}_{k-1},m)$:
+    \begin{itemize}
+    \item Each $\mc{W}_i \in \{\mc{U},\mc{V}\}$
+    \item $m \leq (n+1)k$; in particular, for $i<k$, 
+      \[
+        \sigma(\mc{W}_0,\dots,\mc{W}_{k-1},(n+1)k+i)
+        \subseteq 
+        \tau(\mc{U},\mc{V},n+1) 
+      \]
+    \end{itemize}
+
+  Considering an arbitrary play $\mc{U}_0, \mc{U}_1, \dots$ by $C$ versus $\tau$, we note that $\sigma$ defeats the play 
+  \[
+    \underbrace{\mc{U}_0,\mc{U}_0,\dots,\mc{U}_0}_{k},
+    \underbrace{\mc{U}_1,\mc{U}_1,\dots,\mc{U}_1}_{k}
+    \dots
+  \]
+
+  So we have that
+    \[
+      \bigcup_{i<k, n<\omega} \sigma(
+      \underbrace{\mc{U}_n,\dots,\mc{U}_n}_{k-i-1},
+      \underbrace{\mc{U}_{n+1},\dots,\mc{U}_{n+1}}_{i+1},
+      (n+1)k+i)
+    \]
+  is a cover for $X$, and as 
+    \[
+      \sigma(
+      \underbrace{\mc{U}_n,\dots,\mc{U}_n}_{k-i-1},
+      \underbrace{\mc{U}_{n+1},\dots,\mc{U}_{n+1}}_{i+1},
+      (n+1)k+i)
+      \subseteq 
+      \tau(\mc{U}_n,\mc{U}_{n+1},n+1)
+    \]
+  $\tau$ defeats the play $\mc{U}_0, \mc{U}_1, \dots$.
+  \end{proof}
+
+  But there are spaces for which there is no Markov strategy, but there is a $2$-Markov strategy.
 
   In a question I posed to G, he answered:
 
@@ -155,11 +195,26 @@
     As $\sigma$ was a winning strategy, $\{\sigma(\mathcal{U}(\alpha_n),n): n<\omega\}$ must cover $\oneptlind{\omega_1}$, and thus $\{\tau(\alpha_n,n): n<\omega\}$ must cover $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$, contradiction.
   \end{proof}
 
-  We require a lemma.
-
   \begin{lemma}
-    There exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\beta\rest\alpha =^* f_\alpha\] that is, $f_\beta\rest\alpha$ and $f_\alpha$ agree on all but finitely many ordinals.
+    There exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\beta\rest\alpha =^* f_\alpha\] that is, $f_\beta\rest\alpha$ and $f_\alpha$ agree on all but finitely many ordinals. (In addition, the range of each $f_\alpha$ is co-infinite.)
   \end{lemma}
+
+  \begin{proof}
+    Taken from Kunen (used for the construction of an $\omega_1$-Aronszajn tree).
+
+    We begin with the empty function $f_0:0\to\omega_1$ which satisfies the hypothesis, and assume $f_\alpha$ is defined by induction. Let $f_{\alpha+1} = f_\alpha \cup \{\<\alpha,n\>\}$ where $n$ is not defined for $f_\alpha$, and this satisfies the hypothesis.
+
+    Finally, suppose $\gamma$ is the limit of $\alpha_0,\alpha_1,\dots$, and $f_\alpha$ is defined for $\alpha<\gamma$. Let $g_0=f_{\alpha_0}$, and define $g_n : \alpha_n \to \omega$ to be injective, $g_n=^* f_{\alpha_n}$, and $g_{n+1} \rest \alpha_n = g_n$. $g = \bigcup_{n<\omega} g_n$ is an injective function from $\gamma \to \omega$ and $g =^* f_\alpha$ for $\alpha <\gamma$, but the range need not be coinfinte. So let
+    \[
+      f_\gamma(\beta) = \left\{
+      \begin{array}{ll}
+        g(\alpha_{2n}) & \beta = \alpha_n \\
+        g(\beta) & \text{otherwise}
+      \end{array}
+      \right.
+    \]
+    which frees up $\{g(\alpha_{2n+1}):n<\omega\}$ from the range of $f_\gamma$, but still agrees with all but finitely many points compared to previous $f$'s.
+  \end{proof}
 
   \begin{example}
     $F \kmarkwin{2} \mengame{\oneptlind{\omega_1}}$
@@ -172,6 +227,14 @@
 
     Finally, for each open cover $\mc{U}$, assign arbirtary $\alpha(\mc{U})$, $U(\mc{U})$ such that $[\alpha(\mc{U}),\omega_1)\cup\{\infty\}$ is a subset of $U(\mc{U})\in\mc{U}$. Then a $2$-Markov strategy $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ which chooses $U(\mc{U}_n)$ and covers the finite set $\tau(\alpha(\mc{U}_n),\alpha(\mc{U}_{n+1}),n+1)$ is a winning strategy for $F$.
   \end{proof}
+
+  Due to Telgarski in ``On Games of Topsoe'':
+
+  \begin{theorem}
+    For metrizable $X$, $X$ is $\sigma$-compact if and only if $F \win \mengame{X}$.
+  \end{theorem}
+
+  We adapt this result for regular spaces.
 
   \begin{lemma}
     Let $\sigma(\mc{U}, n)$ be a winning Markov strategy for $F$ in $\mengame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then for
@@ -223,55 +286,12 @@
   where $\mathfrak{C}$ is the collection of open covers of $R$. For any $x_0,x_1,\dots \in R$, we may define the open cover $\mc{U} = \{R \setminus \{x_i: i \not= n\} : n < \omega \}$, and observe that $\bigcup \sigma(\mc{U},n) \supseteq D_n$ cannot contain every $x_i$. Thus $D_n$ is finite, but since the previous lemma requires $\bigcup_{n<\omega} D_n = R$ if $\sigma$ is a winning strategy, there exists a counter to $\sigma$.
   \end{proof}
 
-  \begin{theorem}
-  For any topological space $X$ and all $k \geq 2$, $F \kmarkwin{k} \mengame{X}$ if and only if $F \kmarkwin{2} \mengame{X}$.
-  \end{theorem}
+  \begin{example}
+  Let $R$ be given the topology from example 67 from Counterexamples in Topology, the topology generated by open intervals with or without the rationals removed. This space is non-regular, non-$\sigma$-compact, and Lindel\"of.
+  \end{example}
 
   \begin{proof}
-  Assume $\sigma(\mc{U}_0,\dots,\mc{U}_{k-1},n)$ is a winning $k$-Markov strategy. Define the $2$-Markov strategy $\tau(\mc{U},\mc{V},n)$ so that it contains $\sigma(\mc{W}_0,\dots,\mc{W}_{k-1},m)$ for the following conditions on $(\mc{W}_0,\dots,\mc{W}_{k-1},m)$:
-    \begin{itemize}
-    \item Each $\mc{W}_i \in \{\mc{U},\mc{V}\}$
-    \item $m \leq (n+1)k$; in particular, for $i<k$, 
-      \[
-        \sigma(\mc{W}_0,\dots,\mc{W}_{k-1},(n+1)k+i)
-        \subseteq 
-        \tau(\mc{U},\mc{V},n+1) 
-      \]
-    \end{itemize}
-
-  Considering an arbitrary play $\mc{U}_0, \mc{U}_1, \dots$ by $C$ versus $\tau$, we note that $\sigma$ defeats the play 
-  \[
-    \underbrace{\mc{U}_0,\mc{U}_0,\dots,\mc{U}_0}_{k},
-    \underbrace{\mc{U}_1,\mc{U}_1,\dots,\mc{U}_1}_{k}
-    \dots
-  \]
-
-  So we have that
-    \[
-      \bigcup_{i<k, n<\omega} \sigma(
-      \underbrace{\mc{U}_n,\dots,\mc{U}_n}_{k-i-1},
-      \underbrace{\mc{U}_{n+1},\dots,\mc{U}_{n+1}}_{i+1},
-      (n+1)k+i)
-    \]
-  is a cover for $X$, and as 
-    \[
-      \sigma(
-      \underbrace{\mc{U}_n,\dots,\mc{U}_n}_{k-i-1},
-      \underbrace{\mc{U}_{n+1},\dots,\mc{U}_{n+1}}_{i+1},
-      (n+1)k+i)
-      \subseteq 
-      \tau(\mc{U}_n,\mc{U}_{n+1},n+1)
-    \]
-  $\tau$ defeats the play $\mc{U}_0, \mc{U}_1, \dots$.
+  From Counterexamples: The rationals are closed, but the closure of any open neighborhood is the whole real line, so they cannot be separated from any irrational point. Compact sets in this topology are nowhere dense in the Euclidean topology, so there cannot be countably many which union to the whole space. $\{(a,b)\setminus D : a,b\in\mathbb{Q},D\in\{\emptyset,\mathbb{Q}\}\}$ is a countable base for the space, and second-countability implies Lindel\"of.
   \end{proof}
-
-
-  The question remains:
-
-  \begin{question}
-    In general, does $F \markwin \mengame{X}$ imply $X$ is $\sigma$-compact?
-  \end{question}
-
-  % Let $\sigma(\mathcal{U},n)$ be $F$'s winning Markov strategy.
 
 \end{document}
