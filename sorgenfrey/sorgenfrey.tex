@@ -58,7 +58,7 @@ It suffices to show for $[0,1)\cap P$. We begin by constructing a collection of 
     \item Suppose $\alpha$ is a limit ordinal and $S_\beta$ has been defined for all $\beta<\alpha$. If $s\in\omega^\alpha$ and $t\in \bigcup_{\beta<\alpha}S_\beta$ for all $t<s$, let $S_\alpha$ contain $s$ and define $d_s = \lim_{t<s}d_t$ and $c_{s\concat\<-1\>} = \lim_{t<s} c_{t\concat\<-1\>}$.
   \end{itemize}
 
-  By construction, $\mc{C}' = \{[c_s,d_s) : s\in S\}$ is a disjoint subcollection of $\mc{C}$. We claim it also must cover $[0,1)\cap P$.
+  Let $S = \bigcup_{\alpha<\omega_1} S_\alpha$. By construction, $\mc{C}' = \{[c_s,d_s) : s\in S\}$ is a disjoint subcollection of $\mc{C}$. We claim it also must cover $[0,1)\cap P$.
 
   Suppose not: $x\in[0,1)\cap P$ is not contained in $[c_s,d_s)$ for any $s\in S$. Note that $d_\emptyset<x$ (or else $x\in[c_{\<0\>},d_{\<1\>}$)). Assume $n_\beta<\omega$ is defined for all $\beta<\alpha$, and consider $s\in\omega^\alpha$ where $s(\beta)=n_\beta$. If $d_s<x$, we claim there is a minimal $n_\alpha<\omega$ where $d_{s\concat\<n_\alpha\>}<x$.
     \begin{itemize}
