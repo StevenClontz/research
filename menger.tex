@@ -300,4 +300,30 @@
   To see $F \markwin \mengame{R}$, we define $\sigma(\mc{U}_{2n},2n)$ to be a finite cover of $[-n,n]\setminus\mathbb{Q}$, and $\sigma(\mc{U}_{2n+1},2n+1)$ to be a finite cover of $\{q_n\}$ for each $q_n\in\mathbb{Q}$.
   \end{proof}
 
+  We define a new property ``\scish'' to describe a sufficient condition for $F \kmarkwin{2}\mengame{X}$.
+
+  \begin{definition}
+    Let $\mathfrak{C}$ collect all the open covers of $X$. We say $X$ is \scish if there exists a fuction $f:\mathfrak{C}\times\omega\to\mc{P}(X)$, such that:
+      \begin{itemize}
+        \item $f(\mc{V},n)\subseteq f(\mc{V},n+1)$
+        \item $f(\mc{V},n)$ may be covered by a finite subset of $\mc{U}$
+        \item $\bigcup_{n<\omega}f(\mc{V},n)=X$
+        \item The set
+          \[
+            g(\mc{U},\mc{V},n) = \bigcup_{m\geq n}\left(f(\mc{U},m)\setminus f(\mc{V},m)\right)
+          \]
+         may be covered by a finite subset of $\mc{V}$
+      \end{itemize}
+  \end{definition}
+
+  Obviously $\sigma$-compact implies \scish implies Lindel\"of. Note that the non-$\sigma$-compact space $\omega_1^\dagger$ is \scish.
+
+  \begin{theorem}
+    If $X$ is \scish, then $F \kmarkwin{2}\mengame{X}$.
+  \end{theorem}
+
+  \begin{proof}
+    Let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $f(\mc{U}_{n+1},n+1)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that $x\in f(\mc{U}_0,N)$ for some $N$. So either $x\in \bigcap_{m\leq N} f(\mc{U}_m,N)$ and is covered by the strategy during round $N$, or for some $m\leq N$, $x \in f(\mc{U}_m,N)\setminus f(\mc{U}_{m+1},N)$ and is covered by the strategy during round $m+1$.
+  \end{proof}
+
 \end{document}
