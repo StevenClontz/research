@@ -38,10 +38,10 @@ For every $\mc{C}\subseteq\mc{B}$ which is also a base for $P$, there exists a p
 \end{theorem}
 \newpage
 \begin{proof}
-It suffices to show for $[0,1)\cap P$. We begin by constructing a collection of functions $S\subseteq \omega^{\omega_1}$ and numbers $c_s$, $d_s$ defined by those functions as follows:
+It suffices to show for $[0,1)\cap P$. We begin by constructing a collection of functions $S\subseteq \omega^{\omega_1}$ and numbers $c_s$, $d_s$, $c_{s\concat\<-1\>}$ defined by those functions as follows:
   \begin{itemize}
     \item Let $S_0 = \{\emptyset\}$. Let $d_{\emptyset}=0$ and $c_{\<-1\>}=1$.
-    \item Suppose $S_\alpha$ has been defined, as well as $d_s\leq c_{s\concat\<-1\>}$. For $s\in S$, consider the following:
+    \item Suppose $S_\alpha$ has been defined, as well as $d_s\leq c_{s\concat\<-1\>}$ for each $s\in S_\alpha$. For $s\in S_\alpha$, consider the following:
       \begin{itemize}
         \item If $d_s = c_{s\concat\<-1\>}$, do nothing.
         \item If $d_s < c_{s\concat\<-1\>}$ and $d_s\in P$, let $S_{\alpha+1}$ contain $s\concat\<0\>$ and define $c_{s\concat\<0\>}$, $d_{s\concat\<0\>}$, $c_{s\concat\<0,-1\>}$ such that 
@@ -49,13 +49,14 @@ It suffices to show for $[0,1)\cap P$. We begin by constructing a collection of 
             d_s = c_{s\concat\<0\>} < d_{s\concat\<0\>} \leq c_{s\concat\<0,-1\>} = c_{s\concat\<-1\>}
           \]
         where $[c_{s\concat\<0\>}, d_{s\concat\<0\>})\in \mc{C}$.
-        \item If $d_s < c_{s\concat\<-1\>}$ and $d_s\in P$, let $S_{\alpha+1}$ contain $s\concat\<n\>$ for all $n<\omega$ and define $c_{s\concat\<n\>}$, $d_{s\concat\<n\>}$, $c_{s\concat\<n,-1\>}$ for all $n<\omega$ such that
+        \item If $d_s < c_{s\concat\<-1\>}$ and $d_s\not\in P$, let $S_{\alpha+1}$ contain $s\concat\<n\>$ for all $n<\omega$ and define $c_{s\concat\<n\>}$, $d_{s\concat\<n\>}$, $c_{s\concat\<n,-1\>}$ for all $n<\omega$ such that
           \[
             d_s < \dots \leq c_{s\concat\<2,-1\>} = c_{s\concat\<1\>} < d_{s\concat\<1\>} \leq c_{s\concat\<1,-1\>} = c_{s\concat\<0\>} < d_{s\concat\<0\>} \leq c_{s\concat\<0,-1\>} = c_{s\concat\<-1\>}
           \]
         where $[c_{s\concat\<n\>}, d_{s\concat\<n\>})\in \mc{C}$ for all $n<\omega$ and $c_{s\concat\<n\>} \rightarrow d_s$.
       \end{itemize}
     \item Suppose $\alpha$ is a limit ordinal and $S_\beta$ has been defined for all $\beta<\alpha$. If $s\in\omega^\alpha$ and $t\in \bigcup_{\beta<\alpha}S_\beta$ for all $t<s$, let $S_\alpha$ contain $s$ and define $d_s = \lim_{t<s}d_t$ and $c_{s\concat\<-1\>} = \lim_{t<s} c_{t\concat\<-1\>}$.
+      \item Let $S=\bigcup_{n<\omega} S_\alpha$.
   \end{itemize}
 
   Let $S = \bigcup_{\alpha<\omega_1} S_\alpha$. By construction, $\mc{C}' = \{[c_s,d_s) : s\in S\}$ is a disjoint subcollection of $\mc{C}$. We claim it also must cover $[0,1)\cap P$.
@@ -66,7 +67,7 @@ It suffices to show for $[0,1)\cap P$. We begin by constructing a collection of 
       \item This is also possible when $d_s\in P$ since $[c_{s\concat\<0\>},d_{s\concat\<0\>})$ does not contain $x$, and thus $d_s=c_{s\concat\<0\>}<d_{s\concat\<0\>}\leq x$. If $d_{s\concat\<0\>} = x$ then $d_{s\concat\<0\>}\in P$ and $[d_{s\concat\<0\>},d_{s\concat\<0,0\>})=[c_{s\concat\<0,0\>},d_{s\concat\<0,0\>})$ contains $x$, which is a contradiction.
     \end{itemize}
 
-  Finally, we notice that by defining $f\in\omega^\omega_1$ such that $f(\alpha)=n_\alpha$, then $d_{f(\alpha)}$ is an increasing sequence defined for all $\alpha<\omega_1$, which is a contradiction.
+  Finally, we notice that by defining $f\in\omega^\omega_1$ such that $f(\alpha)=n_\alpha$, then $d_{f\rest\alpha}$ is an increasing uncountable sequence defined for all $\alpha<\omega_1$, which is a contradiction.
 \end{proof}
 
 \end{document}
