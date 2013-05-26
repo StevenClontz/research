@@ -195,39 +195,6 @@
     As $\sigma$ was a winning strategy, $\{\sigma(\mathcal{U}(\alpha_n),n): n<\omega\}$ must cover $\oneptlind{\omega_1}$, and thus $\{\tau(\alpha_n,n): n<\omega\}$ must cover $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$, contradiction.
   \end{proof}
 
-  \begin{lemma}
-    There exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\beta\rest\alpha =^* f_\alpha\] that is, $f_\beta\rest\alpha$ and $f_\alpha$ agree on all but finitely many ordinals. (In addition, the range of each $f_\alpha$ is co-infinite.)
-  \end{lemma}
-
-  \begin{proof}
-    Taken from Kunen (used for the construction of an $\omega_1$-Aronszajn tree).
-
-    We begin with the empty function $f_0:0\to\omega_1$ which satisfies the hypothesis, and assume $f_\alpha$ is defined by induction. Let $f_{\alpha+1} = f_\alpha \cup \{\<\alpha,n\>\}$ where $n$ is not defined for $f_\alpha$, and this satisfies the hypothesis.
-
-    Finally, suppose $\gamma$ is the limit of $\alpha_0,\alpha_1,\dots$, and $f_\alpha$ is defined for $\alpha<\gamma$. Let $g_0=f_{\alpha_0}$, and define $g_n : \alpha_n \to \omega$ to be injective, $g_n=^* f_{\alpha_n}$, and $g_{n+1} \rest \alpha_n = g_n$. $g = \bigcup_{n<\omega} g_n$ is an injective function from $\gamma \to \omega$ and $g =^* f_\alpha$ for $\alpha <\gamma$, but the range need not be coinfinte. So let
-    \[
-      f_\gamma(\beta) = \left\{
-      \begin{array}{ll}
-        g(\alpha_{2n}) & \beta = \alpha_n \\
-        g(\beta) & \text{otherwise}
-      \end{array}
-      \right.
-    \]
-    which frees up $\{g(\alpha_{2n+1}):n<\omega\}$ from the range of $f_\gamma$, but still agrees with all but finitely many points compared to previous $f$'s.
-  \end{proof}
-
-  \begin{example}
-    $F \kmarkwin{2} \mengame{\oneptlind{\omega_1}}$
-  \end{example}
-
-  \begin{proof}
-    Using the functions $f_\alpha$ from the previous lemma, let \[\tau(\alpha_n,\alpha_{n+1},n+1)=f_{\alpha_n}^{-1}([0,n]) \cup \{\beta<\alpha_n,\alpha_{n+1} : f_{\alpha_n}(\beta)\not=f_{\alpha_{n+1}}(\beta)\}\]
-
-    For any sequence $\alpha_n$, suppose that $\beta<\alpha_n$ for all $n$, and $\beta$ is not covered by \[\{\tau(\alpha_n,\alpha_{n+1},n+1): n<\omega\}\] Then we see first that $f_{\alpha_n}(\beta)=f_{\alpha_{n+1}}(\beta)$ for all $n$. However, $f_{n}(\beta)>n$ for all $n$ as well, which is a contradiction.
-
-    Finally, for each open cover $\mc{U}$, assign arbirtary $\alpha(\mc{U})$, $U(\mc{U})$ such that $[\alpha(\mc{U}),\omega_1)\cup\{\infty\}$ is a subset of $U(\mc{U})\in\mc{U}$. Then a $2$-Markov strategy $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ which chooses $U(\mc{U}_n)$ and covers the finite set $\tau(\alpha(\mc{U}_n),\alpha(\mc{U}_{n+1}),n+1)$ is a winning strategy for $F$.
-  \end{proof}
-
   Due to Telgarski in ``On Games of Topsoe'' (along with $\sigma$-compact implying $F\markwin \mengame{X}$).
 
   \begin{theorem}
@@ -303,27 +270,62 @@
   We define a new property ``\scish'' to describe a sufficient condition for $F \kmarkwin{2}\mengame{X}$.
 
   \begin{definition}
-    Let $\mathfrak{C}$ collect all the open covers of $X$. We say $X$ is \scish if there exists a fuction $f:\mathfrak{C}\times\omega\to\mc{P}(X)$, such that:
+    Let $\mc U$ be a cover of $X$. We say $C\subseteq X$ is $\mc U$-compact if there exists a finite subcover of $\mc U$ which covers $C$.
+
+    Let $\mathfrak{C}$ collect all the open covers of $X$. We say $X$ is \scish if there exists a fuction $f:\mathfrak{C}\times\omega\to\mc{P}(X)$ such that:
       \begin{itemize}
+        \item $f(\mc{V},n)$ is $\mc{V}$-compact
         \item $f(\mc{V},n)\subseteq f(\mc{V},n+1)$
-        \item $f(\mc{V},n)$ may be covered by a finite subset of $\mc{U}$
-        \item $\bigcup_{n<\omega}f(\mc{Vnt con},n)=X$
+        \item $\bigcup_{n<\omega}f(\mc{V},n)=X$
         \item The set
           \[
-            g(\mc{U},\mc{V},n) = \bigcup_{m\geq n}\left(f(\mc{U},m)\setminus f(\mc{V},m)\right)
+            g(\mc{U},\mc{V},n) = \bigcup_{m\geq n} f(\mc{U},m)\setminus ( f(\mc{U},m-1)\cup f(\mc{V},m))
           \]
-         may be covered by a finite subset of $\mc{V}$
+         is $\mc{V}$-compact
       \end{itemize}
   \end{definition}
 
-  Obviously $\sigma$-compact implies \scish implies Lindel\"of. Note that the non-$\sigma$-compact space $\omega_1^\dagger$ is \scish.
+  Obviously $\sigma$-compact implies \scish implies Lindel\"of. We shall see that the non-$\sigma$-compact space $\omega_1^\dagger$ is \scish.
+
+   \begin{lemma}
+    There exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\beta\rest\alpha =^* f_\alpha\] that is, $f_\beta\rest\alpha$ and $f_\alpha$ agree on all but finitely many ordinals. (In addition, the range of each $f_\alpha$ is co-infinite.)
+  \end{lemma}
+
+  \begin{proof}
+    Taken from Kunen (used for the construction of an $\omega_1$-Aronszajn tree).
+
+    We begin with the empty function $f_0:0\to\omega_1$ which satisfies the hypothesis, and assume $f_\alpha$ is defined by induction. Let $f_{\alpha+1} = f_\alpha \cup \{\<\alpha,n\>\}$ where $n$ is not defined for $f_\alpha$, and this satisfies the hypothesis.
+
+    Finally, suppose $\gamma$ is the limit of $\alpha_0,\alpha_1,\dots$, and $f_\alpha$ is defined for $\alpha<\gamma$. Let $g_0=f_{\alpha_0}$, and define $g_n : \alpha_n \to \omega$ to be injective, $g_n=^* f_{\alpha_n}$, and $g_{n+1} \rest \alpha_n = g_n$. $g = \bigcup_{n<\omega} g_n$ is an injective function from $\gamma \to \omega$ and $g =^* f_\alpha$ for $\alpha <\gamma$, but the range need not be coinfinte. So let
+    \[
+      f_\gamma(\beta) = \left\{
+      \begin{array}{ll}
+        g(\alpha_{2n}) & \beta = \alpha_n \\
+        g(\beta) & \text{otherwise}
+      \end{array}
+      \right.
+    \]
+    which frees up $\{g(\alpha_{2n+1}):n<\omega\}$ from the range of $f_\gamma$, but still agrees with all but finitely many points compared to previous $f$'s.
+  \end{proof}
+
+  \begin{theorem}
+    The one-point Lindel\"ofication of the uncountable discrete space, $\oneptlind{\omega_1}$, is \scish.
+  \end{theorem}
+
+  \begin{proof}
+    Take the injective funcions $f_\alpha$ from Kunen's lemma such that $f_\alpha\rest\beta =^* f_\beta$. Let $\gamma(\mc U)$ identify the least ordinal such that $[\gamma(\mc U),\omega_1)\cup\{\infty\}$ is in a refinement of $\mc U$. Then $f(\mc U,n)=f^{-1}_{\gamma(\mc U)}([0,n]) \cup [\gamma(\mc U),\omega_1)\cup\{\infty\}$ is easily seen to witness the property.
+  \end{proof}
 
   \begin{theorem}
     If $X$ is \scish, then $F \kmarkwin{2}\mengame{X}$.
   \end{theorem}
 
   \begin{proof}
-    Let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $f(\mc{U}_{n+1},n+1)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that $x\in f(\mc{U}_0,N)$ for some $N$. So either $x\in \bigcap_{m\leq N} f(\mc{U}_m,N)$ and is covered by the strategy during round $N$, or for some $m\leq N$, $x \in f(\mc{U}_m,N)\setminus f(\mc{U}_{m+1},N)$ and is covered by the strategy during round $m+1$.
+    Let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $f(\mc{U}_{n+1},n+1)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that $x\in f(\mc{U}_0,N)$ for some $N$. So either $x\in \bigcap_{m\leq N} f(\mc{U}_m,N)$ and is covered by the strategy during round $N$, or for some $m< N$, $x \in f(\mc{U}_m,N)\setminus (f(\mc{U}_{m},N-1)\cup f(\mc{U}_{m+1},N))$ and is covered by the strategy during round $m+1$.
   \end{proof}
+
+  \begin{corollary}
+    $F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
+  \end{corollary}
 
 \end{document}
