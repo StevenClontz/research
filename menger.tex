@@ -206,16 +206,12 @@
   \end{proposition}
 
   \begin{proof}
-    TODO: this
+    The backward implication is trivial, so let $X$ be $H$-closed. For any open cover $\mc U$ of $X$ and point $x\in X$, choose $x\in V_x\subseteq \cl{V_x}\subseteq U_x\in \mc U$. Then if $\mc F = \{V_{x_i}:i<n\}$ is a finite subset of $\mc V=\{V_x:x\in X\}$ with dense union in $X$, then $\mc G = \{U_{x_i}:i<n\}\subseteq \mc U$ is a finite subcover of $X$.
   \end{proof}
 
   \begin{definition}
     A set $R\subseteq X$ is relatively compact to the topological space $X$ if for every open cover of the entire space $X$, there is a finite subcover of the set $R$.
   \end{definition}
-
-  \begin{proposition}
-    Every subset of a compact set is relatively compact to the entire space.
-  \end{proposition}
 
   \begin{proposition}
     If $X$ is regular, then $Y$ is relatively compact if and only if $\cl{Y}$ is compact.
@@ -240,18 +236,18 @@
   \end{theorem}
 
   \begin{proof}
-    We've seen $(a) \Rightarrow (d)$, and $(d)\Rightarrow(c)$ is trivial. We may see $(b)\Rightarrow(a)$ since for regular spaces, the closure of a relatively compact set is compact.
+    We've seen $(a) \Rightarrow (d)$, and $(d)\Rightarrow(c)$, $(b)\Rightarrow(a)$ are trivial.
 
     To prove $(c)\Rightarrow(b)$, let $\sigma(\mc{U}_0,\dots,\mc{U}_{n-1})$ be a winning strategy for $F$, and observe that since $X$ is second-countable, we may assume all covers are countable. Let $\mathfrak{C}$ be the collection of all countable covers of $X$. We define $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
       \begin{itemize}
         \item $\ds R_\emptyset = \bigcap_{\mc{U}\in\mathfrak{C}} \left(\bigcup \sigma(\mc{U})\right)$
-        \item Note that there are only countably many distinct finite subsets $\sigma(\mc{U})$ of the countable collection $\mathfrak{C}$. Thus define each $\mc U_{\<n\>}$ so that
+        \item Note that there are only countably many distinct finite subsets $\sigma(\mc{U})$ of the countable collection $\mc U$. Thus define each $\mc U_{\<n\>}$ so that
           \[
             R_\emptyset = 
             \bigcap_{n<\omega}\left(\bigcup\sigma(\mc{U}_{\<n\>})\right)
           \]
         \item $\ds R_s = \bigcap_{\mc{U}\in\mathfrak{C}} \left(\bigcup \sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U})\right)$
-        \item Again, note that there are only countably many distinct finite subsets $\sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U})$ of the countable collection $\mathfrak{C}$. Thus define each $\mc U_{s\concat\<n\>}$ so that 
+        \item Again, note that there are only countably many distinct finite subsets $\sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U})$ of the countable collection $\mc U$. Thus define each $\mc U_{s\concat\<n\>}$ so that 
           \[
             R_s = 
             \bigcap_{n<\omega} \left(\bigcup \sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U}_{s\concat\<n\>})\right)
@@ -262,8 +258,6 @@
 
     Finally, we claim that $X = \bigcup_{s\in\omega^{<\omega}} R_s$. If not, let $x$ be missed by every $R_s$, and define $f\in\omega^\omega$ such that $x\not\in \bigcup\sigma(\mc{U}_{f\rest1},\dots,\mc{U}_{f\rest n})$ for any $n$. Then $\mc{U}_{f\rest1},\mc{U}_{f\rest2},\dots$ is a counter to the winning strategy $\sigma$, a contradiction.
   \end{proof}
-
-  We generalize this result for non-metric spaces.
 
   \begin{lemma}
     Let $\sigma(\mc{U}, n)$ be a winning Markov strategy for $F$ in $\mengame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then for
