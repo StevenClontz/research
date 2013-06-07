@@ -195,19 +195,19 @@
     As $\sigma$ was a winning strategy, $\{\sigma(\mathcal{U}(\alpha_n),n): n<\omega\}$ must cover $\oneptlind{\omega_1}$, and thus $\{\tau(\alpha_n,n): n<\omega\}$ must cover $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$, contradiction.
   \end{proof}
 
-  Telgarski showed in ``On Games of Topsoe'' that a metrizable space is $\sigma$-compact if and only if there exists a winning strategy for $F$ in the Menger game, and Scheepers gave a more direct proof later. We slightly generalize Scheeper's proof.
+  Telgarski showed in ``On Games of Topsoe'' that a metrizable space is $\sigma$-compact if and only if there exists a winning strategy for $F$ in the Menger game, and Scheepers gave a more direct proof later. We generalize Scheeper's proof to handle a number of cases.
 
-  \begin{definition}
-    A space $X$ is $H$-closed if for every open cover of $X$, there exists a finite subset of the cover whose union is dense in $X$.
-  \end{definition}
+  % \begin{definition}
+  %   A space $X$ is $H$-closed if for every open cover of $X$, there exists a finite subset of the cover whose union is dense in $X$.
+  % \end{definition}
 
-  \begin{proposition}
-    For regular spaces, $X$ is $H$-closed if and only if $X$ is compact.
-  \end{proposition}
+  % \begin{proposition}
+  %   For regular spaces, $X$ is $H$-closed if and only if $X$ is compact.
+  % \end{proposition}
 
-  \begin{proof}
-    The backward implication is trivial, so let $X$ be $H$-closed. For any open cover $\mc U$ of $X$ and point $x\in X$, choose $x\in V_x\subseteq \cl{V_x}\subseteq U_x\in \mc U$. Then if $\mc F = \{V_{x_i}:i<n\}$ is a finite subset of $\mc V=\{V_x:x\in X\}$ with dense union in $X$, then $\mc G = \{U_{x_i}:i<n\}\subseteq \mc U$ is a finite subcover of $X$.
-  \end{proof}
+  % \begin{proof}
+  %   The backward implication is trivial, so let $X$ be $H$-closed. For any open cover $\mc U$ of $X$ and point $x\in X$, choose $x\in V_x\subseteq \cl{V_x}\subseteq U_x\in \mc U$. Then if $\mc F = \{V_{x_i}:i<n\}$ is a finite subset of $\mc V=\{V_x:x\in X\}$ with dense union in $X$, then $\mc G = \{U_{x_i}:i<n\}\subseteq \mc U$ is a finite subcover of $X$.
+  % \end{proof}
 
   \begin{definition}
     A set $R\subseteq X$ is relatively compact to the topological space $X$ if for every open cover of the entire space $X$, there is a finite subcover of the set $R$.
@@ -220,25 +220,49 @@
   \begin{proof}
     The reverse implication is trivial. 
 
-    Assume $Y$ is relatively compact, let $\mc U$ be an open cover of $\cl Y$, and let $\mc V$ be an open cover of $X\setminus\cl Y$ such that the closure of each member also misses $\cl Y$ (possible by regularity).
+    Assume $Y$ is relatively compact, let $\mc U$ be an open cover of $\cl Y$, and define $x\in V_x\subseteq \cl{V_x}\subseteq U_x \in \mc U$ for each $x\in X$. Then if we take a cover $\mc F = \{V_{x_i} : i<n\}$ of $Y$ by relative compactness, then $\{U_{x_i}:i<n\}$ is a finite cover of $\cl Y$, showing compactness.
+  \end{proof}
 
-    Let $\mc W\subseteq \mc U \cup \mc V$ be a finite subcover of $Y$, and note $\cl{\bigcup\mc W} \supseteq \cl Y$. If $\mc F = \mc W \setminus \mc V$, then $\cl{\bigcup\mc F} \supseteq \cl Y$ as well. Thus $\bigcup\mc F$ is dense in $\cl Y$, showing $\cl Y$ is $H$-closed and thus compact.
+  \begin{lemma}
+    Let $\sigma(\mc{U}, n)$ be a winning Markov strategy for $F$ in $\mengame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then for
+      \[
+        R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)
+      \]
+    it follows that $R_n$ is relatively compact to $X$, and $\bigcup_{n<\omega} R_n = X$.
+  \end{lemma}
+
+  \begin{proof}
+    First, we see that $\sigma(\mc{U},n)$ witnesses the relative compactness of $R_n$. Suppose that $x \not\in R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)$ for any $n<\omega$. Then for each $n$, pick $\mc{U}_n\in\mathfrak{C}$ such that $x\not\in \bigcup\sigma(\mc{U}_n,n)$. Then $\sigma$ does not defeat the play $\mc{U}_0,\mc{U}_1,\dots$
   \end{proof}
 
   \begin{theorem}
-    For metrizable $X$, the following are equivalent:
+    A space $X$ is $\sigma$-(relatively compact) if and only if $F \markwin \mengame{X}$.
+  \end{theorem}
+
+  \begin{proof}
+    For the forward implication, let $X=\bigcup_{n<\omega}R_n$ for $R_n$ relatively compact, and define $\sigma(\mc U,n)$ to be a finite subcover of $R_n$. The previous lemma proves the other direction.
+  \end{proof}
+
+  \begin{corollary}
+    For regular spaces $X$, the following are equivalent:
       \begin{enumerate}[(a)]
         \item $X$ is $\sigma$-compact
+        \item $X$ is $\sigma$-(relatively compact)
+        \item $F \markwin \mengame{X}$
+      \end{enumerate}
+  \end{corollary}
+
+  \begin{theorem}
+    For second-countable $X$, the following are equivalent:
+      \begin{enumerate}[(a)]
         \item $X$ is $\sigma$-(relatively compact)
         \item $F \win \mengame{X}$
         \item $F\markwin \mengame{X}$
       \end{enumerate}
   \end{theorem}
 
-  \begin{proof}
-    We've seen $(a) \Rightarrow (d)$, and $(d)\Rightarrow(c)$, $(b)\Rightarrow(a)$ are trivial.
-
-    To prove $(c)\Rightarrow(b)$, let $\sigma(\mc{U}_0,\dots,\mc{U}_{n-1})$ be a winning strategy for $F$, and observe that since $X$ is second-countable, we may assume all covers are countable. Let $\mathfrak{C}$ be the collection of all countable covers of $X$. We define $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
+  \begin{proof}.
+    We need only show $(b)\Rightarrow(a)$, so let $\sigma(\mc{U}_0,\dots,\mc{U}_{n-1})$ be a winning strategy for $F$, and observe that since $X$ is second-countable, we may assume all covers are countable. Let $\mathfrak{C}$ be the collection of all countable covers of $X$. We define $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
       \begin{itemize}
         \item $\ds R_\emptyset = \bigcap_{\mc{U}\in\mathfrak{C}} \left(\bigcup \sigma(\mc{U})\right)$
         \item Note that there are only countably many distinct finite subsets $\sigma(\mc{U})$ of the countable collection $\mc U$. Thus define each $\mc U_{\<n\>}$ so that
@@ -259,31 +283,12 @@
     Finally, we claim that $X = \bigcup_{s\in\omega^{<\omega}} R_s$. If not, let $x$ be missed by every $R_s$, and define $f\in\omega^\omega$ such that $x\not\in \bigcup\sigma(\mc{U}_{f\rest1},\dots,\mc{U}_{f\rest n})$ for any $n$. Then $\mc{U}_{f\rest1},\mc{U}_{f\rest2},\dots$ is a counter to the winning strategy $\sigma$, a contradiction.
   \end{proof}
 
-  \begin{lemma}
-    Let $\sigma(\mc{U}, n)$ be a winning Markov strategy for $F$ in $\mengame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then for
-      \[
-        R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)
-      \]
-    it follows that $R_n$ is relatively compact to $X$, and $\bigcup_{n<\omega} R_n = X$.
-  \end{lemma}
-
-  \begin{proof}
-    First, we see that $\sigma(\mc{U},n)$ witnesses the relative compactness of $R_n$. Suppose that $x \not\in R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)$ for any $n<\omega$. Then for each $n$, pick $\mc{U}_n\in\mathfrak{C}$ such that $x\not\in \bigcup\sigma(\mc{U}_n,n)$. Then $\sigma$ does not defeat the play $\mc{U}_0,\mc{U}_1,\dots$ since the $\sigma(\mc{U}_n,n)$ do not cover $x$.
-  \end{proof}
-
-  \begin{theorem}
-    A space $X$ is $\sigma$-(relatively compact) if and only if $F \markwin \mengame{X}$.
-  \end{theorem}
-
-  \begin{proof}
-    For the forward implication, let $X=\bigcup_{n<\omega}R_n$ for $R_n$ relatively compact, and define $\sigma(\mc U,n)$ to be a finite subcover of $R_n$. The previous lemma proves the other direction.
-  \end{proof}
-
   \begin{corollary}
-    For regular spaces $X$, the following are equivalent:
+    For metric spaces $X$, the following are equivalent:
       \begin{enumerate}[(a)]
         \item $X$ is $\sigma$-compact
         \item $X$ is $\sigma$-(relatively compact)
+        \item $F \win \mengame{X}$
         \item $F \markwin \mengame{X}$
       \end{enumerate}
   \end{corollary}
