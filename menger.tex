@@ -406,6 +406,61 @@
     Due to Pawlikowski
   \end{proof}
 
+  \begin{definition}
+    A space $X$ is scattered if every subspace contains an isolated point. By convention, $\ds X = \bigcup_{\alpha<\rank(X)}X^\alpha$ where $X^\alpha$ is the set of isolated points of $\ds X\setminus\bigcup_{\beta<\alpha}X^\beta$.
+  \end{definition}
 
+  \begin{proposition}
+    A space $X$ is scattered if and only if every closed subspace contains an isolated point.
+  \end{proposition}
+
+  \begin{proposition}
+    The rank of a compact scattered $T_1$ space is a successor ordinal, and $X^{\rank(X)-1}$ is finite.
+  \end{proposition}
+
+  \begin{proof}
+    Suppose that the rank of $X$ was a limit ordinal $\beta$. Then by choosing $\beta_n\to\beta$, we may pick a point $x_n\in X^{\beta_n}$, and $\{x_n: n<\omega\}$ may be shown to be a closed discrete subspace of $X$.
+
+    It's easily seen that $X^{\rank(X)-1}$ must be finite - it is a closed discrete subspace of compact $X$.
+  \end{proof}
+
+  \begin{theorem}
+    The following are equivalent for compact $T_2$ $X$:
+      \begin{enumerate}[(a)]
+        \item $X$ is Rothberger
+        \item $X$ is scattered
+        \item $O\win\rothgame{X}$
+      \end{enumerate}
+  \end{theorem}
+
+  \begin{proof}
+    To show $(a)\Rightarrow(b)$, we use Aurichi's proof in \textit{D-Spaces}: suppose $X$ has a closed subspace without isolated points. Then it is compact and contains a closed copy of the Cantor set, which is not Rothberger, contradiction.
+
+    To show $(b)\Rightarrow(c)$, if $X$ is scattered, suppose during a particular round $n$, player $O$ observes that the uncovered subspace $Y \subseteq X$ is nonempty. Then as $Y$ is also compact scattered,  select one of the finite points in $Y^{\rank(Y)-1}$, label it $x_n$, and choose an open set containing $x_n$ from the given cover.
+
+    We claim that if $O$ follows this strategy, player $O$ will observe that the uncovered subspace $Y\subseteq X$ is empty during some round. If not, consider the $x_n$ chosen by $Y$ by the end of the game - the rank of each point within $X$ is nonincreasing, and does not contain a constant final sequence, contradiction.
+
+    Of course, $(c)\Rightarrow(a)$ is trivial.
+  \end{proof}
+
+  \begin{theorem}
+    The following are equivalent for points-$G_\delta$ $X$:
+      \begin{enumerate}[(a)]
+        \item $O\win\rothgame{X}$
+        \item $O\markwin\rothgame{X}$
+        \item $|X|=\omega$
+      \end{enumerate}
+  \end{theorem}
+
+  \begin{proof}
+    $(c)\Rightarrow(b)\Rightarrow(a)$ are all trivial. Galvin has shown $(a)\Rightarrow(c)$ in \textit{Indeterminacy}, but a direct proof follows.
+
+    Suppose $X$ is uncountable: define open sets $G_{x,m}$ for $x\in X$ and $m<\omega$ such that $\{x\}=\bigcap_{m<\omega} G_{x,m}$. Let $\mc{U}_m = \{G_{x,m} : x\in X \}$.
+      \[
+        A = \{ x \in X : \exists \<m_0,\dots,m_{n-1}\>\in\omega^{<\omega} ( 
+          \sigma(\mc{U}_{m_0},\dots,\mc{U}_{m_{n-1}})=G_{x,m_{n-1}} )\}
+      \]
+    Since $|A|=\omega$, choose $x\in X\setminus A$, and during round $n$, playasdf. TODO finish
+  \end{proof}
 
 \end{document}
