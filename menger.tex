@@ -462,7 +462,7 @@
       \item
       Let $\sigma$ be a strategy for $S$ in $\rothgame{X}$. 
 
-      We define a strategy for $P$ in $\altrothgame{X}$ as follows: during round $0$, $P$ chooses a point $x_0$ for which every open neighborhood is of the form $U_0 = \sigma(\mc{U}_0)$ for some open cover $\mc{U}_0$. (If not, let $U_x$ witness for every $x\in X$, and note that $\sigma(\{U_x:x\in X\})$ is a contradiction.)
+      We define a strategy for $P$ in $\altrothgame{X}$ as follows: during round $0$, $P$ chooses a point $x_0$ for which every open neighborhood is of the form $U_0 = \sigma(\mc{U}_0)$ for some open cover $\mc{U}_0$. (If not, let $U_x$ witness for every $x\in X$, and note that $\sigma(\{U_x:x\in X\})$ is a contradiction.) %TODO make this clearer.
 
       During round $n+1$, $P$ chooses point $x_{n+1}$ for which every open neighborhood is of the form $U_{n+1}=\sigma(\mc{U}_0,\dots,\mc{U}_n,\mc{U}_{n+1})$ for some open cover $\mc{U}_{n+1}$. (If not, let $U_x$ witness for every $x\in X$, and note that $\sigma(\mc{U}_0,\dots,\mc{U}_n,\{U_x:x\in X\})$ is a contradiction.)
 
@@ -511,5 +511,25 @@
 
     Thus if $\sigma$ is a winning strategy, then $X=\{x_s:s\in\omega^{<\omega}\}$ is countable.
   \end{proof}
+
+  \begin{proposition}
+    $S\win\rothgame{\oneptlind{\omega}}$
+  \end{proposition}
+
+  \begin{question}
+    $S\kmarkwin{2}\rothgame{\oneptlind{\omega}}$?
+  \end{question}
+
+  \begin{question}
+    $S\kmarkwin{2}\rothgame{X}\Leftrightarrow S\kmarkwin{k}\rothgame{X}$?
+  \end{question}
+
+  \begin{question}
+  For any space TFAE:
+    \begin{itemize}
+      \item $S\markwin\rothgame{X}$
+      \item $|X|=\omega$
+    \end{itemize}
+  \end{question}
 
 \end{document}
