@@ -447,7 +447,7 @@
     In the two-player game $\altrothgame{X}$ player $P$ chooses points $x_n\in X$, followed by player $O$ choosing an open neighborhood $U_n$ of $x_n$. $P$ wins if $\{U_n:n<\omega\}$ is a cover of $X$.
   \end{definition}
 
-  \begin{theorem} $\altrothgame{X}$ is equivalent to $\rothgame{X}$. That is:
+  \begin{theorem} $\altrothgame{X}$ is ``perfect information equivalent'' to $\rothgame{X}$. That is:
 
     \begin{itemize}
       \item $P\win\altrothgame{X}$ if and only if $S\win\rothgame{X}$
@@ -462,11 +462,11 @@
       \item
       Let $\sigma$ be a strategy for $S$ in $\rothgame{X}$. 
 
-      We define a strategy for $P$ in $\altrothgame{X}$ as follows: during round $0$, $P$ chooses a point $x_0$ for which every open neighborhood is of the form $U_0 = \sigma(\mc{U}_0)$ for some open cover $\mc{U}_0$. (If not, let $U_x$ witness for every $x\in X$, and note that $\sigma(\{U_x:x\in X\})$ is a contradiction.) %TODO make this clearer.
+      Let $n<\omega$, and consider open covers $\mc{U}_m$ for each $m<n$. Suppose that for each $x\in X$, there was an open neighborhood $U_x$ of $x$ where for every open cover $\mc U$, $\sigma(\mc U_0,\dots,\mc U_{n-1},\mc U)\not=U_x$. The open cover $\{U_x : x\in X\}$ demonstrates the contradiction.
 
-      During round $n+1$, $P$ chooses point $x_{n+1}$ for which every open neighborhood is of the form $U_{n+1}=\sigma(\mc{U}_0,\dots,\mc{U}_n,\mc{U}_{n+1})$ for some open cover $\mc{U}_{n+1}$. (If not, let $U_x$ witness for every $x\in X$, and note that $\sigma(\mc{U}_0,\dots,\mc{U}_n,\{U_x:x\in X\})$ is a contradiction.)
+      We define a strategy for $P$ in $\altrothgame{X}$ as follows: during round $n$, $P$ chooses a point $x_n$ for which every open neighborhood is of the form $U_n = \sigma(\mc U_0,\dots,\mc U_{n-1},\mc{U}_n)$ for some open cover $\mc{U}_0$.
 
-      If $\sigma$ was a winning strategy for $S$, then the open sets chosen by $P$ are of the form $\{\sigma(\mc U_0),\sigma(\mc U_0,\mc U_1),\dots\}$ and are an open cover of $X$.
+      If $\sigma$ was a winning strategy for $S$ in $\rothgame{X}$, then the open sets chosen by $O$ in response to $P$'s strategy for $\altrothgame{X}$ are of the form $\{\sigma(\mc U_0),\sigma(\mc U_0,\mc U_1),\dots\}$ and are an open cover of $X$.
 
       \item
       Let $\sigma$ be a strategy for $P$ in $\altrothgame{X}$.
@@ -486,11 +486,51 @@
     \end{itemize}
   \end{proof}
 
+  % \begin{theorem}
+  % For any $T_1$ space $X$, the following are equivalent:
+  %   \begin{itemize}
+  %     \item $S\markwin\rothgame{X}$
+  %     \item $|X|=\omega$
+  %   \end{itemize}
+  % \end{theorem}
+
+  % \begin{proof}
+  %   If $|X|=\omega$ then the winning Markov strategy is obvious, so let $\sigma(\mc U,n)$ be a Markov strategy.
+
+  %   Let $n<\omega$. Suppose that for each $x\in X$, there was an open neighborhood $U_x$ of $x$ where for every open cover $\mc U$, $\sigma(\mc U,n)\not=U_x$. The open cover $\{U_x : x\in X\}$ demonstrates the contradiction.
+
+  %   So let $x_n\in X$ be chosen such that for each open neighborhood $U$ of $x_n$, there is an open cover $\mc U$ such that $\sigma(\mc U,n)=U$. Then if $x\not=\{x_n : n<\omega\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $U_n$ which contains $x_n$ but not $x$, and then choose $\mc U_n$ such that $\sigma(\mc U_n,n)=U_n$.
+  % \end{proof}
+
+  \begin{theorem}
+  For any $T_1$ space $X$, the following are equivalent:
+    \begin{itemize}
+      \item $S\markwin\rothgame{X}$
+      \item $|X|=\omega$
+    \end{itemize}
+  \end{theorem}
+
+  \begin{proof}
+    If $|X|=\omega$ then the winning Markov strategy is obvious, so let $\sigma(\mc U,n)$ be a Markov strategy.
+
+    Let $n<\omega$. Suppose that for each $x\in X$, there was an open neighborhood $U_x$ of $x$ where for every open cover $\mc U$, $\sigma(\mc U,n) \not= U_x$. The open cover $\{U_x : x\in X\}$ demonstrates the contradiction.
+
+    So let $x_n\in X$ be chosen such that for each open neighborhood $U$ of $x_n$, there is an open cover $\mc U$ such that $\sigma(\mc U,n)=U$. Then if $x\not=\{x_n : n<\omega\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $U_n$ which contains $x_n$ but not $x$, and then choose $\mc U_n$ such that $\sigma(\mc U_n,n)=U_n$.
+  \end{proof}
+
+  % \begin{example}
+  %   For the one-point Lindel\"ofication $\oneptlind{\omega_1}$ (a $T_2$ space), $S\win\rothgame{\oneptlind{\omega}}$, but $S\not\kmarkwin{k}\rothgame{X}$ for any $k$.
+  % \end{example}
+
+  \begin{example}
+    Let $X=\omega_1\cup\{\infty\}$ be a ``weak Lindel\"ofication'' of $\omega_1$ such that open neighborhoods of $\infty$ contain the complement of $\omega$. This space is $T_0$ (provided the topology on $\omega_1$ is) but not $T_1$, and note that $S\markwin\rothgame{X}$ and $|X|>\omega$.
+  \end{example}
+
   \begin{theorem}
     The following are equivalent for points-$G_\delta$ $X$:
       \begin{enumerate}[(a)]
         \item $S\win\rothgame{X}$
-        \item $S\markwin\rothgame{X}$
+        \item $S\kmarkwin{k}\rothgame{X}$
         \item $|X|=\omega$
       \end{enumerate}
   \end{theorem}
@@ -500,36 +540,17 @@
 
     Let $G_{x,m}$ designate open sets such that $\{x\}=\bigcap_{m<\omega}G_{x,m}$ for all $x\in X$.
 
-    Suppose for $s\in\omega^{<\omega}$, $\mc U_t$ is defined for each $t\leq s$. Then $C$ may find a point $x_s$ such that for each $m<\omega$, there exists an open cover $\mc U_{s\concat\<m\>}$ where $\sigma(\mc U_{s\rest1},\dots,\mc U_{s},\mc U_{s\concat\<m\>})=G_{x_s,m}$. (If not, let $m(x)$ witness the contrary for each $x$, and consider $\sigma(\mc U_{s\rest0},\dots,\mc U_s,\{G_{x,m(x)}:x\in X\})$ to see the contradiction.)
+    Let $n<\omega$, $s\in\omega^{n}$, and consider open covers $\mc{U}_t$ for each $t\leq s$. Suppose that for each $x\in X$, there was an open neighborhood $U_x$ of $x$ where for every open cover $\mc U$, $\sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U)\not=U_x$. The open cover $\{U_x : x\in X\}$ demonstrates the contradiction.
 
-    If $x\not\in\{x_s:s\in\omega^{<\omega}\}$, then $C$ may counter the strategy $\sigma$ by choosing $f\in\omega^\omega$ where $x\not\in G_{x_{f\rest n},f(n)}$, and playing $\mc U_{f\rest1},\mc U_{f\rest2},\dots$, for which 
-      \[
-        x\not\in 
-        \bigcup_{n<\omega} G_{x_{f\rest n},f(n)}=
-        \bigcup_{n<\omega} \sigma(\mc U_{f\rest1},\dots,\mc U_{f\rest n+1})
-      \]
-
-    Thus if $\sigma$ is a winning strategy, then $X=\{x_s:s\in\omega^{<\omega}\}$ is countable.
-  \end{proof}
-
-  \begin{proposition}
-    $S\win\rothgame{\oneptlind{\omega}}$
-  \end{proposition}
+    Thus $C$ may find points $x_s$ such that for each $m<\omega$, there exists an open cover $\mc U_{s\concat\<m\>}$ where $\sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U_{s\concat\<m\>})=G_{x_s,m}$. Then if $x\not=\{x_s : s\in\omega^{<\omega}\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $f(n)$ so that $x\not\in G_{x_{f\rest n},f(n)}$, and then choose $\mc U_{f\rest n\concat\<f(n)\>}$ such that $\sigma(\mc U_{f\rest 1},\dots,\mc U_{f\rest n},\mc U_{f\rest n\concat\<f(n)\>})=G_{x_{f\rest n},f(n)}$.
+  \end{proof} 
 
   \begin{question}
-    $S\kmarkwin{2}\rothgame{\oneptlind{\omega}}$?
+    $S\kmarkwin{2}\rothgame{\oneptcomp{\omega_1}}$ or $S\kmarkwin{2}\rothgame{\oneptlind{\omega_1}}$?
   \end{question}
 
   \begin{question}
     $S\kmarkwin{2}\rothgame{X}\Leftrightarrow S\kmarkwin{k}\rothgame{X}$?
-  \end{question}
-
-  \begin{question}
-  For any space TFAE:
-    \begin{itemize}
-      \item $S\markwin\rothgame{X}$
-      \item $|X|=\omega$
-    \end{itemize}
   \end{question}
 
 \end{document}
