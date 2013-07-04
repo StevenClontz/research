@@ -1,4 +1,4 @@
-\input{./header.tex}
+\input{../header.tex}
 
 \begin{document}
 
@@ -335,7 +335,7 @@
         \item $\bigcup_{n<\omega}f(\mc{V},n)=X$
         \item The set
           \[
-            g(\mc{U},\mc{V},n) = \bigcup_{m\geq n} f(\mc{U},m)\setminus ( f(\mc{U},m-1)\cup f(\mc{V},m))
+            g(\mc{U},\mc{V},m+1) = \left(\bigcup_{n\geq m} f(\mc{U},n+1)\setminus f(\mc{V},n+1))\right)\setminus f(\mc{U},0)
           \]
          is $\mc{V}$-compact
       \end{itemize}
@@ -377,12 +377,29 @@
   \end{theorem}
 
   \begin{proof}
-    Let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $f(\mc{U}_{n+1},n+1)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that $x\in f(\mc{U}_0,N)$ for some $N$. So either $x\in \bigcap_{m\leq N} f(\mc{U}_m,N)$ and is covered by the strategy during round $N$, or for some $m< N$, $x \in f(\mc{U}_m,N)\setminus (f(\mc{U}_{m},N-1)\cup f(\mc{U}_{m+1},N))$ and is covered by the strategy during round $m+1$.
+    Let $\sigma(\mc{U}_0,0)$ cover $f(\mc{U}_0,0)$, and let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $f(\mc{U}_{n+1},n+1)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that either $x\in f(\mc{U}_0,0)$ and is covered in the initial round, or $x\in f(\mc{U}_0,N+1)$ for some minimal $N$. So one of the following must occur:
+      \begin{itemize}
+        \item $x\in \bigcup_{m\leq N} f(\mc{U}_{m},0)$ and is covered by the strategy during some round $m\leq N$.
+        \item $x\in \bigcap_{m\leq N} f(\mc{U}_{m+1},N+1)$ and is covered by the strategy during round $N+1$.
+        \item For some $m \leq N$, 
+          \[x \in \Big( f(\mc{U}_{m},N+1)\setminus f(\mc{U}_{m+1},N+1) \Big)\setminus f(\mc{U}_m,0) \subseteq g(\mc{U}_m,\mc{U}_{m+1},m+1)\]
+         and is covered during round $m+1$.
+      \end{itemize}
   \end{proof}
 
   \begin{corollary}
     $F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
   \end{corollary}
+
+
+
+
+
+
+
+
+
+
 
   \newpage
 
