@@ -331,11 +331,11 @@
     Let $\mathfrak{C}$ collect all the open covers of $X$. We say $X$ is \scish if there exists a function $f:\mathfrak{C}\times\omega\to\mc{P}(X)$ such that:
       \begin{itemize}
         \item $f(\mc{V},n)$ is $\mc{V}$-compact
-        \item $f(\mc{V},n)\subseteq f(\mc{V},n+1)$
+        \item $f(\mc{V},n)\cap f(\mc{V},n+1) = \emptyset$
         \item $\bigcup_{n<\omega}f(\mc{V},n)=X$
         \item The set
           \[
-            g(\mc{U},\mc{V},m+1) = \left(\bigcup_{n\geq m} f(\mc{U},n+1)\setminus f(\mc{V},n+1))\right)\setminus f(\mc{U},0)
+            g(\mc{U},\mc{V},n+1) = \bigcup_{p\geq n} \Big(f(\mc{U},p+1)\setminus f(\mc{V},p+1)\Big)\setminus \bigcup_{m\leq n}f(\mc{U},m+1)
           \]
          is $\mc{V}$-compact
       \end{itemize}
@@ -369,7 +369,7 @@
   \end{theorem}
 
   \begin{proof}
-    Take the injective funcions $f_\alpha$ from Kunen's lemma such that $f_\alpha\rest\beta =^* f_\beta$. Let $\gamma(\mc U)$ identify the least ordinal such that $[\gamma(\mc U),\omega_1)\cup\{\infty\}$ is in a refinement of $\mc U$. Then $f(\mc U,n)=f^{-1}_{\gamma(\mc U)}([0,n]) \cup [\gamma(\mc U),\omega_1)\cup\{\infty\}$ is easily seen to witness the property.
+    Take the injective funcions $f_\alpha$ from Kunen's lemma such that $f_\alpha\rest\beta =^* f_\beta$. Let $\gamma(\mc V)$ identify the least ordinal such that $[\gamma(\mc V),\omega_1)\cup\{\infty\}$ is in a refinement of $\mc U$. Then $f$ defined by $f(\mc V,0)=[\gamma(\mc V),\omega_1)\cup\{\infty\}$ and $f(\mc{V},n+1) = f_{\gamma(\mc V)}^{-1}(\{n\})$ is easily seen to witness the property.
   \end{proof}
 
   \begin{theorem}
@@ -377,13 +377,17 @@
   \end{theorem}
 
   \begin{proof}
-    Let $\sigma(\mc{U}_0,0)$ cover $f(\mc{U}_0,0)$, and let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $f(\mc{U}_{n+1},n+1)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that either $x\in f(\mc{U}_0,0)$ and is covered in the initial round, or $x\in f(\mc{U}_0,N+1)$ for some minimal $N$. So one of the following must occur:
+    Let $\sigma(\mc{U}_0,0)$ cover $f(\mc{U}_0,0)$, and let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover $\bigcup_{m\leq n+1}f(\mc{U}_{n+1},m)$ and $g(\mc{U}_n,\mc{U}_{n+1},n+1)$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that one of the following must occur:
       \begin{itemize}
-        \item $x\in \bigcup_{m\leq N} f(\mc{U}_{m},0)$ and is covered by the strategy during some round $m\leq N$.
-        \item $x\in \bigcap_{m\leq N} f(\mc{U}_{m+1},N+1)$ and is covered by the strategy during round $N+1$.
-        \item For some $m \leq N$, 
-          \[x \in \Big( f(\mc{U}_{m},N+1)\setminus f(\mc{U}_{m+1},N+1) \Big)\setminus f(\mc{U}_m,0) \subseteq g(\mc{U}_m,\mc{U}_{m+1},m+1)\]
-         and is covered during round $m+1$.
+        \item $x \in f(\mc U_0,0)$ and is covered in the initial round.
+        \item $x \in f(\mc U_0,P+1)$ for some $P\geq 0$ and:
+        \begin{itemize}
+          \item $x\in \bigcup_{m\leq n\leq P} f(\mc{U}_{n+1},m+1)$ and is covered by the strategy by round $P+1$.
+          \item $x\in \bigcap_{n\leq P} f(\mc{U}_{n+1},P+1)$ and is covered by the strategy during round $P+1$.
+          \item For some $n \leq P$, 
+            \[x \in \Big( f(\mc{U}_{n},P+1)\setminus f(\mc{U}_{n+1},P+1) \Big)\setminus \bigcup_{m\leq n} f(\mc{U}_{n+1},m+1) \subseteq g(\mc{U}_m,\mc{U}_{m+1},m+1)\]
+           and is covered during round $n+1$.
+         \end{itemize}
       \end{itemize}
   \end{proof}
 
