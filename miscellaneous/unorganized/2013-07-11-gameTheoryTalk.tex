@@ -1,0 +1,115 @@
+\input{../../header.tex}
+
+\begin{document}
+
+\centerline{\bf 2013-07-11 talk on Game Theory for Auburn REU program}
+
+Let's start by discussing a few games. For this talk, I'll roughly define a \textbf{game} as a two-player competition, where at the end of the game, exactly one player has won the game.
+
+\begin{game}{(Tic-Tac-Toe-ish)}\label{tictactoe}
+Players $X$ and $O$ are playing Tic-Tac-Toe, but in the case of a ``tie'', player $O$ wins.
+\end{game}
+
+\begin{question}
+Which player has a \textbf{winning strategy} for Game \ref{tictactoe}? (A winning strategy is a strategy where no matter what the opponent does, the strategy guarantees that player will win.)
+\end{question}
+
+\begin{game}{(Pick-a-Number)}\label{pickanum}
+Players I and II alternate removing numbers from the set $\{1,2,\dots,9\}$. The game ends when once a player has removed three different numbers which sum to $15$ (not every number removed must be used), or when all numbers have been removed. Player I wins if she has removed three different numbers which sum to $15$, and Player II wins otherwise.
+\end{game}
+
+\begin{question}
+Which player has a winning strategy for Game \ref{pickanum}?
+\end{question}
+
+\begin{question}
+Can you find a relationship between Game \ref{tictactoe} and Game \ref{pickanum}?
+\end{question}
+
+\begin{game}{(Take One-or-Two)}\label{taketwo}
+Let the game $G_{\ref{taketwo}}(n)$ be defined as follows: a total of $n$ tokens are played on the table. Players I and II alternate removing one or two tokens from the table each turn. The game ends once all tokens are removed from the table, and the player who removed the final token wins.
+\end{game}
+
+\begin{question}
+For which values of $n$ does Player I have a winning strategy for $G_{\ref{taketwo}}(n)$? For which values of $n$ does Player II have a winning strategy?
+\end{question}
+
+\begin{game}{(Take One-or-Two-or-Three)}\label{takethree}
+Same as Game \ref{taketwo}, except players may remove up to three tokens.
+\end{game}
+
+\begin{question}
+For which values of $n$ does Player I have a winning strategy for $G_{\ref{takethree}}(n)$? For which values of $n$ does Player II have a winning strategy?
+\end{question}
+
+\begin{question}
+Generalize Games \ref{taketwo} and \ref{takethree} so that players may take up to $m$ tokens, and describe the winning strategies for a player for each value of $n$.
+\end{question}
+
+\begin{game}{(Nim)}\label{nim}
+Let the game $G_{\ref{nim}}(r,f)$ be defined as follows: $r$ rows of tokens are placed on the table, each with $f(r)$ tokens. Players I and II alternate removing as many tokens as they wish from a particular row each turn. The game ends once all tokens are removed from the table, and the player who removed the final token wins.
+\end{game}
+
+\begin{question}
+Consider the game of Nim with three rows, containing $x$, $y$, and $x$ objects each. Which player has a winning strategy?
+\end{question}
+
+If you're interested in learning more, Nim is a very famous game within Game Theory - in fact, it's provable that any ``finite'' game is equivalent to a game of Nim.
+
+So far, we've taken on faith that for any game, one player or another must have a winning strategy. To see that this is the case (for finite games, anyway), we'll want to model the game mathematically.
+
+\begin{definition}
+We model a finite two-player game as follows: a game is defined as a triple $\<V,E,s\>$ where $\<V,E\>$ form a directed graph, and $s\in V$. We call $s$ the starting position for the game. Each $v\in V$ represents a ``game state'' with $s$ representing the starting game state, and each $e\in E$ represents a legal move for a player from one game state to another. A player wins the game if they can force the other player into a game state for which there are no legal moves.
+\end{definition}
+
+\begin{definition}
+A strategy can be defined as a function $\sigma:V\to V$ where $\sigma(v)$ is always an out-vertex from $v$. Then, a winning strategy for Player $A$ is a strategy where no matter what strategy their opponent Player $B$ uses, the winning strategy results in a win for Player $A$.
+\end{definition}
+
+\begin{question}
+What criteria must be placed on $\<V,E,s\>$ such that $\<V,E,s\>$ represents a game which must always end in finitely many turns, and exactly one player has a winning strategy for the game?
+\end{question}
+
+\begin{question}
+Design a game which must terminate in finitely many moves, but cannot be modeled by $\<V,E,s\>$ where $V$ is finite.
+\end{question}
+
+Although such games can never be played out in reality, considering games which can possibly extend for infinitely many turns (called infinite games or $\omega$-length games) is often useful in set theory and topology. However, these games have to be modeled differently.
+
+\begin{definition}
+We say an $\omega$-length game is a triple $\<M,N,W\>$ such that $W$ contains infinite-length sequences of elements alternating between $M$ and $N$. The sets $M$ and $N$ represent the possible moves of Player I and Player II respectively. The set $W$ represents the ``plays'' of the game where Player I wins.
+\end{definition}
+
+\begin{game}\label{eighteen}
+An example of an infinte game is as follows: Players I and II alternate choosing integers between $2$ and $9$. If at any point during the game, the numbers chosen so far by both players have a product which is a multiple of 18, then Player I wins. If the game never ends, then Player II wins. This game is modeled by $M=N=\{2,\dots,9\}$ and $W$ is the set of sequences such that there exists an initial sequence of odd length whose product is a multiple of 18, and there doesn't exist a shorter even-length initial sequence whose product is a multiple of 18.
+\end{game}
+
+\begin{question}
+Prove that Player II has a winning strategy in Game \ref{eighteen}.
+\end{question}
+
+\begin{question}
+Define an $\omega$-length game $\<M,N,W\>$ to be basically equivalent to a finite game with a digraph model $\<V,E,s\>$.
+\end{question}
+
+A simple example of how such games can be used follows:
+
+\begin{game}\label{converge}
+Let the game $G_{\ref{converge}}(S)$ for $S\subseteq \mathbb{R}$ be defined as follows: during the initial round, Player I chooses $a_0\in \mathbb{R}$, and Player II responds with $b_0\in \mathbb{R}$ where $a_0<b_0$. During round $n+1$, Player I chooses $a_{n+1}\in \mathbb{R}$ where $a_0<\dots<a_{n+1}<b_n<\dots<b_0$, and Player II responds with $b_{n+1}\in \mathbb{R}$ where $a_0<\dots<a_{n+1}<b_{n+1}<\dots<b_0$. The game cannot end in finitely many turns, but Player I wins the game if $\lim_{n\to\infty} a_n \in S$, and Player II wins otherwise.
+\end{game}
+
+Obviously, Player I wins $G_{\ref{converge}}(\mathbb{R})$.
+
+\begin{question}
+Prove that Player II wins $G_{\ref{converge}}(S)$ when $S$ is a countable subset of $\mathbb{R}$.
+\end{question}
+
+There's a cute consequence to this.
+
+\begin{theorem}
+$\mathbb{R}$ is an uncountable set.
+\end{theorem}
+
+\end{document}
+
+
