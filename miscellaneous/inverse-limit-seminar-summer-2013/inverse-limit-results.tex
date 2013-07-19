@@ -1,0 +1,150 @@
+ \input{../../header.tex}
+
+\begin{document}
+
+% \begin{example}
+% Let $L\subseteq \prod_{i=1}^\infty [0,1]$ be the inverse limit space with bonding functions all equal to
+% \[
+%   f(x) = \left\{
+%      \begin{array}{lr}
+%        2x & : x \leq 0.5 \\
+%        2-2x & : x \geq 0.5
+%      \end{array}
+%    \right.
+% \]
+% Then the following hold:
+%   \begin{enumerate}
+%     \item The subspaces $C_t = \{\alpha\in L : \alpha(1)=t\}$ are each homeomorphic to the Cantor Set.
+%     \item All proper subcontinuua are homeomorphic to the unit interval $[0,1]$
+%     \item All proper subcontinuua are nowhere dense in the space.
+%   \end{enumerate}
+% \end{example}
+
+% \begin{proof}
+% For (1), consider that for each number $t\in(0,1)$, there are exactly two preimages under $f$ inside $(0,1)$, giving a natural corespondance with the Cantor tree with branches given by points in the Cantor set $2^\omega$. The arguments for $t=0,1$ are similar.
+
+% For (2), we first claim that all basic open sets are of the form $L\cap\prod_{n=1}^\infty B_n$ where $B_n=[0,1]$ for all $n\not=N$. By definition all basic open sets are of the form $L\cap\prod_{n=1}^\infty A_n$ where $A_n=[0,1]$ for all $n\not=N_1,\dots,N_m$. It's easily seen that if $N=N_m$ and $B_N = \bigcap_{i=1}^m (f^{-1})^{(N_m-N_i)}(A_{N_i})$ and $B_n=[0,1]$ otherwise, then $L\cap\prod_{n=1}^\infty A_n = L\cap\prod_{n=1}^\infty B_n$.
+
+% Using this fact, we can argue that each proper subcontinuum $K$ is of the form $L \cap \prod_{n=1}^\infty [a_n,b_n]$ where $0\leq a_N < b_N < 1$ for some $N$. 
+
+% First note that every maximal basic open set missed by $K$ must be of the form $L\cap\prod_{n=1}^\infty B_n$ here $B_n=[0,1]$ for all $n\not=N$ and $[0,1] \setminus B_N$ is connected, that is, $B_N=[0,a)\cup(b,1]$. (If not, then the disconnection of $[0,1]\setminus B_N$ yields a disconnection for $K$.) Thus $K = \prod_{n=1}^\infty [0,1]\setminus ([0,a_n)\cup(b_n,1]) = \prod_{n=1}^\infty [a_n,b_n]$.
+
+% We can see that $a_n<b_n$ always; otherwise the continuum is a single point. Suppose $b_n = 1$ for all $n$, then either $a_n=0$ for all $n$ (contradiction since $K$ is a proper subcontinuum), or $a_N>0$, and $b_{N+1}\leq 1-\frac{a_N}{2}$ (contradition).
+
+% Finally, considering $[a_N,b_N]$ where $0\leq a_N<b_n<1$, we note that as only a single sequence $\alpha$ in $K$ may satisfy $\alpha(N)=t$ for each $t\in [a_N,b_N]$, the projection from $K$ onto the $N^{th}$ coordinate is a homeomorphism onto $[a_N,b_N]$.
+
+% For (3), it is easy to show that for any sequence $\alpha\in L \cap \prod_{n=1}^\infty [a_n,b_n]$ where $0\leq a_N < b_N < 1$ for some $N$, an open neighborhood of $\alpha$ would contain infinte sequences $\beta$ with $\alpha(N)=\beta(N)$ and $\beta(p)>b_p$ for some number $p$.
+
+% \end{proof}
+
+Let $X_n$ be a continuum for each $n<\omega$, and $f_n:X_{n+1}\to X_n$ be a continuous function for each $n<\omega$, and $\ds L=\lim_{\leftarrow}(X_n,f_n)$ be the inverse limit space induced by the spaces $X_n$ and bonding maps $f_n$.
+
+\begin{lemma}\label{basis}
+  Let 
+    \[
+      \mc{B}_N = 
+      \{L\cap \prod_{n<\omega} B_n : B_n=X_n \text{ for all } n\not= N \text{ and } B_N \text{ is open in } X_N\}
+    \]
+
+  Then $\mc{B} = \bigcup_{N<\omega} \mc{B}_N$ is a basis for $L$.
+\end{lemma}
+
+\begin{proof}
+  Let $\alpha$ be a member of a basic open set induced by the product topology:
+    \[
+      L \cap \prod_{n<\omega} A_n
+    \]
+  where $A_n=X_n$ for all $n\not=N_i$ where $i<m$ and $N_i<N_{i+1}$, and $A_{N_i}$ is open in $X_{N_i}$.
+
+  Let $g_{a\to b}: 2^{X_a}\to 2^{X_b}$ for $a\leq b$ be defined by
+  \[
+    g_{a\to a} = id_{X_a}
+  \]
+  \[
+    g_{a\to (b+1)} =
+    \underbrace{ f^{-1}_{b} \circ \dots \circ f^{-1}_{a+1} \circ f^{-1}_a}_{b-a+1 \text{ times}},
+  \]
+
+  Let $N=N_{m-1}$ and
+    \[
+      B_N = \bigcap_{i<m} g_{N_i\to N} (A_{N_i})
+    \]
+  noting that $B_N$ is open. Note that $\alpha(N_i)\in A_i$ for all $i<m$ implies $\alpha(N)\in B_N$, and thus $\alpha\in L \cap \prod_{n<\omega} B_n$ where $B_n=X_n$ for all $n\not=N$.
+
+  Finally, let $\beta\in L \cap \prod_{n<\omega} B_n$. Since $\beta(N)\in B_N = \bigcap_{i<m} g_{N_i\to N} (A_{N_i})$, we may easily see that $\beta(N_i)\in A_{N_i}$ for each $i<m$ and thus $\beta\in L\cap\prod_{n<\omega} A_n$.
+\end{proof}
+
+\begin{lemma}\label{subcontinuua}
+  For each subcontinuum $K\subseteq L$, there are minimal subcontinuua $K_n\subseteq X_n$ such that
+    \[
+      K = L \cap \prod_{n<\omega} K_n
+    \]
+\end{lemma}
+
+\begin{proof}
+  For each $N<\omega$, let $\mc{B}'_N$ contain all basic open sets in $\mc{B}_N$ whose intersection with $K$ is empty. Then let 
+    \[
+      K_N = X_N \setminus \bigcup_{B\in\mc{B}'_N} \pi_N(B)
+    \]
+
+  $K_N$ is a closed subset of a compact space, and is trivially compact. It is also connected: suppose $K_N\subseteq G\cup H$ with $G,H$ disjoint open in $X_N$. Then $K\subseteq \pi_N^{-1}(G)\cup\pi_N^{-1}(H)$ with $\pi_N^{-1}(G)$,$\pi_N^{-1}(H)$ disjoint open, disconnecting $K$ and showing the contradiction.
+
+  Let $\alpha\in K$. Then as $\alpha\not\in \bigcup_{B\in\mc{B}'_N} B$, we know $\alpha(N)\not\in \bigcup_{B\in\mc{B}'_N} \pi_N(B)$ for any $N<\omega$, so $\alpha \in L \cap \prod_{n<\omega} K_n$.
+
+  Let $\alpha\in L\setminus K$. Then $\alpha\in B \in \mc{B}_N$ for some $N$, and thus $\alpha(N)\in \bigcup_{B\in\mc{B}'_N} \pi_N(B)$. This shows $\alpha(N)\not\in K_N$ and thus $\alpha \not\in L \cap \prod_{n<\omega} K_n$.
+
+  This shows $K = L \cap \prod_{n<\omega} K_n$. To see that minimal candidates for $K_n$ exist, observe that that if
+    \[
+      K = L \cap \prod_{n<\omega} K_{n,\lambda}
+    \]
+  for all $\lambda$ in some indexing set $I$, then if $K^*_n = \bigcap_{\lambda\in I} K_{n,\lambda}$ we may see
+    \[
+      K = L \cap \prod_{n<\omega} \left(\bigcap_{\lambda\in I} K_{n,\lambda}\right)
+    \]
+  and thus $K^*_n$ is the minimal subcontinuum for each $n$. ($K^*_n$ is obviously compact, and observe that if it weren't connected, $K$ wouldn't be connected either.)
+\end{proof}
+
+\begin{example}
+Let $L$ be the inverse limit space induced by $X_n=[0,1]$ and $f_n=f$ where
+\[
+  f(x) = \left\{
+     \begin{array}{lr}
+       2x & : x \leq 0.5 \\
+       2-2x & : x \geq 0.5
+     \end{array}
+   \right.
+\]
+Then the following hold:
+  \begin{enumerate}
+    \item The subspaces $C_t = \{\alpha\in L : \alpha(0)=t\}$ are each homeomorphic to the Cantor Set.
+    \item All proper subcontinuua $K$ are homeomorphic to the unit interval.
+    \item All proper subcontinuua $K$ are nowhere dense in the space.
+  \end{enumerate}
+\end{example}
+
+\begin{proof}
+The reader may easily prove the first item by considering the Cantor tree produced by the branching sequences with a fixed initial coordinate.
+
+By Lemma \ref{subcontinuua}, we may write any proper subcontinuum $K$ as
+  \[
+    K = L \cap \prod_{n<\omega} [a_n,b_n] 
+  \]
+for $0\leq a_n \leq b_n \leq 1$ with $[a_n,b_n]$ minimal.
+
+It's easily seen that $a_n < b_n$ must actually be strict (otherwise $K$ is a single point).
+
+We proceed to show that if each $[a_n,b_n]$ is minimal, then there must exist some $N$ such that $0\leq a_N < b_N < 1$.
+
+If $a_n=0$ and $b_n=1$ always, then $K=L$ and is not a proper subcontinuum, so either:
+  \begin{itemize}
+    \item We assume $0< a_N < b_N \leq 1$ and observe by the minimality of $[a_{N+1},b_{N+1}]$ and $f(1-\frac{a_N}{2})=a_N$ that $[a_{N+1},b_{N+1}]\subseteq[a_{N+1},1-\frac{a_N}{2}]$, which implies $0\leq a_{N+1} < b_{N+1} \leq 1 - \frac{a_N}{2} < 1$.
+    \item We get $0\leq a_N < b_N < 1$ for free.
+  \end{itemize}
+
+Then one of the following occurs:
+  \begin{itemize}
+    \item We may find $N$ such that $0<a_N<b_N<1$.
+  \end{itemize}
+\end{proof}
+
+\end{document}
