@@ -492,7 +492,7 @@
       \item
       Let $\sigma$ be a strategy for $P$ in $\altrothgame{X}$.
 
-      We define a strategy for $S$ in $\rothgame{X}$ as follows: during round $n$, if $S$ has chosen $U_0,\dots,U_{n-1}$ in previous rounds, $S$ chooses an open set covering the point $\sigma(U_0,\dots,U_{n-1})$. If $\sigma$ was a winning strategy for $P$, then for any open sets $U_0,U_1,\dots$ containing $\sigma(\cdot),\sigma(U_0),\dots$, the collection $\{U_0,U_1,\dots\}$ is a cover for $X$.
+      We define a strategy for $S$ in $\rothgame{X}$ as follows: during round $n$, if $S$ has chosen $U_0,\dots,U_{n-1}$ in previous rounds, $S$ chooses any open set in $C$'s latest cover containing the point $\sigma(U_0,\dots,U_{n-1})$. If $\sigma$ was a winning strategy for $P$, then for any open sets $U_0,U_1,\dots$ containing $\sigma(\cdot),\sigma(U_0),\dots$, the collection $\{U_0,U_1,\dots\}$ is a cover for $X$.
 
       \item
       Let $\sigma$ be a strategy for $C$ in $\rothgame{X}$.
@@ -507,27 +507,51 @@
     \end{itemize}
   \end{proof}
 
-  % \begin{theorem}
-  % For any $T_1$ space $X$, the following are equivalent:
-  %   \begin{itemize}
-  %     \item $S\markwin\rothgame{X}$
-  %     \item $|X|=\omega$
-  %   \end{itemize}
-  % \end{theorem}
+  A similar theorem exists for limited information strategies.
 
-  % \begin{proof}
-  %   If $|X|=\omega$ then the winning Markov strategy is obvious, so let $\sigma(\mc U,n)$ be a Markov strategy.
+  \begin{theorem}
+    \begin{itemize}
+      \item $P\prewin\altrothgame{X}$ if and only if $S\markwin\rothgame{X}$
+      \item $O\markwin\altrothgame{X}$ if and only if $C\prewin\rothgame{X}$.
+    \end{itemize}
+  \end{theorem}
 
-  %   Let $n<\omega$. Suppose that for each $x\in X$, there was an open neighborhood $U_x$ of $x$ where for every open cover $\mc U$, $\sigma(\mc U,n)\not=U_x$. The open cover $\{U_x : x\in X\}$ demonstrates the contradiction.
+  \begin{proof}
 
-  %   So let $x_n\in X$ be chosen such that for each open neighborhood $U$ of $x_n$, there is an open cover $\mc U$ such that $\sigma(\mc U,n)=U$. Then if $x\not=\{x_n : n<\omega\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $U_n$ which contains $x_n$ but not $x$, and then choose $\mc U_n$ such that $\sigma(\mc U_n,n)=U_n$.
-  % \end{proof}
+    \begin{itemize}
+      \item
+      Let $\sigma(\mc U_n,n)$ be a Markov strategy for $S$ in $\rothgame{X}$. 
+
+      Let $n<\omega$. Suppose that for each $x\in X$, there was an open neighborhood $U_x$ of $x$ where for every open cover $\mc U$, $\sigma(\mc U,n)\not=U_x$. The open cover $\{U_x : x\in X\}$ demonstrates the contradiction.
+
+      We define a predetermined strategy for $P$ in $\altrothgame{X}$ as follows: during round $n$, $P$ chooses a point $x_n$ for which every open neighborhood is of the form $U_n = \sigma(\mc U,n)$ for some open cover $\mc{U}$.
+
+      If $\sigma$ was a winning strategy for $S$ in $\rothgame{X}$, then the open sets chosen by $O$ in response to $P$'s strategy for $\altrothgame{X}$ are of the form $\{\sigma(\mc U_0,0),\sigma(\mc U_1,1),\dots\}$ and are an open cover of $X$.
+
+      \item
+      Let $\sigma(n)$ be a predetermined strategy for $P$ in $\altrothgame{X}$.
+
+      We define a Markov strategy for $S$ in $\rothgame{X}$ as follows: during round $n$, $S$ chooses any open set in $C$'s cover containing the point $\sigma(n)$. If $\sigma$ was a winning strategy for $P$, then for any open sets $U_0,U_1,\dots$ containing $\sigma(0),\sigma(1),\dots$, the collection $\{U_0,U_1,\dots\}$ is a cover for $X$.
+
+      \item
+      Let $\sigma(n)$ be a predetermined strategy for $C$ in $\rothgame{X}$.
+
+      We define a Markov strategy for $O$ in $\altrothgame{X}$ as follows: during round $n$, $O$ chooses an open set from the cover $\sigma(n)$ containing the point chosen by $P$ that round. If $\sigma$ was a winning strategy for $C$, then for any open sets $U_0,U_1,\dots$ from the covers $\sigma(0),\sigma(1),\dots$, the collection $\{U_0,U_1,\dots\}$ is not a cover for $X$.
+
+      \item
+      Let $\sigma(x_n,n)$ be a Markov strategy for $O$ in $\altrothgame{X}$.
+
+      We define a predetermined strategy for $C$ in $\rothgame{X}$ as follows: during round $n$, $C$ chooses $\mc{U}_n = \{\sigma(x,n) : x\in X\}$. If $\sigma$ was a winning strategy for $O$, we observe any play $\{\sigma(x_0,0),\sigma(x_1,1),\dots\}$ by $S$ is not a cover for $X$.
+
+    \end{itemize}
+
+  \end{proof}
 
   \begin{theorem}
   For any $T_1$ space $X$, the following are equivalent:
     \begin{itemize}
       \item $S\markwin\rothgame{X}$
-      \item $|X|=\omega$
+      \item $|X|\leq\omega$
     \end{itemize}
   \end{theorem}
 
@@ -552,12 +576,12 @@
       \begin{enumerate}[(a)]
         \item $S\win\rothgame{X}$
         \item $S\kmarkwin{k}\rothgame{X}$
-        \item $|X|=\omega$
+        \item $|X|\leq\omega$
       \end{enumerate}
   \end{theorem}
 
   \begin{proof}
-    $(c)\Rightarrow(b)\Rightarrow(a)$ are all trivial. Galvin has shown $(a)\Rightarrow(c)$ in \textit{Indeterminacy}, but a direct proof follows. Let $\sigma$ be a strategy for $S$ in $\rothgame{X}$.
+    $(c)\Rightarrow(b)\Rightarrow(a)$ are all trivial. Galvin has shown $(a) \Leftrightarrow P\win\altrothgame{X} \Rightarrow (c)$ in \textit{Indeterminacy}, but a direct proof of $(a)\Rightarrow(c)$ follows. Let $\sigma$ be a strategy for $S$ in $\rothgame{X}$.
 
     Let $G_{x,m}$ designate open sets such that $\{x\}=\bigcap_{m<\omega}G_{x,m}$ for all $x\in X$.
 
