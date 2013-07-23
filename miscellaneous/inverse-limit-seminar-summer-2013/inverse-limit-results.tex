@@ -99,7 +99,7 @@ Let $X_n$ be a continuum for each $n<\omega$, and $f_n:X_{n+1}\to X_n$ be a cont
     \]
   for all $\lambda$ in some indexing set $I$, then if $K^*_n = \bigcap_{\lambda\in I} K_{n,\lambda}$ we may see
     \[
-      K = L \cap \prod_{n<\omega} \left(\bigcap_{\lambda\in I} K_{n,\lambda}\right)
+      K = L \cap \prod_{n<\omega} K^*_n
     \]
   and thus $K^*_n$ is the minimal subcontinuum for each $n$. ($K^*_n$ is obviously compact, and observe that if it weren't connected, $K$ wouldn't be connected either.)
 \end{proof}
@@ -138,13 +138,15 @@ We proceed to show that if each $[a_n,b_n]$ is minimal, then there must exist so
 If $a_n=0$ and $b_n=1$ always, then $K=L$ and is not a proper subcontinuum, so either:
   \begin{itemize}
     \item We assume $0< a_N < b_N \leq 1$ and observe by the minimality of $[a_{N+1},b_{N+1}]$ and $f(1-\frac{a_N}{2})=a_N$ that $[a_{N+1},b_{N+1}]\subseteq[a_{N+1},1-\frac{a_N}{2}]$, which implies $0\leq a_{N+1} < b_{N+1} \leq 1 - \frac{a_N}{2} < 1$.
-    \item We get $0\leq a_N < b_N < 1$ for free.
+    \item We have $0\leq a_N < b_N < 1$ for free.
   \end{itemize}
-
 Then one of the following occurs:
   \begin{itemize}
-    \item We may find $N$ such that $0<a_N<b_N<1$.
+    \item Suppose $b_{N+1}=1$; then $a_{N+2}>0$. In this case, the reader may check that each sequence in $K$ has a unique value in the $(N+2)^{th}$ coordinate - if not, then the sequences must ``branch'' in some $M>N+2$ coordinate, but either $b_M<\frac{1}{2}$ or $a_M>\frac{1}{2}$ prevents such branching.
+    \item It may be that $0=a_n$ for all $n<\omega$. Then the reader may again check that each sequence in $K$ has a unique value in the $(N+2)^{th}$ coordinate where $0=a_{N+2}<b_{N+2}<1$, as $M>N+2 \Rightarrow b_M<\frac{1}{2}$ prevents branching.
   \end{itemize}
+
+It may be easily verified then that the projection $\pi_{N+2}$ is a homeomorphism from $K$ to $[a_{N+2},b_{N+2}]$.
 \end{proof}
 
 \end{document}
