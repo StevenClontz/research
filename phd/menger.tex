@@ -2,6 +2,8 @@
 
 \begin{document}
 
+  \centerline{Menger}
+
   \begin{definition}
     $X$ is \textbf{Menger} if for all open covers $\mathcal{U}_0,\mathcal{U}_1,\dots$ there exist finite subcollections $\mathcal{F}_n \subseteq \mathcal{U}_n$ such that $\bigcup_{n<\omega} \mathcal{F}_n$ is a cover of $X$.
   \end{definition}
@@ -396,6 +398,75 @@
   \end{corollary}
 
 
+\newpage
+
+  \centerline{Filling Games}
+
+  \begin{definition}
+    The \textbf{filling game} $\fillgame{X}$ proceeds as follows: player $C$ chooses $C_0\in[X]^{\leq\omega}$ in the initial round, followed by $F$ choosing $F_0\in[C_0]^{<\omega}$. In round $n+1$, player $C$ chooses $C_{n+1}$ where $C_n\subseteq C_{n+1}\in[X]^{\leq\omega}$, and player $F$ replies with $F_{n+1}\in[C_{n+1}]^{<\omega}$. Player $F$ wins the game if $\bigcup_{n<\omega} F_n = \bigcup_{n<\omega} C_n$.
+
+    The \textbf{strict filling game} $\sfillgame{X}$ proceeds analogously, with the added requirement that $C_n\subsetneq C_{n+1}$.
+  \end{definition}
+
+  \begin{theorem}
+    $F\ktactwin{2}\sfillgame{\kappa} \Rightarrow F\kmarkwin{2}\fillgame{\kappa}$
+  \end{theorem}
+
+  \begin{proof}
+    Let $\sigma$ be a winning $2$-tactical strategy for $F$ in $\sfillgame{\kappa}$.
+
+    For $C\in [\omega_1]^{\leq\omega}$ and $n<\omega$, let $C+n$ denote the superset of $C$ which also contains the $n$ least elements of $\omega_1\setminus C$, and let $C+\omega = \bigcup_{n<\omega} C + n$.
+
+    We define a $2$-Markov strategy $\tau$ for $F$ in $\fillgame{\kappa}$ as follows:
+
+      \[
+        \tau(C_0,0) = \sigma(C_0)
+      \]
+      \[
+        \tau(C_n,C_{n+1},n+1) = \left\{
+      \begin{array}{ll}
+        \sigma(C_n)\cup \sigma(C_n,C_{n+1}) & C_n\subsetneq C_{n+1} \\
+        C_n \cap \left(\sigma(C_n) \cup \bigcup_{m<n} \sigma(C_n+m,C_n+m+1) \right) & C_n=C_{n+1}
+      \end{array}
+      \right.
+      \]
+
+    Let $C_0 \subseteq C_1 \subseteq \dots$ be an attack by $C$ against $\tau$. There are two possible cases:
+
+      \begin{itemize}
+        \item
+          Assume $C_n=C_N$ for all $n\geq N$.
+
+          The collection produced by $\sigma$ versus the attack
+            \[
+              C_N+0 \subsetneq C_N+1 \subsetneq \dots
+            \] 
+          is 
+            \[
+              \{\sigma(C_N)\}\cup\{\sigma(C_N+m,C_N+m+1) : m<\omega\}
+            \]
+          and must cover $C_N$ as $\sigma$ is a winning strategy.
+
+          Let $\alpha \in C_N$. Then if $\alpha \in \sigma(C_N)$, we observe that $\alpha$ must be covered by $\tau$ in round $N+1$. Otherwise $\alpha \in \sigma(C_N+m,C_N+m+1)$ for some $m$, and $\alpha$ must be covered by $\tau$ in round $N+m+1$.
+
+        \item
+          Assume we may find $f(0)<f(1)<\dots$ such that $C_{f(m)}\subsetneq C_{f(m)+1}$ and $C_{f(m)+1}=C_{f(m+1)}$.
+
+          Then the collection produced by $\sigma$ versus the attack 
+            \[
+              C_{f(0)}\subsetneq C_{f(1)} \subsetneq C_{f(2)} \dots
+            \]
+          is 
+            \[
+              \{\sigma(C_{f(0)})\}\cup\{\sigma(C_{f(m)},C_{f(m+1)}):m<\omega\}
+            \]
+          and must cover $C_N$ as $\sigma$ is a winning strategy.
+
+          Let $\alpha \in C_N$. Then if $\alpha \in \sigma(C_{f(0)})$, we observe that $\alpha$ must be covered by $\tau$ in round $f(0)+1$. Otherwise $\alpha \in \sigma(C_{f(m)},C_{f(m+1)})=\sigma(C_{f(m)},C_{f(m)+1})$ for some $m$, and $\alpha$ must be covered by $\tau$ in round $f(m)+1$
+      \end{itemize}
+
+      Thus $\tau$ is a winning strategy.
+  \end{proof}
 
 
 
@@ -405,7 +476,11 @@
 
 
 
-  \newpage
+
+
+\newpage
+
+  \centerline{Rothberger}
 
   \begin{definition}
     $X$ is \textbf{Rothberger} if for all open covers $\mathcal{U}_0,\mathcal{U}_1,\dots$ there exist open sets $U_n\in \mathcal{U}_n$ such that $\{U_n:n<\omega\}$ is a cover of $X$.
