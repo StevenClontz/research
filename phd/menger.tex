@@ -403,66 +403,81 @@
   \centerline{Filling Games}
 
   \begin{definition}
-    The \textbf{filling game} $\fillgame{X}$ proceeds as follows: player $C$ chooses $C_0\in[X]^{\leq\omega}$ in the initial round, followed by $F$ choosing $F_0\in[C_0]^{<\omega}$. In round $n+1$, player $C$ chooses $C_{n+1}$ where $C_n\subseteq C_{n+1}\in[X]^{\leq\omega}$, and player $F$ replies with $F_{n+1}\in[C_{n+1}]^{<\omega}$. Player $F$ wins the game if $\bigcup_{n<\omega} F_n = \bigcup_{n<\omega} C_n$.
+    The \textbf{filling game} $\fillgame{J}$ on an ideal $J$ proceeds as follows: player $M$ chooses $M_0 \in \<J\>$, the $\sigma$-completion of $J$, in the initial round, followed by $N$ choosing $N_0\in J$. In round $n+1$, player $M$ chooses $M_{n+1}$ where $M_n\subseteq M_{n+1}\in\<J\>$, and player $N$ replies with $N_{n+1}\in J$. Player $N$ wins the game if $\bigcup_{n<\omega} N_n \supseteq \bigcup_{n<\omega} M_n$. (The sets in $J$ and $\<J\>$ are thought of as nowhere-dense and meager sets, respectively.)
 
-    The \textbf{strict filling game} $\sfillgame{X}$ proceeds analogously, with the added requirement that $C_n\subsetneq C_{n+1}$.
+    The \textbf{strict filling game} $\sfillgame{J}$ proceeds analogously, with the added requirement that $M_n\subsetneq M_{n+1}$.
   \end{definition}
 
   \begin{theorem}
-    $F\ktactwin{2}\sfillgame{\kappa} \Rightarrow F\kmarkwin{2}\fillgame{\kappa}$
+    $F\ktactwin{2}\sfillgame{J} \Rightarrow F\kmarkwin{2}\fillgame{J}$
   \end{theorem}
 
   \begin{proof}
-    Let $\sigma$ be a winning $2$-tactical strategy for $F$ in $\sfillgame{\kappa}$.
+    Enumerate the sets in $J$ as $A_\alpha$ for $\alpha<|J|$. For $M\in \<J\>$ and $n<\omega$, let $M+0=M$ and $M+n+1$ be the union of $M+n$ and the least $A_\alpha$ not contained in $M+n$.
 
-    For $C\in [\omega_1]^{\leq\omega}$ and $n<\omega$, let $C+n$ denote the superset of $C$ which also contains the $n$ least elements of $\omega_1\setminus C$, and let $C+\omega = \bigcup_{n<\omega} C + n$.
+    Let $\sigma$ be a winning $2$-tactical strategy for $N$ in $\sfillgame{\kappa}$, and assume $\sigma(M)\cup\sigma(M')\subseteq\sigma(M,M')$.
 
     We define a $2$-Markov strategy $\tau$ for $F$ in $\fillgame{\kappa}$ as follows:
 
       \[
-        \tau(C_0,0) = \sigma(C_0)
+        \tau(M_0,0) = \sigma(M_0)
       \]
       \[
-        \tau(C_n,C_{n+1},n+1) = \left\{
-      \begin{array}{ll}
-        \sigma(C_n)\cup \sigma(C_n,C_{n+1}) & C_n\subsetneq C_{n+1} \\
-        C_n \cap \left(\sigma(C_n) \cup \bigcup_{m<n} \sigma(C_n+m,C_n+m+1) \right) & C_n=C_{n+1}
-      \end{array}
-      \right.
+        \tau(M_{n},M_{n+1},n+1) = \left\{
+          \begin{array}{ll}
+            \sigma(M_{n},M_{n+1}) & \text{if } M_n\subsetneq M_{n+1} \\
+            \bigcup_{m\leq n}\sigma(M_n+m,M_{n+1}+m+1) & \text{otherwise}
+          \end{array}
+        \right.
       \]
 
-    Let $C_0 \subseteq C_1 \subseteq \dots$ be an attack by $C$ against $\tau$. There are two possible cases:
+    Let $M_0 \subseteq M_1 \subseteq \dots$ be an attack by $C$ against $\tau$. There are two possible cases:
 
       \begin{itemize}
         \item
-          Assume $C_n=C_N$ for all $n\geq N$.
+          Assume $M_n=M_N$ for all $n\geq N$.
 
           The collection produced by $\sigma$ versus the attack
             \[
-              C_N+0 \subsetneq C_N+1 \subsetneq \dots
+              M_N+0 \subsetneq M_N+1 \subsetneq \dots
             \] 
-          is 
-            \[
-              \{\sigma(C_N)\}\cup\{\sigma(C_N+m,C_N+m+1) : m<\omega\}
-            \]
-          and must cover $C_N$ as $\sigma$ is a winning strategy.
+          must cover $M_N$ as $\sigma$ is a winning strategy.
 
-          Let $\alpha \in C_N$. Then if $\alpha \in \sigma(C_N)$, we observe that $\alpha$ must be covered by $\tau$ in round $N+1$. Otherwise $\alpha \in \sigma(C_N+m,C_N+m+1)$ for some $m$, and $\alpha$ must be covered by $\tau$ in round $N+m+1$.
+          Let $x \in M_N$. If $x\in\sigma(M_N+0)$, then $x$ will be covered in round $N+1$ by 
+            \[
+              \tau(M_N,M_N,N+1)
+              \supseteq \sigma(M_N+0,M_N+1)
+              \supseteq \sigma(M_N+0)
+            \]
+
+          Otherwise, $x\in\sigma(M_N+n,M_N+n+1)$, and $x$ will be covered in round $N+n+1$ by 
+            \[
+              \tau(M_N,M_N,N+n+1)
+              \supseteq \sigma(M_N+n,M_N+n+1)
+            \]
 
         \item
-          Assume we may find $f(0)<f(1)<\dots$ such that $C_{f(m)}\subsetneq C_{f(m)+1}$ and $C_{f(m)+1}=C_{f(m+1)}$.
+          Otherwise we may find $0<f(0)<f(1)<\dots$ such that $M_{f(n)}\subsetneq M_{f(n)+1}=M_{f(n+1)}$.
 
           Then the collection produced by $\sigma$ versus the attack 
             \[
-              C_{f(0)}\subsetneq C_{f(1)} \subsetneq C_{f(2)} \dots
+              M_{f(0)}\subsetneq M_{f(1)} \subsetneq M_{f(2)} \dots
             \]
-          is 
-            \[
-              \{\sigma(C_{f(0)})\}\cup\{\sigma(C_{f(m)},C_{f(m+1)}):m<\omega\}
-            \]
-          and must cover $C_N$ as $\sigma$ is a winning strategy.
+          must cover $\bigcup_{n<\omega}M_n$ as $\sigma$ is a winning strategy.
 
-          Let $\alpha \in C_N$. Then if $\alpha \in \sigma(C_{f(0)})$, we observe that $\alpha$ must be covered by $\tau$ in round $f(0)+1$. Otherwise $\alpha \in \sigma(C_{f(m)},C_{f(m+1)})=\sigma(C_{f(m)},C_{f(m)+1})$ for some $m$, and $\alpha$ must be covered by $\tau$ in round $f(m)+1$
+          Let $x \in \bigcup_{n<\omega}M_n$. If $x\in\sigma(M_{f(0)})$, then $x$ will be covered by $\tau$ in round $f(0)+1$ by
+            \[
+              \tau(M_{f(0)},M_{f(0)+1},f(0)+1)
+              = \sigma(M_{f(0)},M_{f(0)+1})
+              \supseteq \sigma(M_{f(0)})
+            \]
+
+          Otherwise, $x\in\sigma(M_{f(n)},M_{f(n+1)})$, and $x$ will be covered by $\tau$ in round $f(n)+1$ by
+            \[
+              \tau(M_{f(n)},M_{f(n)+1},f(n)+1)
+              = \sigma(M_{f(n)},M_{f(n)+1})
+              = \sigma(M_{f(n)},M_{f(n+1)})
+            \]
       \end{itemize}
 
       Thus $\tau$ is a winning strategy.

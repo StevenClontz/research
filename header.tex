@@ -42,10 +42,10 @@
 
 
 \pagestyle{fancy}
-\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0pt}
-\chead{\tiny \jobname.tex -- Updated on \today}
-\lfoot{http://github.com/StevenClontz/Research}
+\lfoot{\small \jobname.tex -- Updated on \today}
+\chead{\small http://github.com/StevenClontz/Research}
 \rfoot{\thepage}
 \cfoot{}
 
@@ -75,8 +75,11 @@
 \newcommand{\rothgame}[1]{Cov_{C,S}(#1)}
 \newcommand{\altrothgame}[1]{Cov_{P,O}(#1)}
 
-\newcommand{\fillgame}[1]{Fill^{\subseteq}_{C,F}(#1)}
-\newcommand{\sfillgame}[1]{Fill^{\subsetneq}_{C,F}(#1)}
+\newcommand{\fillgame}[1]{Fill^{\subseteq}_{M,N}(#1)}
+\newcommand{\sfillgame}[1]{Fill^{\subsetneq}_{M,N}(#1)}
+
+\newcommand{\kfillgame}[1]{Fill^{\subseteq}_{C,F}(#1)}
+\newcommand{\ksfillgame}[1]{Fill^{\subsetneq}_{C,F}(#1)}
 
 \newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
 \newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}

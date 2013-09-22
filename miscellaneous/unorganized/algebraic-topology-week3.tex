@@ -1,0 +1,25 @@
+\input{../../header.tex}
+
+\begin{document}
+
+  \begin{question}
+    Week 3 (1b) 
+
+    Show that there is no no-trivial chain $\gamma\in C_2(\mc{S}(E),\mathbb{Z})$ whose boundary is in $A$.
+  \end{question}
+
+  \centerline{\includegraphics[width=0.7\linewidth]{alg-top-2013-09-18.pdf}}
+
+  \begin{proof}
+    Assume $\gamma$ has boundary completely in $A$. Then $\partial(\gamma)=\sum_{i<4} k_i[v_i,v_{i+1(\text{mod}4)}]$.
+
+    We claim $\gamma(\sigma_i) = 0$ for $4\leq i<8$. This can be verified by observing that giving the faces $\sigma_4,\dots,\sigma_7$ nonzero value in $\gamma$ results in non-zero boundary values for the edges on the inner square.
+
+    Next, we observe that since the values for the $45^\circ$ degree diagonals $[v_i,v_{i+4}]$ ($i<4$) in the boundary of $\gamma$ are each $0$, that the two faces at each edge, $\sigma_0$:$\sigma_7$, $\sigma_1$:$\sigma_3$, etc., must be inversely included in $\gamma$. Thus $\gamma(\sigma_0)=-\gamma(\sigma_7)=0$, $\gamma(\sigma_1)=-\gamma(\sigma_4)=0$, etc.
+
+    Therefore $\gamma(\sigma_i)=0$ for $0\leq i<8$.
+  \end{proof}
+
+\end{document}
+
+
