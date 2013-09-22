@@ -405,11 +405,11 @@
   \begin{definition}
     The \textbf{filling game} $\fillgame{J}$ on an ideal $J$ proceeds as follows: player $M$ chooses $M_0 \in \<J\>$, the $\sigma$-completion of $J$, in the initial round, followed by $N$ choosing $N_0\in J$. In round $n+1$, player $M$ chooses $M_{n+1}$ where $M_n\subseteq M_{n+1}\in\<J\>$, and player $N$ replies with $N_{n+1}\in J$. Player $N$ wins the game if $\bigcup_{n<\omega} N_n \supseteq \bigcup_{n<\omega} M_n$. (The sets in $J$ and $\<J\>$ are thought of as nowhere-dense and meager sets, respectively.)
 
-    The \textbf{strict filling game} $\sfillgame{J}$ proceeds analogously, with the added requirement that $M_n\subsetneq M_{n+1}$.
+    The \textbf{strict filling game} $\sfillgame{J}$ proceeds analogously, with the added requirement that $M_n\subsetneq M_{n+1}$. This game has been studied by Scheepers.
   \end{definition}
 
   \begin{theorem}
-    $F\ktactwin{2}\sfillgame{J} \Rightarrow F\kmarkwin{2}\fillgame{J}$
+    $N\ktactwin{2}\sfillgame{J} \Rightarrow N\kmarkwin{2}\fillgame{J}$
   \end{theorem}
 
   \begin{proof}
@@ -483,7 +483,25 @@
       Thus $\tau$ is a winning strategy.
   \end{proof}
 
+  \begin{example}
+    There is a free ideal $J$ such that $N\not\ktactwin{2}\sfillgame{J}$ but $N\kmarkwin{2}\fillgame{J}$.
+  \end{example}
 
+  \begin{proof}
+    Result based on ``Meager nowhere dense games'' Prop 9 by Scheepers. Assume $\mathbb{R}$ has the usual Euclidean topology.
+
+    Choose $A\subseteq\mathbb{R}$ such that $|A|=\omega$ and $A$ is meager but not nowhere dense. Then choose $V\subseteq\mathbb{R}$ such that $|V|=2^\omega$, $V$ is meager, and $V$ is disjoint from $A$. Assume $A=\{a_n:n<\omega\}$.
+
+    Certainly, if $J$ is the collection of nowhere dense subsets of $A\cup V$, then $F\kmarkwin{2}\fillgame{J}$. In fact, since $A\cup V$ is meager, $F\prewin\fillgame{J}$. 
+
+    However, we may show that $F\not\ktactwin{2}\sfillgame{J}$ | let $\sigma$ be a $2$-tactical strategy such that $\sigma(M)\subseteq\sigma(M,M')$.
+
+    We may define $K_n$ to be the collection of pairs of comparable sets $\{B,C\}$ such that $B\subsetneq C$ and $n$ is the least integer where $a_n \in A \setminus \sigma(A\cup B,A\cup C)$.
+
+    By Cor 28 of Scheeper's ``A partition relation for partially ordered sets'', for every partition $\{K_n:n<\omega\}$ of the comparable pairs in $[\pow{V}]^2$ there is some $n'<\omega$ and branch $C_0\subsetneq C_1\subsetneq \dots\subsetneq V$ where $\{C_m,C_{m+1}\}\in K_{n'}$ for all $m<\omega$.
+
+    Then $\sigma$ may be countered by the attack $A\cup C_0, A\cup C_1, \dots$, since $a_{n'} \in A \setminus \sigma(A\cup C_m,A\cup C_{m+1})$ for all $m<\omega$ and thus is never covered.
+  \end{proof}
 
 
 
