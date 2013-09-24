@@ -494,7 +494,7 @@
 
     Certainly, if $J$ is the collection of nowhere dense subsets of $A\cup V$, then $F\kmarkwin{2}\fillgame{J}$. In fact, since $A\cup V$ is meager, $F\prewin\fillgame{J}$. 
 
-    However, we may show that $F\not\ktactwin{2}\sfillgame{J}$ | let $\sigma$ be a $2$-tactical strategy such that $\sigma(M)\subseteq\sigma(M,M')$.
+    By Prop 9 in Scheeper's paper, $F\not\ktactwin{2}\sfillgame{J}$ immediately. A proof follows: let $\sigma$ be a $2$-tactical strategy such that $\sigma(M)\subseteq\sigma(M,M')$.
 
     We may define $K_n$ to be the collection of pairs of comparable sets $\{B,C\}$ such that $B\subsetneq C$ and $n$ is the least integer where $a_n \in A \setminus \sigma(A\cup B,A\cup C)$.
 
@@ -502,6 +502,54 @@
 
     Then $\sigma$ may be countered by the attack $A\cup C_0, A\cup C_1, \dots$, since $a_{n'} \in A \setminus \sigma(A\cup C_m,A\cup C_{m+1})$ for all $m<\omega$ and thus is never covered.
   \end{proof}
+
+  \begin{theorem}
+    $F\kmarkwin{k}\kfillgame{\kappa} \Rightarrow F\kmarkwin{k}\mengame{\oneptlind{\kappa}}$
+  \end{theorem}
+
+  \begin{proof}
+    Assume $\sigma$ is a winning $k$-Mark\"ov strategy for $F\kmarkwin{k}\kfillgame{\kappa}$, where 
+      \[
+        \sigma(C_0,0)\subseteq
+        \dots \subseteq
+        \sigma(\mc C_0,\dots,\mc C_{k-2},k-2) \subseteq
+        \sigma(C_0,C_1,\dots,C_{k-1},k-1)
+      \]
+    for all $n<\omega$.
+
+    For each open cover $\mc U$ of $\oneptlind{\kappa}$, let $C(\mc U)$ be a countable set such that $\oneptlind{\kappa}\setminus C(\mc U)$ is in a refinement of $\mc U$. We define $\tau^*$ as follows:
+
+      \[
+        \tau^*(\mc U_0,0) =
+        \oneptlind{\kappa}\setminus C(\mc U_0)
+      \]
+      \[
+        \tau^*(\mc U_0,\mc U_1,1) =
+        \dots =
+        \tau^*(\mc U_0,\dots,\mc U_{k-2},k-2) =
+        \emptyset
+      \]
+      \[
+        \tau^*(\mc U_0,\dots,\mc U_{k-1},n+k-1) = 
+        \sigma(C(\mc U_0),\dots,C(\mc U_{k-1}),n+k-1)
+      \]
+
+    If $\tau$ yields legal open sets covering $\tau^*$, then we claim $\tau$ is a winning strategy. Note that for any attack $\mc U_0,\mc U_1,\dots$ that $\tau$ covers $\oneptlind{\kappa}\setminus C(\mc U_0)$ in the initial round, and also covers
+      \[
+        \bigcup_{n<\omega}\sigma(C(\mc U_n),\dots,C(\mc U_{n+k-1}),n+k-1) \supseteq
+        \bigcup_{n<\omega} C(\mc U_n) \supseteq
+        C(\mc U_0)
+      \]
+    by the game's end.
+  \end{proof}
+
+
+
+
+
+
+
+
 
 
 
