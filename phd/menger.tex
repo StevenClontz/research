@@ -330,7 +330,7 @@
   \begin{definition}
     Let $\mc U$ be a cover of $X$. We say $C\subseteq X$ is $\mc U$-compact if there exists a finite subcover of $\mc U$ which covers $C$.
 
-    Let $\mathfrak{C}$ collect all the open covers of $X$. We say $X$ is \scish if there exists a function $f:\mathfrak{C}\times\omega\to\mc{P}(X)$ such that:
+    Let $\mathfrak{C}$ collect all the open covers of $X$. We say $X$ is \scish~if there exists a function $f:\mathfrak{C}\times\omega\to\mc{P}(X)$ such that:
       \begin{itemize}
         \item $f(\mc{V},n)$ is $\mc{V}$-compact
         \item $f(\mc{V},n)\cap f(\mc{V},n+1) = \emptyset$
@@ -343,10 +343,14 @@
       \end{itemize}
   \end{definition}
 
-  Obviously $\sigma$-compact implies \scish implies Lindel\"of. We shall see that the non-$\sigma$-compact space $\omega_1^\dagger$ is \scish.
+  Obviously $\sigma$-(relatively compact) implies \scish~implies Lindel\"of. We shall see that the non-$\sigma$-(relatively compact) space $\omega_1^\dagger$ is \scish.
 
-   \begin{lemma}
-    There exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\beta\rest\alpha =^* f_\alpha\] that is, $f_\beta\rest\alpha$ and $f_\alpha$ agree on all but finitely many ordinals. (In addition, the range of each $f_\alpha$ is co-infinite.)
+  \begin{definition}
+    For two functions $f,g$ we say $f$ is \textbf{$\mu$-almost compatible} with $g$ ($f\al\perp_\mu g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\mu$. If $\mu=\omega$ then we say $f,g$ are \textbf{almost compatible} ($f\al\perp g$).
+  \end{definition}
+
+  \begin{lemma}\label{kunlem}
+    For each $\alpha<\omega_1$, there exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\alpha \al\perp f_\beta\] that is, $f_\alpha$ and $f_\beta\rest\alpha$ agree on all but finitely many ordinals. In addition, the range of each $f_\alpha$ is co-infinite.
   \end{lemma}
 
   \begin{proof}
@@ -354,7 +358,7 @@
 
     We begin with the empty function $f_0:0\to\omega_1$ which satisfies the hypothesis, and assume $f_\alpha$ is defined by induction. Let $f_{\alpha+1} = f_\alpha \cup \{\<\alpha,n\>\}$ where $n$ is not defined for $f_\alpha$, and this satisfies the hypothesis.
 
-    Finally, suppose $\gamma$ is the limit of $\alpha_0,\alpha_1,\dots$, and $f_\alpha$ is defined for $\alpha<\gamma$. Let $g_0=f_{\alpha_0}$, and define $g_n : \alpha_n \to \omega$ to be injective, $g_n=^* f_{\alpha_n}$, and $g_{n+1} \rest \alpha_n = g_n$. $g = \bigcup_{n<\omega} g_n$ is an injective function from $\gamma \to \omega$ and $g =^* f_\alpha$ for $\alpha <\gamma$, but the range need not be coinfinte. So let
+    Finally, suppose $\gamma$ is the limit of $\alpha_0,\alpha_1,\dots$, and $f_\alpha$ is defined for $\alpha<\gamma$. Let $g_0=f_{\alpha_0}$, and assuming $g_n\al\perp f_{\alpha_n}$ with coinfinite range, define $g_{n+1}:\alpha_{n+1}\to\omega$ so that $g_{n+1}\rest\alpha_n=g_n$ and $g_{n+1}\rest(\alpha_{n+1}\setminus\alpha_n)\al\perp f_{\alpha_{n+1}}$ with coinfinite range. Then $g=\bigcup_{n<\omega} g_n$ is an injective function from $\gamma \to \omega$ and $g \al\perp f_\alpha$ for $\alpha <\gamma$, but the range need not be coinfinite. So let
     \[
       f_\gamma(\beta) = \left\{
       \begin{array}{ll}
@@ -363,7 +367,7 @@
       \end{array}
       \right.
     \]
-    which frees up $\{g(\alpha_{2n+1}):n<\omega\}$ from the range of $f_\gamma$, but still agrees with all but finitely many points compared to previous $f$'s.
+    which frees up $\{g(\alpha_{2n+1}):n<\omega\}$ from the range of $f_\gamma$, and allows $f_\gamma\al\perp f_\alpha$.
   \end{proof}
 
   \begin{theorem}
@@ -371,7 +375,7 @@
   \end{theorem}
 
   \begin{proof}
-    Take the injective funcions $f_\alpha$ from Kunen's lemma such that $f_\alpha\rest\beta =^* f_\beta$. Let $\gamma(\mc V)$ identify the least ordinal such that $[\gamma(\mc V),\omega_1)\cup\{\infty\}$ is in a refinement of $\mc U$. Then $f$ defined by $f(\mc V,0)=[\gamma(\mc V),\omega_1)\cup\{\infty\}$ and $f(\mc{V},n+1) = f_{\gamma(\mc V)}^{-1}(\{n\})$ is easily seen to witness the property.
+    Take the injective funcions $f_\alpha$ from Kunen's lemma such that $f_\alpha \al\perp f_\beta$. For each open cover $\mc V$ of $\oneptlind{\omega_1}$ let $\gamma(\mc V)$ identify the least ordinal such that $[\gamma(\mc V),\omega_1)\cup\{\infty\}$ is in a refinement of $\mc V$. Then $f$ defined by $f(\mc V,0)=[\gamma(\mc V),\omega_1)\cup\{\infty\}$ and $f(\mc{V},n+1) = f_{\gamma(\mc V)}^{-1}(\{n\})$ is easily seen to witness the property.
   \end{proof}
 
   \begin{theorem}
@@ -396,6 +400,126 @@
   \begin{corollary}
     $F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
   \end{corollary}
+
+  \begin{definition} 
+    The statement $S(\kappa,\mu,\lambda)$ due to Scheepers is shorthand for the following: there exist injective functions $f_A:A\to\lambda$ for each $A\in[\kappa]^\mu$ such that $f_A\al\perp_\mu f_B$ for all $A,B\in[\kappa]^\mu$.
+  \end{definition}
+
+  \begin{theorem}
+    $S(\kappa,\omega,\omega)$ implies $\oneptlind{\kappa}$ is \scish.
+  \end{theorem}
+
+  \begin{proof}
+    Take the injective funcions $f_A:A\to\omega$ witnessing $S(\kappa,\omega,\omega)$. For each cover $\mc V$ of $\oneptlind{\kappa}$ let $A(\mc V)$ define a set such that $\oneptlind{\kappa}\setminus A(\mc V)$ is in a refinement of $\mc V$. Then define $f$ by $f(\mc V,0)=\oneptlind{\kappa}\setminus A(\mc V)$ and $f(\mc{V},n+1) = f_{A(\mc V)}^{-1}(\{n\})$.
+
+    \begin{itemize}
+      \item $f(\mc{V},n)$ is $\mc{V}$-compact by definition.
+      \item $f(\mc{V},n)\cap f(\mc{V},n+1) = \emptyset$ by definition.
+      \item $\bigcup_{n<\omega}f(\mc{V},n)=X$ by definition.
+      \item Note that as $f(\mc{U},p+1)=f^{-1}_{A(\mc U)}(\{p\})$, $f(\mc{V},p+1)=f^{-1}_{A(\mc V)}(\{p\})$, and $f_{A(\mc U)}\al\perp f_{A(\mc V)}$, the set
+          \[
+            \left(\bigcup_{p<\omega} \Big(f(\mc{U},p+1)\setminus f(\mc{V},p+1)\Big) 
+            \setminus A(\mc{U})\right)
+            \setminus A(\mc{V})
+          \] 
+        is finite.
+
+        Thus the set
+          \[
+            g(\mc{U},\mc{V},n+1) = \bigcup_{p\geq n} \Big(f(\mc{U},p+1)\setminus f(\mc{V},p+1)\Big)\setminus \bigcup_{m\leq n}f(\mc{U},m+1)
+          \]
+        is $\mc{V}$-compact.
+    \end{itemize}
+  \end{proof}
+
+  \begin{corollary}
+    $S(\kappa,\omega,\omega)$ implies $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$.
+  \end{corollary}
+
+  \begin{definition}
+    A finite partial function $p$ from $A$ to $B$ has a domain which is a finite subset of $A$ and a range which is a finite subset of $B$. Let the set of all finite partial functions from $A$ to $B$ be denoted by $Fn(A,B)$.
+
+    Then let $Fn^2(\mc A,B)\subset Fn(\mc A,Fn(\bigcup \mc A,B))$ such that for each $p\in Fn^2(\mc A,B)$, $p(A)=p_A\in Fn(A,B)$.
+  \end{definition}
+
+  \begin{definition}
+    Let $\pok\subset Fn^2([\kappa]^\omega,\omega)$ be such that each $p_A$ is injective, and give it the partial order $\leq$ defined by $q\leq p$ if and only if:
+          \begin{itemize}
+            \item $\dom(q)\supseteq\dom(p)$
+            \item For each $A\in\dom(p)$, $q_A\supseteq p_A$
+            \item For each $A,B\in\dom(p)$, if $p_A$ and $p_B$ are not defined for some $\alpha\in A\cap B$, but $q_A$ is, then $q_B$ is also defined for $\alpha$ and $q_A(\alpha)=q_B(x)$. That is, 
+              \[
+                \alpha\in\dom(q_A)\setminus(\dom(p_A)\cup\dom(p_B))
+                \Rightarrow
+                \alpha\in\dom(q_B) \text{ and } q_A(x)=q_B(x)
+              \]
+          \end{itemize}
+  \end{definition}
+
+  \begin{lemma}
+    $\pok$ has property $K$ (and thus is c.c.c.). That is, let $P\subseteq\pok$ be uncountable: there is an uncountable $Q\subseteq P$ such that points in $Q$ are pairwise compatible.
+  \end{lemma}
+
+  \begin{proof}
+    If $|\{\dom(p):p\in P\}|>\omega$, we will use the $\Delta$-system lemma to find an uncountable $P'\subseteq P$ such that for $p,q\in P'$, $\dom(p)\cap\dom(q)=\mc R$. Otherwise, we may fix an uncountable $P'\subseteq P$ such that for $p,q\in P'$, $\dom(p)=\dom(q)=\mc R$.
+
+    Similarly, for each $A\in\mc{R}$ we may find that $|\{\dom(p_A):p\in P'\}|>\omega$, and we can use the $\Delta$-system lemma to find an uncountable $P''\subseteq P'$ where $\dom(p_A)\cap\dom(q_A)=A'$ for all $p,q\in P''$, or otherwise we may find $P''\subseteq P'$ where $\dom(p_A)=\dom(q_A)=A'$ for all $p,q\in P''$.
+
+    Finally, for each $A\in\mc R$ and $\alpha\in A'$, we may find $n_{A,\alpha}$ such that there are uncountable $p\in P''$ with $p_A(\alpha)=n_{A,\alpha}$, and thus we may choose $Q\subseteq P''$ to be an uncountable collection such that for $p,q\in Q$, $p_A=q_A$ for $A\in\mc R$.
+
+    Then it is easily verified that $p\cup q\in\pok$ and $p\cup q\leq p,q$ for all $p,q\in Q$.
+  \end{proof}
+
+  \begin{proposition}
+    For $A\in[\kappa]^\omega$ and $\alpha\in A$, the sets 
+      \[
+        D_A = \{p\in\pok: A\in\dom(p)\}
+      \]
+      \[
+        D_{A,\alpha} = \{p\in\pok: A\in\dom(p), \alpha\in\dom(p_A)\}
+      \]
+    are dense in $\pok$.
+  \end{proposition}
+
+  \begin{proof}
+    Let $A\in[\kappa]^\omega$ and $p\in\pok$. Either $p'=p\in D_A$, or $p'=p\cup\{\<A,\emptyset\>\}\in D_A$ with $p'\leq p$.
+
+    Let $\alpha\in A$. Either $p''=p'\in D_{A,\alpha}$, or we may find $n<\omega$ not in the range of $p'_A$, and then $p''=p'\setminus\{\<A,p'_A\>\}\cup\{\<A,p'_A\cup\{\<\alpha,n\>\}\>\} \in D_{A,\alpha}$ with $p''\leq p'\leq p$.
+  \end{proof}
+
+  \begin{theorem}
+    $S(\kappa,\omega,\omega)$ is consistent with ZFC for any cardinal $\kappa$.
+  \end{theorem}
+
+  \begin{proof}
+    If $\kappa\leq\omega_1$, then $S(\kappa,\omega,\omega)$ is a theorem of ZFC - use Lemma \ref{kunlem}.
+
+    Assume $\kappa>\omega_1$; we adapt a forcing argument due to Scheepers. Let $M$ be a countable transitive submodel of ZFC. Consider the c.c.c. poset $\pok$ realized in the model $M$. Let $G$ be a $\pok$-generic filter over $M$.
+
+    We now work in the smallest model $M[G]$ extending $M$ and containing $G$. Observe that by (Kunen), $M[G]$ preserves cofinalities and cardinals.
+
+    For each $A\in [\kappa]^\omega$, note $[\kappa]^\omega\cap M$ is cofinal in $[\kappa]^\omega$, so let $A'\supseteq A$ be in $[\kappa]^\omega\cap M$ and let $f_A=\bigcup_{p\in G}p_{A'}\rest A$. Since $G$ is a $\pok$-generic filter over $M$, it is easily verified (considering the dense sets $D_{A,\alpha}$) that $f_A$ is an injective function from $A$ into $\omega$.
+
+    In addition, for $A,B\in [\kappa]^\omega\cap M$, let $p\in G\cap D_A\cap D_B$. For all $q\leq p$ it follows that $\{\alpha\in \dom(q_A)\cap \dom(q_B): q_A(\alpha)\not= q_B(\alpha)\} \subseteq \dom(p_A)\cup\dom(p_B)$. Thus $|\{\alpha\in A\cap B: f_A(\alpha)\not= f_B(\alpha)\}|<\omega$ and $f_A\al\perp f_B$ for $A,B\in [\kappa]^\omega\cap M$, and it's immediate that $f_A\al\perp f_B$ for $A,B\in[\kappa]^\omega$ as well.
+
+    The $f_A$ witness $S(\kappa,\omega,\omega)$ relativized to $M[G]$.
+  \end{proof}
+
+  As a result of this forcing for $\kappa>\omega_1$, $CH$ cannot hold in $M[G]$ (Scheepers points out that $\omega_1<\kappa\leq 2^\omega$). It is an open question whether $S(\kappa,\omega,\omega)$ is a theorem of ZFC+CH or ZFC. Nonetheless,
+
+  \begin{corollary}
+    $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$ is consistent with ZFC.
+  \end{corollary}
+
+
+
+
+
+
+
+
+
+
 
 
 \newpage
@@ -503,45 +627,46 @@
     Then $\sigma$ may be countered by the attack $A\cup C_0, A\cup C_1, \dots$, since $a_{n'} \in A \setminus \sigma(A\cup C_m,A\cup C_{m+1})$ for all $m<\omega$ and thus is never covered.
   \end{proof}
 
-  \begin{theorem}
-    $F\kmarkwin{k}\kfillgame{\kappa} \Rightarrow F\kmarkwin{k}\mengame{\oneptlind{\kappa}}$
-  \end{theorem}
+  % I am error
+  % \begin{theorem}
+  %   $F\kmarkwin{k}\kfillgame{\kappa} \Rightarrow F\kmarkwin{k}\mengame{\oneptlind{\kappa}}$
+  % \end{theorem}
 
-  \begin{proof}
-    Assume $\sigma$ is a winning $k$-Mark\"ov strategy for $F\kmarkwin{k}\kfillgame{\kappa}$, where 
-      \[
-        \sigma(C_0,0)\subseteq
-        \dots \subseteq
-        \sigma(\mc C_0,\dots,\mc C_{k-2},k-2) \subseteq
-        \sigma(C_0,C_1,\dots,C_{k-1},k-1)
-      \]
-    for all $n<\omega$.
+  % \begin{proof}
+  %   Assume $\sigma$ is a winning $k$-Mark\"ov strategy for $F\kmarkwin{k}\kfillgame{\kappa}$, where 
+  %     \[
+  %       \sigma(C_0,0)\subseteq
+  %       \dots \subseteq
+  %       \sigma(\mc C_0,\dots,\mc C_{k-2},k-2) \subseteq
+  %       \sigma(C_0,C_1,\dots,C_{k-1},k-1)
+  %     \]
+  %   for all $n<\omega$.
 
-    For each open cover $\mc U$ of $\oneptlind{\kappa}$, let $C(\mc U)$ be a countable set such that $\oneptlind{\kappa}\setminus C(\mc U)$ is in a refinement of $\mc U$. We define $\tau^*$ as follows:
+  %   For each open cover $\mc U$ of $\oneptlind{\kappa}$, let $C(\mc U)$ be a countable set such that $\oneptlind{\kappa}\setminus C(\mc U)$ is in a refinement of $\mc U$. We define $\tau^*$ as follows:
 
-      \[
-        \tau^*(\mc U_0,0) =
-        \oneptlind{\kappa}\setminus C(\mc U_0)
-      \]
-      \[
-        \tau^*(\mc U_0,\mc U_1,1) =
-        \dots =
-        \tau^*(\mc U_0,\dots,\mc U_{k-2},k-2) =
-        \emptyset
-      \]
-      \[
-        \tau^*(\mc U_0,\dots,\mc U_{k-1},n+k-1) = 
-        \sigma(C(\mc U_0),\dots,C(\mc U_{k-1}),n+k-1)
-      \]
+  %     \[
+  %       \tau^*(\mc U_0,0) =
+  %       \oneptlind{\kappa}\setminus C(\mc U_0)
+  %     \]
+  %     \[
+  %       \tau^*(\mc U_0,\mc U_1,1) =
+  %       \dots =
+  %       \tau^*(\mc U_0,\dots,\mc U_{k-2},k-2) =
+  %       \emptyset
+  %     \]
+  %     \[
+  %       \tau^*(\mc U_0,\dots,\mc U_{k-1},n+k-1) = 
+  %       \sigma(C(\mc U_0),\dots,C(\mc U_{k-1}),n+k-1)
+  %     \]
 
-    If $\tau$ yields legal open sets covering $\tau^*$, then we claim $\tau$ is a winning strategy. Note that for any attack $\mc U_0,\mc U_1,\dots$ that $\tau$ covers $\oneptlind{\kappa}\setminus C(\mc U_0)$ in the initial round, and also covers
-      \[
-        \bigcup_{n<\omega}\sigma(C(\mc U_n),\dots,C(\mc U_{n+k-1}),n+k-1) \supseteq
-        \bigcup_{n<\omega} C(\mc U_n) \supseteq
-        C(\mc U_0)
-      \]
-    by the game's end.
-  \end{proof}
+  %   If $\tau$ yields legal open sets covering $\tau^*$, then we claim $\tau$ is a winning strategy. Note that for any attack $\mc U_0,\mc U_1,\dots$ that $\tau$ covers $\oneptlind{\kappa}\setminus C(\mc U_0)$ in the initial round, and also covers
+  %     \[
+  %       \bigcup_{n<\omega}\sigma(C(\mc U_n),\dots,C(\mc U_{n+k-1}),n+k-1) \supseteq
+  %       \bigcup_{n<\omega} C(\mc U_n) \supseteq
+  %       C(\mc U_0)
+  %     \]
+  %   by the game's end.
+  % \end{proof}
 
 
 
@@ -606,7 +731,8 @@
       \begin{enumerate}[(a)]
         \item $X$ is Rothberger
         \item $X$ is scattered
-        \item $O\win\rothgame{X}$
+        \item $S\win\rothgame{X}$
+        \item $C\not\win\rothgame{X}$
       \end{enumerate}
   \end{theorem}
 
@@ -617,7 +743,7 @@
 
     We claim that if $S$ follows this strategy, player $S$ will observe that the uncovered subspace $Y\subseteq X$ is empty during some round. If not, consider the $x_n$ chosen by $Y$ by the end of the game - the rank of each point within $X$ is nonincreasing, and does not contain a constant final sequence, contradiction.
 
-    Of course, $(c)\Rightarrow(a)$ is trivial.
+    Of course, $(c)\Rightarrow(a)$ is trivial, and $(a)\Leftrightarrow(d)$.
   \end{proof}
 
   \begin{definition}
@@ -703,10 +829,35 @@
 
   \end{proof}
 
+  \begin{definition}
+    Let $\mc{N}(x)$ be the $\textbf{neighborhood network}$ of $x$, that is, the collection of all neighborhoods of $x$.
+  \end{definition}
+
+  \begin{definition}
+    A topological space $X$ is \textbf{almost countable} if there exist $x_n\in X$ for each $n<\omega$ such that $X=\bigcup_{n<\omega}\bigcap\mc{N}(x_n)$.
+  \end{definition}
+
   \begin{theorem}
-  For any $T_1$ space $X$, the following are equivalent:
+    For any space $X$, the following are equivalent:
+    \begin{itemize}
+      \item $S\markwin\rothgame{X}$ 
+      \item $P\prewin\altrothgame{X}$
+      \item $X$ is almost countable
+    \end{itemize}
+  \end{theorem}
+
+  \begin{proof}
+    If there exist $x_n\in X$ for each $n<\omega$ such that $X=\bigcup_{n<\omega}\bigcap\mc{N}(x_n)$, then let $\sigma(n)=x_n$ be a predetermined strategy for $P$ in $\altrothgame{X}$. For any neighborhoods $O_n$ of $x_n$ chosen by $O$ to attack $\sigma$, note that $\bigcup_{n<\omega}O_n\supseteq\bigcup_{n<\omega}\bigcap\mc{N}(x_n)=X$ results in a win for $P$.
+
+    Likewise, if for each sequence $x_n \in X$ there is $x\in X$ with $x\not\in \bigcup_{n<\omega}\bigcap\mc{N}(x_n)$, then for a fixed strategy $\sigma(n)$ for $P$, $O$ may counter $\sigma$ by choosing $O_n\in\mc{N}(x_n)$ which misses $x$ during each round, causing $\sigma$ to lose.
+  \end{proof}
+
+  \begin{theorem}
+    For any $T_1$ space $X$, the following are equivalent:
     \begin{itemize}
       \item $S\markwin\rothgame{X}$
+      \item $P\prewin\altrothgame{X}$
+      \item $X$ is almost countable
       \item $|X|\leq\omega$
     \end{itemize}
   \end{theorem}
@@ -719,25 +870,27 @@
     So let $x_n\in X$ be chosen such that for each open neighborhood $U$ of $x_n$, there is an open cover $\mc U$ such that $\sigma(\mc U,n)=U$. Then if $x\not=\{x_n : n<\omega\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $U_n$ which contains $x_n$ but not $x$, and then choose $\mc U_n$ such that $\sigma(\mc U_n,n)=U_n$.
   \end{proof}
 
-  % \begin{example}
-  %   For the one-point Lindel\"ofication $\oneptlind{\omega_1}$ (a $T_2$ space), $S\win\rothgame{\oneptlind{\omega}}$, but $S\not\kmarkwin{k}\rothgame{X}$ for any $k$.
-  % \end{example}
-
   \begin{example}
-    Let $X=\omega_1\cup\{\infty\}$ be a ``weak Lindel\"ofication'' of $\omega_1$ such that open neighborhoods of $\infty$ contain the complement of $\omega$. This space is $T_0$ (provided the topology on $\omega_1$ is) but not $T_1$, and note that $S\markwin\rothgame{X}$ and $|X|>\omega$.
+    Let $X=\omega_1\cup\{\infty\}$ be a ``weak Lindel\"ofication'' of discrete $\omega_1$ such that open neighborhoods of $\infty$ contain $\omega_1\setminus\omega$. This space is $T_0$ but not $T_1$, and note that $S\markwin\rothgame{X}$ and $|X|>\omega$.
   \end{example}
 
   \begin{theorem}
     The following are equivalent for points-$G_\delta$ $X$:
       \begin{enumerate}[(a)]
         \item $S\win\rothgame{X}$
-        \item $S\kmarkwin{k}\rothgame{X}$
+        \item $P\win\altrothgame{X}$
+        \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
+        \item $S\markwin\rothgame{X}$
+        \item $P\prewin\altrothgame{X}$
+        \item $X$ is almost countable
         \item $|X|\leq\omega$
       \end{enumerate}
   \end{theorem}
 
   \begin{proof}
-    $(c)\Rightarrow(b)\Rightarrow(a)$ are all trivial. Galvin has shown $(a) \Leftrightarrow P\win\altrothgame{X} \Rightarrow (c)$ in \textit{Indeterminacy}, but a direct proof of $(a)\Rightarrow(c)$ follows. Let $\sigma$ be a strategy for $S$ in $\rothgame{X}$.
+    % $(c)\Rightarrow(b)\Rightarrow(a)$ are all trivial. Galvin has shown $(a) \Leftrightarrow P\win\altrothgame{X} \Rightarrow (c)$ in \textit{Indeterminacy}, but a direct proof of $(a)\Rightarrow(c)$ follows. 
+
+    Due to Galvin. Let $\sigma$ be a strategy for $S$ in $\rothgame{X}$.
 
     Let $G_{x,m}$ designate open sets such that $\{x\}=\bigcap_{m<\omega}G_{x,m}$ for all $x\in X$.
 
@@ -746,12 +899,51 @@
     Thus $C$ may find points $x_s$ such that for each $m<\omega$, there exists an open cover $\mc U_{s\concat\<m\>}$ where $\sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U_{s\concat\<m\>})=G_{x_s,m}$. Then if $x\not=\{x_s : s\in\omega^{<\omega}\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $f(n)$ so that $x\not\in G_{x_{f\rest n},f(n)}$, and then choose $\mc U_{f\rest n\concat\<f(n)\>}$ such that $\sigma(\mc U_{f\rest 1},\dots,\mc U_{f\rest n},\mc U_{f\rest n\concat\<f(n)\>})=G_{x_{f\rest n},f(n)}$.
   \end{proof} 
 
-  \begin{question}
-    $S\kmarkwin{2}\rothgame{\oneptcomp{\omega_1}}$ or $S\kmarkwin{2}\rothgame{\oneptlind{\omega_1}}$?
-  \end{question}
+  \begin{corollary}
+    The following are equivalent for compact points-$G_\delta$ $X$:
+      \begin{enumerate}[(a)]
+        \item $S\win\rothgame{X}$
+        \item $P\win\altrothgame{X}$
+        \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
+        \item $S\markwin\rothgame{X}$
+        \item $P\prewin\altrothgame{X}$
+        \item $X$ is almost countable
+        \item $|X|\leq\omega$
+        \item $C\not\win\rothgame{X}$
+        \item $O\not\win\altrothgame{X}$
+        \item $X$ is Rothberger
+        \item $X$ is scattered
+      \end{enumerate}
+  \end{corollary}
 
-  \begin{question}
-    $S\kmarkwin{2}\rothgame{X}\Leftrightarrow S\kmarkwin{k}\rothgame{X}$?
-  \end{question}
+  \begin{definition}
+    The game $\recallgame{m}{\kappa}$ proceeds as follows: during round $0$, player $F$ chooses $F_0\in[\kappa]^m$, followed by player $S$ choosing $x_0\in F_0\cup\{\infty\}$. During round $n+1$, $F$ chooses $F_{n+1}\in[\kappa]^{m^{n+2}}$ such that $F_{n+1}\supset F_n$, followed by $S$ choosing $x_{n+1}\in F_{n+1}\cup\{\infty\}$.
+
+    $S$ wins the game if $\{x_n : n<\omega\}\supseteq F_0\cup\{\infty\}$, and $F$ wins otherwise.
+  \end{definition}
+
+  \begin{proposition}
+    $S\limitwin\rothgame{\oneptlind{\kappa}} \Rightarrow S\limitwin\recallgame{m}{\kappa}$
+  \end{proposition}
+
+  \begin{proof}
+    Let $\sigma$ be a limited information strategy for $S$ in $\rothgame{\oneptlind{\kappa}}$.
+
+    Suppose $C(\cdot)$ converts any finite set $G$ played by $F$ in $\recallgame{m}{\kappa}$ into the open cover $\mc{U}_G=[G]^1\cup\{\oneptcomp{\kappa}\setminus G\}$. Then we may define a strategy $\tau$ using the same type of information as $\sigma$ by setting $\tau(\cdot)\in\sigma(C(\cdot))$.
+
+    Suppose that the attack $F_0, F_1, \dots$ countered $\tau$. Let $x_n$ be the point given by $\tau$ during round $n$, and choose $\alpha\in (F_0\cup\{\infty\})\setminus \{x_n : n<\omega \}$.
+
+    If $\alpha=\infty$, then $\sigma$ may be countered by the attack $\mc{U}_{F_0}, \mc{U}_{F_1}, \dots$ since no neighborhood of $\infty$ is ever chosen.
+
+    Similarly, if $\alpha\in F_0$, then $\sigma$ may also be countered by the attack $\mc{U}_{F_0}, \mc{U}_{F_1}, \dots$ since the singleton $\{\alpha\}$ is never chosen.
+  \end{proof}
+
+  \begin{proposition}
+    $S\kmarkwin{k}\recallgame{m}{\kappa} \Leftrightarrow S\ktactwin{k}\recallgame{m}{\kappa}$
+  \end{proposition}
+
+  \begin{proof}
+    The round number is deterimined by the size of the sets played by $C$.
+  \end{proof}
 
 \end{document}
