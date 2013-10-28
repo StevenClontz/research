@@ -1,0 +1,844 @@
+% $Header: /home/vedranm/bitbucket/beamer/solutions/generic-talks/generic-ornate-15min-45min.en.tex,v 90e850259b8b 2007/01/28 20:48:30 tantau $
+
+\documentclass{beamer}
+
+% This file is a solution template for:
+
+% - Giving a talk on some subject.
+% - The talk is between 15min and 45min long.
+% - Style is ornate.
+
+
+
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+
+\mode<presentation>
+{
+  \usetheme{Warsaw}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+      \theoremstyle{theorem}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \theoremstyle{definition}
+      \newtheorem{game}[theorem]{Game}
+      \newtheorem{question}[theorem]{Question}
+
+\usepackage[english]{babel}
+% or whatever
+
+\usepackage[latin1]{inputenc}
+% or whatever
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+
+\usepackage{marvosym} % For \Smiley
+\usepackage{verbatim} % for \verbatiminput
+
+\title
+{Scheeper's Meager-NWD Game and the Menger Game}
+
+\subtitle
+{AU Topology Seminar} % (optional)
+
+\author%[Author, Another] % (optional, use only with lots of authors)
+{Steven~Clontz}%\inst{1} \and S.~Another\inst{2}}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Auburn University] % (optional, but mostly needed)
+{
+  %\inst{1}%
+  Department of Mathematics and Statistics\\
+  Auburn University}
+  %\and
+  %\inst{2}%
+  %Department of Theoretical Philosophy\\
+  %University of Elsewhere}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date[13-10-22] % (optional)
+{October 22, 2013}
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+ \pgfdeclareimage[height=1cm]{university-logo}{auburn_logo.png}
+ \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%  \begin{frame}<beamer>{Outline}
+%    \tableofcontents[currentsection,currentsubsection]
+%  \end{frame}
+%}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+% My game notational definitions
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\uparrow_{\text{pre}}}
+\newcommand{\markwin}{\uparrow_{\text{mark}}}
+\newcommand{\tactwin}{\uparrow_{\text{tact}}}
+\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
+\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
+\newcommand{\codewin}{\uparrow_{\text{code}}}
+\newcommand{\limitwin}{\uparrow_{\text{limit}}}
+\newcommand{\oneptcomp}[1]{#1^*}
+\newcommand{\oneptlind}[1]{#1^\dagger}
+\newcommand{\congame}[2]{Con_{\pl O\pl P}(#1,#2)}
+\newcommand{\clusgame}[2]{Clus_{\pl O\pl P}(#1,#2)}
+\newcommand{\lfkpgame}[1]{LF_{\pl K\pl P}(#1)}
+\newcommand{\lfklgame}[1]{LF_{\pl K\pl L}(#1)}
+\newcommand{\pfgame}[1]{PF_{\pl F\pl C}(#1)}
+\newcommand{\mengame}[1]{Cov_{\pl C\pl F}(#1)}
+\newcommand{\rothgame}[1]{Cov_{\pl C\pl S}(#1)}
+\newcommand{\altrothgame}[1]{Cov_{\pl P\pl O}(#1)}
+\newcommand{\fillgame}[1]{Fill^{\subseteq}_{\pl M\pl N}(#1)}
+\newcommand{\sfillgame}[1]{Fill^{\subsetneq}_{\pl M\pl N}(#1)}
+\newcommand{\kfillgame}[1]{Fill^{\subseteq}_{\pl C\pl F}(#1)}
+\newcommand{\ksfillgame}[1]{Fill^{\subsetneq}_{\pl C\pl F}(#1)}
+\newcommand{\recallgame}[2]{Rec^{#1}_{\pl F\pl S}(#2)}
+\newcommand{\sigmaprodr}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
+\newcommand{\concat}{^\frown}
+\newcommand{\rest}{\restriction}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\pow}[1]{\mc{P}(#1)}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\al}[1]{{#1}^*}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\po}{\mathbb{P}}
+\newcommand{\pok}{\po_\kappa}
+\newcommand{\Lim}{\mathrm{Lim}}
+\newcommand{\Suc}{\mathrm{Suc}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\alcomp}{\al\parallel}
+\newcommand{\rank}{\textrm{rank}}
+\newcommand{\dom}{\textrm{dom}}
+\newcommand{\scish}{almost-$\sigma$-(relatively compact)}
+
+\usepackage{mathrsfs}
+\newcommand{\pl}[1]{\mathscr{#1}}
+
+
+
+
+\begin{document}
+\renewcommand{\pause}{}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% \begin{frame}{Table of Contents}
+%   \tableofcontents
+%   % You might wish to add the option [pausesections]
+% \end{frame}
+
+
+
+\section{Introduction}
+
+\subsection{Abstract}
+
+\begin{frame}{Abstract}%{Subtitles are optional.}
+
+    Marion Scheepers designed the Meager-NWD game $\sfillgame{J}$ in the 80s to study the existence of $k$-tactics in set-theoretic and topological games.
+
+    \pause
+    \vspace{12pt}
+
+    There are strong similarities between Dr. Scheeper's game and the special case of the Menger game $\mengame{\oneptlind{\kappa}}$ played upon the one-point ``Lindel\"ofication'' of a discrete cardinal $\kappa$.
+
+    \pause
+    \vspace{12pt}
+
+    We will explore the relationship between $k$-tactical stratgies in $\sfillgame{J}$ and $k$-Mark\"ov strategies in $\fillgame{J}$ or $\mengame{\oneptlind{\kappa}}$, as well as a sentence $S(\kappa,\omega,\omega)$ which is consistent with ZFC.
+\end{frame}
+
+\subsection{Motivation}
+
+\begin{frame}{Menger Game}
+  \begin{game}
+    The two-player Menger Game $\mengame{X}$ proceeds as follows:
+    \begin{itemize}
+      \item Round $n$: player $\pl C$ chooses an open cover $\mathcal{U}_n$ of $X$
+      \item Round $n$: player $\pl F$ chooses finite $\mathcal{F}_n\subseteq\mathcal{U}_n$.
+    \end{itemize}
+    $\pl F$ wins if $\bigcup_{n<\omega} \mathcal{F}_n$ is a cover of $X$.
+  \end{game}
+  \pause
+
+  \begin{itemize}
+  \item Easy to see that $\pl F$ can win for any $\sigma$-compact space.
+  \pause
+  \item
+    The existence or non-existence of various limited info strategies in this game characterize covering properties of $X$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{$\mengame{X}$ characterizations}
+
+{\tiny
+  \begin{tabular}{ccccccc}
+  $\pl F\markwin\mengame{X}$ & $\Rightarrow$ &
+  $\pl F\kmarkwin{2}\mengame{X}$ & $\Rightarrow$ &
+  $\pl F\win\mengame{X}$ & $\Rightarrow$ &
+  $\pl C\not\win\mengame{X}$ \\
+  $\Updownarrow$ &&
+  $\Updownarrow$ &&
+  $\Updownarrow$ &&
+  $\Updownarrow$ \\
+  $X$ is $\sigma$-(rel. compact) & $\Rightarrow$ &
+  ??? & $\Rightarrow$ &
+  ??? & $\Rightarrow$ &
+  $X$ is Menger
+  \end{tabular}
+}
+{\small
+\begin{itemize}
+  \item $\win$ denotes a player with a \textbf{winning strategy}
+  \item $\markwin$ denotes a player with a winning \textbf{Mark\"ov} strategy (using only the round number and most recent move of opponent)
+  \item $\kmarkwin{k}$ denotes a player with a winning $k$-\textbf{Mark\"ov} strategy (using only the round number and $k$ most recent moves of opponent)
+\end{itemize}
+}
+\pause
+\begin{theorem}
+Assume $k\geq 2$. $\pl F\kmarkwin{k}\mengame{X} \Leftrightarrow \pl F\kmarkwin{2}\mengame{X}$
+\end{theorem}
+\begin{theorem}
+For $X$ second-countable, $\pl F\markwin\mengame{X} \Leftrightarrow \pl F\win\mengame{X}$
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}{$\mengame{X}$ characterizations}
+Here are a couple properties between $\sigma$-compact and Menger:
+  \begin{itemize}
+    \item Alster
+    \item Hurewicz
+  \end{itemize}
+
+\pause
+
+An example of a Menger space which doesn't yield a Markov strategy for $\pl F$ in the Menger game is $\oneptlind{\omega_1}$. 
+
+{\tiny ($\oneptlind{\kappa}=\kappa\cup\{\infty\}$ is the one-point ``Lindel\"ofication'' of discrete $\kappa$.)}
+
+\begin{theorem}
+$\pl F\not\markwin\mengame{\oneptlind{\omega_1}}$ but $\pl F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
+\end{theorem}
+\end{frame}
+
+\begin{frame}{What about $\mengame{\oneptlind{\kappa}}$?}
+  \begin{itemize}
+    \item The direct proof of $\pl F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$ uses injective functions $f_\alpha:\alpha\to\omega$ for each $\alpha<\omega_1$ such that for $\alpha<\beta$:
+      \[
+        |\{\gamma<\alpha: f_\alpha(\gamma)\not=f_\beta(\gamma)\}|<\omega
+      \]
+      (Proof in Kunen's set theory text, used for construction of an Aronszajn tree)
+    \pause
+    \item Would like to extend this idea for $\kappa>\omega_1$ to show $\pl F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$...
+  \end{itemize}
+\end{frame}
+
+\section{Filling Games}
+
+\subsection{Scheeper's Strict Filling Game}
+
+\begin{frame}{$\sfillgame{J}$}
+  \begin{game} 
+      The \textbf{strict filling game} $\sfillgame{J}$ on an ideal $J$ proceeds as follows:
+        \begin{itemize}
+          \item Round 0: player $\pl M$ chooses $M_0 \in \<J\>$, the $\sigma$-completion of $J$ (closure under countable unions)
+          \item Round 0: player $\pl N$ chooses $N_0\in J$. 
+          \item Round $n+1$: player $\pl M$ chooses $M_{n+1}$ where $M_n\subsetneq M_{n+1}\in\<J\>$
+          \item Round $n+1$: player $\pl N$ replies with $N_{n+1}\in J$. 
+        \end{itemize}
+      Player $\pl N$ wins the game if $\bigcup_{n<\omega} N_n \supseteq \bigcup_{n<\omega} M_n$. 
+  \end{game}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+    \item
+      The sets in $\<J\>$ and $J$ are referred to as meager and nowhere-dense sets, respectively.
+      \begin{itemize}
+        \item For any topological space, the set of nowhere dense sets $J$ forms an ideal. 
+        \item For every ideal $J$, there is a topological space where $J$ is the set of nowhere dense sets.
+      \end{itemize}
+    \pause
+    \item
+      This game was defined and studied by Marion Scheepers. Here's some facts.
+  \end{itemize}
+  \begin{proposition}
+    \[\pl N\win\sfillgame{J}\]
+  \end{proposition}
+\end{frame}
+
+\begin{frame}
+  
+  \begin{theorem}
+    \[\pl N\tactwin\sfillgame{J} \Leftrightarrow J=\<J\>\]
+  \end{theorem}
+
+{\small
+\begin{itemize}
+  \item $\tactwin$ denotes a player with a winning \textbf{tactical} strategy (using only the most recent move of opponent)
+  \item $\ktactwin{k}$ denotes a player with a winning $k$-\textbf{tactical} strategy (using only the $k$ most recent moves of opponent)
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    Assume $cf(\<J\>)=\omega_1$. Let $J_X = \{N\cap X : N\in J\}$.
+
+    $\pl N\ktactwin{k}\sfillgame{J} \Leftrightarrow \pl N\ktactwin{k}\sfillgame{J_X}$ for each $X\in\<J\>\setminus J$
+  \end{theorem}
+
+  \pause
+
+  \textbf{Proof:} 
+    $\Rightarrow$ is straight-forward.
+
+  \pause
+
+    \vspace{12pt}
+
+    Sketch of $\Leftarrow$: Let $S_\alpha$ for $\alpha<\omega_1$ enumerate a cofinal set of $\<J\>$, with $\beta\leq\alpha\Rightarrow S_\beta\subseteq S_\alpha$. Assume the latest move by $\pl M$ is contained by $S_\alpha$. There are two types of attacks that $\pl N$ must defeat.
+
+  \pause
+
+    \begin{enumerate}\small
+      \item $\pl M$'s attack may never go outside $S_\alpha$, so $\pl N$ can cover according to the strategy for $\pl N\ktactwin{k}\sfillgame{S_\alpha}$.
+      \pause
+      \item $\pl M$'s attack may eventually exceed $S_\alpha$, but by using tree arrangments $<_n$ of $\omega_1$ of finite height approximating $<$, $\pl N$ can cover according to the \textit{winning perfect information strategy} as though $\pl M$ had played sets $S_\beta$ for $\beta\leq_n \alpha$ instead.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \begin{corollary}
+    If $|\bigcup J| \leq \omega_1$ and $|M|\leq \omega$ for $M\in\<J\>$, then $\pl N\ktactwin{2}\sfillgame{J}$.
+  \end{corollary}
+
+  \pause
+
+  \textbf{Proof:}
+    Assume $\omega\in\<J\>$ and assume the two latest moves of $\pl M$ are $M\subsetneq M'\subseteq \omega$. Let $n=\min(M'\setminus M)$, and have $\pl N$ cover $\{0,\dots,n\}$. It follows that the generated $n$ must be unbounded for any legal attack by $\pl M$, making it a winning $2$-tactic for $\sfillgame{J_\omega}$.
+    \pause
+
+    \vspace{12pt}
+
+    Apply the previous theorem to finish the result. \qed
+
+\end{frame}
+
+\begin{frame}{Countable Finite Game}
+
+  \begin{game}
+    The special case of $\sfillgame{J}$ where $J=[\kappa]^{<\omega}$ is the Countable-Finite game $\ksfillgame{\kappa}$.
+  \end{game}
+
+  \pause
+
+  \begin{corollary}
+    \[\pl F\ktactwin{2}\ksfillgame{\omega_1}\]
+  \end{corollary}
+
+  \pause
+
+  So $\pl F\ktactwin{2}\ksfillgame{\omega_1}$ and $\pl F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$. In addition, the basic goal of $\pl F$ in $\mengame{\oneptlind{\omega_1}}$ is similar to the goal of $\pl F$ in $\ksfillgame{\omega_1}$: $\pl F$ can cover a co-countable neighborhood of $\infty$ in the initial round, and is trying to cover the countable remainder in the following rounds (most likely using finitely many singletons from $\pl C$'s covers).
+\end{frame}
+
+\subsection{A game to connect $\ksfillgame{\kappa}$ and $\mengame{\oneptlind{\kappa}}$}
+
+\begin{frame}
+
+  \begin{itemize}
+    \item Question: why does $\pl F$ need the round number in $\mengame{\oneptlind{\omega_1}}$ and not $\ksfillgame{\omega_1}$?
+  \end{itemize}
+
+  \pause
+
+  \begin{proposition}
+    $\pl F \ktactwin{k} \mengame{X} \Leftrightarrow X$ is compact
+  \end{proposition}
+
+  \textbf{Proof:}
+    If $X$ isn't compact, and $\pl C$ constantly chooses an open cover $\mc U$ without a finite subcover for $X$ throughout the entire game, then $\pl F$ only chooses $k$ different finite subcollections of $\mc U$ by the game's end, which cannot cover $X$.
+
+    \vspace{12pt}
+
+    If $X$ is compact, $\pl F \tactwin \mengame{X}$ trivially. \qed
+
+    \pause
+
+    \begin{itemize}
+      \item Answer: $\pl C$ cannot choose a constant strategy in $\ksfillgame{\kappa}$, but $\pl C$ can in $\mengame{\oneptlind{\kappa}}$.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+  This provides the motivation to change the rules of Scheeper's game to bring it more in line with the Menger game.
+  \pause
+
+  \begin{game}
+    The game $\fillgame{J}$ is identical to $\sfillgame{J}$, except that $\pl M$ may choose the same set in successive rounds.
+  \end{game}
+
+  \begin{game}
+    $\kfillgame{\kappa}$ is identical to $\fillgame{[\kappa]^{<\omega}}$
+  \end{game}
+
+  \pause
+
+  It seems reasonable to ask if $k$-tactics in $\sfillgame{J}$ correspond to $k$-Mark\"ov strategies in $\fillgame{J}$.
+
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    \[\pl N\ktactwin{2}\sfillgame{J} \Rightarrow \pl N\kmarkwin{2}\fillgame{J}\]
+  \end{theorem}
+
+  \pause
+
+  \textbf{Proof:}
+    Enumerate the sets in $J$ as $A_\alpha$ for $\alpha<|J|$. For $M\in \<J\>$ and $n<\omega$, let $M+0=M$ and $M+n+1$ be the union of $M+n$ and the least $A_\alpha$ not contained in $M+n$.
+
+    \pause\vspace{12pt}
+
+    Let $\sigma$ be a winning $2$-tactical strategy for $N$ in $\sfillgame{\kappa}$, and assume $\sigma(M)\cup\sigma(M')\subseteq\sigma(M,M')$.
+
+    \pause\vspace{12pt}
+
+    We define a $2$-Markov strategy $\tau$ for $F$ in $\fillgame{\kappa}$ as follows:
+\end{frame}
+
+\begin{frame}{}
+
+{\small
+      \[
+        \tau(M_0,0) = \sigma(M_0)
+      \]
+      \[
+        \tau(M_{n},M_{n+1},n+1) = \left\{
+          \begin{array}{ll}
+            \sigma(M_{n},M_{n+1}) & \text{if } M_n\subsetneq M_{n+1} \\
+            \bigcup_{m\leq n}\sigma(M_n+m,M_{n+1}+m+1) & \text{otherwise}
+          \end{array}
+        \right.
+      \]
+}
+
+\pause
+\begin{itemize}
+\item (Essentially, if $\pl M$ tries to be tricky and not increase the size of her meager set, $\pl N$ can pretend she added a few extra nowhere dense sets based on the round number.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+Let $M_0 \subseteq M_1 \subseteq \dots$ be an attack by $\pl M$ against $\tau$. There are two possible cases:
+
+      \begin{itemize}\small
+        \item
+          Assume $M_n=M_N$ for all $n\geq N$.\pause
+
+          The collection produced by $\sigma$ versus the attack
+            \[
+              M_N+0 \subsetneq M_N+1 \subsetneq \dots
+            \] 
+          must cover $M_N$ as $\sigma$ is a winning strategy.\pause
+
+          Let $x \in M_N$. If $x\in\sigma(M_N+0)$, then $x$ will be covered in round $N+1$ by 
+            \[
+              \tau(M_N,M_N,N+1)
+              \supseteq \sigma(M_N+0,M_N+1)
+              \supseteq \sigma(M_N+0)
+            \]\pause
+
+          Otherwise, $x\in\sigma(M_N+n,M_N+n+1)$, and $x$ will be covered in round $N+n+1$ by 
+            \[
+              \tau(M_N,M_N,N+n+1)
+              \supseteq \sigma(M_N+n,M_N+n+1)
+            \]
+      \end{itemize}
+\end{frame}
+\begin{frame}
+      \begin{itemize}\small
+        \item
+          Otherwise we may find $0<f(0)<f(1)<\dots$ such that $M_{f(n)}\subsetneq M_{f(n)+1}=M_{f(n+1)}$.\pause
+
+          Then the collection produced by $\sigma$ versus the attack 
+            \[
+              M_{f(0)}\subsetneq M_{f(1)} \subsetneq M_{f(2)} \dots
+            \]
+          must cover $\bigcup_{n<\omega}M_n$ as $\sigma$ is a winning strategy.\pause
+
+          Let $x \in \bigcup_{n<\omega}M_n$. If $x\in\sigma(M_{f(0)})$, then $x$ will be covered by $\tau$ in round $f(0)+1$ by
+            \[
+              \tau(M_{f(0)},M_{f(0)+1},f(0)+1)
+              = \sigma(M_{f(0)},M_{f(0)+1})
+              \supseteq \sigma(M_{f(0)})
+            \]\pause
+
+          Otherwise, $x\in\sigma(M_{f(n)},M_{f(n+1)})$, and $x$ will be covered by $\tau$ in round $f(n)+1$ by
+            \[
+              \tau(M_{f(n)},M_{f(n)+1},f(n)+1)
+              = \sigma(M_{f(n)},M_{f(n)+1})
+              = \sigma(M_{f(n)},M_{f(n+1)})
+            \]
+      \end{itemize}\pause
+
+      Thus $\tau$ is a winning strategy. \qed
+\end{frame}
+
+\begin{frame}
+But the converse need not hold.\pause
+
+  \begin{theorem}
+    There is a free ideal $J$ such that $\pl N\not\ktactwin{2}\sfillgame{J}$ but $\pl N\kmarkwin{2}\fillgame{J}$.
+  \end{theorem}
+  {\small
+  \textbf{Proof:}
+    This counterexample was constructed by Scheepers for another purpose, but works for us as well. Assume $\mathbb{R}$ has the usual Euclidean topology.\vspace{12pt}
+
+    Choose $A\subseteq\mathbb{R}$ such that $|A|=\omega$ and $A$ is meager but not nowhere dense. Then choose $V\subseteq\mathbb{R}$ such that $|V|=2^\omega$, $V$ is meager, and $V$ is disjoint from $A$. Assume $A=\{a_n:n<\omega\}$.\pause\vspace{12pt}
+
+    Certainly, if $J$ is the collection of nowhere dense subsets of $A\cup V$, then $F\kmarkwin{2}\fillgame{J}$. In fact, since $A\cup V$ is meager, $F\prewin\fillgame{J}$ ($\pl F$ has a \textbf{predetermined strategy} using only the round number). 
+    }
+\end{frame}
+\begin{frame}
+
+    Let $\sigma$ be a $2$-tactical strategy for $\pl N$ in $\sfillgame{J}$.\pause\vspace{12pt}
+
+    By Cor 28 of Scheepers' ``Partition relation for partially ordered sets'', for every partition $\{K_n:n<\omega\}$ of the comparable pairs in $[\pow{V}]^2$ there is some $n'<\omega$ and sequence $C_0\subsetneq C_1\subsetneq \dots\subsetneq V$ where $\{C_m,C_{m+1}\}\in K_{n'}$ for all $m<\omega$.\pause\vspace{12pt}
+
+    Define $K_n$ to be the collection of pairs of sets $\{B,C\}$ such that $B\subsetneq C$ and $n$ is the least integer where $a_n \in A \setminus \sigma(A\cup B,A\cup C)$.\pause\vspace{12pt}
+
+    Then $\sigma$ may be countered by the attack $A\cup C_0, A\cup C_1, \dots$, since $a_{n'} \in A \setminus \sigma(A\cup C_m,A\cup C_{m+1})$ for all $m<\omega$ and thus is never covered. \qed\pause
+
+    \begin{question}
+      $\pl N\kmarkwin{2}\kfillgame{\kappa}\Rightarrow \pl N\ktactwin{2}\ksfillgame{\kappa}$?
+    \end{question}
+\end{frame}
+
+\subsection{$S(\kappa,\omega,\omega)$}
+
+\begin{frame}{$S(\kappa,\omega,\omega)$}
+
+Scheepers introduced the sentence $S(\kappa,\omega,\omega)$ (or rather, a sentence equivalent to the one I use below).\pause
+
+  \begin{definition}
+    For two functions $f,g$ we say $f$ is \textbf{almost compatible} with $g$ ($f\alcomp g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega$.
+  \end{definition}\pause
+
+\begin{definition}
+  $S(\kappa,\omega,\omega)$ is shorthand for the sentence: there exist injective functions $f_A:A\to\omega$ for each $A\in[\kappa]^\omega$ such that $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
+\end{definition}
+
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    $S(\omega_1,\omega,\omega)$
+  \end{theorem}
+
+  \textbf{Proof:}
+    Use Kunen's $f_\alpha$ mentioned earlier. \qed
+
+  \pause\vspace{12pt}
+
+  \begin{theorem}
+    $\neg S(\kappa,\omega,\omega)$ for $\kappa>2^\omega$
+  \end{theorem}
+
+  \textbf{Proof:}
+    Let $A_\alpha=\{\alpha\cdot\omega+n:n<\omega\}\in[\kappa]^\omega$ and $f_{A_\alpha}:A_\alpha\to\omega$ be injective for $\alpha<\kappa$. Since there are $\kappa>|[\omega]^\omega|$ different $A_\alpha$, there must be $\alpha,\beta$ where $\text{ran}(f_{A_\alpha})=\text{ran}(f_{A_\beta})$. Then there is no way to define $f_{A_\alpha\cup A_\beta}$ so that it is almost compatible with both $f_{A_\alpha}$ and $f_{A_\beta}$. \qed\pause
+
+  \begin{corollary}
+    $S(\omega_2,\omega,\omega) \Rightarrow \neg CH$
+  \end{corollary}
+\end{frame}
+
+\begin{frame}
+  So what about the consistency of $\neg CH + S(\omega_2,\omega,\omega)$? It turns out that's fine (to be shown later).
+ 
+  \pause
+
+  \begin{theorem}
+    $S(\kappa,\omega,\omega) \Rightarrow \pl F \ktactwin{2} \ksfillgame{\kappa}$
+  \end{theorem}\pause
+
+  \textbf{Proof:} Due to Todorcevic. Let $f_A:A\to\omega$ for $A\in[\kappa]^\omega$ witness $S(\kappa,\omega,\omega)$, and let $g_A(\alpha)$ be the number of ordinals ``skipped'' by $f_A$ below $f_A(\alpha)$, that is, $f_A(\alpha)-|\{\beta\in A:f_A(\beta)<f_A(\alpha)\}|$.
+  \pause\vspace{6pt}
+
+  Note that for $A\subsetneq B$, $|\{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}|<\omega$ since the difference in $f_A$ and $f_B\rest A$ is finite, and $f_B$ has to map at least one more ordinal than $f_A$.
+  \pause\vspace{6pt}
+
+  Let $\sigma(C,C')=\{\alpha\in C: g_C(\alpha)\leq g_{C'}(\alpha)\}$. If $C_0\subsetneq C_1\subsetneq\dots$ was an attack defeating $\sigma$, then let $\alpha\in C_N\setminus\bigcup_{n<\omega}\sigma(C_n,C_{n+1})$.
+  \pause\vspace{6pt}
+
+  Observe that $g_{C_N}(\alpha)>g_{C_{N+1}}(\alpha)>g_{C_{N+2}}(\alpha)>\dots$, contradiction.\qed
+
+\end{frame}
+
+\begin{frame}
+
+  \begin{theorem}
+    $S(\kappa,\omega,\omega) \Rightarrow \pl F \kmarkwin{2} \kfillgame{\kappa}$
+  \end{theorem}
+
+  \textbf{Proof:} 
+    Corollary of the previous theorem. Alternatively, $\pl F$ can use the winning strategy
+      \[
+        \sigma(C,C',n+1)=f_C^{-1}(\{0,\dots,n-1\}) \cup \{\alpha\in C: f_C(\alpha)\not= f_{C'}(\alpha)\}
+      \]
+
+\end{frame}
+
+\section{Menger Game}
+
+\subsection{Almost-$\sigma$-(Relatively Compact)}
+
+\begin{frame}{Back to $\mengame{\oneptlind{\kappa}}$}
+  While a proof $\pl F \kmarkwin{2} \kfillgame{\kappa}\Rightarrow \pl F \kmarkwin{2} \mengame{\oneptlind{\kappa}}$ has eluded me, the techniques used previously are very useful for dealing with $\mengame{\oneptlind{\kappa}}$ directly.
+
+  \pause\vspace{12pt}
+
+  It will be useful to define a sufficient property for $\pl F \kmarkwin{2} \mengame{X}$, which I've called \scish{}.
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    Let $\mc U$ be a cover of $X$. We say $C\subseteq X$ is $\mc U$-compact if there exists a finite subcover of $\mc U$ which covers $C$.\vspace{6pt}
+
+    We say $X$ is \scish~if there exist functions $r_{\mc V}:X\to\omega$ for each open cover $\mc V$ of $X$ such that both of the following sets are $\mc V$-compact for all open covers $\mc U$, $\mc V$ and $n<\omega$:
+      \[
+        c(\mc V,n)=\{ x\in X : r_{\mc V}(x)\leq n\}
+      \]
+      \[
+        p(\mc U,\mc V)=\{ x\in X : 0<r_{\mc U}(x)<r_{\mc V}(x)\}
+      \]
+
+  \end{definition}\pause
+
+  \begin{proposition}
+    $X$ $\sigma$-(relatively compact) $\Rightarrow$ $X$ \scish
+  \end{proposition}
+\end{frame}
+
+\begin{frame}
+
+  \begin{theorem}
+    If $X$ is \scish, then $\pl F \kmarkwin{2} \mengame{X}$.
+  \end{theorem}\pause
+
+  \textbf{Proof:}
+    Let $\sigma(\mc{U}_0,0)$ cover $c(\mc{U}_0,0)$, and let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover both $c(\mc{U}_{n+1},n+1)$ and $p(\mc{U}_n,\mc{U}_{n+1})$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that one of the following must occur:\pause
+      \begin{itemize}
+        \item $r_{\mc U_0}(x)=0$ and thus $x\in c(\mc U_0,0)$.\pause
+        \item $r_{\mc U_0}(x)=N+1$ for some $N\geq 0$ and:\pause
+        \begin{itemize}
+          \item For all $n\leq N$, 
+            \[
+              n+1< r_{\mc U_{n+1}}(x)\leq N+1
+            \] 
+            and thus $x\in c(\mc U_{N+1},r_{\mc U_{n+1}}(x))=c(\mc U_{N+1},N+1)$.
+        \end{itemize}
+      \end{itemize}
+\end{frame}
+\begin{frame}
+      \begin{itemize}
+      \item $r_{\mc U_0}(x)=N+1$ for some $N\geq 0$ and: (cont.)
+        \begin{itemize}
+          \item For some $n \leq N$,
+            \[
+              r_{\mc U_{n+1}}(x)< n+1 \leq r_{\mc U_n}(x)< N+1
+            \]
+            and thus $x\in c(\mc U_{n+1},r_{\mc U_{n+1}}(x))\subseteq c(\mc U_{n+1},n+1)$.\pause
+          \item For some $n \leq N$, 
+            \[
+              n+1 \leq r_{\mc U_n}(x)< N+1 < r_{\mc U_{n+1}}(x)
+            \]
+           and thus $x\in p(\mc U_n,\mc U_{n+1})$\qed
+         \end{itemize}
+      \end{itemize}\pause
+
+  \begin{corollary}
+    $X$ \scish~ $\Rightarrow$ $X$ Menger
+  \end{corollary}\pause
+
+  \begin{question}
+    $\pl F \kmarkwin{2} \mengame{X} \Rightarrow X$ \scish? (Or can I slightly adjust the definition to get this result?)
+  \end{question}
+\end{frame}
+
+\begin{frame}
+
+  \begin{theorem}
+    If $S(\kappa,\omega,\omega)$, then $\oneptlind{\kappa}$ is \scish.
+  \end{theorem}\pause
+
+  \textbf{Proof:}
+    Take the injective funcions $f_A:A\to\omega$ witnessing $S(\kappa,\omega,\omega)$. For each cover $\mc V$ of $\oneptlind{\kappa}$ let $A(\mc V)$ define a set such that $\oneptlind{\kappa}\setminus A(\mc V)$ is in a refinement of $\mc V$. \pause
+
+    Then $r_{\mc V}$ defined by 
+      \[
+        r_{\mc V}(x) = \left\{
+      \begin{array}{ll}
+        0 & x\in\oneptlind{\kappa}\setminus A(\mc V) \\
+        f_{A(\mc V)}(x)+1 & x\in A(\mc V)
+      \end{array}
+      \right.
+      \] 
+
+    witnesses the property as $c(\mc V,0)$ is contained in a single open set in $\mc V$, $c(\mc V,n+1)$ is a singleton or empty set, and
+      \[
+        p(\mc U,\mc V) = \{\alpha\in A(\mc U)\cap A(\mc V) : f_{A(\mc U)}(\alpha)<f_{A(\mc V)}(\alpha)\}
+      \]
+    is finite.\qed
+\end{frame}
+
+\subsection{Consistency of $S(\kappa,\omega,\omega)$}
+
+\begin{frame}
+  \begin{corollary}
+    If $S(\kappa,\omega,\omega)$, then $\pl F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$
+  \end{corollary}
+  This result becomes more interesting if we can show $S(\kappa,\omega,\omega)$ is consistent for $\kappa>\omega_1$.\pause
+
+  \begin{definition}
+    A finite partial function $p$ from $A$ to $B$ has a domain which is a finite subset of $A$ and a range which is a finite subset of $B$. Let the set of all finite partial functions from $A$ to $B$ be denoted by $Fn(A,B)$.
+  \end{definition}\pause
+  \begin{definition}
+    Let $Fn^2(\mc A,B)\subset Fn(\mc A,Fn(\bigcup \mc A,B))$ such that for each $p\in Fn^2(\mc A,B)$, $p(A)=p_A\in Fn(A,B)$.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    For $\kappa>\omega_1$, let $\pok\subset Fn^2([\kappa]^\omega,\omega)$ be such that each $p_A$ is injective, and give it the partial order $\leq$ defined by $q\leq p$ if and only if:
+          \begin{itemize}
+            \item $\dom(q)\supseteq\dom(p)$
+            \item For each $A\in\dom(p)$, $q_A\supseteq p_A$
+            \item For each $A,B\in\dom(p)$, if $p_A$ and $p_B$ are not defined for some $\alpha\in A\cap B$, but $q_A$ is, then $q_B$ is also defined for $\alpha$ and $q_A(\alpha)=q_B(x)$. That is, for $\alpha\in A\cap B$
+              \[
+                \alpha\in \dom(q_A)\setminus(\dom(p_A)\cup\dom(p_B))
+              \]
+              \[
+                \Downarrow
+              \]
+              \[
+                \alpha\in\dom(q_B) \text{ and } q_A(x)=q_B(x)
+              \]
+          \end{itemize}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{lemma}
+    $\pok$ has property $K$ (and thus is c.c.c.). That is, let $P\subseteq\pok$ be uncountable: there is an uncountable $Q\subseteq P$ such that points in $Q$ are pairwise compatible.
+  \end{lemma}\pause
+
+  \textbf{Proof:}
+    If $|\{\dom(p):p\in P\}|>\omega$, we will use the $\Delta$-system lemma to find an uncountable $P'\subseteq P$ such that for $p,q\in P'$, $\dom(p)\cap\dom(q)=\mc R$. Otherwise, we may fix an uncountable $P'\subseteq P$ such that for $p,q\in P'$, $\dom(p)=\dom(q)=\mc R$.\pause\vspace{6pt}
+
+    Similarly, for each $A\in\mc{R}$ we may find that $|\{\dom(p_A):p\in P'\}|>\omega$, and we can use the $\Delta$-system lemma to find an uncountable $P''\subseteq P'$ where $\dom(p_A)\cap\dom(q_A)=A'$ for all $p,q\in P''$, or otherwise we may find $P''\subseteq P'$ where $\dom(p_A)=\dom(q_A)=A'$ for all $p,q\in P''$.
+\end{frame}
+\begin{frame}
+    Finally, for each $A\in\mc R$ and $\alpha\in A'$, we may find $n_{A,\alpha}$ such that there are uncountable $p\in P''$ with $p_A(\alpha)=n_{A,\alpha}$, and thus we may choose $Q\subseteq P''$ to be an uncountable collection such that for $p,q\in Q$, $p_A=q_A$ for $A\in\mc R$.\pause\vspace{6pt}
+
+    Then it is easily verified that $p\cup q\in\pok$ and $p\cup q\leq p,q$ for all $p,q\in Q$.\qed\pause\vspace{12pt}
+
+    Since $\pok$ is c.c.c.:
+
+    \begin{corollary}
+      Any forcing using a $\pok$-generic filter preserves cardinals and cofinalities.
+    \end{corollary}
+
+    \begin{corollary}
+      If $cf(\kappa)>\omega$, any forcing using a $\pok$-generic filter results in $2^\omega\leq\kappa$.
+    \end{corollary}
+\end{frame}
+
+\begin{frame}
+  \begin{proposition}
+    For $A\in[\kappa]^\omega$ and $\alpha\in A$, the sets 
+      \[
+        D_A = \{p\in\pok: A\in\dom(p)\}
+      \]
+      \[
+        D_{A,\alpha} = \{p\in\pok: A\in\dom(p), \alpha\in\dom(p_A)\}
+      \]
+    are dense in $\pok$.
+  \end{proposition}
+
+  \begin{theorem}
+    If $cf(\kappa)>\omega$, $S(\kappa,\omega,\omega)+(\kappa=2^\omega)$ is consistent with $ZFC$.
+  \end{theorem}\pause
+
+  \textbf{Proof:}
+    We adapt a forcing argument due to Scheepers (which used a slightly different poset). Let $M$ be a countable transitive submodel of ZFC. Consider the c.c.c. poset $\pok$ realized in the model $M$. Let $G$ be a $\pok$-generic filter over $M$.
+\end{frame}
+\begin{frame}
+    We now work in the smallest model $M[G]$ extending $M$ and containing $G$.\vspace{6pt}
+
+    For each $A\in [\kappa]^\omega$, note $[\kappa]^\omega\cap M$ is cofinal in $[\kappa]^\omega$, so let $A'\supseteq A$ be in $[\kappa]^\omega\cap M$ and let $f_A=\bigcup_{p\in G\cap D_{A'}}p_{A'}\rest A$. Since $G$ is a $\pok$-generic filter over $M$, it is easily verified (considering the dense sets $D_{A,\alpha}$) that $f_A$ is an injective function from $A$ into $\omega$.\pause\vspace{6pt}
+
+    In addition, for $A,B\in [\kappa]^\omega\cap M$, let $p\in G\cap D_A\cap D_B$. For all $q\leq p$ it follows that 
+      \[
+        \{\alpha\in \dom(q_A)\cap \dom(q_B): q_A(\alpha)\not= q_B(\alpha)\} \subseteq \dom(p_A)\cup\dom(p_B)
+      \] 
+    Thus $|\{\alpha\in A\cap B: f_A(\alpha)\not= f_B(\alpha)\}|<\omega$ and $f_A\alcomp f_B$ for $A,B\in [\kappa]^\omega\cap M$, and it's immediate that $f_A\alcomp f_B$ for $A,B\in[\kappa]^\omega$ as well.\pause\vspace{6pt}
+
+    The $f_A$ witness $S(\kappa,\omega,\omega)$. Since $\kappa\geq 2^\omega$ and $S(\kappa,\omega,\omega)$ is a contradiction for $\kappa>2^\omega$, we know $\kappa=2^\omega$. \qed
+\end{frame}
+
+\begin{frame}
+  \begin{corollary}
+    For all $\kappa$, $\pl F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$ is consistent with $ZFC$.
+  \end{corollary}
+
+  \begin{question}
+    Is $\pl F\kmarkwin{2}\mengame{\oneptlind{\omega_2}}$ a theorem of ZFC?
+  \end{question}
+\end{frame}
+
+\end{document}
+
+

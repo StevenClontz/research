@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.20pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Abstract}{2}{0}{1}
+\beamer@subsectionintoc {1}{2}{Motivation}{3}{0}{1}
+\beamer@sectionintoc {2}{Filling Games}{7}{0}{2}
+\beamer@subsectionintoc {2}{1}{Scheeper's Strict Filling Game}{7}{0}{2}
+\beamer@subsectionintoc {2}{2}{A game to connect $Fill^{\subsetneq }_{\mathscr {C}\mathscr {F}}(\kappa )$ and $Cov_{\mathscr {C}\mathscr {F}}(\kappa ^\dagger )$}{13}{0}{2}
+\beamer@subsectionintoc {2}{3}{$S(\kappa ,\omega ,\omega )$}{21}{0}{2}
+\beamer@sectionintoc {3}{Menger Game}{25}{0}{3}
+\beamer@subsectionintoc {3}{1}{Almost-$\sigma $-(Relatively Compact)}{25}{0}{3}
+\beamer@subsectionintoc {3}{2}{Consistency of $S(\kappa ,\omega ,\omega )$}{30}{0}{3}
