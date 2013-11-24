@@ -510,6 +510,227 @@
     For each $\kappa$, $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$ is consistent with ZFC.
   \end{corollary}
 
+  \begin{definition}
+    A space suggested by G: Give $\kappa^\sharp=(\kappa\times\oneptlind\kappa)\cup\{\infty\}$ the topology where $\{\alpha\}\times\kappa^\sharp$ is an open copy of $\oneptlind{\kappa}$, and neighborhoods of $\infty$ contain a set of the form $\kappa^\sharp\setminus(A\times\oneptlind\kappa)$ for some $A\in[\kappa]^\omega$.
+  \end{definition}
+
+  \begin{theorem}
+    $F\kmarkwin{2}\mengame{\omega_1^\sharp}$
+  \end{theorem}
+
+  \begin{proof}
+    Let $f_\alpha:\alpha\to\omega$ witness $S(\omega_1,\omega,\omega)$ for limit ordinals $\alpha<\omega_1$. Also note that there is a bijection $e:\omega_1\to[\omega_1]^{<\omega}$ such that $e\rest\alpha:\alpha\to[\alpha]^{<\omega}$ is also a bijection for each limit ordinal $\alpha<\omega_1$.
+
+    We define the finite set $F(\alpha_n,\alpha_{n+1},n+1)$ to contain $e(\beta)$ for each $\beta<\alpha_n\cap\alpha_{n+1}$ such that either $f_{\alpha_{n+1}}(\beta)\leq n$ or $f_{\alpha_{n}}(\beta)\not=f_{\alpha_{n+1}}(\beta)$.
+
+    If $\alpha_n<\omega_1$ for all $n<\omega$ with $\alpha=\min\{\alpha_{n+1}:n<\omega\}$ and $G\in[\alpha]^{<\omega}$, note that for each $\beta<\alpha$, either $f_{\alpha_n}(\beta)=N$ always, or $f_{\alpha_n}(\beta)\not=f_{\alpha_{n+1}}(\beta)$ for some $n$. Either way, $e(\beta)\subseteq F(\alpha_n,\alpha_{n+1},n+1)$ for some $n$, and thus every finite subset of $\alpha$ is contained in some $F(\alpha_n,\alpha_{n+1},n+1)$.
+
+    If we let $R(\alpha)=\omega_1^\sharp\setminus(A\times\oneptlind\omega_1)$ and $U(\gamma,\alpha)=\{\gamma\}\times(\oneptlind\omega_1\setminus\alpha)$, then any open cover of $\omega_1^\sharp$ may be refined to be of the form $\mc U_\alpha = \{R(\alpha)\}\cup\{U(\gamma,\alpha):\gamma<\alpha\}\cup\{\{(\gamma,\beta)\}:\gamma,\beta<\alpha\}$ for some limit $\alpha$.
+
+    Without loss of generality assume $\pl C$ plays only covers of the form $\mc U_\alpha$ for limit $\alpha$. Then we may define the $2$-Markov strategy $\sigma(\mc U_{\alpha_n},\mc U_{\alpha_{n+1}},n+1)$ to cover the sets:
+      \[
+        R(\alpha_{n+1})
+      \]
+      \[
+        \bigcup \{U(\gamma,\alpha_{n+1}) : \gamma \in F(\alpha_n,\alpha_{n+1},n+1) \}
+      \]
+      \[
+        \{(\gamma,\delta): \gamma,\delta\in F(\alpha_n,\alpha_{n+1},n+1)\}
+      \]
+
+    Let $\mc U_{\alpha_0},\mc U_{\alpha_1},\dots$ be an attack by $\pl C$, $\alpha=\min\{\alpha_{n+1}:n<\omega\}$ and $\alpha'=\sup\{\alpha_{n+1}:n<\omega\}$. Since $\infty\in R(\alpha_0)$ always, first consider $(\gamma,\infty)$ for $\gamma<\omega_1$. If $\gamma\geq\alpha_{n+1}$ for some $n$, then $(\gamma,\infty)\in R(\alpha_{n+1})$. Otherwise, $\gamma<\alpha$, but then $\gamma\in F(\alpha_n,\alpha_{n+1},n+1)$ for some $n$ and $(\gamma,\infty)\in U(\gamma,\alpha_{n+1})$.
+
+    Lastly consider $(\gamma,\delta)$ for $\gamma,\delta<\omega_1$. If $\gamma\geq\alpha_{n+1}$ for some $n$, then $(\gamma,\delta)\in R(\alpha_{n+1})$. 
+
+    Otherwise, $\gamma<\alpha$. If $\delta\geq \alpha'$, then as $\gamma\in F(\alpha_n,\alpha_{n+1},n+1)$ for some $n$ we see $(\gamma,\delta)\in U(\gamma,\alpha_{n+1})$. If $\delta<\alpha$, then $\{\gamma,\delta\}\subseteq F(\alpha_n,\alpha_{n+1},n+1)$ for some $n$ and $(\gamma,\delta)$ is covered. The final case is when $\alpha\leq\delta<\alpha'$.
+
+    (STILL MISSING STUFF)
+
+    % If $\alpha_{n+1}=\beta$ is fixed for $n\in W\in[\omega]^\omega$, observe that $f_{\alpha_{n+1}}(\gamma)=f_\beta(\gamma)=N$ for all $n\in W$, and thus $\gamma\in F(\alpha_n,\alpha_{n+1},n+1)$ for some $n\in W\setminus N$. Thus $(\gamma,\delta)\in U(\gamma,\alpha)$ is covered.
+  \end{proof}
+
+  % \begin{lemma}
+  %   For each infinite cardinal $\kappa$, the sentence $S(\kappa,\omega,\omega)$ implies there exists a function $F:[\kappa]^\omega\times[\kappa]^\omega\times\omega\to [\kappa]^{<\omega}$ such that for any choice of $A_n\in[\omega]^\omega$ and $G\in[\bigcap_{m<\omega}\bigcup_{m\leq n<\omega} A_{n+1}]^{<\omega}$, there exists an $n<\omega$ with $G\subseteq F(A_n,A_{n+1},n+1)$.
+  % \end{lemma}
+
+  % \begin{proof}
+  %   Let $\Lim([\kappa]^\omega)\subseteq[\kappa]^\omega$ denote the countable subsets of $\kappa$ for which if a set contains $\alpha+n$, then it contains $\alpha+m$ for all $m<\omega$.
+
+  %   Let $e:[\kappa]^{<\omega}\to\kappa$ be a bijection such that for every $A\in\Lim([\kappa]^\omega)$, $e\rest [A]^{<\omega}:[A]^{<\omega}\to A$ is a bijection.
+
+  %   Then for $A,B\in\Lim([\kappa]^\omega)$ let $F(A,B,n+1)$ contain all $G\in[B]^{<\omega}$ satsifying $f_{B}(e(G))\leq n$, and also contain all $G\in[A\cap B]^{<\omega}$ satisfying $f_{A}(e(G))\not= f_{B}(e(G))$.
+
+  %   Fix arbitrary $A_n\in[\omega]^\omega$ and $G\in[\bigcap_{m<\omega}\bigcup_{m\leq n<\omega} A_{n+1}]^{<\omega}$.
+  % \end{proof}
+
+  % \begin{theorem}
+  %   $F\kmarkwin{2}\mengame{\omega_1^\sharp}$
+  % \end{theorem}
+
+  % \begin{proof}
+  %   Let $f_A$ witness $S(\kappa,\omega,\omega)$ for each $A<[\kappa]^{\omega}$.
+
+  %   Let $R(A)=\kappa^\sharp\setminus(A\times\oneptlind\kappa)$. Let $U(\gamma,A)=\{\gamma\}\times(\oneptlind{\kappa}\setminus A)$. Then note that every open cover has a pairwise disjoint open refinement of the form 
+  %     \[
+  %       \mc U_A = 
+  %       \{R(A)\}\cup\{U(\gamma,A):\gamma\in A\}\cup\{\{(\gamma,\beta)\}:\gamma,\beta\in A\}
+  %     \]
+  %   Assume without loss of generality that all covers are of the form $\mc U_A$.
+
+
+  %   % Rough idea: Let $\mc U_\alpha$ cover...
+
+  %   % Let $\sigma(\mc U,\mc V,n+1)$ be a $2$-mark.
+
+  %   % Let $F(\alpha_n,\alpha_{n+1},n+1) = \{\alpha<\alpha_n\cap\alpha_{n+1}:\sigma(\mc U_{\alpha_n},\mc U_{\alpha_{n+1}},n+1)$ covers $(\alpha,\beta)$ or $(\beta,\alpha)$ for some $\beta\}$.
+
+  %   % Claim: It is not true that for all $\alpha,\beta<\alpha_0<\alpha_1<\dots$ there exists $n<\omega$ with $\alpha,\beta\in F(\alpha_n,\alpha_{n+1},n+1)$.
+
+  %   % If so, then choose $\alpha,\beta<\alpha_0<\alpha_1<\dots$ such that $\alpha,\beta\not\in\bigcap_{n<\omega}F(\alpha_n,\alpha_{n+1},n+1)$. Then $\sigma$ covers neither $(\alpha,\beta)$ or $(\beta,\alpha)$ in response to the attack $\mc U_{\alpha_0},\mc U_{\alpha_1},\dots$
+  % \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+  \centerline{Alster, Hurewicz}
+
+  Besides various limited information characterizations of $\mengame{X}$, there are other interesting covering properties between $\sigma$-(relatively compact) and Menger.
+
+  \begin{definition}
+    A colleciton of subsets of a space $X$ is (\textbf{really}) \textbf{ample} if has a finite subcover for each (relatively) compact subset of $X$.
+  \end{definition}
+
+  \begin{proposition}
+    Every ample cover of a regular space $X$ is really ample.
+  \end{proposition}
+
+  \begin{proof}
+    Every relatively compact set $R$ is a subset of the compact set $\overline{R}$.
+  \end{proof}
+
+  \begin{definition}
+    A space $X$ is (\textbf{relatively}) \textbf{Alster} if there exists a countable subcover for each (really) ample cover of $X$ by $G_\delta$ sets.
+  \end{definition}
+
+  \begin{proposition}
+    Every regular relatively Alster space is Alster.
+  \end{proposition}
+
+  \begin{theorem}
+    $X$ $\sigma$-compact $\Rightarrow$ $X$ Alster $\Rightarrow$ $X$ Menger
+  \end{theorem}
+
+  \begin{proof}
+    Due to Leandro F. Aurichi and Franklin D. Tall in ``Lindel\"of spaces which are indestructible, productive, or D''.
+  \end{proof}
+
+  \begin{proposition}
+    $X$ $\sigma$-(relatively compact) $\Rightarrow$ $X$ relatively Alster $\Rightarrow$ $X$ Menger
+  \end{proposition}
+
+  \begin{proof}
+    If $X$ is $\sigma$-(relatively compact), then there exists a countable subcover for every really ample cover of $X$ by arbitrary sets.
+
+    If $X$ is relatively Alster, we adapt Aurichi and Tall's argument for the previous theorem.
+
+    Since relatively Alster implies Lindel\"of (all open covers of $X$ are relatively ample by definition of relatively compact), it is sufficient to consider open covers $\mc U_n = \{ U_n^m : m<\omega\}$ such that $U_n^m\subseteq U_n^{m+1}$. Then $\mc G=\{\bigcap_{n<\omega} U_n^{f(n)} : f\in \omega^\omega\}$ is a $G_\delta$ cover. To see that $\mc G$ is relatively ample, note for each relatively compact $K$ in $X$, $K$ is covered by something in each $\mc U_n$, and thus there is $f_K(n)\in\omega^\omega$ such that $K\subseteq \bigcap_{n<\omega} U_n^{f_K(n)}$.
+
+    By relatively Alster, let $f_m\in\omega^\omega$ for $m<\omega$ so that $\mc G'=\{\bigcap_{n<\omega} U_n^{f_m(n)}:m<\omega\}$ covers $X$.
+
+    Then let $\mc F_n = \{U_n^{f_m(n)}:m\leq n\}\in[\mc U_n]^{<\omega}$. Note that if $x\in X$, then $x\in \bigcap_{n<\omega} U_n^{f_{m_x}(n)}$ for some $m_x<\omega$ as $\mc G'$ is a cover. Thus $x\in U_{m_x}^{f_{m_x}(m_x)}$ and is covered by $\mc F_{m_x}$.
+  \end{proof}
+
+  \begin{example}
+    Let the real numbers $R$ be given the topology generated by open intervals with countable sets removed. $R$ is not relatively Alster and $F\win\mengame{R}$. If $S(2^\omega,\omega,\omega)$ holds, then $F\kmarkwin{2}\mengame{R}$.
+  \end{example}
+
+  \begin{proof}
+    Since points are $G_\delta$ and its relatively compact sets are all finite, a cover by singletons is really ample and has no countable subcover, showing $R$ is not relatively Alster.
+
+    It was proven earlier that $F\win\mengame{R}$. Assuming $S(2^\omega,\omega,\omega)$, we construct a $2$-Mark\"ov strategy by first defining the following:
+      \begin{itemize}
+        \item Let $z_n$ enumerate the integers for $n<\omega$.
+        \item For each open cover $\mc V$ of $R$, let $A(\mc V)$ be a countable set such that $[z_n,z_n+1)\setminus A(V)$ is $\mc V$-compact for each $n<\omega$.
+        \item Let $f_A:A\to\omega$ for $A\subseteq R$ witness $S(2^\omega,\omega,\omega)$.
+      \end{itemize}
+
+    Then we may define $\sigma(\mc U_0,0)=\emptyset$ and define $\sigma(\mc U_n,\mc U_{n+1},n+1)$ such that it covers each of the following:
+      \[
+        \left(\bigcup_{m\leq n} [z_m,z_m+1)\right) \setminus A(\mc U_{n+1})
+      \]
+      \[
+        \{f_{A(\mc U_{n+1})}^{-1}(m) : m\leq n\}
+      \]
+      \[
+        \{x \in A(\mc U_n)\cap A(\mc U_{n+1}) : f_{A(\mc U_{n})}(x)\not= f_{A(\mc U_{n+1})}(x)\}
+      \]
+
+    For any attack $\mc U_0,\mc U_1,\dots$ on $\sigma$, let $x\in[z_n,z_n+1)$. 
+      \begin{itemize}
+        \item If $x\not\in A(\mc U_{n+1})$, then $x$ is covered in round $n+1$.
+        \item If $x\in A(\mc U_{n+1})$, let $N=f_{A(\mc U_{n+1})}(x)$. 
+        \begin{itemize}
+          \item If $N\leq n$, then $x$ is covered in round $n+1$.
+          \item If $N>n$ and $N=f_{A(\mc U_{p+1})}(x)$ for all $p\geq n$, then $x$ is covered in round $N$.
+          \item If $N>n$ and $N\not=f_{A(\mc U_{p+1})}(x)$ for some $p>n$, then $x$ is covered in round $p+1$.
+        \end{itemize}
+      \end{itemize}
+  \end{proof}
+
+  \begin{definition}
+    A space $X$ is \textbf{Hurewicz} if for each sequence of open covers $\mc U_n$, there are $\mc F_n \in [\mc U_n]^{<\omega}$ such that $X=\bigcup_{m<\omega}\bigcap_{m\leq n<\omega}\cup\mc F_n$.
+  \end{definition}
+
+  % Probably no good.
+  % \begin{definition}
+  %   A $\gamma$-cover $\mc U$ of $X$ is a countable cover such that each $x\in X$ is contained in all but finite members of $\mc U$.
+
+  %   A $\gamma_\infty$-cover is an infinite $\gamma$-cover. 
+  % \end{definition}
+
+  % \begin{definition}
+  %   A space $X$ is \textbf{Hurewicz} if and only if for each sequence $\mc U_n$ of $\gamma_\infty$-covers, there are $\mc F_n\in[\mc U_n]^{<\omega}$ such that either $\bigcup_{n<\omega} \mc F_n$ is a $\gamma_\infty$-cover, or $\mc F_N$ is a cover for some $N$.
+  % \end{definition}
+
+  % \begin{proposition}
+  %   A space $X$ is Hurewicz if and only if for each sequence $\mc U_n$ of $\gamma$-covers, there are $\mc F_n\in[\mc U_n]^{<\omega}$ such that $\bigcup_{n<\omega} \mc F_n$ is a $\gamma$-cover.
+  % \end{proposition}
+
+  % \begin{proof}
+  %   Suppose $X$ is Hurewicz. For each sequence $\mc U_n$ of $\gamma$-covers, either:
+  %     \begin{itemize}
+  %       \item Each $\mc U_n$ is a $\gamma_\infty$-cover as well. Apply Hurewicz to find $\mc F_n$ such that either $\bigcup_{n<\omega} \mc F_n$ is a $\gamma_\infty$-cover (and thus a $\gamma$-cover) or else $\mc F_N$ is a cover for some $N$, so letting $\mc F_n'=\emptyset$ for $n\not=N$ and $\mc F_N'=\mc F_N$ yields the $\gamma$-cover $\bigcup_{n<\omega} \mc F_n'=\mc F_n$.
+  %       \item Some $U_N$ is not a $\gamma_\infty$-cover as it is finite. Let $\mc F_n'=\emptyset$ for $n\not=N$ and $\mc F_N=\mc U_N$ to yield the $\gamma$-cover $\bigcup_{n<\omega} \mc F_n=\mc U_n$.
+  %     \end{itemize}
+
+  %   Suppose for each sequence $\mc U_n$ of $\gamma$-covers, there are $\mc F_n\in[\mc U_n]^{<\omega}$ such that $\bigcup_{n<\omega} \mc F_n$ is a $\gamma$-cover. Then for each sequence $\mc U_n$ of $\gamma_\infty$-covers, let $\mc F_n\in[\mc U_n]^{<\omega}$ such that $\bigcup_{n<\omega} \mc F_n$ is a $\gamma$-cover. We are now done, unless $\bigcup_{n<\omega} \mc F_n$ is finite.
+  % \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -838,6 +1059,7 @@
         \item $S\win\rothgame{X}$
         \item $P\win\altrothgame{X}$
         \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
+        \item $P\kmarkwin{k}\altrothgame{X}$ for some $k\geq 1$
         \item $S\markwin\rothgame{X}$
         \item $P\prewin\altrothgame{X}$
         \item $X$ is almost countable
@@ -863,6 +1085,7 @@
         \item $S\win\rothgame{X}$
         \item $P\win\altrothgame{X}$
         \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
+        \item $P\kmarkwin{k}\altrothgame{X}$ for some $k\geq 1$
         \item $S\markwin\rothgame{X}$
         \item $P\prewin\altrothgame{X}$
         \item $X$ is almost countable
