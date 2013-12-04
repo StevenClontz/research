@@ -4,16 +4,22 @@
 
 \begin{definition}
   For any partition $\mc R$ of a space $X$ and $x\in X$, let $\mc R[x]$ be such that $x\in\mc R[x]\in\mc R$.
+
+  For partitions $\mc R_0,\dots,\mc R_n$, let $\mc H_n=\bigwedge_{m\leq n} \mc R_m$ be the coarsest partition which refines each $\mc R_m$.
+
+  For partitions $\mc R,\mc S$ let $\mc R\otimes \mc S = \{r\times s: r\in R, s\in S\}$.
 \end{definition}
 
 \begin{proposition}
-  $x\in \mc R[y] \Leftrightarrow y\in \mc R[x]$
+  $x\in \mc R[y] \Leftrightarrow y\in \mc R[x]$.
+
+  $\mc H_n[x]=\left(\bigwedge_{m\leq n} \mc R_m\right)[x]=\bigcap_{m\leq n}\mc R_m[x]$.
 \end{proposition}
 
 \begin{definition}
   For zero-dimensional $X$, the proximity game $\proxgame{X}$ proceeds as follows: in round $n$, $\pl R$ chooses a clopen partition $\mc R_n$ of $X$, followed by $\pl P$ choosing a point $p_n\in X$.
 
-  For clopen partitions $\mc R_0,\dots,\mc R_n$, let $\mc H_n$ be the coarsest partition which refines each $\mc R_m$. Player $\pl R$ wins if either $\bigcap_{n<\omega} \mc H_n[p_n] = \emptyset$ or $p_n$ converges.
+  Player $\pl R$ wins if either $\bigcap_{n<\omega} \mc H_n[p_n] = \emptyset$ or $p_n$ converges.
 \end{definition}
 
 \begin{proposition}
@@ -28,6 +34,10 @@
 
 \begin{definition}
   A space $X$ is \textbf{proximal} iff $X$ is zero-dimensional and $\pl R\win\proxgame{X}$.
+\end{definition}
+
+\begin{definition}
+  A space $X$ is \textbf{Mark\"ov proximal} iff $X$ is zero-dimensional and $\pl R\markwin\proxgame{X}$.
 \end{definition}
 
 \begin{definition}
@@ -71,7 +81,7 @@
     \]
   and the \textbf{$k$-Mark\"ov fog-of-war}
     \[
-      M_k(m_0,\dots,m_{n-1})=(m_{n-k},\dots,m_{n-1},n-1)
+      M_k(m_0,\dots,m_{n-1})=(m_{n-k},\dots,m_{n-1},n)
     \]
 
   So $P\ktactwin{k}G$ if and only if there exists a winning strategy for $P$ of the form $\sigma\circ T_k$, and $P\kmarkwin{k}G$ if and only if there exists a winning strategy of the form $\sigma\circ M_k$.
@@ -238,5 +248,131 @@ $\pl R\markwin \aproxgame{\oneptcomp{\omega_1}}$.
 \begin{proof}
 Holds for $\pl O$ and $\clusgame{\oneptcomp{\omega_1}}{\infty}$.
 \end{proof}
+
+\begin{proposition}
+If $\sigma\circ L$ is a winning strategy for $\pl R$ in $\proxgame{X}$ (resp. $\aproxgame{X}$) where $L$ is the identity (or a $k$-tactical fog-of-war or a $k$-Mark\"ov fog-of-war), and $C$ is a closed subspace of $X$, then
+  \[
+    \tau\circ L(p_0,\dots,p_{n-1}) = C\cap \sigma\circ L(p_0,\dots,p_{n-1})
+  \]
+defines a winning strategy $\tau\circ L$ for $\pl R$ in $\proxgame{X}$ (resp. $\aproxgame{X}$).
+\end{proposition}
+
+\begin{proof}
+For any attack $p_0,p_1,\dots$ against $\tau\circ L$ in $\proxgame{C}$ (resp. $\aproxgame{C}$), note $p_0,p_1,\dots$ is also an attack against $\sigma\circ L$ in $\proxgame{X}$ (resp. $\aproxgame{X}$). 
+
+If $\pl R$ wins in $\proxgame{X}$ (resp. $\aproxgame{X}$) by $\mc H^\sigma_n[p_n]=\emptyset$, then note that $\mc H^\tau_n[p_n]\subseteq\mc H^\sigma_n[p_n]=\emptyset$. 
+
+If If $\pl R$ wins in $\proxgame{X}$ (resp. $\aproxgame{X}$) because the $p_n$ converge (resp. cluster), then they converge (resp. cluster) in the closed set $C$. 
+
+Either way, $\tau\circ L$ defeats the arbitrary attack and is thus a winning strategy.
+\end{proof}
+
+\begin{proposition}
+If for any $i<m<\omega$, $\sigma_i\circ L$ is a winning strategy for $\pl R$ in $\proxgame{X_i}$ (resp. $\aproxgame{X_i}$) where $L$ is the identity (or a $k$-tactical fog-of-war or a $k$-Mark\"ov fog-of-war), then
+  \[
+    \tau\circ L(p_0,\dots,p_{n-1}) = \bigotimes_{i<m}\sigma_i\circ L(p_0(i),\dots,p_{n-1}(i))
+  \]
+defines a winning strategy $\tau\circ L$ for $\pl R$ in $\proxgame{\prod_{i<m}X_i}$ (resp. $\aproxgame{\prod_{i<m}X_i}$).
+\end{proposition}
+
+\begin{proof}
+For any attack $p_0,p_1,\dots$ against $\tau\circ L$ in $\proxgame{\prod_{i<m}X_i}$ (resp. $\aproxgame{\prod_{i<m}X_i}$), note that for any $i<m$, $p_0(i),p_1(i),\dots$ is an attack against $\sigma_i\circ L$ in $\proxgame{X_i}$ (resp. $\aproxgame{X}$).
+
+If for some $i<m$, $\pl R$ defeats the attack $p_0(i),p_1(i),\dots$ because $\bigcap_{n<\omega}\mc H^i_n[p_n(i)]=\emptyset$, then we see immediately that $\bigcap_{n<\omega} \mc H_n[p_n]=\emptyset$ and $\tau$ defeats the attack $p_0,p_1,\dots$.
+
+Otherwise for all $i<m$, we have $p_n(i)$ converging (resp. clustering) at some $x_i\in X$. It follows then that $p_0,p_1,\dots$ converges (resp. clusters) at $x=\<x_i:i<m\>$ and $\tau$ defeats the attack $p_0,p_1,\dots$.
+\end{proof}
+
+\begin{definition}
+For $H\subseteq X$, the \textbf{$W$-subset-convergence-game} $\congame{X}{H}$ is analogous to $\congame{X}{x}$: $\pl O$ chooses open neighborhoods of $H$ and tries to force $p_n\to H$.
+\end{definition}
+
+\begin{theorem}
+  For all compact $H\subseteq X$, $\pl R \win\proxgame{X}$ implies $\pl O \win\congame{X}{H}$.
+\end{theorem}
+
+\begin{proof}
+  Adapted from G's proof.
+
+  Let $\sigma$ witness $\pl R \win\proxgame{X}$, assuming $\sigma(p)$ refines $\sigma(q)$ whenever $q\subseteq p$.
+
+  For certain finite sequences of points $p\in X^{<\omega}$, we define a tree of finite sequences $\<T(p),\subseteq\>$ as follows:
+
+  \begin{itemize}
+    \item $T(\emptyset)$ contains the empty sequence, and for each of the finite nonempty
+      \[
+        V\in\{U\cap H: U\in\sigma(\emptyset)\}
+      \]
+      choose a unique $h_V\in V$ and include $\<h_V\>$ in $T(\emptyset)$.
+    \item Assume that whenever $T(p)$ is defined, it satisfies the following:
+      \begin{itemize}
+        \item $T(p)$ is finite
+        \item $p'\subseteq p \Rightarrow T(p')\subseteq T(p)$
+        \item If $\<h_0,q_0,\dots,h_n\>\in T(p)$ then $\<q_0,\dots,q_{n-1}\>$ is a subsequence of $p$ and $q_i\in\sigma(h_0,q_0,\dots,h_{i-1},q_{i-1})[h_i]$ for all $i<n$
+        \item For each sequence $t\concat\<h,q\>\in T(p)$ and for each of the finite nonempty
+          \[
+            V\in\{U\cap H\cap \sigma(t)[h]: U\in \sigma(t\concat\<h,q\>)\}
+          \]
+          there is a unique $h_V\in V$ such that $t\concat\<h,q,h_V\>\in T(p)$.
+        \item $\{\sigma(t)[h]:t\concat\<h\>\text{ is maximal in }T(p)\}$ partitions $\st{\bigwedge_{s\in T(p)}\sigma(s)}{H}$.
+      \end{itemize}
+
+    \item Then when $T(p)$ is defined, we define $T(p\concat\<q\>)$ for each $q\in \st{\bigwedge_{s\in T(p)}\sigma(s)}{H}$ as follows:
+      \begin{itemize}
+        \item Assume $T(p)\subseteq T(p\concat\<q\>)$.
+        \item Find the maximal $t_q\concat\<h_q\>$ in $T(p)$ such that $q\in\sigma(t_q)[h_q]$. Include $t_q\concat\<h_q,q\>$ in $T(p\concat\<q\>)$.
+        \item For each of the finite nonempty
+          \[
+            V\in\mc V(t_q,h_q,q)=\{U\cap H\cap \sigma(t_q\concat\<h_q,q\>)[h]: U\in \sigma(t_q\concat\<h_q,q\>)\}
+          \]
+          choose a unique $h_V\in V$ and include $t_q\concat\<h_q,q,h_V\>$ in $T(p\concat\<q\>)$.
+        \item Note that 
+          \[
+            \{\sigma(t)[h]:t\concat\<h\>\text{ is maximal in }T(p), h\not= h_q\}
+          \]
+          partitions 
+          \[
+            \st{\bigwedge_{s\in T(p)}\sigma(s)}{H}\setminus\sigma(t_q)[h_q] = \st{\bigwedge_{s\in T(p\concat\<q\>)}\sigma(s)}{H}\setminus\sigma(t_q)[h_q]
+          \]
+          and that
+          \[
+            \{\sigma(t_q\concat\<h_q,q\>)[h_V]: \mc V\in V(t_q,h_q,q)\}
+          \]
+          partitions 
+          \[
+            \st{\bigwedge_{V\in \mc V(t_q,h_q,q)}\sigma(t_q\concat\<h_q,q,h_V\>)}{H}\cap \sigma(t_q)[h_q] 
+              = 
+            \st{\bigwedge_{s\in T(p\concat\<q\>)}\sigma(s)}{H}\cap\sigma(t_q)[h_q]
+          \]
+          so our definition satisfies the recursion hypotheses.
+      \end{itemize}
+  \end{itemize}
+
+  We may define a strategy $\tau$ for $\pl O$ in $\congame{X,H}$ as follows. Let $\tau(\emptyset)=\st{\bigwedge_{s\in T(\emptyset)}\sigma(s)}{H}$. If $T(p)$ is defined and $q\in \st{\bigwedge_{s\in T(p)}\sigma(s)}{H}$, then let $\tau(p\concat\<q\>)=\st{\bigwedge_{s\in T(p\concat\<q\>)}\sigma(s)}{H}$ (and $\tau(p\concat\<q\>)=X$ otherwise).
+
+  Let $p\in X^\omega$ attack $\tau$ such that $p(n)\in\tau(p\rest n)$ always. It follows that $T(p\rest n)$ is defined for all $n<\omega$, so let $T_p=\bigcup_{n<\omega}T(p\rest n)$. By definition, it is evident that $T_p$ is an infinite tree with finite levels, so choose an infinite branch $p'=\<h_0,q_0,\dots\>$.
+
+  Since $p'$ is an attack on $\sigma$, and $p'(n+1)\in\sigma(p\rest n+1)[p(n)]$ always, it follows that $p'$ converges. Since $p(2n)=h_n\in H$, $p'$ converges in $H$, and so does its subsequence $p''=\<q_0,q_1,\dots\>$, which is also a subsequence of $p$.
+
+  We've shown $p$ clusters in $H$, and since $\tau(p\rest n+1)\subseteq \tau(p)$, it follows analogously to a result of G that $p$ converges in $H$.
+\end{proof}
+
+\begin{corollary}
+If $X$ is compact and $\pl R\win\proxgame{X}$, then $\pl O\win\congame{X^2}{\Delta}$, and thus $X$ is Corson compact.
+\end{corollary}
+
+\begin{proof}
+Note $\pl R\win\proxgame{X^2}$ and $\Delta$ is a compact subset of $X^2$, so $\pl O\win\congame{X^2}{\Delta}$. By a result of G, $X$ is Corson compact.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
