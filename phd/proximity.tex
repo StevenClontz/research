@@ -3,6 +3,63 @@
 \begin{document}
 
 \begin{definition}
+  The simplified proximal game can be defined as follows:
+
+  In round $0$, $\pl D$ chooses a symmetric entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$. 
+
+  In round $n+1$, $\pl D$ chooses a symmetric entourage $D_{n+1}$, followed by $\pl P$ choosing a point $p_{n+1}\in \bigcap_{m\leq n}D_n[p_n]$.
+
+  Player $\pl D$ wins if either $\bigcap_{n<\omega}\left(\bigcap_{m\leq n} D_n\right)[p_n]=\emptyset$ or $p_n$ converges.
+\end{definition}
+
+\begin{theorem}
+  The simplified proximal game is perfect-info equivalent to Bell's game for the entourage-picker $\pl D$.
+\end{theorem}
+
+\begin{proof}
+  Let $\sigma$ be a winning perfect information strategy for $\pl D$ in Bell's game. We define a perfect information strategy $\tau$ in the simplified game to be simply $\tau(p\rest n)=\sigma(p\rest n)$ (so $\tau(p\rest n)=\bigcap_{m\leq n}\tau(p\rest m)$) for all partial attacks $p\rest n$.
+
+  If $p$ attacks $\tau$ in the simplified game, $p(n+1)\in\bigcap_{m\leq n}\tau(p\rest m)[p(n)]=\tau(p\rest n)[p(n)]=\sigma(p\rest n)[p(n)]\subseteq 4\sigma(p\rest n)[p(n)]$, so $p$ attacks $\sigma$ in Bell's game. Thus either $p$ converges, or 
+    \[
+      \emptyset
+        =
+      \bigcap_{n<\omega} 4\sigma(p\rest n)[p(n)]
+        \supseteq 
+      \bigcap_{n<\omega}\tau(p\rest n)[p(n)]
+        =
+      \bigcap_{n<\omega}\left(\bigcap_{m\leq n}\tau(p\rest n)\right)[p(n)]
+    \]
+
+  For the other direction, let $\sigma$ be a winning perfect information strategy for $\pl D$ in the simplified game such that $\sigma(p\rest n)=\bigcap_{m\leq n}\sigma(p\rest m)$. Define the perfect information strategy $\tau$ in Bell's Game such that $4\tau(p\rest n)\subseteq \sigma(p\rest n)$ and $\tau(p\rest n)=\bigcap_{m\leq n}\tau(p\rest m)$ for all partial attacks $p\rest n$.
+
+  If $p$ attacks $\tau$ in Bell's game, $p(n)\in 4\tau(p\rest n)\subseteq\sigma(p\rest n)=\bigcap_{m\leq n}\sigma(p\rest m)$, so $p$ attacks $\sigma$ in the simplified game. Thus either $p$ converges, or
+    \[
+      \emptyset
+        =
+      \bigcap_{n<\omega}\left(\bigcap_{m\leq n}\sigma(p\rest n)\right)[p(n)]
+        =
+      \bigcap_{n<\omega}\sigma(p\rest n)[p(n)]
+        \supseteq
+      \bigcap_{n<\omega}4\tau(p\rest n)[p(n)]
+        \supseteq
+      \bigcap_{n<\omega}\tau(p\rest n)[p(n)]
+    \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\begin{definition}
   A \textbf{uniform space} $\<X,\mc D\>$ is a set $X$ paired with a filter $\mc D$ (called its \textbf{uniformity}) of relations (called \textbf{entourages}) on $X$ such that for each entourage $D\in \mc D$:
     \begin{itemize}
       \item $D$ is reflexive, i.e., the diagonal $\Delta\subseteq D$.
@@ -17,7 +74,7 @@
 \end{definition}
 
 \begin{theorem}
-  A space $X$ is uniformizable (its topology is the uniform topology for some uniformity) if and only if $X$ is completely regular ($T_3$).
+  A space $X$ is uniformizable (its topology is the uniform topology for some uniformity) if and only if $X$ is completely regular ($T_{3\frac{1}{2}}$).
 \end{theorem}
 
 \begin{definition}
@@ -189,36 +246,22 @@ For all $x\in X$:
 \begin{proposition} For any $x\in X$,
   \begin{itemize}
     \item
-      $\pl O\ktactwin{(k+1)}\congame{X}{x} \Leftrightarrow O\tactwin\congame{X}{x}$
+      $\pl O\ktactwin{k}\congame{X}{x} \Rightarrow \pl O\tactwin\congame{X}{x}$
     \item
-      $\pl O\kmarkwin{(k+1)}\congame{X}{x} \Leftrightarrow O\markwin\congame{X}{x}$
+      $\pl O\kmarkwin{k}\congame{X}{x} \Rightarrow \pl O\markwin\congame{X}{x}$
   \end{itemize}
 \end{proposition}
 
 \begin{proof}
-  If $\sigma$ witnesses $O\ktactwin{(k+1)}\congame{X}{x}$, let $\tau(\emptyset)=\sigma(\emptyset)$ and
+  If $\sigma$ witnesses $\pl O\ktactwin{k}\congame{X}{x}$, let $\tau(\emptyset)=\sigma(\emptyset)$ and
     \[
       \tau(\<q\>)
         =
-      \sigma(\<\underbrace{x,\dots,x}_k,q\>)
-        \cap
-      \sigma(\<\underbrace{x,\dots,x}_{k-1},q,x\>)
-        \cap\dots\cap
-      \sigma(\<q,\underbrace{x,\dots,x}_k\>)
+      \bigcap_{i< k}
+      \sigma(\<\underbrace{x,\dots,x}_{k-i-1},q,\underbrace{x,\dots,x}_{i}\>)
     \]
 
-  Similarly, if $\sigma$ witnesses $O\kmarkwin{(k+1)}\congame{X}{x}$, let $\tau(\emptyset,0)=\sigma(\<\underbrace{x,\dots,x}_k\>,k)$ and
-    \[
-      \tau(\<q\>,n+1)
-        =
-      \sigma(\<\underbrace{x,\dots,x}_k,q\>,(k+1)(n+1))
-        \cap
-      \sigma(\<\underbrace{x,\dots,x}_{k-1},q,x\>,(k+1)(n+1)+1)
-        \cap\dots\cap
-      \sigma(\<q,\underbrace{x,\dots,x}_k\>,(k+1)(n+2))
-    \]
-
-  Both may be easily verified to also be winning strategies.
+  This is easily verified to be a winning strategy. The proof for $\pl O\kmarkwin{k}\congame{X}{x}$ is analogous.
 \end{proof}
 
 \begin{corollary}
@@ -231,8 +274,85 @@ For all $x\in X$:
   \end{itemize}
 \end{corollary}
 
+\begin{proposition} For any uniform space $X$,
+  \begin{itemize}
+    \item
+      $\pl O\ktactwin{k}\proxgame{X} \Rightarrow \pl O\ktactwin{2}\proxgame{X}$
+    \item
+      $\pl O\kmarkwin{k}\proxgame{X} \Rightarrow \pl O\kmarkwin{2}\proxgame{X}$
+  \end{itemize}
+\end{proposition}
 
+\begin{proof}
+  If $\sigma$ witnesses $\pl O\ktactwin{k}\congame{X}{x}$, let $\tau(\emptyset)=\sigma(\emptyset)$ and
+    \[
+      \tau(\<q\>)
+        =
+      \bigcap_{i<k}
+      \sigma(\<\underbrace{q,\dots,q}_{i}\>)
+    \]
+    \[
+      \tau(\<q,q'\>)
+        =
+      \bigcap_{i< k}
+      \sigma(\<\underbrace{q,\dots,q}_{k-i},\underbrace{q',\dots,q'}_{i}\>)
+    \]
 
+  This is easily verified to be a winning strategy. The proof for $\pl O\kmarkwin{k}\congame{X}{x}$ is analogous.
+\end{proof}
+
+\begin{theorem}
+  If $\pl D \win \proxgame{X}$, then $\pl O\win \clusgame{X}{H}$ for all compact $H\subseteq X$.
+\end{theorem}
+
+\begin{proof}
+  Let $\sigma$ witness $\pl D \win \proxgame{X}$ such that $q\subseteq p$ implies $\sigma(q)\supseteq\sigma(p)$. Then for certain $p\in X^{<\omega}$, we define a tree $T(p)$ and finite number $m(p)$ as follows:
+    \begin{itemize}
+      \item For $T(\emptyset)$:
+        \begin{itemize}
+          \item Let $\emptyset\in T(\emptyset)$.
+          \item 
+        \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+  If $\pl D \win \proxgame{X}$, then $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
+\end{corollary}
+
+\newpage
+
+\begin{definition}
+  A filter $\mc F$ on a uniform space $X$ is \textbf{Cauchy} if for every entourage $D$, there exists $A\in \mc F$ such that $A^2\subseteq D$.
+\end{definition}
+
+\begin{definition}
+  A fitler $\mc F$ \textbf{converges} to $x$ ($\mc F\to x$) if for every neighborhood $U$ of $x$, there exists $A\in \mc F$ such that $x\in A\subseteq U$.
+\end{definition}
+
+\begin{definition}
+  A uniform space $X$ is \textbf{completely uniform} if every Cauchy filter converges.
+\end{definition}
+
+\begin{proposition}
+  Completely uniform metrizable spaces are completely metrizable.
+\end{proposition}
+
+\begin{proof}
+  ??
+\end{proof}
+
+\begin{theorem}
+For all completely uniform $X$, $\pl O \prewin\proxgame{X}$ if and only if $X$ is metrizable.
+\end{theorem}
+
+\begin{proof}
+  Assume $X$ is metrizable, and thus completely metrizable. Define the predetermined strategy $\sigma$ such that if $D_n=\{(x,y):d(x,y)<\frac{1}{4^n}\}$ then $\sigma(n)=D_{n+1}$. Note that $\sigma(n+1)=D_{n+2}\subseteq 4D_{n+2}= D_{n+1} =\sigma(n)$, so $\bigcap_{m\leq n}\sigma(m)=\sigma(n)$. 
+
+  Let $p$ attack $\sigma$. We have $p(n+1)\in 4\sigma(n)[p(n)]=4D_{n+1}[p(n)]=D_n[p(n)]$, so $d(p(n),p(n+1))<\frac{1}{4^n}$. Thus $p$ is Cauchy and converges.
+
+  Let $\sigma$ witness $\pl O \prewin\proxgame{X}$. Claim: $\Delta = \bigcap_{n<\omega}\sigma(n)$.
+\end{proof}
 
 
 
