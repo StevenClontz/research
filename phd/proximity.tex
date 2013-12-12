@@ -16,8 +16,8 @@
 \end{definition}
 
 \begin{proposition}
-For each $D\in\mc D$ and $n<\omega$ there exists $\frac{1}{n}D\in\mc D$ such that 
-  \[n(\frac{1}{n}D)=\underbrace{\frac{1}{n}D\circ\dots\circ\frac{1}{n}D}_{n}\subseteq D\]
+For each $D\in\mc D$ and $n<\omega$ there exists $\frac{1}{2^n}D\in\mc D$ such that 
+  \[2^n(\frac{1}{2^n}D)=\underbrace{\frac{1}{2^n}D\circ\dots\circ\frac{1}{2^n}D}_{2^n}\subseteq D\]
 \end{proposition}
 
 \begin{definition}
@@ -300,133 +300,138 @@ For all $x\in X$:
   This is easily verified to be a winning strategy. The proof for $\pl O\kmarkwin{k}\congame{X}{x}$ is analogous.
 \end{proof}
 
+\newpage
+
 \begin{theorem}
   If $\pl D \win \proxgame{X}$, then $\pl O\win \clusgame{X}{H}$ for all compact $H\subseteq X$.
 \end{theorem}
 
 \begin{proof}
-  Let $\sigma$ witness $\pl D \win \proxgame{X}$ such that $q\subseteq p$ implies $\sigma(q)\supseteq\sigma(p)$. For certain $a\in X^{<\omega}$, we define a few helpful functions to help us define the winning strategy for $\pl O$ in $\congame{X}{H}$.
+  Let $\sigma$ witness $\pl D \win \proxgame{X}$ such that $p\supseteq q$ implies $\sigma(p)\subseteq \sigma(q)$.
 
   Let $o(t)$ be the subsequence of $t$ consisting of its odd-indexed terms.
 
-  Define $T(a)$ for $a=\emptyset$ and $U_t,m_t,h_t$ for certain $t\in T(\emptyset)$ as follows:
-        \begin{itemize}
-          \item Begin with $\emptyset\in T(\emptyset)$.
-          \item We may choose $m_{\emptyset}<\omega$, $h_{\<i\>}\in H$ for $i<m_{\emptyset}$, and set
-            \[
-              U_{\<i\>}
-                =
-              \sigma(\emptyset)[h_{\<i\>}]
-            \]
-            for $i<m_{\emptyset}$ such that $\{U_{\<i\>}:i<m_{\emptyset}\}$ is a cover of $H$.
-          \item Let $\<i\>,\<i,h_{\<i\>}\>\in T(\emptyset)$ for $i<m_{\emptyset}$.
-          \item For each $i<m_{\emptyset}$, we may choose $m_{\<i\>}<\omega$, $h_{\<i,h_{\<i\>},j\>}\in H\cap\cl{U_{\<i\>}}$ for $j<m_{\<i\>}$, and 
-            \[
-              U_{\<i,h_{\<i\>},j\>}
-                =
-              \frac{1}{4}\sigma(\<h_{\<i\>}\>)[h_{\<i,h_{\<i\>},j\>}]
-                \cap 
-              U_{\<i\>}
-            \]
-            for $j<m_{\<i\>}$ such that $\{U_{\<i,h_{\<i\>},j\>}:j<m_{\<i\>}\}$ is a cover of $H\cap U_{\<i\>}$.
-          \item Let $\<i,h_{\<i\>},j\>\in T(\emptyset)$ for $i<m_{\emptyset}$, $j<m_{\<i\>}$.
-        \end{itemize}
-  If $T(a)$ is defined such that $o(t)$ is an attack against $\sigma$ for $t\in T(a)$, and $U_t,m_t,h_t$ are defined for $t\in T(a)$, we define $T(a\concat\<x\>)$ and $U_t,m_t,h_t$ for certain $t\in T(a\concat\<x\>)$ where 
-        \[
-          x\in \bigcup_{t\in\max(T(a))}U_t
-        \]
-  as follows:
-        \begin{itemize}
-          \newcommand{\thet}{{t_x}}
-          \item Let $T(a)\subseteq T(a\concat\<x\>)$.
-          \item Choose $t=s\concat\<h,j\>\in\max(T(a))$ such that $x\in U_{t}$.
-          \item Let ${\thet}=t\concat\<x\>\in T(a\concat\<x\>)$. Note that since 
-            \[
-            x\in U_t \subseteq U_{s} \subseteq \sigma(o(s))[h]
-            \]
-          $o(t)\concat\<x\>$ is a legal partial attack against $\sigma$.
-          \item We may choose $m_{\thet}<\omega$, $h_{\thet\concat\<i\>}\in H\cap\cl{U_t}$ for $i<m_{\thet}$, and 
-            \[
-              U_{{\thet}\concat\<i\>}
-                =
-              \sigma(o(\thet))[h_{{\thet}\concat\<i\>}]
-                \cap 
-              U_{t}
-            \]
-            for $i<m_{\thet}$ such that $\{U_{{\thet}\concat\<i\>}:i<m_{\thet}\}$ is a cover of $H\cap U_{t}$. Note that since 
-            \[
-              x
-                \in 
-              U_t
-                \subseteq
-              \frac{1}{4}\sigma(o(t))[h_t]
-                \subseteq
-              \frac{1}{2}\sigma(o(t))[h_t]
-            \]
-            and
-            \[
-              h_{{\thet}\concat\<i\>}
-                \in
-              \cl{U_t}
-                \subseteq
-              \cl{\frac{1}{4}\sigma(o(t))[h_t]}
-                \subseteq
-              \frac{1}{2}\sigma(o(t))[h_t]
-            \]
-            it follows that
-            \[
-              h_{{\thet}\concat\<i\>}
-                \in
-              \sigma(o(t))[x]
-            \]
-            and $o(t_x)\concat\<h_{{\thet}\concat\<i\>}\>$ is a legal partial attack against $\sigma$.
-          \item Let ${\thet}\concat\<i\>\in T(a\concat\<x\>)$ and ${\thet}\concat\<i,h_{{\thet}\concat\<i\>}\>\in T(a\concat\<x\>)$ for $i<m_{\thet}$.
-          \item For each $i<m_{\thet}$, we may choose $m_{{\thet}\concat\<i\>}<\omega$, $h_{{\thet}\concat\<i,h_{{\thet}\concat\<i\>},j\>}\in H\cap \cl{U_{{\thet}\concat\<i\>}}$ for $j<m_{{\thet}\concat\<i\>}$, and 
-            \[
-              U_{{\thet}\concat\<i,h_{{\thet}\concat\<i\>},j\>}
-                =
-              \frac{1}{4}\sigma(o(\thet)\concat\<h_{{\thet}\concat\<i\>}\>)[h_{{\thet}\concat\<i,h_{{\thet}\concat\<i\>},j\>}]
-                \cap
-              U_{{\thet}\concat\<i\>}
-            \]
-            for $j<m_{{\thet}\concat\<i\>}$ such that $\{U_{{\thet}\concat\<i,h_{{\thet}\concat\<i\>},j\>}:i<m_{\thet},j<m_{{\thet}\concat\<i\>}\}$ is a cover of $H\cap U_{{\thet}\concat\<i\>}$.
-          \item Let ${\thet}\concat\<i,h_{{\thet}\concat\<i\>},j\>\in T(a\concat\<x\>)$ for $i<m_{\thet}$, $j<m_{{\thet}\concat\<i\>}$.
-        \end{itemize}
+  We define $T(\emptyset)$, etc. as follows:
 
-  We claim that 
-    \[
-      \tau(p\rest n)=\bigcup_{t\in\max(T(p\rest n))}U_t
-    \] 
-  is a strategy for $\pl O$ in $\congame{X}{H}$. We note $\tau(\emptyset)$ is well defined as for $t\in\max(T(\emptyset))$: 
-    \begin{itemize}
-      \item $t=\<i,h_{\<i\>},j\>$
-      \item $\{U_{\<i,h_{\<i\>},j\>}:j<m_{\<i\>}\}$ covers $H\cap U_{\<i\>}$
-      \item $\{U_{\<i\>}:i<m_{\emptyset}\}$ covers $H$
-      \item Thus $\tau(\emptyset)$ is a neighborhood of $H$.
-    \end{itemize}
+  \begin{itemize}
+    \item Let $\emptyset\in T(\emptyset)$.
+    \item Choose $m_\emptyset<\omega$, $h_{\emptyset,i}\in H$ for $i<m_\emptyset$, and $h_{\emptyset,i,j}\in H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}$ for $i,j<m_\emptyset$ such that
+      \[
+        \{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]:i<m_\emptyset\}
+      \]
+    is a cover for $H$ and such that for each $i<m_\emptyset$
+      \[
+        \{\frac{1}{4}\sigma(\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]:j<m_\emptyset\}
+      \]
+    is a cover for $H\cap\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]$.
+    \item Let $\<i\>\in T(\emptyset)$, $\<i,h_{\emptyset,i}\>\in T(\emptyset)$, and $\<i,h_{\emptyset,i},j\>\in T(\emptyset)$ for $i,j<m_\emptyset$.
+  \end{itemize}
 
-  Then, assuming that $\tau(p\rest n)=\bigcup_{t\in\max(T(p\rest n))}U_t$ is a neighborhood of $H$ and $p(n)\in\tau(p\rest n)$, then a single $t_{p(n)}$ in $\max(T(p\rest n))$ is replaced in $\max(T(p\rest (n+1)))$ with sequences of the form 
+  Suppose $T(a)$, etc. are defined. We then define $T(a\concat\<x\>)$, etc. for
     \[
-      {t_{p(n)}}\concat\<p(n),i,h_{{t_{p(n)}}\concat\<p(n),i\>},j\>
+      x\in \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))} \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
     \]
-  but then:
-    \begin{itemize}
-      \item $\{U_{{t_{p(n)}}\concat\<p(n),i,h_{{t_{p(n)}}\concat\<p(n),i\>},j\>}:j<m_{\<i\>}\}$ covers $H\cap U_{{t_{p(n)}}\concat\<p(n),i\>}$
-      \item $\{U_{{t_{p(n)}}\concat\<p(n),i\>}:i<m_{{t_{p(n)}}\concat\<p(n)\>}\}$ covers $H\cap U_{t_{p(n)}}$.
-    \end{itemize}
-  so $\tau(p\rest (n+1))=\bigcup_{t\in\max(T(p\rest (n+1)))}U_t$ is still a neighborhood of $H$.
+  as follows:
 
-  Finally, let $p$ attack $\tau$. Then $T(p\rest n)$ is defined for all $n<\omega$, so $T(p)=\bigcup_{n<\omega} T(p\rest n)$ is also defined. Observe that the levels of $T(p\rest n)$ must be finite:
+  \begin{itemize}
+    \item Let $T(a)\subseteq T(a\concat\<x\>)$.
+    \item Choose $t=s\concat\<i,h_{s,i},j,x\>$ such that $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ and $x\in \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$. 
+    \item Note that, assuming $o(s)\concat\<h_{s,i}\>$ is a legal partial attack against $\sigma$, then
+      \[
+        x
+          \in 
+        \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
+          \subseteq
+        \frac{1}{4}\sigma(o(s))[h_{s,i,j}]
+      \]
+    and
+      \[
+        h_{s,i,j}
+          \in 
+        \cl{\frac{1}{4}\sigma(o(s))[h_{s,i}]}
+          \subseteq 
+        \frac{1}{2}\sigma(o(s))[h_{s,i}]
+      \]
+    implies
+      \[
+        x
+          \in 
+        \sigma(o(s))[h_{s,i}]
+      \]
+    and thus $o(s)\concat\<h_{s,i},x\>=o(t)$ is a legal partial attack against $\sigma$.
+    \item Choose $m_t<\omega$, $h_{t,k}\in H\cap \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}$ for $k<m_t$, and $h_{t,k,l}\in H\cap\cl{\frac{1}{4}\sigma(t)[h_{t,k}]}$ for $k,l<m_t$ such that
+      \[
+        \{\frac{1}{4}\sigma(o(t))[h_{t,k}]:k<m_t\}
+      \]
+    is a cover for $H\cap \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$ and such that for each $k<m_t$
+      \[
+        \{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,i,j}]:l<m_t\}
+      \]
+    is a cover for $H\cap\frac{1}{4}\sigma(o(t))[h_{t,k}]$.
+    \item Note that, assuming $o(t)$ is a legal partial attack against $\sigma$, then
+      \[
+        h_{t,k}
+          \in 
+        \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}
+          \subseteq
+        \frac{1}{2}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
+      \]
+    and
+      \[
+        x
+          \in 
+        \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
+      \]
+    implies
+      \[
+        h_{t,k}
+          \in
+        \sigma(o(s)\concat\<h_{s,i}\>)[x]
+      \]
+    and thus $o(t)\concat\<h_{t,k}\>$ is a legal partial attack against $\sigma$.
+    \item Let $t\in T(a\concat\<x\>)$, $t\concat\<k\>\in T(a\concat\<x\>)$, $t\concat\<k,h_{t,k}\>\in T(a\concat\<x\>)$, and $t\concat\<k,h_{t,k},l\>\in T(a\concat\<x\>)$ for $k,l<m_t$.
+    \item Note that assuming
+      \[
+        \{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}] : s\concat\<i,h_{s,i},j\>\in\max(T(a))\}
+      \]
+    covers $H$, then since
+      \[
+        \{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,k,l}] : s\concat\<i,h_{s,i},j,x,k,h_{t,k},l\>\in\max(T(a\concat\<x\>))\setminus\max(T(a))\}
+      \]
+    covers $H\cap \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$, we have that
+      \[
+        \{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,k,l}] : t\concat\<k,h_{t,k},l\>\in\max(T(a\concat\<x\>))\}
+      \]
+    covers $H$.
+  \end{itemize}
+
+  With this we may define the perfect information strategy $\tau$ for $\pl O$ in $\congame{X}{H}$ such that:
+  \[
+    \tau(p\rest n) = \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(p\rest n))} \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
+  \]
+
+  If $p$ attacks $\tau$, then it follows that $T(p\rest n)$ is defined for all $n<\omega$, so let $T(p)=\bigcup_{n<\omega} T(p\rest n)$. We note $T(p)$ is an infinite tree with finite levels:
     \begin{itemize}
-      \item $\emptyset$'s successors are $\<i\>$ for $i<m_{\emptyset}$
-      \item Each $t\concat\<i\>$ has exactly one successor $t\concat\<i,h_{t\concat\<i\>}\>$
-      \item $t\concat\<h\>$'s successors are $t\concat\<h,j\>$ for $j<m_{t\concat\<h\>}$
-      \item Each $t\concat\<j\>$ has either no successor or exactly one successor $t\concat\<j,p(n)\>$
-      \item $t\concat\<p(n)\>$'s successors are $t\concat\<p(n),i\>$ for $i<m_{t\concat\<p(n)\>}$
+      \item $\emptyset$ has exactly $m_\emptyset$ successors $\<i\>$.
+      \item $s\concat\<i\>$ has exactly one successor $t\concat\<i,h_{s,i}\>$
+      \item $s\concat\<i,h_{s,i}\>$ has exactly $m_s$ successors $t\concat\<i,h_{s,i},j\>$
+      \item $s\concat\<i,h_{s,i},j\>$ has either no successors or exactly one successor $t\concat\<i,h_{s,i},j,x\>$
+      \item $t=s\concat\<i,h_{s,i},j,x\>$ has exactly $m_t$ successors $t\concat\<k\>$
     \end{itemize}
 
-  So $T(p)$ is an infinite tree with finite levels, and we may pick an infinite sequence $q'$ corresponding to an infinite branch. Let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. By the definition of $T(p)$, we know $q$ attacks $\sigma$. Thus either 
+  Let $q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>$ correspond to this infinite branch in $T(p)$, and let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of $T(p)$, $q$ is an attack on $\sigma$.
+
+  Note that
+    \[
+      H
+        \supseteq
+      H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}
+        \supseteq
+      \text{ need more argument here }
+    \]
+  yields a chain of decreasing compact sets nested in $\sigma(q\rest n)[q(n)]$, so $\bigcap_{n<\omega}\sigma(q\rest n)[q(n)]\not= \emptyset$. Then as $\sigma$ is a winning strategy, it follows that $q$ converges. Since $q(2n)\in H$, $q$ must converge to $H$. Thus $o(q)$ converges to $H$, and since $o(q)$ is a subsequence of $p$, $p$ clusters at $H$.
 \end{proof}
+
 
 \begin{corollary}
   If $\pl D \win \proxgame{X}$, then $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
