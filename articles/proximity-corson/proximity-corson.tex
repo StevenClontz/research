@@ -1,0 +1,131 @@
+\documentclass{amsart}
+
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+
+
+\theoremstyle{remark}
+
+\newtheorem{remark}[thm]{Remark}
+
+
+
+\newcommand{\oneptcomp}[1]{{#1}^*}
+
+\newcommand{\mc}{\mathcal}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\renewcommand{\int}[1]{\text{int}(#1)}
+\newcommand{\cl}[1]{\overline{#1}}
+
+
+
+
+
+
+\begin{document}
+
+\title{Equivalency of Proximal Compact and Corson Compact in Uniform Spaces}
+
+\author{Gary Gruenhage}
+\address{Department of Mathematics, Auburn University, 
+Auburn, AL 36830}
+\email{gruengf@auburn.edu}
+\urladdr{www.auburn.edu/$\sim$gruengf} 
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics, Auburn University, 
+Auburn, AL 36830}
+\email{steven.clontz@auburn.edu}
+\urladdr{www.stevenclontz.com} 
+
+
+\begin{abstract}
+A common generalization of metric spaces is the idea of a uniform space, determined by a uniformity of entourages on the diagonal of the square. Proximal uniform spaces are those for which the first player has a winning strategy in this $\omega$-length game due to Bell: the first player chooses an entourage of the space, and her opponent chooses a point close to the point chosen in the previous round, with respect to the entourage chosen in the previous round. As proximal spaces are preserved under $\Sigma$-products, Nyikos has observed that every Corson compact space, a compact space embeddable in the $\Sigma$-product of real lines, must then be proximal. He asked if that implication may also be reversed. We answer his question postively, by way of defining a stronger version of the proximal game which is perfect-information equivalent to Bell's original game for uniformly locally compact spaces.
+\end{abstract}
+
+
+\maketitle
+
+
+
+Jocelyn Bell introduced the concept of proximal spaces in her doctoral dissertation while working on the so-called uniform box product problems, due to her advisor Scott Williams: is the uniform box product of compact spaces normal, collectionwise normal, or paracompact? Proximal spaces, such as the one-point compactification $\oneptcomp\omega_1=\omega_1\cup\{\infty\}$ of the discrete space of cardinality $\omega_1$, are defined to be the spaces for which the first player in the proximal game played on that space has a winning strategy. Bell has shown that proximal spaces have strong preservation properties, particularly, the $\Sigma$-product of proximal spaces is itself proximal \cite{b}. This mirrors the analogous theorem for metric spaces; in fact, every metric space is easily seen to be proximal.
+
+In \cite{n}, Peter Nyikos observed that compact subspaces of the $\Sigma$-product of real lines, known as Corson compacts, must be proximal, since the proximal property is preserved under $\Sigma$-products. He left open the question as to whether any proximal compact must then be Corson compact. Using a characterization of Corson compact due to Gruenhage in \cite{g}, we can answer that question in the affirmative.
+
+\section{Definitions and Properites of Uniform Spaces}
+
+In this paper, all spaces are assumed to be topological spaces induced by a uniformity. We relate some definitions and properties of uniform spaces.
+
+\begin{defn}
+  A \textbf{uniform space} is a pair $\<X,\mc{D}\>$ where $X$ is a set, and $\mc{D}$ is a \textbf{uniformity}. A uniformity is a filter on subsets of $X^2$, called \textbf{entourages}, such that for each entourage $D\in \mc D$:
+  \begin{itemize}
+      \item $D$ is reflexive, i.e., the diagonal $\Delta=\{\<x,x\>:x\in X\}\subseteq D$.
+      \item Its inverse $D^{-1}=\{\<y,x\>:\<x,y\>\in D\}\in \mc D$.
+      \item There exists $\frac{1}{2}D\in\mc D$ such that 
+        \[
+          2\left(\frac{1}{2}D\right)=\frac{1}{2}D\circ \frac{1}{2}D=\left\{\<x,z\>:\exists y\left(\<x,y\>,\<y,z\>\in \frac{1}{2}D\right)\right\}\subseteq D
+        \]
+      (Let $\frac{1}{2^{n+1}}D$ be shorthand for $\frac{1}{2}(\frac{1}{2^{n}}D)$. Without loss of generality, assume that $\frac{1}{2}D$ is always symmetric, that is, $\<x,y\>\in \frac{1}{2} D\Leftrightarrow \<y,x\>\in\frac{1}{2}D$.)
+    \end{itemize}
+\end{defn}
+
+\begin{defn}
+  The \textbf{uniform topology} induced by a uniformity declares a set $U$ to be open if for every $x\in U$, there is some $D\in\mc D$ with $x\in D[x]=\{y: \<x,y\>\in D\}\subseteq U$.
+\end{defn}
+
+\begin{thm}
+  Every completely regular topology may be induced by a uniformity, and every uniform topology is completely regular.
+\end{thm}
+
+\begin{thm}
+  For every entourage $D$, there is an open symmetric entourage $E\subseteq D$. That is, $\<x,y\>\in E \Leftrightarrow \<y,x\> \in E$, and $E$ is open in $X^2$ with the usual product topology induced by the uniform topology on $X$.
+\end{thm}
+
+\begin{prop}
+  If $D$ is an open entourage, then for all $x\in X$, $D[x]$ is an open neighborhood of $x$.
+\end{prop}
+
+\begin{proof}
+  For the proofs of these, see \cite{e}.
+\end{proof}
+
+\begin{prop}
+  If $X$ is a uniform space, then for all $x\in X$ and open symmetric entourages $D$:
+    \[
+      \frac{1}{2}D[x]\subseteq \cl{\frac{1}{2}D[x]}\subseteq D[x]
+    \]
+\end{prop}
+
+
+\begin{thebibliography}{99}
+\bibitem{b}
+  Bell, Jocelyn.
+  \emph{An Infinite Game with Topological Consequences}.
+  etc.
+\bibitem{e}
+  Engelking, Ryszard.
+  \emph{General Topology}.
+  etc.
+\bibitem{g}
+  Gruenhage, Gary.
+  \emph{Covering properties on $X^2\setminus\Delta$, $W$-sets, and compact subsets of $\Sigma$-products}. 
+  Topology Appl. 17 (1984), no. 3, 287–304. 
+\bibitem{n}
+  Nyikos, Peter.
+  \emph{Proximal and Semi-Proximal Spaces}.
+  etc.
+\end{thebibliography}
+
+\end{document}
