@@ -50,73 +50,78 @@
 
 \begin{document}
 
-\title{Equivalency of Proximal Compact and Corson Compact in Uniform Spaces}
+\title{Proximal compact spaces are Corson compact}
 
-\author{Gary Gruenhage}
-\address{Department of Mathematics, Auburn University, 
-Auburn, AL 36830}
-\email{gruengf@auburn.edu}
-\urladdr{www.auburn.edu/$\sim$gruengf} 
 
 
 \author{Steven Clontz}
-\address{Department of Mathematics, Auburn University, 
+\address{Department of Mathematics, Auburn University,
 Auburn, AL 36830}
 \email{steven.clontz@auburn.edu}
-\urladdr{www.stevenclontz.com} 
+\urladdr{www.stevenclontz.com}
+
+\author{Gary Gruenhage}
+\address{Department of Mathematics, Auburn University,
+Auburn, AL 36830}
+\email{gruengf@auburn.edu}
+\urladdr{www.auburn.edu/$\sim$gruengf}
+
+\keywords{Proximal, absolutely proximal, Corson compact, uniform space, $W$-space}
+
+\subjclass[2010]{54E15, 54D30, 54A20}
 
 
 \begin{abstract}
-A common generalization of metric spaces is the idea of a uniform space, determined by a uniformity of entourages on the diagonal of the square. Proximal uniform spaces are those for which the first player has a winning strategy in this $\omega$-length game due to Bell: the first player chooses an entourage of the space, and her opponent chooses a point close to the point chosen in the previous round, with respect to the entourage chosen in the previous round. As proximal spaces are preserved under $\Sigma$-products, Nyikos has observed that every Corson compact space, a compact space embeddable in the $\Sigma$-product of real lines, must then be proximal. He asked if that implication may also be reversed. We answer his question postively, by way of a stronger version of the proximal game which is perfect-information equivalent to Bell's original game for uniformly locally compact spaces.
+
+J. Bell defined a topological space $X$ to be {\it proximal} if $X$ has a compatible uniformity with respect to which the first player has a winning strategy in a certain $\omega$-length game.  As noted by P.J. Nyikos, it follows easily from Bell's results that Corson compact spaces are proximal.  We answer a question of Nyikos by showing that a compact space is proximal iff it is Corson compact.
+
+%A common generalization of metric spaces is the idea of a uniform space, determined by a uniformity of entourages on the diagonal of the square. Proximal uniform spaces are those for which the first player has a winning strategy in this $\omega$-length game due to Bell: the first player chooses an entourage of the space, and her opponent chooses a point close to the point chosen in the previous round, with respect to the entourage chosen in the previous round. As proximal spaces are preserved under $\Sigma$-products, Nyikos has observed that every Corson compact space, a compact space embeddable in the $\Sigma$-product of real lines, must then be proximal. He asked if that implication may also be reversed. We answer his question positively, by way of defining a stronger version of the proximal game which is perfect-information equivalent to Bell's original game for uniformly locally compact spaces.
 \end{abstract}
 
 
 \maketitle
 
+A common generalization of metric spaces is the idea of a {\it uniform space}.  A uniform space is a determined by a collection of supersets of the diagonal in the square (called ``entourages")  satisfying certain conditions.  A uniformity induces in a natural way a topology on $X$, called the {\it uniform topology}.  A topological space $X$ is {\it uniformizable} if there is  a uniformity on $X$ which generates its topology.   Any completely regular space is uniformizable.  See the next section for more complete definitions of these concepts and some of their basic properties.
+
+Jocelyn Bell introduced the concept of proximal spaces in her doctoral dissertation while working on some uniform box product problems due to her advisor Scott Williams.  Proximal spaces are defined to be the spaces $X$ for which there is a compatible uniformity on $X$ such that the entourage picker has a winning strategy in a certain $\omega$-length game. Every metric space is easily seen to be proximal. Bell has shown that proximal spaces are collectionwise normal, countably paracompact, and have strong preservation properties, particularly, closed subpaces and  $\Sigma$-products of proximal spaces are  proximal \cite{b}.
+
+In \cite{nproximal}, Peter Nyikos observed that Bell's results imply that compact subspaces of the $\Sigma$-product of real lines, known as Corson compacts, must be proximal. He asked the natural question as to whether any proximal compact must then be Corson compact. Using a characterization of Corson compact due to the second author in \cite{gcovering}, we  answer that question in the affirmative.
 
 
-Jocelyn Bell introduced the concept of proximal spaces in her doctoral dissertation while working on the following uniform box product problems due to her advisor Scott Williams: is the uniform box product of compact spaces normal, collectionwise normal, or paracompact? Proximal spaces are defined to be the spaces for which the first player in the proximal game played on that space has a winning strategy. Bell has shown that proximal spaces have strong preservation properties, particularly, the $\Sigma$-product of proximal spaces is itself proximal \cite{b}. This mirrors the analogous theorem for metric spaces; in fact, every metric space is easily seen to be proximal.
-
-In \cite{nproximal}, Peter Nyikos observed that compact subspaces of the $\Sigma$-product of real lines, known as Corson compacts, must be proximal, since the proximal property is preserved under $\Sigma$-products. He left open the question as to whether any proximal compact must then be Corson compact. Using a characterization of Corson compact due to Gruenhage in \cite{gcovering}, we can answer that question in the affirmative.
+In this paper, all topological spaces are assumed to be completely regular.
 
 \section{Definitions and Properites of Uniform Spaces}
-
-In this paper, all spaces are assumed to be topological spaces induced by a uniformity. We relate some definitions and properties of uniform spaces.
+ We relate some definitions and properties of uniform spaces.
 
 \begin{defn}
-  A \textbf{uniform space} is a pair $\<X,\mc{D}\>$ where $X$ is a set, and $\mc{D}$ is a \textbf{uniformity}. A uniformity is a filter on subsets of $X^2$, called \textbf{entourages}, such that for each entourage $D\in \mc D$:
+  A \textit{uniform space} is a pair $\<X,\mc{D}\>$ where $X$ is a set, and $\mc{D}$ is a uniformity. A {\it uniformity} is a filter on subsets of $X^2$, called \textit{entourages}, such that for each entourage $D\in \mc D$:
   \begin{itemize}
       \item $D$ is reflexive, i.e., the diagonal $\Delta=\{\<x,x\>:x\in X\}\subseteq D$.
       \item Its inverse $D^{-1}=\{\<y,x\>:\<x,y\>\in D\}\in \mc D$.
-      \item There exists $\frac{1}{2}D\in\mc D$ such that 
+      \item There exists $\frac{1}{2}D\in\mc D$ such that
         \[
-          2\left(\frac{1}{2}D\right)=\frac{1}{2}D\circ \frac{1}{2}D=\left\{\<x,z\>:\exists y\left(\<x,y\>,\<y,z\>\in \frac{1}{2}D\right)\right\}\subseteq D
+          2\left(\frac{1}{2}D\right)=\frac{1}{2}D\circ \frac{1}{2}D=\left\{\<x,z\>:\exists y\left(\<x,y\>,\<y,z\>\in \frac{1}{2}D\right)\right\}\subseteq D.
         \]
-      (Let $\frac{1}{2^{n+1}}D$ be shorthand for $\frac{1}{2}(\frac{1}{2^{n}}D)$.)
+      %(Let $\frac{1}{2^{n+1}}D$ be shorthand for $\frac{1}{2}(\frac{1}{2^{n}}D)$.)
     \end{itemize}
 \end{defn}
 
 \begin{defn}
-  The \textbf{uniform topology} induced by a uniformity declares a set $U$ to be open if for every $x\in U$, there is some $D\in\mc D$ with $x\in D[x]=\{y: \<x,y\>\in D\}\subseteq U$.
+  The \textit{uniform topology} induced by a uniformity declares a set $U$ to be open if for every $x\in U$, there is some $D\in\mc D$ with $x\in D[x]=\{y: \<x,y\>\in D\}\subseteq U$.   A topological space $X$ is said to be \textit{uniformizable} if there is a uniformity $D$ on $X$ which induces its topology.
 \end{defn}
 
-\begin{thm}
-  Every completely regular topology may be induced by a uniformity, and every uniform topology is completely regular.
-\end{thm}
+We now list some basic results about uniformities and uniform spaces.  One may  see \cite{e}, for example, for proofs.
 
-\begin{thm}
-  For every entourage $D$, there is an open symmetric entourage $E\subseteq D$. That is, $\<x,y\>\in E \Leftrightarrow \<y,x\> \in E$, and $E$ is open in $X^2$ with the usual product topology induced by the uniform topology on $X$.
-\end{thm}
 
-(For convenience, we assume that $\frac{1}{2}D$ is always open symmetric.)
 
-\begin{prop}
-  If $D$ is an open entourage, then for all $x\in X$, $D[x]$ is an open neighborhood of $x$.
-\end{prop}
+\begin{itemize}
+ \item Every uniform topology is completely regular, and every completely regular space is uniformizable.
+\item  For every entourage $D$, there is an open symmetric entourage $E\subseteq D$. That is, $\<x,y\>\in E \Leftrightarrow \<y,x\> \in E$, and $E$ is open in $X^2$ with the usual product topology induced by the uniform topology on $X$.
+\item  If $D$ is an open entourage, then for all $x\in X$, $D[x]$ is an open neighborhood of $x$.
+\end{itemize}
 
-\begin{proof}
-  For the proofs of these, see \cite{e}.
-\end{proof}
+We will make frequent use of $\frac{1}{2}D$ in this paper.  Of course, $\frac{1}{2}D$ is not unique, but for convenience we will assume that for each $D\in \mathcal D$, a unique $\frac{1}{2}D$ has been chosen, which  by the second item above may be assumed to be open and symmetric.  Then we define $\frac{1}{4}D=\frac{1}{2}(\frac{1}{2}D)$,
+$\frac{1}{8}D=\frac{1}{2}(\frac{1}{4}D)$, and so on.
 
 We quickly note a couple properites of $\frac{1}{2}D$.
 
@@ -136,35 +141,35 @@ We quickly note a couple properites of $\frac{1}{2}D$.
 \end{prop}
 
 \begin{proof}
-  If $y$ is a limit point of $\frac{1}{2}D[x]$, then $\frac{1}{2}D[y]$ must intersect $\frac{1}{2}D[x]$ at some $z$. It follows then that $z\in D[x]$.
+  If $y$ is a limit point of $\frac{1}{2}D[x]$, then $\frac{1}{2}D[y]$ must intersect $\frac{1}{2}D[x]$ at some $z$. It follows then that $y\in D[x]$.
 \end{proof}
 
 \subsection{The Proximal Game}
 
-The theory of proximal uniform spaces relies on an $\omega$-length game, which proceeds as follows:
+The theory of proximal uniform spaces relies on the following $\omega$-length game:
 
 \begin{defn}
   The \textbf{proximal game} $\proxgame{X}$ of length $\omega$ played on a uniform space $X$ with two players $\pl D$, $\pl P$ proceeds as follows:
     \begin{itemize}
       \item In the initial round $0$, $\pl D$ chooses an open symmetric entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$.
-      \item In round $n+1$, $\pl D$ chooses an open symmetric entourage $D_{n+1}\subseteq \frac{1}{4}D_n$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
+      \item In round $n+1$, $\pl D$ chooses an open symmetric entourage $D_{n+1}\subseteq D_n$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
     \end{itemize}
   At the conclusion of the game, $\pl D$ wins if either $\bigcap_{n<\omega}D_n[p_n]=\emptyset$ or $\<p_0,p_1,\dots\>$ converges, and $\pl P$ wins otherwise.
 \end{defn}
 
-The reader familiar with proximal spaces may note that this definition is different than the original formulation of the game (see \cite{b}); however, it is easily verified that $\pl D$ has a winning strategy in the original game if and only if $\pl D$ has a winning strategy in our version.
+The reader familiar with proximal spaces may note that this definition is different than the original formulation of the game (see \cite{b}); however, it is easily verified that $\pl D$ has a winning strategy in the original game if and only if $\pl D$ has a winning strategy in our version.   Also, if we wish we may assume that if $\sigma$ is a winning strategy for $\pl D$, then $D_{n+1}=\sigma (x_0,x_1,...,x_n)$ is contained in something smaller than $D_n$, e.g., $\frac{1}{4}D_n$.  That is because a sequence of legal moves by $\pl P$ with $\pl D$ using the refined strategy is also a legal sequence of moves with $\pl D$ using the original strategy.
 
 \begin{defn}
   If a player $\pl P$ has a winning strategy in a game $G$, we write $\pl P\win G$. Otherwise, we write $\pl P\not\win G$.
 \end{defn}
 
 \begin{defn}
-  A uniform space $X$ is said to be \textbf{proximal} if and only if $\pl D\win\proxgame{X}$.
+  A uniform space $(X,\mathcal D)$ is said to be \textit{proximal} if and only if $\pl D\win\proxgame{X}$.  A topological space is \textit{proximal} iff it admits  a compatible uniformity (i.e., one which induces its topology) which is proximal.
 \end{defn}
 
 \section{Proximal Games and $W$ Games}
 
-The first author introduced the following game in \cite{ginfinite}.
+The second author introduced the following game in \cite{ginfinite}.
 
 \begin{defn}
   The \textbf{$W$-convergence game} $\congame{X}{H}$ of length $\omega$ played on a topological space $X$ and set $H\subseteq X$ with two players $\pl O$, $\pl P$ proceeds as follows:
@@ -178,7 +183,7 @@ The first author introduced the following game in \cite{ginfinite}.
 \end{defn}
 
 \begin{defn}
-  A topological space $X$ is said to be a $W$ space if and only if for every $x\in X$, $\pl O\win \congame{X}{x}$.
+  A topological space $X$ is said to be a {\it $W$-space} if and only if for every $x\in X$, $\pl O\win \congame{X}{x}$.
 \end{defn}
 
 We find it useful to consider a (seemingly) weaker version of this game.
@@ -194,41 +199,44 @@ We find it useful to consider a (seemingly) weaker version of this game.
 \begin{proof}
   Shown for $H=\{x\}$ in \cite{ginfinite}, but the analogous proof works for arbitrary $H$. The forward implication is immediate. Let $\sigma$ be a strategy for $\pl O$ witnessing $\pl O\win \clusgame{X}{H}$. Note $\sigma$ is a function whose domain is all possible partial attacks by $\pl P$ (finite sequences of points in $X$), and whose range is the open neighborhoods of $H$, such that for any legal attack $p=\<p_0,p_1,\dots\>$ against $\sigma$, it follows that $p$ must cluster at $H$.
 
-  For every partial attack $a$, let $S(a)$ contain all subsequences of $a$. We then define $\tau(p\rest n)=\bigcap_{b\in S(p\rest n)}\sigma(b)$. If $p$ attacks the strategy $\tau$ for $\congame{X}{H}$, then it also is a legal attack against $\sigma$ in $\clusgame{X}{H}$, so $p$ clusters at $H$. 
+  For every partial attack $a$, let $S(a)$ contain all subsequences of $a$. We then define $\tau(p\rest n)=\bigcap_{b\in S(p\rest n)}\sigma(b)$. If $p$ attacks the strategy $\tau$ for $\congame{X}{H}$, then it also is a legal attack against $\sigma$ in $\clusgame{X}{H}$, so $p$ clusters at $H$.
 
   But not only that: let $q$ be a subsequence of $p$. If $q\rest n$ is a legal partial attack against $\sigma$ and $q\rest n$ is a subsequence of $p\rest m$ with $q(n)=p(m)$, then since $q(n)=p(m)\in\tau(p\rest m)\subseteq\sigma(q\rest n)$, $q\rest n+1$ is a legal partial attack against $\sigma$ as well. Thus $q$ is a legal attack against $\sigma$ in $\clusgame{X}{H}$, so $q$ clusters at $H$.
 
   Since no infinite subsequence of $p$ can be completely missed by an open neighborhood of $H$, it follows that $p$ converges to $H$.
 \end{proof}
 
+\begin{thm}\cite{b}
+  All proximal spaces are $W$-spaces.
+\end{thm}
+
+
+   The idea of Bell's proof of the above result is to consider the result of an attack on the winning strategy for $\pl D$ in $\proxgame{X}$ which alternates between points chosen by $\pl P$ in $\congame{X}{x}$ and the particular point $x$ itself. Since the intersection $\bigcap_{n<\omega} D_n[p_n]$ must contain $x$, the sequence must converge, and since the sequence contains $x$ infinitely often, it must converge to $x$.
+
+
+While there is not much trouble in ensuring the nonempty intersection of\\ $\bigcap_{n<\omega} D_n[p_n]$ for this particular proof, we turn to a stronger version of $\proxgame{X}$, also introduced by Bell, which avoids the issue entirely.
+
+\begin{defn}
+  The \textit{absolutely proximal game}  proceeds identially to $\proxgame{X}$, except that $\pl D$ may only win in the case that $\<p_0,p_1,\dots\>$ converges.
+\end{defn}
+
+Obviously, all absolutely proximal spaces are proximal. We are interested in when we have equivalence.
+
+\begin{defn}
+  A uniform space is {\it uniformly locally compact} if there exists an open symmetric entourage $L$ such that $\cl{L[x]}$ is a compact neighborhood of $x$ for all $x\in X$.  A topological space is uniformly locally compact if it admits a compatible uniformly locally compact uniformity.
+\end{defn}
+
+
+Obviously every compact space is uniformly locally compact, but not every locally compact space is uniformly locally compact.  For example, the space of countable ordinals is locally compact, but does not admit a compatible uniformly locally compact uniformity.
+
 \begin{thm}
-  All proximal spaces are $W$ spaces.
+  A uniformly locally compact space $X$ is proximal if and only if it is absolutely proximal.
 \end{thm}
 
 \begin{proof}
-  Due to Bell, see \cite{b}. The idea of the proof is to consider the result of an attack on the winning strategy for $\pl D$ in $\proxgame{X}$ which alternates between points chosen by $\pl P$ in $\congame{X}{x}$ and the particular point $x$ itself. Since the intersection $\bigcap_{n<\omega} D_n[p_n]$ must contain $x$, the sequence must converge, and since the sequence contains $x$ infinitely often, it must converge to $x$.
-\end{proof}
+  Let $L$ be a uniformly locally compact entourage. Let $\sigma$ be a strategy for $\pl D$ witnessing $\pl D\win \proxgame{X}$. Without loss of generality, we may assume such that $\sigma(p\rest n)\subseteq L$ for all partial attacks $p\rest n$ (so $\cl{\sigma(p\rest n)[x]}\subseteq\cl{L[x]}$ is compact), and that $n > m$ implies $\sigma(p\rest n)\subset \frac{1}{4}\sigma(p\rest m)$.
 
-While there is not much trouble in ensuring the nonempty intersection of\\ $\bigcap_{n<\omega} D_n[p_n]$ for this particular proof, we turned to a stronger version of $\proxgame{X}$ discussed briefly by Bell which avoids the issue entirely.
-
-\begin{defn}
-  The \textbf{strong proximal game} $\sproxgame{X}$ proceeds identially to $\proxgame{X}$, except that $\pl D$ may only win in the case that $\<p_0,p_1,\dots\>$ converges.
-\end{defn}
-
-Certainly, if $\pl D\win \sproxgame{X}$, then $\pl D\win \proxgame{X}$, so all ``strongly proximal'' spaces are proximal. We are interested in the case that both games are equivalent for $\pl D$.
-
-\begin{defn}
-  A uniform space is uniformly locally compact if there exists an open symmetric entourage $L$ such that $\cl{L[x]}$ is a compact neighborhood of $x$ for all $x\in X$.
-\end{defn}
-
-\begin{thm}
-  A uniformly locally compact space $X$ is proximal if and only if $\pl D\win \sproxgame{X}$.
-\end{thm}
-
-\begin{proof}
-  Let $L$ be a uniformly locally compact entourage. Let $\sigma$ be a strategy for $\pl D$ witnessing $\pl D\win \proxgame{X}$. Without loss of generality, we may assume such that $\sigma(p\rest n)\subseteq L$ for all partial attacks $p\rest n$ (so $\cl{\sigma(p\rest n)[x]}\subseteq\cl{L[x]}$ is compact), since $\sigma(p\rest n)\cap L$ is itself an open symmetric entourage, and any legal attack against these refined entourages is also a legal attack against the original.
-
-  Let $\tau(p\rest n)=\frac{1}{2}\sigma(p\rest n)$. If $p$ attacks $\tau$ in $\sproxgame{X}$, then
+  Let $\tau(p\rest n)=\frac{1}{2}\sigma(p\rest n)$. If $p$ attacks $\tau$, then
     \[
       p(n+1)
         \in
@@ -259,39 +267,26 @@ Certainly, if $\pl D\win \sproxgame{X}$, then $\pl D\win \proxgame{X}$, so all `
       \sigma(p\rest n)[p(n)]
     \]
 
-  Finally, note that since $\tau$ yields refinements of $\sigma$, then $p$ attacks the winning strategy $\sigma$ in $\proxgame{X}$, but since the intersection of a descending chain of nonempty compact sets is nonempty:
+  Finally, note that since $\tau$ yields refinements of $\sigma$, then $p$ attacks the winning strategy $\sigma$ in $\proxgame{X}$, but since the intersection of a descending chain of nonempty compact sets is nonempty, we have
 
     \[
       \bigcap_{n<\omega} \sigma(p\rest n)[p(n)]
         =
       \bigcap_{n<\omega} \cl{\sigma(p\rest n)[p(n)]}
         \not=
-      \emptyset
+      \emptyset.
     \]
 
   We conclude that $p$ converges.
-\end{proof} 
+\end{proof}
 
-To wrap up this section, we cite a few required results due to Bell, also from \cite{b}.
-
-\begin{thm}
-  The $\Sigma$-product of proximal spaces is proximal. In particular, if $X$ is proximal, then $X^2$ is proximal.
-\end{thm}
-
-\begin{thm}
-  Every closed subspace of a proximal space is proximal.
-\end{thm}
-
-\begin{thm}
-  Every metrizable space is proximal.
-\end{thm}
 
 \section{Corson Compacts and Proximal Compacts}
 
-We recall from \cite{gcovering} the definition of Corson compact.
+We recall  the definition of Corson compact.
 
 \begin{defn}
-  A space is said to be Corson compact if and only if it is homeomorphic to a compact set within the $\Sigma$-product $\Sigma\mathbb{R}^\kappa$ of $\kappa$-many real lines, that is:
+  A space is said to be {\it Corson compact} if and only if it is homeomorphic to a compact set within the $\Sigma$-product $\Sigma\mathbb{R}^\kappa$ of $\kappa$-many real lines, that is:
     \[
       \Sigma\mathbb{R}^\kappa
         =
@@ -299,34 +294,38 @@ We recall from \cite{gcovering} the definition of Corson compact.
     \]
 \end{defn}
 
-\begin{prop}
-  Every Corson compact is proximal.
-\end{prop}
 
-\begin{proof}
-  As observed by Nyikos in \cite{nproximal}. Any Corson compact is a $\Sigma$-product of compact subsets of the real line. Since closed subsets of metrizable spaces are proximal, and the $\Sigma$-product of proximal spaces is proximal, the result follows.
-\end{proof}
+Since proximal spaces are closed under closed subsets and $\Sigma$-products, it follows (as noted by Nyikos) that
+every Corson compact is proximal.
 
-However, this characterization of Corson compact is less useful when proving the other direction.
 
-\begin{thm}
+
+
+
+
+
+However, the given characterization of Corson compact is less useful when proving the other direction.  Instead we use the following game characterization due to the second author.
+
+\begin{thm}\cite{gcovering}
   A space $X$ is Corson compact if and only if $X$ is compact and $\pl O\win\congame{X^2}{\Delta}$.
 \end{thm}
 
-\begin{proof}
-  See \cite{gcovering}.
-\end{proof}
 
-The reverse implication also relies upon a non-trivial lemma.
+The following contains the meat of our proof of the title result.
 
 \begin{thm}
-  For any uniformly locally compact proximal space $X$, $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
+  For any absolutely proximal space $X$, $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
 \end{thm}
 
 \begin{proof}
-  Let $\sigma$ witness $\pl D \win \sproxgame{X}$. Let $o(t)$ be the subsequence of $t$ consisting of its odd-indexed terms.
+  Let $\sigma$ be a winning strategy for $\pl D$ in the absolutely proximal game such that $p\supsetneq q$ implies $\sigma(p)\subset \frac{1}{4}\sigma(q)$.
+  For any sequence $t=\<t_0,t_1,\dots\>$, let $o(t)$ be the subsequence of $t$ consisting of its odd-indexed terms.
 
-  We define $T(\emptyset)$, etc. as follows:
+  For certain finite sequences $s$ in $X$, we will define by induction a tree $T(s)$ of finite height such that $t\supset s$ implies $T(s)$ is a subtree of $T(t)$, and if $u$ is a node of $T(s)$ having successors in $T(s)$, then $u$ has no new successors in $T(t)$.   We let $\max(T)$ denote the nodes of $T$ that have no successors in $T$.
+
+  \bigskip
+
+First we define $T(\emptyset)$.
 
   \begin{itemize}
     \item Let $\emptyset\in T(\emptyset)$.
@@ -339,10 +338,13 @@ The reverse implication also relies upon a non-trivial lemma.
         \{\frac{1}{4}\sigma(\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]:j<m_\emptyset\}
       \]
     is a cover for $H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}$.
-    \item Let $\<i\>\in T(\emptyset)$, $\<i,h_{\emptyset,i}\>\in T(\emptyset)$, and $\<i,h_{\emptyset,i},j\>\in T(\emptyset)$ for $i,j<m_\emptyset$.
+    \item Let $\<i\>, \<i,h_{\emptyset,i}\>$, and $\<i,h_{\emptyset,i},j\>$ be in $T(\emptyset)$ for $i,j<m_\emptyset$.
   \end{itemize}
+This ends the construction of $T(\emptyset)$.   We remark that the indexings $i\mapsto h_{\emptyset,i}$ and $(i,j)\mapsto h_{\emptyset,i, j}$ need not be one-to-one; repetition of points is allowed.
 
-  Suppose $T(a)$, etc. are defined. We then define $T(a\concat\<x\>)$, etc. for
+\bigskip
+
+  Now suppose $T(a)$ is defined. We then define $T(a\concat\<x\>)$, etc., for
     \[
       x\in \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))} \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
     \]
@@ -350,11 +352,11 @@ The reverse implication also relies upon a non-trivial lemma.
 
   \begin{itemize}
     \item Let $T(a)\subseteq T(a\concat\<x\>)$.
-    \item Choose $t=s\concat\<i,h_{s,i},j,x\>$ such that $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ and $x\in \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$. 
+    \item Choose $t=s\concat\<i,h_{s,i},j,x\>$ such that $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ and $x\in \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$.  Then $s\concat\<i,h_{s,i},j\>$ is the only node of $T(a)$ that will be extended in this step.
     \item Note that, assuming $o(s)\concat\<h_{s,i}\>$ is a legal partial attack against $\sigma$, then
       \[
         x
-          \in 
+          \in
         \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
           \subseteq
         \frac{1}{4}\sigma(o(s))[h_{s,i,j}]
@@ -362,31 +364,31 @@ The reverse implication also relies upon a non-trivial lemma.
     and
       \[
         h_{s,i,j}
-          \in 
+          \in
         \cl{\frac{1}{4}\sigma(o(s))[h_{s,i}]}
-          \subseteq 
+          \subseteq
         \frac{1}{2}\sigma(o(s))[h_{s,i}]
       \]
     implies
       \[
         x
-          \in 
+          \in
         \sigma(o(s))[h_{s,i}]
       \]
     and thus $o(s)\concat\<h_{s,i},x\>=o(t)$ is a legal partial attack against $\sigma$.
-    \item Choose $m_t<\omega$, $h_{t,k}\in H\cap \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}$ for $k<m_t$, and $h_{t,k,l}\in H\cap\cl{\frac{1}{4}\sigma(t)[h_{t,k}]}$ for $k,l<m_t$ such that
+    \item Choose $m_t<\omega$, $h_{t,k}\in H\cap \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}$ for $k<m_t$, and $h_{t,k,l}\in H\cap\cl{\frac{1}{4}\sigma(o(t))[h_{t,k}]}$ for $k,l<m_t$ such that
       \[
         \{\frac{1}{4}\sigma(o(t))[h_{t,k}]:k<m_t\}
       \]
     is a cover for $H\cap \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}$ and such that for each $k<m_t$
       \[
-        \{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,i,j}]:l<m_t\}
+        \{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,k,l}]:l<m_t\}
       \]
     is a cover for $H\cap\cl{\frac{1}{4}\sigma(o(t))[h_{t,k}]}$.
     \item Note that, assuming $o(t)$ is a legal partial attack against $\sigma$, then
       \[
         h_{t,k}
-          \in 
+          \in
         \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}
           \subseteq
         \frac{1}{2}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
@@ -394,7 +396,7 @@ The reverse implication also relies upon a non-trivial lemma.
     and
       \[
         x
-          \in 
+          \in
         \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
       \]
     implies
@@ -404,7 +406,10 @@ The reverse implication also relies upon a non-trivial lemma.
         \sigma(o(s)\concat\<h_{s,i}\>)[x]
       \]
     and thus $o(t)\concat\<h_{t,k}\>$ is a legal partial attack against $\sigma$.
-    \item Let $t\in T(a\concat\<x\>)$, $t\concat\<k\>\in T(a\concat\<x\>)$, $t\concat\<k,h_{t,k}\>\in T(a\concat\<x\>)$, and $t\concat\<k,h_{t,k},l\>\in T(a\concat\<x\>)$ for $k,l<m_t$.
+    \item For each $k,l<m_t$, put $t\concat\<k,h_{t,k},l\>$ and all of its initial segments in $ T(a\concat\<x\>)$.   This completes the construction of  $ T(a\concat\<x\>)$.
+
+    \bigskip
+
     \item Note that assuming
       \[
         \{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}] : s\concat\<i,h_{s,i},j\>\in\max(T(a))\}
@@ -420,7 +425,7 @@ The reverse implication also relies upon a non-trivial lemma.
     covers $H$.
   \end{itemize}
 
-  With this we may define the strategy $\tau$ for $\pl O$ in $\clusgame{X}{H}$ such that:
+  Hence we may define the strategy $\tau$ for $\pl O$ in $\clusgame{X}{H}$ such that:
   \[
     \tau(p\rest n) = \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(p\rest n))} \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
   \]
@@ -428,13 +433,13 @@ The reverse implication also relies upon a non-trivial lemma.
   If $p$ attacks $\tau$, then it follows that $T(p\rest n)$ is defined for all $n<\omega$, so let $T(p)=\bigcup_{n<\omega} T(p\rest n)$. We note $T(p)$ is an infinite tree with finite levels:
     \begin{itemize}
       \item $\emptyset$ has exactly $m_\emptyset$ successors $\<i\>$.
-      \item $s\concat\<i\>$ has exactly one successor $t\concat\<i,h_{s,i}\>$
-      \item $s\concat\<i,h_{s,i}\>$ has exactly $m_s$ successors $t\concat\<i,h_{s,i},j\>$
-      \item $s\concat\<i,h_{s,i},j\>$ has either no successors or exactly one successor $t\concat\<i,h_{s,i},j,x\>$
+      \item $s\concat\<i\>$ has exactly one successor $s\concat\<i,h_{s,i}\>$
+      \item $s\concat\<i,h_{s,i}\>$ has exactly $m_s$ successors $s\concat\<i,h_{s,i},j\>$
+      \item $s\concat\<i,h_{s,i},j\>$ has either no successors or exactly one successor $s\concat\<i,h_{s,i},j,x\>$
       \item $t=s\concat\<i,h_{s,i},j,x\>$ has exactly $m_t$ successors $t\concat\<k\>$
     \end{itemize}
 
-  Let $q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>$ correspond to this infinite branch in $T(p)$, and let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of $T(p)$, $q$ is an attack on the winning strategy $\sigma$ in $\sproxgame{X}$, so it must converge. Since every other term of $q$ is in $H$, it must converge to $H$. Then since $q$ is a subsequence of $p$, $p$ must cluster at $H$.
+  Hence $T(p)$ has an infinite branch $q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>$.   Let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of $T(p)$, $q$ is an attack on the winning strategy $\sigma$ in the absolutely proximal game, so it must converge. Since every other term of $q$ is in $H$, it must converge to $H$. Then since $o(q)$ is a subsequence of $p$, $p$ must cluster at $H$.
 
   Since $\pl O\win\clusgame{X}{H}$ if and only if $\pl O\win\congame{X}{H}$, the result follows.
 \end{proof}
@@ -442,11 +447,11 @@ The reverse implication also relies upon a non-trivial lemma.
 The equivalency result follows as a quick corollary.
 
 \begin{cor}
-  For any compact uniform space $X$, $X$ is proximal if and only if $X$ is Corson compact.
+  For any compact space $X$, $X$ is proximal if and only if $X$ is Corson compact.
 \end{cor}
 
 \begin{proof}
-  The reverse implication was shown earlier. If $X$ is compact proximal, then so is $X^2$. By the previous theorem, $\pl O\win\congame{X^2}{\Delta}$, which is a characterization of Corson compact.
+  The reverse implication was noted earlier. If $X$ is compact proximal, then so is $X^2$. By the previous theorem, $\pl O\win\congame{X^2}{\Delta}$, which is a characterization of Corson compact.
 \end{proof}
 
 
@@ -482,32 +487,33 @@ The equivalency result follows as a quick corollary.
 %   Finally, $\pl O\not\markwin\congame{\oneptcomp\omega_1}{\infty}$ was shown by Nyikos in \cite{nclasses}.
 % \end{proof}
 
-\newpage
+
 \begin{thebibliography}{99}
 \bibitem{b}
-  Bell, Jocelyn.
-  \emph{An infinite game with topological consequences}.
-  etc.
+ J. Bell,
+  \emph{An infinite game with topological consequences}, preprint.
 \bibitem{e}
-  Engelking, Ryszard.
-  \emph{General topology}.
-  etc.
+  R. Engelking,
+  \emph{General topology}, Revised and completed edition, Heldermann Verlag, Berlin, 1989.
+
+
+  \bibitem{ginfinite}
+ G. Gruenhage,
+  \emph{Infinite games and generalizations of first-countable spaces}, Gen. Top. Appl. 6(1976), 339-352.
+
 \bibitem{gcovering}
-  Gruenhage, Gary.
-  \emph{Covering properties on $X^2\setminus\Delta$, $W$-sets, and compact subsets of $\Sigma$-products}. 
-  Topology Appl. 17 (1984), no. 3, 287–304.
-\bibitem{ginfinite}
-  Gruenhage, Gary.
-  \emph{Infinite games and generalizations of first-countable spaces}. 
-  etc.
+  G. Gruenhage,
+  \emph{Covering properties on $X^2\setminus\Delta$, $W$-sets, and compact subsets of $\Sigma$-products},
+  Topology Appl. 17 (1984), no. 3, 287–-304.
+
+
 \bibitem{nproximal}
-  Nyikos, Peter.
-  \emph{Proximal and semi-proximal spaces}.
-  etc.
+  P.J. Nyikos,
+  \emph{Proximal and semi-proximal spaces}, preprint.
 % \bibitem{nclasses}
 %   Nyikos, Peter.
 %   \emph{Classes of compact sequential spaces}.
 %   etc.
 \end{thebibliography}
 
-\end{document}
+\end{document} 
