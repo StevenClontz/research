@@ -505,57 +505,253 @@ For all $x\in X$:
 \end{proof}
 
 
+
+
+
+
+
+
+
 \newpage
 
 \begin{theorem}
-  $\pl D \prewin \proxgame{X} \Leftrightarrow $ the uniformity on $X$ is induced by a psuedometric
+  $\pl O \prewin \congame{X}{H}$ if and only if there exists a countable base 
+  around $H$.
 \end{theorem}
 
 \begin{proof}
-  % Let $\sigma$ witness $\pl D \prewin \proxgame{X}$, and assume without loss of generality that $\sigma(n+1)\subseteq\frac{1}{2}\sigma(n)$. Define the entourage $D_n=\sigma(n)$ (so $D_{n+1}\subseteq\frac{1}{2}D_n$). For two distinct points $x,y\in X$, observe that $\<x,y\>\not\in D_n$ for some $n<\omega$: otherwise, the attack $p=\<x,y,x,y,\dots\>$ does not converge (note: assumes $T_1$), and $\{x,y\}\subseteq \bigcap_{n<\omega} D_n[p(n)]\not=\emptyset$.
+  Let $\{U_n:n<\omega\}$ be a countable base around $H$. We define the 
+  predetermined strategy $\sigma(n)=\bigcap_{m\leq n}U_m$. Let $p$ attack 
+  $\sigma(n)$ - then if $U$ is any neighborhood of $H$, we may choose 
+  $H\subseteq U_m\subseteq U$, and note that $\sigma(n)\subseteq U_m$ for 
+  $n\geq m$, and thus $p(n)\in U_m\subseteq U$ for all $n\geq m$. Thus 
+  $\sigma$ is a winning strategy.
 
-  % We define $n(x,y)$ to be the minimal ordinal such that $\<x,y\>\not\in D_{n(x,y)}$. If we let $d(x,y)=2^{-n(x,y)}$ for distinct $x,y$ and $d(x,x)=0$, then $d(x,y)=d(y,x)$ trivially. If we show that the triangle inequality holds, then $d$ is a metric.
+  For the other direction, suppose there does not exist a countable base 
+  around $H$, and let $\sigma(n)$ be an arbitrary predetermined strategy. 
+  Since $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ is not a countable base 
+  around $H$, we may choose an open set $U$ around $H$ such that 
+  $\bigcap_{m\leq n}\sigma(m)\not\subseteq U$ for all $n<\omega$. We may 
+  easily verify that if $p(n)\in\bigcap_{m\leq n}\sigma(m)\setminus U$ for 
+  all $n<\omega$, then $p$ is a successful counterattack to $\sigma$.
+\end{proof}
 
-  % Suppose that both $n(x,y)\geq n(x,z)+2$ and $n(y,z)\geq n(x,z)+2$. Then it follows that both
-  %   \[
-  %     \<x,y\>\in D_{n(x,y)-1}\subseteq \frac{1}{2}D_{n(x,y)-2}\subseteq \frac{1}{2}D_{n(x,z)}
-  %   \]
-  %   \[
-  %     \<y,z\>\in D_{n(y,z)-1}\subseteq \frac{1}{2}D_{n(y,z)-2}\subseteq \frac{1}{2}D_{n(x,z)}
-  %   \]
-  % and $\<x,z\>\in D_{n(x,z)}$, a contradiction.
+\begin{corollary}
+  $X$ is first countable if and only if $\pl O \prewin \congame{X}{x}$ for 
+  all $x\in X$
+\end{corollary}
 
-  % Next, if $n(x,y)=n(y,z)=n(x,z)+1$, we have
-  %   \[
-  %     2^{-n(x,z)}=2^{-n(x,z)-1}+2^{-n(x,z)-1}=2^{-n(x,y)}+2^{-n(y,z)}
-  %   \]
-  %   \[
-  %     \Rightarrow d(x,z)=d(x,y)+d(y,z)
-  %   \]
+\begin{corollary}
+  $\pl D \prewin \proxgame{X}$ implies $X$ is first countable.
+\end{corollary}
 
-  % Also, if $n(x,y)\leq n(x,z)$, we have
-  %   \[
-  %     2^{-n(x,z)}\leq 2^{-n(x,y)}<2^{-n(x,y)}+2^{-n(x,z)}
-  %   \]
-  %   \[
-  %     \Rightarrow d(x,z)< d(x,y)+d(y,z)
-  %   \]
-  % and similar if $n(y,z)\leq n(x,z)$ instead.
+\begin{definition}
+  Scattered Eberlein compact spaces are known as \term{strong Eberlein 
+  compact} spaces.
+\end{definition}
 
-  % \textbf{TODO: Still missing case $n(x,y)=n(x,z)+1$, $n(y,z)\geq n(x,z)+2$! Then need to show metric induces uniformity.}
+\begin{theorem}[folklore]
+  Scattered compact first-countable spaces are metrizable.
+\end{theorem}
 
-  Let $\sigma$ witness $\pl D \prewin \proxgame{X}$, and assume without loss of generality that $\sigma(n+1)\subseteq\frac{1}{4}\sigma(n)$. Note that $\sigma(n)$ satisfies the hypotheses of Engleking 8.1.10, so there exists a psuedometric $\rho$ such that for $n<\omega$,
+\begin{corollary}
+  If $X$ is scattered compact and $\pl O \prewin\congame{X}{x}$ for all
+  $x\in X$ (or $\pl D \prewin\proxgame{X}$), then $X$ is metrizable.
+\end{corollary}
+
+
+\begin{example}
+  $\pl D \not\prewin \proxgame{\oneptcomp\omega_1}$
+\end{example}
+
+\begin{proof}
+  There does not exist a countable base around $\infty$, so 
+    $\pl O \not\prewin \congame{X}{\omega_1}$.
+\end{proof}
+
+\begin{example}
+  $\pl O \tactwin \congame{\oneptcomp\kappa}{\infty}$ and 
+  $\pl D \tactwin \proxgame{\oneptcomp\kappa}$ for all cardinals $\kappa$
+\end{example}
+
+\begin{proof}
+  For $\congame{\oneptcomp\kappa}{\infty}$, let 
+    $\sigma()=\sigma(\infty)=\oneptcomp\kappa$ 
+  and 
+    $\sigma(x)=\oneptcomp\kappa\setminus\{x\}$ 
+  otherwise.
+\end{proof} 
+
+
+\newpage
+
+\begin{theorem}
+  If $H$ is a closed subset of $X$, then 
+    $
+      \pl D \limitwin \proxgame{X}
+        \Rightarrow
+      \pl D \limitwin \proxgame{H}
+    $
+  where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
+\end{theorem}
+
+\begin{proof}
+  Let $\sigma\circ L$ witness $\pl D \limitwin \proxgame{X}$. We define
+  $\tau\circ L$ for $\pl D$ in $\proxgame{H}$ as follows:
     \[
-      \{\<x,y\>:\rho(x,y)<2^{-n}\}\subseteq \sigma(n) \subseteq \{\<x,y\>:\rho(x,y)\leq 2^{-n}\}
+      \tau\circ L(p\rest n)
+        =
+      \sigma\circ L(p\rest n)
+        \cap
+      H^2
     \]
 
-  (Note that if $\rho(x,y)=0$, then $\<x,y\>\in\bigcap_{n<\omega}\sigma(n)$ implies $\{x,y\}\subseteq\bigcap_{n<\omega}\sigma(n)[x]\cap\bigcap_{n<\omega}\sigma(n)[y]$, and since $\sigma$ is a winning strategy, the attack $\<x,y,x,y,\dots\>$ must converge. If $X$ is $T_1$, then $x=y$, and $\rho$ is a metric.)
+  Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy 
+  $\sigma\circ L$, so either 
+    \[
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
+      [p(n)]
+        \subseteq
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
+      [p(n)]
+        =
+      \emptyset
+    \]
+  or $p$ converges in $X$, and thus converges in $H$.
+\end{proof}
+
+\begin{theorem}
+  If $\pl D\limitwin \proxgame{X_i}$ for $i<\omega$, then
+  $\pl D\limitwin \proxgame{\prod_{i<\omega}X_i}$, where $\limitwin$ is either
+  $\win$ or $\kmarkwin{k}$.
+\end{theorem}
+
+\begin{proof}
+  A subbase for $\prod_{i<\omega}X_i$ is
+    \[
+      \{\pi_i^{-1}(D):i<\omega, D\in\mc D_i\}
+    \]
+  where $\pi_i$ is the natural projection from 
+  $\left(\prod_{i<\omega}X_i\right)^2$ onto $X_i^2$. (See Bell.)
+
+  For $p\in \left(\prod_{i<\omega}X_i\right)^\omega$, let $p_i\in X_i^\omega$
+  such that $p_i(n)=p(n)(i)$.
+
+  Let $\sigma_i\circ L$ witness $\pl D\limitwin \proxgame{X_i}$ for
+  $i<\omega$, and assume without loss of generality that 
+  $\sigma_i\circ L$ always yields $X_i^2$ before round $i$.
+
+  Then we define the strategy $\tau\circ L$ for $\pl D$ in
+  $\proxgame{\prod_{i<\omega}X_i}$ as follows:
+    \[
+      \tau\circ L(p\rest n)
+        =
+      \bigcap_{i\leq n} \pi_i^{-1}(\sigma_i\circ L(p_i\rest n))
+    \]
+
+  Let $p$ attack $\tau\circ L$. If
+    $
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\sigma_i(p_i\rest n)\right)[p_i(n)]
+      = \emptyset
+    $
+  for any $i<\omega$, it easily follows that 
+    $
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\tau(p\rest n)\right)[p(n)]
+      = \emptyset
+    $.
+
+  Otherwise, we assume that for each $i<\omega$, $p_i$ converges to some
+  $x_i\in X_i$. Thus $p$ converges to $x=\<x_0,x_1,\dots\>$.
+\end{proof}
+
+Note: I expect I should be able to do some clever things 
+assuming $S(\kappa,\omega,\omega)$ to get a similar result for sigma
+products of dimension $\kappa$.
+
+\begin{example}
+  $\pl D \markwin \proxgame{(\oneptcomp\kappa)^\omega}$
+\end{example}
+
+\begin{proof}
+  $\pl D \tactwin \proxgame{\oneptcomp\kappa}$ + previous result
+\end{proof}
+
+
+
+% \newpage
+
+% \begin{theorem}
+%   $\pl D \prewin \proxgame{X} \Leftrightarrow $ the uniformity on $X$ is 
+%   induced by a psuedometric
+% \end{theorem}
+
+% \begin{proof}
+%   % Let $\sigma$ witness $\pl D \prewin \proxgame{X}$, and assume without loss of generality that $\sigma(n+1)\subseteq\frac{1}{2}\sigma(n)$. Define the entourage $D_n=\sigma(n)$ (so $D_{n+1}\subseteq\frac{1}{2}D_n$). For two distinct points $x,y\in X$, observe that $\<x,y\>\not\in D_n$ for some $n<\omega$: otherwise, the attack $p=\<x,y,x,y,\dots\>$ does not converge (note: assumes $T_1$), and $\{x,y\}\subseteq \bigcap_{n<\omega} D_n[p(n)]\not=\emptyset$.
+
+%   % We define $n(x,y)$ to be the minimal ordinal such that $\<x,y\>\not\in D_{n(x,y)}$. If we let $d(x,y)=2^{-n(x,y)}$ for distinct $x,y$ and $d(x,x)=0$, then $d(x,y)=d(y,x)$ trivially. If we show that the triangle inequality holds, then $d$ is a metric.
+
+%   % Suppose that both $n(x,y)\geq n(x,z)+2$ and $n(y,z)\geq n(x,z)+2$. Then it follows that both
+%   %   \[
+%   %     \<x,y\>\in D_{n(x,y)-1}\subseteq \frac{1}{2}D_{n(x,y)-2}\subseteq \frac{1}{2}D_{n(x,z)}
+%   %   \]
+%   %   \[
+%   %     \<y,z\>\in D_{n(y,z)-1}\subseteq \frac{1}{2}D_{n(y,z)-2}\subseteq \frac{1}{2}D_{n(x,z)}
+%   %   \]
+%   % and $\<x,z\>\in D_{n(x,z)}$, a contradiction.
+
+%   % Next, if $n(x,y)=n(y,z)=n(x,z)+1$, we have
+%   %   \[
+%   %     2^{-n(x,z)}=2^{-n(x,z)-1}+2^{-n(x,z)-1}=2^{-n(x,y)}+2^{-n(y,z)}
+%   %   \]
+%   %   \[
+%   %     \Rightarrow d(x,z)=d(x,y)+d(y,z)
+%   %   \]
+
+%   % Also, if $n(x,y)\leq n(x,z)$, we have
+%   %   \[
+%   %     2^{-n(x,z)}\leq 2^{-n(x,y)}<2^{-n(x,y)}+2^{-n(x,z)}
+%   %   \]
+%   %   \[
+%   %     \Rightarrow d(x,z)< d(x,y)+d(y,z)
+%   %   \]
+%   % and similar if $n(y,z)\leq n(x,z)$ instead.
+
+%   % \textbf{TODO: Still missing case $n(x,y)=n(x,z)+1$, $n(y,z)\geq n(x,z)+2$! Then need to show metric induces uniformity.}
+
+%   Let $\sigma$ witness $\pl D \prewin \proxgame{X}$, and assume without loss 
+%   of generality that $\sigma(n+1)\subseteq\frac{1}{4}\sigma(n)$. Note that 
+%   $\sigma(n)$ satisfies the hypotheses of Engleking 8.1.10, so there exists a 
+%   psuedometric $\rho$ such that for $n<\omega$,
+%     \[
+%       \{\<x,y\>:\rho(x,y)<2^{-n}\}\subseteq \sigma(n) 
+%         \subseteq 
+%       \{\<x,y\>:\rho(x,y)\leq 2^{-n}\}
+%     \]
+
+%   (Note that if $\rho(x,y)=0$, then $\<x,y\>\in\bigcap_{n<\omega}\sigma(n)$ 
+%   implies 
+%     $
+%       \{x,y\}
+%         \subseteq
+%       \bigcap_{n<\omega}\sigma(n)[x]\cap\bigcap_{n<\omega}\sigma(n)[y]
+%     $, 
+%   and since $\sigma$ is a winning strategy, the attack $\<x,y,x,y,\dots\>$ must converge. If $X$ is $T_1$, then $x=y$, and $\rho$ is a metric.)
 
   
 
 
-  Now assume that the uniformity on $X$ is induced by the metric $d$. Let $\sigma(n)=\{\<x,y\>:d(x,y)<2^{-n}\}$. Then if $p$ attacks $\sigma$ such that $x\in\bigcap_{m<\omega}\sigma(n)[p(n)]$, it follows that $p(n)\in\sigma(n)[x]$ for all $n<\omega$. Then for any entourage $D$, there is some $m<\omega$ such that $\sigma(m)\subseteq E$, and thus for $n\geq m$, $p(n)\in\sigma(n)[x]\subseteq \sigma(m)[x]\subseteq D[x]$. Thus $p$ converges to $x$.
-\end{proof}
+%   Now assume that the uniformity on $X$ is induced by the metric $d$. Let 
+%   $\sigma(n)=\{\<x,y\>:d(x,y)<2^{-n}\}$. Then if $p$ attacks $\sigma$ such 
+%   that $x\in\bigcap_{m<\omega}\sigma(n)[p(n)]$, it follows that 
+%   $p(n)\in\sigma(n)[x]$ for all $n<\omega$. Then for any entourage $D$, there 
+%   is some $m<\omega$ such that $\sigma(m)\subseteq E$, and thus for $n\geq m$, 
+%   $p(n)\in\sigma(n)[x]\subseteq \sigma(m)[x]\subseteq D[x]$. Thus $p$ 
+%   converges to $x$.
+% \end{proof}
 
 
 

@@ -52,13 +52,13 @@
 
 % Strategy uparrow shortcuts
 \newcommand{\win}{\uparrow}
-\newcommand{\prewin}{\uparrow_{\text{pre}}}
-\newcommand{\markwin}{\uparrow_{\text{mark}}}
-\newcommand{\tactwin}{\uparrow_{\text{tact}}}
-\newcommand{\ktactwin}[1]{\uparrow_{#1\text{-tact}}}
-\newcommand{\kmarkwin}[1]{\uparrow_{#1\text{-mark}}}
-\newcommand{\codewin}{\uparrow_{\text{code}}}
-\newcommand{\limitwin}{\uparrow_{\text{limit}}}
+\newcommand{\prewin}{\underset{\text{pre}}{\uparrow}}
+\newcommand{\markwin}{\underset{\text{mark}}{\uparrow}}
+\newcommand{\tactwin}{\underset{\text{tact}}{\uparrow}}
+\newcommand{\kmarkwin}[1]{\underset{#1\text{-mark}}{\uparrow}}
+\newcommand{\ktactwin}[1]{\underset{#1\text{-tact}}{\uparrow}}
+\newcommand{\codewin}{\underset{\text{code}}{\uparrow}}
+\newcommand{\limitwin}{\underset{\text{limit}}{\uparrow}}
 
 \newcommand{\oneptcomp}[1]{#1^*}
 \newcommand{\oneptlind}[1]{#1^\dagger}
@@ -124,6 +124,8 @@
 
 \newcommand{\zip}{\bowtie}
 \newcommand{\ran}[1]{\text{range}(#1)}
+
+\newcommand{\term}{\textbf}
 
 
 \newcommand{\scish}{almost-$\sigma$-(relatively compact)}
