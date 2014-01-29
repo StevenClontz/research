@@ -761,40 +761,105 @@ products of dimension $\kappa$.
     \bigcup_{t\in\max(T(n))} \frac{1}{4}\sigma(2n+1)[h_t]
   \]
 
-  (Need to show that this contains $H$.)
+  In order for $\tau$ to be a legal strategy, we must show that $\tau(n)$ 
+  contains $H$. For $n=0$,
+  \[
+    \tau(0)
+      =
+    \bigcup_{i,j<m_\emptyset} \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
+  \]
 
-  Let $p$ be an attack against $\tau$. First set $T=\bigcup_{n<\omega} T(n)$.
-  We construct a partial function $f:T\to X$ by induction
-  on the points in $p$ as follows: 
+  Since $\left\{\frac{1}{4}\sigma(1)[h_{\<i,j\>}]:j<m_{\emptyset}\right\}$ is 
+  a cover for $H\cap\cl{\frac{1}{4}\sigma(0)[h_{\<i\>}]}$, and since 
+  $\left\{\frac{1}{4}\sigma(0)[h_{\<i\>}]:i<m_{\emptyset}\right\}$ is a cover
+  for $H$, $\tau(0)$ must contain $H$. A similar argument follows for 
+  $\tau(n)$.
 
-  \begin{itemize}
-    \item Set $f_0(\<i\>)=h_{\<i\>}$ for $i<m_\emptyset$.
+  Let $p$ be an attack against $\tau$ such that 
+  $p(n)\in \bigcap_{m\leq n}\tau(m)$. If we can construct an attack $q$ 
+  against $\sigma$ which shares a subsequence with $p$, then $p$ must cluster.
+  To find such a $q$, we construct a new tree $T'$.
 
-      Observe that we may choose $\<i\>\in\max(\dom(f_0))$ and $j<m_\emptyset$
-      such that
-      \[
-        p(0)
-          \in
-        \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
-      \]
-      since $p(0)\in\tau(0)$.
-    \item For $n<\omega$, assume that we may choose 
-      $t\concat\<i\>\in \max(\dom(f_n))$ and $j<m_t$ such that 
-      \[
-        p(n)
-          \in
-        \frac{1}{4}\sigma(|t|+1)[h_{t\concat\<i,j\>}]
-      \] 
+  We begin by setting 
+    \[
+      T'(0)
+        =
+      \{s : s\leq\<i,h_{\<i\>},j\> \text{ for } i,j<m_\emptyset\}
+    \]
+
+  Since 
+    \[
+      p(0)
+        \in
+      \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
+    \]
+  for some $i,j<m_\emptyset$, we may find $t\in \max(T'(0))$ such that 
+  $p(0)\in\frac{1}{4}\sigma(|o(t)|)[h_{e(t)}]$.
+
+  Assume that $T'(n)$ is defined such that there is some $t\in \max(T'(n))$
+  where $p(n)\in\frac{1}{4}\sigma(|o(t)|)[h_{e(t)}]$. Then let
+    \[
+      T'(n+1)
+        =
+      T'(n)
+        \cup
+      \{
+        s: s\leq t\concat\<p(n),i,h_{e(t)\concat\<i\>},j\>
+        \text{ for } i,j < m_{e(t)}
+      \}
+    \]
+
+  Note that 
+    \[
+      p(n+1)
+        \in
+      \bigcap_{m\leq n+1} \tau(m)
+        =
+      \bigcap_{m\leq n+1} \left(
+        \bigcup_{t\in\max(T(m))} \frac{1}{4}\sigma(2m+1)[h_t]
+      \right)
+    \]
+
+  (Need details on why there is some $t$ in $\max(T'(n+1))$ such that 
+  $p(n+1)\in\frac{1}{4}\sigma(|o(t)|)[h_{e(t)}]$.)
+
+  (Follow this up with choosing an infinite branch $q'\in T'$, and showing
+  that $q=o(q')$ is an attack on $\sigma$ similar to perfect info result.)
+
+
+
+  % First set $T=\bigcup_{n<\omega} T(n)$.
+  % We construct a partial function $f:T\to X$ by induction
+  % on the points in $p$ as follows: 
+
+  % \begin{itemize}
+  %   \item Set $f_0(\<i\>)=h_{\<i\>}$ for $i<m_\emptyset$.
+
+  %     Observe that we may choose $\<i\>\in\max(\dom(f_0))$ and $j<m_\emptyset$
+  %     such that
+  %     \[
+  %       p(0)
+  %         \in
+  %       \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
+  %     \]
+  %     since $p(0)\in\tau(0)$.
+  %   \item For $n<\omega$, assume that we may choose 
+  %     $t\concat\<i\>\in \max(\dom(f_n))$ and $j<m_t$ such that 
+  %     \[
+  %       p(n)
+  %         \in
+  %       \frac{1}{4}\sigma(|t|+1)[h_{t\concat\<i,j\>}]
+  %     \] 
       
-      Then let $f_{n+1}$ extend $f_n$ such that 
-      $f_{n+1}(t\concat\<i,j\>)=p(n)$, and for each $k<m_{t\concat\<i,j\>}$ 
-      $f_{n+1}(t\concat\<i,j,k\>)=h_{t\concat\<i,j,k\>}$.
-  \end{itemize}
+  %     Then let $f_{n+1}$ extend $f_n$ such that 
+  %     $f_{n+1}(t\concat\<i,j\>)=p(n)$, and for each $k<m_{t\concat\<i,j\>}$ 
+  %     $f_{n+1}(t\concat\<i,j,k\>)=h_{t\concat\<i,j,k\>}$.
+  % \end{itemize}
 
-  (Might need to refine $\tau$ some more, but I should show that I can 
-  continue this sort of process to make $f=\cup f_n$ map from part of $T$
-  into $X$ such that we have an infinite branch in $T$ which gives us the 
-  attack alternating between $h_t$ and $p(n)$ against $\sigma$.)
+  % (Might need to refine $\tau$ some more, but I should show that I can 
+  % continue this sort of process to make $f=\cup f_n$ map from part of $T$
+  % into $X$ such that we have an infinite branch in $T$ which gives us the 
+  % attack alternating between $h_t$ and $p(n)$ against $\sigma$.)
 \end{proof}
 
 
