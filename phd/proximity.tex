@@ -304,7 +304,7 @@ For all $x\in X$:
 \newpage
 
 \begin{definition}
-  The strong proximal game $\sproxgame{X}$ is analogous to $\proxgame{X}$, except $\pl D$ may only win if $p$ converges.
+  The absolute proximal game $\aproxgame{X}$ is analogous to $\proxgame{X}$, except $\pl D$ may only win if $p$ converges.
 \end{definition}
 
 \begin{definition}
@@ -313,13 +313,13 @@ For all $x\in X$:
 
 \begin{theorem}
   For any uniformly locally compact space $X$,
-      $\pl D\win \proxgame{X} \Leftrightarrow \pl D\win \sproxgame{X}$
+      $\pl D\win \proxgame{X} \Leftrightarrow \pl D\win \aproxgame{X}$
 \end{theorem}
 
 \begin{proof}
   Let $M$ be a uniformly locally compact entourage. Let $\sigma$ witness $\pl D\win \proxgame{X}$ such that $\sigma(a)\subseteq M$ always (so $\cl{\sigma(a)[x]}\subseteq\cl{M[x]}$ is compact), and $a\supseteq b$  implies $\sigma(a)\subseteq\frac{1}{4}\sigma(b)$.
 
-  Let $\tau(p\rest n)=\frac{1}{2}\sigma(p\rest n)$. If $p$ attacks $\tau$ in $\sproxgame{X}$, then
+  Let $\tau(p\rest n)=\frac{1}{2}\sigma(p\rest n)$. If $p$ attacks $\tau$ in $\aproxgame{X}$, then
     \[
       p(n+1)
         \in
@@ -364,7 +364,7 @@ For all $x\in X$:
 \end{proof}
 
 \begin{corollary}
-  A uniformaly locally compact space $X$ is proximal if and only if $\pl D \win \sproxgame{X}$.
+  A uniformaly locally compact space $X$ is proximal if and only if $\pl D \win \aproxgame{X}$.
 \end{corollary}
 
 \begin{theorem}
@@ -372,7 +372,7 @@ For all $x\in X$:
 \end{theorem}
 
 \begin{proof}
-  Let $\sigma$ witness $\pl D \win \sproxgame{X}$ such that $p\supseteq q$ implies $\sigma(p)\subseteq \frac{1}{4}\sigma(q)$.
+  Let $\sigma$ witness $\pl D \win \aproxgame{X}$ such that $p\supseteq q$ implies $\sigma(p)\subseteq \frac{1}{4}\sigma(q)$.
 
   Let $o(t)$ be the subsequence of $t$ consisting of its odd-indexed terms.
 
@@ -484,7 +484,7 @@ For all $x\in X$:
       \item $t=s\concat\<i,h_{s,i},j,x\>$ has exactly $m_t$ successors $t\concat\<k\>$
     \end{itemize}
 
-  Let $q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>$ correspond to this infinite branch in $T(p)$, and let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of $T(p)$, $q$ is an attack on the winning strategy $\sigma$ in $\sproxgame{X}$, so it must converge. Since every other term of $q$ is in $H$, it must converge to $H$. Then since $q$ is a subsequence of $p$, $p$ must cluster at $H$.
+  Let $q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>$ correspond to this infinite branch in $T(p)$, and let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of $T(p)$, $q$ is an attack on the winning strategy $\sigma$ in $\aproxgame{X}$, so it must converge. Since every other term of $q$ is in $H$, it must converge to $H$. Then since $q$ is a subsequence of $p$, $p$ must cluster at $H$.
 \end{proof}
 
 
@@ -826,546 +826,180 @@ products of dimension $\kappa$.
   (Follow this up with choosing an infinite branch $q'\in T'$, and showing
   that $q=o(q')$ is an attack on $\sigma$ similar to perfect info result.)
 
-
-
-  % First set $T=\bigcup_{n<\omega} T(n)$.
-  % We construct a partial function $f:T\to X$ by induction
-  % on the points in $p$ as follows: 
-
-  % \begin{itemize}
-  %   \item Set $f_0(\<i\>)=h_{\<i\>}$ for $i<m_\emptyset$.
-
-  %     Observe that we may choose $\<i\>\in\max(\dom(f_0))$ and $j<m_\emptyset$
-  %     such that
-  %     \[
-  %       p(0)
-  %         \in
-  %       \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
-  %     \]
-  %     since $p(0)\in\tau(0)$.
-  %   \item For $n<\omega$, assume that we may choose 
-  %     $t\concat\<i\>\in \max(\dom(f_n))$ and $j<m_t$ such that 
-  %     \[
-  %       p(n)
-  %         \in
-  %       \frac{1}{4}\sigma(|t|+1)[h_{t\concat\<i,j\>}]
-  %     \] 
-      
-  %     Then let $f_{n+1}$ extend $f_n$ such that 
-  %     $f_{n+1}(t\concat\<i,j\>)=p(n)$, and for each $k<m_{t\concat\<i,j\>}$ 
-  %     $f_{n+1}(t\concat\<i,j,k\>)=h_{t\concat\<i,j,k\>}$.
-  % \end{itemize}
-
-  % (Might need to refine $\tau$ some more, but I should show that I can 
-  % continue this sort of process to make $f=\cup f_n$ map from part of $T$
-  % into $X$ such that we have an infinite branch in $T$ which gives us the 
-  % attack alternating between $h_t$ and $p(n)$ against $\sigma$.)
 \end{proof}
 
 
 
-% \newpage
-
-% \begin{theorem}
-%   $\pl D \prewin \proxgame{X} \Leftrightarrow $ the uniformity on $X$ is 
-%   induced by a psuedometric
-% \end{theorem}
-
-% \begin{proof}
-%   % Let $\sigma$ witness $\pl D \prewin \proxgame{X}$, and assume without loss of generality that $\sigma(n+1)\subseteq\frac{1}{2}\sigma(n)$. Define the entourage $D_n=\sigma(n)$ (so $D_{n+1}\subseteq\frac{1}{2}D_n$). For two distinct points $x,y\in X$, observe that $\<x,y\>\not\in D_n$ for some $n<\omega$: otherwise, the attack $p=\<x,y,x,y,\dots\>$ does not converge (note: assumes $T_1$), and $\{x,y\}\subseteq \bigcap_{n<\omega} D_n[p(n)]\not=\emptyset$.
-
-%   % We define $n(x,y)$ to be the minimal ordinal such that $\<x,y\>\not\in D_{n(x,y)}$. If we let $d(x,y)=2^{-n(x,y)}$ for distinct $x,y$ and $d(x,x)=0$, then $d(x,y)=d(y,x)$ trivially. If we show that the triangle inequality holds, then $d$ is a metric.
 
-%   % Suppose that both $n(x,y)\geq n(x,z)+2$ and $n(y,z)\geq n(x,z)+2$. Then it follows that both
-%   %   \[
-%   %     \<x,y\>\in D_{n(x,y)-1}\subseteq \frac{1}{2}D_{n(x,y)-2}\subseteq \frac{1}{2}D_{n(x,z)}
-%   %   \]
-%   %   \[
-%   %     \<y,z\>\in D_{n(y,z)-1}\subseteq \frac{1}{2}D_{n(y,z)-2}\subseteq \frac{1}{2}D_{n(x,z)}
-%   %   \]
-%   % and $\<x,z\>\in D_{n(x,z)}$, a contradiction.
 
-%   % Next, if $n(x,y)=n(y,z)=n(x,z)+1$, we have
-%   %   \[
-%   %     2^{-n(x,z)}=2^{-n(x,z)-1}+2^{-n(x,z)-1}=2^{-n(x,y)}+2^{-n(y,z)}
-%   %   \]
-%   %   \[
-%   %     \Rightarrow d(x,z)=d(x,y)+d(y,z)
-%   %   \]
 
-%   % Also, if $n(x,y)\leq n(x,z)$, we have
-%   %   \[
-%   %     2^{-n(x,z)}\leq 2^{-n(x,y)}<2^{-n(x,y)}+2^{-n(x,z)}
-%   %   \]
-%   %   \[
-%   %     \Rightarrow d(x,z)< d(x,y)+d(y,z)
-%   %   \]
-%   % and similar if $n(y,z)\leq n(x,z)$ instead.
 
-%   % \textbf{TODO: Still missing case $n(x,y)=n(x,z)+1$, $n(y,z)\geq n(x,z)+2$! Then need to show metric induces uniformity.}
 
-%   Let $\sigma$ witness $\pl D \prewin \proxgame{X}$, and assume without loss 
-%   of generality that $\sigma(n+1)\subseteq\frac{1}{4}\sigma(n)$. Note that 
-%   $\sigma(n)$ satisfies the hypotheses of Engleking 8.1.10, so there exists a 
-%   psuedometric $\rho$ such that for $n<\omega$,
-%     \[
-%       \{\<x,y\>:\rho(x,y)<2^{-n}\}\subseteq \sigma(n) 
-%         \subseteq 
-%       \{\<x,y\>:\rho(x,y)\leq 2^{-n}\}
-%     \]
 
-%   (Note that if $\rho(x,y)=0$, then $\<x,y\>\in\bigcap_{n<\omega}\sigma(n)$ 
-%   implies 
-%     $
-%       \{x,y\}
-%         \subseteq
-%       \bigcap_{n<\omega}\sigma(n)[x]\cap\bigcap_{n<\omega}\sigma(n)[y]
-%     $, 
-%   and since $\sigma$ is a winning strategy, the attack $\<x,y,x,y,\dots\>$ must converge. If $X$ is $T_1$, then $x=y$, and $\rho$ is a metric.)
 
-  
 
-
-%   Now assume that the uniformity on $X$ is induced by the metric $d$. Let 
-%   $\sigma(n)=\{\<x,y\>:d(x,y)<2^{-n}\}$. Then if $p$ attacks $\sigma$ such 
-%   that $x\in\bigcap_{m<\omega}\sigma(n)[p(n)]$, it follows that 
-%   $p(n)\in\sigma(n)[x]$ for all $n<\omega$. Then for any entourage $D$, there 
-%   is some $m<\omega$ such that $\sigma(m)\subseteq E$, and thus for $n\geq m$, 
-%   $p(n)\in\sigma(n)[x]\subseteq \sigma(m)[x]\subseteq D[x]$. Thus $p$ 
-%   converges to $x$.
-% \end{proof}
-
-
-
-% \newpage
-
-% \begin{definition}
-%   A filter $\mc F$ on a uniform space $X$ is \textbf{Cauchy} if for every entourage $D$, there exists $A\in \mc F$ such that $A^2\subseteq D$.
-% \end{definition}
-
-% \begin{definition}
-%   A fitler $\mc F$ \textbf{converges} to $x$ ($\mc F\to x$) if for every neighborhood $U$ of $x$, there exists $A\in \mc F$ such that $x\in A\subseteq U$.
-% \end{definition}
-
-% \begin{definition}
-%   A uniform space $X$ is \textbf{completely uniform} if every Cauchy filter converges.
-% \end{definition}
-
-% \begin{proposition}
-%   Completely uniform metrizable spaces are completely metrizable.
-% \end{proposition}
-
-% \begin{proof}
-%   ??
-% \end{proof}
-
-% \begin{theorem}
-% For all completely uniform $X$, $\pl O \prewin\proxgame{X}$ if and only if $X$ is metrizable.
-% \end{theorem}
-
-% \begin{proof}
-%   Assume $X$ is metrizable, and thus completely metrizable. Define the predetermined strategy $\sigma$ such that if $D_n=\{(x,y):d(x,y)<\frac{1}{4^n}\}$ then $\sigma(n)=D_{n+1}$. Note that $\sigma(n+1)=D_{n+2}\subseteq 4D_{n+2}= D_{n+1} =\sigma(n)$, so $\bigcap_{m\leq n}\sigma(m)=\sigma(n)$. 
-
-%   Let $p$ attack $\sigma$. We have $p(n+1)\in 4\sigma(n)[p(n)]=4D_{n+1}[p(n)]=D_n[p(n)]$, so $d(p(n),p(n+1))<\frac{1}{4^n}$. Thus $p$ is Cauchy and converges.
-
-%   Let $\sigma$ witness $\pl O \prewin\proxgame{X}$. Claim: $\Delta = \bigcap_{n<\omega}\sigma(n)$.
-% \end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    % \newpage
-
-    % \centerline{\bf Clopen partition version}
-
-    % \begin{definition}
-    %   For any partition $\mc R$ of a space $X$ and $x\in X$, let $\mc R[x]$ be such that $x\in\mc R[x]\in\mc R$.
-
-    %   For partitions $\mc R_0,\dots,\mc R_n$, let $\mc H_n=\bigwedge_{m\leq n} \mc R_m$ be the coarsest partition which refines each $\mc R_m$.
-
-    %   For partitions $\mc R,\mc S$ let $\mc R\otimes \mc S = \{r\times s: r\in R, s\in S\}$.
-    % \end{definition}
-
-    % \begin{proposition}
-    %   $x\in \mc R[y] \Leftrightarrow y\in \mc R[x]$.
-
-    %   $\mc H_n[x]=\left(\bigwedge_{m\leq n} \mc R_m\right)[x]=\bigcap_{m\leq n}\mc R_m[x]$.
-    % \end{proposition}
-
-    % \begin{definition}
-    %   For zero-dimensional $X$, the proximity game $\proxgame{X}$ proceeds as follows: in round $n$, $\pl R$ chooses a clopen partition $\mc R_n$ of $X$, followed by $\pl P$ choosing a point $p_n\in X$.
-
-    %   Player $\pl R$ wins if either $\bigcap_{n<\omega} \mc H_n[p_n] = \emptyset$ or $p_n$ converges.
-    % \end{definition}
-
-    % \begin{proposition}
-    %   This game is perfect-information equivalent to the analogous game studied by Bell, requiring $\pl P$'s play $p_{n+1}$ to be in $\mc H_n[p_n]$ in rounds $n+1$, and requiring $\pl O$ choose refinements.
-    % \end{proposition}
-
-    % \begin{proof}
-    %   Allowing $\pl P$ to play $p_{n+1}\not\in \mc H_n[p_n]\Rightarrow \mc H_n[p_{n+1}]\not=\mc H_n[p_n]$ does not introduce any new winning plays for $\pl P$ as for any such move, $\bigcap_{m<\omega}\mc H_n[p_n]\subseteq \mc H_{n+1}[p_{n+1}]\cap \mc H_n[p_n]\subseteq \mc H_n[p_{n+1}]\cap \mc H_n[p_n]=\emptyset$.
-
-    %   Allowing $\pl R$ to play non-refining clopen partitions does not introduce any new winning plays for $\pl R$ as the winning condition relies on the refinement of all $\mc R_n$ anyway.
-    % \end{proof}
-
-    % \begin{definition}
-    %   A space $X$ is \textbf{proximal} iff $X$ is zero-dimensional and $\pl R\win\proxgame{X}$.
-    % \end{definition}
-
-    % \begin{definition}
-    %   A space $X$ is \textbf{Mark\"ov proximal} iff $X$ is zero-dimensional and $\pl R\markwin\proxgame{X}$.
-    % \end{definition}
-
-    % \begin{definition}
-    %   For any space $X$ and a point $x\in X$, the \textbf{$W$-convergence-game} $\congame{X}{x}$ proceeds as follows: in round $n$, $\pl O$ chooses a neighborhood $U_n$ of $x$, followed by $\pl P$ choosing a point $p_n\in X$.
-
-    %   For open sets $U_0,\dots,U_n$, let $V_n=\bigcap_{m\leq n} U_m$. Player $\pl O$ wins if either $p_n\not\in V_n$ for some $n<\omega$, or if $p_n$ converges.
-    % \end{definition}
-
-    % \begin{definition}
-    %   A space $X$ is a \textbf{$W$-space} iff $\pl O\win\congame{X}{x}$ for all $x\in X$.
-    % \end{definition}
-
-    %     % \begin{theorem}
-    %     %    All proximal spaces are $W$-spaces.
-    %     % \end{theorem}
-
-    %     % \begin{proof}
-    %     %   Let $\sigma$ witness $\pl R\win\proxgame{X}$, and assume without loss of generality that $\mc R_n=\mc H_n$. For each $x\in X$, we define $\tau_x$ for $\pl O$ in $\congame{X}{x}$ to be $\tau_x()=\sigma(x)[x]$ and $\tau_x(p_0,\dots,p_n)=\sigma(x,p_0,x,\dots,p_n,x)[x]$ (so that $\tau_x(p_0,\dots,p_{n-1})=U_n=V_n$). Let $p_0,p_1,\dots$ be an attack against $\tau_x$ by $\pl P$ in $\congame{x}{X}$ such that $p_n\in V_n$ for each $n<\omega$.
-
-    %     %   We consider the attack $x,p_0,x,p_1,\dots$ against $\sigma$ by $\pl P$ in $\proxgame{X}$. Since the $(2n)$th move by $\pl P$ is $x$, obviously $x\in \mc H_{2n}[x]$ for $\pl C$'s $(2n)$th move $\mc H_{2n}$.  
-
-    %     %   The $(2n+1)$th move by $\pl C$ is $\mc H_{2n+1}=\sigma(x,p_0,\dots,p_{n-1},x)$ and the $(2n+1)$th move by $\pl P$ is $p_n$, so since 
-    %     %     \[
-    %     %       p_n \in 
-    %     %       V_n =
-    %     %       \tau_x(p_0,\dots,p_{m-1})=
-    %     %       \sigma(x,p_0,x,\dots,p_{m-1},x)[x]=
-    %     %       \mc H_{2n+1}[x]
-    %     %     \]
-    %     %   it follows that $x\in \mc H_{2n+1}[p_n]$.
-
-    %     %   This shows $x\in \bigcap_{n<\omega} \mc H_n[p_n]\not= \emptyset$ and as $\sigma$ is a winning strategy for $\pl R$ in $\proxgame{X}$, it follows that $x,p_0,x,p_1,\dots$ converges. This implies $p_0,p_1,\dots$ converges to $x$, proving that $\tau_x$ is a winning strategy for $\pl O$ in $\congame{X}{x}$.
-    %     % \end{proof}
-
-
-
-    % \begin{definition}
-    %   For each finite tuple $(m_0,\dots,m_{n-1})$, we define the \textbf{$k$-tactical fog-of-war}
-    %     \[
-    %       T_k(m_0,\dots,m_{n-1})=(m_{n-k},\dots,m_{n-1})
-    %     \]
-    %   and the \textbf{$k$-Mark\"ov fog-of-war}
-    %     \[
-    %       M_k(m_0,\dots,m_{n-1})=(m_{n-k},\dots,m_{n-1},n)
-    %     \]
-
-    %   So $P\ktactwin{k}G$ if and only if there exists a winning strategy for $P$ of the form $\sigma\circ T_k$, and $P\kmarkwin{k}G$ if and only if there exists a winning strategy of the form $\sigma\circ M_k$.
-    % \end{definition}
-
-    % \begin{theorem}
-    % For all $x\in X$:
-    %   \begin{itemize}
-    %     \item
-    %       $\pl R\win \proxgame{X} \Rightarrow \pl O \win \congame{X}{x}$
-    %     \item
-    %       $\pl R\prewin \proxgame{X} \Rightarrow \pl O \prewin \congame{X}{x}$
-    %     \item
-    %       $\pl R\ktactwin{2k} \proxgame{X} \Rightarrow \pl O \ktactwin{k} \congame{X}{x}$
-    %     \item
-    %       $\pl R\kmarkwin{2k} \proxgame{X} \Rightarrow \pl O \kmarkwin{k} \congame{X}{x}$
-    %   \end{itemize}
-    % \end{theorem}
-
-    % \begin{proof}
-    % Let $\sigma$ witness $\pl R \ktactwin{2k}\proxgame{X}$ (resp. $\pl R \kmarkwin{2k}\proxgame{X}$, $\pl R\win\proxgame{X}$). We define the $k$-tactical (resp. $k$-Mark\"ov, perfect info) strategy $\tau$ such that
-    %   \[
-    %     \tau\circ L_k(p_0,\dots,p_{n-1})
-    %       =
-    %     \sigma\circ L_{2k}(x,p_0,\dots,x,p_{n-1})[x]
-    %       \cap
-    %     \sigma\circ L_{2k}(x,p_0,\dots,x,p_{n-1},x)[x]
-    %   \]
-    % where $L_{2k}$ is the $2k$-tactical fog-of-war (resp. $2k$-Mark\"ov fog-of-war, identity) and $L_{k}$ is the $k$-tactical fog-of-war (resp. $k$-Mark\"ov fog-of-war, identity).
-
-    % Let $p_0,p_1,\dots$ attack $\tau$ such that $p_n\in V_n=\bigcap_{m\leq n}\tau\circ L_k(p_0,\dots,p_{m-1})$ for all $n<\omega$. Consider the attack $q_0,q_1,\dots$ against the winning strategy $\sigma$ such that $q_{2n}=x$ and $q_{2n+1}=p_n$. 
-
-    % Certainly, $x\in \mc H_{2n}[x]= \mc H_{2n}[q_{2n}]$ for any $n<\omega$. Note also for any $n<\omega$ that 
-    %     \[
-    %       p_n \in 
-    %       V_n =
-    %       \bigcap_{m\leq n}\tau\circ L_k(p_0,\dots,p_{m-1})
-    %     \]
-    %     \[
-    %       =
-    %       \bigcap_{m\leq n}\left(
-    %         \sigma\circ L_{2k}(x,p_0,\dots,x,p_{m-1})[x]\cap
-    %         \sigma\circ L_{2k}(x,p_0,\dots,x,p_{m-1},x)[x]
-    %       \right)
-    %     \]
-    %     \[
-    %       =
-    %       \bigcap_{m\leq n}\left(
-    %         \sigma\circ L_{2k}(q_0,q_1,\dots,q_{2m-2},q_{2m-1})[x]\cap
-    %         \sigma\circ L_{2k}(q_0,q_1,\dots,q_{2m-2},q_{2m-1},q_{2m})[x]
-    %       \right)
-    %     \]
-    %     \[
-    %       \bigcap_{m\leq n}\mc R_{2m}[x]\cap R_{2m+1}[x]=
-    %       \mc H_{2n+1}[x]
-    %     \]
-    % so $x\in\mc H_{2n+1}[p_n]=\mc H_{2n+1}[q_{2n+1}]$. Thus $x\in \bigcap_{n<\omega} \mc H_n[q_n]$, and since $\sigma$ is a winning strategy, the attack $q_0,q_1,\dots$ converges, and must converge to $x$. Thus $p_0,p_1,\dots$ converges to $x$, and $\tau$ is also a winning strategy.
-    % \end{proof}
-
-    % \begin{corollary}
-    % For all $x\in X$:
-    %   \begin{itemize}
-    %     \item
-    %       $\pl R\ktactwin{k} \proxgame{X} \Rightarrow \pl O \ktactwin{k} \congame{X}{x}$
-    %     \item
-    %       $\pl R\kmarkwin{k} \proxgame{X} \Rightarrow \pl O \kmarkwin{k} \congame{X}{x}$
-    %   \end{itemize}
-    % \end{corollary}
-
-    % \begin{corollary}
-    %    All proximal spaces are $W$-spaces.
-    % \end{corollary}
-
-    % \begin{definition}
-    %   In the one-point compactification $\oneptcomp\kappa=\kappa\cup\{\infty\}$ of discrete $\kappa$, define the clopen partition $\mc C(F) = [F]^1\cup\{\oneptcomp{\kappa}\setminus F\}$.
-    % \end{definition}
-
-    % \begin{theorem}
-    %   $\pl R\codewin\proxgame{\oneptcomp{\kappa}}$
-    % \end{theorem}
-
-    % \begin{proof}
-    %   Use the coding strategy $\sigma()=\mc C(\emptyset)=\{\oneptcomp\kappa\}$, $\sigma(\mc C(F),\alpha)=\mc C(F\cup\{\alpha\})$ for $\alpha<\kappa$ and $\sigma(\mc C(F),\infty)=\mc C(F)$. Note $\mc R_n=\mc H_n$. For any attack $p_0,p_1,\dots$ against $\sigma$ such that $\bigcap_{n<\omega} \mc H_n[p_n]\not=\emptyset$, suppose 
-    %     \begin{itemize}
-    %       \item $\infty\in\bigcap_{n<\omega} \mc H_n[p_n]$. Then $p_n\in \oneptcomp{\kappa}\setminus\{p_m:m<n\}$ shows that the non-$\infty$ $p_n$ are all distinct. If co-finite $p_n=\infty$, we have $p_n\to\infty$. Otherwise, there are infinite distinct $p_n$, and since neighorhoods of $\infty$ are co-finite, we have $p_n\to\infty$.
-    %       \item $\infty\not\in\ \mc H_N[p_N]$ for some $N<\omega$, so $\alpha\in\bigcap_{n<\omega} \mc H_n[p_n]$ for some $\alpha<\kappa$. Then $\mc H_n[p_n]=\{\alpha\}$ for all $n\geq N$, and thus $p_n\to\alpha$.
-    %     \end{itemize}
-    %   Thus $\sigma$ is a winning coding strategy.
-    % \end{proof}
-
-    % \begin{theorem}
-    % $\pl O\win \congame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \win \proxgame{\oneptcomp\kappa}$
-
-    % $\pl O\prewin \congame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \prewin \proxgame{\oneptcomp\kappa}$
-
-    % $\pl O\ktactwin{k} \congame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \ktactwin{k} \proxgame{\oneptcomp\kappa}$
-
-    % $\pl O\kmarkwin{k} \congame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \kmarkwin{k} \proxgame{\oneptcomp\kappa}$
-    % \end{theorem}
-
-    % \begin{proof}
-    %   Let $\sigma\circ L$ be a winning strategy where $L$ is the identify (resp. a $k$-tactical fog-of-war, a $k$-Mark\"ov fog-of-war).
-
-    %   Define $\tau\circ L$ such that
-    %     \[
-    %       \tau\circ L(p_0,\dots,p_{n-1})=\mc R(\oneptcomp\kappa\setminus(\sigma\circ L(p_0,\dots,p_{n-1})))
-    %     \]
-
-    %   For any attack $p_0,p_1,\dots$ against $\tau$ such that $\bigcap_{n<\omega}\mc H_n[p_n]\not=\emptyset$, suppose 
-    %     \begin{itemize}
-    %       \item $\mc H_n[p_n]=\mc H_n[\infty]=\bigcap_{m\leq n}\sigma\circ L(p_0,\dots,p_{m-1})=\bigcap_{m\leq n}U_m=V_n$ for all $n<\omega$. Since $\sigma$ is a winning strategy, the $p_n$ converge at $\infty$.
-    %       \item $\mc H_N[p_N]\not=\mc H_N[\infty]$ for some $N<\omega$. Then $\mc H_N[p_N]=\{p_N\}$, and since $\bigcap_{n<\omega}\mc H_n[p_n]\not=\emptyset$, we have $\mc H_n[p_n]=\mc H_N[p_N]=\{p_N\}\Rightarrow p_n=p_N$ for all $n\geq N$, and the $p_n$ converge at $p_N$.
-    %     \end{itemize}
-    % \end{proof}
-
-    % \begin{corollary}
-    % $\pl O\win \congame{\oneptcomp\kappa}{\infty} \Leftrightarrow \pl R \win \proxgame{\oneptcomp\kappa}$
-
-    % $\pl O\prewin \congame{\oneptcomp\kappa}{\infty} \Leftrightarrow \pl R \prewin \proxgame{\oneptcomp\kappa}$
-
-    % $\pl O\ktactwin{k} \congame{\oneptcomp\kappa}{\infty} \Leftrightarrow \pl R \ktactwin{k} \proxgame{\oneptcomp\kappa}$
-
-    % $\pl O\kmarkwin{k} \congame{\oneptcomp\kappa}{\infty} \Leftrightarrow \pl R \kmarkwin{k} \proxgame{\oneptcomp\kappa}$
-    % \end{corollary}
-
-    % \begin{corollary}
-    % $O\prewin \proxgame{\oneptcomp{\omega}}$.
-
-    % $O\tactwin\proxgame{\oneptcomp{\omega}}$.
-
-    % $O\not\kmarkwin{k} \proxgame{\oneptcomp{\kappa}}$ for $\kappa\geq\omega_1$.
-    % \end{corollary}
-
-    % \begin{proof}
-    % Results hold for $\pl O$ and $\congame{\oneptcomp{\kappa}}{\infty}$.
-    % \end{proof}
-
-    % \begin{definition}
-    %   The \textbf{almost-proximal game} $\aproxgame{X}$ is analogous to $\proxgame{X}$ except that the points $p_n$ need only cluster for $\pl R$ to win the game.
-    % \end{definition}
-
-    % \begin{definition}
-    %   The \textbf{$W$-clustering game} $\clusgame{X}{x}$ is analogous to $\congame{X}{x}$ except that the points $p_n$ need only cluster at $x$ for $\pl O$ to win the game.
-    % \end{definition}
-
-    % \begin{proposition}
-    % $\pl O\win \clusgame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \win \aproxgame{\oneptcomp\kappa}$
-
-    % $\pl O\prewin \clusgame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \prewin \aproxgame{\oneptcomp\kappa}$
-
-    % $\pl O\ktactwin{k} \clusgame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \ktactwin{k} \aproxgame{\oneptcomp\kappa}$
-
-    % $\pl O\kmarkwin{k} \clusgame{\oneptcomp\kappa}{\infty} \Rightarrow \pl R \kmarkwin{k} \aproxgame{\oneptcomp\kappa}$
-    % \end{proposition}
-
-    % \begin{proof}
-    %   Same proof as before, replacing ``converge'' with ``cluster''.
-    % \end{proof}
-
-    % \begin{corollary}
-    % $\pl R\markwin \aproxgame{\oneptcomp{\omega_1}}$.
-    % \end{corollary}
-
-    % \begin{proof}
-    % Holds for $\pl O$ and $\clusgame{\oneptcomp{\omega_1}}{\infty}$.
-    % \end{proof}
-
-    % \begin{proposition}
-    % If $\sigma\circ L$ is a winning strategy for $\pl R$ in $\proxgame{X}$ (resp. $\aproxgame{X}$) where $L$ is the identity (or a $k$-tactical fog-of-war or a $k$-Mark\"ov fog-of-war), and $C$ is a closed subspace of $X$, then
-    %   \[
-    %     \tau\circ L(p_0,\dots,p_{n-1}) = C\cap \sigma\circ L(p_0,\dots,p_{n-1})
-    %   \]
-    % defines a winning strategy $\tau\circ L$ for $\pl R$ in $\proxgame{X}$ (resp. $\aproxgame{X}$).
-    % \end{proposition}
-
-    % \begin{proof}
-    % For any attack $p_0,p_1,\dots$ against $\tau\circ L$ in $\proxgame{C}$ (resp. $\aproxgame{C}$), note $p_0,p_1,\dots$ is also an attack against $\sigma\circ L$ in $\proxgame{X}$ (resp. $\aproxgame{X}$). 
-
-    % If $\pl R$ wins in $\proxgame{X}$ (resp. $\aproxgame{X}$) by $\mc H^\sigma_n[p_n]=\emptyset$, then note that $\mc H^\tau_n[p_n]\subseteq\mc H^\sigma_n[p_n]=\emptyset$. 
-
-    % If If $\pl R$ wins in $\proxgame{X}$ (resp. $\aproxgame{X}$) because the $p_n$ converge (resp. cluster), then they converge (resp. cluster) in the closed set $C$. 
-
-    % Either way, $\tau\circ L$ defeats the arbitrary attack and is thus a winning strategy.
-    % \end{proof}
-
-    % \begin{proposition}
-    % If for any $i<m<\omega$, $\sigma_i\circ L$ is a winning strategy for $\pl R$ in $\proxgame{X_i}$ (resp. $\aproxgame{X_i}$) where $L$ is the identity (or a $k$-tactical fog-of-war or a $k$-Mark\"ov fog-of-war), then
-    %   \[
-    %     \tau\circ L(p_0,\dots,p_{n-1}) = \bigotimes_{i<m}\sigma_i\circ L(p_0(i),\dots,p_{n-1}(i))
-    %   \]
-    % defines a winning strategy $\tau\circ L$ for $\pl R$ in $\proxgame{\prod_{i<m}X_i}$ (resp. $\aproxgame{\prod_{i<m}X_i}$).
-    % \end{proposition}
-
-    % \begin{proof}
-    % For any attack $p_0,p_1,\dots$ against $\tau\circ L$ in $\proxgame{\prod_{i<m}X_i}$ (resp. $\aproxgame{\prod_{i<m}X_i}$), note that for any $i<m$, $p_0(i),p_1(i),\dots$ is an attack against $\sigma_i\circ L$ in $\proxgame{X_i}$ (resp. $\aproxgame{X}$).
-
-    % If for some $i<m$, $\pl R$ defeats the attack $p_0(i),p_1(i),\dots$ because $\bigcap_{n<\omega}\mc H^i_n[p_n(i)]=\emptyset$, then we see immediately that $\bigcap_{n<\omega} \mc H_n[p_n]=\emptyset$ and $\tau$ defeats the attack $p_0,p_1,\dots$.
-
-    % Otherwise for all $i<m$, we have $p_n(i)$ converging (resp. clustering) at some $x_i\in X$. It follows then that $p_0,p_1,\dots$ converges (resp. clusters) at $x=\<x_i:i<m\>$ and $\tau$ defeats the attack $p_0,p_1,\dots$.
-    % \end{proof}
-
-    % \begin{definition}
-    % For $H\subseteq X$, the \textbf{$W$-subset-convergence-game} $\congame{X}{H}$ is analogous to $\congame{X}{x}$: $\pl O$ chooses open neighborhoods of $H$ and tries to force $p_n\to H$.
-    % \end{definition}
-
-    % \begin{theorem}
-    %   For all compact $H\subseteq X$, $\pl R \win\proxgame{X}$ implies $\pl O \win\congame{X}{H}$.
-    % \end{theorem}
-
-    % \begin{proof}
-    %   Adapted from G's proof.
-
-    %   Let $\sigma$ witness $\pl R \win\proxgame{X}$, assuming $\sigma(p)$ refines $\sigma(q)$ whenever $q\subseteq p$.
-
-    %   For certain finite sequences of points $p\in X^{<\omega}$, we define a tree of finite sequences $\<T(p),\subseteq\>$ as follows:
-
-    %   \begin{itemize}
-    %     \item $T(\emptyset)$ contains the empty sequence, and for each of the finite nonempty
-    %       \[
-    %         V\in\{U\cap H: U\in\sigma(\emptyset)\}
-    %       \]
-    %       choose a unique $h_V\in V$ and include $\<h_V\>$ in $T(\emptyset)$.
-    %     \item Assume that whenever $T(p)$ is defined, it satisfies the following:
-    %       \begin{itemize}
-    %         \item $T(p)$ is finite
-    %         \item $p'\subseteq p \Rightarrow T(p')\subseteq T(p)$
-    %         \item If $\<h_0,q_0,\dots,h_n\>\in T(p)$ then $\<q_0,\dots,q_{n-1}\>$ is a subsequence of $p$ and $q_i\in\sigma(h_0,q_0,\dots,h_{i-1},q_{i-1})[h_i]$ for all $i<n$
-    %         \item For each sequence $t\concat\<h,q\>\in T(p)$ and for each of the finite nonempty
-    %           \[
-    %             V\in\{U\cap H\cap \sigma(t)[h]: U\in \sigma(t\concat\<h,q\>)\}
-    %           \]
-    %           there is a unique $h_V\in V$ such that $t\concat\<h,q,h_V\>\in T(p)$.
-    %         \item $\{\sigma(t)[h]:t\concat\<h\>\text{ is maximal in }T(p)\}$ partitions $\st{\bigwedge_{s\in T(p)}\sigma(s)}{H}$.
-    %       \end{itemize}
-
-    %     \item Then when $T(p)$ is defined, we define $T(p\concat\<q\>)$ for each $q\in \st{\bigwedge_{s\in T(p)}\sigma(s)}{H}$ as follows:
-    %       \begin{itemize}
-    %         \item Assume $T(p)\subseteq T(p\concat\<q\>)$.
-    %         \item Find the maximal $t_q\concat\<h_q\>$ in $T(p)$ such that $q\in\sigma(t_q)[h_q]$. Include $t_q\concat\<h_q,q\>$ in $T(p\concat\<q\>)$.
-    %         \item For each of the finite nonempty
-    %           \[
-    %             V\in\mc V(t_q,h_q,q)=\{U\cap H\cap \sigma(t_q\concat\<h_q,q\>)[h]: U\in \sigma(t_q\concat\<h_q,q\>)\}
-    %           \]
-    %           choose a unique $h_V\in V$ and include $t_q\concat\<h_q,q,h_V\>$ in $T(p\concat\<q\>)$.
-    %         \item Note that 
-    %           \[
-    %             \{\sigma(t)[h]:t\concat\<h\>\text{ is maximal in }T(p), h\not= h_q\}
-    %           \]
-    %           partitions 
-    %           \[
-    %             \st{\bigwedge_{s\in T(p)}\sigma(s)}{H}\setminus\sigma(t_q)[h_q] = \st{\bigwedge_{s\in T(p\concat\<q\>)}\sigma(s)}{H}\setminus\sigma(t_q)[h_q]
-    %           \]
-    %           and that
-    %           \[
-    %             \{\sigma(t_q\concat\<h_q,q\>)[h_V]: \mc V\in V(t_q,h_q,q)\}
-    %           \]
-    %           partitions 
-    %           \[
-    %             \st{\bigwedge_{V\in \mc V(t_q,h_q,q)}\sigma(t_q\concat\<h_q,q,h_V\>)}{H}\cap \sigma(t_q)[h_q] 
-    %               = 
-    %             \st{\bigwedge_{s\in T(p\concat\<q\>)}\sigma(s)}{H}\cap\sigma(t_q)[h_q]
-    %           \]
-    %           so our definition satisfies the recursion hypotheses.
-    %       \end{itemize}
-    %   \end{itemize}
-
-    %   We may define a strategy $\tau$ for $\pl O$ in $\congame{X,H}$ as follows. Let $\tau(\emptyset)=\st{\bigwedge_{s\in T(\emptyset)}\sigma(s)}{H}$. If $T(p)$ is defined and $q\in \st{\bigwedge_{s\in T(p)}\sigma(s)}{H}$, then let $\tau(p\concat\<q\>)=\st{\bigwedge_{s\in T(p\concat\<q\>)}\sigma(s)}{H}$ (and $\tau(p\concat\<q\>)=X$ otherwise).
-
-    %   Let $p\in X^\omega$ attack $\tau$ such that $p(n)\in\tau(p\rest n)$ always. It follows that $T(p\rest n)$ is defined for all $n<\omega$, so let $T_p=\bigcup_{n<\omega}T(p\rest n)$. By definition, it is evident that $T_p$ is an infinite tree with finite levels, so choose an infinite branch $p'=\<h_0,q_0,\dots\>$.
-
-    %   Since $p'$ is an attack on $\sigma$, and $p'(n+1)\in\sigma(p\rest n+1)[p(n)]$ always, it follows that $p'$ converges. Since $p(2n)=h_n\in H$, $p'$ converges in $H$, and so does its subsequence $p''=\<q_0,q_1,\dots\>$, which is also a subsequence of $p$.
-
-    %   We've shown $p$ clusters in $H$, and since $\tau(p\rest n+1)\subseteq \tau(p)$, it follows analogously to a result of G that $p$ converges in $H$.
-    % \end{proof}
-
-    % \begin{corollary}
-    % If $X$ is compact and $\pl R\win\proxgame{X}$, then $\pl O\win\congame{X^2}{\Delta}$, and thus $X$ is Corson compact.
-    % \end{corollary}
-
-    % \begin{proof}
-    % Note $\pl R\win\proxgame{X^2}$ and $\Delta$ is a compact subset of $X^2$, so $\pl O\win\congame{X^2}{\Delta}$. By a result of G, $X$ is Corson compact.
-    % \end{proof}
-
-    % \begin{corollary}
-      
-    % \end{corollary}
-
-
-
-
-
+\newpage
+
+\begin{example}
+  Let $X=I\times 2$ be the Alexandrov double interval. Then 
+  $\pl D \not\prewin \proxgame{X}$, but $\pl D \markwin \proxgame{X}$.
+\end{example}
+
+\begin{proof}
+  We assume that the uniformity on $X$ is given by entourages 
+  \[
+    D(\epsilon,F) = 
+    \{\<x,0\>,\<y,0\>: |x-y|<\epsilon \}
+      \cup
+    \{\<x,1\>,\<y,0\>: |x-y|<\epsilon \vee x\not\in F\}
+  \]
+  \[
+      \cup
+    \{\<x,0\>,\<y,1\>: |x-y|<\epsilon \vee y\not\in F\}
+      \cup
+    \{\<x,1\>,\<y,1\>: x=y\}
+  \]
+
+  That is, points are $D(\epsilon,F)$-close if they are the same point, or 
+  the first coordinates are within $\epsilon$ of each other while neither 
+  second coordinate is in $F$.
+
+  Suppose $\pl D$ had a predetermined winning strategy 
+  $\sigma(n)=D(\epsilon_n,F_n)$. Then 
+  $\pl P$ can choose $x\not\in \bigcup_{n<\omega} F_n$, and play $\<x,1\>$ 
+  during even rounds, and $\<x_{2n+1},0\>$ where $|x-x_{2n+1}|<\epsilon_{2n}$
+  during odd rounds, preventing convergence.
+
+  However, assume $\pl D$ uses the Mark\"ov strategy 
+  $\sigma(x,n)=D(2^{-n},\{x\})$.
+  If $\pl P$ repeats a point of the form $\<x,1\>$, then since 
+  $D(2^{-n},\{x\})[\<x,1\>]=\{\<x,1\>\}$, $\pl P$ must repeat $\<x,1\>$ for
+  the rest of the game, and $\pl D$ wins. Otherwise, $\pl P$ cannot repeat 
+  points played in $I\times\{1\}$, and as the first
+  coordinates form a Cauchy sequence and converge to some $z$, any open set
+  about $\<z,0\>$ contains all but finitely many points of $\pl P$'s sequence,
+  and $\pl D$ wins.
+\end{proof}
+
+\begin{theorem}
+  For any uniformly locally compact space $X$,
+      $\pl D\prewin \proxgame{X} \Leftrightarrow \pl D\prewin \aproxgame{X}$
+\end{theorem}
+
+\begin{proof}
+  Let $M$ be a uniformly locally compact entourage. 
+  Let $\sigma$ witness $\pl D\prewin \proxgame{X}$ such that 
+  $\sigma(n)\subseteq M$ always 
+  (so $\cl{\sigma(a)[x]}\subseteq\cl{M[x]}$ is compact), 
+  $\sigma(n+1)\subseteq\frac{1}{4}\sigma(n)$.
+
+  Let $\tau(n)=\frac{1}{2}\sigma(n)$. If $p$ attacks $\tau$ in 
+  $\aproxgame{X}$, then
+    \[
+      p(n+1)
+        \in
+      \tau(n)[p(n)]
+        =
+      \frac{1}{2}\sigma(n)[p(n)]
+    \]
+
+    and for
+
+    \[
+      x
+        \in
+      \cl{\sigma(n+1)[p(n+1)]}
+        \subseteq
+      \cl{\frac{1}{4}\sigma(n)[p(n+1)]}
+        \subseteq
+      \frac{1}{2}\sigma(n)[p(n+1)]
+    \]
+
+  we can conclude $x\in\sigma(n)[p(n)]$. Thus
+
+    \[
+      \sigma(n+1)[p(n+1)]
+        \subseteq
+      \cl{\sigma(n+1)[p(n+1)]}
+        \subseteq
+      \sigma(n)[p(n)]
+    \]
+
+  Finally, note that $p$ attacks the winning strategy $\sigma$ in 
+  $\proxgame{X}$, but since the intersection of a chain of nonempty compact 
+  sets is nonempty:
+
+    \[
+      \bigcap_{n<\omega} \sigma(n)[p(n)]
+        =
+      \bigcap_{n<\omega} \cl{\sigma(n)[p(n)]}
+        \not=
+      \emptyset
+    \]
+
+  We conclude that $p$ converges.
+\end{proof}
+
+\begin{proposition}
+If $\pl D \prewin \proxgame{X}$, then $X$ has a $G_\delta$ diagonal.
+\end{proposition}
+
+\begin{proof}
+  If $\pl D \prewin \proxgame{X}$ with strategy $\sigma$, then consider 
+  $\<x,y\>\in \bigcap_{n<\omega} \sigma(n)$. It follows that 
+  $\<x,y,x,y,\dots\>$ attacks $\sigma$, and 
+    $
+      \{x,y\}\subseteq \bigcap_{n<\omega} 
+      \sigma(n)[x]\cap\bigcap_{n<\omega}\sigma(n)[y]
+      \not=0
+    $ 
+  so it must converge, and $x=y$. Thus
+  $\bigcap_{n<\omega}\sigma(n) = \Delta$ is $G_\delta$.
+\end{proof}
+
+\begin{example}
+The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
+\end{example}
+
+\begin{corollary}
+  For $X$ with uniformity $\mathbb{D}$ inducing the compact Hausdorff topology 
+  $\tau$, the following are equivalent:
+    \begin{enumerate}[(a)]
+      \item $\pl D \prewin \proxgame{X}$
+      \item $\pl D \prewin \aproxgame{X}$
+      \item $X$ has a $G_\delta$ diagonal
+      \item $\mathbb{D}$ is metrizable
+      \item $\tau$ is metrizable
+    \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  For compact Hausdorff spaces, it is well known that there is exactly one
+  uniformity inducing the topology. Thus $(d)\Leftrightarrow(e)$. Since $X$
+  is uniformly locally compact, $(a)\Leftrightarrow(b)$. Also, compact spaces
+  with a $G_\delta$ diagonal are metrizable, so $(c)\Rightarrow(e)$. 
+  Bell noted $(d)\Rightarrow(a)$ 
+  for arbitrary uniform spaces, and the previous proposition shows
+  $(a)\Rightarrow(c)$.
+\end{proof}
+
+\begin{theorem}
+  A uniformly locally compact space with a $G_\delta$ diagonal is metrizable.
+\end{theorem}
+
+\begin{proof}
+  Based on several folklore results.
+
+  Uniformly locally compact implies the topological sum of $\sigma$-compact
+  spaces implies paracompact. Locally compact plus $G_\delta$ diagonal implies
+  locally metrizable. Locally metrizable plus paracompact characterizes
+  metrizable.
+\end{proof}
+
+\begin{corollary}
+  If $X$ is uniformly locally compact, then $\pl D \prewin \proxgame{X}$ 
+  implies $X$'s topology is metrizable.
+\end{corollary}
 
 
 
