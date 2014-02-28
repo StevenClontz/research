@@ -1004,4 +1004,24 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
 
 
 
+
+\newpage
+
+\begin{example}
+  Let $R$ be the Michael Line. Then $\pl P\win \proxgame{X}$.
+\end{example}
+
+\begin{proof}
+  Let $\pi_n$ be the $n$th digit of $\pi$. 
+  
+  During round $0$, $\pl P$ may choose $m(0)=0$ and $p(0)=\pi_0$, 
+  and during round $n+1$,
+  $\pl P$ may choose $m(n+1)>m(n)$ and
+  $p(n+1)=p(n)+\frac{\pi_{n+1}}{10^{m(n+1)}}$ such that $p$ is a legal attack.
+  
+  It follows that $p$ ``converges'' to 
+  $x=\sum_{n<\omega}\frac{\pi_n}{10^{m(n)}}$, except $x$ is an irrational
+  number.
+\end{proof}
+
 \end{document}
