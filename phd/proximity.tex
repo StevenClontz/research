@@ -1012,16 +1012,104 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
 \end{example}
 
 \begin{proof}
-  Let $\pi_n$ be the $n$th digit of $\pi$. 
-  
-  During round $0$, $\pl P$ may choose $m(0)=0$ and $p(0)=\pi_0$, 
+  During round $0$, $\pl P$ may choose $m(0)=0$ and $p(0)=1$, 
   and during round $n+1$,
   $\pl P$ may choose $m(n+1)>m(n)$ and
-  $p(n+1)=p(n)+\frac{\pi_{n+1}}{10^{m(n+1)}}$ such that $p$ is a legal attack.
+  $p(n+1)=p(n)+\frac{1}{10^{m(n+1)}}$ such that $p$ is a legal attack.
   
   It follows that $p$ ``converges'' to 
-  $x=\sum_{n<\omega}\frac{\pi_n}{10^{m(n)}}$, except $x$ is an irrational
-  number.
+  $x=\sum_{n<\omega}\frac{1}{10^{m(n)}}$, except $x$ is an irrational
+  number composed of $1$s separated by strings of $0$s of strictly
+  increasing size.
+\end{proof}
+
+\begin{example}
+  Let $\kappa$ be an uncountable regular cardinal with a ladder 
+  topology:
+    \begin{itemize}
+      \item All successor ordinals are isolated.
+      \item Strictly increasing sequences (ladders) $L_\alpha:\omega\to\alpha$ 
+            are defined for each limit ordinal $\alpha$ such that $L_\alpha$ converges to $\alpha$ in the order topology, and each limit
+            $\alpha$ is given neighborhoods of the form
+            $\{\alpha\}\cup\{L_\alpha(n):n\geq m\}$.
+    \end{itemize} 
+  Then $\pl P\win \proxgame{\oneptcomp{\kappa}}$ where $\oneptcomp\kappa$
+  is its one-point compactification.
+\end{example}
+
+\begin{proof}
+  It is possible that there are $\omega$-many successor ordinals of $\kappa$ 
+  which are 
+  not part of any ladder. In this case, it is easy to see that $\pl P$ may
+  legally play a sequence within these in any order and prevent convergence, 
+  even to $\infty$. Otherwise we may assume that every successor ordinal is 
+  in some ladder, for if only finitely many ordinals are outside any
+  ladder, $\pl D$
+  may isolate them in her initial partition, forcing $\pl P$ to converge
+  if she ever attempts to make a move with any of them.
+  
+  Entrouages of $\oneptcomp\kappa$ are then of the form $D(F,n)$, where
+  $F\in[\kappa^L]^{<\omega}$ and $n<\omega$. $D(F,n)$ partitions
+  $\oneptcomp\kappa$ such that $\infty$'s part is the complement of the 
+  ladders leading to points in $F$. Each of those ladders is then partitioned
+  by isolating the first $n$ rungs of the ladder, and leaving the top of the
+  ladder leading to a point in $F$ as a whole part. (It's possible that
+  the tops of some ladders might overlap, so they must be considered
+  the same part, but this could be prevented by $\pl D$ by increasing $n$
+  a sufficient amount to separate all the finite limits in $F$ if desired.)
+  
+  $\pl P$'s strategy involves first choosing two disjoint stationary subsets
+  $S_0,T_0$ of $\kappa^L$. During round $0$, $\pl D$'s move partitions ladders
+  leading to limit ordinals in
+  $F_0\in[\kappa^L]^{<\omega}$. Let $S_0'=S_0\setminus F_0$ and 
+  $T_0'=T_0\setminus F_0$, and observe that both are still stationary sets as 
+  only finitely many ordinals were removed.
+  
+  For $\pl P$'s initial move, she may apply the pressing down lemma to the
+  sets $S_0',T_0'$ and the function $f_i(\alpha)=L_\alpha(i)$ for $i<\omega$
+  sufficiently large to identify 
+  stationary
+  subsets $S_1,T_1$ of $S_0',T_0'$ such that $f_i(\alpha)=s_0$ for 
+  $\alpha\in S_1$, $f_i(\alpha)=t_0$ for $\alpha\in T_1$, and
+  $s_0,t_0$ are not in the range of $L_\alpha$ for $\alpha\in F_0$. 
+  
+  $\pl P$ chooses $s_0$ as her initial move.
+  
+  During round $n+1$, we assume that the disjoint stationary sets 
+  $S_{n+1},T_{n+1}$ were defined in the previous round. 
+  $\pl D$'s move in this round again partitions ladders
+  leading to limit ordinals in
+  $F_{n+1}\in[\kappa^L]^{<\omega}$. Let $S_{n+1}'=S_{n+1}\setminus F_{n+1}$ 
+  and $T_{n+1}'=T_{n+1}\setminus F_{n+1}$.
+  
+  $\pl P$ then applies the pressing down lemma to the
+  sets $S_{n+1}',T_{n+1}'$ and the function 
+  $f_i(\alpha)=L_\alpha(i)$ for $n<i<\omega$
+  sufficiently large to identify 
+  stationary
+  subsets $S_{n+2},T_{n+2}$ of $S_{n+1}',T_{n+1}'$ such that 
+  $f_i(\alpha)=s_{n+1}$ for 
+  $\alpha\in S_{n+2}$, $f_i(\alpha)=t_{n+1}$ for $\alpha\in T_{n+2}$, and
+  $s_{n+1},t_{n+1}$ are not in the range of $L_\alpha$ for 
+  $\alpha\in F_{n+1}$.
+  
+  If $n+1$ is even, $\pl P$ chooses $s_{n+1}$ as her move; otherwise, she
+  chooses $t_{n+1}$.
+  
+  All choices of $s_n,t_n$ by $\pl P$ were within the partition containing 
+  $\infty$, and no choice was repeated infinitely often, so $s_n$ and $t_n$
+  must converge. (Need to disprove that either could converge to $\infty$, or
+  could they? That would happen if $\bigcap_{n<\omega} S_n =\emptyset$ or
+  $\bigcap_{n<\omega} T_n =\emptyset$.)
+  
 \end{proof}
 
 \end{document}
+
+
+
+
+
+
+
+
