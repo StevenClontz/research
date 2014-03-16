@@ -685,6 +685,18 @@ products of dimension $\kappa$.
 
 \newpage
 
+\begin{lemma}
+  $\pl O\prewin\clusgame{X}{S}$ if and only if $\pl O\prewin\congame{X}{S}$.
+\end{lemma}
+
+\begin{proof}
+  Suppose that $\sigma$ is a predetermined winning strategy for 
+  $\clusgame{X}{S}$. Let $p$ attack $\sigma$, and $q$ be a subsequence of $p$.
+  It follows that $q$ also attacks $\sigma$, so $q$ clusters at $S$. Thus $p$
+  conveges to $S$, and $\sigma$ is a predetermined winning strategy for 
+  $\congame{X}{S}$.
+\end{proof}
+
 \begin{theorem}
   For any predetermined absolutely proximal space $X$, 
   $\pl O\prewin \congame{X}{H}$ for all compact $H\subseteq X$.
@@ -693,7 +705,7 @@ products of dimension $\kappa$.
 \begin{proof}
   Let $\sigma(n)$ be a winning predetermined strategy for $\pl D$ in the 
   absolutely proximal game such that 
-  $\sigma(n+1)\subseteq \frac{1}{4}\sigma(n)$.
+  $\sigma(n+1)\subseteq \sigma(n)$.
   For a given tree $T$, let $\max(T)$ denote its maximal nodes.
 
   \bigskip
@@ -703,11 +715,20 @@ products of dimension $\kappa$.
   \begin{itemize}
     \item Let $\emptyset\in T(0)$.
     \item Choose 
-      $m_{\emptyset}<\omega$, 
-      $h_{\<i\>}\in H$ for $i<m_{\emptyset}$, and 
-      $h_{\<i,j\>}\in 
-        H\cap\cl{\frac{1}{4}\sigma(0)[h_{\<i\>}]}$ 
-      for $i,j<m_{\emptyset}$ such that
+      \[
+        m_{\emptyset}<\omega
+      \]
+      and for $i<m_{\emptyset}$ choose
+      \[
+        h_{\<i\>}\in H
+      \]
+      and for $i,j<m_{\emptyset}$ choose
+      \[
+        h_{\<i,j\>}
+          \in 
+        H\cap\cl{\frac{1}{4}\sigma(0)[h_{\<i\>}]}
+      \]
+      such that
         \[
           \left\{\frac{1}{4}\sigma(0)[h_{\<i\>}]:i<m_{\emptyset}\right\}
         \]
@@ -727,26 +748,32 @@ products of dimension $\kappa$.
 
   \begin{itemize}
     \item Let $T(n)\subseteq T(n+1)$.
-    \item For each $t\in\max(T(n))$, choose 
-        $m_t<\omega$, 
-        $h_{t\concat\<i\>}\in H\cap \cl{\frac{1}{4}\sigma(2n+2)[h_t]}$ 
-          for $i<m_t$, 
-        and 
-          $
-            h_{t\concat\<i,j\>} 
+    \item For each $t\concat\<i,j\>\in\max(T(n))$, choose 
+        \[m_{t\concat\<i,j\>}<\omega\]
+        and for $k<m_{t\concat\<i,j\>}$ choose 
+          \[
+            h_{t\concat\<i,j,k\>}
               \in 
-            H\cap\cl{\frac{1}{4}\sigma(2n+3)[h_{t\concat\<i\>}]}
-          $ 
-        for $i,j<m_t$ such that
+            H\cap \cl{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i,j\>}]}
+          \]
+        and for $k,l<m_{t\concat\<i,j\>}$ choose
+          \[
+            h_{t\concat\<i,j,k,l\>} 
+              \in 
+            H\cap\cl{\frac{1}{4}\sigma(2n+3)[h_{t\concat\<i,j,k\>}]}
+          \]
+        such that
       \[
-        \left\{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i\>}]:i<m_t\right\}
+        \left\{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i,j,k\>}]
+          :
+        k<m_{t\concat\<i,j\>}\right\}
       \]
-    is a cover for $H\cap \cl{\frac{1}{4}\sigma(2n+1)[h_t]}$ 
-    and such that for each $i<m_t$
+    is a cover for $H\cap \cl{\frac{1}{4}\sigma(2n+1)[h_{t\concat\<i,j\>}]}$, 
+    and such that for each $k<m_{t\concat\<i,j\>}$
       \[
-        \left\{\frac{1}{4}\sigma(2n+3)[h_{t\concat\<i,j\>}]:i<m_t\right\}
+        \left\{\frac{1}{4}\sigma(2n+3)[h_{t\concat\<i,j,k\>}]:l<m_t\right\}
       \]
-    is a cover for $H\cap\cl{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i\>}]}$.
+    is a cover for $H\cap\cl{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i,j,k\>}]}$.
     \item For each $t\in\max(T(n))$ and each $i,j<m_t$, put $t\concat\<i\>$
       and $t\concat\<i,j\>$ in $T(n+1)$.
   \end{itemize}
@@ -758,74 +785,120 @@ products of dimension $\kappa$.
   \[
     \tau(n) 
       = 
-    \bigcup_{t\in\max(T(n))} \frac{1}{4}\sigma(2n+1)[h_t]
+    \bigcup_{t\in\max(T(n))} 
+      \bigcap_{m<2n+2}
+        \frac{1}{4}\sigma(m)[h_{t\rest m+1}]
   \]
-
-  In order for $\tau$ to be a legal strategy, we must show that $\tau(n)$ 
-  contains $H$. For $n=0$,
-  \[
-    \tau(0)
-      =
-    \bigcup_{i,j<m_\emptyset} \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
-  \]
-
-  Since $\left\{\frac{1}{4}\sigma(1)[h_{\<i,j\>}]:j<m_{\emptyset}\right\}$ is 
-  a cover for $H\cap\cl{\frac{1}{4}\sigma(0)[h_{\<i\>}]}$, and since 
-  $\left\{\frac{1}{4}\sigma(0)[h_{\<i\>}]:i<m_{\emptyset}\right\}$ is a cover
-  for $H$, $\tau(0)$ must contain $H$. A similar argument follows for 
-  $\tau(n)$.
-
-  Let $p$ be an attack against $\tau$ such that 
-  $p(n)\in \bigcap_{m\leq n}\tau(m)$. If we can construct an attack $q$ 
-  against $\sigma$ which shares a subsequence with $p$, then $p$ must cluster.
-  To find such a $q$, we construct a new tree $T'$.
-
-  We begin by setting 
-    \[
-      T'(0)
-        =
-      \{s : s\leq\<i,h_{\<i\>},j\> \text{ for } i,j<m_\emptyset\}
-    \]
+  noting that $\tau(n)=\bigcap_{m\leq n}\tau(m)$ by definition.
 
   Since 
-    \[
-      p(0)
-        \in
-      \frac{1}{4}\sigma(1)[h_{\<i,j\>}]
-    \]
-  for some $i,j<m_\emptyset$, we may find $t\in \max(T'(0))$ such that 
-  $p(0)\in\frac{1}{4}\sigma(|o(t)|)[h_{e(t)}]$.
+  $\left\{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i\>}]:i<m_{t}\right\}$ is a cover
+  for $H\cap \frac{1}{4}\sigma(2n+1)[h_{t}]$, since \\
+  $\left\{\frac{1}{4}\sigma(2n+1)[h_{t\concat\<i,j\>}]:j<m_{t}\right\}$ is 
+  a cover for $H\cap \frac{1}{4}\sigma(2n)[h_{t\concat\<i\>}]$, and since
+  $\left\{\frac{1}{4}\sigma(0)[h_{\<i\>}]:i<m_{\emptyset}\right\}$ is a 
+  cover for $H$, it follows that $\tau(n)$ contains $H$ and is $\tau$ is
+  a legal strategy.
 
-  Assume that $T'(n)$ is defined such that there is some $t\in \max(T'(n))$
-  where $p(n)\in\frac{1}{4}\sigma(|o(t)|)[h_{e(t)}]$. Then let
-    \[
-      T'(n+1)
-        =
-      T'(n)
-        \cup
-      \{
-        s: s\leq t\concat\<p(n),i,h_{e(t)\concat\<i\>},j\>
-        \text{ for } i,j < m_{e(t)}
-      \}
-    \]
 
-  Note that 
-    \[
-      p(n+1)
-        \in
-      \bigcap_{m\leq n+1} \tau(m)
-        =
-      \bigcap_{m\leq n+1} \left(
-        \bigcup_{t\in\max(T(m))} \frac{1}{4}\sigma(2m+1)[h_t]
-      \right)
-    \]
+  Let $p$ be an attack against $\tau$ such that 
+  $p(n)\in \tau(n)$. If we can construct an attack $q$ 
+  against $\sigma$ which shares a subsequence of $p$, then $p$ must cluster
+  since $q$ must converge.
+  To find such a $q$, we construct a subtree $T'\subseteq T$.
 
-  (Need details on why there is some $t$ in $\max(T'(n+1))$ such that 
-  $p(n+1)\in\frac{1}{4}\sigma(|o(t)|)[h_{e(t)}]$.)
+  We begin by setting $T'(0)=T(0)$.
 
-  (Follow this up with choosing an infinite branch $q'\in T'$, and showing
-  that $q=o(q')$ is an attack on $\sigma$ similar to perfect info result.)
+  For $n<\omega$, suppose $T'(n)\subseteq T(n)$ is defined such that:
+    \begin{itemize}
+      \item If $t'\concat\<i,j\>\in T'(n)$, then $|t'|\leq 2n$
+      \item If $s'\leq t'\in T'(n)$, then $s\in T'(n)$.
+      \item If $t'\in T'(n)\setminus\max(T'(n))$ and $|t'|$ is even,
+            then $t'\concat\<i,j\>\in T'(n)$ for $i,j<m_{t'}$.
+    \end{itemize}
 
+  Since $p(n)\in\tau(n)$, there exists some $t_n\in\max(T(n))$ such that
+  \[
+    p(n) 
+      \in
+    \bigcap_{m<2n+2}
+    \frac{1}{4}\sigma(m)[h_{t_n\rest m+1}]
+  \]
+  and in turn, there exists $t_n'\concat\<i,j\>\in\max(T'(n))$ 
+  with $t_n'\concat\<i,j\>\leq t_n$ and
+  \[
+    p(n)
+      \in
+    \bigcap_{m<|t_n'|+2}
+    \frac{1}{4}\sigma(m)[h_{t_n'\concat\<i,j\>\rest m+1}]
+  \]
+  since $|t_n'|\leq 2n$.
+
+  Let $p_{t_n'\concat\<i,j\>}=p(n)$
+
+  Take note that, in particular,
+  \[
+    p_{t_n'\concat\<i,j\>}
+      \in
+    \sigma(|t_n'|)[h_{t_n'\concat\<i\>}]
+  \]
+  and
+  \[
+    p_{t_n'\concat\<i,j\>}
+      \in
+    \frac{1}{4}\sigma(|t_n'|+1)[h_{t_n'\concat\<i,j\>}]
+  \]
+
+  We then define 
+  \[
+    T'(n+1)
+      =
+    T'(n)
+      \cup
+    \{t_n'\concat\<i,j,k\>: k\leq m_{t_n'\concat\<i,j\>}\}
+      \cup
+    \{t_n'\concat\<i,j,k,l\>: k,l\leq m_{t_n'\concat\<i,j\>}\}
+  \]
+  while noting that for all $k\leq m_{t_n'\concat\<i,j\>}$,
+  \[
+    h_{t_n'\concat\<i,j,k\>}
+      \in 
+    H\cap \cl{\frac{1}{4}\sigma(|t_n'|+2)[h_{t_n'\concat\<i,j\>}]}
+      \subseteq 
+    \frac{1}{2}\sigma(|t_n'|+1)[h_{t_n'\concat\<i,j\>}]
+  \]
+  and thus
+  \[
+    h_{t_n'\concat\<i,j,k\>}\in\sigma(|t_n'|+1)[p_{t_n'\concat\<i,j\>}]
+  \]
+
+  Finally, we let $T'=\bigcup_{n<\omega}T'(n)$. Since 
+  $T'$ is an infinite tree with finite levels, we may
+  pick an infinite branch $b$. From $b$, we construct the sequence
+  \[
+    q=\<h_{b\rest 1}, p_{b\rest 2}, h_{b\rest 3}, p_{b\rest 4}, \dots\>
+  \]
+  and claim it attacks $\sigma$ and thus must converge. If so, since 
+  $\<p_{b\rest2},p_{b\rest4},\dots\>$ is a subsequence of $p$, $p$ must
+  cluster. To see this, recall that for some $t_n'$:
+  \[
+    p_{b\rest2n+2} 
+      =
+    p_{t_n'\concat\<i,j\>}
+      \in
+    \sigma(|t_n'|)[h_{t_n'\concat\<i\>}]
+  \]
+  and
+  \[
+    h_{b\rest2n+3}
+      =
+    h_{t_n'\concat\<i,j,k\>}
+      \in
+    \sigma(|t_n'|+1)[p_{t_n'\concat\<i,j\>}]
+  \]
+
+  We have thus proven $\pl O\prewin\clusgame{X}{H}$, and thus
+  $\pl O\prewin\congame{X}{H}$.
 \end{proof}
 
 
