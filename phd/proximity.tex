@@ -1109,96 +1109,77 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
   
   Let 
     \[
-      A(F,n)
+      A(\alpha,n)
         =
-      \{\{L_{\alpha}(m)\} : m<n, \alpha\in F\}
+      [L(\alpha,0)\setminus L(\alpha,n)]^1 
+        \cup
+      \{\oneptcomp\omega_1 \setminus (L(\alpha,0)\setminus L(\alpha,n))\}
     \]
     \[
-      B(F,n)
+      B(\alpha)
         =
-      \left\{
-        L(\alpha,n)
-          \setminus 
-        \bigcup_{\beta\in F\cap\alpha}L(\beta,n)
-          \setminus
-        A(F,n)
-          :
-        \alpha\in F
-      \right\}
+      \{L(\alpha,0), \oneptcomp\omega_1 \setminus L(\alpha,0)\}
     \]
     
-  Then 
-  $
-    D(F,n)
-      =
-    A(F,n)
-      \cup 
-    B(F,n)
-      \cup 
-    \{
-      \oneptcomp\omega_1
-        \setminus
-      \bigcup A(F,n)
-        \setminus
-      \bigcup B(F,n)
-    \}
-  $
-  partitions $\oneptcomp\omega_1$, and these partitions witness a uniformity
-  which induces the ladder space topology. (TODO: More elegant way to 
-  produce partition from subset of power set?)
+  Finite refinements of $A(\alpha,n)$ and $B(\alpha)$ give partitions
+  witnessing a uniformization of the ladder topology.
+  
+  Then $\proxgame{\oneptcomp\omega_1}$ is indetermined.
 \end{example}
 
 \begin{proof}
+  $\pl D\not\win\proxgame{\oneptcomp\omega_1}$ since $\oneptcomp\omega_1$
+  isn't Corson compact.
+
   Let $\sigma$ be a perfect information strategy for $\pl P$.
   
   Let
   \[
-    C 
+    C(\sigma) 
       = 
     \{
       \delta\in\omega_1^L
         : 
-      \omega_1\setminus D[\infty] \subset \delta
+      \omega_1\setminus D[\infty] \subseteq \delta
         \Rightarrow
       \sigma(D) < \delta
     \}
   \]
-  where $D$ ranges over partitions witnessing entourages of the space.
-  By definition, $C$ is always club. (TODO: What's the name of this
-  lemma?)
+  and note that by the closing up lemma, $C(\sigma)$ is always club.
   
-  % If $L(\alpha)=\{L_\alpha(n):n<\omega\}$, then for an ordinal $p<\omega_1$,
-  % let
-  % \[
-  %   S(p)
-  %     =
-  %   \{
-  %     \alpha
-  %       :
-  %     p\in L(\alpha)
-  %   \}
-  % \]
-  % By definition (by way of the pressing down lemma), $S(p)$ is always
-  % stationary.
+  We define a counterattack for $\pl D$ with $D_0=D(F_0,0)$ and
+  $F_0=\emptyset$ as her 
+  initial move, and let $p_0=\sigma(D_0)$ be the initial move of $\pl P$. 
+  We fix $p_0<\delta_0<\delta_1<\dots\in C(\sigma)$ such that 
+  $\lim_{n\to\infty}\delta_n=\delta_\infty\in C$. Enumerate all the
+  limit ordinals $<\delta_n$ as $\alpha_{n,m}$ for $m<\omega$. Let
+  $i_n<\omega$ be the least integer such that 
+  $L_{\delta_\infty}(i_n)>\delta_n$.
   
-  We define a winning strategy for $\pl D$ with $D_0=D(\emptyset,0)$ as her 
-  initial move. Let $p=\<p(0),\dots,p(n)\>$ be the first $n$ moves of $\pl P$ 
-  determined by $\sigma$.
+  If $D_0,\dots,D_n$ are the first $n$ moves of $\pl D$, and 
+  $p_0,\dots,p_n$ are the first $n$ moves of $\pl P$ determined by $\sigma$,
+  then we define
+    \[
+      D_{n+1} 
+        =
+      \bigwedge_{j\leq n}
+      \left(
+        A(\delta_j,n)
+          \wedge
+        B(\delta_j)
+      \right)
+        \wedge
+      \bigwedge_{j,k\leq n}
+      \left(
+        A(\alpha_{j,k},n)
+          \wedge
+        B(\alpha_{j,k})
+      \right)
+        \wedge
+      A(\delta_\infty,i_n)
+    \]
   
-  Let $c_m$ be the least ordinal greater than $p(m)$ in $C$. Basically,
-  make a promise to handle all the limit ordinals less than $c_m$ by the
-  end of the game. The upper boundary of the $p(n)$ is bounded by the upper
-  bound of the $c_m$, so all the necessary limit ordinals are taken care of:
-  $p$ must converge to $\infty$. (TODO: make rigorous)
-  
-  % $\pl D$ from round $0$ to $n$ be enumerated $D_0$ through
-  % $D_n$ (assuming WLOG that $D_n=\bigwedge_{m\leq n}D_m$), and similarly let 
-  % the moves of $\pl P$ determined by $\sigma$ from round $0$ to $n$ be
-  % enumerated $p_0$ through $p_n$.
-  
-  % Let $\rho_m$ be the minimal element in $C(D_n)\cap S(p_m)$.
-  
-  
+  (TODO: show this is a winning counterattack)
 \end{proof}
 
 \end{document}
