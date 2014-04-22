@@ -1097,75 +1097,89 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
 \end{proof}
 
 \begin{example}
-  Let $\kappa$ be an uncountable regular cardinal with a ladder 
-  topology:
+  Let $\omega_1$ be given a ladder topology:
     \begin{itemize}
       \item All successor ordinals are isolated.
       \item Strictly increasing sequences (ladders) $L_\alpha:\omega\to\alpha$ 
             are defined for each limit ordinal $\alpha$ such that $L_\alpha$ converges to $\alpha$ in the order topology, and each limit
             $\alpha$ is given neighborhoods of the form
-            $\{\alpha\}\cup\{L_\alpha(n):n\geq m\}$. We assume that
-            all successor ordinals are a part of some ladder.
+            $L(\alpha,m)=\{\alpha\}\cup\{L_\alpha(n):n\geq m\}$. 
+      \item $\omega_1=\bigcup_{\alpha\in\omega_1^L} L(\alpha,0)$
     \end{itemize} 
-  Then $\pl P\win \proxgame{\oneptcomp{\kappa}}$ where $\oneptcomp\kappa$
-  is its one-point compactification.
+  
+  Let 
+    \[
+      A(\alpha,n)
+        =
+      [L(\alpha,0)\setminus L(\alpha,n)]^1 
+        \cup
+      \{\oneptcomp\omega_1 \setminus (L(\alpha,0)\setminus L(\alpha,n))\}
+    \]
+    \[
+      B(\alpha)
+        =
+      \{L(\alpha,0), \oneptcomp\omega_1 \setminus L(\alpha,0)\}
+    \]
+    
+  Finite refinements of $A(\alpha,n)$ and $B(\alpha)$ give partitions
+  witnessing a uniformization of the ladder topology.
+  
+  Then $\proxgame{\oneptcomp\omega_1}$ is indetermined.
 \end{example}
 
 \begin{proof}
-  Entrouages of $\oneptcomp\kappa$ are then of the form $D(F,n)$, where
-  $F\in[\kappa^L]^{<\omega}$ and $n<\omega$. $D(F,n)$ partitions
-  $\oneptcomp\kappa$ such that $\infty$'s part is the complement of the 
-  ladders leading to points in $F$. Each of those ladders is then partitioned
-  by isolating the first $n$ rungs of the ladder, and leaving the top of the
-  ladder leading to a point in $F$ as a whole part. (It's possible that
-  the tops of some ladders might overlap, so they must be considered
-  the same part, but this could be prevented by $\pl D$ by increasing $n$
-  a sufficient amount to separate all the finite limits in $F$ if desired.)
+  $\pl D\not\win\proxgame{\oneptcomp\omega_1}$ since $\oneptcomp\omega_1$
+  isn't Corson compact.
+
+  Let $\sigma$ be a perfect information strategy for $\pl P$.
   
-  $\pl P$'s strategy involves first choosing two disjoint stationary subsets
-  $S_0,T_0$ of $\kappa^L$. During round $0$, $\pl D$'s move partitions ladders
-  leading to limit ordinals in
-  $F_0\in[\kappa^L]^{<\omega}$. Let $S_0'=S_0\setminus F_0$ and 
-  $T_0'=T_0\setminus F_0$, and observe that both are still stationary sets as 
-  only finitely many ordinals were removed.
+  Let
+  \[
+    C(\sigma) 
+      = 
+    \{
+      \delta\in\omega_1^L
+        : 
+      \omega_1\setminus D[\infty] \subseteq \delta
+        \Rightarrow
+      \sigma(D) < \delta
+    \}
+  \]
+  and note that by the closing up lemma, $C(\sigma)$ is always club.
   
-  For $\pl P$'s initial move, she may apply the pressing down lemma to the
-  sets $S_0',T_0'$ and the function $f_i(\alpha)=L_\alpha(i)$ for $i<\omega$
-  sufficiently large to identify 
-  stationary
-  subsets $S_1,T_1$ of $S_0',T_0'$ such that $f_i(\alpha)=s_0$ for 
-  $\alpha\in S_1$, $f_i(\alpha)=t_0$ for $\alpha\in T_1$, and
-  $s_0,t_0$ are not in the range of $L_\alpha$ for $\alpha\in F_0$. 
+  We define a counterattack for $\pl D$ with $D_0=D(F_0,0)$ and
+  $F_0=\emptyset$ as her 
+  initial move, and let $p_0=\sigma(D_0)$ be the initial move of $\pl P$. 
+  We fix $p_0<\delta_0<\delta_1<\dots\in C(\sigma)$ such that 
+  $\lim_{n\to\infty}\delta_n=\delta_\infty\in C$. Enumerate all the
+  limit ordinals $<\delta_n$ as $\alpha_{n,m}$ for $m<\omega$. Let
+  $i_n<\omega$ be the least integer such that 
+  $L_{\delta_\infty}(i_n)>\delta_n$.
   
-  $\pl P$ chooses $s_0$ as her initial move.
+  If $D_0,\dots,D_n$ are the first $n$ moves of $\pl D$, and 
+  $p_0,\dots,p_n$ are the first $n$ moves of $\pl P$ determined by $\sigma$,
+  then we define
+    \[
+      D_{n+1} 
+        =
+      \bigwedge_{j\leq n}
+      \left(
+        A(\delta_j,n)
+          \wedge
+        B(\delta_j)
+      \right)
+        \wedge
+      \bigwedge_{j,k\leq n}
+      \left(
+        A(\alpha_{j,k},n)
+          \wedge
+        B(\alpha_{j,k})
+      \right)
+        \wedge
+      A(\delta_\infty,i_n)
+    \]
   
-  During round $n+1$, we assume that the disjoint stationary sets 
-  $S_{n+1},T_{n+1}$ were defined in the previous round. 
-  $\pl D$'s move in this round again partitions ladders
-  leading to limit ordinals in
-  $F_{n+1}\in[\kappa^L]^{<\omega}$. Let $S_{n+1}'=S_{n+1}\setminus F_{n+1}$ 
-  and $T_{n+1}'=T_{n+1}\setminus F_{n+1}$.
-  
-  $\pl P$ then applies the pressing down lemma to the
-  sets $S_{n+1}',T_{n+1}'$ and the function 
-  $f_i(\alpha)=L_\alpha(i)$ for $n<i<\omega$
-  sufficiently large to identify 
-  stationary
-  subsets $S_{n+2},T_{n+2}$ of $S_{n+1}',T_{n+1}'$ such that 
-  $f_i(\alpha)=s_{n+1}$ for 
-  $\alpha\in S_{n+2}$, $f_i(\alpha)=t_{n+1}$ for $\alpha\in T_{n+2}$, and
-  $s_{n+1},t_{n+1}$ are not in the range of $L_\alpha$ for 
-  $\alpha\in F_{n+1}$.
-  
-  If $n+1$ is even, $\pl P$ chooses $s_{n+1}$ as her move; otherwise, she
-  chooses $t_{n+1}$.
-  
-  All choices of $s_n,t_n$ by $\pl P$ were within the partition containing 
-  $\infty$, and no choice was repeated infinitely often, so $s_n$ and $t_n$
-  must converge. (Need to disprove that either could converge to $\infty$, or
-  could they? That would happen if $\bigcap_{n<\omega} S_n =\emptyset$ or
-  $\bigcap_{n<\omega} T_n =\emptyset$.)
-  
+  (TODO: show this is a winning counterattack)
 \end{proof}
 
 \end{document}
