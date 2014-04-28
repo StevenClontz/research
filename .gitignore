@@ -4,3 +4,7 @@
 *.log
 *.synctex.gz
 *.thm
+*.lof
+*.lot
+*.nlo
+*.toc
