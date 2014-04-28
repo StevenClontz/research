@@ -1,0 +1,18 @@
+\contentsline {chapter}{Abstract}{ii}
+\contentsline {chapter}{Acknowledgments}{iii}
+\contentsline {chapter}{List of Figures}{v}
+\contentsline {chapter}{List of Tables}{vi}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Toplogical Games and Strategies of Perfect and Limited Information}{2}
+\contentsline {chapter}{\numberline {3}Convergence/clustering games}{3}
+\contentsline {section}{\numberline {3.1}Basic game}{3}
+\contentsline {section}{\numberline {3.2}$Con_{O,P}(X,x)$ for Sigma Product}{5}
+\contentsline {chapter}{\numberline {4}Locally Finite Games}{10}
+\contentsline {section}{\numberline {4.1}basic results}{10}
+\contentsline {section}{\numberline {4.2}Cantor space example}{20}
+\contentsline {section}{\numberline {4.3}various examples}{28}
+\contentsline {chapter}{\numberline {5}Menger Game}{31}
+\contentsline {section}{\numberline {5.1}cut-and-paste}{31}
+\contentsline {chapter}{\numberline {6}Proximal Game}{59}
+\contentsline {section}{\numberline {6.1}cut-and-paste}{59}
+\contentsline {chapter}{Bibliography}{83}
