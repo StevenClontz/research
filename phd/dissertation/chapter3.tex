@@ -7,55 +7,55 @@ Results related to Gruenhage's ``W''-convergence game and variants.
 
 \section{Basic game}
 
-\begin{definition} 
+\begin{defn} 
 Gruenhage's open-point convergence game $\congame{X}{x}$ has $O$ choosing nested open sets and $P$ choosing a point within the last chosen open set by $O$. $O$ wins if the points chosen by $P$ converge to $x$.
-\end{definition}
+\end{defn}
 
 TODO: This version of the game (where $\pl P$ need not play within all 
 previously chosen open sets) is more difficult for $\pl O$. Need to 
 differientiate these two versions somehow...
 
-\begin{definition}
+\begin{defn}
 The one-point compactification of a space $X$ is $\oneptcomp{X}$, where neighborhoods of points in $X$ are the same as they were originally, and neighborhoods of $\infty$ are sets $\oneptcomp{X}\setminus K$ for compact $K$. If $X$ is discrete then neighborhoods of $\infty$ are cofinite sets containing $\infty$, and the game is equivalent to $O$ choosing finite ``forbidden'' sets and $P$ choosing points not forbidden by $O$.
-\end{definition}
+\end{defn}
 
-\begin{proposition}
+\begin{prop}
 $O\codewin \congame{\oneptcomp{\kappa}}{\infty}$ for all cardinals $\kappa$.
-\end{proposition}
+\end{prop}
 
 \begin{proof}
 Use $F(N,p)=N\cup\{p\}$.
 \end{proof}
 
-\begin{proposition}
+\begin{prop}
 $O\prewin \congame{\oneptcomp{\omega}}{\infty}$.
-\end{proposition}
+\end{prop}
 
 \begin{proof}
 Use $F(n)=n$.
 \end{proof}
 
 
-\begin{proposition}
+\begin{prop}
 $O\not\prewin \clusgame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
-\end{proposition}
+\end{prop}
 
 \begin{proof}
 Let $F(n)$ be $O$'s predetermined forbidding strategy, let $\alpha\in\kappa\setminus\bigcup_{n<\omega}F(n)$, and have $P$ counter with $\left<\alpha,\alpha,\dots\right>$.
 \end{proof}
 
 
-\begin{proposition}
+\begin{prop}
 $O\tactwin\congame{\oneptcomp{\omega}}{\infty}$.
-\end{proposition}
+\end{prop}
 
 \begin{proof}
 Use $F(n)=n+1$.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 If $\kappa$ is a regular uncountable cardinal, for every function $f:[\kappa]^{<\omega}\to[\kappa]^{<\omega}$ the set $C_f = \{\alpha < \kappa : S\in[\alpha]^{<\omega} \Rightarrow f(S)\in[\alpha]^{<\omega}\}$ is club.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 First assume $\alpha_0<\alpha_1<\dots\in C_f$. It is easily seen that $\sup(\alpha_n)\in C_f$, showing $C_f$ is closed.
@@ -65,17 +65,17 @@ Now assume $\gamma_0\in C_f$. Let $\gamma_{n+1}>\gamma_n$ be the least ordinal s
 
 We may thus assume, for the purposes of countering a tactical or Markov strategy, that the strategy is \textbf{downward} on some regular uncountable cardinal.
 
-\begin{theorem}
+\begin{thm}
 $O\not\ktactwin{k}\clusgame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Let $F:[\kappa]^{\leq k} \to [\kappa]^{<\omega}$ be a forbidding strategy by $O$ against $P$ which is downward on $\omega_1$. We define $n_i$ for $0\leq i < k$ to be a natural number such that \[ n_i \in \omega \setminus(F(n_0,\dots,n_{i-1}) \cup F(n_0,\dots,n_{i-1},\omega+i,\dots,\omega+k-1))\] and note that\[\left<n_0,n_1,\dots,n_{k-1},\omega,\omega+1,\dots,\omega+k-1,n_0,n_1,\dots,n_{k-1},\omega,\omega+1,\dots,\omega+k-1,\dots\right>\] counters $F$.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 $O\markwin \clusgame{\oneptcomp{\omega_1}}{\infty}$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 For $\alpha<\omega_1$ let $A_{\alpha,n}$ be a sequence of finite sets such that $A_{\alpha,n}\subset A_{\alpha,n+1}$ and $\bigcup_{n<\omega}A_{\alpha,n}=\alpha+1$.
@@ -85,15 +85,15 @@ Give $O$ the Markov forbidding strategy $F(n,\alpha)=A_{\alpha,n}$. To observe t
 
 Peter J. Nyikos has shown the following:
 
-\begin{theorem}
+\begin{thm}
 $O\not\markwin Con_{O,P}(\omega_1\cup\{\infty\},\infty)$.
-\end{theorem}
+\end{thm}
 
 which improves to:
 
-\begin{theorem}
+\begin{thm}
 $O\not\kmarkwin{k}Clus_{O,P}(\kappa\cup\{\infty\},\infty)$ for $\kappa>\omega_1$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Let $F:\omega \times [\kappa]^{\leq k} \to [\kappa]^{<\omega}$ be a forbidding strategy by $O$ against $P$ which is downward on $\omega_2$. We define $\alpha_i$ for $0\leq i < k$ to be a countable ordinal such that \[ \alpha_i \in \omega_1 \setminus\bigcup_{n<\omega}\left(F(n,\{\alpha_0,\dots,\alpha_{i-1}\}) \cup F(n,\{\alpha_0,\dots,\alpha_{i-1},\omega_1+i,\dots,\omega_1+k-1\})\right)\] and note that \[\left<\alpha_0,\alpha_1,\dots,\alpha_{k-1},\omega_1,\omega_1+1,\dots,\omega_1+k-1,\alpha_0,\alpha_1,\dots,\alpha_{k-1},\omega_1,\omega_1+1,\dots,\omega_1+k-1,\dots\right>\] counters $F$.
@@ -101,9 +101,9 @@ Let $F:\omega \times [\kappa]^{\leq k} \to [\kappa]^{<\omega}$ be a forbidding s
 
 \section{$Con_{O,P}(X,x)$ for Sigma Product}
 
-\begin{proposition}
+\begin{prop}
 $O\uparrow\congame{\sigmaprodr{\kappa}}{\vec{0}}$.
-\end{proposition}
+\end{prop}
 
 \begin{proof}
 For $s\in\sigmaprodr{\kappa}$ let $C(s)=\{\alpha<\kappa:s(\alpha)\not=0\}$ denote the countable nonzero coordinates of $s$. Let $\Phi:[\kappa]^{\leq\omega}\times\omega\to[\kappa]^{<\omega}$ be such that $\Phi(C,n)\subseteq\Phi(C,n+1)$ and $\bigcup_{n<\omega}\Phi(C,n)=C$.
@@ -121,9 +121,9 @@ U_\alpha(s_0,\dots,s_{n-1})=\left\{
 Finally, give $O$ the winning strategy $\sigma(s_0,\dots,s_{n-1})=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa}U_\alpha(s_0,\dots,s_{n-1})$.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 For all cardinals $\kappa\leq 2^\omega$, $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Note that $|\Sigma\mathbb{R}^\kappa| \leq 2^\omega = |\mathbb{R}|$. Define the following:
@@ -145,9 +145,9 @@ Note that $|\Sigma\mathbb{R}^\kappa| \leq 2^\omega = |\mathbb{R}|$. Define the f
 It follows that $\sigma(U,s)=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa} \sigma_\alpha(U,s)$ is a winning coding strategy.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 Let $\kappa$ be a cardinal such that there exists a function $f:\kappa\to[\kappa]^{\leq \omega}$ where for every $W\in[\kappa]^{\leq\omega}$ there exists $\alpha_W<\kappa$ with $W\subseteq f(\alpha_W)$. (That is, $\textrm{cf}([\kappa]^{\leq\omega})=\kappa$.) Then $F \codewin PF_{F,C}(\kappa)$ and $O \codewin \congame{\sigmaprodr{\kappa}}{\vec{0}}$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Let $W\restriction n \in [\kappa]^n$ be a subset of $W\in[\kappa]^\omega$ such that $W\restriction n \subset W \restriction (n+1)$ and $\bigcup_{n<\omega} W\restriction n = W$.
@@ -161,9 +161,9 @@ We turn our attention to $Con_{O,P}(\Sigma\mathbb{R}^\kappa)$. We define the win
 Consider the play $\left<\emptyset,p_0,U_1,p_1,U_2,p_2,\dots\right>$ with $O$ following the strategy $\tau$. Observe that $N(\tau(U,p))=\sigma(N(U),W(p))$. Thus $p_i(\gamma)\not=0$ is equivalent to $\gamma \in W(p_i)$, and by the above argument, for sufficiently large $n$, $\gamma \in \sigma(N(U_n),W(p_n))$. Therefore from round $n$ onward the $\gamma$-coordinates of points chosen by $P$ must lay in $(-\frac{1}{|N(U)|},\frac{1}{|N(U)|})$ and converge to $0$.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 Let $\kappa$ be the limit of cardinals $\kappa_n$ such that $\textrm{cf}([\kappa_n]^{\leq\omega},\subseteq)=\kappa_n$. Then $F \codewin PF_{F,C}(\kappa)$ and $O \codewin \congame{\sigmaprodr{\kappa}}{\vec{0}}$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Let $f_n:\kappa_n\to[\kappa_n]^{\leq\omega}$ be such that for every $W\in[\kappa_n]^{\leq\omega}$ there exists $\alpha_{W,n}<\kappa_n$ such that $f_n(\alpha_{W,n})\supseteq W$.
@@ -179,9 +179,9 @@ We turn our attention to $\congame{\sigmaprodr{\kappa}}{\vec{0}}$. We define the
 Consider the play $\left<\sigmaprodr{\kappa},p_0,U_1,p_1,U_2,p_2,\dots\right>$ with $O$ following the strategy $\tau$. Observe that $N(\tau(U,p))=\sigma(N(U),W(p))$. Thus $p_i(\gamma)\not=0$ is equivalent to $\gamma \in W(p_i)$, and by the above argument, for sufficiently large $n$, $\gamma \in \sigma(N(U_n),W(p_n))$. Therefore from round $n$ onward the $\gamma$-coordinates of points chosen by $P$ must lay in $(-\frac{1}{|N(U)|},\frac{1}{|N(U)|})$ and converge to $0$.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 $F\codewin\pfgame{\kappa}$ for all cardinals $\kappa$.
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Let $\kappa$ be the limit of cardinals $\kappa_n$ such that $F\codewin\pfgame{\kappa_n}$ using the strategy $\sigma_n(N,W)$ such that for $M\subseteq N$, $\sigma_n(M,W)\subseteq\sigma_n(N,W)$. Define \[\sigma(N,W)=(|N|+1)\cup\bigcup_{n<|N|}\sigma_n(N\cap\kappa_n,W\cap\kappa_n)\]
@@ -197,9 +197,9 @@ Let $\left<N_0,W_0,N_1,W_1,\dots\right>$ be a legal play of the game with $N_{i+
 Since $\sigma_{\gamma+1}$ is a winning strategy, $\gamma\in M_{m+1}\subseteq\sigma_{\gamma+1}(N_i\cap(\gamma+1),W_i\cap(\gamma+1))\subseteq\sigma(N_i,W_i)=N_{i+1}$ for some sufficiently large $m$, making $\left<N_0,W_0,N_1,W_1,\dots\right>$ illegal, contradiction.
 \end{proof}
 
-\begin{corollary}
+\begin{cor}
 $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$ for all cardinals $\kappa$.
-\end{corollary}
+\end{cor}
 
 \begin{proof}
 Let $\tau(N,W)$ be the winning coding strategy for $F$ in $\pfgame{\kappa}$, $N(U)\in[\kappa]^{<\omega}$ represent the non-$\mathbb{R}$ coordinates of a basic open set $U$ of $\sigmaprodr{\kappa}$, and $W(p)\in[\kappa]^{\leq\omega}$ represent the non-$0$ coordinates of a point $p$ in $\sigmaprodr{\kappa}$. For each $\alpha<\kappa$, let \[\sigma_\alpha(U,p)=\left\{\begin{array}{ll}(-\frac{1}{|N(U)|},\frac{1}{|N(U)|})&\text{if }\alpha\in\tau(N(U),W(p))\\\mathbb{R}&\text{otherwise}\end{array}\right.\] and $\sigma(U,p)=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa}\sigma_\alpha(U,p)$.

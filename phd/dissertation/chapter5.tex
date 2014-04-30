@@ -8,21 +8,21 @@ Results pertaining to the Menger game characterizing the Menger property.
 \section{cut-and-paste}
 
 
-  \begin{definition}
+  \begin{defn}
     $X$ is \textbf{Menger} if for all open covers $\mathcal{U}_0,\mathcal{U}_1,\dots$ there exist finite subcollections $\mathcal{F}_n \subseteq \mathcal{U}_n$ such that $\bigcup_{n<\omega} \mathcal{F}_n$ is a cover of $X$.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     $\sigma$-compact $\Rightarrow$ Menger $\Rightarrow$ Lindelof
-  \end{proposition}
+  \end{prop}
 
-  \begin{definition}
+  \begin{defn}
     In the two-player game $\mengame{X}$ player $C$ chooses open covers $\mathcal{U}_n$ of $X$, followed by player $F$ choosing a finite subcollection $\mathcal{F}_n\subseteq\mathcal{U}_n$. $F$ wins if $\bigcup_{n<\omega} \mathcal{F}_n$ is a cover of $X$.
-  \end{definition}
+  \end{defn}
 
-  \begin{theorem}
+  \begin{thm}
     $X$ is Menger if and only if $C \not\win \mengame{X}$.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Result due to Hurewicz.
@@ -109,9 +109,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     Finally, apply Menger to $\mathcal{V}^n$, resulting in the cover $\{V_{f(0)}^0, V_{f(1)}^1, \dots\}$, noting \[X = \bigcup_{n<\omega}V_{f(n)}^n \subseteq \bigcup_{n<\omega} U_{(f\rest n)\concat f(n)} = \bigcup_{n<\omega} U_{f\rest (n+1)}\]
   \end{proof}
 
-  \begin{proposition}
+  \begin{prop}
     $X$ is compact if and only if $F \tactwin \mengame{X}$ if and only if $F \ktactwin{k} \mengame{X}$
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Assume $X$ is compact. For each open cover played by $C$, pick a finite subcover, and this yields a winning tactical strategy.
@@ -119,9 +119,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     Assume $F$ has a winning $k$-tactical strategy. For any open cover, have $C$ play only it during the entire game. $F$'s only choice must be a finite subcover.
   \end{proof}
 
-  \begin{proposition}
+  \begin{prop}
     If $X$ is $\sigma$-compact then $F \markwin \mengame{X}$
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Let $X=\bigcup_{n<\omega} X_n$ for compact $X_n$. On round $n$, $F$ picks the finite subcover of $C$'s open cover of $X_n$.
@@ -129,9 +129,9 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   For Menger's game, there is no useful distinction between a $k$-Markov strategy for $F$, and a $2$-Markov strategy.
 
-  \begin{theorem}
+  \begin{thm}
   For any topological space $X$ and all $k \geq 2$, $F \kmarkwin{k} \mengame{X}$ if and only if $F \kmarkwin{2} \mengame{X}$.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
   Assume $\sigma(\mc{U}_0,\dots,\mc{U}_{k-1},n)$ is a winning $k$-Markov strategy. Define the $2$-Markov strategy $\tau(\mc{U},\mc{V},n)$ so that it contains $\sigma(\mc{W}_0,\dots,\mc{W}_{k-2},\mc{V},m)$ for the following conditions on $\mc{W}_0,\dots,\mc{W}_{k-2},m$:
@@ -175,9 +175,9 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   In a question I posed to G, he answered:
 
-  \begin{lemma}
+  \begin{lem}
     For all functions $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$, there exists a sequence $\alpha_0, \alpha_1, \dots < \omega_1$ such that $\{\tau(\alpha_n,n): n<\omega\}$ is not a cover for $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$.
-  \end{lemma} 
+  \end{lem} 
 
   \begin{proof}
     Let $P_n = \{\beta: \beta < \alpha \Rightarrow \beta \in \tau(\alpha, n)\}$. Observe that each $P_n$ is finite; else there is some $\alpha$ larger than every member of some countably infinite $P_n^*\subseteq P_n$ such that $P_n^* \subseteq \tau(\alpha, n)$.
@@ -187,9 +187,9 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   Note that the one-point Lindel\"ofication of discrete $\omega_1$, $\oneptlind{\omega_1}$, is not $\sigma$-compact. With the above lemma, we may see that:
 
-  \begin{example}
+  \begin{ex}
     $F \win \mengame{\oneptlind{\omega_1}}$ but $F \not\markwin \mengame{\oneptlind{\omega_1}}$.
-  \end{example}
+  \end{ex}
 
   \begin{proof}
     First, we see $F$ has a simple perfect information strategy: in response to the initial cover of $\oneptlind{\omega_1}$, $F$ chooses a co-countable neighborhood of $\infty$. On successive turns she may pick a single set from $C$'s covers to cover the countable remainder.
@@ -203,13 +203,13 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   Telgarski showed in ``On Games of Topsoe'' that a metrizable space is $\sigma$-compact if and only if there exists a winning strategy for $F$ in the Menger game, and Scheepers gave a more direct proof later. We generalize Scheeper's proof to handle a number of cases.
 
-  \begin{definition}
+  \begin{defn}
     A set $R\subseteq X$ is relatively compact to the topological space $X$ if for every open cover of the entire space $X$, there is a finite subcover of the set $R$.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     If $X$ is regular, then $Y$ is relatively compact if and only if $\cl{Y}$ is compact.
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     The reverse implication is trivial. 
@@ -217,39 +217,39 @@ Results pertaining to the Menger game characterizing the Menger property.
     Assume $Y$ is relatively compact, let $\mc U$ be an open cover of $\cl Y$, and define $x\in V_x\subseteq \cl{V_x}\subseteq U_x \in \mc U$ for each $x\in X$. Then if we take a cover $\mc F = \{V_{x_i} : i<n\}$ of $Y$ by relative compactness, then $\{U_{x_i}:i<n\}$ is a finite cover of $\cl Y$, showing compactness.
   \end{proof}
 
-  \begin{lemma}
+  \begin{lem}
     Let $\sigma(\mc{U}, n)$ be a winning Markov strategy for $F$ in $\mengame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then for
       \[
         R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)
       \]
     it follows that $R_n$ is relatively compact to $X$, and $\bigcup_{n<\omega} R_n = X$.
-  \end{lemma}
+  \end{lem}
 
   \begin{proof}
     First, we see that $\sigma(\mc{U},n)$ witnesses the relative compactness of $R_n$. Suppose that $x \not\in R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)$ for any $n<\omega$. Then for each $n$, pick $\mc{U}_n\in\mathfrak{C}$ such that $x\not\in \bigcup\sigma(\mc{U}_n,n)$. Then $\sigma$ does not defeat the play $\mc{U}_0,\mc{U}_1,\dots$
   \end{proof}
 
-  \begin{corollary}
+  \begin{cor}
     A space $X$ is $\sigma$-(relatively compact) if and only if $F \markwin \mengame{X}$.
-  \end{corollary}
+  \end{cor}
 
-  \begin{corollary}
+  \begin{cor}
     For regular spaces $X$, the following are equivalent:
       \begin{enumerate}[(a)]
         \item $X$ is $\sigma$-compact
         \item $X$ is $\sigma$-(relatively compact)
         \item $F \markwin \mengame{X}$
       \end{enumerate}
-  \end{corollary}
+  \end{cor}
 
-  \begin{theorem}
+  \begin{thm}
     For second-countable $X$, the following are equivalent:
       \begin{enumerate}[(a)]
         \item $X$ is $\sigma$-(relatively compact)
         \item $F \win \mengame{X}$
         \item $F\markwin \mengame{X}$
       \end{enumerate}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}.
     We need only show $(b)\Rightarrow(a)$, so let $\sigma(\mc{U}_0,\dots,\mc{U}_{n-1})$ be a winning strategy for $F$, and observe that since $X$ is second-countable, we may assume all covers are countable. Let $\mathfrak{C}$ be the collection of all countable covers of $X$. We define $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
@@ -273,7 +273,7 @@ Results pertaining to the Menger game characterizing the Menger property.
     Finally, we claim that $X = \bigcup_{s\in\omega^{<\omega}} R_s$. If not, let $x$ be missed by every $R_s$, and define $f\in\omega^\omega$ such that $x\not\in \bigcup\sigma(\mc{U}_{f\rest1},\dots,\mc{U}_{f\rest n})$ for any $n$. Then $\mc{U}_{f\rest1},\mc{U}_{f\rest2},\dots$ is a counter to the winning strategy $\sigma$, a contradiction.
   \end{proof}
 
-  \begin{corollary}
+  \begin{cor}
     For metric spaces $X$, the following are equivalent:
       \begin{enumerate}[(a)]
         \item $X$ is $\sigma$-compact
@@ -281,11 +281,11 @@ Results pertaining to the Menger game characterizing the Menger property.
         \item $F \win \mengame{X}$
         \item $F \markwin \mengame{X}$
       \end{enumerate}
-  \end{corollary}
+  \end{cor}
 
-  \begin{example}
+  \begin{ex}
   Let $R$ be given the topology from example 63 from Counterexamples in Topology, the topology generated by open intervals with countable sets removed. This space is a non-regular example where $F \win \mengame{R}$, but $F \not\markwin \mengame{R}$, that is, $R$ is not $\sigma$-(relatively compact).
-  \end{example}
+  \end{ex}
 
   \begin{proof}
   From Counterexamples: The irrationals are open, but contain no closed neighborhood, showing non-regular.
@@ -295,9 +295,9 @@ Results pertaining to the Menger game characterizing the Menger property.
   For any $A=\{x_n:n<\omega\} \in [R]^\omega$, we may choose the open cover $\mc{U} = \{R \setminus \{x_i: i \not= n\} : n < \omega \}$ of $R$ with no finite subcover. Thus all relatively compact sets are finite, and the countable union of finite sets cannot contain $R$, making $R$ not $\sigma$-(relatively compact).
   \end{proof}
 
-  \begin{example}
+  \begin{ex}
   Let $R$ be given the topology from example 67 from Counterexamples in Topology, the topology generated by open intervals with or without the rationals removed. This space is non-regular, and non-$\sigma$-compact, but is second-countable and $\sigma$-(relatively compact).
-  \end{example}
+  \end{ex}
 
   \begin{proof}
   From Counterexamples: The rationals are closed, but the closure of any open neighborhood is the whole real line, so they cannot be separated from any irrational point. Compact sets in this topology are nowhere dense in the Euclidean topology, so there cannot be countably many which union to the whole space. $\{(a,b)\setminus D : a,b\in\mathbb{Q},D\in\{\emptyset,\mathbb{Q}\}\}$ is a countable base for the space.
@@ -307,7 +307,7 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   We define a new property ``\scish'' to describe a sufficient condition for $F \kmarkwin{2}\mengame{X}$.
 
-  \begin{definition}
+  \begin{defn}
     Let $\mc U$ be a cover of $X$. We say $C\subseteq X$ is $\mc U$-compact if there exists a finite subcover of $\mc U$ which covers $C$.
 
     We say $X$ is \scish~if there exist functions $r_{\mc V}:X\to\omega$ for each open cover $\mc V$ of $X$ such that both of the following sets are $\mc V$-compact for all open covers $\mc U$, $\mc V$ and $n<\omega$:
@@ -317,15 +317,15 @@ Results pertaining to the Menger game characterizing the Menger property.
       \[
         p(\mc U,\mc V)=\{ x\in X : 0<r_{\mc U}(x)<r_{\mc V}(x)\}
       \]
-  \end{definition}
+  \end{defn}
 
-  \begin{definition}
+  \begin{defn}
     For two functions $f,g$ we say $f$ is \textbf{$\mu$-almost compatible} with $g$ ($f\alcomp_\mu g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\mu$. If $\mu=\omega$ then we say $f,g$ are \textbf{almost compatible} ($f\alcomp g$).
-  \end{definition}
+  \end{defn}
 
-  \begin{lemma}\label{kunlem}
+  \begin{lem}\label{kunlem}
     For each $\alpha<\omega_1$, there exist injective functions $f_\alpha:\alpha\to\omega$ such that if $\alpha<\beta$, then \[f_\alpha \alcomp f_\beta\] that is, $f_\alpha$ and $f_\beta\rest\alpha$ agree on all but finitely many ordinals. In addition, the range of each $f_\alpha$ is co-infinite.
-  \end{lemma}
+  \end{lem}
 
   \begin{proof}
     Taken from Kunen (used for the construction of an $\omega_1$-Aronszajn tree).
@@ -344,9 +344,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     which frees up $\{g(\alpha_{2n+1}):n<\omega\}$ from the range of $f_\gamma$, and allows $f_\gamma\alcomp f_\alpha$.
   \end{proof}
 
-  \begin{theorem}
+  \begin{thm}
     The one-point Lindel\"ofication of the uncountable discrete space, $\oneptlind{\omega_1}$, is \scish.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Take the injective funcions $f_\alpha$ from Kunen's lemma such that $f_\alpha \alcomp f_\beta$. For each open cover $\mc V$ of $\oneptlind{\omega_1}$ let $\gamma(\mc V)$ identify the least ordinal such that $\oneptlind{\omega_1}\setminus\gamma(\mc U)$ is in a refinement of $\mc V$. Then $r_{\mc V}$ defined by
@@ -365,9 +365,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     is finite.
   \end{proof}
 
-  \begin{theorem}
+  \begin{thm}
     If $X$ is \scish, then $F \kmarkwin{2}\mengame{X}$.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Let $\sigma(\mc{U}_0,0)$ cover $c(\mc{U}_0,0)$, and let $\sigma(\mc{U}_n,\mc{U}_{n+1},n+1)$ cover both $c(\mc{U}_{n+1},n+1)$ and $p(\mc{U}_n,\mc{U}_{n+1})$. If $\mc{U}_0,\mc{U}_1,\dots$ is any play by $C$, then for each $x\in X$, we note that one of the following must occur:
@@ -389,25 +389,25 @@ Results pertaining to the Menger game characterizing the Menger property.
       \end{itemize}
   \end{proof}
 
-  \begin{corollary}
+  \begin{cor}
     $F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
-  \end{corollary}
+  \end{cor}
 
-  \begin{definition} 
+  \begin{defn} 
     The statement $S(\kappa,\mu,\lambda)$ due to Scheepers is shorthand for the following: there exist injective functions $f_A:A\to\lambda$ for each $A\in[\kappa]^\mu$ such that $f_A\alcomp_\mu f_B$ for all $A,B\in[\kappa]^\mu$.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     $\neg S(\kappa,\omega,\omega)$ for $\kappa>2^\omega$
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Let $A_\alpha=\{\alpha\cdot\omega+n:n<\omega\}\in[\kappa]^\omega$ and $f_{A_\alpha}:A_\alpha\to\omega$ be injective for $\alpha<\kappa$. Since there are $\kappa>|[\omega]^\omega|$ different $A_\alpha$, there must be $\alpha,\beta$ where $\text{ran}(f_{A_\alpha})=\text{ran}(f_{A_\beta})$. Then there is no way to define $f_{A_\alpha\cup A_\beta}$ so that it is almost compatible with both $f_{A_\alpha}$ and $f_{A_\beta}$.
   \end{proof}
 
-  \begin{theorem}
+  \begin{thm}
     $S(\kappa,\omega,\omega)$ implies $\oneptlind{\kappa}$ is \scish.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Take the injective funcions $f_A:A\to\omega$ witnessing $S(\kappa,\omega,\omega)$. For each cover $\mc V$ of $\oneptlind{\kappa}$ let $A(\mc V)$ define a set such that $\oneptlind{\kappa}\setminus A(\mc V)$ is in a refinement of $\mc V$. Then $r_{\mc V}$ defined by 
@@ -427,17 +427,17 @@ Results pertaining to the Menger game characterizing the Menger property.
     is finite.
   \end{proof}
 
-  \begin{corollary}
+  \begin{cor}
     $S(\kappa,\omega,\omega)$ implies $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$.
-  \end{corollary}
+  \end{cor}
 
-  \begin{definition}
+  \begin{defn}
     A finite partial function $p$ from $A$ to $B$ has a domain which is a finite subset of $A$ and a range which is a finite subset of $B$. Let the set of all finite partial functions from $A$ to $B$ be denoted by $Fn(A,B)$.
 
     Then let $Fn^2(\mc A,B)\subset Fn(\mc A,Fn(\bigcup \mc A,B))$ such that for each $p\in Fn^2(\mc A,B)$, $p(A)=p_A\in Fn(A,B)$.
-  \end{definition}
+  \end{defn}
 
-  \begin{definition}
+  \begin{defn}
     Let $\pok\subset Fn^2([\kappa]^\omega,\omega)$ be such that each $p_A$ is injective, and give it the partial order $\leq$ defined by $q\leq p$ if and only if:
           \begin{itemize}
             \item $\dom(q)\supseteq\dom(p)$
@@ -449,11 +449,11 @@ Results pertaining to the Menger game characterizing the Menger property.
                 \alpha\in\dom(q_B) \text{ and } q_A(x)=q_B(x)
               \]
           \end{itemize}
-  \end{definition}
+  \end{defn}
 
-  \begin{lemma}
+  \begin{lem}
     $\pok$ has property $K$ (and thus is c.c.c.). That is, let $P\subseteq\pok$ be uncountable: there is an uncountable $Q\subseteq P$ such that points in $Q$ are pairwise compatible.
-  \end{lemma}
+  \end{lem}
 
   \begin{proof}
     If $|\{\dom(p):p\in P\}|>\omega$, we will use the $\Delta$-system lemma to find an uncountable $P'\subseteq P$ such that for $p,q\in P'$, $\dom(p)\cap\dom(q)=\mc R$. Otherwise, we may fix an uncountable $P'\subseteq P$ such that for $p,q\in P'$, $\dom(p)=\dom(q)=\mc R$.
@@ -465,7 +465,7 @@ Results pertaining to the Menger game characterizing the Menger property.
     Then it is easily verified that $p\cup q\in\pok$ and $p\cup q\leq p,q$ for all $p,q\in Q$.
   \end{proof}
 
-  \begin{proposition}
+  \begin{prop}
     For $A\in[\kappa]^\omega$ and $\alpha\in A$, the sets 
       \[
         D_A = \{p\in\pok: A\in\dom(p)\}
@@ -474,7 +474,7 @@ Results pertaining to the Menger game characterizing the Menger property.
         D_{A,\alpha} = \{p\in\pok: A\in\dom(p), \alpha\in\dom(p_A)\}
       \]
     are dense in $\pok$.
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Let $A\in[\kappa]^\omega$ and $p\in\pok$. Either $p'=p\in D_A$, or $p'=p\cup\{\<A,\emptyset\>\}\in D_A$ with $p'\leq p$.
@@ -482,9 +482,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     Let $\alpha\in A$. Either $p''=p'\in D_{A,\alpha}$, or we may find $n<\omega$ not in the range of $p'_A$, and then $p''=p'\setminus\{\<A,p'_A\>\}\cup\{\<A,p'_A\cup\{\<\alpha,n\>\}\>\} \in D_{A,\alpha}$ with $p''\leq p'\leq p$.
   \end{proof}
 
-  \begin{theorem}
+  \begin{thm}
     $S(\kappa,\omega,\omega)+(\kappa=2^\omega)$ is consistent with ZFC for any cardinal $\kappa$ with $cf(\kappa)>\omega$.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     We adapt a forcing argument due to Scheepers. Let $M$ be a countable transitive submodel of ZFC. Consider the c.c.c. poset $\pok$ realized in the model $M$. Let $G$ be a $\pok$-generic filter over $M$.
@@ -498,9 +498,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     The $f_A$ witness $S(\kappa,\omega,\omega)$. Since $\kappa\geq 2^\omega$ by $\pok$ c.c.c., and $S(\kappa,\omega,\omega)$ is a contradiction for $\kappa>2^\omega$, we know $\kappa=2^\omega$. 
   \end{proof}
 
-  \begin{corollary}
+  \begin{cor}
     For each $\kappa$, $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$ is consistent with ZFC.
-  \end{corollary}
+  \end{cor}
 
 
 
@@ -516,37 +516,37 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   Besides various limited information characterizations of $\mengame{X}$, there are other interesting covering properties between $\sigma$-(relatively compact) and Menger.
 
-  \begin{definition}
+  \begin{defn}
     A colleciton of subsets of a space $X$ is (\textbf{really}) \textbf{ample} if has a finite subcover for each (relatively) compact subset of $X$.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     Every ample cover of a regular space $X$ is really ample.
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Every relatively compact set $R$ is a subset of the compact set $\overline{R}$.
   \end{proof}
 
-  \begin{definition}
+  \begin{defn}
     A space $X$ is (\textbf{relatively}) \textbf{Alster} if there exists a countable subcover for each (really) ample cover of $X$ by $G_\delta$ sets.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     Every regular relatively Alster space is Alster.
-  \end{proposition}
+  \end{prop}
 
-  \begin{theorem}
+  \begin{thm}
     $X$ $\sigma$-compact $\Rightarrow$ $X$ Alster $\Rightarrow$ $X$ Menger
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Due to Leandro F. Aurichi and Franklin D. Tall in ``Lindel\"of spaces which are indestructible, productive, or D''.
   \end{proof}
 
-  \begin{proposition}
+  \begin{prop}
     $X$ $\sigma$-(relatively compact) $\Rightarrow$ $X$ relatively Alster $\Rightarrow$ $X$ Menger
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     If $X$ is $\sigma$-(relatively compact), then there exists a countable subcover for every really ample cover of $X$ by arbitrary sets.
@@ -560,9 +560,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     Then let $\mc F_n = \{U_n^{f_m(n)}:m\leq n\}\in[\mc U_n]^{<\omega}$. Note that if $x\in X$, then $x\in \bigcap_{n<\omega} U_n^{f_{m_x}(n)}$ for some $m_x<\omega$ as $\mc G'$ is a cover. Thus $x\in U_{m_x}^{f_{m_x}(m_x)}$ and is covered by $\mc F_{m_x}$.
   \end{proof}
 
-  \begin{example}
+  \begin{ex}
     Let the real numbers $R$ be given the topology generated by open intervals with countable sets removed. $R$ is not relatively Alster and $F\win\mengame{R}$. If $S(2^\omega,\omega,\omega)$ holds, then $F\kmarkwin{2}\mengame{R}$.
-  \end{example}
+  \end{ex}
 
   \begin{proof}
     Since points are $G_\delta$ and its relatively compact sets are all finite, a cover by singletons is really ample and has no countable subcover, showing $R$ is not relatively Alster.
@@ -597,9 +597,9 @@ Results pertaining to the Menger game characterizing the Menger property.
       \end{itemize}
   \end{proof}
 
-  \begin{definition}
+  \begin{defn}
     A space $X$ is \textbf{Hurewicz} if for each sequence of open covers $\mc U_n$, there are $\mc F_n \in [\mc U_n]^{<\omega}$ such that $X=\bigcup_{m<\omega}\bigcap_{m\leq n<\omega}\cup\mc F_n$.
-  \end{definition}
+  \end{defn}
 
 
 
@@ -626,15 +626,15 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   \centerline{Filling Games}
 
-  \begin{definition}
+  \begin{defn}
     The \textbf{filling game} $\fillgame{J}$ on an ideal $J$ proceeds as follows: player $M$ chooses $M_0 \in \<J\>$, the $\sigma$-completion of $J$, in the initial round, followed by $N$ choosing $N_0\in J$. In round $n+1$, player $M$ chooses $M_{n+1}$ where $M_n\subseteq M_{n+1}\in\<J\>$, and player $N$ replies with $N_{n+1}\in J$. Player $N$ wins the game if $\bigcup_{n<\omega} N_n \supseteq \bigcup_{n<\omega} M_n$. (The sets in $J$ and $\<J\>$ are thought of as nowhere-dense and meager sets, respectively.)
 
     The \textbf{strict filling game} $\sfillgame{J}$ proceeds analogously, with the added requirement that $M_n\subsetneq M_{n+1}$. This game has been studied by Scheepers.
-  \end{definition}
+  \end{defn}
 
-  \begin{theorem}
+  \begin{thm}
     $N\ktactwin{2}\sfillgame{J} \Rightarrow N\kmarkwin{2}\fillgame{J}$
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Enumerate the sets in $J$ as $A_\alpha$ for $\alpha<|J|$. For $M\in \<J\>$ and $n<\omega$, let $M+0=M$ and $M+n+1$ be the union of $M+n$ and the least $A_\alpha$ not contained in $M+n$.
@@ -707,9 +707,9 @@ Results pertaining to the Menger game characterizing the Menger property.
       Thus $\tau$ is a winning strategy.
   \end{proof}
 
-  \begin{example}
+  \begin{ex}
     There is a free ideal $J$ such that $N\not\ktactwin{2}\sfillgame{J}$ but $N\kmarkwin{2}\fillgame{J}$.
-  \end{example}
+  \end{ex}
 
   \begin{proof}
     Result based on ``Meager nowhere dense games'' Prop 9 by Scheepers. Assume $\mathbb{R}$ has the usual Euclidean topology.
@@ -747,37 +747,37 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   \centerline{Rothberger}
 
-  \begin{definition}
+  \begin{defn}
     $X$ is \textbf{Rothberger} if for all open covers $\mathcal{U}_0,\mathcal{U}_1,\dots$ there exist open sets $U_n\in \mathcal{U}_n$ such that $\{U_n:n<\omega\}$ is a cover of $X$.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     Rothberger $\Rightarrow$ Menger
-  \end{proposition}
+  \end{prop}
 
-  \begin{definition}
+  \begin{defn}
     In the two-player game $\rothgame{X}$ player $C$ chooses open covers $\mathcal{U}_n$ of $X$, followed by player $S$ choosing an open set $U_n\in\mathcal{U}_n$. $S$ wins if $\{U_n:n<\omega\}$ is a cover of $X$.
-  \end{definition}
+  \end{defn}
 
-  \begin{theorem}
+  \begin{thm}
     $X$ is Rothberger if and only if $C\not\win\rothgame{X}$.
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Due to Pawlikowski
   \end{proof}
 
-  \begin{definition}
+  \begin{defn}
     A space $X$ is scattered if every subspace contains an isolated point. By convention, $\ds X = \bigcup_{\alpha<\rank(X)}X^\alpha$ where $X^\alpha$ is the set of isolated points of $\ds X\setminus\bigcup_{\beta<\alpha}X^\beta$.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     A space $X$ is scattered if and only if every closed subspace contains an isolated point.
-  \end{proposition}
+  \end{prop}
 
-  \begin{proposition}
+  \begin{prop}
     The rank of a compact scattered $T_1$ space is a successor ordinal, and $X^{\rank(X)-1}$ is finite.
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Suppose that the rank of $X$ was a limit ordinal $\beta$. Then by choosing $\beta_n\to\beta$, we may pick a point $x_n\in X^{\beta_n}$, and $\{x_n: n<\omega\}$ may be shown to be a closed discrete subspace of $X$.
@@ -785,7 +785,7 @@ Results pertaining to the Menger game characterizing the Menger property.
     It's easily seen that $X^{\rank(X)-1}$ must be finite - it is a closed discrete subspace of compact $X$.
   \end{proof}
 
-  \begin{theorem}
+  \begin{thm}
     The following are equivalent for compact $T_2$ $X$:
       \begin{enumerate}[(a)]
         \item $X$ is Rothberger
@@ -793,7 +793,7 @@ Results pertaining to the Menger game characterizing the Menger property.
         \item $S\win\rothgame{X}$
         \item $C\not\win\rothgame{X}$
       \end{enumerate}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     To show $(a)\Rightarrow(b)$, we use Aurichi's proof in \textit{D-Spaces}: suppose $X$ has a closed subspace without isolated points. Then it is compact and contains a closed copy of the Cantor set, which is not Rothberger, contradiction.
@@ -805,17 +805,17 @@ Results pertaining to the Menger game characterizing the Menger property.
     Of course, $(c)\Rightarrow(a)$ is trivial, and $(a)\Leftrightarrow(d)$.
   \end{proof}
 
-  \begin{definition}
+  \begin{defn}
     In the two-player game $\altrothgame{X}$ player $P$ chooses points $x_n\in X$, followed by player $O$ choosing an open neighborhood $U_n$ of $x_n$. $P$ wins if $\{U_n:n<\omega\}$ is a cover of $X$.
-  \end{definition}
+  \end{defn}
 
-  \begin{theorem} $\altrothgame{X}$ is ``perfect information equivalent'' to $\rothgame{X}$. That is:
+  \begin{thm} $\altrothgame{X}$ is ``perfect information equivalent'' to $\rothgame{X}$. That is:
 
     \begin{itemize}
       \item $P\win\altrothgame{X}$ if and only if $S\win\rothgame{X}$
       \item $O\win\altrothgame{X}$ if and only if $C\win\rothgame{X}$.
     \end{itemize}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     Due to Galvin.
@@ -850,12 +850,12 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   A similar theorem exists for limited information strategies.
 
-  \begin{theorem}
+  \begin{thm}
     \begin{itemize}
       \item $P\prewin\altrothgame{X}$ if and only if $S\markwin\rothgame{X}$
       \item $O\markwin\altrothgame{X}$ if and only if $C\prewin\rothgame{X}$.
     \end{itemize}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
 
@@ -888,22 +888,22 @@ Results pertaining to the Menger game characterizing the Menger property.
 
   \end{proof}
 
-  \begin{definition}
+  \begin{defn}
     Let $\mc{N}(x)$ be the $\textbf{neighborhood network}$ of $x$, that is, the collection of all neighborhoods of $x$.
-  \end{definition}
+  \end{defn}
 
-  \begin{definition}
+  \begin{defn}
     A topological space $X$ is \textbf{almost countable} if there exist $x_n\in X$ for each $n<\omega$ such that $X=\bigcup_{n<\omega}\bigcap\mc{N}(x_n)$.
-  \end{definition}
+  \end{defn}
 
-  \begin{theorem}
+  \begin{thm}
     For any space $X$, the following are equivalent:
     \begin{itemize}
       \item $S\markwin\rothgame{X}$ 
       \item $P\prewin\altrothgame{X}$
       \item $X$ is almost countable
     \end{itemize}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     If there exist $x_n\in X$ for each $n<\omega$ such that $X=\bigcup_{n<\omega}\bigcap\mc{N}(x_n)$, then let $\sigma(n)=x_n$ be a predetermined strategy for $P$ in $\altrothgame{X}$. For any neighborhoods $O_n$ of $x_n$ chosen by $O$ to attack $\sigma$, note that $\bigcup_{n<\omega}O_n\supseteq\bigcup_{n<\omega}\bigcap\mc{N}(x_n)=X$ results in a win for $P$.
@@ -911,7 +911,7 @@ Results pertaining to the Menger game characterizing the Menger property.
     Likewise, if for each sequence $x_n \in X$ there is $x\in X$ with $x\not\in \bigcup_{n<\omega}\bigcap\mc{N}(x_n)$, then for a fixed strategy $\sigma(n)$ for $P$, $O$ may counter $\sigma$ by choosing $O_n\in\mc{N}(x_n)$ which misses $x$ during each round, causing $\sigma$ to lose.
   \end{proof}
 
-  \begin{theorem}
+  \begin{thm}
     For any $T_1$ space $X$, the following are equivalent:
     \begin{itemize}
       \item $S\markwin\rothgame{X}$
@@ -919,7 +919,7 @@ Results pertaining to the Menger game characterizing the Menger property.
       \item $X$ is almost countable
       \item $|X|\leq\omega$
     \end{itemize}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     If $|X|=\omega$ then the winning Markov strategy is obvious, so let $\sigma(\mc U,n)$ be a Markov strategy.
@@ -929,11 +929,11 @@ Results pertaining to the Menger game characterizing the Menger property.
     So let $x_n\in X$ be chosen such that for each open neighborhood $U$ of $x_n$, there is an open cover $\mc U$ such that $\sigma(\mc U,n)=U$. Then if $x\not=\{x_n : n<\omega\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $U_n$ which contains $x_n$ but not $x$, and then choose $\mc U_n$ such that $\sigma(\mc U_n,n)=U_n$.
   \end{proof}
 
-  \begin{example}
+  \begin{ex}
     Let $X=\omega_1\cup\{\infty\}$ be a ``weak Lindel\"ofication'' of discrete $\omega_1$ such that open neighborhoods of $\infty$ contain $\omega_1\setminus\omega$. This space is $T_0$ but not $T_1$, and note that $S\markwin\rothgame{X}$ and $|X|>\omega$.
-  \end{example}
+  \end{ex}
 
-  \begin{theorem}
+  \begin{thm}
     The following are equivalent for points-$G_\delta$ $X$:
       \begin{enumerate}[(a)]
         \item $S\win\rothgame{X}$
@@ -945,7 +945,7 @@ Results pertaining to the Menger game characterizing the Menger property.
         \item $X$ is almost countable
         \item $|X|\leq\omega$
       \end{enumerate}
-  \end{theorem}
+  \end{thm}
 
   \begin{proof}
     % $(c)\Rightarrow(b)\Rightarrow(a)$ are all trivial. Galvin has shown $(a) \Leftrightarrow P\win\altrothgame{X} \Rightarrow (c)$ in \textit{Indeterminacy}, but a direct proof of $(a)\Rightarrow(c)$ follows. 
@@ -959,7 +959,7 @@ Results pertaining to the Menger game characterizing the Menger property.
     Thus $C$ may find points $x_s$ such that for each $m<\omega$, there exists an open cover $\mc U_{s\concat\<m\>}$ where $\sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U_{s\concat\<m\>})=G_{x_s,m}$. Then if $x\not=\{x_s : s\in\omega^{<\omega}\}$, $C$ may counter $\sigma$ as follows: during round $n$, choose $f(n)$ so that $x\not\in G_{x_{f\rest n},f(n)}$, and then choose $\mc U_{f\rest n\concat\<f(n)\>}$ such that $\sigma(\mc U_{f\rest 1},\dots,\mc U_{f\rest n},\mc U_{f\rest n\concat\<f(n)\>})=G_{x_{f\rest n},f(n)}$.
   \end{proof} 
 
-  \begin{corollary}
+  \begin{cor}
     The following are equivalent for compact points-$G_\delta$ $X$:
       \begin{enumerate}[(a)]
         \item $S\win\rothgame{X}$
@@ -975,17 +975,17 @@ Results pertaining to the Menger game characterizing the Menger property.
         \item $X$ is Rothberger
         \item $X$ is scattered
       \end{enumerate}
-  \end{corollary}
+  \end{cor}
 
-  \begin{definition}
+  \begin{defn}
     The game $\recallgame{m}{\kappa}$ proceeds as follows: during round $0$, player $F$ chooses $F_0\in[\kappa]^m$, followed by player $S$ choosing $x_0\in F_0\cup\{\infty\}$. During round $n+1$, $F$ chooses $F_{n+1}\in[\kappa]^{m^{n+2}}$ such that $F_{n+1}\supset F_n$, followed by $S$ choosing $x_{n+1}\in F_{n+1}\cup\{\infty\}$.
 
     $S$ wins the game if $\{x_n : n<\omega\}\supseteq F_0\cup\{\infty\}$, and $F$ wins otherwise.
-  \end{definition}
+  \end{defn}
 
-  \begin{proposition}
+  \begin{prop}
     $S\limitwin\rothgame{\oneptlind{\kappa}} \Rightarrow S\limitwin\recallgame{m}{\kappa}$
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     Let $\sigma$ be a limited information strategy for $S$ in $\rothgame{\oneptlind{\kappa}}$.
@@ -999,9 +999,9 @@ Results pertaining to the Menger game characterizing the Menger property.
     Similarly, if $\alpha\in F_0$, then $\sigma$ may also be countered by the attack $\mc{U}_{F_0}, \mc{U}_{F_1}, \dots$ since the singleton $\{\alpha\}$ is never chosen.
   \end{proof}
 
-  \begin{proposition}
+  \begin{prop}
     $S\kmarkwin{k}\recallgame{m}{\kappa} \Leftrightarrow S\ktactwin{k}\recallgame{m}{\kappa}$
-  \end{proposition}
+  \end{prop}
 
   \begin{proof}
     The round number is deterimined by the size of the sets played by $C$.

@@ -3,11 +3,96 @@
 
 \chapter{Toplogical Games and Strategies\\ of Perfect and Limited Information}
 
-Definitions and conventions for dealing with topological games and strategies.
+The goal of this paper is to explore the applications of limited information
+strategies in existing topological games. (TODO: History of combinatorical
+and topological games?)
 
 \section{Games}
 
-\subsection{Combinatorial Games}
+Intuitively, the games studied in this paper are two-player games for which
+each player takes turns making a choice from a set of possible moves. At
+the conclusion of the game, the choices made by both players are examined,
+and one of the players is declared the winner of that playthrough, with
+no ties allowed.
+
+Games may be modeled mathematically in various ways (TODO: cite digraph model)
+but we will find it convenient to think of them as follows.
+
+\begin{defn}
+  A \term{game} is a tuple $\<M,W\>$ such that 
+  $W\subseteq (M^{\omega})^2$. $M$ is set of \term{moves} for
+  the game, and $(M^{\omega})^2$ is the set of all possible 
+  \term{playthroughs} of the game.
+
+  $W$ is the set of \term{winning} playthroughs for the 
+  first player, and $(M^{\omega})^2\setminus W$ is the set of winning
+  playthroughs for the second player.
+\end{defn}
+
+To illustrate this definition, we may formally model the well-known game 
+Tic-Tac-Toe. Imagine that the game board is labeled as a ``magic square''
+of the numbers $0$ through $8$. (TODO: image) Then writing $X$ or $O$ on
+the game board is equivalent to choosing a number $0$ through $8$, and 
+getting a ``tic-tac-toe'' is equivalent to having chosen three numbers which 
+sum to $12$.
+
+\begin{game}
+  Let $\tttgame$ denote the game \term{Tic-Tac-Toe}, with players $\pl X$ 
+  and $\pl O$.
+
+  The moves $M$ for the game are the first nine non-negative 
+  integers $\{0,\dots,8\}$. The winning playthroughs $W$ for $\pl X$ 
+  consist of pairs of sequences $\<X,O\>$ such that $X\geq\<X_0,\dots,X_4\>$,
+  $O\geq\<O_0,\dots,O_3\>$, and any of the following hold:
+    \begin{itemize}
+      \item There exists some $k<4$ such that $\<X_0,O_0,\dots,X_k\>$ contains
+            no repeated integers, but $\<X_0,O_0,\dots,X_k,O_k\>$ does.
+
+            ($\pl O$ drew her mark on a space already occupied.)
+      \item There exists $i<j<k<5$ such that $\<X_0,O_0,\dots,X_4\>$ contains 
+            no repeated integers and $X_i+X_j+X_k=12$, and for all
+            $i'<j'<k'<k$ it follows that $O_{i'}+O_{j'}+O_{k'}\not=12$.
+
+            ($\pl X$ did not draw her mark on a space that was already occupied,
+            and was able to secure a ``tic-tac-toe'' before $\pl O$.)
+            \footnote{
+              The observant reader will note that in this formulation of 
+              Tic-Tac-Toe, player $\pl O$ wins ``cat's games'' where neither 
+              player secures a ``tic-tac-toe'' (since no ties are allowed).
+            }
+    \end{itemize}
+\end{game}
+
+Due to the tedium of defining games explicitly from the definition, we 
+typically define games by declaring the \term{rules} that each player must 
+follow (e.g. players may not make a mark on a space which was already marked)
+and the \term{winning condition} for the first player (e.g. $\pl X$ secures
+a ``tic-tac-toe'' before $\pl O$). Then a playthrough is in $W$ if either 
+the first player made only \term{legal moves} which observed the game's rules
+and the playthrough satisifies the winning condition, or the second player
+made an \term{illegal move} which contradicted the game's rules.
+
+Often, players should not be able to choose from the same set of moves
+(e.g. player Black cannot move White's pieces in chess), in which case $M$ may
+be partitioned into two sets $M_0,M_1$ and the rules for the game may be defined
+such that each player may only choose from one of those sets 
+(e.g. Black will automatically lose if she moves one of White's pieces).
+
+An artifact of this game model is that games never technically end, since 
+playthroughs of the game are infinite sequences. Nonetheless, Tic-Tac-Toe
+is always decided by $\pl X$'s fifth move, and in chess, there is also an
+upper bound for the length of a game due to the finite number of ways pieces
+may be positioned on the chessboard (and the ``threefold rule''
+which declares the game finished if the same position is repeated three times).
+
+But a two-player game need not have a bounded number of rounds, as is
+demonstrated by this game due to John Conway:
+
+\begin{game}
+  The game ...
+\end{game}
+
+
 
 \subsection{Infinite Games}
 
