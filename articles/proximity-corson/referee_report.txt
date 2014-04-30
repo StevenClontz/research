@@ -1,0 +1,41 @@
+Referee’s report on "Proximal compact spaces are Corson compact," by
+Steven Clontz and Gary Gruenhage
+
+- - -
+
+This paper is well worth publishing. The result not only answers a very
+natural question about compact proximal spaces, but does it in a way that
+gives us a new internal characterization of Corson compact spaces. The proof
+is quite nontrivial and is a remarkable example of using a winning strategy in
+one game to produce a winning strategy in another.
+
+Because of the intricacy of the proof, the authors should make an effort to
+give the reader help as early as possible to see what is really going on. As it is,
+a lot of motivation is saved towards the end. For example, I recommend that,
+immediately after “Now suppose T(a) is defined.” on the top of page 6, some
+such statement as the following appear:
+
+“Part of our induction hypothesis is that G = ___ is an open
+cover for H and that O chose \bigcup G in the round for which T(a)
+is defined. This makes x a legal play for P in that round iff x \in \bigcup G. 
+For each such point x, we define ...” 
+Where the blank appears, put the first displayed formula on page 7.
+
+I also recommend that the information immediately preceding “Hence we
+may define the strategy \tau” on page 7 be moved back to the bulleted part on
+page 6 which shows how to choose h_t,k and h_t,k,l.
+
+I would even suggest moving the remark at the end of the construction of
+T(\emptyset) back to the end of the preceding bulleted information. It’s a very small
+move, but for some time I was under the impression that m_\emptyset was indexing too
+many things, because the remark only appears at the top of the next page.
+
+If Bell’s paper [1] has appeared in print, the wording of the citation should
+be updated; if not, then the authors should give her original definition of her
+game instead of leaving it up to the reader to show that it is equivalent to
+their formulation. In fact it might be a good idea to give the original definition
+anyway.
+
+The paper is remarkably free of typos. The only (very minor) grammatical
+adjustment I would make is to write “a couple of properties” instead of just “a
+couple properties” just before Proposition 1.3.

@@ -1,0 +1,12 @@
+We've restructured the proof of the main result (Thm 3.3)
+to address the referee's concerns about better motivating
+the construction of the tree which is used to define
+the winning strategy. Now, before defining T(\emptyset)
+and T(s\concat\<x\>), we describe the neighborhoods of H
+which will be used in the winning strategy \tau, which we
+believe addresses these concerns.
+
+Bell's paper is not yet in print, but she has updated her
+definition of the proximal game by replacing 4D_n with D_n,
+which matches our defintion. We've added an appropriate
+footnote to address this.
