@@ -16,22 +16,30 @@ and one of the players is declared the winner of that playthrough, with
 no ties allowed.
 
 Games may be modeled mathematically in various ways (TODO: cite digraph model)
-but we will find it convenient to think of them as follows.
+but we will find it convenient to think of them in terms defined by
+Gale and Stewart. (TODO: cite)
 
 \begin{defn}
   A \term{game} is a tuple $\<M,W\>$ such that 
-  $W\subseteq (M^{\omega})^2$. $M$ is set of \term{moves} for
-  the game, and $(M^{\omega})^2$ is the set of all possible 
+  $W\subseteq M^{\omega}$. $M$ is set of \term{moves} for
+  the game, and $M^{\omega}$ is the set of all possible 
   \term{playthroughs} of the game.
 
-  $W$ is the set of \term{winning} playthroughs for the 
-  first player, and $(M^{\omega})^2\setminus W$ is the set of winning
-  playthroughs for the second player.
+  $W$ is the set of \term{winning playthroughs} or \term{victories} for the 
+  first player, and $M^{\omega}\setminus W$ is the set of victories for the 
+  second player. ($W$ is often called the \term{payoff set} for the
+  first player.)
 \end{defn}
 
 To illustrate this definition, we may formally model the well-known game 
-Tic-Tac-Toe. Imagine that the game board is labeled as a ``magic square''
-of the numbers $0$ through $8$. (TODO: image) Then writing $X$ or $O$ on
+Tic-Tac-Toe. For convenince, we may label the game board as a ``magic square''
+of the numbers $0$ through $8$ such that the combinations of three integers
+which sum to $12$ are exactly the rows, columns, and diagonals of the
+grid. 
+
+(TODO: image) 
+
+Then writing $X$ or $O$ on
 the game board is equivalent to choosing a number $0$ through $8$, and 
 getting a ``tic-tac-toe'' is equivalent to having chosen three numbers which 
 sum to $12$.
@@ -41,9 +49,9 @@ sum to $12$.
   and $\pl O$.
 
   The moves $M$ for the game are the first nine non-negative 
-  integers $\{0,\dots,8\}$. The winning playthroughs $W$ for $\pl X$ 
-  consist of pairs of sequences $\<X,O\>$ such that $X\geq\<X_0,\dots,X_4\>$,
-  $O\geq\<O_0,\dots,O_3\>$, and any of the following hold:
+  integers $\{0,\dots,8\}$. The victories $W$ for $\pl X$ 
+  consist of sequences $\<X_0,O_0,X_1,O_1,\dots\>$ such that either of the 
+  following hold:
     \begin{itemize}
       \item There exists some $k<4$ such that $\<X_0,O_0,\dots,X_k\>$ contains
             no repeated integers, but $\<X_0,O_0,\dots,X_k,O_k\>$ does.
@@ -87,23 +95,208 @@ which declares the game finished if the same position is repeated three times).
 
 But a two-player game need not have a bounded number of rounds, as is
 demonstrated by this game due to John Conway:
+\cite{winning_ways}
 
 \begin{game}
-  The game ...
+  Let $\coingame$ denote the game \term{Sylver Coinage} with players 
+  $\pl A$ and $\pl B$. During round $n$, $\pl A$ chooses an integer $a_n>0$,
+  followed by $\pl B$ choosing another integer $b_n>0$, with the rule that
+  neither player may choose an integer which is the sum of nonnegative integer 
+  multiples of previously chosen integers. $\pl A$ wins the game if $\pl B$
+  ever chooses the number $1$, and $\pl B$ wins otherwise.
 \end{game}
 
+After some thought, the reader may confirm that there will be no 
+legal moves except $1$ remaining after a finite number of rounds. 
+Specifically, if $\pl A$
+chooses $a_0$ in the initial round, then all following legal moves must be
+of the form $i \mod\, a_0$ for $0<i<a_0$. $i \mod\, a_0$ may be repeated,
+but all following repetitions must be strictly less than the previous
+iterations, which may only be done finitely many times. Thus after a finite 
+number of moves, there will only be finitely many legal moves remaining. 
+\footnote{
+  A more involved
+  argument due to Sylvester (for whom the game is named)
+  shows that the number of legal moves 
+  is finite as soon as two coprime numbers have been played. \cite{sylvester}
+}
+
+Sylver Coinage was defined as an example of an ``unboundedly unboundedly 
+bounded'' game, the maximum length of which is not decided until at least
+the second move.
 
 
-\subsection{Infinite Games}
+\subsection{Infinite and Topological Games}
 
-\subsection{Topological Games}
+(TODO: History of infinite games in topology / descriptive set theory)
+
+\begin{defn}
+  A game is said to be an \term{infinite game} if there exists a playthrough
+  $p\in M^\omega$ of the game such that for all $n<\omega$,
+    $ 
+      \{q : q\geq p\rest n \}
+    $
+  is not a subset of either $W$ or $M^\omega\setminus W$.
+\end{defn}
+
+Put another way, an infinite game need not be decided after a finite number
+of rounds. Games which are not infinite are of course called
+\term{finite games}. 
+
+As an illustration, we may consider an example due to 
+Baker \cite{baker}. 
+
+\begin{game}
+  Let $\bakergame{A}$ denote a game with players $\pl A$ and $\pl B$,
+  defined for each subset $A\subset \mathbb{R}$.
+  In round $0$, $\pl A$ chooses a number $a_0$, followed by $\pl B$ choosing
+  a number $b_0$ such that $a_0<b_0$.
+  In round $n+1$, $\pl A$ chooses a number $a_{n+1}$ such that 
+  $a_n<a_{n+1}<b_n$, followed by $\pl B$ choosing a number $b_{n+1}$ such that
+  $a_{n+1}<b_{n+1}<b_n$.
+
+  $\pl A$ wins the game if the sequence $\<a_n:n<\omega\>$ converges to a 
+  point in $A$, and $\pl B$ wins otherwise.
+\end{game}
+
+Certainly, $\pl A$ and $\pl B$ will never be in
+a position without (infinitely many) legal moves available, so this is
+an infinite game. While the game could never be ``completed'' in reality,
+the winning condition considers the infinite sequence of moves made by the
+players and declares a victor at the ``end'' of the game.
+
+As a simple example, if $A=\mathbb{R}$, then $W=M^\omega$. That is,
+all playthroughs of the game are victories for $\pl A$, since every
+bounded increasing sequence converges to some real number. 
+
+\begin{defn}
+  A \term{topological game} is a game defined in terms of an arbitrary
+  topological space.
+\end{defn}
+
+Topological games are usually infinite games. One of the earliest examples
+of a topological game is the Banach Mazur game, proposed by Stanislaw Mazur
+as Problem 43 in Stefan Banach's Scottish Book (1935). We give a more
+general definition here.
+
+\begin{game}
+  Let $\bmgame{X}$ denote the \term{Banach-Mazur game} with players $\pl E$,
+  $\pl N$ defined for each topological space $X$.
+  In round $0$, $\pl E$ chooses a nonempty open set $E_0\subseteq X$, followed
+  by $\pl N$ choosing a nonempty open subset $N_0\subseteq E_0$.
+  In round $n+1$, $\pl E$ chooses a nonempty open subset $E_{n+1}\subseteq N_n$, 
+  followed by $\pl N$ choosing a nonempty open subset 
+  $N_{n+1}\subseteq E_{n+1}$.
+
+  $\pl E$ wins the game if $\bigcap_{n<\omega} E_n = \emptyset$, 
+  and $\pl N$ wins otherwise.
+\end{game}
+
+For example, if $X$ is a locally compact Hausdorff space, $\pl N$ can ``force'' 
+a win by choosing $N_0$ such that $\cl{N_0}$ is compact, and choosing 
+$N_{n+1}$ such that 
+$N_{n+1}\subseteq\cl{N_{n+1}}\subseteq O_{n+1}\subseteq N_n$ 
+(possible since $N_n$ is a compact Hausdorff $\Rightarrow$ normal space). 
+Since $\bigcap_{n<\omega} E_n = \bigcap_{n<\omega} N_n$ is the decreasing 
+intersection of compact sets, it cannot be empty.
+
+This concept of when (and how) a player can ``force'' a win in certain
+topological games is the focus of this manuscript.
+
 
 
 \section{Strategies}
 
-\subsection{Perfect Information}
+We shall make the notion of forcing a win in a game rigorous by introducing
+``strategies'' and ``attacks'' for games.
 
-\subsection{Limited Information}
+\begin{defn}
+  A \term{strategy} for a game $G=\<M,W\>$ is a function 
+  from $M^{<\omega}$ to $M$.
+\end{defn}
+
+\begin{defn}
+  An \term{attack} for a game $G=\<M,W\>$ is a function 
+  from $\omega$ to $M$.
+\end{defn}
+
+Intuitively, a strategy is a rule for one of the players on how to play
+the game based upon the previous moves of her opponent, while an attack is
+a fixed strike by an opponent.
+
+\begin{defn}
+  The \term{result} of a game for a strategy $\sigma$ for the first player and 
+  attack $\<a_0,a_1,\dots\>$ for  the second player is the playthrough
+    \[
+      \<\sigma(\emptyset),a_0,\sigma(\<a_0\>), a_1, \sigma(\<a_0,a_1\>),\dots\>
+    \]
+  Likewise, if $\sigma$ is a strategy for the second player, and 
+  $\<a_0,a_1,\dots\>$ is an attack by the first player, then the result is
+  the playthrough
+    \[
+      \<a_0,\sigma(\<a_0\>), a_1, \sigma(\<a_0,a_1\>),\dots\>
+    \]
+\end{defn}
+
+We now may rigorously define the notion of ``forcing'' a win in a game.
+
+\begin{defn}
+  A strategy $\sigma$ is a \term{winning strategy} for a player if for
+  every attack by the opponent, the result of the game is a victory 
+  for that player.
+
+  If a winning strategy exists for player $\pl A$ in the game $G$, then we
+  write $\pl A \win G$. Otherwise, we write $\pl A \not\win G$.
+\end{defn}
+
+Of course, a strategy $\sigma$ is not a winning strategy for a player if there 
+exists some \term{counter-attack} by the opponent for which the result is 
+a victory for the opponent. Typically this counter-attack is defined in
+terms of the strategy $\sigma$; else, the counter-attack is itself a
+winning strategy depending on only the round number (which we will
+investigate further in a later section).
+
+\begin{defn}
+  A game $G$ with players $\pl A$, $\pl B$ is said to be \term{determined}
+  if either $\pl A \win G$ or $\pl B \win G$.
+\end{defn}
+
+(TODO: cite Gale and Stewart)
+% http://en.wikipedia.org/wiki/Borel_determinacy_theorem
+
+\begin{thm}
+  If the move set $M$ for a game $G=\<M,W\>$ is given the discrete topology
+  and $W$ is either an open or closed subset of $M^\omega$ with the
+  usual product topology, then $G$ is determined.
+\end{thm}
+
+(TODO: outline proof?)
+
+We get this important corollary:
+
+\begin{cor}
+  Finite games are determined.
+\end{cor}
+
+\begin{proof} 
+  For every victory $p\in W$ for the first player, there was some 
+  round $n<\omega$ for which that partial playthrough was guaranteed to
+  result in a victory for the first player. 
+
+  Put another way, there exists $n<\omega$ such that
+    $ 
+      \{q : q\geq p\rest n \}
+    $
+  (a neighborhood of $p$) is contained in $W$. Thus $W$ is open.
+\end{proof}
+
+(TODO: find combinatorial proof and cite it)
+
+(TODO: Cover Martin's Borel determinacy theorem?)
+
+\subsection{Applications of Strategies}
+
+\subsection{Limited Information Strategies}
 
 
 \section{Examples of Topological Games}
