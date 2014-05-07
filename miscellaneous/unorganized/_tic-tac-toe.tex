@@ -1,0 +1,39 @@
+To illustrate this definition, we may formally model the well-known game 
+Tic-Tac-Toe. For convenince, we may label the game board as a ``magic square''
+of the numbers $0$ through $8$ such that the combinations of three integers
+which sum to $12$ are exactly the rows, columns, and diagonals of the
+grid. 
+
+(TODO: image) 
+
+Then writing $X$ or $O$ on
+the game board is equivalent to choosing a number $0$ through $8$, and 
+getting a ``tic-tac-toe'' is equivalent to having chosen three numbers which 
+sum to $12$.
+
+\begin{game}
+  Let $\tttgame$ denote the game \term{Tic-Tac-Toe}, with players $\pl X$ 
+  and $\pl O$.
+
+  The moves $M$ for the game are the first nine non-negative 
+  integers $\{0,\dots,8\}$. The victories $W$ for $\pl X$ 
+  consist of sequences $\<X_0,O_0,X_1,O_1,\dots\>$ such that either of the 
+  following hold:
+    \begin{itemize}
+      \item There exists some $k<4$ such that $\<X_0,O_0,\dots,X_k\>$ contains
+            no repeated integers, but $\<X_0,O_0,\dots,X_k,O_k\>$ does.
+
+            ($\pl O$ drew her mark on a space already occupied.)
+      \item There exists $i<j<k<5$ such that $\<X_0,O_0,\dots,X_4\>$ contains 
+            no repeated integers and $X_i+X_j+X_k=12$, and for all
+            $i'<j'<k'<k$ it follows that $O_{i'}+O_{j'}+O_{k'}\not=12$.
+
+            ($\pl X$ did not draw her mark on a space that was already occupied,
+            and was able to secure a ``tic-tac-toe'' before $\pl O$.)
+            \footnote{
+              The observant reader will note that in this formulation of 
+              Tic-Tac-Toe, player $\pl O$ wins ``cat's games'' where neither 
+              player secures a ``tic-tac-toe'' (since no ties are allowed).
+            }
+    \end{itemize}
+\end{game}

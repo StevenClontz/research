@@ -1,0 +1,32 @@
+
+But a two-player game need not have a bounded number of rounds, as is
+demonstrated by this game due to John Conway:
+\cite{winning_ways}
+
+\begin{game}
+  Let $\coingame$ denote the game \term{Sylver Coinage} with players 
+  $\pl A$ and $\pl B$. During round $n$, $\pl A$ chooses an integer $a_n>0$,
+  followed by $\pl B$ choosing another integer $b_n>0$, with the rule that
+  neither player may choose an integer which is the sum of nonnegative integer 
+  multiples of previously chosen integers. $\pl A$ wins the game if $\pl B$
+  ever chooses the number $1$, and $\pl B$ wins otherwise.
+\end{game}
+
+After some thought, the reader may confirm that there will be no 
+legal moves except $1$ remaining after a finite number of rounds. 
+Specifically, if $\pl A$
+chooses $a_0$ in the initial round, then all following legal moves must be
+of the form $i \mod\, a_0$ for $0<i<a_0$. $i \mod\, a_0$ may be repeated,
+but all following repetitions must be strictly less than the previous
+iterations, which may only be done finitely many times. Thus after a finite 
+number of moves, there will only be finitely many legal moves remaining. 
+\footnote{
+  A more involved
+  argument due to Sylvester (for whom the game is named)
+  shows that the number of legal moves 
+  is finite as soon as two coprime numbers have been played. \cite{sylvester}
+}
+
+Sylver Coinage was defined as an example of an ``unboundedly unboundedly 
+bounded'' game, the maximum length of which is not decided until at least
+the second move.

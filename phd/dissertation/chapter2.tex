@@ -4,20 +4,20 @@
 \chapter{Toplogical Games and Strategies\\ of Perfect and Limited Information}
 
 The goal of this paper is to explore the applications of limited information
-strategies in existing topological games. (TODO: History of combinatorical
-and topological games?)
+strategies in existing topological games. There are a variety of frameworks
+for modeling such games, so we establish one within this chapter which we 
+will use for this manuscript.
 
 \section{Games}
 
 Intuitively, the games studied in this paper are two-player games for which
 each player takes turns making a choice from a set of possible moves. At
 the conclusion of the game, the choices made by both players are examined,
-and one of the players is declared the winner of that playthrough, with
-no ties allowed.
+and one of the players is declared the winner of that playthrough.
 
-Games may be modeled mathematically in various ways (TODO: cite digraph model)
+Games may be modeled mathematically in various ways,
 but we will find it convenient to think of them in terms defined by
-Gale and Stewart. (TODO: cite)
+Gale and Stewart. \cite{gale}
 
 \begin{defn}
   A \term{game} is a tuple $\<M,W\>$ such that 
@@ -31,119 +31,65 @@ Gale and Stewart. (TODO: cite)
   first player.)
 \end{defn}
 
-To illustrate this definition, we may formally model the well-known game 
-Tic-Tac-Toe. For convenince, we may label the game board as a ``magic square''
-of the numbers $0$ through $8$ such that the combinations of three integers
-which sum to $12$ are exactly the rows, columns, and diagonals of the
-grid. 
+Within this model, we may imagine two players $\pl A$ and $\pl B$ playing a 
+game which consists of \term{rounds} enumerated for each $n<\omega$.
+During round $n$, $\pl A$ chooses $a_n\in M$, followed by $\pl B$ choosing
+$b_n\in M$. The playthrough corresponding to those choices would be
+the sequence $p = \<a_0,b_0,a_1,b_1,\dots\>$. If $p\in W$, then $\pl A$
+is the winner of that playthrough, and if $p\not\in W$, then $\pl B$ is
+the winner. (No ties are allowed.)
 
-(TODO: image) 
-
-Then writing $X$ or $O$ on
-the game board is equivalent to choosing a number $0$ through $8$, and 
-getting a ``tic-tac-toe'' is equivalent to having chosen three numbers which 
-sum to $12$.
-
-\begin{game}
-  Let $\tttgame$ denote the game \term{Tic-Tac-Toe}, with players $\pl X$ 
-  and $\pl O$.
-
-  The moves $M$ for the game are the first nine non-negative 
-  integers $\{0,\dots,8\}$. The victories $W$ for $\pl X$ 
-  consist of sequences $\<X_0,O_0,X_1,O_1,\dots\>$ such that either of the 
-  following hold:
-    \begin{itemize}
-      \item There exists some $k<4$ such that $\<X_0,O_0,\dots,X_k\>$ contains
-            no repeated integers, but $\<X_0,O_0,\dots,X_k,O_k\>$ does.
-
-            ($\pl O$ drew her mark on a space already occupied.)
-      \item There exists $i<j<k<5$ such that $\<X_0,O_0,\dots,X_4\>$ contains 
-            no repeated integers and $X_i+X_j+X_k=12$, and for all
-            $i'<j'<k'<k$ it follows that $O_{i'}+O_{j'}+O_{k'}\not=12$.
-
-            ($\pl X$ did not draw her mark on a space that was already occupied,
-            and was able to secure a ``tic-tac-toe'' before $\pl O$.)
-            \footnote{
-              The observant reader will note that in this formulation of 
-              Tic-Tac-Toe, player $\pl O$ wins ``cat's games'' where neither 
-              player secures a ``tic-tac-toe'' (since no ties are allowed).
-            }
-    \end{itemize}
-\end{game}
-
-Due to the tedium of defining games explicitly from the definition, we 
+Rather than explicitly defining $W$, we 
 typically define games by declaring the \term{rules} that each player must 
-follow (e.g. players may not make a mark on a space which was already marked)
-and the \term{winning condition} for the first player (e.g. $\pl X$ secures
-a ``tic-tac-toe'' before $\pl O$). Then a playthrough is in $W$ if either 
+follow and the \term{winning condition} for the first player. 
+Then a playthrough is in $W$ if either 
 the first player made only \term{legal moves} which observed the game's rules
-and the playthrough satisifies the winning condition, or the second player
+and the playthrough satisified the winning condition, or the second player
 made an \term{illegal move} which contradicted the game's rules.
 
-Often, players should not be able to choose from the same set of moves
-(e.g. player Black cannot move White's pieces in chess), in which case $M$ may
-be partitioned into two sets $M_0,M_1$ and the rules for the game may be defined
-such that each player may only choose from one of those sets 
-(e.g. Black will automatically lose if she moves one of White's pieces).
-
-An artifact of this game model is that games never technically end, since 
-playthroughs of the game are infinite sequences. Nonetheless, Tic-Tac-Toe
-is always decided by $\pl X$'s fifth move, and in chess, there is also an
-upper bound for the length of a game due to the finite number of ways pieces
-may be positioned on the chessboard (and the ``threefold rule''
-which declares the game finished if the same position is repeated three times).
-
-But a two-player game need not have a bounded number of rounds, as is
-demonstrated by this game due to John Conway:
-\cite{winning_ways}
-
-\begin{game}
-  Let $\coingame$ denote the game \term{Sylver Coinage} with players 
-  $\pl A$ and $\pl B$. During round $n$, $\pl A$ chooses an integer $a_n>0$,
-  followed by $\pl B$ choosing another integer $b_n>0$, with the rule that
-  neither player may choose an integer which is the sum of nonnegative integer 
-  multiples of previously chosen integers. $\pl A$ wins the game if $\pl B$
-  ever chooses the number $1$, and $\pl B$ wins otherwise.
-\end{game}
-
-After some thought, the reader may confirm that there will be no 
-legal moves except $1$ remaining after a finite number of rounds. 
-Specifically, if $\pl A$
-chooses $a_0$ in the initial round, then all following legal moves must be
-of the form $i \mod\, a_0$ for $0<i<a_0$. $i \mod\, a_0$ may be repeated,
-but all following repetitions must be strictly less than the previous
-iterations, which may only be done finitely many times. Thus after a finite 
-number of moves, there will only be finitely many legal moves remaining. 
+As an illustration, we could model a game of chess (ignoring stalemates) 
+by letting
+\[
+  M = \{\<p,s\>: p \text{ is a chess piece and } 
+                 s \text{ is a space on the board } \}
+\]
+representing moving a piece $p$ to the space $s$ on the board. Then the
+rules of chess restict White from moving pieces which belong to
+Black, or moving a piece to an illegal space on the board. 
 \footnote{
-  A more involved
-  argument due to Sylvester (for whom the game is named)
-  shows that the number of legal moves 
-  is finite as soon as two coprime numbers have been played. \cite{sylvester}
+  In practice, $M$ is often defined as the union of two sets, such
+  as white pieces and black pieces in chess. For example,
+  the first player may choose open sets in a topology, while the second player
+  chooses points within the topological space.
 }
-
-Sylver Coinage was defined as an example of an ``unboundedly unboundedly 
-bounded'' game, the maximum length of which is not decided until at least
-the second move.
+The winning condition could then
+``inspect'' the resulting positions of pieces on the board after each move 
+to see if White attained a
+checkmate. This winning condition along with the rules implicitly define the 
+set $W$ of winning playthroughs for White.
 
 
 \subsection{Infinite and Topological Games}
 
-(TODO: History of infinite games in topology / descriptive set theory)
+Games never technically end within this model, since 
+playthroughs of the game are infinite sequences. However, for all practical
+purposes many games end after a finite number of turns.
 
 \begin{defn}
-  A game is said to be an \term{infinite game} if there exists a playthrough
-  $p\in M^\omega$ of the game such that for all $n<\omega$,
+  A game is said to be an \term{finite game} if for every playthrough
+  $p\in M^\omega$ there exists a round $n<\omega$ such that
     $ 
-      \{q : q\geq p\rest n \}
+      [p\rest n] = \{q\in M^\omega : q\supseteq p\rest n \}
     $
-  is not a subset of either $W$ or $M^\omega\setminus W$.
+  is a subset of either $W$ or $M^\omega\setminus W$.
 \end{defn}
 
-Put another way, an infinite game need not be decided after a finite number
-of rounds. Games which are not infinite are of course called
-\term{finite games}. 
+Put another way, a finite game is decided after a finite number
+of rounds, after which the game's winner could not change even if further
+rounds were played.
+Games which are not finite are called \term{infinite games}. 
 
-As an illustration, we may consider an example due to 
+As an illustration of an infinite game, we may consider a simple example due to 
 Baker \cite{baker}. 
 
 \begin{game}
@@ -160,21 +106,21 @@ Baker \cite{baker}.
 \end{game}
 
 Certainly, $\pl A$ and $\pl B$ will never be in
-a position without (infinitely many) legal moves available, so this is
-an infinite game. While the game could never be ``completed'' in reality,
-the winning condition considers the infinite sequence of moves made by the
+a position without (infinitely many) legal moves available, and provided that
+$A$ is non-trivial, there is a playthrough such that for all $n<\omega$,
+the segment $(a_n,b_n)$ intersects both $A$ and $\mathbb{R}\setminus A$. 
+Such a playthrough could never be decided in a finite number of moves,
+so the winning condition considers the infinite sequence of moves made by the
 players and declares a victor at the ``end'' of the game.
-
-As a simple example, if $A=\mathbb{R}$, then $W=M^\omega$. That is,
-all playthroughs of the game are victories for $\pl A$, since every
-bounded increasing sequence converges to some real number. 
 
 \begin{defn}
   A \term{topological game} is a game defined in terms of an arbitrary
   topological space.
 \end{defn}
 
-Topological games are usually infinite games. One of the earliest examples
+Topological games are usually infinite games for non-trivial spaces.
+(The meaning of trivial here depends on the game played.)
+One of the earliest examples
 of a topological game is the Banach-Mazur game, proposed by Stanislaw Mazur
 as Problem 43 in Stefan Banach's Scottish Book (1935). A more comprehensive
 history of the Banacy-Mazur and other topological games may be found in 
@@ -225,20 +171,34 @@ We shall make the notion of forcing a win in a game rigorous by introducing
 \end{defn}
 
 Intuitively, a strategy is a rule for one of the players on how to play
-the game based upon the previous moves of her opponent, while an attack is
-a fixed strike by an opponent.
+the game based upon the previous (finite) moves of her opponent, while an 
+attack is a fixed strike by an opponent indexed by round number. 
+
 
 \begin{defn}
-  The \term{result} of a game for a strategy $\sigma$ for the first player and 
-  attack $\<a_0,a_1,\dots\>$ for  the second player is the playthrough
+  The \term{result} of a game given a strategy $\sigma$ for the first player 
+  and an attack $\<a_0,a_1,\dots\>$ by the second player is the playthrough
     \[
-      \<\sigma(\emptyset),a_0,\sigma(\<a_0\>), a_1, \sigma(\<a_0,a_1\>),\dots\>
+      \<
+        \sigma(\emptyset), 
+        a_0,
+        \sigma(\<a_0\>), 
+        a_1, 
+        \sigma(\<a_0,a_1\>),
+        \dots
+      \>
     \]
   Likewise, if $\sigma$ is a strategy for the second player, and 
   $\<a_0,a_1,\dots\>$ is an attack by the first player, then the result is
   the playthrough
     \[
-      \<a_0,\sigma(\<a_0\>), a_1, \sigma(\<a_0,a_1\>),\dots\>
+      \< 
+        a_0,
+        \sigma(\<a_0\>), 
+        a_1, 
+        \sigma(\<a_0,a_1\>),
+        \dots
+      \>
     \]
 \end{defn}
 
@@ -263,43 +223,28 @@ investigate further in a later section).
 \begin{defn}
   A game $G$ with players $\pl A$, $\pl B$ is said to be \term{determined}
   if either $\pl A \win G$ or $\pl B \win G$.
+  Otherwise, the game is \term{indetermined}.
 \end{defn}
 
-(TODO: cite Gale and Stewart)
-% http://en.wikipedia.org/wiki/Borel_determinacy_theorem
-
-\begin{thm}
+\begin{thm}\cite{gale}
   If the move set $M$ for a game $G=\<M,W\>$ is given the discrete topology
   and $W$ is either an open or closed subset of $M^\omega$ with the
   usual product topology, then $G$ is determined.
 \end{thm}
 
-(TODO: outline proof?)
+This is actually a special case of the powerful Borel Determinacy theorem 
+which states that $G=\<M,W\>$ is determined whenever $W$ is a Borel subset
+of $M^\omega$. \cite{martin}
 
-We get this important corollary:
-
-\begin{cor}
-  Finite games are determined.
-\end{cor}
-
-\begin{proof} 
-  For every victory $p\in W$ for the first player, there was some 
-  round $n<\omega$ for which that partial playthrough was guaranteed to
-  result in a victory for the first player. 
-
-  Put another way, there exists $n<\omega$ such that
-    $ 
-      \{q : q\geq p\rest n \}
-    $
-  (a neighborhood of $p$) is contained in $W$. Thus $W$ is open.
-\end{proof}
-
-(TODO: find combinatorial proof and cite it)
-
-(TODO: Cover Martin's Borel determinacy theorem?)
-
-Non-trivial topological games are infinite, however, and many are indetermined
-for certain spaces.
+It's an easy corollary that all finite games are determined
+($W$ must be clopen). As stated earlier, most topological games are infinite,
+and many are indetermined for certain spaces constructed using the Axiom of
+Choice.
+\footnote{
+  The Axiom of Choice is required, as the Axiom of Determinacy stating
+  that all Gale-Stewart games are determined is another axiom independent
+  of ZF. \cite{MR0140430}
+}
 
 \begin{ex}
   Let $B$ be a Bernstein subset of the real line. Then $\bmgame{B}$ is
@@ -326,14 +271,12 @@ $\pl E\not\win \bmgame{X}$ if and only if $X$ is a Baire space. \cite{haworth}
 \end{thm}
 
 
-
 \subsection{Limited Information Strategies}
 
 
 \section{Examples of Topological Games}
 
 (TODO: )
-
 
 
 
