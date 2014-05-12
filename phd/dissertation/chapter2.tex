@@ -5,7 +5,7 @@
 
 The goal of this paper is to explore the applications of limited information
 strategies in existing topological games. There are a variety of frameworks
-for modeling such games, so we establish one within this chapter which we 
+for modeling such games, so we establish one within this chapter which we
 will use for this manuscript.
 
 \section{Games}
@@ -20,65 +20,64 @@ but we will find it convenient to think of them in terms defined by
 Gale and Stewart. \cite{gale}
 
 \begin{defn}
-  A \term{game} is a tuple $\<M,W\>$ such that 
+  A \term{game} is a tuple $\<M,W\>$ such that
   $W\subseteq M^{\omega}$. $M$ is set of \term{moves} for
-  the game, and $M^{\omega}$ is the set of all possible 
+  the game, and $M^{\omega}$ is the set of all possible
   \term{playthroughs} of the game.
 
-  $W$ is the set of \term{winning playthroughs} or \term{victories} for the 
-  first player, and $M^{\omega}\setminus W$ is the set of victories for the 
+  $W$ is the set of \term{winning playthroughs} or \term{victories} for the
+  first player, and $M^{\omega}\setminus W$ is the set of victories for the
   second player. ($W$ is often called the \term{payoff set} for the
   first player.)
 \end{defn}
 
-Within this model, we may imagine two players $\pl A$ and $\pl B$ playing a 
+Within this model, we may imagine two players $\pl A$ and $\pl B$ playing a
 game which consists of \term{rounds} enumerated for each $n<\omega$.
 During round $n$, $\pl A$ chooses $a_n\in M$, followed by $\pl B$ choosing
 $b_n\in M$. The playthrough corresponding to those choices would be
 the sequence $p = \<a_0,b_0,a_1,b_1,\dots\>$. If $p\in W$, then $\pl A$
 is the winner of that playthrough, and if $p\not\in W$, then $\pl B$ is
-the winner. (No ties are allowed.)
+the winner. Note that no ties are allowed.
 
-Rather than explicitly defining $W$, we 
-typically define games by declaring the \term{rules} that each player must 
-follow and the \term{winning condition} for the first player. 
-Then a playthrough is in $W$ if either 
+Rather than explicitly defining $W$, we
+typically define games by declaring the \term{rules} that each player must
+follow and the \term{winning condition} for the first player.
+Then a playthrough is in $W$ if either
 the first player made only \term{legal moves} which observed the game's rules
 and the playthrough satisified the winning condition, or the second player
 made an \term{illegal move} which contradicted the game's rules.
 
-As an illustration, we could model a game of chess (ignoring stalemates) 
+As an illustration, we could model a game of chess (ignoring stalemates)
 by letting
 \[
-  M = \{\<p,s\>: p \text{ is a chess piece and } 
+  M = \{\<p,s\>: p \text{ is a chess piece and }
                  s \text{ is a space on the board } \}
 \]
 representing moving a piece $p$ to the space $s$ on the board. Then the
 rules of chess restict White from moving pieces which belong to
-Black, or moving a piece to an illegal space on the board. 
-\footnote{
+Black, or moving a piece to an illegal space on the board.\footnote{
   In practice, $M$ is often defined as the union of two sets, such
   as white pieces and black pieces in chess. For example,
   the first player may choose open sets in a topology, while the second player
   chooses points within the topological space.
 }
 The winning condition could then
-``inspect'' the resulting positions of pieces on the board after each move 
+``inspect'' the resulting positions of pieces on the board after each move
 to see if White attained a
-checkmate. This winning condition along with the rules implicitly define the 
+checkmate. This winning condition along with the rules implicitly define the
 set $W$ of winning playthroughs for White.
 
 
 \subsection{Infinite and Topological Games}
 
-Games never technically end within this model, since 
+Games never technically end within this model, since
 playthroughs of the game are infinite sequences. However, for all practical
 purposes many games end after a finite number of turns.
 
 \begin{defn}
   A game is said to be an \term{finite game} if for every playthrough
   $p\in M^\omega$ there exists a round $n<\omega$ such that
-    $ 
+    $
       [p\rest n] = \{q\in M^\omega : q\supseteq p\rest n \}
     $
   is a subset of either $W$ or $M^\omega\setminus W$.
@@ -87,28 +86,28 @@ purposes many games end after a finite number of turns.
 Put another way, a finite game is decided after a finite number
 of rounds, after which the game's winner could not change even if further
 rounds were played.
-Games which are not finite are called \term{infinite games}. 
+Games which are not finite are called \term{infinite games}.
 
-As an illustration of an infinite game, we may consider a simple example due to 
-Baker \cite{baker}. 
+As an illustration of an infinite game, we may consider a simple example due to
+Baker \cite{baker}.
 
 \begin{game}
-  Let $\bakergame{A}$ denote a game with players $\pl A$ and $\pl B$,
+  Let $\bakergame{X}$ denote a game with players $\pl A$ and $\pl B$,
   defined for each subset $A\subset \mathbb{R}$.
   In round $0$, $\pl A$ chooses a number $a_0$, followed by $\pl B$ choosing
   a number $b_0$ such that $a_0<b_0$.
-  In round $n+1$, $\pl A$ chooses a number $a_{n+1}$ such that 
+  In round $n+1$, $\pl A$ chooses a number $a_{n+1}$ such that
   $a_n<a_{n+1}<b_n$, followed by $\pl B$ choosing a number $b_{n+1}$ such that
   $a_{n+1}<b_{n+1}<b_n$.
 
-  $\pl A$ wins the game if the sequence $\<a_n:n<\omega\>$ converges to a 
-  point in $A$, and $\pl B$ wins otherwise.
+  $\pl A$ wins the game if the sequence $\<a_n:n<\omega\>$ limits to a
+  point in $X$, and $\pl B$ wins otherwise.
 \end{game}
 
 Certainly, $\pl A$ and $\pl B$ will never be in
 a position without (infinitely many) legal moves available, and provided that
 $A$ is non-trivial, there is a playthrough such that for all $n<\omega$,
-the segment $(a_n,b_n)$ intersects both $A$ and $\mathbb{R}\setminus A$. 
+the segment $(a_n,b_n)$ intersects both $A$ and $\mathbb{R}\setminus A$.
 Such a playthrough could never be decided in a finite number of moves,
 so the winning condition considers the infinite sequence of moves made by the
 players and declares a victor at the ``end'' of the game.
@@ -118,15 +117,14 @@ players and declares a victor at the ``end'' of the game.
   topological space.
 \end{defn}
 
-Topological games are usually infinite games for non-trivial spaces.
-(The meaning of trivial here depends on the game played.)
+Topological games are usually infinite games, ignoring trivial examples.
 One of the earliest examples
 of a topological game is the Banach-Mazur game, proposed by Stanislaw Mazur
 as Problem 43 in Stefan Banach's Scottish Book (1935). A more comprehensive
-history of the Banacy-Mazur and other topological games may be found in 
+history of the Banacy-Mazur and other topological games may be found in
 Telgarsky's survey on the subject \cite{telgarsky}.
 
-The original game was defined for subsets of the real line; however, 
+The original game was defined for subsets of the real line; however,
 we give a more general definition here.
 
 \begin{game}
@@ -134,20 +132,20 @@ we give a more general definition here.
   $\pl N$ defined for each topological space $X$.
   In round $0$, $\pl E$ chooses a nonempty open set $E_0\subseteq X$, followed
   by $\pl N$ choosing a nonempty open subset $N_0\subseteq E_0$.
-  In round $n+1$, $\pl E$ chooses a nonempty open subset $E_{n+1}\subseteq N_n$, 
-  followed by $\pl N$ choosing a nonempty open subset 
+  In round $n+1$, $\pl E$ chooses a nonempty open subset $E_{n+1}\subseteq N_n$,
+  followed by $\pl N$ choosing a nonempty open subset
   $N_{n+1}\subseteq E_{n+1}$.
 
-  $\pl E$ wins the game if $\bigcap_{n<\omega} E_n = \emptyset$, 
+  $\pl E$ wins the game if $\bigcap_{n<\omega} E_n = \emptyset$,
   and $\pl N$ wins otherwise.
 \end{game}
 
-For example, if $X$ is a locally compact Hausdorff space, $\pl N$ can ``force'' 
-a win by choosing $N_0$ such that $\cl{N_0}$ is compact, and choosing 
-$N_{n+1}$ such that 
-$N_{n+1}\subseteq\cl{N_{n+1}}\subseteq O_{n+1}\subseteq N_n$ 
-(possible since $N_n$ is a compact Hausdorff $\Rightarrow$ normal space). 
-Since $\bigcap_{n<\omega} E_n = \bigcap_{n<\omega} N_n$ is the decreasing 
+For example, if $X$ is a locally compact Hausdorff space, $\pl N$ can ``force''
+a win by choosing $N_0$ such that $\cl{N_0}$ is compact, and choosing
+$N_{n+1}$ such that
+$N_{n+1}\subseteq\cl{N_{n+1}}\subseteq O_{n+1}\subseteq N_n$
+(possible since $N_n$ is a compact Hausdorff $\Rightarrow$ normal space).
+Since $\bigcap_{n<\omega} E_n = \bigcap_{n<\omega} N_n$ is the decreasing
 intersection of compact sets, it cannot be empty.
 
 This concept of when (and how) a player can ``force'' a win in certain
@@ -161,41 +159,41 @@ We shall make the notion of forcing a win in a game rigorous by introducing
 ``strategies'' and ``attacks'' for games.
 
 \begin{defn}
-  A \term{strategy} for a game $G=\<M,W\>$ is a function 
+  A \term{strategy} for a game $G=\<M,W\>$ is a function
   from $M^{<\omega}$ to $M$.
 \end{defn}
 
 \begin{defn}
-  An \term{attack} for a game $G=\<M,W\>$ is a function 
+  An \term{attack} for a game $G=\<M,W\>$ is a function
   from $\omega$ to $M$.
 \end{defn}
 
 Intuitively, a strategy is a rule for one of the players on how to play
-the game based upon the previous (finite) moves of her opponent, while an 
-attack is a fixed strike by an opponent indexed by round number. 
+the game based upon the previous (finite) moves of her opponent, while an
+attack is a fixed strike by an opponent indexed by round number.
 
 
 \begin{defn}
-  The \term{result} of a game given a strategy $\sigma$ for the first player 
+  The \term{result} of a game given a strategy $\sigma$ for the first player
   and an attack $\<a_0,a_1,\dots\>$ by the second player is the playthrough
     \[
       \<
-        \sigma(\emptyset), 
+        \sigma(\emptyset),
         a_0,
-        \sigma(\<a_0\>), 
-        a_1, 
+        \sigma(\<a_0\>),
+        a_1,
         \sigma(\<a_0,a_1\>),
         \dots
       \>
     \]
-  Likewise, if $\sigma$ is a strategy for the second player, and 
+  Likewise, if $\sigma$ is a strategy for the second player, and
   $\<a_0,a_1,\dots\>$ is an attack by the first player, then the result is
   the playthrough
     \[
-      \< 
+      \<
         a_0,
-        \sigma(\<a_0\>), 
-        a_1, 
+        \sigma(\<a_0\>),
+        a_1,
         \sigma(\<a_0,a_1\>),
         \dots
       \>
@@ -206,84 +204,207 @@ We now may rigorously define the notion of ``forcing'' a win in a game.
 
 \begin{defn}
   A strategy $\sigma$ is a \term{winning strategy} for a player if for
-  every attack by the opponent, the result of the game is a victory 
+  every attack by the opponent, the result of the game is a victory
   for that player.
 
-  If a winning strategy exists for player $\pl A$ in the game $G$, then we
+  If a winning strategy exists for a player $\pl A$ in the game $G$, then we
   write $\pl A \win G$. Otherwise, we write $\pl A \not\win G$.
 \end{defn}
 
-Of course, a strategy $\sigma$ is not a winning strategy for a player if there 
-exists some \term{counter-attack} by the opponent for which the result is 
-a victory for the opponent. Typically this counter-attack is defined in
-terms of the strategy $\sigma$; else, the counter-attack is itself a
-winning strategy depending on only the round number (which we will
-investigate further in a later section).
+To show that a winning strategy exists for a player (i.e. $\pl A\win G$),
+we typically begin by
+defining it and showing that it is \term{legal}: it only yields moves which are
+legal according to the rules of the game. Then, we consider an arbitrary
+legal attack, and prove that the result of the game is a victory for that
+player.
+
+If we wish to show that a winning strategy does not exist for a player
+(i.e. $\pl A\not\win G$), we
+often consider an arbitrary legal strategy, and use it to define a legal
+\term{counter-attack} for the opponent. If we can prove that the result of
+the game for that strategy and counter-attack is a victory for the opponent,
+then a winning strategy does not exist.
+
+Unlike finite games, is not the case that a winning strategy must exist for
+one of the players in an infinite game.
 
 \begin{defn}
   A game $G$ with players $\pl A$, $\pl B$ is said to be \term{determined}
   if either $\pl A \win G$ or $\pl B \win G$.
-  Otherwise, the game is \term{indetermined}.
+  Otherwise, the game is \term{undetermined}.
 \end{defn}
 
-\begin{thm}\cite{gale}
-  If the move set $M$ for a game $G=\<M,W\>$ is given the discrete topology
-  and $W$ is either an open or closed subset of $M^\omega$ with the
-  usual product topology, then $G$ is determined.
-\end{thm}
+The Borel Determinacy Theorem states that $G=\<M,W\>$ is determined whenever
+$W$ is a Borel subset of $M^\omega$ \cite{martin}. It's an easy corollary that
+all finite games are determined; $W$ must be clopen.
 
-This is actually a special case of the powerful Borel Determinacy theorem 
-which states that $G=\<M,W\>$ is determined whenever $W$ is a Borel subset
-of $M^\omega$. \cite{martin}
-
-It's an easy corollary that all finite games are determined
-($W$ must be clopen). As stated earlier, most topological games are infinite,
-and many are indetermined for certain spaces constructed using the Axiom of
-Choice.
-\footnote{
-  The Axiom of Choice is required, as the Axiom of Determinacy stating
-  that all Gale-Stewart games are determined is another axiom independent
-  of ZF. \cite{MR0140430}
+However, as stated earlier, most topological games are infinite,
+and many are undetermined for certain spaces constructed using the Axiom of
+Choice.\footnote{
+  These spaces cannot be constructed just only the axioms of ZF. In fact,
+  mathematicians have studied an Axiom of Determinacy which declares that
+  that all Gale-Stewart games are determined (and implies that the Axiom
+  of Choice is false). \cite{MR0140430}
 }
-
-\begin{ex}
-  Let $B$ be a Bernstein subset of the real line. Then $\bmgame{B}$ is
-  undetermined.
-\end{ex}
-
-\begin{proof}
-  It can be shown that $B$ is a Baire space, and we will soon see that 
-  $\pl E\not\win \bmgame{X}$ characterizes Baire spaces. Also, if $\sigma$
-  is a winning strategy for $\pl N$ in $\bmgame{Y}$ for $Y\subseteq X$, it can 
-  be shown that $Y$ contains a closed uncountable set in $X$. 
-  Thus $\pl N\not\win \bmgame{B}$.
-\end{proof}
 
 \subsection{Applications of Strategies}
 
-The presence or absence of a winning strategie for a player in a topological
-game characterizes a property of the topological space in question.
+The power of studying these infinite-length games can be illustrated by
+considering the following proposition.
 
-A classical result follows.
+\begin{prop}
+  If $X$ is countable, then $\pl B \win \bakergame{X}$.
+\end{prop}
+
+\begin{proof}
+  Adapted from \cite{baker}.
+  Let $X=\{x_0,x_1,\dots\}$. Let $i(a,b)$ be the least integer such that
+  $a<x_{i(x,y)}<b$, if it exists. We define a strategy $\sigma$ for $\pl B$
+  such that:
+  \begin{itemize}
+    \item $\sigma(\<a_0\>)=x_{i(a_0,\infty)}$.
+          If $i(a_0,\infty)$ does not exist, then the choice of $\sigma(\<a_0\>)$
+          is arbitary, say, $a_0+1$.
+    \item $\sigma(\<a_0,...,a_{n+1}\>)=x_{i(a_{n+1},b_n)}$, where
+          $b_n=\sigma(\<a_0,\dots,a_n\>)$.
+          If $i(a_{n+1},b_n)$ does not exist, then the choice of
+          $\sigma(\<a_0,...,a_{n+1}\>)$ is arbitrary, say,
+          $
+            \sigma(\<a_0,...,a_{n+1}\>)
+              =
+            \frac{a_{n+1}+b_n}{2}
+          $.
+  \end{itemize}
+
+  Observe that $\sigma$ is a legal strategy according to the rules of the game
+  since $a_0<\sigma(\<a_0\>)$ and $a_{n+1}<\sigma(\<a_0,\dots,a_{n+1}\>)<b_n$.
+  We claim this is a winning strategy for $\pl B$. Let $a=\<a_0,a_1,\dots\>$
+  be a legal attack by $\pl A$ against $\sigma$: we will show that the
+  resulting playthrough is a victory for $\pl B$, that is,
+  $\lim_{n\to\infty} a_n\not\in X$. Let $b_n=\sigma(\<a_0,\dots,a_n\>)$.
+  Note that
+    \[
+      a_0<a_1<\dots<\lim_{n\to\infty}a_n<\dots<b_1<b_0
+    \]
+
+  If $i(a_0,\infty)$ does not exist, then $a_0$ is greater than every element
+  of $X$, and thus
+  $\lim_{n\to\infty} a_n \not\in X$. A similar argument follows if some
+  $i(a_{n+1},b_n)$ does not exist.
+
+  Otherwise,
+    \[
+      i(a_0,\infty)<i(a_1,b_0)<i(a_2,b_1)<\dots
+    \]
+  and for each $i<\omega$, one of the following must hold.
+    \begin{itemize}
+      \item $i<i(a_0,\infty)$. Then $x_i\leq a_0<\lim_{n\to\infty}a_n$.
+      \item $i = i(a_0,\infty)$. Then $x_i=b_0>\lim_{n\to\infty}a_n$.
+      \item $i(a_0,\infty)<i<i(a_1,b_0)$.
+            Then $x_i\leq a_1<\lim_{n\to\infty}a_n$ or
+            $x_i\geq b_0>\lim_{n\to\infty}a_n$.
+      \item $i = i(a_{n+1},b_n)$ for some $n<\omega$.
+            Then $x_i=b_{n+1}>\lim_{n\to\infty}a_n$.
+      \item $i(a_{n+1},b_n)<i<i(a_{n+2},b_{n+1})$ for some $n<\omega$.
+            Then $x_i\leq a_{n+2}<\lim_{n\to\infty}a_n$ or
+            $x_i\geq b_{n+1}>\lim_{n\to\infty}a_n$.
+    \end{itemize}
+  In any case, $x_i\not=\lim_{n\to\infty}a_n$, and thus
+  $\lim_{n\to\infty}a_n\not\in X$.
+\end{proof}
+
+This yields a classical result.
+
+\begin{cor}
+  $\mathbb{R}$ is uncountable.
+\end{cor}
+
+\begin{proof}
+  $\pl A\win \bakergame{\mathbb{R}}$, since $a_n$ must converge to some
+  real number. This implies $\pl B\not\win \bakergame{\mathbb{R}}$, and thus
+  $\mathbb{R}$ is not countable.
+\end{proof}
+
+Infinite games thus provide a rich framework for considering questions in
+set theory and topology. In general, the presence or absence of a winning
+strategy for a player in a topological game characterizes a property of the
+topological space in question.
 
 \begin{thm}
 $\pl E\not\win \bmgame{X}$ if and only if $X$ is a Baire space. \cite{haworth}
 \end{thm}
 
-
 \subsection{Limited Information Strategies}
 
+So far we have assumed both players enjoy \term{perfect information}, and
+may develop strategies which use all of the previous moves of the opponent
+as input.
 
-\section{Examples of Topological Games}
+\begin{defn}
+  For a game $G=\<M,W\>$, the \term{$k$-tactical fog-of-war} is the function
+  $\nu_k:M^{<\omega}\to M^{\leq k}$ defined by
+    \[
+      \nu_k(\<m_0,\dots,m_{n-1}\>)=\<m_{n-k},\dots,m_{n-1}\>
+    \]
+  and the \term{$k$-Mark\"ov fog-of-war} is the function
+  $\mu_k:M^{<\omega}\to (M^{\leq k}\times\omega)$ defined by
+    \[
+      \mu_k(\<m_0,\dots,m_{n-1}\>)=\<\<m_{n-k},\dots,m_{n-1}\>,n\>
+    \]
+\end{defn}
 
-(TODO: )
+Essentially, these fogs-of-war represent a limited memory: $\nu_k$ filters out
+all but the last $k$ moves of the opponent, and $\mu_k$ filters out all but
+the last $k$ moves of the opponent and the round number.
 
+We call strategies which do not require full recollection of the opponent's
+moves \term{limited information strategies}.
 
+\begin{defn}
+  A \term{$k$-tactical strategy} or \term{$k$-tactic} is a limited information
+  strategy of the form $\sigma\circ\nu_k$.
 
+  A \term{$k$-Mark\"ov strategy} or \term{$k$-mark} is a limited information
+  strategy of the form $\sigma\circ\mu_k$.
+\end{defn}
 
+$k$-tactics and $k$-marks may then only use the last $k$ moves of the opponent,
+and in the latter case, also the round number.
 
+The $k$ is usually omitted when $k=1$. A ($1$-)tactic is
+called a \term{stationary strategy} by some authors. $0$-tactics are not
+usually interesting (such strategies would be constant functions); however,
+we will discuss $0$-Mark\"ov strategies, called
+\term{predetermined strategies} since such a strategy only uses the round
+number and does not rely on knowing which moves the opponent will make.
 
+\begin{defn}
+  If a winning $k$-tactical strategy exists for a player $\pl A$ in the game
+  $G$, then we write $\pl A \ktactwin{k} G$. If $k=1$, then $\pl A \tactwin G$.
 
+  If a winning $k$-Mark\"ov strategy exists for a player $\pl A$ in the game
+  $G$, then we write $\pl A \kmarkwin{k} G$. If $k=1$, then $\pl A \markwin G$,
+  and if $k=0$, then $\pl A \prewin G$.
+\end{defn}
 
+The existence of a winning limited information strategy can characterize a
+stronger property than the property characterized by a perfect information
+strategy.
 
+\begin{defn}
+  $X$ is an \term{$\alpha$-favorable space}
+  when $\pl N \tactwin \bmgame{X}$.
+  $X$ is a \term{weakly $\alpha$-favorable space}
+  when $\pl N \win \bmgame{X}$.
+\end{defn}
 
+\begin{obs}
+  $X$ is $\alpha$-favorable
+    $\Rightarrow$
+  $X$ is weakly $\alpha$-favorable
+    $\Rightarrow$
+  $X$ is Baire
+\end{obs}
+
+Those arrows may not be reversed. A Bernstein subset of the real line is an
+example of a Baire space which is not weakly $\alpha$-favorable, and
