@@ -3,7 +3,7 @@
 %%%       auphd.sty (Ph.D. Dissertation)
 %%%       auhonors.sty (Honors Scholar)
 
-%%%To use it, please edit the necessary options, title, author, date, year, keywords, advisor, professor, etc. 
+%%%To use it, please edit the necessary options, title, author, date, year, keywords, advisor, professor, etc.
 
 \documentclass[12pt]{report}
 %\usepackage{aums}       % For Master's papers
@@ -19,8 +19,8 @@
 %% If you do not need a List of Abbreviations, then comment out the lines below and the \printnomenclature line.
 %%for List of Abbreviations information:  (see http://www.mackichan.com/TECHTALK/509.htm  )
 \usepackage[intoc]{nomencl}
-\renewcommand{\nomname}{List of Abbreviations}   	       
-\makenomenclature 
+\renewcommand{\nomname}{List of Abbreviations}
+\makenomenclature
 
 
 \usepackage{amssymb}
@@ -33,7 +33,7 @@
 
 
 
-% Custom 
+% Custom
   \theoremstyle{plain}
   \newtheorem{thm}{Theorem}
   \newtheorem{lem}[thm]{Lemma}
@@ -41,28 +41,29 @@
   \newtheorem{prop}[thm]{Proposition}
   \newtheorem{conj}[thm]{Conjecture}
   \newtheorem{ques}[thm]{Question}
-  
+  \newtheorem{obs}[thm]{Observation}
+
   \theoremstyle{definition}
   \newtheorem{defn}[thm]{Definition}
   \newtheorem{ex}[thm]{Example}
   \newtheorem{game}[thm]{Game}
-  
+
   \theoremstyle{remark}
   \newtheorem{rem}[thm]{Remark}
 
-% Put the title, author, and date in. 
+% Put the title, author, and date in.
 \title{Limited Information Strategies for Topological Games}
-\author{Steven Clontz} 
+\author{Steven Clontz}
 \date{May 4, 2015} %date of graduation
 \copyrightyear{2015} %copyright year
 
 \keywords{topology, uniform spaces, infinite games, limited information strategies}
 
-% Put the Thesis Adviser here. 
+% Put the Thesis Adviser here.
 \adviser{Gary Gruenhage}
 
 
-% Put the committee here (including the adviser), one \professor for each. 
+% Put the committee here (including the adviser), one \professor for each.
 % The advisor must be first, and the dean of the graduate school must be last.
 \professor{Gary Gruenhage, Chair, Professor of Mathematics}
 
@@ -79,11 +80,11 @@
 
 \begin{document}
 
-\begin{romanpages}      % roman-numbered pages 
+\begin{romanpages}      % roman-numbered pages
 
-\TitlePage 
+\TitlePage
 
-\begin{abstract} 
+\begin{abstract}
 I talk a lot about topological games.
 
 TODO: Write this.
@@ -103,12 +104,12 @@ TODO: Thank people.
 
 \normalem       % Make italics the default for \em
 
-\input{chapter1.tex} 
+\input{chapter1.tex}
 \input{chapter2.tex}
-% \input{chapter3.tex}
-% \input{chapter4.tex}
-% \input{chapter5.tex}
-% \input{chapter6.tex}
+\input{chapter3.tex}
+\input{chapter4.tex}
+\input{chapter5.tex}
+\input{chapter6.tex}
 
 
 \bibliographystyle{plain}
