@@ -1,0 +1,119 @@
+\input{../../header.tex}
+
+\usepackage{hyperref}
+
+\begin{document}
+
+\textbf{Notes on an example due to Baker}
+
+In \cite{baker}, the author defines a game played on the unit interval.
+
+\begin{game}
+  Let $G(X,J)$ denote a game with players $\pl A$ and $\pl B$.
+
+  In round 0, $\pl A$ chooses a number $a_0$ such that $0\leq a_0\leq 1$, 
+  followed by $\pl B$ choosing a number $b_0$ such that $a_0<b_0\leq 1$.
+
+  In round $n+1$, $\pl A$ chooses a number $a_{n+1}$ such that 
+  $a_n<a_{n+1}< b_n$, followed by $\pl B$ choosing a number $b_{n+1}$ such
+  that $a_{n+1}< b_{n+1}<b_n$.
+
+  $\pl A$ wins the game if $\lim_{n\to\infty}a_n\in X$, and $\pl B$ wins
+  otherwise.
+\end{game}
+
+The game is strongly related to one formulation of the Banach-Mazur game
+played upon the unit interval, which has been extensively studied
+\cite{telgarsky}.
+
+\begin{game}
+  Let $M(X,J)$ denote the Banach-Mazur interval game with players $\pl A$ and
+  $\pl B$.
+
+  In round 0, $\pl A$ chooses a closed interval $I_0\subseteq J=[0,1]$,
+  followed by $\pl B$ choosing a closed interval $J_0\subseteq I_0$.
+
+  In round $n+1$, $\pl A$ chooses a closed interval $I_{n+1}\subseteq J_n$,
+  followed by $\pl B$ choosing a closed interval $J_{n+1}\subseteq I_{n+1}$.
+\end{game}
+
+The author of \cite{baker} asks if there is a set $X$ such that $G(X,J)$ is
+indetermined: neither $\pl A$ nor $\pl B$ have a winning strategy.
+
+We show that such a set would also make $MB(X,J)$ indeteremined.
+
+\begin{theorem}
+  $\pl A\win MB(X,J) \Rightarrow \pl A\win G(X,J)$ and
+  $\pl B\win MB(X,J) \Rightarrow \pl B\win G(X,J)$.
+  (Thus if $MB(X,J)$ is determined, then $G(X,J)$ is determined.)
+\end{theorem}
+
+\begin{proof}
+  First let $\sigma$ witness $\pl A\win MB(X,J)$. We define the strategy $\tau$
+  for $\pl A$ in $G(X,J)$ like so:
+    \[
+      a_0 = \tau(\emptyset) = \inf(\sigma(\emptyset))
+    \]
+    \[
+      a_{n+1} = \tau(\<b_0,\dots,b_n\>) 
+        = 
+      \inf\left(\sigma\left(\left\<
+        \left[\frac{2a_0+b_0}{3},\frac{a_0+2b_0}{3}\right],
+        \dots,
+        \left[\frac{2a_n+b_n}{3},\frac{a_n+2b_n}{3}\right]
+      \right\>\right)\right)
+    \]
+
+  It is easily seen that
+    $
+      \bigcap_{n<\omega}
+      [\frac{2a_n+b_n}{3},\frac{a_n+2b_n}{3}]
+        =
+      \{x\}
+    $
+  and $x\in X$ since $\sigma$ is a winning strategy.
+  Thus $\lim_{n\to\infty}a_n=x$ and $\pl A\win G(X,J)$.
+
+  If $\sigma$ now witnesses $\pl B\win MB(X,J)$, then a similar argument shows
+  that
+    \[
+      b_n = \tau(\<b_0,\dots,b_n\>) 
+        = 
+      \inf\left(\sigma\left(\left\<
+        \left[\frac{2a_0+b_0}{3},\frac{a_0+2b_0}{3}\right],
+        \dots,
+        \left[\frac{2a_n+b_n}{3},\frac{a_n+2b_n}{3}\right]
+      \right\>\right)\right)
+    \]
+  defines a winning strategy for $\pl B$ in $G(X,J)$.
+\end{proof}
+
+\begin{corollary}
+  If $X$ is Baire, then $G(X,J)$ is determined.
+\end{corollary}
+
+\begin{proof}
+  If $X$ is a Baire subset of a Polish space, then $MB(X,J)$ is determined.
+\end{proof}
+
+\newpage
+
+\begin{thebibliography}{9}
+
+\bibitem{baker}
+  Baker, M. H.,
+  \emph{Uncountable sets and an inﬁnite real number game}.
+  \url{http://arxiv.org/pdf/math/0606253.pdf}
+  2006.
+
+\bibitem{telgarsky}
+  Telgarksy, R.,
+  \emph{Topological games: On the 50th anniversary of the Banach-Mazur game}.
+  \url{http://www.telgarsky.com/1987-RMJM-Telgarsky-Topological-Games.pdf}
+  1987.
+
+\end{thebibliography}
+
+\end{document}
+
+
