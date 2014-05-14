@@ -17,7 +17,7 @@ and one of the players is declared the winner of that playthrough.
 
 Games may be modeled mathematically in various ways,
 but we will find it convenient to think of them in terms defined by
-Gale and Stewart. \cite{gale}
+Gale and Stewart. \cite{MR0054922}
 
 \begin{defn}
   A \term{game} is a tuple $\<M,W\>$ such that
@@ -89,7 +89,7 @@ rounds were played.
 Games which are not finite are called \term{infinite games}.
 
 As an illustration of an infinite game, we may consider a simple example due to
-Baker \cite{baker}.
+Baker \cite{noMRbaker}.
 
 \begin{game}
   Let $\bakergame{X}$ denote a game with players $\pl A$ and $\pl B$,
@@ -122,7 +122,7 @@ One of the earliest examples
 of a topological game is the Banach-Mazur game, proposed by Stanislaw Mazur
 as Problem 43 in Stefan Banach's Scottish Book (1935). A more comprehensive
 history of the Banacy-Mazur and other topological games may be found in
-Telgarsky's survey on the subject \cite{telgarsky}.
+Telgarsky's survey on the subject \cite{MR892457}.
 
 The original game was defined for subsets of the real line; however,
 we give a more general definition here.
@@ -235,7 +235,7 @@ one of the players in an infinite game.
 \end{defn}
 
 The Borel Determinacy Theorem states that $G=\<M,W\>$ is determined whenever
-$W$ is a Borel subset of $M^\omega$ \cite{martin}. It's an easy corollary that
+$W$ is a Borel subset of $M^\omega$ \cite{MR0403976}. It's an easy corollary that
 all finite games are determined; $W$ must be clopen.
 
 However, as stated earlier, most topological games are infinite,
@@ -257,7 +257,7 @@ considering the following proposition.
 \end{prop}
 
 \begin{proof}
-  Adapted from \cite{baker}.
+  Adapted from \cite{noMRbaker}.
   Let $X=\{x_0,x_1,\dots\}$. Let $i(a,b)$ be the least integer such that
   $a<x_{i(x,y)}<b$, if it exists. We define a strategy $\sigma$ for $\pl B$
   such that:
@@ -313,6 +313,8 @@ considering the following proposition.
   $\lim_{n\to\infty}a_n\not\in X$.
 \end{proof}
 
+More informally, $\pl B$ can force a win by enumerating the countable set
+$X$ and playing every legal choice by the end of the game.
 This yields a classical result.
 
 \begin{cor}
@@ -331,7 +333,8 @@ strategy for a player in a topological game characterizes a property of the
 topological space in question.
 
 \begin{thm}
-$\pl E\not\win \bmgame{X}$ if and only if $X$ is a Baire space. \cite{haworth}
+$\pl E\not\win \bmgame{X}$ if and only if $X$ is a Baire space.
+\cite{MR0431104}
 \end{thm}
 
 \subsection{Limited Information Strategies}
@@ -407,4 +410,6 @@ strategy.
 \end{obs}
 
 Those arrows may not be reversed. A Bernstein subset of the real line is an
-example of a Baire space which is not weakly $\alpha$-favorable, and
+example of a Baire space which is not weakly $\alpha$-favorable, and Gabriel
+Debs constructed an example of a completely regular space for which $\pl N$
+has a winning $2$-tactic, but lacks a winning $1$-tactic. \cite{MR817083}
