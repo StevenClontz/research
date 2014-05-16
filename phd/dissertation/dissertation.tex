@@ -33,23 +33,62 @@
 
 
 
-% Custom
-  \theoremstyle{plain}
-  \newtheorem{thm}{Theorem}
-  \newtheorem{lem}[thm]{Lemma}
-  \newtheorem{cor}[thm]{Corollary}
-  \newtheorem{prop}[thm]{Proposition}
-  \newtheorem{conj}[thm]{Conjecture}
-  \newtheorem{ques}[thm]{Question}
-  \newtheorem{obs}[thm]{Observation}
+% Theorems
 
-  \theoremstyle{definition}
-  \newtheorem{defn}[thm]{Definition}
-  \newtheorem{ex}[thm]{Example}
-  \newtheorem{game}[thm]{Game}
+% Define vanilla versions
+\theoremstyle{theorem}
+  \newtheorem{TMPthm}{Theorem}[section]
+  \newtheorem{TMPlem}[TMPthm]{Lemma}
+  \newtheorem{TMPcor}[TMPthm]{Corollary}
+  \newtheorem{TMPprop}[TMPthm]{Proposition}
+  \newtheorem{TMPobs}[TMPthm]{Observation}
 
-  \theoremstyle{remark}
-  \newtheorem{rem}[thm]{Remark}
+\theoremstyle{definition}
+  \newtheorem{TMPdefn}[TMPthm]{Definition}
+  \newtheorem{TMPex}[TMPthm]{Example}
+  \newtheorem{TMPgame}[TMPthm]{Game}
+  \newtheorem{TMPconj}[TMPthm]{Conjecture}
+  \newtheorem{TMPques}[TMPthm]{Question}
+
+% Custom theorem bookend
+\newcommand{\thmBookend}{
+\leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+\quad\hbox{\ensuremath{\lozenge}}}
+
+% Custom Theorem environments
+\newenvironment{thm}
+  {\begin{TMPthm}}
+  {\thmBookend{}\end{TMPthm}}
+\newenvironment{lem}
+  {\begin{TMPlem}}
+  {\thmBookend{}\end{TMPlem}}
+\newenvironment{cor}
+  {\begin{TMPcor}}
+  {\thmBookend{}\end{TMPcor}}
+\newenvironment{prop}
+  {\begin{TMPprop}}
+  {\thmBookend{}\end{TMPprop}}
+\newenvironment{obs}
+  {\begin{TMPobs}}
+  {\thmBookend{}\end{TMPobs}}
+
+\newenvironment{defn}
+  {\begin{TMPdefn}}
+  {\thmBookend{}\end{TMPdefn}}
+\newenvironment{ex}
+  {\begin{TMPex}}
+  {\thmBookend{}\end{TMPex}}
+\newenvironment{game}
+  {\begin{TMPgame}}
+  {\thmBookend{}\end{TMPgame}}
+\newenvironment{conj}
+  {\begin{TMPconj}}
+  {\thmBookend{}\end{TMPconj}}
+\newenvironment{ques}
+  {\begin{TMPques}}
+  {\thmBookend{}\end{TMPques}}
+
+
 
 % Put the title, author, and date in.
 \title{Limited Information Strategies for Topological Games}
