@@ -13,7 +13,7 @@ Results pertaining to Bell's proximal game for uniform spaces.
     \begin{itemize}
       \item $D$ is reflexive, i.e., the diagonal $\Delta\subseteq D$.
       \item Its inverse $D^{-1}=\{\<y,x\>:\<x,y\>\in D\}\in \mc D$.
-      \item There exists $\frac{1}{2}D\in\mc D$ such that 
+      \item There exists $\frac{1}{2}D\in\mc D$ such that
         \[
           2(\frac{1}{2}D)=\frac{1}{2}D\circ\frac{1}{2}D=\{\<x,z\>:\exists y(\<x,y\>,\<y,z\>\in\frac{1}{2}D)\}\subseteq D
         \]
@@ -22,7 +22,7 @@ Results pertaining to Bell's proximal game for uniform spaces.
 \end{defn}
 
 \begin{prop}
-For each $D\in\mc D$ and $n<\omega$ there exists $\frac{1}{2^{n+1}}D\in\mc D$ such that 
+For each $D\in\mc D$ and $n<\omega$ there exists $\frac{1}{2^{n+1}}D\in\mc D$ such that
   \[2(\frac{1}{2^{n+1}}D)=\frac{1}{2^{n+1}}D\circ \frac{1}{2^{n+1}}D\subseteq \frac{1}{2^{n}}D\]
 and if $2E\subseteq \frac{1}{2^{n}}D$, then $E\subseteq \frac{1}{2^{n+1}}D$.
 \end{prop}
@@ -53,9 +53,9 @@ and if $2E\subseteq \frac{1}{2^{n}}D$, then $E\subseteq \frac{1}{2^{n+1}}D$.
 \end{proof}
 
 \begin{defn}
-  For a uniform space $X$, Bell's proximity game proceeds as follows. 
+  For a uniform space $X$, Bell's proximity game proceeds as follows.
 
-  In round $0$, $\pl D$ chooses an entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$. 
+  In round $0$, $\pl D$ chooses an entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$.
 
   In round $n+1$, $\pl D$ chooses an entourage $D_{n+1}\subseteq D_n$, followed by $\pl P$ choosing a point $p_{n+1}\in 4D_n[p_n]$.
 
@@ -65,7 +65,7 @@ and if $2E\subseteq \frac{1}{2^{n}}D$, then $E\subseteq \frac{1}{2^{n+1}}D$.
 \begin{defn}
   For a uniform space $X$, the simplified proximal game $\proxgame{X}$ can be defined as follows:
 
-  In round $0$, $\pl D$ chooses a symmetric entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$. 
+  In round $0$, $\pl D$ chooses a symmetric entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$.
 
   In round $n+1$, $\pl D$ chooses a symmetric entourage $D_{n+1}$, followed by $\pl P$ choosing a point $p_{n+1}\in\left(\bigcap_{m\leq n}D_m\right)[p_n]$.
 
@@ -79,12 +79,12 @@ and if $2E\subseteq \frac{1}{2^{n}}D$, then $E\subseteq \frac{1}{2^{n+1}}D$.
 \begin{proof}
   Let $\sigma$ be a winning perfect information strategy for $\pl D$ in Bell's game. We define a perfect information strategy $\tau$ in the simplified game to yield symmetric entourages $\tau(p\rest n)=\sigma(p\rest n)\cap(\sigma(p\rest n))^{-1}$ for all partial attacks $p\rest n$. Note that $\tau(p\rest n)=\bigcap_{m\leq n}\tau(p\rest m)$.
 
-  If $p$ attacks $\tau$ in the simplified game, $p(n+1)\in\left(\bigcap_{m\leq n}\tau(p\rest m)\right)[p(n)]=\tau(p\rest n)[p(n)]\subseteq\sigma(p\rest n)[p(n)]\subseteq 4\sigma(p\rest n)[p(n)]$, so $p$ attacks $\sigma$ in Bell's game. Thus either $p$ converges, or 
+  If $p$ attacks $\tau$ in the simplified game, $p(n+1)\in\left(\bigcap_{m\leq n}\tau(p\rest m)\right)[p(n)]=\tau(p\rest n)[p(n)]\subseteq\sigma(p\rest n)[p(n)]\subseteq 4\sigma(p\rest n)[p(n)]$, so $p$ attacks $\sigma$ in Bell's game. Thus either $p$ converges, or
     \[
       \emptyset
         =
       \bigcap_{n<\omega} 4\sigma(p\rest n)[p(n)]
-        \supseteq 
+        \supseteq
       \bigcap_{n<\omega}\tau(p\rest n)[p(n)]
         =
       \bigcap_{n<\omega}\left(\bigcap_{m\leq n}\tau(p\rest n)\right)[p(n)]
@@ -119,7 +119,7 @@ $\pl P$ has a winning perfect-information strategy in Bell's game if and only if
 \end{defn}
 
 \begin{defn}
-  For a space $X$ and a point $x\in X$, the \textbf{$W$-convergence-game} $\congame{X}{x}$ proceeds as follows. 
+  For a space $X$ and a point $x\in X$, the \textbf{$W$-convergence-game} $\congame{X}{x}$ proceeds as follows.
 
   In round $0$, $\pl O$ chooses a neighborhood $U_n$ of $x$, followed by $\pl P$ choosing a point $p_n\in \bigcap_{m\leq n}U_m$.
 
@@ -168,9 +168,9 @@ where $L_{2k}$ is the $2k$-tactical fog-of-war (resp. $2k$-Mark\"ov fog-of-war, 
 
 Let $p$ attack $\tau$. Consider the attack $q$ against the winning strategy $\sigma$ such that $q(2n)=x$ and $q(2n+1)=p(n)$, and let $D_n=\sigma\circ L_{2k}(q)$ and $E_n=\bigcap_{m\leq n}D_n$.
 
-Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$. Note also for any $n<\omega$ that 
+Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$. Note also for any $n<\omega$ that
     \[
-      p(n) \in 
+      p(n) \in
       \bigcap_{m\leq n}\tau\circ L_k(p\rest n)
     \]
     \[
@@ -290,7 +290,7 @@ For all $x\in X$:
 \end{prop}
 
 \begin{proof}
-  If $\sigma$ witnesses $\pl O\ktactwin{k}\congame{X}{x}$, let $\tau(\emptyset)=\sigma(\emptyset)$ and
+  If $\sigma$ witnesses $\pl O\ktactwin{k}\proxgame{X}{x}$, let $\tau(\emptyset)=\sigma(\emptyset)$ and
     \[
       \tau(\<q\>)
         =
@@ -304,7 +304,7 @@ For all $x\in X$:
       \sigma(\<\underbrace{q,\dots,q}_{k-i},\underbrace{q',\dots,q'}_{i}\>)
     \]
 
-  This is easily verified to be a winning strategy. The proof for $\pl O\kmarkwin{k}\congame{X}{x}$ is analogous.
+  This is easily verified to be a winning strategy. The proof for $\pl O\kmarkwin{k}\proxgame{X}{x}$ is analogous.
 \end{proof}
 
 \newpage
@@ -406,11 +406,11 @@ For all $x\in X$:
 
   \begin{itemize}
     \item Let $T(a)\subseteq T(a\concat\<x\>)$.
-    \item Choose $t=s\concat\<i,h_{s,i},j,x\>$ such that $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ and $x\in \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$. 
+    \item Choose $t=s\concat\<i,h_{s,i},j,x\>$ such that $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ and $x\in \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$.
     \item Note that, assuming $o(s)\concat\<h_{s,i}\>$ is a legal partial attack against $\sigma$, then
       \[
         x
-          \in 
+          \in
         \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
           \subseteq
         \frac{1}{4}\sigma(o(s))[h_{s,i,j}]
@@ -418,15 +418,15 @@ For all $x\in X$:
     and
       \[
         h_{s,i,j}
-          \in 
+          \in
         \cl{\frac{1}{4}\sigma(o(s))[h_{s,i}]}
-          \subseteq 
+          \subseteq
         \frac{1}{2}\sigma(o(s))[h_{s,i}]
       \]
     implies
       \[
         x
-          \in 
+          \in
         \sigma(o(s))[h_{s,i}]
       \]
     and thus $o(s)\concat\<h_{s,i},x\>=o(t)$ is a legal partial attack against $\sigma$.
@@ -442,7 +442,7 @@ For all $x\in X$:
     \item Note that, assuming $o(t)$ is a legal partial attack against $\sigma$, then
       \[
         h_{t,k}
-          \in 
+          \in
         \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}
           \subseteq
         \frac{1}{2}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
@@ -450,7 +450,7 @@ For all $x\in X$:
     and
       \[
         x
-          \in 
+          \in
         \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
       \]
     implies
@@ -521,29 +521,29 @@ For all $x\in X$:
 \newpage
 
 \begin{thm}
-  $\pl O \prewin \congame{X}{H}$ if and only if there exists a countable base 
+  $\pl O \prewin \congame{X}{H}$ if and only if there exists a countable base
   around $H$.
 \end{thm}
 
 \begin{proof}
-  Let $\{U_n:n<\omega\}$ be a countable base around $H$. We define the 
-  predetermined strategy $\sigma(n)=\bigcap_{m\leq n}U_m$. Let $p$ attack 
-  $\sigma(n)$ - then if $U$ is any neighborhood of $H$, we may choose 
-  $H\subseteq U_m\subseteq U$, and note that $\sigma(n)\subseteq U_m$ for 
-  $n\geq m$, and thus $p(n)\in U_m\subseteq U$ for all $n\geq m$. Thus 
+  Let $\{U_n:n<\omega\}$ be a countable base around $H$. We define the
+  predetermined strategy $\sigma(n)=\bigcap_{m\leq n}U_m$. Let $p$ attack
+  $\sigma(n)$ - then if $U$ is any neighborhood of $H$, we may choose
+  $H\subseteq U_m\subseteq U$, and note that $\sigma(n)\subseteq U_m$ for
+  $n\geq m$, and thus $p(n)\in U_m\subseteq U$ for all $n\geq m$. Thus
   $\sigma$ is a winning strategy.
 
-  For the other direction, suppose there does not exist a countable base 
-  around $H$, and let $\sigma(n)$ be an arbitrary predetermined strategy. 
-  Since $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ is not a countable base 
-  around $H$, we may choose an open set $U$ around $H$ such that 
-  $\bigcap_{m\leq n}\sigma(m)\not\subseteq U$ for all $n<\omega$. We may 
-  easily verify that if $p(n)\in\bigcap_{m\leq n}\sigma(m)\setminus U$ for 
+  For the other direction, suppose there does not exist a countable base
+  around $H$, and let $\sigma(n)$ be an arbitrary predetermined strategy.
+  Since $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ is not a countable base
+  around $H$, we may choose an open set $U$ around $H$ such that
+  $\bigcap_{m\leq n}\sigma(m)\not\subseteq U$ for all $n<\omega$. We may
+  easily verify that if $p(n)\in\bigcap_{m\leq n}\sigma(m)\setminus U$ for
   all $n<\omega$, then $p$ is a successful counterattack to $\sigma$.
 \end{proof}
 
 \begin{cor}
-  $X$ is first countable if and only if $\pl O \prewin \congame{X}{x}$ for 
+  $X$ is first countable if and only if $\pl O \prewin \congame{X}{x}$ for
   all $x\in X$
 \end{cor}
 
@@ -552,7 +552,7 @@ For all $x\in X$:
 \end{cor}
 
 \begin{defn}
-  Scattered Eberlein compact spaces are known as \term{strong Eberlein 
+  Scattered Eberlein compact spaces are known as \term{strong Eberlein
   compact} spaces.
 \end{defn}
 
@@ -571,28 +571,28 @@ For all $x\in X$:
 \end{ex}
 
 \begin{proof}
-  There does not exist a countable base around $\infty$, so 
+  There does not exist a countable base around $\infty$, so
     $\pl O \not\prewin \congame{X}{\omega_1}$.
 \end{proof}
 
 \begin{ex}
-  $\pl O \tactwin \congame{\oneptcomp\kappa}{\infty}$ and 
+  $\pl O \tactwin \congame{\oneptcomp\kappa}{\infty}$ and
   $\pl D \tactwin \proxgame{\oneptcomp\kappa}$ for all cardinals $\kappa$
 \end{ex}
 
 \begin{proof}
-  For $\congame{\oneptcomp\kappa}{\infty}$, let 
-    $\sigma()=\sigma(\infty)=\oneptcomp\kappa$ 
-  and 
-    $\sigma(x)=\oneptcomp\kappa\setminus\{x\}$ 
+  For $\congame{\oneptcomp\kappa}{\infty}$, let
+    $\sigma()=\sigma(\infty)=\oneptcomp\kappa$
+  and
+    $\sigma(x)=\oneptcomp\kappa\setminus\{x\}$
   otherwise.
-\end{proof} 
+\end{proof}
 
 
 \newpage
 
 \begin{thm}
-  If $H$ is a closed subset of $X$, then 
+  If $H$ is a closed subset of $X$, then
     $
       \pl D \limitwin \proxgame{X}
         \Rightarrow
@@ -612,8 +612,8 @@ For all $x\in X$:
       H^2
     \]
 
-  Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy 
-  $\sigma\circ L$, so either 
+  Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
+  $\sigma\circ L$, so either
     \[
       \bigcap_{n<\omega}
       \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
@@ -639,14 +639,14 @@ For all $x\in X$:
     \[
       \{\pi_i^{-1}(D):i<\omega, D\in\mc D_i\}
     \]
-  where $\pi_i$ is the natural projection from 
+  where $\pi_i$ is the natural projection from
   $\left(\prod_{i<\omega}X_i\right)^2$ onto $X_i^2$. (See Bell.)
 
   For $p\in \left(\prod_{i<\omega}X_i\right)^\omega$, let $p_i\in X_i^\omega$
   such that $p_i(n)=p(n)(i)$.
 
   Let $\sigma_i\circ L$ witness $\pl D\limitwin \proxgame{X_i}$ for
-  $i<\omega$, and assume without loss of generality that 
+  $i<\omega$, and assume without loss of generality that
   $\sigma_i\circ L$ always yields $X_i^2$ before round $i$.
 
   Then we define the strategy $\tau\circ L$ for $\pl D$ in
@@ -663,7 +663,7 @@ For all $x\in X$:
       \left(\bigcap_{m\leq n}\sigma_i(p_i\rest n)\right)[p_i(n)]
       = \emptyset
     $
-  for any $i<\omega$, it easily follows that 
+  for any $i<\omega$, it easily follows that
     $
       \bigcap_{n<\omega}
       \left(\bigcap_{m\leq n}\tau(p\rest n)\right)[p(n)]
@@ -674,7 +674,7 @@ For all $x\in X$:
   $x_i\in X_i$. Thus $p$ converges to $x=\<x_0,x_1,\dots\>$.
 \end{proof}
 
-Note: I expect I should be able to do some clever things 
+Note: I expect I should be able to do some clever things
 assuming $S(\kappa,\omega,\omega)$ to get a similar result for sigma
 products of dimension $\kappa$.
 
@@ -696,21 +696,21 @@ products of dimension $\kappa$.
 \end{lem}
 
 \begin{proof}
-  Suppose that $\sigma$ is a predetermined winning strategy for 
+  Suppose that $\sigma$ is a predetermined winning strategy for
   $\clusgame{X}{S}$. Let $p$ attack $\sigma$, and $q$ be a subsequence of $p$.
   It follows that $q$ also attacks $\sigma$, so $q$ clusters at $S$. Thus $p$
-  conveges to $S$, and $\sigma$ is a predetermined winning strategy for 
+  conveges to $S$, and $\sigma$ is a predetermined winning strategy for
   $\congame{X}{S}$.
 \end{proof}
 
 \begin{thm}
-  For any predetermined absolutely proximal space $X$, 
+  For any predetermined absolutely proximal space $X$,
   $\pl O\prewin \congame{X}{H}$ for all compact $H\subseteq X$.
 \end{thm}
 
 \begin{proof}
-  Let $\sigma(n)$ be a winning predetermined strategy for $\pl D$ in the 
-  absolutely proximal game such that 
+  Let $\sigma(n)$ be a winning predetermined strategy for $\pl D$ in the
+  absolutely proximal game such that
   $\sigma(n+1)\subseteq \sigma(n)$.
   For a given tree $T$, let $\max(T)$ denote its maximal nodes.
 
@@ -720,7 +720,7 @@ products of dimension $\kappa$.
 
   \begin{itemize}
     \item Let $\emptyset\in T(0)$.
-    \item Choose 
+    \item Choose
       \[
         m_{\emptyset}<\omega
       \]
@@ -731,7 +731,7 @@ products of dimension $\kappa$.
       and for $i,j<m_{\emptyset}$ choose
       \[
         h_{\<i,j\>}
-          \in 
+          \in
         H\cap\cl{\frac{1}{4}\sigma(0)[h_{\<i\>}]}
       \]
       such that
@@ -742,30 +742,30 @@ products of dimension $\kappa$.
         \[
           \left\{\frac{1}{4}\sigma(1)[h_{\<i,j\>}]:j<m_{\emptyset}\right\}
         \]
-      is a cover for 
+      is a cover for
       $H\cap\cl{\frac{1}{4}\sigma(0)[h_{\<i\>}]}$.
     \item Let $\<i\>$ and $\<i,j\>$ be in $T(0)$ for $i,j<m_{\emptyset}$.
   \end{itemize}
 
   \bigskip
 
-  Now suppose $T(n)\subseteq \omega^{\leq 2n+2}$ is defined. 
+  Now suppose $T(n)\subseteq \omega^{\leq 2n+2}$ is defined.
   We then define $T(n+1)\subseteq \omega^{\leq 2n+4}$ as follows:
 
   \begin{itemize}
     \item Let $T(n)\subseteq T(n+1)$.
-    \item For each $t\concat\<i,j\>\in\max(T(n))$, choose 
+    \item For each $t\concat\<i,j\>\in\max(T(n))$, choose
         \[m_{t\concat\<i,j\>}<\omega\]
-        and for $k<m_{t\concat\<i,j\>}$ choose 
+        and for $k<m_{t\concat\<i,j\>}$ choose
           \[
             h_{t\concat\<i,j,k\>}
-              \in 
+              \in
             H\cap \cl{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i,j\>}]}
           \]
         and for $k,l<m_{t\concat\<i,j\>}$ choose
           \[
-            h_{t\concat\<i,j,k,l\>} 
-              \in 
+            h_{t\concat\<i,j,k,l\>}
+              \in
             H\cap\cl{\frac{1}{4}\sigma(2n+3)[h_{t\concat\<i,j,k\>}]}
           \]
         such that
@@ -774,7 +774,7 @@ products of dimension $\kappa$.
           :
         k<m_{t\concat\<i,j\>}\right\}
       \]
-    is a cover for $H\cap \cl{\frac{1}{4}\sigma(2n+1)[h_{t\concat\<i,j\>}]}$, 
+    is a cover for $H\cap \cl{\frac{1}{4}\sigma(2n+1)[h_{t\concat\<i,j\>}]}$,
     and such that for each $k<m_{t\concat\<i,j\>}$
       \[
         \left\{\frac{1}{4}\sigma(2n+3)[h_{t\concat\<i,j,k\>}]:l<m_t\right\}
@@ -786,29 +786,29 @@ products of dimension $\kappa$.
 
   \bigskip
 
-  We now define the predetermined strategy $\tau$ for $\pl O$ in 
+  We now define the predetermined strategy $\tau$ for $\pl O$ in
   $\clusgame{X}{H}$ such that:
   \[
-    \tau(n) 
-      = 
-    \bigcup_{t\in\max(T(n))} 
+    \tau(n)
+      =
+    \bigcup_{t\in\max(T(n))}
       \bigcap_{m<2n+2}
         \frac{1}{4}\sigma(m)[h_{t\rest m+1}]
   \]
   noting that $\tau(n)=\bigcap_{m\leq n}\tau(m)$ by definition.
 
-  Since 
+  Since
   $\left\{\frac{1}{4}\sigma(2n+2)[h_{t\concat\<i\>}]:i<m_{t}\right\}$ is a cover
   for $H\cap \frac{1}{4}\sigma(2n+1)[h_{t}]$, since \\
-  $\left\{\frac{1}{4}\sigma(2n+1)[h_{t\concat\<i,j\>}]:j<m_{t}\right\}$ is 
+  $\left\{\frac{1}{4}\sigma(2n+1)[h_{t\concat\<i,j\>}]:j<m_{t}\right\}$ is
   a cover for $H\cap \frac{1}{4}\sigma(2n)[h_{t\concat\<i\>}]$, and since
-  $\left\{\frac{1}{4}\sigma(0)[h_{\<i\>}]:i<m_{\emptyset}\right\}$ is a 
+  $\left\{\frac{1}{4}\sigma(0)[h_{\<i\>}]:i<m_{\emptyset}\right\}$ is a
   cover for $H$, it follows that $\tau(n)$ contains $H$ and is $\tau$ is
   a legal strategy.
 
 
-  Let $p$ be an attack against $\tau$ such that 
-  $p(n)\in \tau(n)$. If we can construct an attack $q$ 
+  Let $p$ be an attack against $\tau$ such that
+  $p(n)\in \tau(n)$. If we can construct an attack $q$
   against $\sigma$ which shares a subsequence of $p$, then $p$ must cluster
   since $q$ must converge.
   To find such a $q$, we construct a subtree $T'\subseteq T$.
@@ -825,12 +825,12 @@ products of dimension $\kappa$.
 
   Since $p(n)\in\tau(n)$, there exists some $t_n\in\max(T(n))$ such that
   \[
-    p(n) 
+    p(n)
       \in
     \bigcap_{m<2n+2}
     \frac{1}{4}\sigma(m)[h_{t_n\rest m+1}]
   \]
-  and in turn, there exists $t_n'\concat\<i,j\>\in\max(T'(n))$ 
+  and in turn, there exists $t_n'\concat\<i,j\>\in\max(T'(n))$
   with $t_n'\concat\<i,j\>\leq t_n$ and
   \[
     p(n)
@@ -855,7 +855,7 @@ products of dimension $\kappa$.
     \frac{1}{4}\sigma(|t_n'|+1)[h_{t_n'\concat\<i,j\>}]
   \]
 
-  We then define 
+  We then define
   \[
     T'(n+1)
       =
@@ -868,9 +868,9 @@ products of dimension $\kappa$.
   while noting that for all $k\leq m_{t_n'\concat\<i,j\>}$,
   \[
     h_{t_n'\concat\<i,j,k\>}
-      \in 
+      \in
     H\cap \cl{\frac{1}{4}\sigma(|t_n'|+2)[h_{t_n'\concat\<i,j\>}]}
-      \subseteq 
+      \subseteq
     \frac{1}{2}\sigma(|t_n'|+1)[h_{t_n'\concat\<i,j\>}]
   \]
   and thus
@@ -878,17 +878,17 @@ products of dimension $\kappa$.
     h_{t_n'\concat\<i,j,k\>}\in\sigma(|t_n'|+1)[p_{t_n'\concat\<i,j\>}]
   \]
 
-  Finally, we let $T'=\bigcup_{n<\omega}T'(n)$. Since 
+  Finally, we let $T'=\bigcup_{n<\omega}T'(n)$. Since
   $T'$ is an infinite tree with finite levels, we may
   pick an infinite branch $b$. From $b$, we construct the sequence
   \[
     q=\<h_{b\rest 1}, p_{b\rest 2}, h_{b\rest 3}, p_{b\rest 4}, \dots\>
   \]
-  and claim it attacks $\sigma$ and thus must converge. If so, since 
+  and claim it attacks $\sigma$ and thus must converge. If so, since
   $\<p_{b\rest2},p_{b\rest4},\dots\>$ is a subsequence of $p$, $p$ must
   cluster. To see this, recall that for some $t_n'$:
   \[
-    p_{b\rest2n+2} 
+    p_{b\rest2n+2}
       =
     p_{t_n'\concat\<i,j\>}
       \in
@@ -920,14 +920,14 @@ products of dimension $\kappa$.
 \newpage
 
 \begin{ex}
-  Let $X=I\times 2$ be the Alexandrov double interval. Then 
+  Let $X=I\times 2$ be the Alexandrov double interval. Then
   $\pl D \not\prewin \proxgame{X}$, but $\pl D \markwin \proxgame{X}$.
 \end{ex}
 
 \begin{proof}
-  We assume that the uniformity on $X$ is given by entourages 
+  We assume that the uniformity on $X$ is given by entourages
   \[
-    D(\epsilon,F) = 
+    D(\epsilon,F) =
     \{\<x,0\>,\<y,0\>: |x-y|<\epsilon \}
       \cup
     \{\<x,1\>,\<y,0\>: |x-y|<\epsilon \vee x\not\in F\}
@@ -939,21 +939,21 @@ products of dimension $\kappa$.
     \{\<x,1\>,\<y,1\>: x=y\}
   \]
 
-  That is, points are $D(\epsilon,F)$-close if they are the same point, or 
-  the first coordinates are within $\epsilon$ of each other while neither 
+  That is, points are $D(\epsilon,F)$-close if they are the same point, or
+  the first coordinates are within $\epsilon$ of each other while neither
   second coordinate is in $F$.
 
-  Suppose $\pl D$ had a predetermined winning strategy 
-  $\sigma(n)=D(\epsilon_n,F_n)$. Then 
-  $\pl P$ can choose $x\not\in \bigcup_{n<\omega} F_n$, and play $\<x,1\>$ 
+  Suppose $\pl D$ had a predetermined winning strategy
+  $\sigma(n)=D(\epsilon_n,F_n)$. Then
+  $\pl P$ can choose $x\not\in \bigcup_{n<\omega} F_n$, and play $\<x,1\>$
   during even rounds, and $\<x_{2n+1},0\>$ where $|x-x_{2n+1}|<\epsilon_{2n}$
   during odd rounds, preventing convergence.
 
-  However, assume $\pl D$ uses the Mark\"ov strategy 
+  However, assume $\pl D$ uses the Mark\"ov strategy
   $\sigma(x,n)=D(2^{-n},\{x\})$.
-  If $\pl P$ repeats a point of the form $\<x,1\>$, then since 
+  If $\pl P$ repeats a point of the form $\<x,1\>$, then since
   $D(2^{-n},\{x\})[\<x,1\>]=\{\<x,1\>\}$, $\pl P$ must repeat $\<x,1\>$ for
-  the rest of the game, and $\pl D$ wins. Otherwise, $\pl P$ cannot repeat 
+  the rest of the game, and $\pl D$ wins. Otherwise, $\pl P$ cannot repeat
   points played in $I\times\{1\}$, and as the first
   coordinates form a Cauchy sequence and converge to some $z$, any open set
   about $\<z,0\>$ contains all but finitely many points of $\pl P$'s sequence,
@@ -966,13 +966,13 @@ products of dimension $\kappa$.
 \end{thm}
 
 \begin{proof}
-  Let $M$ be a uniformly locally compact entourage. 
-  Let $\sigma$ witness $\pl D\prewin \proxgame{X}$ such that 
-  $\sigma(n)\subseteq M$ always 
-  (so $\cl{\sigma(a)[x]}\subseteq\cl{M[x]}$ is compact), 
+  Let $M$ be a uniformly locally compact entourage.
+  Let $\sigma$ witness $\pl D\prewin \proxgame{X}$ such that
+  $\sigma(n)\subseteq M$ always
+  (so $\cl{\sigma(a)[x]}\subseteq\cl{M[x]}$ is compact),
   $\sigma(n+1)\subseteq\frac{1}{4}\sigma(n)$.
 
-  Let $\tau(n)=\frac{1}{2}\sigma(n)$. If $p$ attacks $\tau$ in 
+  Let $\tau(n)=\frac{1}{2}\sigma(n)$. If $p$ attacks $\tau$ in
   $\aproxgame{X}$, then
     \[
       p(n+1)
@@ -1004,8 +1004,8 @@ products of dimension $\kappa$.
       \sigma(n)[p(n)]
     \]
 
-  Finally, note that $p$ attacks the winning strategy $\sigma$ in 
-  $\proxgame{X}$, but since the intersection of a chain of nonempty compact 
+  Finally, note that $p$ attacks the winning strategy $\sigma$ in
+  $\proxgame{X}$, but since the intersection of a chain of nonempty compact
   sets is nonempty:
 
     \[
@@ -1024,14 +1024,14 @@ If $\pl D \prewin \proxgame{X}$, then $X$ has a $G_\delta$ diagonal.
 \end{prop}
 
 \begin{proof}
-  If $\pl D \prewin \proxgame{X}$ with strategy $\sigma$, then consider 
-  $\<x,y\>\in \bigcap_{n<\omega} \sigma(n)$. It follows that 
-  $\<x,y,x,y,\dots\>$ attacks $\sigma$, and 
+  If $\pl D \prewin \proxgame{X}$ with strategy $\sigma$, then consider
+  $\<x,y\>\in \bigcap_{n<\omega} \sigma(n)$. It follows that
+  $\<x,y,x,y,\dots\>$ attacks $\sigma$, and
     $
-      \{x,y\}\subseteq \bigcap_{n<\omega} 
+      \{x,y\}\subseteq \bigcap_{n<\omega}
       \sigma(n)[x]\cap\bigcap_{n<\omega}\sigma(n)[y]
       \not=0
-    $ 
+    $
   so it must converge, and $x=y$. Thus
   $\bigcap_{n<\omega}\sigma(n) = \Delta$ is $G_\delta$.
 \end{proof}
@@ -1041,7 +1041,7 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
 \end{ex}
 
 \begin{cor}
-  For $X$ with uniformity $\mathbb{D}$ inducing the compact Hausdorff topology 
+  For $X$ with uniformity $\mathbb{D}$ inducing the compact Hausdorff topology
   $\tau$, the following are equivalent:
     \begin{enumerate}[(a)]
       \item $\pl D \prewin \proxgame{X}$
@@ -1056,8 +1056,8 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
   For compact Hausdorff spaces, it is well known that there is exactly one
   uniformity inducing the topology. Thus $(d)\Leftrightarrow(e)$. Since $X$
   is uniformly locally compact, $(a)\Leftrightarrow(b)$. Also, compact spaces
-  with a $G_\delta$ diagonal are metrizable, so $(c)\Rightarrow(e)$. 
-  Bell noted $(d)\Rightarrow(a)$ 
+  with a $G_\delta$ diagonal are metrizable, so $(c)\Rightarrow(e)$.
+  Bell noted $(d)\Rightarrow(a)$
   for arbitrary uniform spaces, and the previous proposition shows
   $(a)\Rightarrow(c)$.
 \end{proof}
@@ -1076,7 +1076,7 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
 \end{proof}
 
 \begin{cor}
-  If $X$ is uniformly locally compact, then $\pl D \prewin \proxgame{X}$ 
+  If $X$ is uniformly locally compact, then $\pl D \prewin \proxgame{X}$
   implies $X$'s topology is metrizable.
 \end{cor}
 
@@ -1091,12 +1091,12 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
 \end{ex}
 
 \begin{proof}
-  During round $0$, $\pl P$ may choose $m(0)=0$ and $p(0)=1$, 
+  During round $0$, $\pl P$ may choose $m(0)=0$ and $p(0)=1$,
   and during round $n+1$,
   $\pl P$ may choose $m(n+1)>m(n)$ and
   $p(n+1)=p(n)+\frac{1}{10^{m(n+1)}}$ such that $p$ is a legal attack.
-  
-  It follows that $p$ ``converges'' to 
+
+  It follows that $p$ ``converges'' to
   $x=\sum_{n<\omega}\frac{1}{10^{m(n)}}$, except $x$ is an irrational
   number composed of $1$s separated by strings of $0$s of strictly
   increasing size.
@@ -1106,18 +1106,18 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
   Let $\omega_1$ be given a ladder topology:
     \begin{itemize}
       \item All successor ordinals are isolated.
-      \item Strictly increasing sequences (ladders) $L_\alpha:\omega\to\alpha$ 
+      \item Strictly increasing sequences (ladders) $L_\alpha:\omega\to\alpha$
             are defined for each limit ordinal $\alpha$ such that $L_\alpha$ converges to $\alpha$ in the order topology, and each limit
             $\alpha$ is given neighborhoods of the form
-            $L(\alpha,m)=\{\alpha\}\cup\{L_\alpha(n):n\geq m\}$. 
+            $L(\alpha,m)=\{\alpha\}\cup\{L_\alpha(n):n\geq m\}$.
       \item $\omega_1=\bigcup_{\alpha\in\omega_1^L} L(\alpha,0)$
-    \end{itemize} 
-  
-  Let 
+    \end{itemize}
+
+  Let
     \[
       A(\alpha,n)
         =
-      [L(\alpha,0)\setminus L(\alpha,n)]^1 
+      [L(\alpha,0)\setminus L(\alpha,n)]^1
         \cup
       \{\oneptcomp\omega_1 \setminus (L(\alpha,0)\setminus L(\alpha,n))\}
     \]
@@ -1126,10 +1126,10 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
         =
       \{L(\alpha,0), \oneptcomp\omega_1 \setminus L(\alpha,0)\}
     \]
-    
+
   Finite refinements of $A(\alpha,n)$ and $B(\alpha)$ give partitions
   witnessing a uniformization of the ladder topology.
-  
+
   Then $\proxgame{\oneptcomp\omega_1}$ is indetermined.
 \end{ex}
 
@@ -1138,35 +1138,35 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
   isn't Corson compact.
 
   Let $\sigma$ be a perfect information strategy for $\pl P$.
-  
+
   Let
   \[
-    C(\sigma) 
-      = 
+    C(\sigma)
+      =
     \{
       \delta\in\omega_1^L
-        : 
+        :
       \omega_1\setminus D[\infty] \subseteq \delta
         \Rightarrow
       \sigma(D) < \delta
     \}
   \]
   and note that by the closing up lemma, $C(\sigma)$ is always club.
-  
+
   We define a counterattack for $\pl D$ with $D_0=D(F_0,0)$ and
-  $F_0=\emptyset$ as her 
-  initial move, and let $p_0=\sigma(D_0)$ be the initial move of $\pl P$. 
-  We fix $p_0<\delta_0<\delta_1<\dots\in C(\sigma)$ such that 
+  $F_0=\emptyset$ as her
+  initial move, and let $p_0=\sigma(D_0)$ be the initial move of $\pl P$.
+  We fix $p_0<\delta_0<\delta_1<\dots\in C(\sigma)$ such that
   $\lim_{n\to\infty}\delta_n=\delta_\infty\in C$. Enumerate all the
   limit ordinals $<\delta_n$ as $\alpha_{n,m}$ for $m<\omega$. Let
-  $i_n<\omega$ be the least integer such that 
+  $i_n<\omega$ be the least integer such that
   $L_{\delta_\infty}(i_n)>\delta_n$.
-  
-  If $D_0,\dots,D_n$ are the first $n$ moves of $\pl D$, and 
+
+  If $D_0,\dots,D_n$ are the first $n$ moves of $\pl D$, and
   $p_0,\dots,p_n$ are the first $n$ moves of $\pl P$ determined by $\sigma$,
   then we define
     \[
-      D_{n+1} 
+      D_{n+1}
         =
       \bigwedge_{j\leq n}
       \left(
@@ -1184,6 +1184,6 @@ The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
         \wedge
       A(\delta_\infty,i_n)
     \]
-  
+
   (TODO: show this is a winning counterattack)
 \end{proof}
