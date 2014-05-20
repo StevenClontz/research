@@ -16,7 +16,7 @@ We begin by investigating a game due to Gary Gruenhage.
   for every open neighborhood $U\supseteq S$, $x_n\in U$ for
   all but finite $n<\omega$.
 
-  If $S=\{x\}$ then we write $\congamehard{X}{x}$ for short.
+  If $S=\{x\}$ then we write $\congame{X}{x}$ for short.
 \end{game}
 
 (TODO: Any reason for the ``W''?)
@@ -46,7 +46,7 @@ first-countable spaces using this game.
 
   If $X$ is not first countable at some $x$, let $\sigma$ be a
   predetermined strategy for $\pl O$ in $\congamehard{X}{x}$. There exists
-  an open neighborhood $U$ such that $U$ is not a subset of any $\sigma(n)$
+  an open neighborhood $U$ of $x$ which does not contain any $\sigma(n)$
   (otherwise $\{\sigma(n):n<\omega\}$ would be a countable base at $x$).
   Let $x_n$ be an element of $\sigma(n)\setminus U$ for all $n<\omega$.
   Then $\<x_0,x_1,\dots\>$ is a winning counter-attack to $\sigma$ for $\pl P$,
@@ -59,14 +59,16 @@ recent open set played by $\pl O$, rather than all the previously played
 open sets.
 
 \begin{defn}
-  Let $\congame{X}{S}$ denote the \term{hard $W$-convergence game} which proceeds
-  as $\congamehard{X}{S}$, except that $\pl P$ need only play within $O_n$
-  rather than $\bigcap_{m\leq n}O_n$.
+  Let $\congamehard{X}{S}$ denote the \term{hard $W$-convergence game} which
+  proceeds as $\congame{X}{S}$, except that $\pl P$ need only choose
+  $x_n\in O_n$ rather than $x_n\in \bigcap_{m\leq n}O_m$ during each round.
 \end{defn}
 
-Of course, this is normally easily circumvented.
+This seemingly more difficult game for $\pl O$ is Gruenhage's original
+formulation. But with perfect information, there is no real difference for
+$\pl O$.
 
-\begin{prop}
+\begin{prop}\label{propNormalHardCon}
   $\pl O \limitwin \congame{X}{S}$
     if and only if
   $\pl O \limitwin \congamehard{X}{S}$,
@@ -77,7 +79,8 @@ Of course, this is normally easily circumvented.
   The backwards implication is immediate.
 
   For the forward implication, let $\sigma$ be a winning predetermined
-  (perfect information) strategy, and $\lambda$ be $\mu_0$ (the identity).
+  (perfect information) strategy, and $\lambda$ be the $0$-Mark\"ov
+  fog-of-war $\mu_0$ (the identity).
 
   We define a new predetermined (perfect information) strategy $\tau$ by
     \[
@@ -85,39 +88,42 @@ Of course, this is normally easily circumvented.
         =
       \bigcap_{m\leq n}\sigma\circ\lambda(\<x_0,\dots,x_{m-1}\>)
     \]
-  so that each move by $\pl O$ according to $\tau$ is the intersection of
-  $\pl O$'s previous moves. Then any attack against $\tau$ is an attack
-  against $\sigma$, and since $\sigma$ is a winning strategy, so is $\tau$.
+  so that each move by $\pl O$ according to $\tau\circ\lambda$ is the
+  intersection of $\pl O$'s previous moves. Then any attack against
+  $\tau\circ\lambda$ is an attack against $\sigma\circ\lambda$, and since
+  $\sigma\circ\lambda$ is a winning strategy, so is $\tau\circ\lambda$.
 \end{proof}
 
-It's important to note that $\tau$ is only well-defined in the case
-$\lambda=\mu_0$ because the value of
-$\sigma\circ\lambda(\<x_0,\dots,x_{m-1}\>)$ does not rely on knowledge of the
-points $\<x_0,\dots,x_{m-1}\>$ for any $m\leq n$.
-The proof would be invalid if $\lambda$ was required to be, say,
-$\nu_{k+1}$, since the value of
-$\sigma\circ\nu_{k+1}(\<x_0,\dots,x_k\>)=\sigma(\<x_0,\dots,x_k\>)$
-could not be uniquely determined from
-$\nu_{k+1}(\<x_0,\dots,x_{k+1}\>)=\<x_1,\dots,x_{k+1}\>$.
+Put another way, $\tau(n)=\bigcap_{m\leq n}\sigma(m)$ in the predetermined
+case, and
+$\tau(\<x_0,\dots,x_{n-1}\>)=\bigcap_{m\leq n}\sigma(\<x_0,\dots,x_{m-1}\>)$
+in the perfect information case.
+The original proof would have been invalid if $\lambda$ was required to be, say,
+the tactical fog-of-war $\nu_1$, since the value of $\pl O$'s own second move
+$\sigma\circ\nu_1(\<x_0\>)=\sigma(\<x_0\>)$
+could not be determined from the information she has during round
+$2$: $\nu_1(\<x_0,x_1\>)=\<x_1\>$.
 
 Due to the equivalency of the ``hard'' and ``normal'' variations of the
-convergence game in the perfect information case, most authors use them
-interchangibly. However, it is easy to find spaces for which the games are
-not equivalent when considering $k+1$-tactics and $k+1$-marks.
+convergence game in the perfect information case, many authors use them
+interchangibly. However, it is possible to find spaces for which the games are
+not equivalent when considering $k+1$-tactics and $k+1$-marks, as we will
+soon see.
 
 In addition to the $W$-convergence games, we will also investigate
 ``clustering'' analogs to both variations.
 
 \begin{game}
-  Let $\clusgame{X}{S}$ (resp. $\clusgamehard{X}{S}$) be a variation of
-  $\congame{X}{S}$ (resp. $\congamehard{X}{S}$) such that $x_n$ need only
+  Let $\clusgame{X}{S}$ ($\clusgamehard{X}{S}$) be a variation of
+  $\congame{X}{S}$ ($\congamehard{X}{S}$) such that $x_n$ need only
   cluster at $S$, that is, for every open neighborhood $U$ of $S$, $x_n\in U$
   for infinitely many $n<\omega$.
 \end{game}
 
-Gruenhage noted that the clustering game is
-perfect-information equivalent to the convergence game for $\pl O$. This
-can easily be extended for some limited information cases as well.
+This variation seems to make $\pl O$'s job easier, but Gruenhage noted that
+the clustering game is perfect-information equivalent to the convergence game
+for $\pl O$. This can easily be extended for some limited information cases
+as well.
 
 \begin{prop}
   $\pl O \limitwin \congame{X}{S}$
@@ -137,27 +143,40 @@ can easily be extended for some limited information cases as well.
   at $S$, $p$ converges to $S$, and $\sigma$ is a winning predetermined
   (resp. tactical) strategy for $\pl O$ in $\congame{X}{S}$ as well.
 
-  In the final case, note that any Mark\"ov strategy $\sigma$ for $\pl O$ may be
-  strengthened by setting $\sigma'(x,n)=\bigcap_{m\leq n}\sigma(x,m)$.
+  In the final case, note that any Mark\"ov strategy $\sigma'$ for $\pl O$ may
+  be strengthened to $\sigma$ defined by
+  $\sigma(x,n)=\bigcap_{m\leq n}\sigma'(x,m)$.
   So, suppose that $\sigma$ is a winning Mark\"ov strategy for $\pl O$ in
   $\clusgame{X}{S}$ such that $\sigma(x,m)\supseteq\sigma(x,n)$ for all
   $m\leq n$.
 
   Let $p$ be a legal attack against $\sigma$, and $q$ be a subsequence of $p$.
-  For $m<\omega$, there exists $f(m)\leq m$ such that $q(m)=p(f(m))$. It follows
+  For $m<\omega$, there exists $f(m)\geq m$ such that $q(m)=p(f(m))$. It follows
   that
-    \[
-      q(n+1)
+    $
+      q(0)=p(f(0))
         \in
-      \bigcap_{m\leq n}\sigma(q(m),m+1)
-        =
-      \bigcap_{m\leq n}\sigma(p(f(m)),m+1)
-    \]
+      \sigma(\emptyset,0)\cap \bigcap_{m\leq f(0)}\sigma(\<p(m)\>,m)
+        \subseteq
+      \sigma(\emptyset,0)
+    $
+  and
     \[
-        \subseteq
-      \bigcap_{m\leq n}\sigma(p(f(m)),f(m)+1)
-        \subseteq
-      \bigcap_{m\leq f(n)}\sigma(p(m),m+1)
+      \begin{array}{rcl}
+        q(n+1)=p(f(n+1)) &
+          \in &
+        \displaystyle
+        \sigma(\emptyset,0)\cap \bigcap_{m<f(n+1)}\sigma(\<p(m)\>,m+1) \\ &
+          \subseteq &
+        \displaystyle
+        \sigma(\emptyset,0)\cap \bigcap_{m<n+1}\sigma(\<p(f(m))\>,f(m)+1) \\ &
+          = &
+        \displaystyle
+        \sigma(\emptyset,0)\cap \bigcap_{m<n+1}\sigma(\<q(m)\>,f(m)+1) \\ &
+          \subseteq &
+        \displaystyle
+        \sigma(\emptyset,0)\cap \bigcap_{m<n+1}\sigma(\<q(m)\>,m+1)
+      \end{array}
     \]
   so $q$ is also a legal attack against $\sigma$. Since $\sigma$ is a winning
   strategy, $q$ clusters at $S$, and since every subsequence of $p$ clusters
@@ -167,12 +186,15 @@ can easily be extended for some limited information cases as well.
 
 (TODO: Maybe $k+2$ tacts/marks as well, but not as obvious if so.)
 
+(TODO: It's feasible that $k$-limit $\Leftrightarrow$ $1$-limit for
+one variation or another.)
+
 
 
 \section{Fort spaces}
 
-Gruenhage suggested the one-point-compactification of a discrete space as
-an example of a $W$-space which is not first-countable.
+In his original paper, Gruenhage suggested the one-point-compactification of a
+discrete space as an example of a $W$-space which is not first-countable.
 
 \begin{defn}
   A \term{Fort space} $\oneptcomp\kappa=\kappa\cup\{\infty\}$ is defined
@@ -181,25 +203,206 @@ an example of a $W$-space which is not first-countable.
   for each $F\in[\kappa]^{<\omega}$.
 \end{defn}
 
-\begin{thm}
-$O\not\ktactwin{k}\clusgame{\oneptcomp{\omega_1}}{\infty}$.
-\end{thm}
+\begin{prop}\label{propFortTact}
+  $\pl O \tactwin \congame{\oneptcomp\kappa}{\infty}$ for all cardinals $\kappa$
+\end{prop}
+
+\begin{proof}
+  Let $\sigma(\emptyset)=\sigma(\<\infty\>)=\oneptcomp\kappa$ and
+  $\sigma(\<\alpha\>)=\oneptcomp\kappa\setminus\{\alpha\}$. Any legal attack
+  against the tactic $\sigma$ could not repeat non-$\infty$ points, so
+  it must converge to $\infty$.
+\end{proof}
+
+\begin{cor}
+  $\pl O \win \congamehard{\oneptcomp\kappa}{\infty}$ for all cardinals $\kappa$
+\end{cor}
+
+\begin{proof}
+  Propositions \ref{propNormalHardCon} and \ref{propFortTact}.
+\end{proof}
+
+Since it's trivial to show that $\pl O\prewin\congame{\oneptcomp\kappa}$ if and
+only if $\kappa\leq\omega$, this closes the question on limited information
+strategies for $\congame{\oneptcomp\kappa}{\infty}$. However, limited
+information analysis of the harder $\congamehard{\oneptcomp\kappa}{\infty}$
+is more interesting.
+
+Peter Nyikos noted Proposition \ref{propFortTact} and the following in
+\cite{MR1031771}.
 
 \begin{thm}
-$O\markwin \clusgame{\oneptcomp{\omega_1}}{\infty}$.
+  $\pl O \not\markwin \congamehard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
-\begin{thm}(Nyikos)
-$O\not\markwin \congame{\oneptcomp{\omega_1}}{\infty}$.
-\end{thm}
+This actually can be generalized to any $k$-Mark\"ov strategy with just
+a little more bookkeeping.
 
 \begin{thm}
-$O\not\kmarkwin{k}\clusgame{\oneptcomp{\kappa}}{\infty}$ for $\kappa>\omega_1$.
+  $\pl O \not\kmarkwin{k} \congamehard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
-(TODO: It's feasible that $k$-limit $\Leftrightarrow$ $1$-limit.)
+\begin{proof}
+  Let $\sigma$ be a $k$-mark for $\pl O$. Since the set
+    \[
+      D_\sigma
+        =
+      \bigcap_{n<\omega,s\in \omega^{\leq k}}
+      \sigma(s,n)
+    \]
+  is co-countable, we may choose $\alpha_\sigma\in D_\sigma\cap\omega_1$.
+  Thus, we may choose $n_0<n_1<\dots<\omega$ such that
+    \[
+      \<n_0,\dots,n_{k-1},\alpha_\sigma,
+        n_k,\dots,n_{2k-1},\alpha_\sigma,
+        \dots\>
+    \]
+  is a legal counterattack, which fails to converge to $\infty$ since
+  $\alpha_\sigma$ is repeated infinitely often.
+\end{proof}
 
-\section{Sigma-products}
+However, while the clustering and convergence variants are equivalent
+for Mark\"ov strategies in the ``normal'' version of the $W$ game, they are
+\textit{not} equivalent in the ``hard'' version.
+
+\begin{thm}
+  $\pl O\markwin \clusgamehard{\oneptcomp\omega_1}{\infty}$.
+\end{thm}
+
+\begin{proof}
+  For each $\alpha<\omega_1$ let $A_\alpha=\<A_\alpha(0),A_\alpha(1),\dots\>$
+  be a countable sequence of finite sets such that
+  $A_\alpha(n)\subset A_\alpha(n+1)$ and
+  $\bigcup_{n<\omega}A_\alpha(n)=\alpha+1$.
+
+  We define the Mark\"ov strategy $\sigma$ by setting
+    \[
+      \sigma(\emptyset,0) = \sigma(\<\infty\>,n) = \oneptcomp\omega_1
+    \]
+  and for all $\alpha<\omega_1$ setting
+    \[
+      \sigma(\<\alpha\>,n) = \oneptcomp\omega_1 \setminus A_\alpha(n)
+    \]
+
+  Note that for any $\alpha_0<\dots<\alpha_{k-1}$, there is some $n<\omega$
+  such that
+  $\{\alpha_0,\dots,\alpha_{k-1}\}\subseteq A_{\alpha_i}(n)$ for all $i<k$.
+  Thus for any legal attack $p$ against $\sigma$, the range of $p$ cannot
+  be finite. Since the range of $p$ is infinite, every open neighborhood of
+  $\infty$ contains infinitely many points of $p$, so $p$ clusters at $\infty$.
+\end{proof}
+
+However, knowledge of the round number is critical.
+
+\begin{thm}
+  $O\not\ktactwin{k}\clusgamehard{\oneptcomp\omega_1}{\infty}$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a $k$-tactic for $\pl O$ in
+  $\clusgame{\oneptcomp\omega_1}{\infty}$. By the closing-up lemma, the set
+    \[
+      C_\sigma
+        =
+      \{
+        \alpha<\omega_1
+          :
+        s\in\alpha^{\leq k}
+          \Rightarrow
+        \oneptcomp\omega_1\setminus\sigma(s)
+        \subset \alpha
+      \}
+    \]
+  is closed and unbounded. Let $a_\sigma:\omega_1\to C_\sigma$ be an order
+  isomorphism.
+
+  Choose $n_0<\dots<n_{k-1}<\omega$ such that for each $i<k$:
+    \[
+      a_\sigma(n_i)
+        \in
+      \sigma(
+        \<a_\sigma(n_0),\dots,a_\sigma(n_{i-1}),
+          a_\sigma(\omega+i),\dots,a_\sigma(\omega+k-1)\>
+      )
+    \]
+
+  Finally, observe that the legal counterattack
+    \[
+      \<a_\sigma(n_0),\dots,a_\sigma(n_{k-1}),
+        a_\sigma(\omega),\dots,a_\sigma(\omega+k-1),
+        a_\sigma(n_0),\dots,a_\sigma(n_{k-1}),
+        a_\sigma(\omega),\dots,a_\sigma(\omega+k-1),
+        \dots\>
+    \]
+  has a range outside the open neighborhood
+    \[
+      \oneptcomp\omega_1
+        \setminus
+      \{a_\sigma(n_0),\dots,a_\sigma(n_{k-1}),
+        a_\sigma(\omega),\dots,a_\sigma(\omega+k-1)\}
+    \]
+  of $\infty$. Thus $\sigma$ is not a winning $k$-tactic.
+\end{proof}
+
+Once the discrete space is larger than $\omega_1$, knowing the round number
+is not sufficient to construct a limited information strategy, due to a
+similar argument.
+
+\begin{thm}
+  $O\not\kmarkwin{k}\clusgame{\oneptcomp\omega_2}{\infty}$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a $k$-mark for $\pl O$ in
+  $\clusgame{\oneptcomp\omega_2}{\infty}$. By the closing-up lemma, the set
+    \[
+      C_\sigma
+        =
+      \{
+        \alpha<\omega_2
+          :
+        s\in\alpha^{<\omega}
+          \Rightarrow
+        \oneptcomp\omega_2\setminus\sigma\circ\mu_k(s)
+        \subset \alpha
+      \}
+    \]
+  is closed and unbounded. Let $a_\sigma:\omega_2\to C_\sigma$ be
+  an order isomorphism.
+
+  Choose $\beta_0<\dots<\beta_{k-1}<\omega_1$ such that for each $i<k$:
+    \[
+      a_\sigma(\beta_i)
+        \in
+      \bigcup_{n<\omega}
+      \sigma(
+        \<a_\sigma(\beta_0),\dots,a_\sigma(\beta_{i-1}),
+          a_\sigma(\omega_1+i),\dots,a_\sigma(\omega_1+k-1)\>,
+      n)
+    \]
+
+  Finally, observe that the legal counterattack
+    \[
+      \<a_\sigma(\beta_0),\dots,a_\sigma(\beta_{k-1}),
+        a_\sigma(\omega_1),\dots,a_\sigma(\omega_1+k-1),
+        a_\sigma(\beta_0),\dots,a_\sigma(\beta_{k-1}),
+        a_\sigma(\omega_1),\dots,a_\sigma(\omega_1+k-1),
+        \dots\>
+    \]
+  has a range outside the open neighborhood
+    \[
+      \oneptcomp\omega_2
+        \setminus
+      \{a_\sigma(\beta_0),\dots,a_\sigma(\beta_{k-1}),
+        a_\sigma(\omega_1),\dots,a_\sigma(\omega_1+k-1)\}
+    \]
+  of $\infty$. Thus $\sigma$ is not a winning $k$-mark.
+\end{proof}
+
+
+
+
+\section{TODO: Sigma-products}
 
 \begin{thm}
   Let $\textrm{cf}([\kappa]^{\leq\omega})=\kappa$.
