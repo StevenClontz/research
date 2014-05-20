@@ -46,6 +46,8 @@ Then a playthrough is in $W$ if either
 the first player made only \term{legal moves} which observed the game's rules
 and the playthrough satisified the winning condition, or the second player
 made an \term{illegal move} which contradicted the game's rules.
+Often, we will consider \term{legal playthoughs} where both players only
+made legal moves, in which case only the winning condition need be considered.
 
 As an illustration, we could model a game of chess (ignoring stalemates)
 by letting
@@ -247,6 +249,20 @@ Choice.\footnote{
   of Choice is false). \cite{MR0140430}
 }
 
+Often, we will build new strategies based on others.
+
+\begin{defn}
+  A strategy $\tau$ is a \term{strengthening} of another strategy $\sigma$
+  for a player if whenever the result of the game for $\sigma$ and an attack
+  $a$ by the opponent is a victory for the player, then the result of the game
+  for $\tau$ and $a$ is also a victory for the player.
+\end{defn}
+
+\begin{prop}
+  If $\sigma$ is a winning strategy, and $\tau$ strengthens $\sigma$,
+  then $\tau$ is also a winning strategy.
+\end{prop}
+
 \subsection{Applications of Strategies}
 
 The power of studying these infinite-length games can be illustrated by
@@ -364,11 +380,13 @@ We call strategies which do not require full recollection of the opponent's
 moves \term{limited information strategies}.
 
 \begin{defn}
-  A \term{$k$-tactical strategy} or \term{$k$-tactic} is a limited information
-  strategy of the form $\sigma\circ\nu_k$.
+  A \term{$k$-tactical strategy} or \term{$k$-tactic} is a function
+  $\sigma:M^{\leq k}\to M$ yielding a corresponding strategy
+  $\sigma\circ\nu_k:M^{<\omega}\to M$.
 
-  A \term{$k$-Mark\"ov strategy} or \term{$k$-mark} is a limited information
-  strategy of the form $\sigma\circ\mu_k$.
+  A \term{$k$-Mark\"ov strategy} or \term{$k$-mark} is a function
+  $\sigma:M^{\leq k}\times\omega\to M$ yielding a corresponding strategy
+  $\sigma\circ\mu_k:M^{<\omega}\to M$.
 \end{defn}
 
 $k$-tactics and $k$-marks may then only use the last $k$ moves of the opponent,
@@ -380,6 +398,9 @@ usually interesting (such strategies would be constant functions); however,
 we will discuss $0$-Mark\"ov strategies, called
 \term{predetermined strategies} since such a strategy only uses the round
 number and does not rely on knowing which moves the opponent will make.
+Of course, a limited information strategy $\sigma$ is \term{winning} for a
+player if its corresponding strategy $\sigma\circ\nu_k$ or $\sigma\circ\mu_k$
+is winning for that player.
 
 \begin{defn}
   If a winning $k$-tactical strategy exists for a player $\pl A$ in the game
@@ -401,13 +422,13 @@ strategy.
   when $\pl N \win \bmgame{X}$.
 \end{defn}
 
-\begin{obs}
+\begin{prop}
   $X$ is $\alpha$-favorable
     $\Rightarrow$
   $X$ is weakly $\alpha$-favorable
     $\Rightarrow$
   $X$ is Baire
-\end{obs}
+\end{prop}
 
 Those arrows may not be reversed. A Bernstein subset of the real line is an
 example of a Baire space which is not weakly $\alpha$-favorable, and Gabriel

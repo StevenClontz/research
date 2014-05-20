@@ -3,12 +3,183 @@
 
 \chapter{$W$ convergence and clustering games}
 
-Results related to Gruenhage's ``W''-convergence game and variants.
+We begin by investigating a game due to Gary Gruenhage.
 
-(these are related to the ``hard'' version for $\pl O$ where $\pl P$
-need only play within the most recent open set)
+\begin{game}
+  Let $\congame{X}{S}$ denote the \term{$W$-convergence game} with
+  players $\pl O$, $\pl P$, for a topological space $X$ and $S\subseteq X$.
+
+  In round $n$, $\pl O$ chooses an open neighborhood $O_n\supseteq S$, followed
+  by $\pl P$ choosing a point $x_n\in \bigcap_{m\leq n}O_m$.
+
+  $\pl O$ wins the game if the points $x_n$ converge to the set $S$; that is,
+  for every open neighborhood $U\supseteq S$, $x_n\in U$ for
+  all but finite $n<\omega$.
+
+  If $S=\{x\}$ then we write $\congamehard{X}{x}$ for short.
+\end{game}
+
+(TODO: Any reason for the ``W''?)
+
+Gruenhage defined this game in his doctoral dissertation to define a class
+of spaces generalizing first-countability. \cite{MR0413049}
+
+\begin{defn}
+  The spaces $X$ for which $\pl O \win \congamehard{X}{x}$ for all $x\in X$ are
+  called \term{$W$-spaces}.
+\end{defn}
+
+In fact, using limited information strategies, one may characterize the
+first-countable spaces using this game.
+
+\begin{prop}
+  $X$ is first countable
+    if and only if
+  $\pl O \prewin \congamehard{X}{x}$ for all $x\in X$.
+\end{prop}
+
+\begin{proof}
+  The forward implication shows that all $W$ spaces are first-countable spaces,
+  and was proven in \cite{MR0413049}: if $\{U_n:n<\omega\}$ is a countable
+  base at $x$, let $\sigma(n)=\bigcap_{m\leq n} U_m$. $\sigma$ is easily seen
+  to be a winning predetermined strategy.
+
+  If $X$ is not first countable at some $x$, let $\sigma$ be a
+  predetermined strategy for $\pl O$ in $\congamehard{X}{x}$. There exists
+  an open neighborhood $U$ such that $U$ is not a subset of any $\sigma(n)$
+  (otherwise $\{\sigma(n):n<\omega\}$ would be a countable base at $x$).
+  Let $x_n$ be an element of $\sigma(n)\setminus U$ for all $n<\omega$.
+  Then $\<x_0,x_1,\dots\>$ is a winning counter-attack to $\sigma$ for $\pl P$,
+  so $\pl O$ lacks a winning predetermined strategy.
+\end{proof}
+
+At first glance, the difficulty of $\congame{X}{S}$ could be increased for
+$\pl O$ by only restricting the choices for $\pl P$ to be within the most
+recent open set played by $\pl O$, rather than all the previously played
+open sets.
+
+\begin{defn}
+  Let $\congame{X}{S}$ denote the \term{hard $W$-convergence game} which proceeds
+  as $\congamehard{X}{S}$, except that $\pl P$ need only play within $O_n$
+  rather than $\bigcap_{m\leq n}O_n$.
+\end{defn}
+
+Of course, this is normally easily circumvented.
+
+\begin{prop}
+  $\pl O \limitwin \congame{X}{S}$
+    if and only if
+  $\pl O \limitwin \congamehard{X}{S}$,
+  where $\limitwin$ is either $\win$ or $\prewin$.
+\end{prop}
+
+\begin{proof}
+  The backwards implication is immediate.
+
+  For the forward implication, let $\sigma$ be a winning predetermined
+  (perfect information) strategy, and $\lambda$ be $\mu_0$ (the identity).
+
+  We define a new predetermined (perfect information) strategy $\tau$ by
+    \[
+      \tau\circ\lambda(\<x_0,\dots,x_{n-1}\>)
+        =
+      \bigcap_{m\leq n}\sigma\circ\lambda(\<x_0,\dots,x_{m-1}\>)
+    \]
+  so that each move by $\pl O$ according to $\tau$ is the intersection of
+  $\pl O$'s previous moves. Then any attack against $\tau$ is an attack
+  against $\sigma$, and since $\sigma$ is a winning strategy, so is $\tau$.
+\end{proof}
+
+It's important to note that $\tau$ is only well-defined in the case
+$\lambda=\mu_0$ because the value of
+$\sigma\circ\lambda(\<x_0,\dots,x_{m-1}\>)$ does not rely on knowledge of the
+points $\<x_0,\dots,x_{m-1}\>$ for any $m\leq n$.
+The proof would be invalid if $\lambda$ was required to be, say,
+$\nu_{k+1}$, since the value of
+$\sigma\circ\nu_{k+1}(\<x_0,\dots,x_k\>)=\sigma(\<x_0,\dots,x_k\>)$
+could not be uniquely determined from
+$\nu_{k+1}(\<x_0,\dots,x_{k+1}\>)=\<x_1,\dots,x_{k+1}\>$.
+
+Due to the equivalency of the ``hard'' and ``normal'' variations of the
+convergence game in the perfect information case, most authors use them
+interchangibly. However, it is easy to find spaces for which the games are
+not equivalent when considering $k+1$-tactics and $k+1$-marks.
+
+In addition to the $W$-convergence games, we will also investigate
+``clustering'' analogs to both variations.
+
+\begin{game}
+  Let $\clusgame{X}{S}$ (resp. $\clusgamehard{X}{S}$) be a variation of
+  $\congame{X}{S}$ (resp. $\congamehard{X}{S}$) such that $x_n$ need only
+  cluster at $S$, that is, for every open neighborhood $U$ of $S$, $x_n\in U$
+  for infinitely many $n<\omega$.
+\end{game}
+
+Gruenhage noted that the clustering game is
+perfect-information equivalent to the convergence game for $\pl O$. This
+can easily be extended for some limited information cases as well.
+
+\begin{prop}
+  $\pl O \limitwin \congame{X}{S}$
+    if and only if
+  $\pl O \limitwin \clusgame{X}{S}$
+  where $\limitwin$ is any of $\win$, $\prewin$, $\tactwin$, or $\markwin$.
+\end{prop}
+
+\begin{proof}
+  For the perfect information case we refer to \cite{MR0413049}.
+
+  In the predetermined (resp. tactical) case, suppose that $\sigma$ is a
+  winning predetermined (resp. tactical) strategy for $\pl O$ in
+  $\clusgame{X}{S}$. Let $p$ be a legal attack against $\sigma$, and $q$ be a
+  subsequence of $p$. It's easily seen that $q$ is also a legal attack against
+  $\sigma$, so $q$ clusters at $S$. Since every subsequence of $p$ clusters
+  at $S$, $p$ converges to $S$, and $\sigma$ is a winning predetermined
+  (resp. tactical) strategy for $\pl O$ in $\congame{X}{S}$ as well.
+
+  In the final case, note that any Mark\"ov strategy $\sigma$ for $\pl O$ may be
+  strengthened by setting $\sigma'(x,n)=\bigcap_{m\leq n}\sigma(x,m)$.
+  So, suppose that $\sigma$ is a winning Mark\"ov strategy for $\pl O$ in
+  $\clusgame{X}{S}$ such that $\sigma(x,m)\supseteq\sigma(x,n)$ for all
+  $m\leq n$.
+
+  Let $p$ be a legal attack against $\sigma$, and $q$ be a subsequence of $p$.
+  For $m<\omega$, there exists $f(m)\leq m$ such that $q(m)=p(f(m))$. It follows
+  that
+    \[
+      q(n+1)
+        \in
+      \bigcap_{m\leq n}\sigma(q(m),m+1)
+        =
+      \bigcap_{m\leq n}\sigma(p(f(m)),m+1)
+    \]
+    \[
+        \subseteq
+      \bigcap_{m\leq n}\sigma(p(f(m)),f(m)+1)
+        \subseteq
+      \bigcap_{m\leq f(n)}\sigma(p(m),m+1)
+    \]
+  so $q$ is also a legal attack against $\sigma$. Since $\sigma$ is a winning
+  strategy, $q$ clusters at $S$, and since every subsequence of $p$ clusters
+  at $S$, $p$ must converge to $S$. Thus $\sigma$ is also a winning Mark\"ov
+  strategy for $\pl O$ in $\congame{X}{S}$ as well.
+\end{proof}
+
+(TODO: Maybe $k+2$ tacts/marks as well, but not as obvious if so.)
+
+
 
 \section{Fort spaces}
+
+Gruenhage suggested the one-point-compactification of a discrete space as
+an example of a $W$-space which is not first-countable.
+
+\begin{defn}
+  A \term{Fort space} $\oneptcomp\kappa=\kappa\cup\{\infty\}$ is defined
+  for each cardinal $\kappa$. Its subspace $\kappa$ is discrete, and the
+  neighborhoods of $\infty$ are of the form $\oneptcomp\kappa\setminus F$
+  for each $F\in[\kappa]^{<\omega}$.
+\end{defn}
 
 \begin{thm}
 $O\not\ktactwin{k}\clusgame{\oneptcomp{\omega_1}}{\infty}$.
