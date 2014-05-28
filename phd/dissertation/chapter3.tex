@@ -19,13 +19,12 @@ We begin by investigating a game due to Gary Gruenhage.
   If $S=\{x\}$ then we write $\congame{X}{x}$ for short.
 \end{game}
 
-(TODO: Any reason for the ``W''?)
-
+The ``W'' in the name merely refers to $\pl O$'s goal: to ``win'' the game.
 Gruenhage defined this game in his doctoral dissertation to define a class
 of spaces generalizing first-countability. \cite{MR0413049}
 
 \begin{defn}
-  The spaces $X$ for which $\pl O \win \congamehard{X}{x}$ for all $x\in X$ are
+  The spaces $X$ for which $\pl O \win \congame{X}{x}$ for all $x\in X$ are
   called \term{$W$-spaces}.
 \end{defn}
 
@@ -35,7 +34,7 @@ first-countable spaces using this game.
 \begin{prop}
   $X$ is first countable
     if and only if
-  $\pl O \prewin \congamehard{X}{x}$ for all $x\in X$.
+  $\pl O \prewin \congame{X}{x}$ for all $x\in X$.
 \end{prop}
 
 \begin{proof}
@@ -46,11 +45,12 @@ first-countable spaces using this game.
 
   If $X$ is not first countable at some $x$, let $\sigma$ be a
   predetermined strategy for $\pl O$ in $\congamehard{X}{x}$. There exists
-  an open neighborhood $U$ of $x$ which does not contain any $\sigma(n)$
-  (otherwise $\{\sigma(n):n<\omega\}$ would be a countable base at $x$).
-  Let $x_n$ be an element of $\sigma(n)\setminus U$ for all $n<\omega$.
-  Then $\<x_0,x_1,\dots\>$ is a winning counter-attack to $\sigma$ for $\pl P$,
-  so $\pl O$ lacks a winning predetermined strategy.
+  an open neighborhood $U$ of $x$ which does not contain any 
+  $\bigcap_{m\leq n}\sigma(m)$ (otherwise 
+  $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ would be a countable base at $x$).
+  Let $x_n$ be an element of $\bigcap_{m\leq n}\sigma(m)\setminus U$ for all 
+  $n<\omega$. Then $\<x_0,x_1,\dots\>$ is a winning counter-attack to $\sigma$ 
+  for $\pl P$, so $\pl O$ lacks a winning predetermined strategy.
 \end{proof}
 
 At first glance, the difficulty of $\congame{X}{S}$ could be increased for
@@ -94,12 +94,12 @@ $\pl O$.
   $\sigma\circ\lambda$ is a winning strategy, so is $\tau\circ\lambda$.
 \end{proof}
 
-Put another way, $\tau(n)=\bigcap_{m\leq n}\sigma(m)$ in the predetermined
+Put more simply, $\tau(n)=\bigcap_{m\leq n}\sigma(m)$ in the predetermined
 case, and
 $\tau(\<x_0,\dots,x_{n-1}\>)=\bigcap_{m\leq n}\sigma(\<x_0,\dots,x_{m-1}\>)$
 in the perfect information case.
 The original proof would have been invalid if $\lambda$ was required to be, say,
-the tactical fog-of-war $\nu_1$, since the value of $\pl O$'s own second move
+the tactical fog-of-war $\nu_1$, since the value of $\pl O$'s own round $1$ move
 $\sigma\circ\nu_1(\<x_0\>)=\sigma(\<x_0\>)$
 could not be determined from the information she has during round
 $2$: $\nu_1(\<x_0,x_1\>)=\<x_1\>$.
