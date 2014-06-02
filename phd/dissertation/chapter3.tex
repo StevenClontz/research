@@ -45,11 +45,11 @@ first-countable spaces using this game.
 
   If $X$ is not first countable at some $x$, let $\sigma$ be a
   predetermined strategy for $\pl O$ in $\congamehard{X}{x}$. There exists
-  an open neighborhood $U$ of $x$ which does not contain any 
-  $\bigcap_{m\leq n}\sigma(m)$ (otherwise 
+  an open neighborhood $U$ of $x$ which does not contain any
+  $\bigcap_{m\leq n}\sigma(m)$ (otherwise
   $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ would be a countable base at $x$).
-  Let $x_n$ be an element of $\bigcap_{m\leq n}\sigma(m)\setminus U$ for all 
-  $n<\omega$. Then $\<x_0,x_1,\dots\>$ is a winning counter-attack to $\sigma$ 
+  Let $x_n$ be an element of $\bigcap_{m\leq n}\sigma(m)\setminus U$ for all
+  $n<\omega$. Then $\<x_0,x_1,\dots\>$ is a winning counter-attack to $\sigma$
   for $\pl P$, so $\pl O$ lacks a winning predetermined strategy.
 \end{proof}
 
@@ -184,10 +184,17 @@ as well.
   strategy for $\pl O$ in $\congame{X}{S}$ as well.
 \end{proof}
 
-(TODO: Maybe $k+2$ tacts/marks as well, but not as obvious if so.)
+Two types of questions emerge from these results.
 
-(TODO: It's feasible that $k$-limit $\Leftrightarrow$ $1$-limit for
-one variation or another.)
+\begin{ques}
+  Does $\pl O \ktactwin{2} \clusgame{X}{S}$ imply
+  $\pl O \ktactwin{2} \congame{X}{S}$? What about for $\kmarkwin{2}$?
+\end{ques}
+
+\begin{ques}
+  Could $\pl O \ktactwin{k+1} \congame{X}{S}$ actually imply
+  $\pl O \tactwin \congame{X}{S}$? What about for $\clusgame{X}{S}$?
+\end{ques}
 
 
 
@@ -349,7 +356,7 @@ is not sufficient to construct a limited information strategy, due to a
 similar argument.
 
 \begin{thm}
-  $O\not\kmarkwin{k}\clusgame{\oneptcomp\omega_2}{\infty}$.
+  $O\not\kmarkwin{k}\clusgamehard{\oneptcomp\omega_2}{\infty}$.
 \end{thm}
 
 \begin{proof}
@@ -401,12 +408,200 @@ similar argument.
 
 
 
+\section{Sigma-products}
 
-\section{TODO: Sigma-products}
+Knowing the status of $W$-games in simpler spaces yields insight to larger
+spaces.
+
+\begin{prop}
+  Suppose $S\subseteq Y\subseteq X$, $\limitwin$ is any of $\win$,
+  $\ktactwin{k}$, or $\kmarkwin{k}$, and $G(X,S)$ is any of $\congame{X}{S}$,
+  $\congamehard{X}{S}$, $\clusgame{X}{S}$, or $\clusgamehard{X}{S}$.
+
+  Then $\pl O \limitwin G(X,S)$ implies $\pl O \limitwin G(Y,S)$.
+\end{prop}
+
+\begin{proof}
+  Simply intersect the output of the winning strategy in $G(X,S)$ with $Y$.
+\end{proof}
+
+A natural superspace of a Fort space is the sigma-product of a discrete
+cardinal.
+
+\begin{defn}
+  Let $\Sigma_{y} X^\kappa$ be a \term{sigma product} of $X$ with dimension
+  $\kappa$ for each $y\in X^\kappa$, the subset of the usual Tychonoff
+  product space $X^\kappa$ such that $x\in \Sigma_y X^\kappa$ if and only if
+  $\{\alpha<\kappa : x(\alpha)\not=y(\alpha)\}$ is countable.
+
+  For homogeneous spaces $X$ containing $0$, $y$ is usually assumed to be the
+  zero vector $\vec 0$ and the sigma product is written $\Sigma X^\kappa$.
+\end{defn}
+
+\begin{prop}
+  $\oneptcomp\kappa$ is homeomorphic to the space
+  \[
+    \{
+    x\in \Sigma 2^\kappa
+      :
+    x(\alpha)=0 \text{ for all but one } \alpha<\kappa
+    \}
+  \]
+\end{prop}
+
+\begin{proof}
+  Map $\alpha<\kappa$ to $x_\alpha$ such that
+  \[
+    x_\alpha(\beta) =
+    \left\{
+      \begin{array}{ll}
+        0 & \beta\not=\alpha \\
+        1 & \beta=\alpha
+      \end{array}
+    \right.
+  \]
+  and map $\infty$ to the zero vector $\vec0$.
+\end{proof}
+
+\begin{cor}
+  $\pl O\not\ktactwin{k}\clusgamehard{\SigmaProdR{\omega_1}}{\vec0}$,
+  $\pl O\not\kmarkwin{k}\congamehard{\SigmaProdR{\omega_1}}{\vec0}$, and
+  $\pl O\not\kmarkwin{k}\clusgamehard{\SigmaProdR{\omega_2}}{\vec0}$.
+\end{cor}
+
+While this closes the question on tactics and marks for high dimensional
+sigma- (and Tychonoff-) products of the real line, there is another type of
+limited information strategy to investigate.
+
+\begin{defn}
+  For a game $G=\<M,W\>$ and \term{coding strategy} or \term{code}
+  $\sigma:M^2\to M$, the \term{$\sigma$-coding fog-of-war}
+  $\gamma_\sigma: M^{<\omega}\to M^{\leq2}$ is the function defined such that
+    \[
+      \gamma_\sigma(\emptyset) = \emptyset
+    \]
+  and
+    \[
+      \gamma_\sigma(s\concat\<x\>) = \<\sigma\circ\gamma_\sigma(s),x\>
+    \]
+
+  For a coding strategy $\sigma$, its coresponding strategy is
+  $\sigma\circ\gamma_\sigma$. For a game $G$, if $\sigma\circ\gamma_\sigma$
+  is a winning strategy for $\pl A$, then $\sigma$ is a winning coding
+  strategy and we write $\pl A \codewin G$.
+\end{defn}
+
+Intuitively, a $\sigma$-coding fog-of-war converts perfect information of the
+game into the last moves of both the player and her opponent, so a player has
+a winning coding strategy when she only needs to know the move of her opponent
+and her own last move. The term ``coding'' comes from the fact
+that a player may encode information about the history of the game into
+her own moves, and use this encoded information in later rounds.
+
+Coding strategies have been studied since the earliest days of the
+Banach-Mazur game.
+
+\begin{thm}
+  (TODO: Cite the precise version of the BM game where a winning strategy
+    implies a coding strategy.)
+\end{thm}
+
+The hard and normal versions of the $W$ games are all equivalent with regards
+to coding strategies since $\pl O$
+may always ensure her new move is a subset of her previous move. For
+Fort spaces, the question is immediately closed.
+
+\begin{prop}
+  $\pl O \codewin \congame{\oneptcomp\kappa}{\infty}$.
+\end{prop}
+
+\begin{proof}
+  Let $\sigma(\emptyset)=\oneptcomp\kappa$,
+  $\sigma(\<U,\alpha\>)=U\setminus\{\alpha\}$ for $\alpha<\kappa$,
+  and $\sigma(\<U,\infty\>)=U$. $\pl P$
+  cannot legally repeat non-$\infty$ points of the set, so her points converge
+  to $\infty$.
+\end{proof}
+
+This trick does not simply extend to the $\SigmaProdR\kappa$ case, however.
+An open set may only restrict finitely many coordinates of the product,
+and a point in $\SigmaProdR\kappa$ may have countably infinite non-zero
+coordinates. Thus, information about the previous non-zero coordinates cannot be
+directly encoded into the open set.
+
+Circumventing this takes a bit of extra bookkeeping. We proceed by defining
+a simpler infinite game for each cardinal $\kappa$.
+
+\begin{game}
+  Let $\pfgame\kappa$ denote the \term{point-finite game} with players
+  $\pl F$, $\pl C$ for each cardinal $\kappa$.
+
+  In round $n$, $\pl F$ chooses $F_n\in[\kappa]^{<\omega}$, followed by
+  $\pl C$ choosing $C_n\in[\kappa\setminus\bigcup_{m\leq n}F_m]^{\leq\omega}$.
+
+  $\pl F$ wins the game if the collection $\{C_n:n<\omega\}$ is a point-finite
+  cover of its union $\bigcup_{n<\omega} C_n$, that is, each point in
+  $\bigcup_{n<\omega} C_n$ is in $C_n$ only for finitely many $n<\omega$.
+\end{game}
+
+\begin{prop}
+  $\pl F\win\pfgame\kappa$ for all cardinals $\kappa$.
+\end{prop}
+
+\begin{thm}
+  $\pl F \codewin \pfgame\kappa$ implies
+  $\pl O \codewin \congame{\SigmaProdR\kappa}{\vec0}$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a coding strategy for $\pl F$ in $\pfgame\kappa$
+  such that $\sigma(F,C)\supset F$.
+
+  For $F\in[\kappa]^{<\omega}$ and $\epsilon>0$ let $U(F,\epsilon)$ be the
+  open set in $\mathbb{R}^\kappa$ such that
+  \[
+    \pi_\alpha(U(F,\epsilon)) =
+    \left\{
+      \begin{array}{ll}
+        (-\epsilon,\epsilon) & \alpha\in F\\
+        \mathbb{R} & \alpha\not\in F
+      \end{array}
+    \right.
+  \]
+  Note that $F$ is uniquely identifible given
+  $U(F,\epsilon)\cap\SigmaProdR\kappa$.
+
+  For each point $x\in\SigmaProdR\kappa$ and $\epsilon\geq 0$, let
+  $C_\epsilon(x)\in[\kappa]^{\leq\omega}$
+  such that $\alpha\in C_\epsilon(\alpha)$ if and only if
+  $|x(\alpha)|\geq\epsilon$.
+
+  TODO: Finish
+
+  % We define the coding strategy $\tau$ for $\pl O$ in
+  % $\congame{\SigmaProdR\kappa}{\vec0}$ as follows:
+  % \[
+  %   \tau(\<U(\tau(\<U,x\>,\epsilon)\cap\SigmaProdR\kappa,x\>)
+  %     =
+  %   U(\sigma(\<F,C_{2^{-|F|}}(x)\>),2^{-|F|}) \cap \SigmaProdR\kappa
+  % \]
+
+  % Assume that $\pl O \not\codewin \congame{\SigmaProdR\kappa}{\vec0}$. Then
+  % there exists a legal attack $a=\<a_0,a_1,\dots\>$ by $\pl P$ against $\tau$.
+  % Since $a$ does not converge to $\vec0$, it follows there is some
+  % $\alpha<\kappa$ such that $a_n(\alpha)$ does not converge to $0$. Thus there
+  % is a sequence $n_0<n_1<\dots$ such that $|a_{n_i}(\alpha)|\geq 2^{-n_i}$, and
+  % it follows that $\alpha\not\in\sigma(\<F,C_{2^{-|F|}}(x)\>)$ at any stage
+  % of the game.
+
+  % Consider the attack $a'=\<$
+\end{proof}
+
+TODO:
 
 \begin{thm}
   Let $\textrm{cf}([\kappa]^{\leq\omega})=\kappa$.
-  Then $F \codewin PF_{F,C}(\kappa)$.
+  Then $\pl F \codewin PF_{F,C}(\kappa)$.
 \end{thm}
 
 \begin{thm}
@@ -420,6 +615,6 @@ similar argument.
 \end{thm}
 
 \begin{cor}
-  $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$
+  $O\codewin\congame{\SigmaProdR{\kappa}}{\vec{0}}$
   for all cardinals $\kappa$.
 \end{cor}
