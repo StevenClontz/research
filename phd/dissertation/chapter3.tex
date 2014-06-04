@@ -593,12 +593,9 @@ a simpler infinite game for each cardinal $\kappa$.
   % Consider the attack $a'=\<$
 \end{proof}
 
-We aim to show that $\pl F \codewin \pfgame\kappa$ for all
-$\kappa$.
-
 \begin{thm}
   Let $\cf{[\kappa]^{\leq\omega}}=\kappa$.
-  Then $\pl F \codewin PF_{F,C}(\kappa)$.
+  Then $\pl F \codewin \pfgame\kappa$.
 \end{thm}
 
 \begin{proof}
@@ -648,15 +645,20 @@ and since $|N_n|\geq n$, we may conclude $\alpha\in N_{n+1}$.
 Thus $\alpha\not\in W_j$ for $j>n$, and $\pl F$ wins the game.
 \end{proof}
 
-\begin{thm}
-  Let $\kappa$ be the limit of cardinals $\kappa_n$ such that
-  $\cf{[\kappa_n]^{\leq\omega}}=\kappa_n$.
-  Then $F \codewin \pfgame{\kappa}$.
-\end{thm}
+  (TODO: The above result is cute, but unnecessary due to the below.)
 
 \begin{thm}
-  $F\codewin\pfgame{\kappa}$ for all cardinals $\kappa$.
+  $\pl F \codewin \pfgame{\kappa}$ for all cardinals $\kappa$.
 \end{thm}
+
+\begin{proof}
+  TODO: Fill in sketch.
+
+  SKETCH: For each cardinal
+  $\kappa$, assume $F\codewin\pfgame\lambda$ for $\lambda<\kappa$. Always
+  cover the upper bound of $\pl O$'s moves if possible, or use a trick
+  assuming $\cf\kappa=\omega$.
+\end{proof}
 
 \begin{cor}
   $O\codewin\congame{\SigmaProdR{\kappa}}{\vec{0}}$
