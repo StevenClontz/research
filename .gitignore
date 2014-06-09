@@ -10,3 +10,6 @@
 *.toc
 *.bbl
 *.blg
+*.nav
+*.out
+*.snm
