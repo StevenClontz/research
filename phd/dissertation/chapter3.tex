@@ -498,13 +498,15 @@ and her own last move. The term ``coding'' comes from the fact
 that a player may encode information about the history of the game into
 her own moves, and use this encoded information in later rounds.
 
-Coding strategies have been studied since the earliest days of the
-Banach-Mazur game.
+As an example, the existence of a winning coding strategy is necessary for the
+second player to force a win the Banach-Mazur game.
 
-\begin{thm}
-  (TODO: Cite the precise version of the BM game where a winning strategy
-    implies a coding strategy.)
+\begin{thm}\label{bmcode}
+  $\pl N\win\bmgame{X}$ if and only if $\pl N\codewin\bmgame{X}$
+  \cite{MR817083} \cite{MR831181}.
 \end{thm}
+
+We are interested in whether the same holds for $W$ games.
 
 The hard and normal versions of the $W$ games are all equivalent with regards
 to coding strategies since $\pl O$
@@ -544,10 +546,19 @@ a simpler infinite game for each cardinal $\kappa$.
   $\bigcup_{n<\omega} C_n$ is in $C_n$ only for finitely many $n<\omega$.
 \end{game}
 
-\begin{thm}
+This game has a strong resemblance to a game defined by Scheepers in
+\cite{MR1129143} in relationship to the Banach-Mazur game and studied
+specifically with finite and countable sets in \cite{MR1183703}. Scheeper's
+game and the results pertaining to it aren't of use here; however, they will be
+referenced in a later chapter in studying a different topological game.
+
+This game of finite and countable sets is directly applicable to the $W$
+games played upon the sigma-product of real lines.
+
+\begin{lem}
   $\pl F \codewin \pfgame\kappa$ implies
   $\pl O \codewin \congame{\SigmaProdR\kappa}{\vec0}$.
-\end{thm}
+\end{lem}
 
 \begin{proof}
   Let $\sigma$ be a winning coding strategy for $\pl F$ in $\pfgame\kappa$
@@ -601,74 +612,77 @@ a simpler infinite game for each cardinal $\kappa$.
   showing that $\tau$ is a winning strategy.
 \end{proof}
 
-% \begin{thm}
-%   Let $\cf{[\kappa]^{\leq\omega}}=\kappa$.
-%   Then $\pl F \codewin \pfgame\kappa$.
-% \end{thm}
-
-% \begin{proof}
-% Let $c:\kappa\to[\kappa]^{\leq \omega}$ be a funtion such that for every
-% $W\in[\kappa]^{\leq\omega}$, there exists $\gamma_W<\kappa$ with
-% $W\subseteq c(\gamma_W)$.
-
-% Let $W\rest n \in [\kappa]^n$ be a subset of $W\in[\kappa]^\omega$ such that
-% $W\rest n \subset W \rest (n+1)$ and $\bigcup_{n<\omega} W\rest n = W$.
-
-% Define the coding strategy $\sigma$ as follows:
-%   \[
-%     \sigma(\emptyset) = \emptyset
-%   \]
-%   \[
-%     \sigma(\<N,W\>)
-%       =
-%     N
-%       \cup
-%     (|N|+1)
-%       \cup
-%     \{\gamma_W\}
-%       \cup
-%     \bigcup_{\alpha \in N}\left(c(\alpha) \rest |N|\right)
-%   \]
-
-% Let $\<W_0,W_1,\dots\>$ be a legal attack against $\sigma$,
-% $N_0=\sigma(\emptyset)$, and
-% $N_{i+1}=\sigma(\<N_i,W_i\>)$. Then $\<N_0,W_0,N_1,W_1,\dots\>$ is the
-% playthrough of the game coresponding to the coding strategy $\sigma$ and
-% attack $a$.
-
-% Let $\alpha\in W_i$ for some $i<\omega$. Then $\gamma_{W_i}\in N_n$ when
-% $n>i$. Since $W_i\subseteq c(\gamma_{W_i})$, there exists some $n>i$ such
-% that $\alpha\in c(\gamma_{W_i})\rest n$.
-% Finally, we consider
-%   \[
-%     N_{n+1}
-%       =
-%     \sigma(\<N_n,W_n\>)
-%       \supseteq
-%     \bigcup_{\alpha\in N_n}\left(c(\alpha) \rest |N_n|\right)
-%       \supseteq
-%     c(\gamma_{W_i})\rest |N_n|
-%   \]
-% and since $|N_n|\geq n$, we may conclude $\alpha\in N_{n+1}$.
-% Thus $\alpha\not\in W_j$ for $j>n$, and $\pl F$ wins the game.
-% \end{proof}
-
-%   (TODO: The above result is cute, but unnecessary due to the below.)
+This lemma simplifies our notation in proving the main result. Intuitively, we
+aim to show that when $\kappa$ has cofinality $\omega$, $\pl F$ can split up
+the game among $\omega$-many smaller cardinals converging to $\kappa$, and
+when $\kappa$ has a larger cofinality, $\pl F$ may exploit the fact that $\pl C$
+may only play within some ordinal smaller than $\kappa$.
 
 \begin{thm}
   $\pl F \codewin \pfgame{\kappa}$ for all cardinals $\kappa$.
 \end{thm}
 
 \begin{proof}
-  TODO: Fill in sketch.
+  For each cardinal $\kappa$ and $\lambda<\kappa$,
+  assume $\sigma_\lambda$ is a winning strategy for $\pl F$ in $\pfgame\lambda$
+  such that $\sigma_\lambda(\emptyset)\supset\emptyset$ and
+  $\sigma_\lambda(\<F,C\>)\supset F$.
 
-  SKETCH: For each cardinal
-  $\kappa$, assume $F\codewin\pfgame\lambda$ for $\lambda<\kappa$. Always
-  cover the upper bound of $\pl O$'s moves if possible, or use a trick
-  assuming $\cf\kappa=\omega$.
+  In the case that $\cf\kappa=\omega$, let $\<\kappa_0,\kappa_1,\dots\>$ be
+  an increasing sequence of cardinals limiting to $\kappa$. Then we define
+  the coding strategy $\sigma$ for $\pl F$ as follows:
+    \[
+      \sigma(\emptyset) = \sigma_{K_0}(\emptyset)
+    \]
+    \[
+      \sigma(\<F,C\>)
+        =
+      \bigcup_{n\leq|F|}
+      \sigma_{\kappa_n}(\<F\cap \kappa_n,C\cap \kappa_n\>)
+    \]
+
+  Then for each legal attack $a=\<a(0),a(1),\dots\>$ by $\pl C$ against $\sigma$
+  and each $n<\omega$, the sequence
+  $b_n=\<a(n)\cap \kappa_n,a(n+1)\cap \kappa_n,\dots\>$
+  is a legal attack by $\pl C$ against the winning coding strategy
+  $\sigma_{\kappa_n}$. It follows then that $\{a(i+n)\cap \kappa_n:i<\omega\}$
+  is a point-finite cover of $\bigcup_{i<\omega}a(i+n)\cap \kappa_n$. We
+  conclude that $\{a(i):i<\omega\}$ is a point-finite cover of
+  $\bigcup_{i<\omega}a(i)$ and $\sigma$ is a winning strategy.
+
+  It remains to consider the case where $\cf\kappa>\omega$. Note that now, for
+  each $C\in[\kappa]^{\leq\omega}$, $C$ is bounded above in $\kappa$. So we
+  define the coding strategy $\sigma$ for $\pl F$ as follows:
+    \[
+      \sigma(\emptyset) = \emptyset
+    \]
+    \[
+      \sigma(\<F,C\>)
+        =
+      \{\sup(C)\}
+        \cup
+      \bigcup_{\alpha\in F}
+      \sigma_{\alpha+1}(\<F\cap(\alpha+1),C\cap(\alpha+1)\>)
+    \]
+
+  Then for each legal attack $a=\<a(0),a(1),\dots\>$ by $\pl C$ against $\sigma$
+  and each $n<\omega$, the sequence
+  $b_n=\<a(n)\cap (\sup(a(n))+1),a(n+1)\cap (\sup(a(n))+1),\dots\>$
+  is a legal attack by $\pl C$ against the winning coding strategy
+  $\sigma_{\sup(a(n))+1}$. It follows then that
+  $\{a(i+n)\cap (\sup(a(n))+1):i<\omega\}$
+  is a point-finite cover of $\bigcup_{i<\omega}a(i+n)\cap(\sup(a(n))+1)$. We
+  conclude that $\{a(i):i<\omega\}$ is a point-finite cover of
+  $\bigcup_{i<\omega}a(i)$ and $\sigma$ is a winning strategy.
 \end{proof}
 
 \begin{cor}
-  $O\codewin\congame{\SigmaProdR{\kappa}}{\vec{0}}$
+  $\pl O\codewin\congame{\SigmaProdR{\kappa}}{\vec{0}}$
   for all cardinals $\kappa$.
 \end{cor}
+
+This leaves open the question analogous to Theorem \ref{bmcode}.
+
+\begin{ques}
+  Does $\pl O \win\congame{X}{x}$ imply $\pl O \codewin\congame{X}{x}$?
+\end{ques}
