@@ -529,7 +529,7 @@ and a point in $\SigmaProdR\kappa$ may have countably infinite non-zero
 coordinates. Thus, information about the previous non-zero coordinates cannot be
 directly encoded into the open set.
 
-Circumventing this takes a bit of extra bookkeeping. We proceed by defining
+Circumventing this takes a bit of extra machinery. We proceed by defining
 a simpler infinite game for each cardinal $\kappa$.
 
 \begin{game}
@@ -550,11 +550,11 @@ a simpler infinite game for each cardinal $\kappa$.
 \end{thm}
 
 \begin{proof}
-  Let $\sigma$ be a coding strategy for $\pl F$ in $\pfgame\kappa$
-  such that $\sigma(F,C)\supset F$.
+  Let $\sigma$ be a winning coding strategy for $\pl F$ in $\pfgame\kappa$
+  such that $\sigma(\emptyset)\supset\emptyset$ and $\sigma(F,C)\supset F$.
 
   For $F\in[\kappa]^{<\omega}$ and $\epsilon>0$ let $U(F,\epsilon)$ be the
-  open set in $\mathbb{R}^\kappa$ such that
+  basic open set in $\mathbb{R}^\kappa$ such that each projection is of the form
   \[
     \pi_\alpha(U(F,\epsilon)) =
     \left\{
@@ -564,88 +564,96 @@ a simpler infinite game for each cardinal $\kappa$.
       \end{array}
     \right.
   \]
-  Note that $F$ is uniquely identifible given
+  Note that $F\supset\emptyset$ and $\epsilon$ are uniquely identifible given
   $U(F,\epsilon)\cap\SigmaProdR\kappa$.
 
-  For each point $x\in\SigmaProdR\kappa$ and $\epsilon\geq 0$, let
+  For each point $x\in\SigmaProdR\kappa$ and $\epsilon> 0$, let
   $C_\epsilon(x)\in[\kappa]^{\leq\omega}$
   such that $\alpha\in C_\epsilon(\alpha)$ if and only if
   $|x(\alpha)|\geq\epsilon$.
 
-  TODO: Finish
+  We define the coding strategy $\tau$ for $\pl O$ in
+  $\congame{\SigmaProdR\kappa}{\vec0}$ as follows:
+  \[
+    \tau(\emptyset)
+      =
+    U(\sigma(\emptyset),1) \cap \SigmaProdR\kappa
+  \]
+  \[
+    \tau(\<U(F,\epsilon)\cap\SigmaProdR\kappa,x\>)
+      =
+    U\left(\sigma(\<F,C_{\epsilon}(x)\>),\frac{\epsilon}{2}\right)
+      \cap
+    \SigmaProdR\kappa
+  \]
 
-  % We define the coding strategy $\tau$ for $\pl O$ in
-  % $\congame{\SigmaProdR\kappa}{\vec0}$ as follows:
-  % \[
-  %   \tau(\<U(\tau(\<U,x\>,\epsilon)\cap\SigmaProdR\kappa,x\>)
-  %     =
-  %   U(\sigma(\<F,C_{2^{-|F|}}(x)\>),2^{-|F|}) \cap \SigmaProdR\kappa
-  % \]
-
-  % Assume that $\pl O \not\codewin \congame{\SigmaProdR\kappa}{\vec0}$. Then
-  % there exists a legal attack $a=\<a_0,a_1,\dots\>$ by $\pl P$ against $\tau$.
-  % Since $a$ does not converge to $\vec0$, it follows there is some
-  % $\alpha<\kappa$ such that $a_n(\alpha)$ does not converge to $0$. Thus there
-  % is a sequence $n_0<n_1<\dots$ such that $|a_{n_i}(\alpha)|\geq 2^{-n_i}$, and
-  % it follows that $\alpha\not\in\sigma(\<F,C_{2^{-|F|}}(x)\>)$ at any stage
-  % of the game.
-
-  % Consider the attack $a'=\<$
+  Let $\<a_0,a_1,a_2,\dots\>$ be a legal attack by $\pl P$ against $\tau$. It
+  then follows that
+    \[
+      b=\<C_{1}(a_0),C_{1/2}(a_1),C_{1/4}(a_2),\dots\>
+    \]
+  is a
+  legal attack by $\pl C$ against $\sigma$. Since $\sigma$ is a winning
+  strategy, each ordinal in $\bigcup_{n<\omega} C_{2^{-n}}(a_n)$ is in
+  $C_{2^{-n}}(a_n)$ only for finitely many $n<\omega$. Thus for every coordinate
+  $\alpha<\kappa$ it follows that there exists some $n_\alpha<\omega$ such that
+  $a_{n}(\alpha)\leq 2^{-n}$ for $n\geq n_\alpha$. We conclude $a_n\to\vec0$,
+  showing that $\tau$ is a winning strategy.
 \end{proof}
 
-\begin{thm}
-  Let $\cf{[\kappa]^{\leq\omega}}=\kappa$.
-  Then $\pl F \codewin \pfgame\kappa$.
-\end{thm}
+% \begin{thm}
+%   Let $\cf{[\kappa]^{\leq\omega}}=\kappa$.
+%   Then $\pl F \codewin \pfgame\kappa$.
+% \end{thm}
 
-\begin{proof}
-Let $c:\kappa\to[\kappa]^{\leq \omega}$ be a funtion such that for every
-$W\in[\kappa]^{\leq\omega}$, there exists $\gamma_W<\kappa$ with
-$W\subseteq c(\gamma_W)$.
+% \begin{proof}
+% Let $c:\kappa\to[\kappa]^{\leq \omega}$ be a funtion such that for every
+% $W\in[\kappa]^{\leq\omega}$, there exists $\gamma_W<\kappa$ with
+% $W\subseteq c(\gamma_W)$.
 
-Let $W\rest n \in [\kappa]^n$ be a subset of $W\in[\kappa]^\omega$ such that
-$W\rest n \subset W \rest (n+1)$ and $\bigcup_{n<\omega} W\rest n = W$.
+% Let $W\rest n \in [\kappa]^n$ be a subset of $W\in[\kappa]^\omega$ such that
+% $W\rest n \subset W \rest (n+1)$ and $\bigcup_{n<\omega} W\rest n = W$.
 
-Define the coding strategy $\sigma$ as follows:
-  \[
-    \sigma(\emptyset) = \emptyset
-  \]
-  \[
-    \sigma(\<N,W\>)
-      =
-    N
-      \cup
-    (|N|+1)
-      \cup
-    \{\gamma_W\}
-      \cup
-    \bigcup_{\alpha \in N}\left(c(\alpha) \rest |N|\right)
-  \]
+% Define the coding strategy $\sigma$ as follows:
+%   \[
+%     \sigma(\emptyset) = \emptyset
+%   \]
+%   \[
+%     \sigma(\<N,W\>)
+%       =
+%     N
+%       \cup
+%     (|N|+1)
+%       \cup
+%     \{\gamma_W\}
+%       \cup
+%     \bigcup_{\alpha \in N}\left(c(\alpha) \rest |N|\right)
+%   \]
 
-Let $\<W_0,W_1,\dots\>$ be a legal attack against $\sigma$,
-$N_0=\sigma(\emptyset)$, and
-$N_{i+1}=\sigma(\<N_i,W_i\>)$. Then $\<N_0,W_0,N_1,W_1,\dots\>$ is the
-playthrough of the game coresponding to the coding strategy $\sigma$ and
-attack $a$.
+% Let $\<W_0,W_1,\dots\>$ be a legal attack against $\sigma$,
+% $N_0=\sigma(\emptyset)$, and
+% $N_{i+1}=\sigma(\<N_i,W_i\>)$. Then $\<N_0,W_0,N_1,W_1,\dots\>$ is the
+% playthrough of the game coresponding to the coding strategy $\sigma$ and
+% attack $a$.
 
-Let $\alpha\in W_i$ for some $i<\omega$. Then $\gamma_{W_i}\in N_n$ when
-$n>i$. Since $W_i\subseteq c(\gamma_{W_i})$, there exists some $n>i$ such
-that $\alpha\in c(\gamma_{W_i})\rest n$.
-Finally, we consider
-  \[
-    N_{n+1}
-      =
-    \sigma(\<N_n,W_n\>)
-      \supseteq
-    \bigcup_{\alpha\in N_n}\left(c(\alpha) \rest |N_n|\right)
-      \supseteq
-    c(\gamma_{W_i})\rest |N_n|
-  \]
-and since $|N_n|\geq n$, we may conclude $\alpha\in N_{n+1}$.
-Thus $\alpha\not\in W_j$ for $j>n$, and $\pl F$ wins the game.
-\end{proof}
+% Let $\alpha\in W_i$ for some $i<\omega$. Then $\gamma_{W_i}\in N_n$ when
+% $n>i$. Since $W_i\subseteq c(\gamma_{W_i})$, there exists some $n>i$ such
+% that $\alpha\in c(\gamma_{W_i})\rest n$.
+% Finally, we consider
+%   \[
+%     N_{n+1}
+%       =
+%     \sigma(\<N_n,W_n\>)
+%       \supseteq
+%     \bigcup_{\alpha\in N_n}\left(c(\alpha) \rest |N_n|\right)
+%       \supseteq
+%     c(\gamma_{W_i})\rest |N_n|
+%   \]
+% and since $|N_n|\geq n$, we may conclude $\alpha\in N_{n+1}$.
+% Thus $\alpha\not\in W_j$ for $j>n$, and $\pl F$ wins the game.
+% \end{proof}
 
-  (TODO: The above result is cute, but unnecessary due to the below.)
+%   (TODO: The above result is cute, but unnecessary due to the below.)
 
 \begin{thm}
   $\pl F \codewin \pfgame{\kappa}$ for all cardinals $\kappa$.
