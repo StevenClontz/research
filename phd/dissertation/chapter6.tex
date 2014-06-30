@@ -38,28 +38,147 @@ used to characterize the Menger property.
   \cite{MR1544773}.
 \end{thm}
 
-% Results pertaining to the Menger game characterizing the Menger property.
+\section{Mark\"ov strategies}
 
+To the author's knowledge, no other direct work has been done on limited
+information strategies pertaining to the Menger game, although as we'll see
+there are results which can be sharpened when considering them.
+However, we immediately see that tactics are not of any real interest.
 
-%   \begin{thm}(Hurewicz)
-%     $X$ is Menger if and only if $C \not\win \mengame{X}$.
-%   \end{thm}
+\begin{prop}
+  $X$ is compact if and only if
+  $\pl F \tactwin \mengame{X}$ if and only if
+  $\pl F \ktactwin{(k+1)} \mengame{X}$.
+\end{prop}
 
-%   \begin{prop}
-%     $X$ is compact if and only if $F \tactwin \mengame{X}$ if and only if $F \ktactwin{k} \mengame{X}$
-%   \end{prop}
+\begin{proof}
+  For any open cover $\mc U$, attack the winning $k$-tactic with
+  $\<\mc U,\mc U,\dots\>$ to produce a finite open subcover.
+\end{proof}
 
-%   \begin{prop}
-%     If $X$ is $\sigma$-compact then $F \markwin \mengame{X}$
-%   \end{prop}
+Essentially, because $\pl C$ may repeat the same finite sequence of open covers,
+$\pl F$ needs to be seeded with knowledge of the round number to prevent being
+trapped in a loop.
 
-%   \begin{thm}
-%   For any topological space $X$ and all $k \geq 2$, $F \kmarkwin{k} \mengame{X}$ if and only if $F \kmarkwin{2} \mengame{X}$.
-%   \end{thm}
+If $\pl F$'s memory of $\pl C$'s past moves is bounded, then
+there is no need to consider more than the two most recent moves. The
+intuitive reason is that $\pl C$ could simply play the same cover repeatedly
+until $\pl F$'s memory is exhausted, in which case $\pl F$ would only ever
+see the change from one cover to another.
 
-%   \begin{lem}(G)
-%     For all functions $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$, there exists a sequence $\alpha_0, \alpha_1, \dots < \omega_1$ such that $\{\tau(\alpha_n,n): n<\omega\}$ is not a cover for $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$.
-%   \end{lem}
+\begin{thm}
+  $F \kmarkwin{2} \mengame{X}$ if and only if $F \kmarkwin{(k+2)} \mengame{X}$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a winning $(k+2)$-mark. We define the $2$-mark $\tau$ as
+  follows:
+    \[
+      \tau(\<\mc U\>,0)
+        =
+      \bigcup_{m<k+2}
+        \sigma(\<\underbrace{\mc U,\dots,\mc U}_{m+1}\>,m)
+    \]
+    \[
+      \tau(\<\mc U,\mc V\>,n+1)
+        =
+      \bigcup_{m<k+2}
+        \sigma(\<
+          \underbrace{\mc U,\dots,\mc U}_{k+1-m},
+          \underbrace{\mc V,\dots,\mc V}_{m+1}
+        \>,(n+1)(k+2)+m)
+    \]
+
+  Let $\<\mc U_0,\mc U_1,\dots\>$ be an attack by $\pl C$ against $\tau$.
+  Then consider the attack
+    \[
+      \<
+        \underbrace{\mc U_0,\dots,\mc U_0}_{k+2},
+        \underbrace{\mc U_1,\dots,\mc U_1}_{k+2},
+        \dots
+      \>
+    \]
+  by $\pl C$ against $\sigma$. Since $\sigma$ is a winning $(k+2)$-mark, the
+  collection
+    \[
+      \bigcup_{m<k+2}
+        \sigma(\<\underbrace{\mc U_0,\dots,\mc U_0}_{m+1}\>,m)
+      \cup
+      \bigcup_{n<\omega}
+      \bigcup_{m<k+2}
+        \sigma(\<
+          \underbrace{\mc U_n,\dots,\mc U_n}_{k+1-m},
+          \underbrace{\mc U_{n+1},\dots,\mc U_{n+1}}_{m+1}
+        \>,(n+1)(k+2)+m)
+    \]
+    \[
+      =
+      \tau(\<\mc U_0\>,0)
+      \cup
+      \bigcup_{n<\omega}
+      \tau(\<\mc U_n,\mc U_{n+1}\>,n+1)
+    \]
+  covers the space, and $\tau$ is a winning $2$-mark.
+\end{proof}
+
+A natural question arises: is there an example of a space $X$ for which
+$\pl F\kmarkwin{2}\mengame{X}$ but $\pl F\not\markwin\mengame{X}$? Fortunately,
+perhaps the simplest example of a Lindel\"of non-$\sigma$-compact
+space has this property.
+
+\begin{defn}
+  For any cardinal $\kappa$, let $\oneptlind\kappa=\kappa\cup\{\infty\}$ denote
+  the \term{one-point Lindel\"of-ication} of discrete $\kappa$, where points in
+  $\kappa$ are isolated, and the neighborhoods of $\infty$ are the co-countable
+  sets containing it.
+\end{defn}
+
+We require a techincal lemma.
+
+\begin{lem}
+  For each function
+  $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$,
+  there exists a sequence $\alpha\in\omega_1^\omega$
+  such that $\{\tau(\alpha(n),n): n<\omega\}$ is not a cover for
+  $\bigcap_{n<\omega}\alpha(n)$.
+\end{lem}
+
+\begin{proof}
+  Suggested by the author's major professor: let
+    \[
+      P_n =
+      \{
+        \beta : \forall \beta <\alpha < \omega_1 ( \beta \in \tau(\alpha, n))
+      \}
+    \]
+  Observe that since
+  $P_n \subseteq \tau(\sup(P_n)+1, n)$, each $P_n$ is finite.
+
+  Choose $\beta \in\omega_1\setminus \bigcup_{n<\omega} P_n$. Then for each
+  $n<\omega$, pick $\alpha(n)>\beta$ such that
+  $\beta \not\in \tau(\alpha(n),n)$.
+\end{proof}
+
+\begin{thm}
+  $F\not\markwin\mengame{\oneptlind{\omega_1}}$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a Mark\"ov strategy for $\pl F$. For each $\alpha<\omega_1$,
+  let $\mc U_\alpha$ be the open cover
+  $\{\{\beta\}:\beta<\alpha\}\cup\{\oneptlind{\omega_1}\setminus\alpha\}$ of
+  $\oneptlind{\omega_1}$. Then define
+  $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$ so that
+  $\tau(\alpha,n)$ is the collection of singletons included in
+  $\sigma(\<\mc U_\alpha\>,n)$.
+
+  Use the preceding lemma to generate $\alpha\in\omega_1^\omega$, and attack
+  $\sigma$ with $\<\mc U_{\alpha(0)}, \mc U_{\alpha(1)},\dots\>$.
+  Since $\{\tau(\alpha(n),n): n<\omega\}$ is not a cover for
+  $\bigcap_{n<\omega}\alpha(n)$, it follows that
+  $\bigcup_{n<\omega}\sigma(\<\mc U_{\alpha(n)}\>,n)$ is not a cover for
+  $\oneptlind{\omega_1}$.
+\end{proof}
 
 %   \begin{ex}
 %     $F \win \mengame{\oneptlind{\omega_1}}$ but $F \not\markwin \mengame{\oneptlind{\omega_1}}$.
