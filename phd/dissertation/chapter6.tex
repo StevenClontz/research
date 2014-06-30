@@ -1,148 +1,183 @@
 %!TEX root = dissertation.tex
 % ^ leave for LaTeXTools build functionality
 
-\chapter{Menger Game}
-
-Results pertaining to the Menger game characterizing the Menger property.
-
-
-  \begin{thm}(Hurewicz)
-    $X$ is Menger if and only if $C \not\win \mengame{X}$.
-  \end{thm}
-
-  \begin{prop}
-    $X$ is compact if and only if $F \tactwin \mengame{X}$ if and only if $F \ktactwin{k} \mengame{X}$
-  \end{prop}
-
-  \begin{prop}
-    If $X$ is $\sigma$-compact then $F \markwin \mengame{X}$
-  \end{prop}
-
-  \begin{thm}
-  For any topological space $X$ and all $k \geq 2$, $F \kmarkwin{k} \mengame{X}$ if and only if $F \kmarkwin{2} \mengame{X}$.
-  \end{thm}
-
-  \begin{lem}(G)
-    For all functions $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$, there exists a sequence $\alpha_0, \alpha_1, \dots < \omega_1$ such that $\{\tau(\alpha_n,n): n<\omega\}$ is not a cover for $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$.
-  \end{lem}
-
-  \begin{ex}
-    $F \win \mengame{\oneptlind{\omega_1}}$ but $F \not\markwin \mengame{\oneptlind{\omega_1}}$.
-  \end{ex}
-
-  \begin{thm}
-    A space $X$ is $\sigma$-(relatively compact) if and only if $F \markwin \mengame{X}$.
-  \end{thm}
-
-  \begin{cor}
-    For regular spaces $X$, the following are equivalent:
-      \begin{enumerate}[(a)]
-        \item $X$ is $\sigma$-compact
-        \item $X$ is $\sigma$-(relatively compact)
-        \item $F \markwin \mengame{X}$
-      \end{enumerate}
-  \end{cor}
-
-  \begin{thm}
-    For second-countable $X$, the following are equivalent:
-      \begin{enumerate}[(a)]
-        \item $X$ is $\sigma$-(relatively compact)
-        \item $F \win \mengame{X}$
-        \item $F\markwin \mengame{X}$
-      \end{enumerate}
-  \end{thm}
+\chapter{The Menger Game}
+
+In 1924 Karl Menger introduced a covering property generalizing
+$\sigma$-compactness \cite{custom31879423}.
+
+\begin{defn}
+  A space $X$ is Menger if for every sequence of open covers of $X$
+  $\<\mc U_0,\mc U_1,\dots\>$ there exists a sequence
+  $\<\mc F_0,\mc F_1,\dots\>$ such that $\mc F_n\subseteq \mc U_n$,
+  $|\mc F_n|<\omega$, and $\bigcup_{n<\omega}\mc F_n$ is a cover of $X$.
+\end{defn}
+
+\begin{prop}
+  $X$ is $\sigma$-compact
+    $\Rightarrow$
+  $X$ is Menger
+    $\Rightarrow$
+  $X$ is Lindel\"of.
+\end{prop}
+
+It can be shown via a non-trivial proof that the following game can be
+used to characterize the Menger property.
+
+\begin{game}
+  Let $\mengame{X}$ denote the \term{Menger game} with players $\pl C$, $\pl F$.
+  In round $n$, $\pl C$ chooses an open cover $\mc C_n$, followed by $\pl F$
+  choosing a finite subcollection $\mc F_n\subseteq \mc C_n$.
+
+  $\pl F$ wins the game if $\bigcup_{n<\omega}\mc F_n$ is a cover for the space
+  $X$, and $\pl C$ wins otherwise.
+\end{game}
+
+\begin{thm}
+  A space $X$ is Menger if and only if $\pl C\not\win\mengame{X}$
+  \cite{MR1544773}.
+\end{thm}
+
+% Results pertaining to the Menger game characterizing the Menger property.
+
+
+%   \begin{thm}(Hurewicz)
+%     $X$ is Menger if and only if $C \not\win \mengame{X}$.
+%   \end{thm}
+
+%   \begin{prop}
+%     $X$ is compact if and only if $F \tactwin \mengame{X}$ if and only if $F \ktactwin{k} \mengame{X}$
+%   \end{prop}
+
+%   \begin{prop}
+%     If $X$ is $\sigma$-compact then $F \markwin \mengame{X}$
+%   \end{prop}
+
+%   \begin{thm}
+%   For any topological space $X$ and all $k \geq 2$, $F \kmarkwin{k} \mengame{X}$ if and only if $F \kmarkwin{2} \mengame{X}$.
+%   \end{thm}
+
+%   \begin{lem}(G)
+%     For all functions $\tau:\omega_1\times\omega \rightarrow [\omega_1]^{<\omega}$, there exists a sequence $\alpha_0, \alpha_1, \dots < \omega_1$ such that $\{\tau(\alpha_n,n): n<\omega\}$ is not a cover for $\{\beta:\forall n<\omega (\beta < \alpha_n)\}$.
+%   \end{lem}
+
+%   \begin{ex}
+%     $F \win \mengame{\oneptlind{\omega_1}}$ but $F \not\markwin \mengame{\oneptlind{\omega_1}}$.
+%   \end{ex}
+
+%   \begin{thm}
+%     A space $X$ is $\sigma$-(relatively compact) if and only if $F \markwin \mengame{X}$.
+%   \end{thm}
+
+%   \begin{cor}
+%     For regular spaces $X$, the following are equivalent:
+%       \begin{enumerate}[(a)]
+%         \item $X$ is $\sigma$-compact
+%         \item $X$ is $\sigma$-(relatively compact)
+%         \item $F \markwin \mengame{X}$
+%       \end{enumerate}
+%   \end{cor}
+
+%   \begin{thm}
+%     For second-countable $X$, the following are equivalent:
+%       \begin{enumerate}[(a)]
+%         \item $X$ is $\sigma$-(relatively compact)
+%         \item $F \win \mengame{X}$
+%         \item $F\markwin \mengame{X}$
+%       \end{enumerate}
+%   \end{thm}
 
-  \begin{cor}(Telgarsky)
-    For metric spaces $X$, the following are equivalent:
-      \begin{enumerate}[(a)]
-        \item $X$ is $\sigma$-compact
-        \item $X$ is $\sigma$-(relatively compact)
-        \item $F \win \mengame{X}$
-        \item $F \markwin \mengame{X}$
-      \end{enumerate}
-  \end{cor}
+%   \begin{cor}(Telgarsky)
+%     For metric spaces $X$, the following are equivalent:
+%       \begin{enumerate}[(a)]
+%         \item $X$ is $\sigma$-compact
+%         \item $X$ is $\sigma$-(relatively compact)
+%         \item $F \win \mengame{X}$
+%         \item $F \markwin \mengame{X}$
+%       \end{enumerate}
+%   \end{cor}
 
-  \begin{ex}
-  Let $R$ be given the topology from example 63 from Counterexamples in Topology, the topology generated by open intervals with countable sets removed. This space is a non-regular example where $F \win \mengame{R}$, but $F \not\markwin \mengame{R}$, that is, $R$ is not $\sigma$-(relatively compact).
-  \end{ex}
+%   \begin{ex}
+%   Let $R$ be given the topology from example 63 from Counterexamples in Topology, the topology generated by open intervals with countable sets removed. This space is a non-regular example where $F \win \mengame{R}$, but $F \not\markwin \mengame{R}$, that is, $R$ is not $\sigma$-(relatively compact).
+%   \end{ex}
 
-  \begin{ex}
-  Let $R$ be given the topology from example 67 from Counterexamples in Topology, the topology generated by open intervals with or without the rationals removed. This space is non-regular, and non-$\sigma$-compact, but is second-countable and $\sigma$-(relatively compact).
-  \end{ex}
+%   \begin{ex}
+%   Let $R$ be given the topology from example 67 from Counterexamples in Topology, the topology generated by open intervals with or without the rationals removed. This space is non-regular, and non-$\sigma$-compact, but is second-countable and $\sigma$-(relatively compact).
+%   \end{ex}
 
-  \begin{defn}
-    Let $\mc U$ be a cover of $X$. We say $C\subseteq X$ is $\mc U$-compact if there exists a finite subcover of $\mc U$ which covers $C$.
+%   \begin{defn}
+%     Let $\mc U$ be a cover of $X$. We say $C\subseteq X$ is $\mc U$-compact if there exists a finite subcover of $\mc U$ which covers $C$.
 
-    We say $X$ is \scish~if there exist functions $r_{\mc V}:X\to\omega$ for each open cover $\mc V$ of $X$ such that both of the following sets are $\mc V$-compact for all open covers $\mc U$, $\mc V$ and $n<\omega$:
-      \[
-        c(\mc V,n)=\{ x\in X : r_{\mc V}(x)\leq n\}
-      \]
-      \[
-        p(\mc U,\mc V)=\{ x\in X : 0<r_{\mc U}(x)<r_{\mc V}(x)\}
-      \]
-  \end{defn}
+%     We say $X$ is \scish~if there exist functions $r_{\mc V}:X\to\omega$ for each open cover $\mc V$ of $X$ such that both of the following sets are $\mc V$-compact for all open covers $\mc U$, $\mc V$ and $n<\omega$:
+%       \[
+%         c(\mc V,n)=\{ x\in X : r_{\mc V}(x)\leq n\}
+%       \]
+%       \[
+%         p(\mc U,\mc V)=\{ x\in X : 0<r_{\mc U}(x)<r_{\mc V}(x)\}
+%       \]
+%   \end{defn}
 
-  \begin{defn}
-    For two functions $f,g$ we say $f$ is \textbf{$\mu$-almost compatible} with $g$ ($f\alcomp_\mu g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\mu$. If $\mu=\omega$ then we say $f,g$ are \textbf{almost compatible} ($f\alcomp g$).
-  \end{defn}
+%   \begin{defn}
+%     For two functions $f,g$ we say $f$ is \textbf{$\mu$-almost compatible} with $g$ ($f\alcomp_\mu g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\mu$. If $\mu=\omega$ then we say $f,g$ are \textbf{almost compatible} ($f\alcomp g$).
+%   \end{defn}
 
-  \begin{ex}
-    The one-point Lindel\"ofication of the uncountable discrete space, $\oneptlind{\omega_1}$, is \scish.
-  \end{ex}
+%   \begin{ex}
+%     The one-point Lindel\"ofication of the uncountable discrete space, $\oneptlind{\omega_1}$, is \scish.
+%   \end{ex}
 
-  \begin{thm}
-    If $X$ is \scish, then $F \kmarkwin{2}\mengame{X}$.
-  \end{thm}
+%   \begin{thm}
+%     If $X$ is \scish, then $F \kmarkwin{2}\mengame{X}$.
+%   \end{thm}
 
-  \begin{cor}
-    $F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
-  \end{cor}
+%   \begin{cor}
+%     $F\kmarkwin{2}\mengame{\oneptlind{\omega_1}}$
+%   \end{cor}
 
-  \begin{prop}
-    $\neg S(\kappa,\omega,\omega)$ for $\kappa>2^\omega$
-  \end{prop}
+%   \begin{prop}
+%     $\neg S(\kappa,\omega,\omega)$ for $\kappa>2^\omega$
+%   \end{prop}
 
-  \begin{thm}
-    $S(\kappa,\omega,\omega)$ implies $\oneptlind{\kappa}$ is \scish.
-  \end{thm}
+%   \begin{thm}
+%     $S(\kappa,\omega,\omega)$ implies $\oneptlind{\kappa}$ is \scish.
+%   \end{thm}
 
-  \begin{cor}
-    $S(\kappa,\omega,\omega)$ implies $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$.
-  \end{cor}
+%   \begin{cor}
+%     $S(\kappa,\omega,\omega)$ implies $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$.
+%   \end{cor}
 
-  \begin{thm}
-    $S(\kappa,\omega,\omega)+(\kappa=2^\omega)$ is consistent with ZFC for any cardinal $\kappa$ with $cf(\kappa)>\omega$.
-  \end{thm}
+%   \begin{thm}
+%     $S(\kappa,\omega,\omega)+(\kappa=2^\omega)$ is consistent with ZFC for any cardinal $\kappa$ with $cf(\kappa)>\omega$.
+%   \end{thm}
 
-  \begin{cor}
-    For each $\kappa$, $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$ is consistent with ZFC.
-  \end{cor}
+%   \begin{cor}
+%     For each $\kappa$, $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$ is consistent with ZFC.
+%   \end{cor}
 
 
 
-  \section{Alster property}
+%   \section{Alster property}
 
-  Besides various limited information characterizations of $\mengame{X}$, there are other interesting covering properties between $\sigma$-(relatively compact) and Menger.
+%   Besides various limited information characterizations of $\mengame{X}$, there are other interesting covering properties between $\sigma$-(relatively compact) and Menger.
 
-  \begin{prop}
-    Every ample cover of a regular space $X$ is really ample.
-  \end{prop}
+%   \begin{prop}
+%     Every ample cover of a regular space $X$ is really ample.
+%   \end{prop}
 
-  \begin{prop}
-    Every regular relatively Alster space is Alster.
-  \end{prop}
+%   \begin{prop}
+%     Every regular relatively Alster space is Alster.
+%   \end{prop}
 
-  \begin{thm}(Aurichi, Tall)
-    $X$ $\sigma$-compact $\Rightarrow$ $X$ Alster $\Rightarrow$ $X$ Menger
-  \end{thm}
+%   \begin{thm}(Aurichi, Tall)
+%     $X$ $\sigma$-compact $\Rightarrow$ $X$ Alster $\Rightarrow$ $X$ Menger
+%   \end{thm}
 
-  \begin{prop}
-    $X$ $\sigma$-(relatively compact) $\Rightarrow$ $X$ relatively Alster $\Rightarrow$ $X$ Menger
-  \end{prop}
+%   \begin{prop}
+%     $X$ $\sigma$-(relatively compact) $\Rightarrow$ $X$ relatively Alster $\Rightarrow$ $X$ Menger
+%   \end{prop}
 
-  \begin{ex}
-    Let the real numbers $R$ be given the topology generated by open intervals with countable sets removed. $R$ is not relatively Alster and $F\win\mengame{R}$. If $S(2^\omega,\omega,\omega)$ holds, then $F\kmarkwin{2}\mengame{R}$.
-  \end{ex}
+%   \begin{ex}
+%     Let the real numbers $R$ be given the topology generated by open intervals with countable sets removed. $R$ is not relatively Alster and $F\win\mengame{R}$. If $S(2^\omega,\omega,\omega)$ holds, then $F\kmarkwin{2}\mengame{R}$.
+%   \end{ex}
 
 
 
@@ -150,21 +185,21 @@ Results pertaining to the Menger game characterizing the Menger property.
 
 
 
-  \section{Filling Games}
+%   \section{Filling Games}
 
-  \begin{defn}
-    The \textbf{filling game} $\fillgame{J}$ on an ideal $J$ proceeds as follows: player $M$ chooses $M_0 \in \<J\>$, the $\sigma$-completion of $J$, in the initial round, followed by $N$ choosing $N_0\in J$. In round $n+1$, player $M$ chooses $M_{n+1}$ where $M_n\subseteq M_{n+1}\in\<J\>$, and player $N$ replies with $N_{n+1}\in J$. Player $N$ wins the game if $\bigcup_{n<\omega} N_n \supseteq \bigcup_{n<\omega} M_n$. (The sets in $J$ and $\<J\>$ are thought of as nowhere-dense and meager sets, respectively.)
+%   \begin{defn}
+%     The \textbf{filling game} $\fillgame{J}$ on an ideal $J$ proceeds as follows: player $M$ chooses $M_0 \in \<J\>$, the $\sigma$-completion of $J$, in the initial round, followed by $N$ choosing $N_0\in J$. In round $n+1$, player $M$ chooses $M_{n+1}$ where $M_n\subseteq M_{n+1}\in\<J\>$, and player $N$ replies with $N_{n+1}\in J$. Player $N$ wins the game if $\bigcup_{n<\omega} N_n \supseteq \bigcup_{n<\omega} M_n$. (The sets in $J$ and $\<J\>$ are thought of as nowhere-dense and meager sets, respectively.)
 
-    The \textbf{strict filling game} $\sfillgame{J}$ proceeds analogously, with the added requirement that $M_n\subsetneq M_{n+1}$. This game has been studied by Scheepers.
-  \end{defn}
+%     The \textbf{strict filling game} $\sfillgame{J}$ proceeds analogously, with the added requirement that $M_n\subsetneq M_{n+1}$. This game has been studied by Scheepers.
+%   \end{defn}
 
-  \begin{thm}
-    $N\ktactwin{2}\sfillgame{J} \Rightarrow N\kmarkwin{2}\fillgame{J}$
-  \end{thm}
+%   \begin{thm}
+%     $N\ktactwin{2}\sfillgame{J} \Rightarrow N\kmarkwin{2}\fillgame{J}$
+%   \end{thm}
 
-  \begin{ex}
-    There is a free ideal $J$ such that $N\not\ktactwin{2}\sfillgame{J}$ but $N\kmarkwin{2}\fillgame{J}$.
-  \end{ex}
+%   \begin{ex}
+%     There is a free ideal $J$ such that $N\not\ktactwin{2}\sfillgame{J}$ but $N\kmarkwin{2}\fillgame{J}$.
+%   \end{ex}
 
 
 
@@ -173,104 +208,104 @@ Results pertaining to the Menger game characterizing the Menger property.
 
 
 
-  \section{Rothberger property}
+%   \section{Rothberger property}
 
-  \begin{thm}(Pawlikowski)
-    $X$ is Rothberger if and only if $C\not\win\rothgame{X}$.
-  \end{thm}
+%   \begin{thm}(Pawlikowski)
+%     $X$ is Rothberger if and only if $C\not\win\rothgame{X}$.
+%   \end{thm}
 
 
-  \begin{thm}
-    The following are equivalent for compact $T_2$ $X$:
-      \begin{enumerate}[(a)]
-        \item $X$ is Rothberger
-        \item $X$ is scattered
-        \item $S\win\rothgame{X}$
-        \item $C\not\win\rothgame{X}$
-      \end{enumerate}
-  \end{thm}
+%   \begin{thm}
+%     The following are equivalent for compact $T_2$ $X$:
+%       \begin{enumerate}[(a)]
+%         \item $X$ is Rothberger
+%         \item $X$ is scattered
+%         \item $S\win\rothgame{X}$
+%         \item $C\not\win\rothgame{X}$
+%       \end{enumerate}
+%   \end{thm}
 
-  \begin{thm}(Galvin)
-  $\altrothgame{X}$ is ``perfect information equivalent'' to $\rothgame{X}$. That is:
+%   \begin{thm}(Galvin)
+%   $\altrothgame{X}$ is ``perfect information equivalent'' to $\rothgame{X}$. That is:
 
-    \begin{itemize}
-      \item $P\win\altrothgame{X}$ if and only if $S\win\rothgame{X}$
-      \item $O\win\altrothgame{X}$ if and only if $C\win\rothgame{X}$.
-    \end{itemize}
-  \end{thm}
+%     \begin{itemize}
+%       \item $P\win\altrothgame{X}$ if and only if $S\win\rothgame{X}$
+%       \item $O\win\altrothgame{X}$ if and only if $C\win\rothgame{X}$.
+%     \end{itemize}
+%   \end{thm}
 
-  \begin{thm}
-    \begin{itemize}
-      \item $P\prewin\altrothgame{X}$ if and only if $S\markwin\rothgame{X}$
-      \item $O\markwin\altrothgame{X}$ if and only if $C\prewin\rothgame{X}$.
-    \end{itemize}
-  \end{thm}
+%   \begin{thm}
+%     \begin{itemize}
+%       \item $P\prewin\altrothgame{X}$ if and only if $S\markwin\rothgame{X}$
+%       \item $O\markwin\altrothgame{X}$ if and only if $C\prewin\rothgame{X}$.
+%     \end{itemize}
+%   \end{thm}
 
-  \begin{thm}
-    For any space $X$, the following are equivalent:
-    \begin{itemize}
-      \item $S\markwin\rothgame{X}$
-      \item $P\prewin\altrothgame{X}$
-      \item $X$ is almost countable
-    \end{itemize}
-  \end{thm}
+%   \begin{thm}
+%     For any space $X$, the following are equivalent:
+%     \begin{itemize}
+%       \item $S\markwin\rothgame{X}$
+%       \item $P\prewin\altrothgame{X}$
+%       \item $X$ is almost countable
+%     \end{itemize}
+%   \end{thm}
 
-  \begin{thm}
-    For any $T_1$ space $X$, the following are equivalent:
-    \begin{itemize}
-      \item $S\markwin\rothgame{X}$
-      \item $P\prewin\altrothgame{X}$
-      \item $X$ is almost countable
-      \item $|X|\leq\omega$
-    \end{itemize}
-  \end{thm}
+%   \begin{thm}
+%     For any $T_1$ space $X$, the following are equivalent:
+%     \begin{itemize}
+%       \item $S\markwin\rothgame{X}$
+%       \item $P\prewin\altrothgame{X}$
+%       \item $X$ is almost countable
+%       \item $|X|\leq\omega$
+%     \end{itemize}
+%   \end{thm}
 
-  \begin{ex}
-    Let $X=\omega_1\cup\{\infty\}$ be a ``weak Lindel\"ofication'' of discrete $\omega_1$ such that open neighborhoods of $\infty$ contain $\omega_1\setminus\omega$. This space is $T_0$ but not $T_1$, and note that $S\markwin\rothgame{X}$ and $|X|>\omega$.
-  \end{ex}
+%   \begin{ex}
+%     Let $X=\omega_1\cup\{\infty\}$ be a ``weak Lindel\"ofication'' of discrete $\omega_1$ such that open neighborhoods of $\infty$ contain $\omega_1\setminus\omega$. This space is $T_0$ but not $T_1$, and note that $S\markwin\rothgame{X}$ and $|X|>\omega$.
+%   \end{ex}
 
-  \begin{thm}
-    The following are equivalent for points-$G_\delta$ $X$:
-      \begin{enumerate}[(a)]
-        \item $S\win\rothgame{X}$
-        \item $P\win\altrothgame{X}$
-        \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
-        \item $P\kmarkwin{k}\altrothgame{X}$ for some $k\geq 1$
-        \item $S\markwin\rothgame{X}$
-        \item $P\prewin\altrothgame{X}$
-        \item $X$ is almost countable
-        \item $|X|\leq\omega$
-      \end{enumerate}
-  \end{thm}
+%   \begin{thm}
+%     The following are equivalent for points-$G_\delta$ $X$:
+%       \begin{enumerate}[(a)]
+%         \item $S\win\rothgame{X}$
+%         \item $P\win\altrothgame{X}$
+%         \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
+%         \item $P\kmarkwin{k}\altrothgame{X}$ for some $k\geq 1$
+%         \item $S\markwin\rothgame{X}$
+%         \item $P\prewin\altrothgame{X}$
+%         \item $X$ is almost countable
+%         \item $|X|\leq\omega$
+%       \end{enumerate}
+%   \end{thm}
 
-  \begin{cor}
-    The following are equivalent for compact points-$G_\delta$ $X$:
-      \begin{enumerate}[(a)]
-        \item $S\win\rothgame{X}$
-        \item $P\win\altrothgame{X}$
-        \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
-        \item $P\kmarkwin{k}\altrothgame{X}$ for some $k\geq 1$
-        \item $S\markwin\rothgame{X}$
-        \item $P\prewin\altrothgame{X}$
-        \item $X$ is almost countable
-        \item $|X|\leq\omega$
-        \item $C\not\win\rothgame{X}$
-        \item $O\not\win\altrothgame{X}$
-        \item $X$ is Rothberger
-        \item $X$ is scattered
-      \end{enumerate}
-  \end{cor}
+%   \begin{cor}
+%     The following are equivalent for compact points-$G_\delta$ $X$:
+%       \begin{enumerate}[(a)]
+%         \item $S\win\rothgame{X}$
+%         \item $P\win\altrothgame{X}$
+%         \item $S\kmarkwin{k}\rothgame{X}$ for some $k\geq 1$
+%         \item $P\kmarkwin{k}\altrothgame{X}$ for some $k\geq 1$
+%         \item $S\markwin\rothgame{X}$
+%         \item $P\prewin\altrothgame{X}$
+%         \item $X$ is almost countable
+%         \item $|X|\leq\omega$
+%         \item $C\not\win\rothgame{X}$
+%         \item $O\not\win\altrothgame{X}$
+%         \item $X$ is Rothberger
+%         \item $X$ is scattered
+%       \end{enumerate}
+%   \end{cor}
 
-  \begin{defn}
-    The game $\recallgame{m}{\kappa}$ proceeds as follows: during round $0$, player $F$ chooses $F_0\in[\kappa]^m$, followed by player $S$ choosing $x_0\in F_0\cup\{\infty\}$. During round $n+1$, $F$ chooses $F_{n+1}\in[\kappa]^{m^{n+2}}$ such that $F_{n+1}\supset F_n$, followed by $S$ choosing $x_{n+1}\in F_{n+1}\cup\{\infty\}$.
+%   \begin{defn}
+%     The game $\recallgame{m}{\kappa}$ proceeds as follows: during round $0$, player $F$ chooses $F_0\in[\kappa]^m$, followed by player $S$ choosing $x_0\in F_0\cup\{\infty\}$. During round $n+1$, $F$ chooses $F_{n+1}\in[\kappa]^{m^{n+2}}$ such that $F_{n+1}\supset F_n$, followed by $S$ choosing $x_{n+1}\in F_{n+1}\cup\{\infty\}$.
 
-    $S$ wins the game if $\{x_n : n<\omega\}\supseteq F_0\cup\{\infty\}$, and $F$ wins otherwise.
-  \end{defn}
+%     $S$ wins the game if $\{x_n : n<\omega\}\supseteq F_0\cup\{\infty\}$, and $F$ wins otherwise.
+%   \end{defn}
 
-  \begin{prop}
-    $S\limitwin\rothgame{\oneptlind{\kappa}} \Rightarrow S\limitwin\recallgame{m}{\kappa}$
-  \end{prop}
+%   \begin{prop}
+%     $S\limitwin\rothgame{\oneptlind{\kappa}} \Rightarrow S\limitwin\recallgame{m}{\kappa}$
+%   \end{prop}
 
-  \begin{prop}
-    $S\kmarkwin{k}\recallgame{m}{\kappa} \Leftrightarrow S\ktactwin{k}\recallgame{m}{\kappa}$
-  \end{prop}
+%   \begin{prop}
+%     $S\kmarkwin{k}\recallgame{m}{\kappa} \Leftrightarrow S\ktactwin{k}\recallgame{m}{\kappa}$
+%   \end{prop}
