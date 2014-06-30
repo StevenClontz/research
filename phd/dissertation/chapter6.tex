@@ -21,8 +21,12 @@ $\sigma$-compactness \cite{custom31879423}.
   $X$ is Lindel\"of.
 \end{prop}
 
-It can be shown via a non-trivial proof that the following game can be
-used to characterize the Menger property.
+None of these implications may be reversed; the irrationals are a simple example
+of a Lindel\"of space which is not Menger, and we'll see several examples of
+Menger spaces which are not $\sigma$-compact.
+
+It can be shown via a non-trivial
+proof that the following game can be used to characterize the Menger property.
 
 \begin{game}
   Let $\mengame{X}$ denote the \term{Menger game} with players $\pl C$, $\pl F$.
@@ -180,9 +184,107 @@ We require a techincal lemma.
   $\oneptlind{\omega_1}$.
 \end{proof}
 
-%   \begin{ex}
-%     $F \win \mengame{\oneptlind{\omega_1}}$ but $F \not\markwin \mengame{\oneptlind{\omega_1}}$.
-%   \end{ex}
+The greatest advantage of a strategy which has knowledge of two or more previous
+moves of the opponent, versus only knowledge of the most recent move, is the
+ability to react to changes from one round to the next. It's this ability to
+react that will give $\pl F$ her winning $2$-Mark\"ov strategy in the Menger
+game on $\oneptlind\omega_1$.
+
+\begin{defn}
+  For two functions $f,g$ we say $f$ is \textbf{$\mu$-almost compatible} with
+  $g$ ($f\alcomp_\mu g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\mu$.
+  If $\mu=\omega$ then we say $f,g$ are \textbf{almost compatible}
+  ($f\alcomp g$).
+\end{defn}
+
+For inspiration, we turn to a game whose $n$-tactics were studied by Marion
+Scheepers in \cite{MR1129143} which has similar goals to the Menger game when
+played upon $\oneptlind\kappa$.
+
+\begin{game}
+  Let $\ksfillgame\kappa$ denote the \term{strict countable/finite filling game}
+  with two players $\pl C$, $\pl F$. In round $0$, $\pl C$ chooses
+  $C_0\in[\kappa]^{\leq\omega}$, followed by $\pl F$ choosing
+  $F_0\in[\kappa]^{<\omega}$. In round $n+1$, $\pl C$ chooses
+  $C_{n+1}\in[\kappa]^{\leq\omega}$ such that $C_{n+1}\supset C_n$, followed
+  by $\pl F$ choosing $F_{n+1}\in[\kappa]^{<\omega}$.
+
+  $\pl F$ wins the game if
+  $\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n$; otherwise, $\pl C$
+  wins.
+\end{game}
+
+Essentially, in $\mengame{\oneptlind\kappa}$ $\pl C$ chooses a countable set
+to not include in her neighborhood of $\infty$, followed by $\pl F$ choosing
+finitely many of them to cover each round. The games are not quite equivalent,
+however. In the Menger game, $\pl F$ only has to cover the \textit{intersection}
+of the countable sets chosen by $\pl C$ rather than the union, since she may
+always choose to cover the neighborhood of $\infty$ chosen by $\pl C$ each
+round.
+
+In addition, Scheepers required that $\pl C$ always choose strictly growing
+countable sets. The reasoning is clear: if the goal is to study tactics, then
+$\pl C$ cannot be allowed to trap $\pl F$ in a loop by repeating the same moves.
+But by eliminating this requirement, the study can then turn to Mark\"ov
+srategies, bringing the game further in line with the Menger game played upon
+$\oneptlind\kappa$.
+
+\begin{game}
+  Let $\kfillgame\kappa$ denote the
+  \term{(nonstrict) countable/finite filling game} which proceeds analogously
+  to $\ksfillgame\kappa$, except that $\pl C$ need only ensure that
+  $C_{n+1}\supseteq C_n$.
+\end{game}
+
+In studying these filling games, Scheepers introduced the statement
+$\alcompS\kappa$ relating to the almost-compatability of functions
+from countable subsets of $\kappa$ into $\omega$.
+
+\begin{defn}
+  $\alcompS\kappa$ states that there exist injective functions
+  $f_A:A\to\lambda$ for each $A\in[\kappa]^\omega$ such that $f_A\alcomp f_B$
+  for all $A,B\in[\kappa]^\omega$.
+  \footnote{
+    In \cite{MR1129143}, $\alcompS\kappa$ is restricted to the case that
+    $A\subset B$, but from $f_A\alcomp f_{A\cap B}$ and
+    $f_B\alcomp f_{A\cap B}$ it follows then that $f_A\alcomp f_B$ for any
+    $A,B$.
+  }
+\end{defn}
+
+Scheepers went on to show that $\alcompS\kappa$ implies
+$\pl F \ktactwin2 \ksfillgame\kappa$. It can shown similarly that
+$\alcompS\kappa$ implies $\pl F \kmarkwin2 \kfillgame\kappa$, either directly
+or by using the winning $2$-tactic in $\ksfillgame\kappa$ to construct a
+winning $2$-mark in $\kfillgame\kappa$. These proofs, along with the following
+fact, give us inspiration for
+finding a winning $2$-Mark\"ov strategy in the Menger game.
+
+\begin{thm}
+  $\alcompS{\omega_1}$ and $\neg\alcompS{(2^\omega)^+}$ are theorems of $ZFC$.
+  $\alcompS{2^\omega}$ is a theorem of $ZFC+CH$ and consistent with
+  $ZFC+\neg CH$.
+\end{thm}
+
+\begin{proof}
+  For $\alcompS{\omega_1}$, look at pg. 70 of \cite{MR597342}; this of course
+  shows $\alcompS{2^\omega}$ under $CH$.
+  $\neg\alcompS{(2^\omega)^+}$ can be shown with a simple cardinality argument.
+  The consistency result under $ZFC+\neg CH$
+  is a lemma for the main theorem in \cite{MR1129143}.
+\end{proof}
+
+\begin{thm}
+  $\pl F \kmarkwin2 \mengame{\oneptlind\omega_1}$.
+\end{thm}
+
+\begin{proof}
+  The result follows from $S(\omega_1,\omega,\omega)$; however, we delay the
+  details of the proof pending the introduction of a related covering property.
+\end{proof}
+
+
+
 
 %   \begin{thm}
 %     A space $X$ is $\sigma$-(relatively compact) if and only if $F \markwin \mengame{X}$.
@@ -257,11 +359,11 @@ We require a techincal lemma.
 %   \end{prop}
 
 %   \begin{thm}
-%     $S(\kappa,\omega,\omega)$ implies $\oneptlind{\kappa}$ is \scish.
+%     $\alcompS\kappa$ implies $\oneptlind{\kappa}$ is \scish.
 %   \end{thm}
 
 %   \begin{cor}
-%     $S(\kappa,\omega,\omega)$ implies $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$.
+%     $\alcompS\kappa$ implies $F\kmarkwin{2}\mengame{\oneptlind{\kappa}}$.
 %   \end{cor}
 
 %   \begin{thm}
