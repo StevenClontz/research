@@ -38,13 +38,13 @@ first-countable spaces using this game.
 \end{prop}
 
 \begin{proof}
-  The forward implication shows that all $W$ spaces are first-countable spaces,
+  The forward implication shows that all first-countable spaces are $W$ spaces,
   and was proven in \cite{MR0413049}: if $\{U_n:n<\omega\}$ is a countable
   base at $x$, let $\sigma(n)=\bigcap_{m\leq n} U_m$. $\sigma$ is easily seen
   to be a winning predetermined strategy.
 
   If $X$ is not first countable at some $x$, let $\sigma$ be a
-  predetermined strategy for $\pl O$ in $\congamehard{X}{x}$. There exists
+  predetermined strategy for $\pl O$ in $\congame{X}{x}$. There exists
   an open neighborhood $U$ of $x$ which does not contain any
   $\bigcap_{m\leq n}\sigma(m)$ (otherwise
   $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ would be a countable base at $x$).
@@ -307,7 +307,7 @@ However, knowledge of the round number is critical.
 
 \begin{proof}
   Let $\sigma$ be a $k$-tactic for $\pl O$ in
-  $\clusgame{\oneptcomp\omega_1}{\infty}$. By the closing-up lemma, the set
+  $\clusgamehard{\oneptcomp\omega_1}{\infty}$. By the closing-up lemma, the set
     \[
       C_\sigma
         =
@@ -341,7 +341,7 @@ However, knowledge of the round number is critical.
         a_\sigma(\omega),\dots,a_\sigma(\omega+k-1),
         \dots\>
     \]
-  has a range outside the open neighborhood
+  has a range outside the open neighborhood %FIXME, say has finite range.
     \[
       \oneptcomp\omega_1
         \setminus
@@ -374,14 +374,16 @@ similar argument.
         \subset \alpha
       \}
     \]
-  is closed and unbounded. Let $a_\sigma:\omega_2\to C_\sigma$ be
+  is closed and unbounded. (Recall that $\mu_k$ is the
+  $k$-Mark\"ov fog-of-war which turns perfect information into the last $k$
+  moves and the round number.) Let $a_\sigma:\omega_2\to C_\sigma$ be
   an order isomorphism.
 
   Choose $\beta_0<\dots<\beta_{k-1}<\omega_1$ such that for each $i<k$:
     \[
       a_\sigma(\beta_i)
         \in
-      \bigcup_{n<\omega}
+      \bigcap_{n<\omega}
       \sigma(
         \<a_\sigma(\beta_0),\dots,a_\sigma(\beta_{i-1}),
           a_\sigma(\omega_1+i),\dots,a_\sigma(\omega_1+k-1)\>,
@@ -396,7 +398,7 @@ similar argument.
         a_\sigma(\omega_1),\dots,a_\sigma(\omega_1+k-1),
         \dots\>
     \]
-  has a range outside the open neighborhood
+  has a range outside the open neighborhood %FIXME, say has finite range.
     \[
       \oneptcomp\omega_2
         \setminus
@@ -632,7 +634,7 @@ may only play within some ordinal smaller than $\kappa$.
   an increasing sequence of cardinals limiting to $\kappa$. Then we define
   the coding strategy $\sigma$ for $\pl F$ as follows:
     \[
-      \sigma(\emptyset) = \sigma_{K_0}(\emptyset)
+      \sigma(\emptyset) = \sigma_{\kappa_0}(\emptyset)
     \]
     \[
       \sigma(\<F,C\>)
