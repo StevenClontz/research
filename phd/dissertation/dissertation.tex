@@ -31,6 +31,9 @@
 
 \usepackage{enumerate}
 
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
 
 
 % Theorems
@@ -57,36 +60,36 @@
 
 % Custom Theorem environments
 \newenvironment{thm}
-  {\begin{TMPthm}}
-  {\thmBookend{}\end{TMPthm}}
+  {\begin{samepage}\begin{TMPthm}}
+  {\thmBookend{}\end{TMPthm}\end{samepage}}
 \newenvironment{lem}
-  {\begin{TMPlem}}
-  {\thmBookend{}\end{TMPlem}}
+  {\begin{samepage}\begin{TMPlem}}
+  {\thmBookend{}\end{TMPlem}\end{samepage}}
 \newenvironment{cor}
-  {\begin{TMPcor}}
-  {\thmBookend{}\end{TMPcor}}
+  {\begin{samepage}\begin{TMPcor}}
+  {\thmBookend{}\end{TMPcor}\end{samepage}}
 \newenvironment{prop}
-  {\begin{TMPprop}}
-  {\thmBookend{}\end{TMPprop}}
+  {\begin{samepage}\begin{TMPprop}}
+  {\thmBookend{}\end{TMPprop}\end{samepage}}
 \newenvironment{obs}
-  {\begin{TMPobs}}
+  {\begin{samepage}\begin{TMPobs}}
   {\thmBookend{}\end{TMPobs}}
 
 \newenvironment{defn}
-  {\begin{TMPdefn}}
-  {\thmBookend{}\end{TMPdefn}}
+  {\begin{samepage}\begin{TMPdefn}}
+  {\thmBookend{}\end{TMPdefn}\end{samepage}}
 \newenvironment{ex}
-  {\begin{TMPex}}
-  {\thmBookend{}\end{TMPex}}
+  {\begin{samepage}\begin{TMPex}}
+  {\thmBookend{}\end{TMPex}\end{samepage}}
 \newenvironment{game}
-  {\begin{TMPgame}}
-  {\thmBookend{}\end{TMPgame}}
+  {\begin{samepage}\begin{TMPgame}}
+  {\thmBookend{}\end{TMPgame}\end{samepage}}
 \newenvironment{conj}
-  {\begin{TMPconj}}
-  {\thmBookend{}\end{TMPconj}}
+  {\begin{samepage}\begin{TMPconj}}
+  {\thmBookend{}\end{TMPconj}\end{samepage}}
 \newenvironment{ques}
-  {\begin{TMPques}}
-  {\thmBookend{}\end{TMPques}}
+  {\begin{samepage}\begin{TMPques}}
+  {\thmBookend{}\end{TMPques}\end{samepage}}
 
 
 
