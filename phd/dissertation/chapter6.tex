@@ -7,8 +7,8 @@ In 1924 Karl Menger introduced a covering property generalizing
 $\sigma$-compactness \cite{custom31879423}.
 
 \begin{defn}
-  A space $X$ is Menger if for every sequence of open covers of $X$
-  $\<\mc U_0,\mc U_1,\dots\>$ there exists a sequence
+  A space $X$ is Menger if for every sequence $\<\mc U_0,\mc U_1,\dots\>$
+  of open covers of $X$ there exists a sequence
   $\<\mc F_0,\mc F_1,\dots\>$ such that $\mc F_n\subseteq \mc U_n$,
   $|\mc F_n|<\omega$, and $\bigcup_{n<\omega}\mc F_n$ is a cover of $X$.
 \end{defn}
@@ -241,7 +241,7 @@ from countable subsets of $\kappa$ into $\omega$.
 
 \begin{defn}
   $\alcompS\kappa$ states that there exist injective functions
-  $f_A:A\to\lambda$ for each $A\in[\kappa]^{\leq\omega}$ such that
+  $f_A:A\to\omega$ for each $A\in[\kappa]^{\leq\omega}$ such that
   $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
   \footnote{
     In \cite{MR1129143}, $\alcompS\kappa$ is restricted to the case that
@@ -595,16 +595,16 @@ following covering property.
   $A(\mc U)\in[\kappa]^{\leq\omega}$ for each open cover $\mc U$ such that
   $\oneptlind\kappa\setminus A(\mc U)$ is contained in some element of
   $\mc U$.
-  Then $r_{\mc U}(x)=0$ for $x\in\oneptlind\kappa\setminus A(\mc U)$,
+  Then let $r_{\mc U}(x)=0$ for $x\in\oneptlind\kappa\setminus A(\mc U)$,
   and $r_{\mc U}(x)=f_{A(\mc U)}(x)$ for $x\in A(\mc U)$.
 
   It follows that
     \[
       c(\mc U,n)
         =
-      \oneptlind\kappa\setminus A(\mc U)
+      \left(\oneptlind\kappa\setminus A(\mc U)\right)
         \cup
-      \{f_{A(\mc U)}^{-1}(m) : m\in n\cap\ran{f_{A(\mc U)}} \}
+      f_{A(\mc U)}^{-1}\left(n+1\right)
     \]
   is $\mc U$-compact, $\bigcup_{n<\omega}c(\mc U,n)=X$, and
     \[
@@ -633,7 +633,23 @@ than the usual Euclidean line.
 \end{thm}
 
 \begin{proof}
-  TODO
+  Compact sets in $R_{\mathbb Q}$ can be shown to not contain open intervals,
+  and thus are nowhere dense in nonmeager $\mathbb R$,
+  so $R_{\mathbb Q}$ is not $\sigma$-compact. The usual base of
+  intervals with rational endpoints (with or without rationals removed)
+  witnesses second-countability.
+
+  To see that $R_{\mathbb Q}$ is $\sigma$-relatively compact, consider
+  $[a,b]\setminus\mathbb{Q}$. Let $\mc U$ be a cover of $R_{\mathbb Q}$, and
+  let $\mc U'$ fill in the missing rationals for any open set in $\mc U$.
+  There is a finite subcover $\mc V'\subseteq \mc U'$ for $[a,b]$ since
+  $\mc U'$ contains open sets from the Euclidean topology. Let
+  $\mc V= \{V\setminus\mathbb{Q}:V\in V'\}$: this is a finite refinment of
+  $\mc U$ covering $[a,b]\setminus\mathbb{Q}$, so $[a,b]\setminus\mathbb{Q}$
+  is relatively compact. It follows then that $R_{\mathbb Q}\setminus\mathbb Q$
+  is $\sigma$-relatively-compact, and since $\mathbb Q$ is countable,
+  $R_{\mathbb Q}$ is $\sigma$-relatively-compact. Non-regularity follows since
+  regular and $\sigma$-relatively-compact implies $\sigma$-compact.
 \end{proof}
 
 \begin{defn}
@@ -642,13 +658,32 @@ than the usual Euclidean line.
 \end{defn}
 
 \begin{thm}
-  $R_\omega$ is non-regular and non-$\sigma$-relatively-compact, but
-  $\pl F\win\mengame{R_\omega}$.
+  $R_\omega$ is non-regular, non-second-countable, and
+  non-$\sigma$-relatively-compact, but $\pl F\win\mengame{R_\omega}$.
 \end{thm}
 
 \begin{proof}
-  TODO
+  The closure of any open set is its closure in the usual Euclidean topology,
+  so $R_\omega$ is not regular. If $S\supseteq\{s_n:n<\omega\}$ for $s_n$
+  discrete, then $U_m=R_\omega\setminus\{s_n:m<n<\omega\}$ yields an
+  infinite cover $\{U_m:m<\omega\}$ with no finite subcollection covering $S$,
+  showing that all relatively compact sets are finite, and $R_\omega$ is not
+  $\sigma$-relatively-compact.
+
+  Define the winning strategy $\sigma$ for $\pl F$ in $\mengame{R_\omega}$ as
+  follows: let $\sigma(\mc{U}_0,\dots,\mc{U}_{2n})$ be a finite subcover for
+  $[-n,n]\setminus C_n$ for some countable $C_n=\{c_{n,m}: m<\omega\}$,
+  and let $\sigma(\mc{U}_0,\dots,\mc{U}_{2n+1})$ be a finite subcover for
+  $\{c_{i,j} : i,j < n\}$. Non-second-countable follows since
+  second-countable and $\pl F\win\mengame{X}$ implies
+  $\sigma$-relatively-compact.
 \end{proof}
+
+% TODO: Either show 2mark, or prove otherwise
+
+% TODO: \omega_1^\sharp
+
+% TODO: Alster
 
 
 
