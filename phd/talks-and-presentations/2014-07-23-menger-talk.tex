@@ -52,6 +52,9 @@
 \usepackage{marvosym} % For \Smiley
 \usepackage{verbatim} % for \verbatiminput
 
+\usepackage{tikz}
+\usetikzlibrary{matrix} % for diagrams
+
 \title
 {Game-theoretic strengthenings of Menger's property}
 
@@ -112,6 +115,13 @@
 \newcommand{\ktactwin}[1]{\underset{#1\text{-tact}}{\uparrow}}
 \newcommand{\codewin}{\underset{\text{code}}{\uparrow}}
 \newcommand{\limitwin}{\underset{\text{limit}}{\uparrow}}
+\newcommand{\notprewin}{\underset{\text{pre}}{\not\uparrow}}
+\newcommand{\notmarkwin}{\underset{\text{mark}}{\not\uparrow}}
+\newcommand{\nottactwin}{\underset{\text{tact}}{\not\uparrow}}
+\newcommand{\notkmarkwin}[1]{\underset{#1\text{-mark}}{\not\uparrow}}
+\newcommand{\notktactwin}[1]{\underset{#1\text{-tact}}{\not\uparrow}}
+\newcommand{\notcodewin}{\underset{\text{code}}{\not\uparrow}}
+\newcommand{\notlimitwin}{\underset{\text{limit}}{\not\uparrow}}
 
 \newcommand{\oneptcomp}[1]{#1^*}
 \newcommand{\oneptlind}[1]{#1^\dagger}
@@ -156,8 +166,6 @@
 \newcommand{\<}{\langle}
 \renewcommand{\>}{\rangle}
 
-\newcommand{\al}[1]{{#1}^*}
-
 \newcommand{\mc}[1]{\mathcal{#1}}
 
 \newcommand{\po}{\mathbb{P}}
@@ -170,7 +178,9 @@
 
 \newcommand{\st}[2]{st\left(#1,#2\right)}
 
-\newcommand{\alcomp}{\al\parallel}
+
+\newcommand{\al}[1]{{#1}^*}
+\newcommand{\alcomp}{\wr}
 
 \newcommand{\rank}{\textrm{rank}}
 \newcommand{\dom}{\textrm{dom}}
@@ -317,9 +327,9 @@
   Sketch of Scheeper's proof:
   \begin{itemize}
     \item Using second-countability and the winning strategy for $\pl F$,
-          construct certain subsets $R_s$ for $s \in \omega^{<\omega}$ such
-          that $X = \bigcup_{s\in\omega^{<\omega}}$.
-    \item Using regularity, show that each $R_s$ is compact.
+          construct certain subsets $K_s$ for $s \in \omega^{<\omega}$ such
+          that $X = \bigcup_{s\in\omega^{<\omega}}K_s$.
+    \item Using regularity, show that each $K_s$ is compact.
     \item The result follows since $|\omega^{<\omega}|=\omega$.
   \end{itemize}
 
@@ -534,13 +544,163 @@
 \subsection{$2$-Mark\"ov but not $1$-Mark\"ov}
 
 \begin{frame}
-  foo
+  Knowledge of two previous moves versus one is an important distinction:
+  in the former case, the player is able to react to change by the
+  opponent.
+
+  \pause
+
+  \begin{definition}
+    Let $\oneptlind\kappa = \kappa\cup\{\infty\}$ be the
+    \term{one point Lindel\"of-ication} of discrete $\kappa$: neighborhoods
+    of $\infty$ are exactly the co-countable sets containing it.
+  \end{definition}
+
+  \pause
+
+  $\oneptlind\kappa$ is a simple space which is a regular and Lindel\"of, but
+  not second-countable space or $\sigma$-compact. Thus
+  $\pl F\notkmarkwin{1}\mengame{\oneptlind\kappa}$, but it's easy to see
+  that $\pl F\win\mengame{\oneptlind\kappa}$. What about $2$-Mark\"ov
+  strategies?
+\end{frame}
+
+\begin{frame}
+  In 1991, Scheepers introduced the statement $\alcompS\kappa$ to study an
+  infinite game involving the countable and finite subsets of $\kappa$.
+
+  \pause
+
+  \begin{game}
+    Let $\fillgameS\kappa$ denote the \term{strict union filling game}
+    with two players $\pl C$, $\pl F$. In round $0$, $\pl C$ chooses
+    $C_0\in[\kappa]^{\leq\omega}$, followed by $\pl F$ choosing
+    $F_0\in[\kappa]^{<\omega}$. In round $n+1$, $\pl C$ chooses
+    $C_{n+1}\in[\kappa]^{\leq\omega}$ such that $C_{n+1}\supset C_n$, followed
+    by $\pl F$ choosing $F_{n+1}\in[\kappa]^{<\omega}$.
+
+    $\pl F$ wins the game if
+    $\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n$; otherwise, $\pl C$
+    wins.
+  \end{game}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    For two functions $f,g$ we say $f$ is \term{almost compatible} with
+    $g$ ($f\alcomp g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega$.
+  \end{definition}
+  \pause
+  \begin{definition}
+    $\alcompS\kappa$ states that there exist functions
+    $f_A:A\to\omega$ for each $A\in[\kappa]^{\leq\omega}$ such that
+    $|f_A^{-1}(n)|<\omega$ for all $n<\omega$ and
+    $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
+  \end{definition}
+  \pause
+  \begin{theorem}
+    $\alcompS{\omega_1}$; $Con(\alcompS{2^\omega}+\neg CH)$;
+    $\neg\alcompS\kappa$ for $\kappa>2^\omega$.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  The round number is unnecessary in Scheeper's game, since $\pl C$ must
+  choose strictly increasing sets.
+
+  \begin{theorem}
+    If $\alcompS\kappa$, then $\pl F\ktactwin2 \fillgameS\kappa$.
+  \end{theorem}
+
+  \pause
+
+  As it turns out, a related game characterizes $\mengame{\oneptlind\kappa}$.
+
+  \begin{definition}
+    Let $\fillgameInt\kappa$ denote the \term{intersection filling game}
+    analogous to $\fillgameS\kappa$, except that $\pl C$ has no restriction
+    on the countable sets she choooses, but $\pl F$ need only ensure that
+    $\bigcup_{n<\omega}\mc F_n\supseteq \bigcap_{n<\omega}\mc U_n$ to win
+    the game.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    $\pl F \kmarkwin{k} \mengame{\oneptlind\kappa}$ if and only if
+    $\pl F \kmarkwin{k} \fillgameInt\kappa$.
+  \end{theorem}
+
+  \pause
+
+  \begin{theorem}
+    If $\alcompS\kappa$, then $\pl F\kmarkwin{2} \fillgameInt\kappa$.
+  \end{theorem}
+
+  \pause
+
+  \begin{proof}
+    Let $f_A:A\to\omega$ witness $\alcompS\kappa$. Then we define the
+    winning $2$-Mark\"ov strategy $\sigma$ as follows:
+      \[
+        \sigma(\<A\>,0) = \{\alpha\in A: f_A(\alpha) = 0\}
+      \]
+      \[
+        \sigma(\<A,B\>,n+1)
+          =
+        \{\alpha\in A\cap B
+          :
+        f_B(\alpha) \leq n+1
+          \text{ or }
+        f_A(\alpha)\not=f_B(\alpha)\}
+      \]
+  \end{proof}
+\end{frame}
+
+\begin{frame}
+  \begin{corollary}
+    $\pl F\kmarkwin{2}\mengame{\oneptlind\omega_1}$, but
+    $\pl F\notkmarkwin1\mengame{\oneptlind\omega_1}$.
+  \end{corollary}
+  \begin{figure}
+    \includegraphics[height=1.7in]{mengerGameChart.png}
+  \end{figure}
+\end{frame}
+
+\section{Quesitons}
+
+\begin{frame}
+  \begin{question}
+    Does $\pl F\kmarkwin2\mengame{\oneptlind\kappa}$ imply $\alcompS\kappa$?
+  \end{question}
+
+  \pause
+
+  \begin{question}
+    Are $\pl F\win\mengame X$ and $\pl F\kmarkwin2\mengame X$ distinct?
+  \end{question}
+
+  An affirmative answer to the first question answers this since
+  $\neg\alcompS\kappa$ for $\kappa>2^\omega$.
+\end{frame}
+\begin{frame}
+  \begin{question}
+    Where does $\pl F\kmarkwin2\mengame X$ fit in with other properties
+    between $\sigma$-(relatively-)compact and Menger?
+  \end{question}
+  $\pl F\kmarkwin2\mengame X$ seems to characterize an
+  ``almost-$\sigma$-(relative-)compactness''.
+
+  Any sufficient property must imply $\pl F\win\mengame X$ (ruling out
+  Hurewicz[?]), and any (interesting) necessary property shouldn't be implied by
+  $\pl F\win\mengame X$ (ruling out Alster and productively Lindel\"of for
+  regular spaces).
 \end{frame}
 
 \section*{}
 
 \begin{frame}
-Questions? Thanks for having me!
+Questions? Thanks for listening!
 \end{frame}
 
 
