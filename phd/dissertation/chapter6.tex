@@ -601,65 +601,99 @@ second-countability, the latter of which was essentially used by Scheepers in
 this way:
 
 \begin{lem}
-  Let $X$ be a second-countable space. If $\pl F\win\mengame{X}$, then
-  $X$ is $\sigma$-relatively-compact.
+  Let $X$ be a second-countable space. $\pl F\win\mengame{X}$ if and only if
+  $\pl F\markwin\mengame{X}$
 \end{lem}
 
 \begin{proof}
   Let $\sigma$ be a strategy for $\pl F$, and let $\mathfrak{C}$ be the
-  collection of all covers of $X$ using basic open sets. We define
-  $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
-    \begin{itemize}
-      \item We first define $R_\emptyset$ by
-        \[
-          R_\emptyset
-            =
-          \bigcap_{\mc{U}\in\mathfrak{C}}
-          \left(\bigcup \sigma(\<\mc{U}\>)\right)
-        \]
-      \item Since there are only countably many distinct finite collections of
-            basic open sets, we may choose $\mc U_{\<n\>}$ for $n<\omega$ such
-            that
-        \[
-          R_\emptyset
-            =
-          \bigcap_{n<\omega}
-          \left(\bigcup\sigma(\mc{U}_{\<n\>})\right)
-        \]
-      \item Then, define $R_{s}$ by
-        \[
-          R_s
-            =
-          \bigcap_{\mc{U}\in\mathfrak{C}}
-          \left(\bigcup
-            \sigma(\<\mc U_{s\rest1},\mc U_{s\rest2},\dots,\mc U_s,\mc U\>)
-          \right)
-        \]
-      \item Again, since there are only countably many distinct finite
-            collections of basic open sets, we may choose
-            $\mc U_{s\concat\<n\>}$ for $n<\omega$ such that
-        \[
-          R_s
-            =
-          \bigcap_{n<\omega}
-          \left(\bigcup
-            \sigma(\<\mc U_{s\rest1},\mc U_{s\rest2},\dots,
-                     \mc U_s,\mc U_{s\concat\<n\>}\>)
-          \right)
-        \]
-    \end{itemize}
+  collection of all covers of $X$ using open sets from some countable
+  base.
 
-    We may quickly confirm that each $R_s$ is relatively compact as for each
-    open cover $\mc{U}$ of $X$,
-    $\sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U})$ is
-    a finite subcollection covering $R_s$.
+  Note that there are only
+  countably many finite collections of basic open sets. So for
+  $s\in\omega^{<\omega}$, we may define $\mc U_{s\concat\<n\>}\in\mathfrak C$
+  such that for each basic open cover $\mc U$, there is some $n<\omega$ where
+  \[
+    \sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U)
+      =
+    \sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U_{s\concat\<n\>})
+  \]
 
-    If $x$ is not a member of any $R_s$, we may define $f\in\omega^\omega$ such
-    that $x\not\in \bigcup\sigma(\<\mc{U}_{f\rest1},\dots,\mc{U}_{f\rest n})\>$
-    for any $n$. Then $\<\mc{U}_{f\rest1},\mc{U}_{f\rest2},\dots\>$ is a
-    counter to the strategy $\sigma$. Thus if $\sigma$ is a winning
-    strategy, $X = \bigcup_{s\in\omega^{<\omega}} R_s$.
+  Let $t:\omega\to\omega^{<\omega}$ be a bijection. We define the Mark\"ov
+  strategy $\tau$ as follows:
+  \[
+    \tau(\mc U,n) = \sigma(\mc U_{t(n)\rest 1},\dots,\mc U_{t(n)},\mc U)
+  \]
+
+  Suppose there exists a counter-attack $\<\mc V_0,\mc V_1,\dots\>$ which
+  defeats $\tau$. Then there exists
+  $f:\omega\to\omega$ such that:
+  \[
+    \begin{array}{rcl}
+    x & \not\in & \bigcup \tau(\mc V_{t^{-1}(f\rest n)},t^{-1}(f\rest n)) \\
+    & = & \bigcup\sigma(\mc U_{f\rest 1},\dots,\mc U_{f\rest n},\mc V_{t^{-1}(f\rest n)}) \\
+    & = & \bigcup\sigma(\mc U_{f\rest 1},\dots,\mc U_{f\rest n},\mc U_{f\rest (n+1)})
+    \end{array}
+  \]
+
+  Thus $\<\mc U_{f\rest 1}, \mc U_{f\rest 2},\dots\>$ is a successful
+  counter-attack by $\pl C$ against the perfect information strategy $\sigma$.
 \end{proof}
+
+  % alt proof
+  %  We define
+  % $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
+  %   \begin{itemize}
+  %     \item We first define $R_\emptyset$ by
+  %       \[
+  %         R_\emptyset
+  %           =
+  %         \bigcap_{\mc{U}\in\mathfrak{C}}
+  %         \left(\bigcup \sigma(\<\mc{U}\>)\right)
+  %       \]
+  %     \item Since there are only countably many distinct finite collections of
+  %           basic open sets, we may choose $\mc U_{\<n\>}$ for $n<\omega$ such
+  %           that
+  %       \[
+  %         R_\emptyset
+  %           =
+  %         \bigcap_{n<\omega}
+  %         \left(\bigcup\sigma(\mc{U}_{\<n\>})\right)
+  %       \]
+  %     \item Then, define $R_{s}$ by
+  %       \[
+  %         R_s
+  %           =
+  %         \bigcap_{\mc{U}\in\mathfrak{C}}
+  %         \left(\bigcup
+  %           \sigma(\<\mc U_{s\rest1},\mc U_{s\rest2},\dots,\mc U_s,\mc U\>)
+  %         \right)
+  %       \]
+  %     \item Again, since there are only countably many distinct finite
+  %           collections of basic open sets, we may choose
+  %           $\mc U_{s\concat\<n\>}$ for $n<\omega$ such that
+  %       \[
+  %         R_s
+  %           =
+  %         \bigcap_{n<\omega}
+  %         \left(\bigcup
+  %           \sigma(\<\mc U_{s\rest1},\mc U_{s\rest2},\dots,
+  %                    \mc U_s,\mc U_{s\concat\<n\>}\>)
+  %         \right)
+  %       \]
+    % \end{itemize}
+
+    % We may quickly confirm that each $R_s$ is relatively compact as for each
+    % open cover $\mc{U}$ of $X$,
+    % $\sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U})$ is
+    % a finite subcollection covering $R_s$.
+
+    % If $x$ is not a member of any $R_s$, we may define $f\in\omega^\omega$ such
+    % that $x\not\in \bigcup\sigma(\<\mc{U}_{f\rest1},\dots,\mc{U}_{f\rest n})\>$
+    % for any $n$. Then $\<\mc{U}_{f\rest1},\mc{U}_{f\rest2},\dots\>$ is a
+    % counter to the strategy $\sigma$. Thus if $\sigma$ is a winning
+    % strategy, $X = \bigcup_{s\in\omega^{<\omega}} R_s$.
 
 \begin{cor}
   Let $X$ be a second-countable space. The following are equivalent:
