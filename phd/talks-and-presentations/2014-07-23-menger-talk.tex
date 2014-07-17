@@ -225,30 +225,30 @@
 % \end{frame}
 
 
-\section{Introduction}
+% \section{Introduction}
 
-\subsection{Abstract}
+% \subsection{Abstract}
 
-\begin{frame}{Abstract}%{Subtitles are optional.}
-    \small
-    A certain topological game introduced by Hurewicz characterizes Menger's
-    covering property whenever the first player lacks a winning strategy. It
-    was later shown by Telgarsky (and later by Scheepers using a different
-    argument) that for metric spaces, the second player having a winning
-    strategy characterizes the stronger property of $\sigma$-compactness.
+% \begin{frame}{Abstract}%{Subtitles are optional.}
+%     \small
+%     A certain topological game introduced by Hurewicz characterizes Menger's
+%     covering property whenever the first player lacks a winning strategy. It
+%     was later shown by Telgarsky (and later by Scheepers using a different
+%     argument) that for metric spaces, the second player having a winning
+%     strategy characterizes the stronger property of $\sigma$-compactness.
 
-    \vspace{1em}
+%     \vspace{1em}
 
-    We factor out Scheepers' proof to show
-    that for regular spaces, the second player having a winning $1$-Mark\"ov
-    strategy characterizes $\sigma$-compactness; also, for second-countable
-    spaces, the presence of a winning perfect information strategy for the
-    second player implies the existence of a winning $1$-Mark\"ov strategy for
-    that player. We also show the that for all $k$, the existence of a
-    winning $k$-Mark\"ov strategy for the second player implies the existence
-    of a winning $2$-Mark\"ov strategy, and give a space which permits
-    a winning $2$-Mark\"ov strategy but not a winning $1$-Mark\"ov strategy.
-\end{frame}
+%     We factor out Scheepers' proof to show
+%     that for regular spaces, the second player having a winning $1$-Mark\"ov
+%     strategy characterizes $\sigma$-compactness; also, for second-countable
+%     spaces, the presence of a winning perfect information strategy for the
+%     second player implies the existence of a winning $1$-Mark\"ov strategy for
+%     that player. We also show the that for all $k$, the existence of a
+%     winning $k$-Mark\"ov strategy for the second player implies the existence
+%     of a winning $2$-Mark\"ov strategy, and give a space which permits
+%     a winning $2$-Mark\"ov strategy but not a winning $1$-Mark\"ov strategy.
+% \end{frame}
 
 \section{Menger Spaces and the Menger Game}
 
@@ -620,7 +620,7 @@
     Let $\fillgameInt\kappa$ denote the \term{intersection filling game}
     analogous to $\fillgameS\kappa$, except that $\pl C$ has no restriction
     on the countable sets she choooses, but $\pl F$ need only ensure that
-    $\bigcup_{n<\omega}\mc F_n\supseteq \bigcap_{n<\omega}\mc U_n$ to win
+    $\bigcup_{n<\omega} F_n\supseteq \bigcap_{n<\omega} C_n$ to win
     the game.
   \end{definition}
 \end{frame}
@@ -691,10 +691,13 @@
   $\pl F\kmarkwin2\mengame X$ seems to characterize an
   ``almost-$\sigma$-(relative-)compactness''.
 
-  Any sufficient property must imply $\pl F\win\mengame X$ (ruling out
-  Hurewicz[?]), and any (interesting) necessary property shouldn't be implied by
-  $\pl F\win\mengame X$ (ruling out Alster and productively Lindel\"of for
-  regular spaces).
+  \vpause
+
+  Any sufficient property would imply $\pl F\win\mengame X$, and any
+  (interesting) necessary property shouldn't be implied by
+  $\pl F\win\mengame X$. Assuming $T_3$, properties which come to mind
+  from the literature fit the latter: e.g. Alster (Aurichi, Tall 2013),
+  and thus productively Lindel\"of (Alster 1988) and Hurewicz (Tall 2009).
 \end{frame}
 
 \section*{}
