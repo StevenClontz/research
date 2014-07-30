@@ -320,14 +320,14 @@ both.
 \end{defn}
 
 \begin{defn}
-  $\alcompS\kappa$ states that there exist injective functions
+  $\alcompS\kappa$ states that there exist functions
   $f_A:A\to\omega$ for each $A\in[\kappa]^{\leq\omega}$ such that
+  $|f_A^{-1}(n)|<\omega$ for all $n<\omega$ and
   $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
   \footnote{
-    In \cite{MR1129143}, $\alcompS\kappa$ is restricted to the case that
-    $A\subset B$, but from $f_A\alcomp f_{A\cap B}$ and
-    $f_B\alcomp f_{A\cap B}$ it follows then that $f_A\alcomp f_B$ for any
-    $A,B$.
+  This is equivalent to the original characterization given in
+  \cite{MR1129143}: there exist injections $g_A:A\to\omega$
+  such that $g_A\alcomp g_B$ for all $A,B\in[\kappa]^\omega$ and $A\subset B$.
   }
 \end{defn}
 
@@ -346,7 +346,8 @@ finding a winning $2$-Markov strategy in the Menger game.
 \begin{proof}
   For $\alcompS{\omega_1}$, look at pg. 70 of \cite{MR597342}; this of course
   implies $\alcompS{2^\omega}$ under $CH$.
-  $\neg\alcompS{(2^\omega)^+}$ can be shown with a simple cardinality argument.
+  $\neg\alcompS{(2^\omega)^+}$ is shown by a cardinality argument
+  in \cite{MR1129143}.
   The consistency result under $ZFC+\neg CH$
   is a lemma for the main theorem in \cite{MR1129143}.
 \end{proof}
@@ -364,19 +365,22 @@ finding a winning $2$-Markov strategy in the Menger game.
   Let $f_A$ for $A\in[\kappa]^{\leq\omega}$ witness $\alcompS\kappa$. We define
   the $2$-mark $\sigma$ as follows:
     \[
-      \sigma(\<A\>,0) = f_A^{-1}(1)
+      \sigma(\<A\>,0) = \{\alpha\in A: f_A(\alpha) \leq 0 \}
     \]
     \[
       \sigma(\<A,B\>,n+1)
         =
-      f_B^{-1}(n+2)
-        \cup
-      \{\alpha \in A\cap B : f_A(\alpha)\not=f_B(\alpha)\}
+      \{
+        \alpha \in A\cap B
+      :
+        f_B(\alpha) \leq n+1 \text{ or }
+        f_A(\alpha)\not=f_B(\alpha)
+      \}
     \]
   For any attack $\<A_0,A_1,\dots\>$ by $\pl C$ and
   $\alpha\in\bigcap_{n<\omega}A_n$, either $f_{A_n}(\alpha)$ is constant for
-  all $n$, or $f_{A_n}(\alpha)\not=f_{A_{n+1}}(\alpha)$; either way, $\alpha$
-  is covered.
+  all $n$, or $f_{A_n}(\alpha)\not=f_{A_{n+1}}(\alpha)$ for some $n$;
+  either way, $\alpha$ is covered.
 \end{proof}
 
 \begin{cor}
@@ -525,60 +529,6 @@ this way:
   counter-attack by $\pl C$ against the perfect information strategy $\sigma$.
 \end{proof}
 
-  % alt proof
-  %  We define
-  % $R_s,\mc{U}_s$ for $s\in\omega^{<\omega}$ as follows:
-  %   \begin{itemize}
-  %     \item We first define $R_\emptyset$ by
-  %       \[
-  %         R_\emptyset
-  %           =
-  %         \bigcap_{\mc{U}\in\mathfrak{C}}
-  %         \left(\bigcup \sigma(\<\mc{U}\>)\right)
-  %       \]
-  %     \item Since there are only countably many distinct finite collections of
-  %           basic open sets, we may choose $\mc U_{\<n\>}$ for $n<\omega$ such
-  %           that
-  %       \[
-  %         R_\emptyset
-  %           =
-  %         \bigcap_{n<\omega}
-  %         \left(\bigcup\sigma(\mc{U}_{\<n\>})\right)
-  %       \]
-  %     \item Then, define $R_{s}$ by
-  %       \[
-  %         R_s
-  %           =
-  %         \bigcap_{\mc{U}\in\mathfrak{C}}
-  %         \left(\bigcup
-  %           \sigma(\<\mc U_{s\rest1},\mc U_{s\rest2},\dots,\mc U_s,\mc U\>)
-  %         \right)
-  %       \]
-  %     \item Again, since there are only countably many distinct finite
-  %           collections of basic open sets, we may choose
-  %           $\mc U_{s\concat\<n\>}$ for $n<\omega$ such that
-  %       \[
-  %         R_s
-  %           =
-  %         \bigcap_{n<\omega}
-  %         \left(\bigcup
-  %           \sigma(\<\mc U_{s\rest1},\mc U_{s\rest2},\dots,
-  %                    \mc U_s,\mc U_{s\concat\<n\>}\>)
-  %         \right)
-  %       \]
-    % \end{itemize}
-
-    % We may quickly confirm that each $R_s$ is relatively compact as for each
-    % open cover $\mc{U}$ of $X$,
-    % $\sigma(\mc{U}_{s\rest1},\mc{U}_{s\rest2},\dots,\mc{U}_s,\mc{U})$ is
-    % a finite subcollection covering $R_s$.
-
-    % If $x$ is not a member of any $R_s$, we may define $f\in\omega^\omega$ such
-    % that $x\not\in \bigcup\sigma(\<\mc{U}_{f\rest1},\dots,\mc{U}_{f\rest n})\>$
-    % for any $n$. Then $\<\mc{U}_{f\rest1},\mc{U}_{f\rest2},\dots\>$ is a
-    % counter to the strategy $\sigma$. Thus if $\sigma$ is a winning
-    % strategy, $X = \bigcup_{s\in\omega^{<\omega}} R_s$.
-
 \begin{cor}
   Let $X$ be a second-countable space. The following are equivalent:
   \begin{itemize}
@@ -695,7 +645,7 @@ following covering property.
   $\oneptlind\kappa\setminus A(\mc U)$ is contained in some element of
   $\mc U$.
   Then let $r_{\mc U}(x)=0$ for $x\in\oneptlind\kappa\setminus A(\mc U)$,
-  and $r_{\mc U}(x)=f_{A(\mc U)}(x)$ for $x\in A(\mc U)$.
+  and $r_{\mc U}(\alpha)=f_{A(\mc U)}(\alpha)$ for $\alpha\in A(\mc U)$.
 
   It follows that
     \[
@@ -703,7 +653,7 @@ following covering property.
         =
       \left(\oneptlind\kappa\setminus A(\mc U)\right)
         \cup
-      f_{A(\mc U)}^{-1}\left(n+1\right)
+      \{\alpha\in A(\mc U) : f_{A(\mc U)}(\alpha)\leq n \}
     \]
   is $\mc U$-compact, $\bigcup_{n<\omega}c(\mc U,n)=X$, and
     \[
