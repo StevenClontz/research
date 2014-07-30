@@ -365,7 +365,7 @@ as input.
     \[
       \nu_k(\<m_0,\dots,m_{n-1}\>)=\<m_{n-k},\dots,m_{n-1}\>
     \]
-  and the \term{$k$-Mark\"ov fog-of-war} is the function
+  and the \term{$k$-Markov fog-of-war} is the function
   $\mu_k:M^{<\omega}\to (M^{\leq k}\times\omega)$ defined by
     \[
       \mu_k(\<m_0,\dots,m_{n-1}\>)=\<\<m_{n-k},\dots,m_{n-1}\>,n\>
@@ -384,7 +384,7 @@ moves \term{limited information strategies}.
   $\sigma:M^{\leq k}\to M$ yielding a corresponding strategy
   $\sigma\circ\nu_k:M^{<\omega}\to M$.
 
-  A \term{$k$-Mark\"ov strategy} or \term{$k$-mark} is a function
+  A \term{$k$-Markov strategy} or \term{$k$-mark} is a function
   $\sigma:M^{\leq k}\times\omega\to M$ yielding a corresponding strategy
   $\sigma\circ\mu_k:M^{<\omega}\to M$.
 \end{defn}
@@ -395,7 +395,7 @@ and in the latter case, also the round number.
 The $k$ is usually omitted when $k=1$. A ($1$-)tactic is
 called a \term{stationary strategy} by some authors. $0$-tactics are not
 usually interesting (such strategies would be constant functions); however,
-we will discuss $0$-Mark\"ov strategies, called
+we will discuss $0$-Markov strategies, called
 \term{predetermined strategies} since such a strategy only uses the round
 number and does not rely on knowing which moves the opponent will make.
 Of course, a limited information strategy $\sigma$ is \term{winning} for a
@@ -406,7 +406,7 @@ is winning for that player.
   If a winning $k$-tactical strategy exists for a player $\pl A$ in the game
   $G$, then we write $\pl A \ktactwin{k} G$. If $k=1$, then $\pl A \tactwin G$.
 
-  If a winning $k$-Mark\"ov strategy exists for a player $\pl A$ in the game
+  If a winning $k$-Markov strategy exists for a player $\pl A$ in the game
   $G$, then we write $\pl A \kmarkwin{k} G$. If $k=1$, then $\pl A \markwin G$,
   and if $k=0$, then $\pl A \prewin G$.
 \end{defn}

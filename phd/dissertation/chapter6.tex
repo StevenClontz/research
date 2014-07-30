@@ -42,7 +42,7 @@ proof that the following game can be used to characterize the Menger property.
   \cite{MR1544773}.
 \end{thm}
 
-\section{Mark\"ov strategies}
+\section{Markov strategies}
 
 To the author's knowledge, no other direct work has been done on limited
 information strategies pertaining to the Menger game, although as we'll see
@@ -168,7 +168,7 @@ We require a techincal lemma.
 \end{thm}
 
 \begin{proof}
-  Let $\sigma$ be a Mark\"ov strategy for $\pl F$. For each $\alpha<\omega_1$,
+  Let $\sigma$ be a Markov strategy for $\pl F$. For each $\alpha<\omega_1$,
   let $\mc U_\alpha$ be the open cover
   $\{\{\beta\}:\beta<\alpha\}\cup\{\oneptlind{\omega_1}\setminus\alpha\}$ of
   $\oneptlind{\omega_1}$. Then define
@@ -186,7 +186,7 @@ We require a techincal lemma.
 The greatest advantage of a strategy which has knowledge of two or more previous
 moves of the opponent, versus only knowledge of the most recent move, is the
 ability to react to changes from one round to the next. It's this ability to
-react that will give $\pl F$ her winning $2$-Mark\"ov strategy in the Menger
+react that will give $\pl F$ her winning $2$-Markov strategy in the Menger
 game on $\oneptlind\omega_1$.
 
 For inspiration, we turn to a game whose $n$-tactics were studied by Marion
@@ -217,7 +217,7 @@ $\infty$ chosen by $\pl C$ each round.
 In addition, Scheepers required that $\pl C$ always choose strictly growing
 countable sets. The reasoning is clear: if the goal is to study tactics, then
 $\pl C$ cannot be allowed to trap $\pl F$ in a loop by repeating the same moves.
-But by eliminating this requirement, the study can then turn to Mark\"ov
+But by eliminating this requirement, the study can then turn to Markov
 srategies, bringing the game further in line with the Menger game played upon
 $\oneptlind\kappa$.
 
@@ -382,7 +382,7 @@ both.
 Scheepers went on to show that $\alcompS\kappa$ implies
 $\pl F \ktactwin2 \fillgameS\kappa$. This proof, along with the following
 facts, give us inspiration for
-finding a winning $2$-Mark\"ov strategy in the Menger game.
+finding a winning $2$-Markov strategy in the Menger game.
 
 \begin{thm}
   $\alcompS{\omega_1}$ and $\kappa>2^\omega\Rightarrow\neg\alcompS\kappa$
@@ -479,8 +479,8 @@ we do not know if the middle two properties are actually distinct.
      \pl F \win \mengame{X} &
      \pl C \not\win \mengame{X} \\
 
-     \text{Mark\"ov Menger} &
-     2\text{-Mark\"ov Menger} &
+     \text{Markov Menger} &
+     2\text{-Markov Menger} &
      \text{Perfect Menger} &
      \text{Menger} \\
   };
@@ -520,7 +520,7 @@ winning Menger spaces are exactly the $\sigma$-compact spaces, shown first
 by Telgarksy in \cite{MR753073} and later directly by Scheepers in
 \cite{MR1273523}.
 
-In the interest of generality, we will first characterize the Mark\"ov Menger
+In the interest of generality, we will first characterize the Markov Menger
 spaces without any separation axioms.
 
 \begin{defn}
@@ -565,7 +565,7 @@ limited information implications at work.
       R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \bigcup\sigma(\mc{U},n)
     \]
   it follows that $R_n$ is relatively compact to $X$. If $\sigma$ is a winning
-  Mark\"ov startegy, then $\bigcup_{n<\omega} R_n = X$.
+  Markov startegy, then $\bigcup_{n<\omega} R_n = X$.
 \end{lem}
 
 \begin{proof}
@@ -756,7 +756,7 @@ following covering property.
 \end{thm}
 
 \begin{proof}
-  We define the Mark\"ov strategy $\sigma$ as follows.
+  We define the Markov strategy $\sigma$ as follows.
   Let $\sigma(\<\mc U\>,0)$ cover $c(\mc U,0)$, and let
   $\sigma(\<\mc U,\mc V\>,n+1)$ cover both $c(\mc V,n+1)$ and
   $p(\mc U, \mc V,n+1)$.

@@ -79,7 +79,7 @@ $\pl O$.
   The backwards implication is immediate.
 
   For the forward implication, let $\sigma$ be a winning predetermined
-  (perfect information) strategy, and $\lambda$ be the $0$-Mark\"ov
+  (perfect information) strategy, and $\lambda$ be the $0$-Markov
   fog-of-war $\mu_0$ (the identity).
 
   We define a new predetermined (perfect information) strategy $\tau$ by
@@ -143,10 +143,10 @@ as well.
   at $S$, $p$ converges to $S$, and $\sigma$ is a winning predetermined
   (resp. tactical) strategy for $\pl O$ in $\congame{X}{S}$ as well.
 
-  In the final case, note that any Mark\"ov strategy $\sigma'$ for $\pl O$ may
+  In the final case, note that any Markov strategy $\sigma'$ for $\pl O$ may
   be strengthened to $\sigma$ defined by
   $\sigma(x,n)=\bigcap_{m\leq n}\sigma'(x,m)$.
-  So, suppose that $\sigma$ is a winning Mark\"ov strategy for $\pl O$ in
+  So, suppose that $\sigma$ is a winning Markov strategy for $\pl O$ in
   $\clusgame{X}{S}$ such that $\sigma(x,m)\supseteq\sigma(x,n)$ for all
   $m\leq n$.
 
@@ -180,7 +180,7 @@ as well.
     \]
   so $q$ is also a legal attack against $\sigma$. Since $\sigma$ is a winning
   strategy, $q$ clusters at $S$, and since every subsequence of $p$ clusters
-  at $S$, $p$ must converge to $S$. Thus $\sigma$ is also a winning Mark\"ov
+  at $S$, $p$ must converge to $S$. Thus $\sigma$ is also a winning Markov
   strategy for $\pl O$ in $\congame{X}{S}$ as well.
 \end{proof}
 
@@ -242,7 +242,7 @@ Peter Nyikos noted Proposition \ref{propFortTact} and the following in
   $\pl O \not\markwin \congamehard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
-This actually can be generalized to any $k$-Mark\"ov strategy with just
+This actually can be generalized to any $k$-Markov strategy with just
 a little more bookkeeping.
 
 \begin{thm}
@@ -269,7 +269,7 @@ a little more bookkeeping.
 \end{proof}
 
 However, while the clustering and convergence variants are equivalent
-for Mark\"ov strategies in the ``normal'' version of the $W$ game, they are
+for Markov strategies in the ``normal'' version of the $W$ game, they are
 \textit{not} equivalent in the ``hard'' version.
 
 \begin{thm}
@@ -282,7 +282,7 @@ for Mark\"ov strategies in the ``normal'' version of the $W$ game, they are
   $A_\alpha(n)\subset A_\alpha(n+1)$ and
   $\bigcup_{n<\omega}A_\alpha(n)=\alpha+1$.
 
-  We define the Mark\"ov strategy $\sigma$ by setting
+  We define the Markov strategy $\sigma$ by setting
     \[
       \sigma(\emptyset,0) = \sigma(\<\infty\>,n) = \oneptcomp\omega_1
     \]
@@ -375,7 +375,7 @@ similar argument.
       \}
     \]
   is closed and unbounded. (Recall that $\mu_k$ is the
-  $k$-Mark\"ov fog-of-war which turns perfect information into the last $k$
+  $k$-Markov fog-of-war which turns perfect information into the last $k$
   moves and the round number.) Let $a_\sigma:\omega_2\to C_\sigma$ be
   an order isomorphism.
 
