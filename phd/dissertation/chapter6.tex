@@ -31,7 +31,7 @@ proof that the following game can be used to characterize the Menger property.
 \begin{game}
   Let $\mengame{X}$ denote the \term{Menger game} with players $\pl C$, $\pl F$.
   In round $n$, $\pl C$ chooses an open cover $\mc C_n$, followed by $\pl F$
-  choosing a finite subcollection $\mc F_n\subseteq \mc C_n$.
+  choosing a finite refinement $\mc F_n$ of $\mc C_n$.
 
   $\pl F$ wins the game if $\bigcup_{n<\omega}\mc F_n$ is a cover for the space
   $X$, and $\pl C$ wins otherwise.
@@ -57,7 +57,7 @@ However, we immediately see that tactics are not of any real interest.
 
 \begin{proof}
   For any open cover $\mc U$, attack the winning $k$-tactic with
-  $\<\mc U,\mc U,\dots\>$ to produce a finite open subcover.
+  $\<\mc U,\mc U,\dots\>$ to produce a finite refinement of which covers $X$.
 \end{proof}
 
 Essentially, because $\pl C$ may repeat the same finite sequence of open covers,
@@ -251,7 +251,7 @@ Figure \ref{fillingGamesDiagram} holds.
   \pl F \kmarkwin{k}\mengame{\oneptlind\kappa}$:
   Let $\sigma$ be a winning $k$-mark for $\pl F$ in
   $\fillgameInt\kappa$. Let $C(\mc U)$ (resp. $C(s)$) convert each basic open
-  cover $\mc U$ of $\oneptlind\kappa$ (resp. finite sequence s of such covers)
+  cover $\mc U$ of $\oneptlind\kappa$ (resp. finite sequence $s$ of such covers)
   into a countable set $C$ which is the complement of some neighborhood of
   $\infty$ in $\mc U$ (resp. finite sequence of such countable sets).
   Then $\tau$ defined by
@@ -322,7 +322,7 @@ both.
 \begin{defn}
   $\alcompS\kappa$ states that there exist functions
   $f_A:A\to\omega$ for each $A\in[\kappa]^{\leq\omega}$ such that
-  $|f_A^{-1}(n)|<\omega$ for all $n<\omega$ and
+  $|\{\alpha\in A:f_A(\alpha)\leq n\}|<\omega$ for all $n<\omega$ and
   $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
   \footnote{
   This is equivalent to the original characterization given in
@@ -413,7 +413,8 @@ spaces without any separation axioms.
 
 \begin{defn}
   A subset $Y$ of $X$ is \term{relatively compact} to $X$ if for every open
-  cover of $X$, there exists a finite subcollection which covers $Y$.
+  cover of $X$, there exists a finite subcollection (equivalently, refinement)
+  which covers $Y$.
 \end{defn}
 
 For example, any bounded subset of Euclidean space is relatively compact
@@ -438,9 +439,9 @@ of as an analogue of boundedness for regular spaces.
 
   Assume $Y$ is relatively compact, let $\mc U$ be an open cover of $\cl Y$,
   and define $x\in V_x\subseteq \cl{V_x}\subseteq U_x \in \mc U$ for each
-  $x\in X$. Then if we take a cover $\mc F = \{V_{x_i} : i<n\}$ of $Y$ by
-  relative compactness, then $\{U_{x_i}:i<n\}$ is a finite cover of $\cl Y$,
-  showing compactness.
+  $x\in X$. Then if we take a subcollection $\mc F = \{W_{x_i} : i<n\}$ covering
+  $Y$ by relative compactness, then $\{U_{x_i}:i<n\}$ is a finite subcollection
+  of $\mc U$ covering $\cl Y$, showing compactness.
 \end{proof}
 
 We now begin the process of factoring out Scheeper's proof to reveal the
