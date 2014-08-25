@@ -6,7 +6,7 @@
 We begin by investigating a game due to Gary Gruenhage.
 
 \begin{game}
-  Let $\congame{X}{S}$ denote the \term{$W$-convergence game} with
+  Let $\gruConGame{X}{S}$ denote the \term{$W$-convergence game} with
   players $\pl O$, $\pl P$, for a topological space $X$ and $S\subseteq X$.
 
   In round $n$, $\pl O$ chooses an open neighborhood $O_n\supseteq S$, followed
@@ -16,7 +16,7 @@ We begin by investigating a game due to Gary Gruenhage.
   for every open neighborhood $U\supseteq S$, $x_n\in U$ for
   all but finite $n<\omega$.
 
-  If $S=\{x\}$ then we write $\congame{X}{x}$ for short.
+  If $S=\{x\}$ then we write $\gruConGame{X}{x}$ for short.
 \end{game}
 
 The ``W'' in the name merely refers to $\pl O$'s goal: to ``win'' the game.
@@ -24,7 +24,7 @@ Gruenhage defined this game in his doctoral dissertation to define a class
 of spaces generalizing first-countability. \cite{MR0413049}
 
 \begin{defn}
-  The spaces $X$ for which $\pl O \win \congame{X}{x}$ for all $x\in X$ are
+  The spaces $X$ for which $\pl O \win \gruConGame{X}{x}$ for all $x\in X$ are
   called \term{$W$-spaces}.
 \end{defn}
 
@@ -34,7 +34,7 @@ first-countable spaces using this game.
 \begin{prop}
   $X$ is first countable
     if and only if
-  $\pl O \prewin \congame{X}{x}$ for all $x\in X$.
+  $\pl O \prewin \gruConGame{X}{x}$ for all $x\in X$.
 \end{prop}
 
 \begin{proof}
@@ -44,7 +44,7 @@ first-countable spaces using this game.
   to be a winning predetermined strategy.
 
   If $X$ is not first countable at some $x$, let $\sigma$ be a
-  predetermined strategy for $\pl O$ in $\congame{X}{x}$. There exists
+  predetermined strategy for $\pl O$ in $\gruConGame{X}{x}$. There exists
   an open neighborhood $U$ of $x$ which does not contain any
   $\bigcap_{m\leq n}\sigma(m)$ (otherwise
   $\{\bigcap_{m\leq n}\sigma(m):n<\omega\}$ would be a countable base at $x$).
@@ -53,14 +53,14 @@ first-countable spaces using this game.
   for $\pl P$, so $\pl O$ lacks a winning predetermined strategy.
 \end{proof}
 
-At first glance, the difficulty of $\congame{X}{S}$ could be increased for
+At first glance, the difficulty of $\gruConGame{X}{S}$ could be increased for
 $\pl O$ by only restricting the choices for $\pl P$ to be within the most
 recent open set played by $\pl O$, rather than all the previously played
 open sets.
 
 \begin{defn}
-  Let $\congamehard{X}{S}$ denote the \term{hard $W$-convergence game} which
-  proceeds as $\congame{X}{S}$, except that $\pl P$ need only choose
+  Let $\gruConGameHard{X}{S}$ denote the \term{hard $W$-convergence game} which
+  proceeds as $\gruConGame{X}{S}$, except that $\pl P$ need only choose
   $x_n\in O_n$ rather than $x_n\in \bigcap_{m\leq n}O_m$ during each round.
 \end{defn}
 
@@ -69,9 +69,9 @@ formulation. But with perfect information, there is no real difference for
 $\pl O$.
 
 \begin{prop}\label{propNormalHardCon}
-  $\pl O \limitwin \congame{X}{S}$
+  $\pl O \limitwin \gruConGame{X}{S}$
     if and only if
-  $\pl O \limitwin \congamehard{X}{S}$,
+  $\pl O \limitwin \gruConGameHard{X}{S}$,
   where $\limitwin$ is either $\win$ or $\prewin$.
 \end{prop}
 
@@ -114,8 +114,8 @@ In addition to the $W$-convergence games, we will also investigate
 ``clustering'' analogs to both variations.
 
 \begin{game}
-  Let $\clusgame{X}{S}$ ($\clusgamehard{X}{S}$) be a variation of
-  $\congame{X}{S}$ ($\congamehard{X}{S}$) such that $x_n$ need only
+  Let $\gruClusGame{X}{S}$ ($\gruClusGameHard{X}{S}$) be a variation of
+  $\gruConGame{X}{S}$ ($\gruConGameHard{X}{S}$) such that $x_n$ need only
   cluster at $S$, that is, for every open neighborhood $U$ of $S$, $x_n\in U$
   for infinitely many $n<\omega$.
 \end{game}
@@ -126,9 +126,9 @@ for $\pl O$. This can easily be extended for some limited information cases
 as well.
 
 \begin{prop}
-  $\pl O \limitwin \congame{X}{S}$
+  $\pl O \limitwin \gruConGame{X}{S}$
     if and only if
-  $\pl O \limitwin \clusgame{X}{S}$
+  $\pl O \limitwin \gruClusGame{X}{S}$
   where $\limitwin$ is any of $\win$, $\prewin$, $\tactwin$, or $\markwin$.
 \end{prop}
 
@@ -137,17 +137,17 @@ as well.
 
   In the predetermined (resp. tactical) case, suppose that $\sigma$ is a
   winning predetermined (resp. tactical) strategy for $\pl O$ in
-  $\clusgame{X}{S}$. Let $p$ be a legal attack against $\sigma$, and $q$ be a
+  $\gruClusGame{X}{S}$. Let $p$ be a legal attack against $\sigma$, and $q$ be a
   subsequence of $p$. It's easily seen that $q$ is also a legal attack against
   $\sigma$, so $q$ clusters at $S$. Since every subsequence of $p$ clusters
   at $S$, $p$ converges to $S$, and $\sigma$ is a winning predetermined
-  (resp. tactical) strategy for $\pl O$ in $\congame{X}{S}$ as well.
+  (resp. tactical) strategy for $\pl O$ in $\gruConGame{X}{S}$ as well.
 
   In the final case, note that any Markov strategy $\sigma'$ for $\pl O$ may
   be strengthened to $\sigma$ defined by
   $\sigma(x,n)=\bigcap_{m\leq n}\sigma'(x,m)$.
   So, suppose that $\sigma$ is a winning Markov strategy for $\pl O$ in
-  $\clusgame{X}{S}$ such that $\sigma(x,m)\supseteq\sigma(x,n)$ for all
+  $\gruClusGame{X}{S}$ such that $\sigma(x,m)\supseteq\sigma(x,n)$ for all
   $m\leq n$.
 
   Let $p$ be a legal attack against $\sigma$, and $q$ be a subsequence of $p$.
@@ -181,19 +181,19 @@ as well.
   so $q$ is also a legal attack against $\sigma$. Since $\sigma$ is a winning
   strategy, $q$ clusters at $S$, and since every subsequence of $p$ clusters
   at $S$, $p$ must converge to $S$. Thus $\sigma$ is also a winning Markov
-  strategy for $\pl O$ in $\congame{X}{S}$ as well.
+  strategy for $\pl O$ in $\gruConGame{X}{S}$ as well.
 \end{proof}
 
 Two types of questions emerge from these results.
 
 \begin{ques}
-  Does $\pl O \ktactwin{2} \clusgame{X}{S}$ imply
-  $\pl O \ktactwin{2} \congame{X}{S}$? What about for $\kmarkwin{2}$?
+  Does $\pl O \ktactwin{2} \gruClusGame{X}{S}$ imply
+  $\pl O \ktactwin{2} \gruConGame{X}{S}$? What about for $\kmarkwin{2}$?
 \end{ques}
 
 \begin{ques}
-  Could $\pl O \ktactwin{k+1} \congame{X}{S}$ actually imply
-  $\pl O \tactwin \congame{X}{S}$? What about for $\clusgame{X}{S}$?
+  Could $\pl O \ktactwin{k+1} \gruConGame{X}{S}$ actually imply
+  $\pl O \tactwin \gruConGame{X}{S}$? What about for $\gruClusGame{X}{S}$?
 \end{ques}
 
 
@@ -211,7 +211,7 @@ discrete space as an example of a $W$-space which is not first-countable.
 \end{defn}
 
 \begin{prop}\label{propFortTact}
-  $\pl O \tactwin \congame{\oneptcomp\kappa}{\infty}$ for all cardinals $\kappa$
+  $\pl O \tactwin \gruConGame{\oneptcomp\kappa}{\infty}$ for all cardinals $\kappa$
 \end{prop}
 
 \begin{proof}
@@ -222,31 +222,31 @@ discrete space as an example of a $W$-space which is not first-countable.
 \end{proof}
 
 \begin{cor}
-  $\pl O \win \congamehard{\oneptcomp\kappa}{\infty}$ for all cardinals $\kappa$
+  $\pl O \win \gruConGameHard{\oneptcomp\kappa}{\infty}$ for all cardinals $\kappa$
 \end{cor}
 
 \begin{proof}
   Propositions \ref{propNormalHardCon} and \ref{propFortTact}.
 \end{proof}
 
-Since it's trivial to show that $\pl O\prewin\congame{\oneptcomp\kappa}$ if and
+Since it's trivial to show that $\pl O\prewin\gruConGame{\oneptcomp\kappa}$ if and
 only if $\kappa\leq\omega$, this closes the question on limited information
-strategies for $\congame{\oneptcomp\kappa}{\infty}$. However, limited
-information analysis of the harder $\congamehard{\oneptcomp\kappa}{\infty}$
+strategies for $\gruConGame{\oneptcomp\kappa}{\infty}$. However, limited
+information analysis of the harder $\gruConGameHard{\oneptcomp\kappa}{\infty}$
 is more interesting.
 
 Peter Nyikos noted Proposition \ref{propFortTact} and the following in
 \cite{MR1031771}.
 
 \begin{thm}
-  $\pl O \not\markwin \congamehard{\oneptcomp\omega_1}{\infty}$.
+  $\pl O \not\markwin \gruConGameHard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
 This actually can be generalized to any $k$-Markov strategy with just
 a little more bookkeeping.
 
 \begin{thm}
-  $\pl O \not\kmarkwin{k} \congamehard{\oneptcomp\omega_1}{\infty}$.
+  $\pl O \not\kmarkwin{k} \gruConGameHard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
 \begin{proof}
@@ -273,7 +273,7 @@ for Markov strategies in the ``normal'' version of the $W$ game, they are
 \textit{not} equivalent in the ``hard'' version.
 
 \begin{thm}
-  $\pl O\markwin \clusgamehard{\oneptcomp\omega_1}{\infty}$.
+  $\pl O\markwin \gruClusGameHard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
 \begin{proof}
@@ -302,12 +302,12 @@ for Markov strategies in the ``normal'' version of the $W$ game, they are
 However, knowledge of the round number is critical.
 
 \begin{thm}
-  $O\not\ktactwin{k}\clusgamehard{\oneptcomp\omega_1}{\infty}$.
+  $O\not\ktactwin{k}\gruClusGameHard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
 \begin{proof}
   Let $\sigma$ be a $k$-tactic for $\pl O$ in
-  $\clusgamehard{\oneptcomp\omega_1}{\infty}$. By the closing-up lemma, the set
+  $\gruClusGameHard{\oneptcomp\omega_1}{\infty}$. By the closing-up lemma, the set
     \[
       C_\sigma
         =
@@ -356,12 +356,12 @@ is not sufficient to construct a limited information strategy, due to a
 similar argument.
 
 \begin{thm}
-  $O\not\kmarkwin{k}\clusgamehard{\oneptcomp\omega_2}{\infty}$.
+  $O\not\kmarkwin{k}\gruClusGameHard{\oneptcomp\omega_2}{\infty}$.
 \end{thm}
 
 \begin{proof}
   Let $\sigma$ be a $k$-mark for $\pl O$ in
-  $\clusgame{\oneptcomp\omega_2}{\infty}$. By the closing-up lemma, the set
+  $\gruClusGame{\oneptcomp\omega_2}{\infty}$. By the closing-up lemma, the set
     \[
       C_\sigma
         =
@@ -417,8 +417,8 @@ spaces.
 
 \begin{prop}
   Suppose $S\subseteq Y\subseteq X$, $\limitwin$ is any of $\win$,
-  $\ktactwin{k}$, or $\kmarkwin{k}$, and $G(X,S)$ is any of $\congame{X}{S}$,
-  $\congamehard{X}{S}$, $\clusgame{X}{S}$, or $\clusgamehard{X}{S}$.
+  $\ktactwin{k}$, or $\kmarkwin{k}$, and $G(X,S)$ is any of $\gruConGame{X}{S}$,
+  $\gruConGameHard{X}{S}$, $\gruClusGame{X}{S}$, or $\gruClusGameHard{X}{S}$.
 
   Then $\pl O \limitwin G(X,S)$ implies $\pl O \limitwin G(Y,S)$.
 \end{prop}
@@ -466,9 +466,9 @@ cardinal.
 \end{proof}
 
 \begin{cor}
-  $\pl O\not\ktactwin{k}\clusgamehard{\SigmaProdR{\omega_1}}{\vec0}$,
-  $\pl O\not\kmarkwin{k}\congamehard{\SigmaProdR{\omega_1}}{\vec0}$, and
-  $\pl O\not\kmarkwin{k}\clusgamehard{\SigmaProdR{\omega_2}}{\vec0}$.
+  $\pl O\not\ktactwin{k}\gruClusGameHard{\SigmaProdR{\omega_1}}{\vec0}$,
+  $\pl O\not\kmarkwin{k}\gruConGameHard{\SigmaProdR{\omega_1}}{\vec0}$, and
+  $\pl O\not\kmarkwin{k}\gruClusGameHard{\SigmaProdR{\omega_2}}{\vec0}$.
 \end{cor}
 
 While this closes the question on tactics and marks for high dimensional
@@ -516,7 +516,7 @@ may always ensure her new move is a subset of her previous move. For
 Fort spaces, the question is immediately closed.
 
 \begin{prop}
-  $\pl O \codewin \congame{\oneptcomp\kappa}{\infty}$.
+  $\pl O \codewin \gruConGame{\oneptcomp\kappa}{\infty}$.
 \end{prop}
 
 \begin{proof}
@@ -537,7 +537,7 @@ Circumventing this takes a bit of extra machinery. We proceed by defining
 a simpler infinite game for each cardinal $\kappa$.
 
 \begin{game}
-  Let $\pfgame\kappa$ denote the \term{point-finite game} with players
+  Let $\cloPFGame\kappa$ denote the \term{point-finite game} with players
   $\pl F$, $\pl C$ for each cardinal $\kappa$.
 
   In round $n$, $\pl F$ chooses $F_n\in[\kappa]^{<\omega}$, followed by
@@ -558,12 +558,12 @@ This game of finite and countable sets is directly applicable to the $W$
 games played upon the sigma-product of real lines.
 
 \begin{lem}
-  $\pl F \codewin \pfgame\kappa$ implies
-  $\pl O \codewin \congame{\SigmaProdR\kappa}{\vec0}$.
+  $\pl F \codewin \cloPFGame\kappa$ implies
+  $\pl O \codewin \gruConGame{\SigmaProdR\kappa}{\vec0}$.
 \end{lem}
 
 \begin{proof}
-  Let $\sigma$ be a winning coding strategy for $\pl F$ in $\pfgame\kappa$
+  Let $\sigma$ be a winning coding strategy for $\pl F$ in $\cloPFGame\kappa$
   such that $\sigma(\emptyset)\supset\emptyset$ and $\sigma(F,C)\supset F$.
 
   For $F\in[\kappa]^{<\omega}$ and $\epsilon>0$ let $U(F,\epsilon)$ be the
@@ -586,7 +586,7 @@ games played upon the sigma-product of real lines.
   $|x(\alpha)|\geq\epsilon$.
 
   We define the coding strategy $\tau$ for $\pl O$ in
-  $\congame{\SigmaProdR\kappa}{\vec0}$ as follows:
+  $\gruConGame{\SigmaProdR\kappa}{\vec0}$ as follows:
   \[
     \tau(\emptyset)
       =
@@ -621,12 +621,12 @@ when $\kappa$ has a larger cofinality, $\pl F$ may exploit the fact that $\pl C$
 may only play within some ordinal smaller than $\kappa$.
 
 \begin{thm}
-  $\pl F \codewin \pfgame{\kappa}$ for all cardinals $\kappa$.
+  $\pl F \codewin \cloPFGame{\kappa}$ for all cardinals $\kappa$.
 \end{thm}
 
 \begin{proof}
   For each cardinal $\kappa$ and $\lambda<\kappa$,
-  assume $\sigma_\lambda$ is a winning strategy for $\pl F$ in $\pfgame\lambda$
+  assume $\sigma_\lambda$ is a winning strategy for $\pl F$ in $\cloPFGame\lambda$
   such that $\sigma_\lambda(\emptyset)\supset\emptyset$ and
   $\sigma_\lambda(\<F,C\>)\supset F$.
 
@@ -679,12 +679,12 @@ may only play within some ordinal smaller than $\kappa$.
 \end{proof}
 
 \begin{cor}
-  $\pl O\codewin\congame{\SigmaProdR{\kappa}}{\vec{0}}$
+  $\pl O\codewin\gruConGame{\SigmaProdR{\kappa}}{\vec{0}}$
   for all cardinals $\kappa$.
 \end{cor}
 
 This leaves open the question analogous to Theorem \ref{bmcode}.
 
 \begin{ques}
-  Does $\pl O \win\congame{X}{x}$ imply $\pl O \codewin\congame{X}{x}$?
+  Does $\pl O \win\gruConGame{X}{x}$ imply $\pl O \codewin\gruConGame{X}{x}$?
 \end{ques}

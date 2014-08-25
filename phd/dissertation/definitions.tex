@@ -15,32 +15,33 @@
 \newcommand{\oneptlind}[1]{#1^\dagger}
 % \newcommand{\sharp}[1]{#1^{\#}}
 
-\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
-\newcommand{\congamehard}[2]{Con_{O,P}^\star(#1,#2)}
-\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
-\newcommand{\clusgamehard}[2]{Clus_{O,P}^\star(#1,#2)}
+% Games
+\newcommand{\gruConGame}[2]{Gru_{O,P}^{\to}(#1,#2)}
+\newcommand{\gruConGameHard}[2]{Gru_{O,P}^{\to,\star}(#1,#2)}
+\newcommand{\gruClusGame}[2]{Gru_{O,P}^{\leadsto}(#1,#2)}
+\newcommand{\gruClusGameHard}[2]{Gru_{O,P}^{\leadsto,\star}(#1,#2)}
 
-\newcommand{\lfkpgame}[1]{LF_{K,P}(#1)}
-\newcommand{\lfklgame}[1]{LF_{K,L}(#1)}
+\newcommand{\gruKPGame}[1]{Gru_{K,P}(#1)}
+\newcommand{\gruKLGame}[1]{Gru_{K,L}(#1)}
 
-\newcommand{\pfgame}[1]{PF_{F,C}(#1)}
+\newcommand{\cloPFGame}[1]{PtFin_{F,C}(#1)}
 
-\newcommand{\mengame}[1]{Cov_{C,F}(#1)}
-\newcommand{\rothgame}[1]{Cov_{C,S}(#1)}
-\newcommand{\altrothgame}[1]{Cov_{P,O}(#1)}
+\newcommand{\menGame}[1]{Men_{C,F}(#1)}
+\newcommand{\rothGame}[1]{Roth_{C,S}(#1)}
+\newcommand{\rothAltGame}[1]{Roth_{P,O}(#1)}
 
-\newcommand{\fillgameS}[1]{Fill^{\cup,\subset}_{C,F}(#1)}
-\newcommand{\fillgame}[1]{Fill^{\cup,\subseteq}_{C,F}(#1)}
-\newcommand{\fillgameOne}[1]{Fill^{1,\subseteq}_{C,F}(#1)}
-\newcommand{\fillgameInt}[1]{Fill^{\cap}_{C,F}(#1)}
+\newcommand{\cloFillStrictGame}[1]{Fill^{\cup,\subset}_{C,F}(#1)}
+\newcommand{\cloFillGame}[1]{Fill^{\cup,\subseteq}_{C,F}(#1)}
+\newcommand{\cloFillInitialGame}[1]{Fill^{1,\subseteq}_{C,F}(#1)}
+\newcommand{\cloFillIntGame}[1]{Fill^{\cap}_{C,F}(#1)}
+
+\newcommand{\bellUniGame}[1]{Bell_{D,P}^{\textrm{uni}}(#1)}
+\newcommand{\bellConGame}[1]{Bell_{D,P}^{\to}(#1)}
+\newcommand{\bellConHardGame}[1]{Bell_{D,P}^{\to,\star}(#1)}
+\newcommand{\bellClusGame}[1]{Bell_{D,P}^{\leadsto}(#1)}
+\newcommand{\bellClusHardGame}[1]{Bell_{D,P}^{\leadsto,\star}(#1)}
 
 
-
-\newcommand{\recallgame}[2]{Rec^{#1}_{F,S}(#2)}
-
-\newcommand{\proxgame}[1]{Prox_{D,P}(#1)}
-\newcommand{\proxgamehard}[1]{Prox^\star_{D,P}(#1)}
-\newcommand{\aproxgame}[1]{aProx_{D,P}(#1)}
 
 \newcommand{\SigmaProdR}[1]{\Sigma\mathbb{R}^{#1}}
 \newcommand{\sigmaprodtwo}[1]{\Sigma2^{#1}}
@@ -95,8 +96,8 @@
 \newcommand{\term}{\textit}
 
 
-\newcommand{\bakergame}[1]{{Lim}_{A,B}(#1)}
-\newcommand{\bmgame}[1]{{Empty}_{E,N}(#1)}
+\newcommand{\bakergame}[1]{{Bak}_{A,B}(#1)}
+\newcommand{\bmgame}[1]{{BM}_{E,N}(#1)}
 
 
 

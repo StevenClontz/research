@@ -279,13 +279,13 @@ Give $K$ the predetermined strategy $\sigma(n)$. $H$ counters with \[H_n=(n\cup\
 
 However, while it is consistant that there is an ultrafilter which defies the existance of a predetermined winning strategy for $K$ in $G_{K,P}$...
 
-\begin{prop} 
+\begin{prop}
 If a selective ultrafilter $\mathcal{F}$ exists (this is independent of ZFC), then $K$ has no winning predetermined strategy in the compact-point game $G_{K,P}(Y)$ for the single selective ultrafilter space $Y=\omega \cup \{\mathcal{F}\}$.
 \end{prop}
 
 \begin{proof}
 Let $\sigma$ be a predetermined strategy for $K$. By the definition of a selective ultrafilter, for every partition $\{B_n : n < \omega\}$ of subsets of $\omega$ such that $B_n \not\in \mathcal{F}$ for all $n$, there exists $A \in \mathcal{F}$ such that $|A \cap B_n|=1$ for all $n$. So then let \[B_n = \omega \cap \sigma(n) \setminus \sigma(n-1)\]
-  
+
 Note that $B_n$ is finite and thus $B_n \not\in \mathcal{F}$, so there exists $A\in \mathcal{F}$ such that $|A \cap B_n|=1$. Let $p_n$ be the singleton in $A \cap B_{n+1}$, so $\{p_n : n < \omega\}$ is cofinite in $A$, and thus is also a member of $\mathcal{F}$. Thus $p_n$ converges to $\mathcal{F}$, and counters the strategy $\sigma$.
 \end{proof}
 
@@ -326,12 +326,12 @@ Finally, let \[\mathbb{X} = C \cup \bigcup_{s\in 2^{<\omega}} X_s\] be a tree of
 
 
 \begin{defn}
-Let $S\in[\omega_1]^{<\omega}$ and $m<\omega$. Define 
-    \[K_S = \bigcup_{\alpha \in S} \left( c_\alpha \cup \left(\bigcup_{s < c_\alpha} U_{\alpha,s}\right)\right)\] 
-    \[ A = \{z^\frown \<1\> : z \in 1^{<\omega}\}\] 
-    \[ K^*_S = K_S \setminus \bigcup_{s \in A} X_s \] 
-and 
-    \[L_m = \bigcup_{s \in 2^{<m}} X_s\] 
+Let $S\in[\omega_1]^{<\omega}$ and $m<\omega$. Define
+    \[K_S = \bigcup_{\alpha \in S} \left( c_\alpha \cup \left(\bigcup_{s < c_\alpha} U_{\alpha,s}\right)\right)\]
+    \[ A = \{z^\frown \<1\> : z \in 1^{<\omega}\}\]
+    \[ K^*_S = K_S \setminus \bigcup_{s \in A} X_s \]
+and
+    \[L_m = \bigcup_{s \in 2^{<m}} X_s\]
 and observe that every compact set is dominated by $K^*_S \cup L_m$ for some $S,m$. Intuitively, $K^*_S$ collects the branches of $U_\alpha$ converging up to $c_\alpha$ for each $\alpha \in S$ while avoiding copies $X_s$ of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies $X_s$ of $X$ with $|s| < m$ at the base of the tree.
 \end{defn}
 
@@ -340,7 +340,7 @@ Without loss of generality, $P$ always plays points in $\bigcup_{s \in 2^{<\omeg
 \end{prop}
 
 \begin{prop}
-$K \win \lfkpgame{\mathbb{X}}$.
+$K \win \gruKPGame{\mathbb{X}}$.
 \end{prop}
 
 \begin{proof}
@@ -350,13 +350,13 @@ Suppose $P$'s moves clustered at some point. Since $K$ forbade $L_{|s|+1}$ durin
 \end{proof}
 
 \begin{thm}
-$K\not\tactwin\lfkpgame{\mathbb{X}}$.
+$K\not\tactwin\gruKPGame{\mathbb{X}}$.
 \end{thm}
 
 \begin{proof}
 This is actually a corollary of G's theorem in [?]. The following is a direct game-theoretic proof.
 
-Suppose that $\sigma(\<x,s\>)$ was a winning strategy for $K$ and assume 
+Suppose that $\sigma(\<x,s\>)$ was a winning strategy for $K$ and assume
   \[
     \sigma(\<x,s\>) = \bigcup_{|t|\leq |s|} \sigma(\<x,t\>) = \sigma'(x,|s|)
   \]
@@ -368,13 +368,13 @@ Since the collection $\{U_\alpha : \alpha \in A\}$ is uncountable, it is not poi
 
 
 \begin{thm}
-$K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+$K\not\ktactwin{2}\gruKPGame{\mathbb{X}}$.
 \end{thm}
 
 \begin{proof}
 Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. We may define $S(x,y,n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
   \[
-    \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq 
+    \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq
     K^*_{S(x,y,n)} \cup L_{m(x,y,n)}
   \]
 and so we assume
@@ -383,9 +383,9 @@ and so we assume
     K^*_{S(x,y,\max(|s|,|t|))} \cup L_{m(x,y,\max(|s|,|t|))}
   \]
 
-Select an arbitrary point $x' \in X$. We define a tactical strategy 
+Select an arbitrary point $x' \in X$. We define a tactical strategy
   \[
-  \tau(x,s) = 
+  \tau(x,s) =
   K^*_{S(x,x',m(x,x',|s|)+1)} \cup L_{m(x,x',m(x,x',|s|)+1)}
   \]
 We complete the proof by showing $\tau$ is a winning tactical strategy (a contradiction).
@@ -404,7 +404,7 @@ We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
   \[
     |s_i| <
     m(x_i,x',|s_i|)+1 =
-    |{z_{m(x_i,x',|s_i|)}}^\frown\<1\>| 
+    |{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|
   \]
   \[
     <
@@ -423,7 +423,7 @@ Note that $m(x,y,\max(|s|,|t|))$ is increasing throughout this play of the game 
   \]
   \[
     \leq
-    |s_{i+1}| 
+    |s_{i+1}|
   \]
   \[
     <
@@ -461,7 +461,7 @@ which we can see here:
     |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
   \]
 
-We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
+We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids
   \[
   L_{m(x_{i},x',\max(|s_{i}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))}
   \]
@@ -474,7 +474,7 @@ since
 
 Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
   \[
-    K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} = 
+    K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} =
     K^*_{S(x_h,x',\max(|s_h|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))}
   \]
 for $h\leq i$. And when $h<i$, we see it avoids:
@@ -491,15 +491,15 @@ This concludes the proof.
 \end{proof}
 
 \begin{thm}
-$K\not\ktactwin{k}\lfkpgame{\mathbb{X}}$.
+$K\not\ktactwin{k}\gruKPGame{\mathbb{X}}$.
 \end{thm}
 
 \begin{proof}
-The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
+The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\gruKPGame{\mathbb{X}}$.
 
 Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. We may define $S(x_0,\dots,x_{k},n)\in [\omega_1]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
   \[
-    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq 
+    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq
     K^*_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
   \]
 and so we assume
@@ -508,7 +508,7 @@ and so we assume
     K^*_{S(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))} \cup L_{m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
   \]
 
-Select an arbitrary point $x' \in X$. Let $M^0(x,n)=m(x,x',\dots,x',n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$. We define a tactical strategy 
+Select an arbitrary point $x' \in X$. Let $M^0(x,n)=m(x,x',\dots,x',n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$. We define a tactical strategy
   \[
   \tau(x,s) = K^*_{S(x,x',\dots,x',M^{k-1}(x,|s|)+1)} \cup L_{m(x,x',\dots,x',M^{k-1}(x,|s|)+1)}
   \]
@@ -520,18 +520,18 @@ Suppose
 \]
 successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
-  \<x_0, s_0\>, 
+  \<x_0, s_0\>,
   \<x', {z_{M^0(x_0,|s_0|)}}^\frown\<1\>\>,
-  \<x', {z_{M^1(x_0,|s_0|)}}^\frown\<1\>\>, 
-  \dots, 
+  \<x', {z_{M^1(x_0,|s_0|)}}^\frown\<1\>\>,
+  \dots,
   \<x', {z_{M^{k-1}(x_0,|s_0|)}}^\frown\<1\>\>,
 \]
 \[
-  \<x_1, s_1\>, 
-  \<x', {z_{M^0(x_1,|s_1|)}}^\frown\<1\>\>, 
-  \<x', {z_{M^1(x_1,|s_1|)}}^\frown\<1\>\>, 
-  \dots, 
-  \<x', {z_{M^{k-1}(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \<x_1, s_1\>,
+  \<x', {z_{M^0(x_1,|s_1|)}}^\frown\<1\>\>,
+  \<x', {z_{M^1(x_1,|s_1|)}}^\frown\<1\>\>,
+  \dots,
+  \<x', {z_{M^{k-1}(x_1,|s_1|)}}^\frown\<1\>\>,
   \dots
 \]
 is a successful counter to $\sigma$.
@@ -541,14 +541,14 @@ We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
     |s_i| <
     M^0(x_i,|s_i|)+1 =
     |{z_{M^0(x_i,|s_i|)}}^\frown\<1\>| <
-    M^0(x_i,M^0(x_i,|s_i|)+1)+1 
+    M^0(x_i,M^0(x_i,|s_i|)+1)+1
   \]
   \[
     =
     M^1(x_i,|s_i|)+1 =
     |{z_{M^1(x_i,|s_i|)}}^\frown\<1\>| <
     \dots <
-    |{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>| 
+    |{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|
   \]
   \[
     =
@@ -571,7 +571,7 @@ Note that $m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))$ is increasing throughout 
   \]
   \[
     \leq
-    |s_{i+1}| 
+    |s_{i+1}|
   \]
   \[
     <
@@ -642,7 +642,7 @@ which we can see here:
     |{z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
   \]
 
-We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
+We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids
   \[
   L_{m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))}
   \]
@@ -667,15 +667,15 @@ since
 
 Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, it avoided
   \[
-    K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)} 
+    K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)}
   \]
   \[
-    = 
+    =
     K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
   \]
 for $h\leq i$. And when $h<i$, we see it avoids both:
   \[
-    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
   \]
   \[
     =
@@ -691,7 +691,7 @@ for $h\leq i$. And when $h<i$, we see it avoids both:
   \]
 and:
   \[
-    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
   \]
   \[
     =
@@ -712,13 +712,13 @@ This concludes the proof.
 \section{various examples}
 
 \begin{ex}
-If $\mathcal{F}$ is a free ultrafilter on $\omega$, let $L(\mathcal{F})=\omega \cup \{\mathcal{F}\}$ as a subspace of the Stone-Cech compactification $\beta\omega$ be the \textbf{single ultrafilter line}. There is some ultrafilter $\mathcal{F}$ such that $K \prewin \lfkpgame{L(\mathcal{F})}$ and $K \tactwin \lfkpgame{L(\mathcal{F})}$.
+If $\mathcal{F}$ is a free ultrafilter on $\omega$, let $L(\mathcal{F})=\omega \cup \{\mathcal{F}\}$ as a subspace of the Stone-Cech compactification $\beta\omega$ be the \textbf{single ultrafilter line}. There is some ultrafilter $\mathcal{F}$ such that $K \prewin \gruKPGame{L(\mathcal{F})}$ and $K \tactwin \gruKPGame{L(\mathcal{F})}$.
 
 ($L(\mathcal{F})$ is not compactly generated, and thus not locally compact.)
 \end{ex}
 
 \begin{proof}
-Let $a_n$ be a sequence such that the sequence $\frac{a_n}{n}$ is unbounded above. Then there is an ultrafilter $\mathcal{F}$ such that $\sigma(n)=(\sum_{m\leq n} a_m )\cup \{\mathcal{F}\}$ is a winning predetermined strategy for $K$ in $\lfkpgame{L(\mathcal{F})}$.
+Let $a_n$ be a sequence such that the sequence $\frac{a_n}{n}$ is unbounded above. Then there is an ultrafilter $\mathcal{F}$ such that $\sigma(n)=(\sum_{m\leq n} a_m )\cup \{\mathcal{F}\}$ is a winning predetermined strategy for $K$ in $\gruKPGame{L(\mathcal{F})}$.
 
 Let $\mathcal{P}$ be the collection of all legal plays by $P$ against the strategy $\sigma$. Consider a finite collection of plays $P_0,\dots,P_{n-1}\in \mathcal{P}$. As $\frac{a_m}{m}$ is unbounded above, we may find infinitely many $m$ such that $\frac{a_m}{m}>n \Rightarrow mn<a_m$. As the $a_m$ partition $\omega$ such that $P$ may only play at most $m$ points in each part, there are infinitely many parts which are not filled, and thus $\bigcup_{m<n} P_m$ is not cofinite.
 
@@ -728,7 +728,7 @@ A winning tactic can then be easily constructed by using the moves by $P$ as the
 \end{proof}
 
 \begin{ex}
-Let $T(\mathcal{F}) = 2^{\leq\omega}$ where $2^{<\omega}$ is discrete and for each $c\in 2^\omega$, $\{c \restriction \alpha : \alpha \leq \omega\}$ is homeomorphic to $L(\mathcal{F})$. This is called the \textbf{single ultrafilter tree}. There is some ultrafilter $\mathcal{F}$ such that $K \prewin \lfkpgame{L(\mathcal{F})}$ and $K \tactwin \lfkpgame{L(\mathcal{F})}$.
+Let $T(\mathcal{F}) = 2^{\leq\omega}$ where $2^{<\omega}$ is discrete and for each $c\in 2^\omega$, $\{c \restriction \alpha : \alpha \leq \omega\}$ is homeomorphic to $L(\mathcal{F})$. This is called the \textbf{single ultrafilter tree}. There is some ultrafilter $\mathcal{F}$ such that $K \prewin \gruKPGame{L(\mathcal{F})}$ and $K \tactwin \gruKPGame{L(\mathcal{F})}$.
 
 ($T(\mathcal{F})$ is not compactly generated, and thus not locally compact.)
 \end{ex}
@@ -742,7 +742,7 @@ A winning tactic can then be easily constructed by using the moves by $P$, takin
 \end{proof}
 
 \begin{ex}
-Let $M = \omega^2 \cup \{\infty\}$ be the \textbf{metric fan} where $\omega^2$ is discrete and $\infty$ has neighborhoods of the form $M \setminus (n\times\omega)$ for any $n<\omega$. Then $K \not\win \lfkpgame{M}$. (In fact, $P \markwin \lfkpgame{M}$.)
+Let $M = \omega^2 \cup \{\infty\}$ be the \textbf{metric fan} where $\omega^2$ is discrete and $\infty$ has neighborhoods of the form $M \setminus (n\times\omega)$ for any $n<\omega$. Then $K \not\win \gruKPGame{M}$. (In fact, $P \markwin \gruKPGame{M}$.)
 
 ($M$ is not locally compact, but is compactly generated.)
 \end{ex}
@@ -754,7 +754,7 @@ So let $P$ respond to the move $C\in K[X]$ by $K$ on round $n$ with the point $p
 \end{proof}
 
 \begin{ex}
-Let $S = \omega^2 \cup \{\infty\}$ be the \textbf{sequential fan} where $\omega^2$ is discrete and $\infty$ has neighborhoods of the form $M \setminus \{(x,y) : x<f(y)\}$ for any $f:\omega\to\omega$. Then $K \prewin \lfkpgame{S}$ and $K\tactwin \lfkpgame{S}$.
+Let $S = \omega^2 \cup \{\infty\}$ be the \textbf{sequential fan} where $\omega^2$ is discrete and $\infty$ has neighborhoods of the form $M \setminus \{(x,y) : x<f(y)\}$ for any $f:\omega\to\omega$. Then $K \prewin \gruKPGame{S}$ and $K\tactwin \gruKPGame{S}$.
 
 ($S$ is not locally compact, but is compactly generated.)
 

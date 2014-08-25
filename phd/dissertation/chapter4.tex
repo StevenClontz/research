@@ -102,7 +102,8 @@ also a symmetric open entourage.
 \section{A game on uniformizable spaces}
 
 \begin{game}
-  The \term{proximal game} with players $\pl D$, $\pl P$
+  Let $\bellUniGame{X}$ denote the \term{Bell uniform space game} with players
+  $\pl D$, $\pl P$ which
   proceeds as follows for a space $X$ with uniformity $\mb D$. In round $0$,
   $\pl D$ chooses an entourage $D_0$, followed by $\pl P$ choosing a point
   $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage $D_{n+1}$, followed
@@ -121,7 +122,7 @@ Considering the universal uniformity, we may
 consider a purely topological variations of the game.
 
 \begin{game}
-  Let $\proxgamehard{X}$ denote the \term{hard Bell game} with players $\pl D$,
+  Let $\bellConHardGame{X}$ denote the \term{hard Bell game} with players $\pl D$,
   $\pl P$ which proceeds as follows for a topological space $X$. In round $0$,
   $\pl D$ chooses a symmetric open entourage $D_0$, followed by $\pl P$
   choosing a point $p_0\in X$. In round $n+1$, $\pl D$ chooses a symmetric
@@ -133,8 +134,8 @@ consider a purely topological variations of the game.
 \end{game}
 
 \begin{game}
-  Let $\proxgame{X}$ denote the \term{Bell game} with players $\pl D$,
-  $\pl P$ which proceeds analogously to $\proxgamehard{X}$, except that
+  Let $\bellConGame{X}$ denote the \term{Bell game} with players $\pl D$,
+  $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except that
   $\pl P$ must ensure $p_{n+1}\in E_n[p_n]$,
   and $\pl D$ wins when $\<p_0,p_1,\dots\>$ converges in $X$
   or $\bigcap_{n<\omega}E_n[p_n] = \emptyset$, where
@@ -145,7 +146,7 @@ With regards to $\pl D$'s perfect information winning strategies, all three
 are equivalent.
 
 \begin{thm}
-  $\pl D\win\proxgame{X}$ if and only if $\pl D\win\proxgamehard{X}$ if and
+  $\pl D\win\bellConGame{X}$ if and only if $\pl D\win\bellConHardGame{X}$ if and
   only if $\pl D$ has a winning strategy for the proximal game for some
   uniformity inducing the topology on $X$.
 \end{thm}
@@ -154,23 +155,23 @@ are equivalent.
   TODO
 \end{proof}
 
-The hard and normal variants $\proxgamehard{X}$, $\proxgame{X}$ mirror the
-$W$ game variants $\congamehard{X}{x}$, $\congame{X}{x}$. In fact, Bell
+The hard and normal variants $\bellConHardGame{X}$, $\bellConGame{X}$ mirror the
+$W$ game variants $\gruConGameHard{X}{x}$, $\gruConGame{X}{x}$. In fact, Bell
 showed a strong connection in \cite{MR3239205}.
 
 \begin{thm}
-  If $\pl D\win\proxgame{X}$, then $X$ is a $W$-space.
+  If $\pl D\win\bellConGame{X}$, then $X$ is a $W$-space.
 \end{thm}
 
 % \begin{thm}
 % For all $x\in X$:
 %   \begin{itemize}
 %     \item
-%       $\pl D\win \proxgame{X} \Rightarrow \pl O \win \congame{X}{x}$
+%       $\pl D\win \bellConGame{X} \Rightarrow \pl O \win \gruConGame{X}{x}$
 %     \item
-%       $\pl D\ktactwin{2k} \proxgame{X} \Rightarrow \pl O \ktactwin{k} \congame{X}{x}$
+%       $\pl D\ktactwin{2k} \bellConGame{X} \Rightarrow \pl O \ktactwin{k} \gruConGame{X}{x}$
 %     \item
-%       $\pl D\kmarkwin{2k} \proxgame{X} \Rightarrow \pl O \kmarkwin{k} \congame{X}{x}$
+%       $\pl D\kmarkwin{2k} \bellConGame{X} \Rightarrow \pl O \kmarkwin{k} \gruConGame{X}{x}$
 %   \end{itemize}
 % \end{thm}
 
@@ -178,20 +179,20 @@ showed a strong connection in \cite{MR3239205}.
 %   Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete. Then
 %   \begin{itemize}
 %     \item
-%       $\pl O\win \congame{X\cup\{\infty\}}{\infty} \Leftrightarrow \pl D \win \proxgame{X\cup\{\infty\}}$
+%       $\pl O\win \gruConGame{X\cup\{\infty\}}{\infty} \Leftrightarrow \pl D \win \bellConGame{X\cup\{\infty\}}$
 %     \item
-%       $\pl O\ktactwin{k} \congame{X\cup\{\infty\}}{\infty} \Leftrightarrow \pl D \ktactwin{k} \proxgame{X\cup\{\infty\}}$
+%       $\pl O\ktactwin{k} \gruConGame{X\cup\{\infty\}}{\infty} \Leftrightarrow \pl D \ktactwin{k} \bellConGame{X\cup\{\infty\}}$
 %     \item
-%       $\pl O\kmarkwin{k} \congame{X\cup\{\infty\}}{\infty} \Leftrightarrow \pl D \kmarkwin{k} \proxgame{X\cup\{\infty\}}$
+%       $\pl O\kmarkwin{k} \gruConGame{X\cup\{\infty\}}{\infty} \Leftrightarrow \pl D \kmarkwin{k} \bellConGame{X\cup\{\infty\}}$
 %   \end{itemize}
 % \end{thm}
 
 % \begin{prop} For any $x\in X$ and $k\geq 1$,
 %   \begin{itemize}
 %     \item
-%       $\pl O\ktactwin{k}\congame{X}{x} \Leftrightarrow \pl O\tactwin\congame{X}{x}$
+%       $\pl O\ktactwin{k}\gruConGame{X}{x} \Leftrightarrow \pl O\tactwin\gruConGame{X}{x}$
 %     \item
-%       $\pl O\kmarkwin{k}\congame{X}{x} \Leftrightarrow \pl O\markwin\congame{X}{x}$
+%       $\pl O\kmarkwin{k}\gruConGame{X}{x} \Leftrightarrow \pl O\markwin\gruConGame{X}{x}$
 %   \end{itemize}
 % \end{prop}
 
@@ -199,28 +200,28 @@ showed a strong connection in \cite{MR3239205}.
 %   Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete, and $k\geq 1$. Then
 %   \begin{itemize}
 %     \item
-%       $\pl D\ktactwin{k}\proxgame{X\cup\{\infty\}} \Leftrightarrow O\tactwin\proxgame{X\cup\{\infty\}}$
+%       $\pl D\ktactwin{k}\bellConGame{X\cup\{\infty\}} \Leftrightarrow O\tactwin\bellConGame{X\cup\{\infty\}}$
 %     \item
-%       $\pl D\kmarkwin{k}\proxgame{X\cup\{\infty\}} \Leftrightarrow O\markwin\proxgame{X\cup\{\infty\}}$
+%       $\pl D\kmarkwin{k}\bellConGame{X\cup\{\infty\}} \Leftrightarrow O\markwin\bellConGame{X\cup\{\infty\}}$
 %   \end{itemize}
 % \end{cor}
 
 % \begin{prop} For any uniform space $X$,
 %   \begin{itemize}
 %     \item
-%       $\pl D\ktactwin{k}\proxgame{X} \Leftrightarrow \pl D\ktactwin{2}\proxgame{X}$
+%       $\pl D\ktactwin{k}\bellConGame{X} \Leftrightarrow \pl D\ktactwin{2}\bellConGame{X}$
 %     \item
-%       $\pl D\kmarkwin{k}\proxgame{X} \Leftrightarrow \pl D\kmarkwin{2}\proxgame{X}$
+%       $\pl D\kmarkwin{k}\bellConGame{X} \Leftrightarrow \pl D\kmarkwin{2}\bellConGame{X}$
 %   \end{itemize}
 % \end{prop}
 
 % \begin{thm}
 %   For any uniformly locally compact space $X$,
-%       $\pl D\win \proxgame{X} \Leftrightarrow \pl D\win \aproxgame{X}$
+%       $\pl D\win \bellConGame{X} \Leftrightarrow \pl D\win \bellClusGame{X}$
 % \end{thm}
 
 % \begin{thm}
-%   For any uniformly locally compact proximal space $X$, $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
+%   For any uniformly locally compact proximal space $X$, $\pl O\win \gruConGame{X}{H}$ for all compact $H\subseteq X$.
 % \end{thm}
 
 % \begin{cor}
@@ -228,40 +229,40 @@ showed a strong connection in \cite{MR3239205}.
 % \end{cor}
 
 % \begin{thm}
-%   $\pl O \prewin \congame{X}{H}$ if and only if there exists a countable base
+%   $\pl O \prewin \gruConGame{X}{H}$ if and only if there exists a countable base
 %   around $H$.
 % \end{thm}
 
 
 % \begin{cor}
-%   $X$ is first countable if and only if $\pl O \prewin \congame{X}{x}$ for
+%   $X$ is first countable if and only if $\pl O \prewin \gruConGame{X}{x}$ for
 %   all $x\in X$
 % \end{cor}
 
 % \begin{cor}
-%   $\pl D \prewin \proxgame{X}$ implies $X$ is first countable.
+%   $\pl D \prewin \bellConGame{X}$ implies $X$ is first countable.
 % \end{cor}
 
 % \begin{cor}
-%   If $X$ is scattered compact and $\pl O \prewin\congame{X}{x}$ for all
-%   $x\in X$ (or $\pl D \prewin\proxgame{X}$), then $X$ is metrizable.
+%   If $X$ is scattered compact and $\pl O \prewin\gruConGame{X}{x}$ for all
+%   $x\in X$ (or $\pl D \prewin\bellConGame{X}$), then $X$ is metrizable.
 % \end{cor}
 
 
 % \begin{thm}
 %   If $H$ is a closed subset of $X$, then
 %     $
-%       \pl D \limitwin \proxgame{X}
+%       \pl D \limitwin \bellConGame{X}
 %         \Rightarrow
-%       \pl D \limitwin \proxgame{H}
+%       \pl D \limitwin \bellConGame{H}
 %     $
 %   where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
 % \end{thm}
 
 
 % \begin{thm}
-%   If $\pl D\limitwin \proxgame{X_i}$ for $i<\omega$, then
-%   $\pl D\limitwin \proxgame{\prod_{i<\omega}X_i}$, where $\limitwin$ is either
+%   If $\pl D\limitwin \bellConGame{X_i}$ for $i<\omega$, then
+%   $\pl D\limitwin \bellConGame{\prod_{i<\omega}X_i}$, where $\limitwin$ is either
 %   $\win$ or $\kmarkwin{k}$.
 % \end{thm}
 
@@ -270,40 +271,40 @@ showed a strong connection in \cite{MR3239205}.
 % products of dimension $\kappa$.)
 
 % \begin{lem}
-%   $\pl O\prewin\clusgame{X}{S}$ if and only if $\pl O\prewin\congame{X}{S}$.
+%   $\pl O\prewin\gruClusGame{X}{S}$ if and only if $\pl O\prewin\gruConGame{X}{S}$.
 % \end{lem}
 
 % \begin{thm}
 %   For any predetermined absolutely proximal space $X$,
-%   $\pl O\prewin \congame{X}{H}$ for all compact $H\subseteq X$.
+%   $\pl O\prewin \gruConGame{X}{H}$ for all compact $H\subseteq X$.
 % \end{thm}
 
 
 % \begin{ex}
 %   Let $X=I\times 2$ be the Alexandrov double interval. Then
-%   $\pl D \not\prewin \proxgame{X}$, but $\pl D \markwin \proxgame{X}$.
+%   $\pl D \not\prewin \bellConGame{X}$, but $\pl D \markwin \bellConGame{X}$.
 % \end{ex}
 
 % \begin{thm}
 %   For any uniformly locally compact space $X$,
-%       $\pl D\prewin \proxgame{X} \Leftrightarrow \pl D\prewin \aproxgame{X}$
+%       $\pl D\prewin \bellConGame{X} \Leftrightarrow \pl D\prewin \bellClusGame{X}$
 % \end{thm}
 
 % \begin{prop}
-% If $\pl D \prewin \proxgame{X}$, then $X$ has a $G_\delta$ diagonal.
+% If $\pl D \prewin \bellConGame{X}$, then $X$ has a $G_\delta$ diagonal.
 % \end{prop}
 
 
 % \begin{ex}
-% The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\proxgame{S}$.
+% The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\bellConGame{S}$.
 % \end{ex}
 
 % \begin{cor}
 %   For $X$ with uniformity $\mathbb{D}$ inducing the compact Hausdorff topology
 %   $\tau$, the following are equivalent:
 %     \begin{enumerate}[(a)]
-%       \item $\pl D \prewin \proxgame{X}$
-%       \item $\pl D \prewin \aproxgame{X}$
+%       \item $\pl D \prewin \bellConGame{X}$
+%       \item $\pl D \prewin \bellClusGame{X}$
 %       \item $X$ has a $G_\delta$ diagonal
 %       \item $\mathbb{D}$ is metrizable
 %       \item $\tau$ is metrizable
@@ -316,12 +317,12 @@ showed a strong connection in \cite{MR3239205}.
 % \end{thm}
 
 % \begin{cor}
-%   If $X$ is uniformly locally compact, then $\pl D \prewin \proxgame{X}$
+%   If $X$ is uniformly locally compact, then $\pl D \prewin \bellConGame{X}$
 %   implies $X$'s topology is metrizable.
 % \end{cor}
 
 % \begin{ex}
-%   Let $R$ be the Michael Line. Then $\pl P\win \proxgame{X}$.
+%   Let $R$ be the Michael Line. Then $\pl P\win \bellConGame{X}$.
 % \end{ex}
 
 % \begin{proof}
@@ -364,7 +365,7 @@ showed a strong connection in \cite{MR3239205}.
 %   Finite refinements of $A(\alpha,n)$ and $B(\alpha)$ give partitions
 %   witnessing a uniformization of the ladder topology.
 
-%   Then $\proxgame{\oneptcomp\omega_1}$ is indetermined.
+%   Then $\bellConGame{\oneptcomp\omega_1}$ is indetermined.
 % \end{ex}
 
 % (TODO: finish proof)

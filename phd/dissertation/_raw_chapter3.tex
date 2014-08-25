@@ -5,7 +5,7 @@ Results related to Gruenhage's ``W''-convergence game and variants.
 \section{Basic game}
 
 \begin{defn}
-Gruenhage's open-point convergence game $\congame{X}{x}$ has $O$ choosing nested open sets and $P$ choosing a point within the last chosen open set by $O$. $O$ wins if the points chosen by $P$ converge to $x$.
+Gruenhage's open-point convergence game $\gruConGame{X}{x}$ has $O$ choosing nested open sets and $P$ choosing a point within the last chosen open set by $O$. $O$ wins if the points chosen by $P$ converge to $x$.
 \end{defn}
 
 TODO: This version of the game (where $\pl P$ need not play within all
@@ -17,7 +17,7 @@ The one-point compactification of a space $X$ is $\oneptcomp{X}$, where neighbor
 \end{defn}
 
 \begin{prop}
-$O\codewin \congame{\oneptcomp{\kappa}}{\infty}$ for all cardinals $\kappa$.
+$O\codewin \gruConGame{\oneptcomp{\kappa}}{\infty}$ for all cardinals $\kappa$.
 \end{prop}
 
 \begin{proof}
@@ -25,7 +25,7 @@ Use $F(N,p)=N\cup\{p\}$.
 \end{proof}
 
 \begin{prop}
-$O\prewin \congame{\oneptcomp{\omega}}{\infty}$.
+$O\prewin \gruConGame{\oneptcomp{\omega}}{\infty}$.
 \end{prop}
 
 \begin{proof}
@@ -34,7 +34,7 @@ Use $F(n)=n$.
 
 
 \begin{prop}
-$O\not\prewin \clusgame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
+$O\not\prewin \gruClusGame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
 \end{prop}
 
 \begin{proof}
@@ -43,7 +43,7 @@ Let $F(n)$ be $O$'s predetermined forbidding strategy, let $\alpha\in\kappa\setm
 
 
 \begin{prop}
-$O\tactwin\congame{\oneptcomp{\omega}}{\infty}$.
+$O\tactwin\gruConGame{\oneptcomp{\omega}}{\infty}$.
 \end{prop}
 
 \begin{proof}
@@ -63,7 +63,7 @@ Now assume $\gamma_0\in C_f$. Let $\gamma_{n+1}>\gamma_n$ be the least ordinal s
 We may thus assume, for the purposes of countering a tactical or Markov strategy, that the strategy is \textbf{downward} on some regular uncountable cardinal.
 
 \begin{thm}
-$O\not\ktactwin{k}\clusgame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
+$O\not\ktactwin{k}\gruClusGame{\oneptcomp{\kappa}}{\infty}$ for $\kappa\geq\omega_1$.
 \end{thm}
 
 \begin{proof}
@@ -71,7 +71,7 @@ Let $F:[\kappa]^{\leq k} \to [\kappa]^{<\omega}$ be a forbidding strategy by $O$
 \end{proof}
 
 \begin{thm}
-$O\markwin \clusgame{\oneptcomp{\omega_1}}{\infty}$.
+$O\markwin \gruClusGame{\oneptcomp{\omega_1}}{\infty}$.
 \end{thm}
 
 \begin{proof}
@@ -99,7 +99,7 @@ Let $F:\omega \times [\kappa]^{\leq k} \to [\kappa]^{<\omega}$ be a forbidding s
 \section{$Con_{O,P}(X,x)$ for Sigma Product}
 
 \begin{prop}
-$O\uparrow\congame{\sigmaprodr{\kappa}}{\vec{0}}$.
+$O\uparrow\gruConGame{\sigmaprodr{\kappa}}{\vec{0}}$.
 \end{prop}
 
 \begin{proof}
@@ -119,7 +119,7 @@ Finally, give $O$ the winning strategy $\sigma(s_0,\dots,s_{n-1})=\sigmaprodr{\k
 \end{proof}
 
 \begin{thm}
-For all cardinals $\kappa\leq 2^\omega$, $O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$.
+For all cardinals $\kappa\leq 2^\omega$, $O\codewin\gruConGame{\sigmaprodr{\kappa}}{\vec{0}}$.
 \end{thm}
 
 \begin{proof}
@@ -143,7 +143,7 @@ It follows that $\sigma(U,s)=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa} \sigma
 \end{proof}
 
 \begin{thm}
-Let $\kappa$ be a cardinal such that there exists a function $f:\kappa\to[\kappa]^{\leq \omega}$ where for every $W\in[\kappa]^{\leq\omega}$ there exists $\alpha_W<\kappa$ with $W\subseteq f(\alpha_W)$. (That is, $\textrm{cf}([\kappa]^{\leq\omega})=\kappa$.) Then $F \codewin PF_{F,C}(\kappa)$ and $O \codewin \congame{\sigmaprodr{\kappa}}{\vec{0}}$.
+Let $\kappa$ be a cardinal such that there exists a function $f:\kappa\to[\kappa]^{\leq \omega}$ where for every $W\in[\kappa]^{\leq\omega}$ there exists $\alpha_W<\kappa$ with $W\subseteq f(\alpha_W)$. (That is, $\textrm{cf}([\kappa]^{\leq\omega})=\kappa$.) Then $F \codewin PF_{F,C}(\kappa)$ and $O \codewin \gruConGame{\sigmaprodr{\kappa}}{\vec{0}}$.
 \end{thm}
 
 \begin{proof}
@@ -159,7 +159,7 @@ Consider the play $\left<\emptyset,p_0,U_1,p_1,U_2,p_2,\dots\right>$ with $O$ fo
 \end{proof}
 
 \begin{thm}
-Let $\kappa$ be the limit of cardinals $\kappa_n$ such that $\textrm{cf}([\kappa_n]^{\leq\omega},\subseteq)=\kappa_n$. Then $F \codewin PF_{F,C}(\kappa)$ and $O \codewin \congame{\sigmaprodr{\kappa}}{\vec{0}}$.
+Let $\kappa$ be the limit of cardinals $\kappa_n$ such that $\textrm{cf}([\kappa_n]^{\leq\omega},\subseteq)=\kappa_n$. Then $F \codewin PF_{F,C}(\kappa)$ and $O \codewin \gruConGame{\sigmaprodr{\kappa}}{\vec{0}}$.
 \end{thm}
 
 \begin{proof}
@@ -171,23 +171,23 @@ Consider the play $\left<N_0,W_0,N_1,W_1,\dots\right>$ where $O$ follows the str
 
 Let $\gamma\in W_i\cap \kappa_{|N_i|}$. For all $j>i$, $\alpha_{W\cap\kappa_{N_i},|N_i|}\in N_j$. Also, $\gamma \in f_{N_i}(\alpha_{W\cap\kappa_{N_i},|N_i|})\restriction|N_j|$ for some sufficiently large $j$. So we observe that $\gamma \in \bigcup_{n\leq|N_j|}\bigcup_{\alpha\in N_j} f_n(\alpha)\restriction |N_j|\subseteq \sigma(N_j,W_j)$.
 
-We turn our attention to $\congame{\sigmaprodr{\kappa}}{\vec{0}}$. We define the winning strategy $\tau(U,p)$ for $O$ as follows: let $N(U)$ be the non-$\mathbb{R}$ coordinates in the basic open set $U$ and $W(p)$ be the non-$0$ coordinates in $p$. Then $\tau(U,p) =\Sigma\mathbb{R}^\kappa \cap \prod_{\alpha<\kappa} U_\alpha$ where if $\alpha \in \sigma(N(U),W(p))$ then $U_\alpha = (-\frac{1}{|N(U)|},\frac{1}{|N(U)|})$ and $U_\alpha=\mathbb{R}$ otherwise.
+We turn our attention to $\gruConGame{\sigmaprodr{\kappa}}{\vec{0}}$. We define the winning strategy $\tau(U,p)$ for $O$ as follows: let $N(U)$ be the non-$\mathbb{R}$ coordinates in the basic open set $U$ and $W(p)$ be the non-$0$ coordinates in $p$. Then $\tau(U,p) =\Sigma\mathbb{R}^\kappa \cap \prod_{\alpha<\kappa} U_\alpha$ where if $\alpha \in \sigma(N(U),W(p))$ then $U_\alpha = (-\frac{1}{|N(U)|},\frac{1}{|N(U)|})$ and $U_\alpha=\mathbb{R}$ otherwise.
 
 Consider the play $\left<\sigmaprodr{\kappa},p_0,U_1,p_1,U_2,p_2,\dots\right>$ with $O$ following the strategy $\tau$. Observe that $N(\tau(U,p))=\sigma(N(U),W(p))$. Thus $p_i(\gamma)\not=0$ is equivalent to $\gamma \in W(p_i)$, and by the above argument, for sufficiently large $n$, $\gamma \in \sigma(N(U_n),W(p_n))$. Therefore from round $n$ onward the $\gamma$-coordinates of points chosen by $P$ must lay in $(-\frac{1}{|N(U)|},\frac{1}{|N(U)|})$ and converge to $0$.
 \end{proof}
 
 \begin{thm}
-$F\codewin\pfgame{\kappa}$ for all cardinals $\kappa$.
+$F\codewin\cloPFGame{\kappa}$ for all cardinals $\kappa$.
 \end{thm}
 
 \begin{proof}
-Let $\kappa$ be the limit of cardinals $\kappa_n$ such that $F\codewin\pfgame{\kappa_n}$ using the strategy $\sigma_n(N,W)$ such that for $M\subseteq N$, $\sigma_n(M,W)\subseteq\sigma_n(N,W)$. Define \[\sigma(N,W)=(|N|+1)\cup\bigcup_{n<|N|}\sigma_n(N\cap\kappa_n,W\cap\kappa_n)\]
+Let $\kappa$ be the limit of cardinals $\kappa_n$ such that $F\codewin\cloPFGame{\kappa_n}$ using the strategy $\sigma_n(N,W)$ such that for $M\subseteq N$, $\sigma_n(M,W)\subseteq\sigma_n(N,W)$. Define \[\sigma(N,W)=(|N|+1)\cup\bigcup_{n<|N|}\sigma_n(N\cap\kappa_n,W\cap\kappa_n)\]
 
 Let $\left<N_0,W_0,N_1,W_1,\dots\right>$ be a legal play of the game with $N_{i+1}=\sigma(N_i,W_i)$. Suppose $\gamma\in W_i$ for infinitely-many $i$. $\gamma\in\kappa_n$ for some $n$, so observe the play $\left<M_0,W_0\cap\kappa_n,M_1,W_1\cap\kappa_n,\dots\right>$ with $M_0=N_0\cap\kappa_n$ and $M_{i+1}=\sigma_n(M_i,W_i\cap\kappa_n)\subseteq\sigma_n(N_i\cap\kappa_n,W_i\cap\kappa_n)$ which is $\subseteq\sigma(N_i,W_i)=N_{i+1}$ for sufficiently large $i$.
 
 Since $\sigma_n$ is a winning strategy, $\gamma\in M_{m+1}\subseteq N_{m+1}$ for sufficiently large $i$, making $\left<N_0,W_0,N_1,W_1,\dots\right>$ illegal, contradiction.
 
-Now suppose $F\codewin\pfgame{\kappa}$. For each $\alpha<\kappa^+$, let $\sigma_\alpha(N,W)$ be a winning coding strategy for $\pfgame{\alpha}$ such that for $M\subseteq N$, $\sigma_\alpha(M,W)\subseteq\sigma_\alpha(N,W)$. We define the following strategy for $F$ in $\pfgame{\kappa^+}$: \[\sigma(N,W)=N\cup\bigcup_{\alpha\in N}\sigma_{\alpha+1}(N\cap(\alpha+1),W\cap(\alpha+1))\]
+Now suppose $F\codewin\cloPFGame{\kappa}$. For each $\alpha<\kappa^+$, let $\sigma_\alpha(N,W)$ be a winning coding strategy for $\cloPFGame{\alpha}$ such that for $M\subseteq N$, $\sigma_\alpha(M,W)\subseteq\sigma_\alpha(N,W)$. We define the following strategy for $F$ in $\cloPFGame{\kappa^+}$: \[\sigma(N,W)=N\cup\bigcup_{\alpha\in N}\sigma_{\alpha+1}(N\cap(\alpha+1),W\cap(\alpha+1))\]
 
 Let $\left<N_0,W_0,N_1,W_1,\dots\right>$ be a legal play of the game with $N_{i+1}=\sigma(N_i,W_i)$. Suppose $\gamma\in W_i$ for infinitely-many $i$. Observe the play $\left<M_0,W_0\cap(\gamma+1),M_1,W_1\cap(\gamma+1),\dots\right>$ with $M_0=N_0\cap(\gamma+1)$ and $M_{i+1}=\sigma_{\gamma+1}(M_i,W_i\cap(\gamma+1))\subseteq\sigma_{\gamma+1}(N_i\cap(\gamma+1),W_i\cap(\gamma+1))$.
 
@@ -195,9 +195,9 @@ Since $\sigma_{\gamma+1}$ is a winning strategy, $\gamma\in M_{m+1}\subseteq\sig
 \end{proof}
 
 \begin{cor}
-$O\codewin\congame{\sigmaprodr{\kappa}}{\vec{0}}$ for all cardinals $\kappa$.
+$O\codewin\gruConGame{\sigmaprodr{\kappa}}{\vec{0}}$ for all cardinals $\kappa$.
 \end{cor}
 
 \begin{proof}
-Let $\tau(N,W)$ be the winning coding strategy for $F$ in $\pfgame{\kappa}$, $N(U)\in[\kappa]^{<\omega}$ represent the non-$\mathbb{R}$ coordinates of a basic open set $U$ of $\sigmaprodr{\kappa}$, and $W(p)\in[\kappa]^{\leq\omega}$ represent the non-$0$ coordinates of a point $p$ in $\sigmaprodr{\kappa}$. For each $\alpha<\kappa$, let \[\sigma_\alpha(U,p)=\left\{\begin{array}{ll}(-\frac{1}{|N(U)|},\frac{1}{|N(U)|})&\text{if }\alpha\in\tau(N(U),W(p))\\\mathbb{R}&\text{otherwise}\end{array}\right.\] and $\sigma(U,p)=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa}\sigma_\alpha(U,p)$.
+Let $\tau(N,W)$ be the winning coding strategy for $F$ in $\cloPFGame{\kappa}$, $N(U)\in[\kappa]^{<\omega}$ represent the non-$\mathbb{R}$ coordinates of a basic open set $U$ of $\sigmaprodr{\kappa}$, and $W(p)\in[\kappa]^{\leq\omega}$ represent the non-$0$ coordinates of a point $p$ in $\sigmaprodr{\kappa}$. For each $\alpha<\kappa$, let \[\sigma_\alpha(U,p)=\left\{\begin{array}{ll}(-\frac{1}{|N(U)|},\frac{1}{|N(U)|})&\text{if }\alpha\in\tau(N(U),W(p))\\\mathbb{R}&\text{otherwise}\end{array}\right.\] and $\sigma(U,p)=\sigmaprodr{\kappa}\cap\prod_{\alpha<\kappa}\sigma_\alpha(U,p)$.
 \end{proof}

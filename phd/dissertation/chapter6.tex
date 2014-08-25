@@ -36,7 +36,7 @@ proof that the following game can be used to characterize the Menger property.
 Of course, a compact space is $\mc U$-finite for all open covers $\mc U$.
 
 \begin{game}
-  Let $\mengame{X}$ denote the \term{Menger game} with players $\pl C$, $\pl F$.
+  Let $\menGame{X}$ denote the \term{Menger game} with players $\pl C$, $\pl F$.
   In round $n$, $\pl C$ chooses an open cover $\mc U_n$, followed by $\pl F$
   choosing a $\mc U_n$-finite subset $F_n$ of $X$.
 
@@ -45,7 +45,7 @@ Of course, a compact space is $\mc U$-finite for all open covers $\mc U$.
 \end{game}
 
 \begin{thm}
-  A space $X$ is Menger if and only if $\pl C\not\win\mengame{X}$
+  A space $X$ is Menger if and only if $\pl C\not\win\menGame{X}$
   \cite{MR1544773}.
 \end{thm}
 
@@ -64,8 +64,8 @@ However, we immediately see that tactics are not of any real interest.
 
 \begin{prop}
   $X$ is compact if and only if
-  $\pl F \tactwin \mengame{X}$ if and only if
-  $\pl F \ktactwin{k} \mengame{X}$.
+  $\pl F \tactwin \menGame{X}$ if and only if
+  $\pl F \ktactwin{k} \menGame{X}$.
 \end{prop}
 
 \begin{proof}
@@ -88,8 +88,8 @@ until $\pl F$'s memory is exhausted, in which case $\pl F$ would only ever
 see the change from one cover to another.
 
 \begin{thm}
-  There exists $k<\omega$ such that $F \kmarkwin{(k+2)} \mengame{X}$
-  if and only if $F \kmarkwin2 \mengame{X}$.
+  There exists $k<\omega$ such that $F \kmarkwin{(k+2)} \menGame{X}$
+  if and only if $F \kmarkwin2 \menGame{X}$.
 \end{thm}
 
 \begin{proof}
@@ -145,7 +145,7 @@ see the change from one cover to another.
 \end{proof}
 
 A natural question arises: is there an example of a space $X$ for which
-$\pl F\kmarkwin{2}\mengame{X}$ but $\pl F\not\markwin\mengame{X}$? We quickly
+$\pl F\kmarkwin{2}\menGame{X}$ but $\pl F\not\markwin\menGame{X}$? We quickly
 see that perhaps the simplest example of a Lindel\"of non-$\sigma$-compact
 space has this property.
 
@@ -157,7 +157,7 @@ space has this property.
 \end{defn}
 
 \begin{thm}
-  $F\not\markwin\mengame{\oneptlind{\omega_1}}$.
+  $F\not\markwin\menGame{\oneptlind{\omega_1}}$.
 \end{thm}
 
 \begin{proof}
@@ -197,7 +197,7 @@ Scheepers in \cite{MR1129143} which has similar goals to the Menger game when
 played upon $\oneptlind\kappa$.
 
 \begin{game}
-  Let $\fillgameS\kappa$ denote the \term{strict union filling game}
+  Let $\cloFillStrictGame\kappa$ denote the \term{strict union filling game}
   with two players $\pl C$, $\pl F$. In round $0$, $\pl C$ chooses
   $C_0\in[\kappa]^{\leq\omega}$, followed by $\pl F$ choosing
   $F_0\in[\kappa]^{<\omega}$. In round $n+1$, $\pl C$ chooses
@@ -209,12 +209,12 @@ played upon $\oneptlind\kappa$.
   wins.
 \end{game}
 
-In $\mengame{\oneptlind\kappa}$, $\pl C$ essentially chooses a countable set
+In $\menGame{\oneptlind\kappa}$, $\pl C$ essentially chooses a countable set
 to not include in her neighborhood of $\infty$, followed by $\pl F$ choosing
 a finite subset of this complement to cover during each round. Thus,
 $\pl F$ need only be concerned with the \textit{intersection} of the
-countable sets chosen by $\pl C$ in $\mengame{\oneptlind\kappa}$, rather
-than the union as in $\fillgameS\kappa$.
+countable sets chosen by $\pl C$ in $\menGame{\oneptlind\kappa}$, rather
+than the union as in $\cloFillStrictGame\kappa$.
 
 Another difference: Scheepers required that $\pl C$ always choose strictly
 growing countable sets. The reasoning is clear: if the goal is to study tactics,
@@ -224,26 +224,26 @@ srategies, bringing the game further in line with the Menger game played upon
 $\oneptlind\kappa$.
 
 We introduce a few games to make the relationship between Scheeper's
-$\fillgameS\kappa$ and $\mengame{\oneptlind\kappa}$ more precise.
+$\cloFillStrictGame\kappa$ and $\menGame{\oneptlind\kappa}$ more precise.
 
 \begin{game}
-  Let $\fillgame\kappa$ denote the
+  Let $\cloFillGame\kappa$ denote the
   \term{union filling game} which proceeds analogously
-  to $\fillgameS\kappa$, except that $\pl C$'s restriction in round $n+1$
+  to $\cloFillStrictGame\kappa$, except that $\pl C$'s restriction in round $n+1$
   is reduced to $C_{n+1}\supseteq C_n$.
 \end{game}
 
 \begin{game}
-  Let $\fillgameOne\kappa$ denote the
+  Let $\cloFillInitialGame\kappa$ denote the
   \term{initial filling game} which proceeds analogously
-  to $\fillgame\kappa$, except that $\pl F$ wins whenever
+  to $\cloFillGame\kappa$, except that $\pl F$ wins whenever
   $\bigcup_{n<\omega}F_n\supseteq C_0$.
 \end{game}
 
 \begin{game}
-  Let $\fillgameInt\kappa$ denote the
+  Let $\cloFillIntGame\kappa$ denote the
   \term{intersection filling game} which proceeds analogously
-  to $\fillgameOne\kappa$, except that $\pl C$ may choose any
+  to $\cloFillInitialGame\kappa$, except that $\pl C$ may choose any
   $C_n\in[\kappa]^{\leq\omega}$ each round, and $\pl F$ wins whenever
   $\bigcup_{n<\omega}F_n\supseteq\bigcap_{n<\omega}C_n$.
 \end{game}
@@ -253,14 +253,14 @@ $\fillgameS\kappa$ and $\mengame{\oneptlind\kappa}$ more precise.
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
   {
-    \pl F \kmarkwin{k}\mengame{\oneptlind\kappa} &
-    \pl F \kmarkwin{k}\fillgameInt\kappa \\
+    \pl F \kmarkwin{k}\menGame{\oneptlind\kappa} &
+    \pl F \kmarkwin{k}\cloFillIntGame\kappa \\
 
-    \pl F \kmarkwin{k}\fillgameOne\kappa &
-    \pl F \kmarkwin{k}\fillgame\kappa \\
+    \pl F \kmarkwin{k}\cloFillInitialGame\kappa &
+    \pl F \kmarkwin{k}\cloFillGame\kappa \\
 
     &
-    \pl F \ktactwin{k}\fillgameS\kappa \\
+    \pl F \ktactwin{k}\cloFillStrictGame\kappa \\
   };
   \path[>=latex,->]
     (m-1-1) edge (m-2-1)
@@ -281,11 +281,11 @@ Figure \ref{fillingGamesDiagram} holds.
 \end{thm}
 
 \begin{proof}
-  $\pl F \kmarkwin{k}\mengame{\oneptlind\kappa}
+  $\pl F \kmarkwin{k}\menGame{\oneptlind\kappa}
     \Rightarrow
-  \pl F \kmarkwin{k}\fillgameInt\kappa$:
+  \pl F \kmarkwin{k}\cloFillIntGame\kappa$:
   Let $\sigma$ be a winning $k$-mark for $\pl F$ in
-  $\mengame{\oneptlind\kappa}$. Let $\mc U(C)$ (resp. $\mc U(s)$) convert each
+  $\menGame{\oneptlind\kappa}$. Let $\mc U(C)$ (resp. $\mc U(s)$) convert each
   countable subset $C$ of $\kappa$ (resp. finite sequence $s$ of such subsets)
   into the open cover $[C]^1\cup\{\oneptlind\kappa\setminus C\}$
   (resp. finite sequence of such open covers). Then $\tau$ defined by
@@ -294,13 +294,13 @@ Figure \ref{fillingGamesDiagram} holds.
         =
       C\cap\sigma(\mc U(s\concat\<C\>),n)
     \]
-  is a winning $k$-mark for $\pl F$ in $\fillgameInt\kappa$.
+  is a winning $k$-mark for $\pl F$ in $\cloFillIntGame\kappa$.
 
-  $\pl F \kmarkwin{k}\fillgameInt\kappa
+  $\pl F \kmarkwin{k}\cloFillIntGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\mengame{\oneptlind\kappa}$:
+  \pl F \kmarkwin{k}\menGame{\oneptlind\kappa}$:
   Let $\sigma$ be a winning $k$-mark for $\pl F$ in
-  $\fillgameInt\kappa$. Let $C(\mc U)$ (resp. $C(s)$) convert each open
+  $\cloFillIntGame\kappa$. Let $C(\mc U)$ (resp. $C(s)$) convert each open
   cover $\mc U$ of $\oneptlind\kappa$ (resp. finite sequence $s$ of such covers)
   into a countable set $C$ which is the complement of some neighborhood of
   $\infty$ in $\mc U$ (resp. finite sequence of such countable sets).
@@ -312,19 +312,19 @@ Figure \ref{fillingGamesDiagram} holds.
         \cup
       \sigma(C(s\concat\<\mc U)\>),n)
     \]
-  is a winning $k$-mark for $\pl F$ in $\mengame{\oneptlind\kappa}$.
+  is a winning $k$-mark for $\pl F$ in $\menGame{\oneptlind\kappa}$.
 
-  $\pl F \kmarkwin{k}\fillgameInt\kappa
+  $\pl F \kmarkwin{k}\cloFillIntGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\fillgameOne\kappa$:
+  \pl F \kmarkwin{k}\cloFillInitialGame\kappa$:
   Let $\sigma$ be a winning $k$-mark for $\pl F$ in
-  $\fillgameInt\kappa$. $\sigma$ is also a winning $k$-mark for $\pl F$
-  in $\fillgameOne\kappa$.
+  $\cloFillIntGame\kappa$. $\sigma$ is also a winning $k$-mark for $\pl F$
+  in $\cloFillInitialGame\kappa$.
 
-  $\pl F \kmarkwin{k}\fillgameOne\kappa
+  $\pl F \kmarkwin{k}\cloFillInitialGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\fillgame\kappa$: Let $\sigma$ be a winning $k$-mark for $\pl F$ in
-  $\fillgameOne\kappa$. For each finite sequence $s$, let $t\preceq s$ mean $t$
+  \pl F \kmarkwin{k}\cloFillGame\kappa$: Let $\sigma$ be a winning $k$-mark for $\pl F$ in
+  $\cloFillInitialGame\kappa$. For each finite sequence $s$, let $t\preceq s$ mean $t$
   is a final subsequence of $s$. Then $\tau$ defined by
     \[
       \tau(s\concat\<C\>,n)
@@ -332,20 +332,20 @@ Figure \ref{fillingGamesDiagram} holds.
       \bigcup_{t\preceq s, m\leq n}
       \sigma(t\concat\<C\>,m)
     \]
-  is a winning $k$-mark for $\pl F$ in $\fillgame\kappa$.
+  is a winning $k$-mark for $\pl F$ in $\cloFillGame\kappa$.
 
-  $\pl F \kmarkwin{k}\fillgame\kappa
+  $\pl F \kmarkwin{k}\cloFillGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\fillgameOne\kappa$:
+  \pl F \kmarkwin{k}\cloFillInitialGame\kappa$:
   Let $\sigma$ be a winning $k$-mark for $\pl F$ in
-  $\fillgame\kappa$. $\sigma$ is also a winning $k$-mark for $\pl F$
-  in $\fillgameOne\kappa$.
+  $\cloFillGame\kappa$. $\sigma$ is also a winning $k$-mark for $\pl F$
+  in $\cloFillInitialGame\kappa$.
 
-  $\pl F \ktactwin{k}\fillgameS\kappa
+  $\pl F \ktactwin{k}\cloFillStrictGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\fillgame\kappa$:
+  \pl F \kmarkwin{k}\cloFillGame\kappa$:
   Let $\sigma$ be a winning $k$-tactic for $\pl F$ in
-  $\fillgameS\kappa$. For each countable subset $C$ of $\kappa$, let $C+n$
+  $\cloFillStrictGame\kappa$. For each countable subset $C$ of $\kappa$, let $C+n$
   be the union of $C$ with the $n$ least ordinals in $\kappa\setminus C$.
   Then $\tau$ defined by
     \[
@@ -353,7 +353,7 @@ Figure \ref{fillingGamesDiagram} holds.
         =
       \sigma(\<C_0+(n-i),\dots,C_i+n\>)
     \]
-  is a winning $k$-mark for $\pl F$ in $\fillgame\kappa$.
+  is a winning $k$-mark for $\pl F$ in $\cloFillGame\kappa$.
 \end{proof}
 
 While we have not proven a direct implication between the Menger game and
@@ -382,7 +382,7 @@ both.
 \end{defn}
 
 Scheepers went on to show that $\alcompS\kappa$ implies
-$\pl F \ktactwin2 \fillgameS\kappa$. This proof, along with the following
+$\pl F \ktactwin2 \cloFillStrictGame\kappa$. This proof, along with the following
 facts, give us inspiration for
 finding a winning $2$-Markov strategy in the Menger game played on
 $\oneptlind\kappa$.
@@ -409,16 +409,16 @@ $\oneptlind\kappa$.
   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
   {
     &
-    \pl F \kmarkwin2\mengame{\oneptlind\kappa} &
-    \pl F \kmarkwin2\fillgameInt\kappa \\
+    \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
+    \pl F \kmarkwin2\cloFillIntGame\kappa \\
 
     \alcompS\kappa &
-    \pl F \kmarkwin2\fillgameOne\kappa &
-    \pl F \kmarkwin2\fillgame\kappa \\
+    \pl F \kmarkwin2\cloFillInitialGame\kappa &
+    \pl F \kmarkwin2\cloFillGame\kappa \\
 
     &
     &
-    \pl F \ktactwin2\fillgameS\kappa \\
+    \pl F \ktactwin2\cloFillStrictGame\kappa \\
   };
   \path[>=latex,->]
     (m-2-1) edge (m-1-2)
@@ -442,9 +442,9 @@ $\oneptlind\kappa$.
 \end{thm}
 
 \begin{proof}
-  Since $\alcompS\kappa\Rightarrow\pl F \ktactwin2\fillgameS\kappa$ was
+  Since $\alcompS\kappa\Rightarrow\pl F \ktactwin2\cloFillStrictGame\kappa$ was
   a main result of \cite{MR1129143}, it is sufficient to show that
-  $\alcompS\kappa\Rightarrow \pl F \kmarkwin2\fillgameInt\kappa$.
+  $\alcompS\kappa\Rightarrow \pl F \kmarkwin2\cloFillIntGame\kappa$.
 
   Let $f_A$ for $A\in[\kappa]^{\leq\omega}$ witness $\alcompS\kappa$. We define
   the $2$-mark $\sigma$ as follows:
@@ -468,7 +468,7 @@ $\oneptlind\kappa$.
 \end{proof}
 
 \begin{cor}
-  $\pl F \kmarkwin2\mengame{\oneptlind\omega_1}$.
+  $\pl F \kmarkwin2\menGame{\oneptlind\omega_1}$.
 \end{cor}
 
 
@@ -480,10 +480,10 @@ $\oneptlind\kappa$.
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
   {
-     \pl F \markwin \mengame{X} &
-     \pl F \kmarkwin2 \mengame{X} &
-     \pl F \win \mengame{X} &
-     \pl C \not\win \mengame{X} \\
+     \pl F \markwin \menGame{X} &
+     \pl F \kmarkwin2 \menGame{X} &
+     \pl F \win \menGame{X} &
+     \pl C \not\win \menGame{X} \\
 
      \text{Markov Menger} &
      2\text{-Markov Menger} &
@@ -521,8 +521,8 @@ of covering properties, see Figure \ref{menSpec}. However,
 we do not know if the middle two properties are actually distinct.
 
 \begin{ques}\label{perfectTo2Mark}
-  Does there exist a space $X$ such that $\pl F \win \mengame{X}$ but
-  $\pl F \not\kmarkwin2 \mengame{X}$?
+  Does there exist a space $X$ such that $\pl F \win \menGame{X}$ but
+  $\pl F \not\kmarkwin2 \menGame{X}$?
 \end{ques}
 
 We are also interested in non-game-theoretic characterizations of these
@@ -571,7 +571,7 @@ limited information implications at work.
 
 \begin{lem}
   Let $\sigma(\mc{U}, n)$ be a Markov strategy for $F$ in
-  $\mengame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then the
+  $\menGame{X}$, and $\mathfrak{C}$ collect all open covers of $X$. Then the
   set
     \[
       R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \sigma(\mc{U},n)
@@ -598,8 +598,8 @@ limited information implications at work.
   The following are equivalent:
   \begin{itemize}
     \item $X$ is $\sigma$-relatively-compact
-    \item $F \prewin \mengame X$
-    \item $F \markwin \mengame X$
+    \item $F \prewin \menGame X$
+    \item $F \markwin \menGame X$
   \end{itemize}
 \end{cor}
 
@@ -614,8 +614,8 @@ limited information implications at work.
   \begin{itemize}
     \item $X$ is $\sigma$-compact
     \item $X$ is $\sigma$-relatively-compact
-    \item $F \prewin \mengame X$
-    \item $F \markwin \mengame X$
+    \item $F \prewin \menGame X$
+    \item $F \markwin \menGame X$
   \end{itemize}
 \end{cor}
 
@@ -624,8 +624,8 @@ second-countability, the latter of which was essentially used by Scheepers in
 this way:
 
 \begin{lem}
-  Let $X$ be a second-countable space. $\pl F\win\mengame{X}$ if and only if
-  $\pl F\markwin\mengame{X}$.
+  Let $X$ be a second-countable space. $\pl F\win\menGame{X}$ if and only if
+  $\pl F\markwin\menGame{X}$.
 \end{lem}
 
 \begin{proof}
@@ -674,9 +674,9 @@ this way:
   Let $X$ be a second-countable space. The following are equivalent:
   \begin{itemize}
     \item $X$ is $\sigma$-relatively-compact
-    \item $F \prewin \mengame{X}$
-    \item $F \markwin \mengame{X}$
-    \item $F \win \mengame{X}$
+    \item $F \prewin \menGame{X}$
+    \item $F \markwin \menGame{X}$
+    \item $F \win \menGame{X}$
   \end{itemize}
 \end{cor}
 
@@ -685,9 +685,9 @@ this way:
   \begin{itemize}
     \item $X$ is $\sigma$-compact
     \item $X$ is $\sigma$-relatively-compact
-    \item $F \prewin \mengame{X}$
-    \item $F \markwin \mengame{X}$
-    \item $F \win \mengame{X}$
+    \item $F \prewin \menGame{X}$
+    \item $F \markwin \menGame{X}$
+    \item $F \win \menGame{X}$
   \end{itemize}
 \end{cor}
 
@@ -700,16 +700,16 @@ this way:
 
 \section{Robustly Lindel\"of}
 
-To help describe $\pl F\kmarkwin2\mengame{X}$ topologically, we introduce a
+To help describe $\pl F\kmarkwin2\menGame{X}$ topologically, we introduce a
 subset variant of the Menger game and a related covering property.
 
 \begin{game}
-  Let $\mengame{X,Y}$ denote the \term{Menger subspace game} which proceeds
+  Let $\menGame{X,Y}$ denote the \term{Menger subspace game} which proceeds
   analogously to the Menger game, except that $\pl F$ wins whenever
   $\bigcup_{n<\omega} \mc F_n$ is a cover for $Y\subseteq X$.
 \end{game}
 
-Note of course that $\mengame{X,X}=\mengame{X}$.
+Note of course that $\menGame{X,X}=\menGame{X}$.
 
 \begin{defn}
   A subset $Y$ of $X$ is \term{relatively robustly Menger} if there exist
@@ -742,7 +742,7 @@ Note of course that $\mengame{X,X}=\mengame{X}$.
 
 \begin{thm}
   If $Y\subseteq X$ is relatively robustly Menger, then
-  $\pl F\kmarkwin2\mengame{X,Y}$.
+  $\pl F\kmarkwin2\menGame{X,Y}$.
 \end{thm}
 
 \begin{proof}
@@ -790,7 +790,7 @@ Note of course that $\mengame{X,X}=\mengame{X}$.
 \begin{thm}
   $\alcompS\kappa$ implies $\oneptlind\kappa$ is
   robustly Menger, and thus
-  $\pl F\kmarkwin2\mengame{\oneptlind\kappa}$.
+  $\pl F\kmarkwin2\menGame{\oneptlind\kappa}$.
 \end{thm}
 
 \begin{proof}
@@ -862,7 +862,7 @@ than the usual Euclidean line.
 
 \begin{thm}
   $R_\omega$ is non-regular, non-second-countable, and
-  non-$\sigma$-relatively-compact, but $\pl F\win\mengame{R_\omega}$.
+  non-$\sigma$-relatively-compact, but $\pl F\win\menGame{R_\omega}$.
 \end{thm}
 
 \begin{proof}
@@ -873,31 +873,31 @@ than the usual Euclidean line.
   showing that all relatively compact sets are finite, and $R_\omega$ is not
   $\sigma$-relatively-compact.
 
-  Define the winning strategy $\sigma$ for $\pl F$ in $\mengame{R_\omega}$ as
+  Define the winning strategy $\sigma$ for $\pl F$ in $\menGame{R_\omega}$ as
   follows: let $\sigma(\mc{U}_0,\dots,\mc{U}_{2n})=[-n,n]\setminus C_n$
   for some countable $C_n=\{c_{n,m}: m<\omega\}$,
   and let $\sigma(\mc{U}_0,\dots,\mc{U}_{2n+1})=\{c_{i,j} : i,j < n\}$.
   Non-second-countable follows since
-  second-countable and $\pl F\win\mengame{X}$ implies
+  second-countable and $\pl F\win\menGame{X}$ implies
   $\sigma$-relatively-compact.
 \end{proof}
 
 We will soon see that, assuming $\alcompS{2^\omega}$, $\pl F$ has a winning
-$2$-Mark\"ov strategy for $\mengame{R_\omega}$ as well.
+$2$-Mark\"ov strategy for $\menGame{R_\omega}$ as well.
 
 \begin{prop}
   Let $\limitwin$ be either $\kmarkwin{k}$ or $\win$.
-  If $X=\bigcup_{i<\omega} X_i$ and $\pl F \limitwin \mengame{X,X_i}$
-  for $i<\omega$, then $\pl F \limitwin \mengame{X}$
+  If $X=\bigcup_{i<\omega} X_i$ and $\pl F \limitwin \menGame{X,X_i}$
+  for $i<\omega$, then $\pl F \limitwin \menGame{X}$
 \end{prop}
 
 \begin{proof}
   Let $L$ be the $k$-Markov fog-of-war $\mu_k$ (resp. the identity),
   and let $\sigma_i$ be a $k$-Markov strategy (resp. perfect information
-  strategy) for $\pl F$ in $\mengame{X,X_i}$.
+  strategy) for $\pl F$ in $\menGame{X,X_i}$.
 
   We define the $k$-Markov strategy (resp. perfect information strategy)
-  $\sigma$ for $\mengame{X}$ as follows:
+  $\sigma$ for $\menGame{X}$ as follows:
     \[
       \sigma\circ L(\<\mc U_0,\dots,\mc U_n\>)
         =
@@ -916,7 +916,7 @@ $2$-Mark\"ov strategy for $\mengame{R_\omega}$ as well.
 \end{proof}
 
 \begin{thm}
-  If $\alcompS{2^\omega}$, then $\pl F\kmarkwin2\mengame{R_\omega}$.
+  If $\alcompS{2^\omega}$, then $\pl F\kmarkwin2\menGame{R_\omega}$.
 \end{thm}
 
 \begin{proof}
@@ -957,7 +957,7 @@ Menger property and game.
 \end{defn}
 
 \begin{game}
-  Let $\rothgame{X}$ denote the \term{Rothberger game} with players $\pl C$,
+  Let $\rothGame{X}$ denote the \term{Rothberger game} with players $\pl C$,
   $\pl S$.
   In round $n$, $\pl C$ chooses an open cover $\mc U_n$, followed by $\pl S$
   choosing a subset $S_n$ of $X$ contained in some open set in $\mc U_n$.
@@ -966,7 +966,7 @@ Menger property and game.
 \end{game}
 
 \begin{thm}
-  $X$ is Rothberger if and only if $\pl C\not\win\rothgame{X}$.
+  $X$ is Rothberger if and only if $\pl C\not\win\rothGame{X}$.
   \cite{MR1279482}
 \end{thm}
 
@@ -977,8 +977,8 @@ Menger property and game.
     \begin{itemize}
       \item $X$ is Rothberger
       \item $X$ is scattered
-      \item $\pl S\win\rothgame{X}$
-      \item $\pl C\not\win\rothgame{X}$
+      \item $\pl S\win\rothGame{X}$
+      \item $\pl C\not\win\rothGame{X}$
     \end{itemize}
 \end{thm}
 
@@ -986,7 +986,7 @@ Another game exists which is ``perfect information equivalent'' to the
 Rothberger game.
 
 \begin{game}
-  Let $\altrothgame{X}$ denote the \term{alternate Rothberger game} with
+  Let $\rothAltGame{X}$ denote the \term{alternate Rothberger game} with
   players $\pl P$, $\pl O$. In round $n$, $\pl P$ chooses a point $p_n\in X$,
   followed by $\pl O$ choosing a neighborhood $O_n$ of $p_n$.
   $\pl P$ wins if $X=\bigcup_{n<\omega} O_n$; $\pl O$ wins otherwise.
@@ -995,8 +995,8 @@ Rothberger game.
 (TODO: cite Galvin (Indeterminacy of Point Open Games?) )
 
 \begin{thm}
-  $\pl P\win\altrothgame{X}$ if and only if $\pl S\win\rothgame{X}$;
-  $\pl O\win\altrothgame{X}$ if and only if $\pl C\win\rothgame{X}$.
+  $\pl P\win\rothAltGame{X}$ if and only if $\pl S\win\rothGame{X}$;
+  $\pl O\win\rothAltGame{X}$ if and only if $\pl C\win\rothGame{X}$.
 \end{thm}
 
 \newpage
@@ -1005,8 +1005,8 @@ An analogous relationship exists for the winning limited information
 strategies.
 
 \begin{thm}
-  $P\prewin\altrothgame{X}$ if and only if $S\markwin\rothgame{X}$;
-  $O\markwin\altrothgame{X}$ if and only if $C\prewin\rothgame{X}$.
+  $P\prewin\rothAltGame{X}$ if and only if $S\markwin\rothGame{X}$;
+  $O\markwin\rothAltGame{X}$ if and only if $C\prewin\rothGame{X}$.
 \end{thm}
 
 \begin{proof}
@@ -1023,8 +1023,8 @@ guarantee victory with a Markov strategy in the Rothberger game.
 \begin{thm}
   For any space $X$, the following are equivalent:
   \begin{itemize}
-    \item $S\markwin\rothgame{X}$
-    \item $P\prewin\altrothgame{X}$
+    \item $S\markwin\rothGame{X}$
+    \item $P\prewin\rothAltGame{X}$
     \item $X$ is almost countable
   \end{itemize}
 \end{thm}
@@ -1036,8 +1036,8 @@ guarantee victory with a Markov strategy in the Rothberger game.
 \begin{thm}
   For any $T_1$ space $X$, the following are equivalent:
   \begin{itemize}
-    \item $S\markwin\rothgame{X}$
-    \item $P\prewin\altrothgame{X}$
+    \item $S\markwin\rothGame{X}$
+    \item $P\prewin\rothAltGame{X}$
     \item $X$ is almost countable
     \item $X$ is countable
   \end{itemize}
@@ -1051,10 +1051,10 @@ space which is not countable.
 \begin{thm}
   The following are equivalent for points-$G_\delta$ $X$:
     \begin{itemize}
-      \item $S\win\rothgame{X}$
-      \item $P\win\altrothgame{X}$
-      \item $S\markwin\rothgame{X}$
-      \item $P\prewin\altrothgame{X}$
+      \item $S\win\rothGame{X}$
+      \item $P\win\rothAltGame{X}$
+      \item $S\markwin\rothGame{X}$
+      \item $P\prewin\rothAltGame{X}$
       \item $X$ is Rothberger
       \item $X$ is almost countable
       \item $X$ is countable
@@ -1068,12 +1068,12 @@ space which is not countable.
 \begin{cor}
   The following are equivalent for compact points-$G_\delta$ $X$:
     \begin{itemize}
-      \item $S\win\rothgame{X}$
-      \item $P\win\altrothgame{X}$
-      \item $S\markwin\rothgame{X}$
-      \item $P\prewin\altrothgame{X}$
-      \item $C\not\win\rothgame{X}$
-      \item $O\not\win\altrothgame{X}$
+      \item $S\win\rothGame{X}$
+      \item $P\win\rothAltGame{X}$
+      \item $S\markwin\rothGame{X}$
+      \item $P\prewin\rothAltGame{X}$
+      \item $C\not\win\rothGame{X}$
+      \item $O\not\win\rothAltGame{X}$
       \item $X$ is scattered
       \item $X$ is Rothberger
       \item $X$ is almost countable
