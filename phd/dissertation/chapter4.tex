@@ -50,11 +50,27 @@ Like metrics, uniformities induce natural topological structures.
 
 \begin{defn}
   The \term{uniform topology} for a space $X$ with uniformity $\mb D$ is given
-  by declaring $D[x]$ to be a neighborhood of $x$ for each $x\in X$.
+  by letting $U$ be open if for each $x\in U$, there exists $D\in\mathbb{D}$
+  such that $D[x]\subseteq U$.
 \end{defn}
 
-Note that $D[x]$ need not be open, but for each open neighborhood $U$ of $x$,
-there exists $D\in\mb D$ such that $x\in D[x]\subseteq U$. The uniform topology
+\begin{thm}
+  The uniform topology for a space $X$ with uniformity $\mb D$ is the coarsest
+  topology such that $D[x]$ is a neighborhood (not necessarily open)
+  of $x$ for each $x\in X$ and $D\in\mathbb{D}$.
+\end{thm}
+
+\begin{proof}
+  Let $\mc T$ be a topology such that $D[x]$ is a neighborhood
+  of $x$ for each $x\in X$, and let $U$ be open in the uniform topology.
+  For each $x\in U$, there exists $D_x\in\mathbb{D}$ such that
+  $D_x[x]\subseteq U$, and since $D_x[x]$ is a neighborhood of $x$, there
+  is $U_x\in \mc T$ such that $x\in U_x\subseteq D_x[x]$. Since
+  $U=\bigcup_{x\in U}U_x\in \mc T$, the result follows as $\mc T$ contains the
+  uniform topology.
+\end{proof}
+
+The uniform topology
 for a metric uniformity is simply the usual metric topology, and $D_\epsilon(x)$
 is the usual metric $\epsilon$-ball around $x$.
 
