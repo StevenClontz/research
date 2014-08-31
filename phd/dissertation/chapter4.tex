@@ -56,8 +56,8 @@ Like metrics, uniformities induce natural topological structures.
 
 \begin{thm}
   The uniform topology for a space $X$ with uniformity $\mb D$ is the coarsest
-  topology such that $D[x]$ is a neighborhood (not necessarily open)
-  of $x$ for each $x\in X$ and $D\in\mathbb{D}$.
+  topology such that for each $x\in X$ and $D\in\mathbb{D}$,
+  $D[x]$ is a neighborhood (not necessarily open) of $x$.
 \end{thm}
 
 \begin{proof}
@@ -71,10 +71,11 @@ Like metrics, uniformities induce natural topological structures.
 \end{proof}
 
 The uniform topology
-for a metric uniformity is simply the usual metric topology, and $D_\epsilon(x)$
+for a metric uniformity is simply the usual metric topology, and $D_\epsilon[x]$
 is the usual metric $\epsilon$-ball around $x$.
 
-We require a few known results on uniform spaces.
+We require a few known results on uniform spaces. See e.g. \cite{MR1039321}
+for proofs.
 
 \begin{thm}
   Every uniform topology is $T_{3\frac{1}{2}}$.
@@ -118,10 +119,10 @@ also a symmetric open entourage.
 \section{A game on uniformizable spaces}
 
 \begin{game}
-  Let $\bellUniGame{X}$ denote the \term{Bell uniform space game} with players
-  $\pl D$, $\pl P$ which
-  proceeds as follows for a space $X$ with uniformity $\mb D$. In round $0$,
-  $\pl D$ chooses an entourage $D_0$, followed by $\pl P$ choosing a point
+  Let $\bellUniGame{X, \mb D}$ denote the \term{Bell uniform space game} with
+  players $\pl D$, $\pl P$ which
+  proceeds as follows for a uniform space $X$ with uniformity $\mb D$. In round
+  $0$, $\pl D$ chooses an entourage $D_0$, followed by $\pl P$ choosing a point
   $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage $D_{n+1}$, followed
   by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
 
@@ -134,8 +135,17 @@ $\sigma$-product of spaces for which $\pl D$ has a winning strategy is
 collectionwise normal, as well as to show the collectionwise normality
 of certain uniform box products.
 
+\begin{defn}
+  A uniformizable space $X$ is \term{proximal} if it has a compatible uniformity
+  $\mb D$ such that $\pl D\win\bellUniGame{X,\mb D}$.
+\end{defn}
+
+\begin{prop}
+  Every metric space is proximal.
+\end{prop}
+
 Considering the universal uniformity, we may
-consider a purely topological variations of the game.
+consider purely topological variations of this game.
 
 \begin{game}
   Let $\bellConHardGame{X}$ denote the \term{hard Bell game} with players $\pl D$,
@@ -158,26 +168,60 @@ consider a purely topological variations of the game.
   $E_n=\bigcap_{m\leq n}D_n$.
 \end{game}
 
-With regards to $\pl D$'s perfect information winning strategies, all three
-are equivalent.
-
 \begin{thm}
-  $\pl D\win\bellConGame{X}$ if and only if $\pl D\win\bellConHardGame{X}$ if and
-  only if $\pl D$ has a winning strategy for the proximal game for some
-  uniformity inducing the topology on $X$.
+  $X$ is proximal if and only if $\pl D\win\bellConHardGame{X}$ if
+  and only if $\pl D\win\bellConGame{X}$.
 \end{thm}
 
 \begin{proof}
-  TODO
+  If $\pl D\win\bellConHardGame{X}$, then we immediately see that
+  $\pl D\win\bellConGame{X}$. If $\sigma$ is a winning strategy for $\pl D$
+  in $\bellConGame{X}$, then $\tau$ defined by
+  $\tau(s)=\bigcap_{t\leq s}\sigma(t)$ is easily seen to be a winning strategy
+  for $\pl D$ in $\bellConHardGame{X}$.
+
+  If $\pl D\win\bellConHardGame{X}$, then $\pl D\win\bellUniGame{X,\mb D}$
+  where $\mb D$ is the universal uniformity, showing $X$ is proximal.
+  Finally, if $X$ is proximal, then there exists a winning strategy $\sigma$
+  for $\bellUniGame{X,\mb D}$ where $\mb D$ is a uniformity inducing the
+  topology on $X$. Let $\tau$ be defined by $\tau(s)=O(\sigma(s))$ where
+  $O(D)$ is an open symmetric entourage which is a subset of $D$; $\tau$
+  is easily seen to be a winning strategy for $\pl D$ in $\bellConHardGame{X}$.
 \end{proof}
 
 The hard and normal variants $\bellConHardGame{X}$, $\bellConGame{X}$ mirror the
-$W$ game variants $\gruConGameHard{X}{x}$, $\gruConGame{X}{x}$. In fact, Bell
+hard and normal variants of Gruenhage's convergence game. In fact, Bell
 showed a strong connection in \cite{MR3239205}.
 
 \begin{thm}
-  If $\pl D\win\bellConGame{X}$, then $X$ is a $W$-space.
+  If $X$ is proximal, then $X$ is a $W$-space.
 \end{thm}
+
+Proximal spaces have strong preservation properties, demonstrated in
+\cite{MR3239205}.
+
+\begin{thm}
+  Every closed subspace of a proximal space is proximal.
+\end{thm}
+
+\begin{thm}
+  Every $\Sigma$-product of proximal spaces is proximal.
+\end{thm}
+
+Gruenhage and the author showed in \cite{MR3227201} that Bell's game
+yields an internal characterization of Corson compact spaces, answering
+a question of Nyikos in \cite{nyikosProximalPreprint}.
+
+\begin{defn}
+  A compact space is \term{Corson compact} if it is homeomorphic to a compact
+  subset of a $\Sigma$-product of real lines.
+\end{defn}
+
+\begin{thm}
+  A compact space is proximal if and only if it is Corson compact.
+\end{thm}
+
+\section{Limited information results}
 
 % \begin{thm}
 % For all $x\in X$:
