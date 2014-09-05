@@ -224,6 +224,7 @@ showed a strong connection in \cite{MR3239205}.
 \end{thm}
 
 We similarly may consider clustering versions of the Bell games.
+(TODO: will I actually use this game?)
 
 \begin{defn}
   Let $\bellClusGame{X}$ ($\bellClusHardGame{X}$) denote the
@@ -231,6 +232,27 @@ We similarly may consider clustering versions of the Bell games.
   proceeds analogously to $\bellConGame{X}$ ($\bellConHardGame{X}$), except
   that $\pl D$ need only ensure that $\<p_0,p_1,\dots\>$ clusters
   in $X$ in order to win.
+\end{defn}
+
+\begin{defn}
+  A uniformizable space $X$ is \term{almost proximal} if
+  $\pl D \win \bellClusGame{X}$.
+\end{defn}
+
+Or we eliminate the secondary winning condition to create a stronger
+variant of the game.
+
+\begin{defn}
+  Let $\bellAbsConGame{X}$ denote the
+  \term{absolute Bell convergence game} which
+  proceeds analogously to $\bellConGame{X}$, except
+  that $\pl D$ must always ensure that $\<p_0,p_1,\dots\>$ converges
+  in $X$ in order to win.
+\end{defn}
+
+\begin{defn}
+  A uniformizable space $X$ is \term{absolutely proximal} if
+  $\pl D \win \bellAbsConGame{X}$.
 \end{defn}
 
 Proximal spaces have strong preservation properties, demonstrated in
@@ -272,8 +294,8 @@ Following this observation, Nyikos asked if Bell's game actually provided an
 internal characterization of Corson compactness. The author, working with
 Gary Gruenhage, answered this question in the affirmative in \cite{MR3227201}.
 
-We require a result of Gruenhage which gives another game characterization
-of Corson compactness, found in \cite{MR752278}.
+To see this, we require a result of Gruenhage which gives another game
+characterization of Corson compactness, found in \cite{MR752278}.
 
 \begin{thm}
   A compact space is Corson compact if and only if
@@ -282,19 +304,101 @@ of Corson compactness, found in \cite{MR752278}.
 
 Thus our desired result will follow if we may show that a winning strategy
 in $\bellConGame{X}$ may be used to construct a winning strategy in
-$\gruConGame{X^2}{\Delta}$.
+$\gruConGame{X^2}{\Delta}$. However, due to the secondary winning condition
+for $\pl D$ in $\bellConGame{X}$ ($\bigcap_{n<\omega}E_n[p_n]=\emptyset$),
+it will be more convenient if we may use a winning strategy for $\pl D$
+in $\bellAbsConGame{X}$ instead.
 
-(TODO: show absolute bell game equivalence in uniformly locally compact
-spaces)
+\begin{defn}
+  A uniformizable space $X$ is \term{uniformly locally compact} if there
+  exists an open symmetric neighborhood $D$ such that $\cl{D[x]}$ is compact
+  for all $x$.
+\end{defn}
+
+Of course, any compact uniformizable space is uniformly locally compact.
 
 \begin{thm}
-  A compact space is Corson compact if and only if
-  $\pl D \win\bellConGame{X}$.
+  If $X$ is a uniformly locally compact space, then
+  $\pl D \win \bellConGame{X}$ if and only if
+  $\pl D \win \bellAbsConGame{X}$.
+\end{thm}
+
+\begin{proof}
+  Let $L$ be an open symmetric neighborhood such that $\cl{L[x]}$ is compact
+  for all $x$.
+  Let $\sigma$ be a strategy witnessing $\pl D\win \bellConGame{X}$.
+  Without loss of generality, we may assume such that
+  $\sigma(t)\subseteq L$
+  (so $\cl{\sigma(t)[x]}\subseteq\cl{L[x]}$ is compact), and that
+  $t \supseteq s$ implies $\sigma(t)\subseteq \frac{1}{4}\sigma(s)$.
+
+  Let $\tau(t)=\frac{1}{2}\sigma(t)$. If $p$ attacks $\tau$, then
+    \[
+      p(n+1)
+        \in
+      \tau(p\rest n)[p(n)]
+        =
+      \frac{1}{2}\sigma(p\rest n)[p(n)]
+    \]
+
+  \noindent and for
+
+    \[
+      x
+        \in
+      \cl{\sigma(p\rest (n+1))[p(n+1)]}
+        \subseteq
+      \cl{\frac{1}{4}\sigma(p\rest n)[p(n+1)]}
+        \subseteq
+      \frac{1}{2}\sigma(p\rest n)[p(n+1)]
+    \]
+
+  \noindent we can conclude $x\in\sigma(p\rest n)[p(n)]$. Thus
+
+    \[
+      \sigma(p\rest (n+1))[p(n+1)]
+        \subseteq
+      \cl{\sigma(p\rest (n+1))[p(n+1)]}
+        \subseteq
+      \sigma(p\rest n)[p(n)]
+    \]
+
+  Finally, note that since $\tau$ yields subsets of $\sigma$, $p$ also attacks
+  the winning strategy $\sigma$ in $\bellConGame{X}$, but since the intersection
+  of a descending chain of nonempty compact sets is nonempty, we have
+
+    \[
+      \bigcap_{n<\omega} \sigma(p\rest n)[p(n)]
+        =
+      \bigcap_{n<\omega} \cl{\sigma(p\rest n)[p(n)]}
+        \not=
+      \emptyset
+    \]
+
+  We conclude that $p$ converges.
+\end{proof}
+
+\begin{thm}
+  If $\pl D\win\bellAbsConGame{X}$, then $\pl O\win\gruConGame{X}{H}$ for
+  all compact $H$ in $X$.
 \end{thm}
 
 \begin{proof}
   TODO
 \end{proof}
+
+\begin{cor}
+  A compact space is Corson compact if and only if
+  $\pl D \win\bellConGame{X}$.
+\end{cor}
+
+\begin{proof}
+  If $\pl D \win\bellConGame{X}$, then $\pl D \win\bellConGame{X^2}$.
+  As $X^2$ is (uniformly locally) compact, $\pl D \win\bellAbsConGame{X^2}$.
+  Thus $\pl O\win\gruConGame{X^2}{\Delta}$, showing that $X$ is Corson compact.
+\end{proof}
+
+
 
 \section{Limited information results}
 
@@ -314,6 +418,8 @@ For all $x\in X$:
 \end{thm}
 
 \begin{proof}
+The perfect-information result is due to Bell.
+
 Let $\sigma\circ \nu_{2k}$ witness $\pl D \ktactwin{2k} \bellConGame{X}$,
 where $\nu_k$ is the $k$-tactical fog-of-war which removes all information
 except the final $k$ moves of the opponent.
@@ -329,13 +435,13 @@ We define the $k$-tactical strategy $\tau$ for $\gruConGame{X}{x}$ such that
 
 Let $p$ attack $\tau$. Consider the attack $q$ against the winning strategy
 $\sigma\circ \nu_{2k}$ such that $q(2n)=x$ and $q(2n+1)=p(n)$, and let
-$D_n=\sigma\circ \nu_{2k}(q\rest n)$ and $E_n=\bigcap_{m\leq n}D_n$.
+$D_n=\sigma\circ \nu_{2k}(q\rest n)$ and $E_n=\bigcap_{m\leq n}D_m$.
 
 Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$.
 Note also for any $n<\omega$ that
     \[
       p(n) \in
-      \bigcap_{m\leq n}\tau\circ \nu_k(p\rest n)
+      \bigcap_{m\leq n}\tau\circ \nu_k(p\rest m)
     \]
     \[
       =
@@ -358,7 +464,9 @@ a winning $2k$-tactic, the attack $q$ converges. Since $q(2n)=x$, $q$ must
 converge to $x$. Thus its subsequence $p$ converges to $x$, and $\tau$ is a
 winning $k$-tactic for $\pl O$ in $\gruConGame{X}{x}$.
 
-The proofs of the other two implications are analogous.
+The proofs of the other two implications follow analogously by
+replacing $\nu_i$ with the $i$-Markov fog-of-war $\mu_i$ or the identity
+function, repsectively.
 \end{proof}
 
 \begin{thm}
@@ -386,9 +494,11 @@ The proofs of the other two implications are analogous.
 \end{thm}
 
 \begin{proof}
+  The perfect-information result is due to Nyikos.
+
   The right-to-left implications have already been shown.
-  For any open neighborhood $U$ of $\infty$, $X\setminus U$ is also open,
-  so $D(U)=U^2\cup(X\setminus U)^2$ is an open symmetric entourage of $X$.
+  For any open neighborhood $U$ of $\infty$,
+  $D(U)=\Delta\cup U^2$ is an open symmetric entourage of $X$.
 
   Let $\sigma\circ\nu_k$ witness
   $\pl D \ktactwin{k}\gruConGame{X\cap\{\infty\}}{\infty}$. We then define
@@ -411,7 +521,9 @@ The proofs of the other two implications are analogous.
   $\tau\circ\nu_k(p\rest N)[p(N)]=\{p(N)\}$ implies $p\to p(N)$.
 
   Thus $\tau$ is a winning $k$-tactic. The other implications may
-  be proven analogously.
+  be proven analogously by
+  replacing $\nu_i$ with the $i$-Markov fog-of-war $\mu_i$ or the identity
+  function, repsectively.
 \end{proof}
 
 % \begin{prop} For any $x\in X$ and $k\geq 1$,
