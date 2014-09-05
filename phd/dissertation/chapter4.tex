@@ -7,6 +7,8 @@ A very recent development related to Gruenhage's convergence and
 clustering games comes from
 Jocelyn Bell, used to study the uniform box product of uniform spaces.
 
+
+
 \section{Uniform Spaces}
 
 \begin{defn}
@@ -26,7 +28,7 @@ Jocelyn Bell, used to study the uniform box product of uniform spaces.
   \end{itemize}
 \end{defn}
 
-A set $X$ with a uniformity is called a \term{uniform sapce}.
+A set $X$ with a uniformity is called a \term{uniform space}.
 As $\mb D$ is a filter, we also have that $D\cap E\in \mb D$ for all
 $E\in\mb D$, and $F\in \mb D$ for all $F\supseteq D$. Note that if $\mb E$ is
 a filter base satisfying the conditions for a uniformity, then we say
@@ -39,17 +41,6 @@ A uniformity is a generalization of a metric.
   For an entourage $D\in\mb D$ and a point $x\in X$, the
   \term{$D$-ball around $x$} is the set $D[x]=\{y:\<x,y\>\in D\}$.
 \end{defn}
-
-\begin{prop}
-  If $X$ is a uniform space, then for all $x\in X$ and entourages $D$:
-    \[
-      x\in \frac{1}{2}D[y]\text{ and } y\in\frac{1}{2}D[z] \Rightarrow x\in D[z]
-    \]
-  and
-    \[
-      \frac{1}{2}D[x]\subseteq \cl{\frac{1}{2}D[x]}\subseteq D[x]
-    \]
-\end{prop}
 
 \begin{defn}
   If $d$ is a metric for the space $X$, then the \term{metric uniformity} for
@@ -119,6 +110,18 @@ for proofs.
   \end{itemize}
 \end{defn}
 
+\begin{prop}
+  If $X$ is a uniformizable space, then for all $x\in X$ and symmetric open
+  entourages $D$:
+    \[
+      x\in \frac{1}{2}D[y]\text{ and } y\in\frac{1}{2}D[z] \Rightarrow x\in D[z]
+    \]
+  and
+    \[
+      \frac{1}{2}D[x]\subseteq \cl{\frac{1}{2}D[x]}\subseteq D[x]
+    \]
+\end{prop}
+
 \begin{thm}
   For every entourage $D$ in the universal uniformity on $X$, there exists a
   symmetric open entourage $U\subseteq D$.
@@ -127,6 +130,7 @@ for proofs.
 If $D$ is a symmetric open entourage, then we assume $\frac{1}{2}D$ is
 also a symmetric open entourage. Note that if $D$ is an open symmetric
 entourage, then $D[x]$ is an open neighborhood of $x$.
+
 
 
 \section{Games on uniformizable spaces}
@@ -139,8 +143,13 @@ entourage, then $D[x]$ is an open neighborhood of $x$.
   $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage $D_{n+1}$, followed
   by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
 
-  $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges in $X$,
-  or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$. $\pl P$ wins otherwise.
+  $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges
+  with respect to the uniformity $\mb D$,
+  or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$.\footnote{
+    A sequence $p$ converges to $x$ with respect to a uniformity $\mb D$
+    if for every entourage $D\in\mb D$, there exists $N<\omega$ such that
+    $p(n)\in D[x]$ for $n\geq N$.
+  } $\pl P$ wins otherwise.
 \end{game}
 
 This original formulation was called the ``proximal game'' in \cite{MR3239205}.
@@ -162,8 +171,9 @@ Considering the universal uniformity, we may
 consider purely topological variations of this game.
 
 \begin{game}
-  Let $\bellConHardGame{X}$ denote the \term{hard Bell convergence game} with players $\pl D$,
-  $\pl P$ which proceeds as follows for a topological space $X$. In round $0$,
+  Let $\bellConHardGame{X}$ denote the \term{hard Bell convergence game} with
+  players $\pl D$, $\pl P$ which proceeds as follows for
+  a uniformizable space $X$. In round $0$,
   $\pl D$ chooses a symmetric open entourage $D_0$, followed by $\pl P$
   choosing a point $p_0\in X$. In round $n+1$, $\pl D$ chooses a symmetric
   open entourage $D_{n+1}$, followed
@@ -175,16 +185,18 @@ consider purely topological variations of this game.
 
 \begin{game}
   Let $\bellConGame{X}$ denote the \term{Bell convergence game} with players $\pl D$,
-  $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except that
-  $\pl P$ must ensure $p_{n+1}\in E_n[p_n]$,
-  and $\pl D$ wins when $\<p_0,p_1,\dots\>$ converges in $X$
-  or $\bigcap_{n<\omega}E_n[p_n] = \emptyset$, where
-  $E_n=\bigcap_{m\leq n}D_n$.
+  $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except for the
+  following. Let $E_n=\bigcap_{m\leq n}D_n$, where $D_n$ is the entourage played
+  by $\pl D$ in round $n$.
+  Then $\pl P$ must ensure that $p_{n+1}\in E_n[p_n]$,
+  and $\pl D$ wins when either $\<p_0,p_1,\dots\>$ converges in $X$
+  or $\bigcap_{n<\omega}E_n[p_n] = \emptyset$.
 \end{game}
 
 \begin{thm}
-  $X$ is proximal if and only if $\pl D\win\bellConHardGame{X}$ if
-  and only if $\pl D\win\bellConGame{X}$.
+  $\pl D\win\bellConHardGame{X}$ if and only if
+  $\pl D\win\bellConGame{X}$ if and only if
+  $X$ is proximal.
 \end{thm}
 
 \begin{proof}
@@ -236,14 +248,53 @@ Gruenhage and the author showed in \cite{MR3227201} that Bell's game
 yields an internal characterization of Corson compact spaces, answering
 a question of Nyikos in \cite{nyikosProximalPreprint}.
 
+
+
+\section{Characterizing Corson compactness}
+
 \begin{defn}
   A compact space is \term{Corson compact} if it is homeomorphic to a compact
   subset of a $\Sigma$-product of real lines.
 \end{defn}
 
+Nyikos observed the following in \cite{nyikosProximalPreprint}.
+
+\begin{prop}
+  Corson compact spaces are proximal.
+\end{prop}
+
+\begin{proof}
+  The real line is proximal, and closed subsets of $\Sigma$-products of proximal
+  spaces are proximal.
+\end{proof}
+
+Following this observation, Nyikos asked if Bell's game actually provided an
+internal characterization of Corson compactness. The author, working with
+Gary Gruenhage, answered this question in the affirmative in \cite{MR3227201}.
+
+We require a result of Gruenhage which gives another game characterization
+of Corson compactness, found in \cite{MR752278}.
+
 \begin{thm}
-  A compact space is proximal if and only if it is Corson compact.
+  A compact space is Corson compact if and only if
+  $\pl O \win\gruConGame{X^2}{\Delta}$.
 \end{thm}
+
+Thus our desired result will follow if we may show that a winning strategy
+in $\bellConGame{X}$ may be used to construct a winning strategy in
+$\gruConGame{X^2}{\Delta}$.
+
+(TODO: show absolute bell game equivalence in uniformly locally compact
+spaces)
+
+\begin{thm}
+  A compact space is Corson compact if and only if
+  $\pl D \win\bellConGame{X}$.
+\end{thm}
+
+\begin{proof}
+  TODO
+\end{proof}
 
 \section{Limited information results}
 
