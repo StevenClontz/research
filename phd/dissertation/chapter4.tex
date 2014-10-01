@@ -311,11 +311,21 @@ in $\bellAbsConGame{X}$ instead.
 
 \begin{defn}
   A uniformizable space $X$ is \term{uniformly locally compact} if there
-  exists an open symmetric neighborhood $D$ such that $\cl{D[x]}$ is compact
+  exists an open symmetric entourage $D$ such that $\cl{D[x]}$ is compact
   for all $x$.
 \end{defn}
 
 Of course, any compact uniformizable space is uniformly locally compact.
+However, note that a space may be locally compact without being uniformly
+locally compact.
+
+\begin{thm}
+  A uniformizable space is uniformly locally compact if and only if it is
+  locally compact and paracompact. (See e.g. \cite{MR2040233}.)
+\end{thm}
+
+As an example, $\omega_1$ with the linear order topology is locally compact,
+but not paracompact.
 
 \begin{thm}
   If $X$ is a uniformly locally compact space, then
@@ -324,7 +334,7 @@ Of course, any compact uniformizable space is uniformly locally compact.
 \end{thm}
 
 \begin{proof}
-  Let $L$ be an open symmetric neighborhood such that $\cl{L[x]}$ is compact
+  Let $L$ be an open symmetric entourage such that $\cl{L[x]}$ is compact
   for all $x$.
   Let $\sigma$ be a strategy witnessing $\pl D\win \bellConGame{X}$.
   Without loss of generality, we may assume such that
@@ -332,7 +342,8 @@ Of course, any compact uniformizable space is uniformly locally compact.
   (so $\cl{\sigma(t)[x]}\subseteq\cl{L[x]}$ is compact), and that
   $t \supseteq s$ implies $\sigma(t)\subseteq \frac{1}{4}\sigma(s)$.
 
-  Let $\tau(t)=\frac{1}{2}\sigma(t)$. If $p$ attacks $\tau$, then
+  Let $\tau(t)=\frac{1}{2}\sigma(t)$. If $p$ attacks $\tau$
+  in $\bellAbsConGame{X}$, then
     \[
       p(n+1)
         \in
