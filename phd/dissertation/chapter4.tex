@@ -389,14 +389,222 @@ but not paracompact.
   We conclude that $p$ converges.
 \end{proof}
 
+
 \begin{thm}
   If $\pl D\win\bellAbsConGame{X}$, then $\pl O\win\gruConGame{X}{H}$ for
   all compact $H$ in $X$.
 \end{thm}
 
+
 \begin{proof}
-  TODO
+  Let $\sigma$ be a winning strategy for $\pl D$ in $\bellAbsConGame{X}$
+  game such that $p\supsetneq q$ implies
+  $\sigma(p)\subseteq \frac{1}{4}\sigma(q)$.
+  For any sequence $t$, let $o_t=\{\<n,t(2n+1)\>:2n+1\in\dom(t)\}$
+  be the subsequence of $t$ consisting of its odd-indexed terms.
+  We proceed by constructing a winning strategy for $\pl O$ in
+  $\gruClusGame{X}{H}$. Since $\pl O\win\gruClusGame{X}{H}$
+  if and only if $\pl O\win\gruConGame{X}{H}$, the result will follow.
+
+%   \bigskip
+
+  We begin by defining a tree $T(\emptyset)$, during which we will
+  define a number $m_\emptyset<\omega$ and points
+  $h_{\emptyset,i},h_{\emptyset,i,j}$ for $i,j<m_\emptyset$
+  which yield an open set
+    \[
+      \bigcup_{i,j<m_\emptyset}
+        \frac{1}{4}\sigma(\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]
+      =
+      \bigcup_{\emptyset\concat\<i,h_{\emptyset,i},j\>\in\max(T(\emptyset))}
+        \frac{1}{4}\sigma(o_\emptyset\concat\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]
+    \]
+  containing $H$. $\pl O$ will use this as the inital move in her winning
+  strategy for $\gruClusGame{X}{H}$.
+
+  \begin{itemize}
+    \item
+    Choose $m_\emptyset<\omega$, $h_{\emptyset,i}\in H$ for $i<m_\emptyset$, and
+    $h_{\emptyset,i,j}\in H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}$
+    for $i,j<m_\emptyset$ such that
+      \[
+        \left\{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]:i<m_\emptyset\right\}
+      \]
+    is a cover for $H$ and such that for each $i<m_\emptyset$
+      \[
+        \left\{\frac{1}{4}\sigma(\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]:j<m_\emptyset\right\}
+      \]
+    is a cover for $H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}$.
+    \item
+    Let $\<i,h_{\emptyset,i},j\>$ and its initial segments be in
+    $T(\emptyset)$ for $i,j<m_\emptyset$.
+  \end{itemize}
+
+  It follows that
+    \[
+      \left\{
+        \frac{1}{4}\sigma(o_\emptyset\concat\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]
+      :
+        \emptyset\concat\<i,h_{\emptyset,i},j\>\in\max(T(a))
+      \right\}
+    \]
+  covers $H$.
+
+% \bigskip
+
+  Now suppose that $a$ is a partial attack by $\pl P$ in $\gruClusGame{X}{H}$
+  for which we have defined a tree $T(a)$.
+  We will define $T(a\concat\<x\>)\supseteq T(a)$ for each $x\in X$, and
+  whenever $x\in \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]$ for
+  some $s\concat\<i,h_{s,i},j\>\in\max(T(a))$, we will set
+  $t=s\concat\<i,h_{s,i},j,x\>$ and define a number $m_t<\omega$ and points
+  $h_{t,k},h_{t,k,l}$ for $k,l<m_t$ to yield an open set
+    \[
+      \bigcup_{t\concat\<k,h_{t,k},l\>\in\max(T(a\concat\<x\>))}
+        \frac{1}{4}\sigma(o_t\concat\<h_{t,k}\>)[h_{t,k,l}]
+    \]
+  which will be the next open neighborhood of $H$ in $\pl O$'s winning strategy
+  for $\gruClusGame{X}{H}$.
+
+  \begin{itemize}
+    \item
+    We will extend the nodes $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ such
+    that $x\in \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]$.
+    For each such $s\concat\<i,h_{s,i},j\>$, set $t=s\concat\<i,h_{s,i},j,x\>$.
+    \item
+    Note that whenever $o_s\concat\<h_{s,i}\>$ is a legal partial attack
+    against $\sigma$, then
+      \[
+        x
+          \in
+        \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
+          \subseteq
+        \frac{1}{4}\sigma(o_s)[h_{s,i,j}]
+      \]
+    and
+      \[
+        h_{s,i,j}
+          \in
+        \cl{\frac{1}{4}\sigma(o_s)[h_{s,i}]}
+          \subseteq
+        \frac{1}{2}\sigma(o_s)[h_{s,i}]
+      \]
+    implies
+      \[
+        x
+          \in
+        \sigma(o_s)[h_{s,i}]
+      \]
+    and thus $o_s\concat\<h_{s,i},x\>=o_t$ is also a legal partial attack
+    against $\sigma$.
+    \item
+    Choose $m_t<\omega$,
+    $h_{t,k}\in H\cap \cl{\frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]}$
+    for $k<m_t$, and
+    $h_{t,k,l}\in H\cap\cl{\frac{1}{4}\sigma(o_t)[h_{t,k}]}$
+    for $k,l<m_t$ such that
+      \[
+        \left\{\frac{1}{4}\sigma(o_t)[h_{t,k}]:k<m_t\right\}
+      \]
+    is a cover for
+    $H\cap \cl{\frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]}$
+    and such that for each $k<m_t$
+      \[
+        \left\{\frac{1}{4}\sigma(o_t\concat\<h_{t,k}\>)[h_{t,k,l}]:l<m_t\right\}
+      \]
+    is a cover for $H\cap\cl{\frac{1}{4}\sigma(o_t)[h_{t,k}]}$.
+    \item
+    Note that whenever $o_t$ is a legal partial attack against $\sigma$, then
+      \[
+        h_{t,k}
+          \in
+        \cl{\frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]}
+          \subseteq
+        \frac{1}{2}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
+      \]
+    and
+      \[
+        x
+          \in
+        \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
+      \]
+    implies
+      \[
+        h_{t,k}
+          \in
+        \sigma(o_s\concat\<h_{s,i}\>)[x]
+      \]
+    and thus $o_t\concat\<h_{t,k}\>$ is a legal partial attack against $\sigma$.
+    \item
+    Include all initial segments of $t\concat\<k,h_{t,k},l\>$ in
+    $T(a\concat\<x\>)$ for $k,l<m_t$.
+  \end{itemize}
+
+%     \bigskip
+
+ This completes the construction of  $ T(a\concat\<x\>)$. Note that since
+    \[
+      \left\{
+        \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
+      :
+        s\concat\<i,h_{s,i},j\>\in\max(T(a))
+      \right\}
+    \]
+  covers $H$, then since
+    \[
+      \left\{
+        \frac{1}{4}\sigma(o_t\concat\<h_{t,k}\>)[h_{t,k,l}]
+      :
+        s\concat\<i,h_{s,i},j,x,k,h_{t,k},l\>
+          \in
+        \max(T(a\concat\<x\>))\setminus\max(T(a))
+      \right\}
+    \]
+  covers $H\cap \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]$, we have that
+    \[
+      \left\{
+        \frac{1}{4}\sigma(o_t\concat\<h_{t,k}\>)[h_{t,k,l}]
+      :
+        t\concat\<k,h_{t,k},l\>\in\max(T(a\concat\<x\>))
+      \right\}
+    \]
+  covers $H$.
+
+  We define a strategy $\tau$ for $\pl O$ in $\gruClusGame{X}{H}$ such
+  that:
+  \[
+    \tau(a)
+      =
+    \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))}
+    \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
+  \]
+
+  If $p$ is a legal attack by $\pl P$ against $\tau$, then
+  let $\ds T(p)=\bigcup_{n<\omega} T(p\rest n)$. We note $T(p)$ is an infinite
+  tree (for each $n<\omega$, a node of $T(p\rest n)$ was extended)
+  with finite levels:
+    \begin{itemize}
+      \item $\emptyset$ has exactly $m_\emptyset$ successors $\<i\>$.
+      \item $s\concat\<i\>$ has exactly one successor $s\concat\<i,h_{s,i}\>$
+      \item $s\concat\<i,h_{s,i}\>$ has exactly $m_s$ successors
+            $s\concat\<i,h_{s,i},j\>$
+      \item $s\concat\<i,h_{s,i},j\>$ has either no successors or exactly
+            one successor $s\concat\<i,h_{s,i},j,x\>$
+      \item $t=s\concat\<i,h_{s,i},j,x\>$ has exactly $m_t$ successors
+            $t\concat\<k\>$
+    \end{itemize}
+
+  Hence $T(p)$ has an infinite branch
+    \[
+      q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>
+    \]
+  Let $q=o_{q'}=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of
+  $T(p)$, $q$ is a legal attack on the winning strategy $\sigma$ in
+  $\bellAbsConGame{X}$, so it must converge. Since every other term of $q$ is
+  in $H$, it must converge to $H$. Then since $o_q$ is a subsequence of $p$,
+  $p$ must cluster at $H$.
 \end{proof}
+
 
 \begin{cor}
   A compact space is Corson compact if and only if
