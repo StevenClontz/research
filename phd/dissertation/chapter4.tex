@@ -13,9 +13,9 @@ Jocelyn Bell, used to study the uniform box product of uniform spaces.
 
 \begin{defn}
   A \term{uniformity} on a set $X$ is a filter $\mb D$ of subsets of $X^2$,
-  known as \term{entourages}, such that for each entourage $D\in\mb D$:
+  known as \term{entourages}, such that $\bigcap\mb D=\Delta=\{\<x,x\>:x\in X\}$
+  and, for each entourage $D\in\mb D$:
   \begin{itemize}
-    \item $\Delta=\{\<x,x\>:x\in X\}\subseteq D$
     \item There exists $\frac{1}{2}D\in\mb D$ such that
       \[
         \frac{1}{2}D\circ\frac{1}{2}D
@@ -637,7 +637,7 @@ For all $x\in X$:
 \end{thm}
 
 \begin{proof}
-The perfect-information result is due to Bell.
+The perfect-information result was originally shown by Bell.
 
 Let $\sigma\circ \nu_{2k}$ witness $\pl D \ktactwin{2k} \bellConGame{X}$,
 where $\nu_k$ is the $k$-tactical fog-of-war which removes all information
@@ -689,7 +689,8 @@ function, repsectively.
 \end{proof}
 
 \begin{thm}
-  Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete. Then
+  Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete,
+  and $k<\omega$. Then
   \begin{itemize}
     \item
       $
@@ -745,77 +746,153 @@ function, repsectively.
   function, repsectively.
 \end{proof}
 
-% \begin{prop} For any $x\in X$ and $k\geq 1$,
-%   \begin{itemize}
-%     \item
-%       $\pl O\ktactwin{k}\gruConGame{X}{x} \Leftrightarrow \pl O\tactwin\gruConGame{X}{x}$
-%     \item
-%       $\pl O\kmarkwin{k}\gruConGame{X}{x} \Leftrightarrow \pl O\markwin\gruConGame{X}{x}$
-%   \end{itemize}
-% \end{prop}
+\begin{prop} For any $x\in X$ and $k<\omega$,
+  \begin{itemize}
+    \item
+      $
+      \pl O\ktactwin{k+1}\gruConGame{X}{x}
+        \Leftrightarrow
+      \pl O\tactwin\gruConGame{X}{x}
+      $
+    \item
+      $
+      \pl O\kmarkwin{k+1}\gruConGame{X}{x}
+        \Leftrightarrow
+      \pl O\markwin\gruConGame{X}{x}
+      $
+  \end{itemize}
+\end{prop}
 
-% \begin{cor}
-%   Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete, and $k\geq 1$. Then
-%   \begin{itemize}
-%     \item
-%       $\pl D\ktactwin{k}\bellConGame{X\cup\{\infty\}} \Leftrightarrow O\tactwin\bellConGame{X\cup\{\infty\}}$
-%     \item
-%       $\pl D\kmarkwin{k}\bellConGame{X\cup\{\infty\}} \Leftrightarrow O\markwin\bellConGame{X\cup\{\infty\}}$
-%   \end{itemize}
-% \end{cor}
 
-% \begin{prop} For any uniform space $X$,
-%   \begin{itemize}
-%     \item
-%       $\pl D\ktactwin{k}\bellConGame{X} \Leftrightarrow \pl D\ktactwin{2}\bellConGame{X}$
-%     \item
-%       $\pl D\kmarkwin{k}\bellConGame{X} \Leftrightarrow \pl D\kmarkwin{2}\bellConGame{X}$
-%   \end{itemize}
-% \end{prop}
+\begin{proof}
+  If $\sigma$ witnesses $\pl O\ktactwin{k+1}\gruConGame{X}{x}$,
+  let $\tau(\emptyset)=\sigma(\emptyset)$ and
+    \[
+      \tau(\<q\>)
+        =
+      \bigcap_{i< k}
+      \sigma(\<\underbrace{x,\dots,x}_{k-i},q,\underbrace{x,\dots,x}_{i+1}\>)
+    \]
 
-% \begin{thm}
-%   For any uniformly locally compact space $X$,
-%       $\pl D\win \bellConGame{X} \Leftrightarrow \pl D\win \bellClusGame{X}$
+  Then $\tau$ is easily verified to be a winning tactic, and
+  the proof for the second part is analogous.
+\end{proof}
+
+\begin{cor}
+  Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete,
+  and $k<\omega$. Then
+  \begin{itemize}
+    \item
+      $
+        \pl D\ktactwin{k+1}\bellConGame{X\cup\{\infty\}}
+          \Leftrightarrow
+        O\tactwin\bellConGame{X\cup\{\infty\}}
+      $
+    \item
+      $
+        \pl D\kmarkwin{k+1}\bellConGame{X\cup\{\infty\}}
+          \Leftrightarrow
+        O\markwin\bellConGame{X\cup\{\infty\}}
+      $
+  \end{itemize}
+\end{cor}
+
+\begin{prop} For any uniform space $X$ and $k<\omega$,
+  \begin{itemize}
+    \item
+      $
+        \pl D\ktactwin{k+2}\bellConGame{X}
+          \Leftrightarrow
+        \pl D\ktactwin{2}\bellConGame{X}
+      $
+    \item
+      $
+        \pl D\kmarkwin{k+2}\bellConGame{X}
+          \Leftrightarrow
+        \pl D\kmarkwin{2}\bellConGame{X}
+      $
+  \end{itemize}
+\end{prop}
+
+\begin{proof}
+  If $\sigma$ witnesses $\pl O\ktactwin{k}\bellConGame{X}$,
+  let $\tau(\emptyset)=\sigma(\emptyset)$ and
+    \[
+      \tau(\<q\>)
+        =
+      \bigcap_{i<k+2}
+      \sigma(\<\underbrace{q,\dots,q}_{i+1}\>)
+    \]
+    \[
+      \tau(\<q,q'\>)
+        =
+      \bigcap_{i<k+2}
+      \sigma(\<\underbrace{q,\dots,q}_{k+1-i},\underbrace{q',\dots,q'}_{i+1}\>)
+    \]
+
+  Then $\tau$ is easily verified to be a winning strategy, and
+  the proof for the second part is analogous.
+\end{proof}
+
+\begin{prop}
+  $\pl D \prewin \bellConGame{X}$ implies $X$ is first countable.
+\end{prop}
+
+\begin{proof}
+  Result follows as $\pl O \prewin \gruConGame{X}{x}$ for all $x\in X$.
+\end{proof}
+
+% \begin{defn}
+%   Scattered Eberlein compact spaces are known as \term{strong Eberlein
+%   compact} spaces.
+% \end{defn}
+
+% \begin{thm}[folklore]
+%   Scattered compact first-countable spaces are metrizable.
 % \end{thm}
 
-% \begin{thm}
-%   For any uniformly locally compact proximal space $X$, $\pl O\win \gruConGame{X}{H}$ for all compact $H\subseteq X$.
-% \end{thm}
-
 % \begin{cor}
-%   A compact uniform space $X$ is Corson compact if and only if it is proximal.
-% \end{cor}
-
-% \begin{thm}
-%   $\pl O \prewin \gruConGame{X}{H}$ if and only if there exists a countable base
-%   around $H$.
-% \end{thm}
-
-
-% \begin{cor}
-%   $X$ is first countable if and only if $\pl O \prewin \gruConGame{X}{x}$ for
-%   all $x\in X$
-% \end{cor}
-
-% \begin{cor}
-%   $\pl D \prewin \bellConGame{X}$ implies $X$ is first countable.
-% \end{cor}
-
-% \begin{cor}
-%   If $X$ is scattered compact and $\pl O \prewin\gruConGame{X}{x}$ for all
-%   $x\in X$ (or $\pl D \prewin\bellConGame{X}$), then $X$ is metrizable.
+%   If $X$ is scattered compact and $\pl D \prewin\bellConGame{X}$,
+%   then $X$ is metrizable.
 % \end{cor}
 
 
-% \begin{thm}
-%   If $H$ is a closed subset of $X$, then
-%     $
-%       \pl D \limitwin \bellConGame{X}
-%         \Rightarrow
-%       \pl D \limitwin \bellConGame{H}
-%     $
-%   where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
-% \end{thm}
+\begin{thm}
+  If $H$ is a closed subset of $X$, then
+    $
+      \pl D \limitwin \bellConGame{X}
+        \Rightarrow
+      \pl D \limitwin \bellConGame{H}
+    $
+  where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
+\end{thm}
+
+% \begin{proof}
+%   Let $\sigma\circ L$ witness $\pl D \limitwin \bellConGame{X}$. We define
+%   $\tau\circ L$ for $\pl D$ in $\bellConGame{H}$ as follows:
+%     \[
+%       \tau\circ L(p\rest n)
+%         =
+%       \sigma\circ L(p\rest n)
+%         \cap
+%       H^2
+%     \]
+
+%   Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
+%   $\sigma\circ L$, so either
+%     \[
+%       \bigcap_{n<\omega}
+%       \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
+%       [p(n)]
+%         \subseteq
+%       \bigcap_{n<\omega}
+%       \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
+%       [p(n)]
+%         =
+%       \emptyset
+%     \]
+%   or $p$ converges in $X$, and thus converges in $H$.
+% \end{proof}
 
 
 % \begin{thm}
