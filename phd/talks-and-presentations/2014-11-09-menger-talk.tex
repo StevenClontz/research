@@ -59,7 +59,7 @@
 {Game-theoretic strengthenings of Menger's property}
 
 \subtitle
-{29th Summer Conference on Topology and its Applications} % (optional)
+{AMS Sectional Meeting at UNCG} % (optional)
 
 \author%[Author, Another] % (optional, use only with lots of authors)
 {Steven~Clontz~\\http://stevenclontz.com}%\inst{1} \and S.~Another\inst{2}}
@@ -78,8 +78,8 @@
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
 
-\date[14-07-23] % (optional)
-{July 23, 2014}
+\date[14-11-09] % (optional)
+{November 9, 2014}
 
 
 % If you have a file called "university-logo-filename.xxx", where xxx
@@ -137,7 +137,7 @@
 
 \newcommand{\pfgame}[1]{PF_{F,C}(#1)}
 
-\newcommand{\mengame}[1]{Cov_{C,F}(#1)}
+\newcommand{\mengame}[1]{Men_{C,F}(#1)}
 \newcommand{\rothgame}[1]{Cov_{C,S}(#1)}
 \newcommand{\altrothgame}[1]{Cov_{P,O}(#1)}
 
@@ -146,6 +146,8 @@
 \newcommand{\fillgameOne}[1]{Fill^{1,\subseteq}_{C,F}(#1)}
 \newcommand{\fillgameInt}[1]{Fill^{\cap}_{C,F}(#1)}
 
+
+\newcommand{\bmGame}[1]{BM_{E,N}(#1)}
 
 
 \newcommand{\recallgame}[2]{Rec^{#1}_{F,S}(#2)}
@@ -192,7 +194,7 @@
 
 \newcommand{\cf}[1]{\textrm{cf}(#1)}
 
-\newcommand{\alcompS}[1]{S(#1,\omega,\omega)}
+\newcommand{\alcompS}[1]{S(#1)}
 
 
 \newcommand{\scish}{almost-$\sigma$-(relatively compact)}
@@ -240,14 +242,14 @@
 %     \vspace{1em}
 
 %     We factor out Scheepers' proof to show
-%     that for regular spaces, the second player having a winning $1$-Mark\"ov
+%     that for regular spaces, the second player having a winning $1$-Markov
 %     strategy characterizes $\sigma$-compactness; also, for second-countable
 %     spaces, the presence of a winning perfect information strategy for the
-%     second player implies the existence of a winning $1$-Mark\"ov strategy for
+%     second player implies the existence of a winning $1$-Markov strategy for
 %     that player. We also show the that for all $k$, the existence of a
-%     winning $k$-Mark\"ov strategy for the second player implies the existence
-%     of a winning $2$-Mark\"ov strategy, and give a space which permits
-%     a winning $2$-Mark\"ov strategy but not a winning $1$-Mark\"ov strategy.
+%     winning $k$-Markov strategy for the second player implies the existence
+%     of a winning $2$-Markov strategy, and give a space which permits
+%     a winning $2$-Markov strategy but not a winning $1$-Markov strategy.
 % \end{frame}
 
 \section{Menger Spaces and the Menger Game}
@@ -288,9 +290,8 @@
 
   \pause
 
-  \begin{theorem}
+  \begin{theorem}[Hurewicz 1926, effectively]
     $X$ is Menger if and only if $\pl C \not\win \mengame X$.
-    (Hurewicz 1926, effectively)
   \end{theorem}
 \end{frame}
 
@@ -300,9 +301,9 @@
 
   \pause
 
-  \begin{theorem}
+  \begin{theorem}[Fremlin, Miller 1988]
     There are $ZFC$ examples of non-$\sigma$-compact
-    subsets of the real line which are Menger. (Fremlin, Miller 1988)
+    subsets of the real line which are Menger.
   \end{theorem}
 
   But metrizable non-$\sigma$-compact Menger spaces will be
@@ -310,9 +311,9 @@
 
   \pause
 
-  \begin{theorem}
+  \begin{theorem}[Telgarsky 1984, Scheepers 1995]
     Let $X$ be metrizable. $\pl F\win\mengame X$ if and only if $X$ is
-    $\sigma$-compact. (Telgarsky 1984, Scheepers 1995)
+    $\sigma$-compact.
   \end{theorem}
 \end{frame}
 
@@ -330,7 +331,6 @@
           construct certain subsets $K_s$ for $s \in \omega^{<\omega}$ such
           that $X = \bigcup_{s\in\omega^{<\omega}}K_s$.
     \item Using regularity, show that each $K_s$ is compact.
-    \item The result follows since $|\omega^{<\omega}|=\omega$.
   \end{itemize}
 
   \vpause
@@ -357,7 +357,7 @@
   \pause
 
   \begin{definition}
-    A \term{$k$-Mark\"ov strategy} has knowledge of only the past $k$
+    A \term{$k$-Markov strategy} has knowledge of only the past $k$
     moves of the opponent and the round number.
   \end{definition}
 \end{frame}
@@ -386,12 +386,12 @@
   same open cover during every round of the game.
 \end{frame}
 
-\section{$1$-Mark\"ov Strategies}
+\section{$1$-Markov Strategies}
 
 \subsection{Limited info and relative compactness}
 
 \begin{frame}
-  Comparitively, Mark\"ov strategies are very powerful.
+  Comparitively, Markov strategies are very powerful.
 
   \begin{proposition}
     If $X$ is $\sigma$-compact, then $\pl F \kmarkwin{1}\mengame X$.
@@ -439,7 +439,7 @@
   \pause
 
   \begin{proof}
-    Let $\sigma(\mc U, n)$ represent a $1$-Mark\"ov strategy.
+    Let $\sigma(\mc U, n)$ represent a $1$-Markov strategy.
     For every open cover $\mc U\in\mathfrak C$, $\sigma(\mc{U},n)$
     witnesses relative compactness for the set
       \[
@@ -460,9 +460,11 @@
 \subsection{Limited info in second-countable spaces}
 
 \begin{frame}
-  So for regular spaces, a winning strategy for $\pl F$ in the Menger game
-  isn't sufficient to characterize $\sigma$-compactness, but a winning
-  $1$-Mark\"ov strategy does the trick.
+  \begin{corollary}
+    For regular spaces $X$,
+    $\pl F \kmarkwin{1}\mengame X$ if and only if $X$ is
+    $\sigma$-compact.
+  \end{corollary}
 
   \vpause
 
@@ -475,22 +477,36 @@
 \end{frame}
 
 \begin{frame}{Proof}
-  Let $\sigma$ be a perfect information strategy.
-  Since $X$ is a second-countable space, we may pretend that there are only
-  countably many finite collections of open sets. Thus for
-  $s\in\omega^{<\omega}$, we may define open covers $\mc U_{s\concat\<n\>}$
-  such that for each open cover $\mc U$, there is some $n<\omega$ where
+  It's sufficient to assume all covers contain only basic open sets, and
+  since $X$ is a second-countable space, there are only
+  countably many finite collections of basic open sets.
+
+  \vpause
+
+  Let $\sigma$ be a perfect information strategy, and suppose we've defined
+  open covers $\mc U_{s'}$ for $s'\leq s\in\omega^{<\omega}$. If $\mc U$ is an
+  arbitrary open cover, then there are only countably many
+  choices for the finite subcollection
+  \[
+    \sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U) \subseteq \mc U
+  \]
+\end{frame}
+
+\begin{frame}{Proof (cont.)}
+  Thus we may define open covers $\mc U_{s\concat\<n\>}$ for each
+  $n<\omega$ such that for an arbitrary open cover $\mc U$,
   \[
     \sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U)
       =
     \sigma(\mc U_{s\rest 1},\dots,\mc U_{s},\mc U_{s\concat\<n\>})
   \]
+  for some $n<\omega$.
 
   \vpause
 
   Let $t:\omega\to\omega^{<\omega}$ be a bijection. During round $n$ and
-  seeing only the latest open cover $\mc U$, $\pl F$ may play the finite
-  subcollection
+  seeing only the latest open cover $\mc U$, $\pl F$ may use the following
+  $1$-Markov strategy:
   \[
     \tau(\mc U,n) = \sigma(\mc U_{t(n)\rest 1},\dots,\mc U_{t(n)},\mc U)
   \]
@@ -498,7 +514,7 @@
 
 \begin{frame}{Proof (cont.)}
   Suppose there exists a counter-attack $\<\mc V_0,\mc V_1,\dots\>$ which
-  defeats the $1$-Mark\"ov strategy $\tau$. Then there exists
+  defeats the $1$-Markov strategy $\tau$. Then there exists
   $f:\omega\to\omega$ such that, if $\mc V^n=\mc V_{t^{-1}(f\rest n)}$
   \[
     \begin{array}{rcl}
@@ -511,21 +527,26 @@
   \vpause
 
   Thus $\<\mc U_{f\rest 1}, \mc U_{f\rest 2},\dots\>$ is a successful
-  counter-attack by $\pl C$ against the perfect information strategy $\sigma$.
+  counter-attack by $\pl C$ against the perfect information strategy $\sigma$,
+  showing $\pl O\win\mengame{X}\Rightarrow\pl O\kmarkwin{1}\mengame{X}$.
   \qed
 \end{frame}
 
-\section{$k$-Mark\"ov strategies for $k\geq 2$}
+\section{$k$-Markov strategies for $k\geq 2$}
 
-\subsection{$k$-Mark\"ov implies $2$-Mark\"ov}
+\subsection{$k$-Markov implies $2$-Markov}
 
 \begin{frame}
-  Unlike the Banach-Mazur game, we can immediately see that knowledge
-  of more than two previous moves of $\pl F$'s opponent must be infinite
-  to be of any use.
+  It's speculated that there are spaces $X_k$ such that for the Banach-Mazur
+  game, $\pl N\ktactwin{k+1}\bmGame{X_k}$ but $\pl N\notktactwin{k}\bmGame{X_k}$.
+  (This is true for $k=1$.)
+
+  \pause
 
   \begin{theorem}
-    If $\pl F \kmarkwin{k}\mengame X$, then $\pl F \kmarkwin2\mengame X$.
+    $\pl F \kmarkwin{k+2}\mengame X$
+    if and only if
+    $\pl F \kmarkwin2\mengame X$.
   \end{theorem}
 
   \begin{proof}
@@ -541,12 +562,12 @@
   \end{proof}
 \end{frame}
 
-\subsection{$2$-Mark\"ov but not $1$-Mark\"ov}
+\subsection{$2$-Markov but not $1$-Markov}
 
 \begin{frame}
-  Knowledge of two previous moves versus one is an important distinction:
-  in the former case, the player is able to react to change by the
-  opponent.
+  Having knowledge of \textit{two} of an opponent's moves allows a player to
+  react when the opponent changes her moves, something impossible to do
+  using a $1$-tactical or $1$-Markov strategy.
 
   \pause
 
@@ -559,19 +580,22 @@
   \pause
 
   $\oneptlind\kappa$ is a simple space which is a regular and Lindel\"of, but
-  not second-countable space or $\sigma$-compact. Thus
+  not second-countable or $\sigma$-compact. Thus
   $\pl F\notkmarkwin{1}\mengame{\oneptlind\kappa}$, but it's easy to see
-  that $\pl F\win\mengame{\oneptlind\kappa}$. What about $2$-Mark\"ov
+  that $\pl F\win\mengame{\oneptlind\kappa}$. What about $2$-Markov
   strategies?
 \end{frame}
 
 \begin{frame}
-  In 1991, Scheepers introduced the statement $\alcompS\kappa$ to study an
-  infinite game involving the countable and finite subsets of $\kappa$.
+  The game $\mengame{\oneptlind\kappa}$ essentially involves choosing
+  countable and finite subsets of $\kappa$.
+  Conveniently, there already exists an
+  infinite game also involving the countable and finite subsets of
+  $\kappa$ in the literature.
 
   \pause
 
-  \begin{game}
+  \begin{game}[Scheepers 1991]
     Let $\fillgameS\kappa$ denote the \term{strict union filling game}
     with two players $\pl C$, $\pl F$. In round $0$, $\pl C$ chooses
     $C_0\in[\kappa]^{\leq\omega}$, followed by $\pl F$ choosing
@@ -598,28 +622,27 @@
     $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
   \end{definition}
   \pause
-  \begin{theorem}
-    $\alcompS{\omega_1}$; $Con(\alcompS{2^\omega}+\neg CH)$;
-    $\neg\alcompS\kappa$ for $\kappa>2^\omega$.
+  \begin{theorem}[Scheepers 1991]
+    $\alcompS{\omega_1}$;
+    $\neg\alcompS\kappa$ for $\kappa>2^\omega$;
+    $Con(\alcompS{2^\omega}+\neg CH)$.
   \end{theorem}
 \end{frame}
 
 \begin{frame}
-  The round number is unnecessary in Scheeper's game, since $\pl C$ must
-  choose strictly increasing sets.
-
-  \begin{theorem}
+  \begin{theorem}[Scheepers 1991]
     If $\alcompS\kappa$, then $\pl F\ktactwin2 \fillgameS\kappa$.
   \end{theorem}
 
   \pause
 
-  As it turns out, a related game characterizes $\mengame{\oneptlind\kappa}$.
+  We slightly adapt Scheeper's game to characterize
+  $\mengame{\oneptlind\kappa}$ purely combinatorially.
 
   \begin{definition}
     Let $\fillgameInt\kappa$ denote the \term{intersection filling game}
     analogous to $\fillgameS\kappa$, except that $\pl C$ has no restriction
-    on the countable sets she choooses, but $\pl F$ need only ensure that
+    on the countable sets she chooses, but $\pl F$ need only ensure that
     $\bigcup_{n<\omega} F_n\supseteq \bigcap_{n<\omega} C_n$ to win
     the game.
   \end{definition}
@@ -636,12 +659,17 @@
   \begin{theorem}
     If $\alcompS\kappa$, then $\pl F\kmarkwin{2} \fillgameInt\kappa$.
   \end{theorem}
+\end{frame}
 
-  \pause
+\begin{frame}
+
+  \begin{theorem}
+    If $\alcompS\kappa$, then $\pl F\kmarkwin{2} \fillgameInt\kappa$.
+  \end{theorem}
 
   \begin{proof}
     Let $f_A:A\to\omega$ witness $\alcompS\kappa$. Then we define the
-    winning $2$-Mark\"ov strategy $\sigma$ as follows:
+    winning $2$-Markov strategy $\sigma$ as follows:
       \[
         \sigma(\<A\>,0) = \{\alpha\in A: f_A(\alpha) = 0\}
       \]
@@ -655,23 +683,20 @@
         f_A(\alpha)\not=f_B(\alpha)\}
       \]
   \end{proof}
-\end{frame}
 
-\begin{frame}
+  \pause
+
   \begin{corollary}
     $\pl F\kmarkwin{2}\mengame{\oneptlind\omega_1}$, but
     $\pl F\notkmarkwin1\mengame{\oneptlind\omega_1}$.
   \end{corollary}
-  \begin{figure}
-    \includegraphics[height=1.7in]{mengerGameChart.png}
-  \end{figure}
 \end{frame}
 
 \section{Quesitons}
 
 \begin{frame}
   \begin{question}
-    Does $\pl F\kmarkwin2\mengame{\oneptlind\kappa}$ imply $\alcompS\kappa$?
+    Does $\pl F\kmarkwin2\fillgameInt{\kappa}$ imply $\alcompS\kappa$?
   \end{question}
 
   \pause
@@ -680,23 +705,22 @@
     Are $\pl F\win\mengame X$ and $\pl F\kmarkwin2\mengame X$ distinct?
   \end{question}
 
-  An affirmative answer to the first question answers this since
-  $\neg\alcompS\kappa$ for $\kappa>2^\omega$.
+  \pause
+
+  A ``yes'' for the first is a ``yes'' for the second, since
+  $\neg\alcompS{\kappa}$ for $\kappa>2^\omega$ but
+  $\pl F\win\mengame{\oneptlind\kappa}$ for all $\kappa$.
 \end{frame}
+
 \begin{frame}
   \begin{question}
     Where does $\pl F\kmarkwin2\mengame X$ fit in with other properties
     between $\sigma$-(relatively-)compact and Menger?
   \end{question}
-  $\pl F\kmarkwin2\mengame X$ seems to characterize an
-  ``almost-$\sigma$-(relative-)compactness''.
 
-  \vpause
-
-  Any sufficient property would imply $\pl F\win\mengame X$, and any
-  (interesting) necessary property shouldn't be implied by
-  $\pl F\win\mengame X$. Assuming $T_3$, properties which come to mind
-  from the literature fit the latter: e.g. Alster (Aurichi, Tall 2013),
+  Assuming $T_3$, properties which come to mind
+  from the literature are implied by $\pl F\win\mengame X$:
+  e.g. Alster (Aurichi, Tall 2013),
   and thus productively Lindel\"of (Alster 1988) and Hurewicz (Tall 2009).
 \end{frame}
 
