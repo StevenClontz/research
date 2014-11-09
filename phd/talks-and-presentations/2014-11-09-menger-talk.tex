@@ -59,7 +59,7 @@
 {Game-theoretic strengthenings of Menger's property}
 
 \subtitle
-{AMS Sectional Meeting at UNCG} % (optional)
+{AMS Fall Sectional Meeting at UNCG} % (optional)
 
 \author%[Author, Another] % (optional, use only with lots of authors)
 {Steven~Clontz~\\http://stevenclontz.com}%\inst{1} \and S.~Another\inst{2}}
@@ -221,37 +221,6 @@
   \titlepage
 \end{frame}
 
-% \begin{frame}{Table of Contents}
-%   \tableofcontents
-%   % You might wish to add the option [pausesections]
-% \end{frame}
-
-
-% \section{Introduction}
-
-% \subsection{Abstract}
-
-% \begin{frame}{Abstract}%{Subtitles are optional.}
-%     \small
-%     A certain topological game introduced by Hurewicz characterizes Menger's
-%     covering property whenever the first player lacks a winning strategy. It
-%     was later shown by Telgarsky (and later by Scheepers using a different
-%     argument) that for metric spaces, the second player having a winning
-%     strategy characterizes the stronger property of $\sigma$-compactness.
-
-%     \vspace{1em}
-
-%     We factor out Scheepers' proof to show
-%     that for regular spaces, the second player having a winning $1$-Markov
-%     strategy characterizes $\sigma$-compactness; also, for second-countable
-%     spaces, the presence of a winning perfect information strategy for the
-%     second player implies the existence of a winning $1$-Markov strategy for
-%     that player. We also show the that for all $k$, the existence of a
-%     winning $k$-Markov strategy for the second player implies the existence
-%     of a winning $2$-Markov strategy, and give a space which permits
-%     a winning $2$-Markov strategy but not a winning $1$-Markov strategy.
-% \end{frame}
-
 \section{Menger Spaces and the Menger Game}
 
 \subsection{Definitions}
@@ -260,8 +229,8 @@
   \begin{definition}
     A space $X$ is Menger if for every sequence $\<\mc U_0,\mc U_1,\dots\>$
     of open covers of $X$ there exists a sequence
-    $\<\mc F_0,\mc F_1,\dots\>$ such that $\mc F_n\subseteq \mc U_n$,
-    $|\mc F_n|<\omega$, and $\bigcup_{n<\omega}\mc F_n$ is a cover of $X$.
+    $\<\mc F_0,\mc F_1,\dots\>$ such that $\mc F_n\in [\mc U_n]^{<\omega}$
+    and $\bigcup_{n<\omega}\mc F_n$ is a cover of $X$.
   \end{definition}
 
   \pause
@@ -280,10 +249,9 @@
     Let $\mengame{X}$ denote the \term{Menger game} with players
     $\pl C$, $\pl F$.
     In round $n$, $\pl C$ chooses an open cover $\mc C_n$,
-    followed by $\pl F$
-    choosing a finite subcollection $\mc F_n\subseteq \mc C_n$.
+    followed by $\pl F$ choosing $\mc F_n\in[\mc C_n]^{<\omega}$.
 
-    $\pl F$ wins the game, that is, $\pl F \win \mengame{X}$ if
+    $\pl F$ wins the game ($\pl F \win \mengame{X}$) if
     $\bigcup_{n<\omega}\mc F_n$ is a cover for the space
     $X$, and $\pl C$ wins otherwise.
   \end{game}
@@ -325,18 +293,9 @@
 
   \vpause
 
-  Sketch of Scheeper's proof:
-  \begin{itemize}
-    \item Using second-countability and the winning strategy for $\pl F$,
-          construct certain subsets $K_s$ for $s \in \omega^{<\omega}$ such
-          that $X = \bigcup_{s\in\omega^{<\omega}}K_s$.
-    \item Using regularity, show that each $K_s$ is compact.
-  \end{itemize}
-
-  \vpause
-
-  By considering winning \term{limited-information strategies}, we'll be able
-  to factor out this proof a bit.
+  By considering winning \term{limited-information strategies}, it turns
+  out Scheeper's proof essentially factors into two lemmas: one for regularity
+  and one for second-countablity.
 \end{frame}
 
 \subsection{Limited information strategies}
@@ -350,40 +309,9 @@
   \pause
 
   \begin{definition}
-    A \term{$k$-tactical strategy} has knowledge of only the past $k$
-    moves of the opponent.
-  \end{definition}
-
-  \pause
-
-  \begin{definition}
     A \term{$k$-Markov strategy} has knowledge of only the past $k$
     moves of the opponent and the round number.
   \end{definition}
-\end{frame}
-
-\begin{frame}
-  Obviously,
-  \[
-    \pl A \ktactwin{k} G
-      \Rightarrow
-    \pl A \kmarkwin{k} G
-      \Rightarrow
-    \pl A \underset{\text{(perfect)}}{\uparrow} G
-  \]
-
-  \vpause
-
-  But tactical strategies aren't interesting for the Menger game.
-
-  \begin{proposition}
-    For any $k<\omega$,
-    $\pl F\ktactwin{k}\mengame X$ if and only if $X$ is compact.
-  \end{proposition}
-
-  Effectively, $\pl F$ needs some sort of seed to prevent from being
-  stuck in a loop: there's nothing stopping $\pl C$ from playing the
-  same open cover during every round of the game.
 \end{frame}
 
 \section{$1$-Markov Strategies}
@@ -391,8 +319,6 @@
 \subsection{Limited info and relative compactness}
 
 \begin{frame}
-  Comparitively, Markov strategies are very powerful.
-
   \begin{proposition}
     If $X$ is $\sigma$-compact, then $\pl F \kmarkwin{1}\mengame X$.
   \end{proposition}
@@ -406,8 +332,7 @@
 \end{frame}
 
 \begin{frame}
-  Without assuming regularity, we can't quite reverse the implication, but
-  we can get close.
+  In general that implication cannot be reversed.
 
   \pause
 
@@ -418,14 +343,6 @@
 
   \begin{proposition}
     If $X$ is $\sigma$-relatively-compact, then $\pl F \kmarkwin{1}\mengame X$.
-  \end{proposition}
-
-  \pause
-
-  \begin{proposition}
-    For regular spaces, $Y\subseteq X$ is relatively compact if and only if
-    $\cl Y$ is compact. So $\sigma$-relatively-compact regular spaces are
-    exactly the $\sigma$-compact regular spaces.
   \end{proposition}
 \end{frame}
 
@@ -468,8 +385,6 @@
 
   \vpause
 
-  We can complete Telgarsky's/Scheeper's result by showing the following:
-
   \begin{theorem}
     For second countable spaces $X$, $\pl F \win \mengame X$ if and only if
     $\pl F \kmarkwin{1}\mengame X$.
@@ -477,7 +392,7 @@
 \end{frame}
 
 \begin{frame}{Proof}
-  It's sufficient to assume all covers contain only basic open sets, and
+  It's sufficient to consider only basic open sets, and
   since $X$ is a second-countable space, there are only
   countably many finite collections of basic open sets.
 
@@ -504,9 +419,8 @@
 
   \vpause
 
-  Let $t:\omega\to\omega^{<\omega}$ be a bijection. During round $n$ and
-  seeing only the latest open cover $\mc U$, $\pl F$ may use the following
-  $1$-Markov strategy:
+  Let $t:\omega\to\omega^{<\omega}$ be a bijection. We define a $1$-Markov
+  strategy $\tau$ as follows:
   \[
     \tau(\mc U,n) = \sigma(\mc U_{t(n)\rest 1},\dots,\mc U_{t(n)},\mc U)
   \]
@@ -591,67 +505,48 @@
   countable and finite subsets of $\kappa$.
   Conveniently, there already exists an
   infinite game also involving the countable and finite subsets of
-  $\kappa$ in the literature.
+  $\kappa$ in the literature (Scheepers 1991). An adaptation follows:
 
   \pause
 
-  \begin{game}[Scheepers 1991]
-    Let $\fillgameS\kappa$ denote the \term{strict union filling game}
+  \begin{game}
+    Let $\fillgameInt\kappa$ denote the \term{intersection filling game}
     with two players $\pl C$, $\pl F$. In round $0$, $\pl C$ chooses
     $C_0\in[\kappa]^{\leq\omega}$, followed by $\pl F$ choosing
     $F_0\in[\kappa]^{<\omega}$. In round $n+1$, $\pl C$ chooses
-    $C_{n+1}\in[\kappa]^{\leq\omega}$ such that $C_{n+1}\supset C_n$, followed
+    $C_{n+1}\in[\kappa]^{\leq\omega}$, followed
     by $\pl F$ choosing $F_{n+1}\in[\kappa]^{<\omega}$.
 
     $\pl F$ wins the game if
-    $\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n$; otherwise, $\pl C$
+    $\bigcup_{n<\omega} F_n\supseteq\bigcap_{n<\omega} C_n$; otherwise, $\pl C$
     wins.
   \end{game}
-\end{frame}
-
-\begin{frame}
-  \begin{definition}
-    For two functions $f,g$ we say $f$ is \term{almost compatible} with
-    $g$ ($f\alcomp g$) if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega$.
-  \end{definition}
-  \pause
-  \begin{definition}
-    $\alcompS\kappa$ states that there exist functions
-    $f_A:A\to\omega$ for each $A\in[\kappa]^{\leq\omega}$ such that
-    $|f_A^{-1}(n)|<\omega$ for all $n<\omega$ and
-    $f_A\alcomp f_B$ for all $A,B\in[\kappa]^\omega$.
-  \end{definition}
-  \pause
-  \begin{theorem}[Scheepers 1991]
-    $\alcompS{\omega_1}$;
-    $\neg\alcompS\kappa$ for $\kappa>2^\omega$;
-    $Con(\alcompS{2^\omega}+\neg CH)$.
-  \end{theorem}
-\end{frame}
-
-\begin{frame}
-  \begin{theorem}[Scheepers 1991]
-    If $\alcompS\kappa$, then $\pl F\ktactwin2 \fillgameS\kappa$.
-  \end{theorem}
-
-  \pause
-
-  We slightly adapt Scheeper's game to characterize
-  $\mengame{\oneptlind\kappa}$ purely combinatorially.
-
-  \begin{definition}
-    Let $\fillgameInt\kappa$ denote the \term{intersection filling game}
-    analogous to $\fillgameS\kappa$, except that $\pl C$ has no restriction
-    on the countable sets she chooses, but $\pl F$ need only ensure that
-    $\bigcup_{n<\omega} F_n\supseteq \bigcap_{n<\omega} C_n$ to win
-    the game.
-  \end{definition}
 \end{frame}
 
 \begin{frame}
   \begin{theorem}
     $\pl F \kmarkwin{k} \mengame{\oneptlind\kappa}$ if and only if
     $\pl F \kmarkwin{k} \fillgameInt\kappa$.
+  \end{theorem}
+  \pause
+  \begin{definition}
+    For two functions $f,g$ we say $f$ is \term{almost compatible} with
+    $g$ if $|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega$.
+  \end{definition}
+  \pause
+  \begin{definition}
+    $\alcompS\kappa$ states that there exist functions
+    $f_A:A\to\omega$ for each $A\in[\kappa]^{\leq\omega}$ such that
+    $|f_A^{-1}(n)|<\omega$ for all $n<\omega$ and
+    $f_A$, $f_B$ are almost compatible for all $A,B\in[\kappa]^\omega$.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}[Scheepers 1991]
+    $\alcompS{\omega_1}$;
+    $\neg\alcompS\kappa$ for $\kappa>2^\omega$;
+    $Con(\alcompS{2^\omega}+\neg CH)$.
   \end{theorem}
 
   \pause
@@ -692,42 +587,101 @@
   \end{corollary}
 \end{frame}
 
-\section{Quesitons}
+\subsection{Relatively Robustly Menger}
 
-\begin{frame}
-  \begin{question}
-    Does $\pl F\kmarkwin2\fillgameInt{\kappa}$ imply $\alcompS\kappa$?
-  \end{question}
-
-  \pause
-
-  \begin{question}
-    Are $\pl F\win\mengame X$ and $\pl F\kmarkwin2\mengame X$ distinct?
-  \end{question}
+\begin{frame}{Characterizing $2$-Markov strategies topologically}
+  \begin{game}
+    Let $\mengame{X,Y}$ proceed
+    analogously to the Menger game, except that $\pl F$ only need
+    cover $Y\subseteq X$.
+  \end{game}
 
   \pause
 
-  A ``yes'' for the first is a ``yes'' for the second, since
-  $\neg\alcompS{\kappa}$ for $\kappa>2^\omega$ but
-  $\pl F\win\mengame{\oneptlind\kappa}$ for all $\kappa$.
+  \begin{definition}
+    A subset $Y$ of $X$ is \term{relatively robustly Menger} if there exist
+    functions $r_{\mc V}:Y\to\omega$
+    for each open cover $\mc V$ of $X$ such that
+    for all open covers $\mc U,\mc V$ and numbers $n<\omega$,
+    the following sets are finitely coverable by $\mc V$:
+      \[
+        c(\mc V,n)=\{ x\in Y : r_{\mc V}(x)\leq n\}
+      \]
+      \[
+        p(\mc U,\mc V,n+1)=\{ x\in Y : n<r_{\mc U}(x)<r_{\mc V}(x)\}
+      \]
+  \end{definition}
 \end{frame}
 
 \begin{frame}
-  \begin{question}
-    Where does $\pl F\kmarkwin2\mengame X$ fit in with other properties
-    between $\sigma$-(relatively-)compact and Menger?
-  \end{question}
+  \begin{theorem}
+    If $Y$ is relatively robustly Menger to $X$, then
+    $\pl F\kmarkwin2\mengame{X,Y}$.
+  \end{theorem}
 
-  Assuming $T_3$, properties which come to mind
-  from the literature are implied by $\pl F\win\mengame X$:
-  e.g. Alster (Aurichi, Tall 2013),
-  and thus productively Lindel\"of (Alster 1988) and Hurewicz (Tall 2009).
+  \begin{theorem}
+    If $\pl F\kmarkwin{2} \mengame{X,X_i}$ for $i<\omega$, then
+    $\pl F\kmarkwin{2} \mengame{X,\bigcup_{i<\omega}X_i}$.
+  \end{theorem}
+
+  \begin{theorem}
+    $\mengame{X,X}=\mengame{X}$.
+  \end{theorem}
 \end{frame}
 
-\section*{}
+\begin{frame}
+  \begin{theorem}
+    $\alcompS\kappa$ implies $\oneptlind{\omega_1}$ is relatively robustly
+    Menger to itself.
+  \end{theorem}
+
+  \pause
+
+  \begin{definition}
+    Let $R_\omega$ be the real line with the topology generated by open
+    intervals with countably many points removed.
+  \end{definition}
+
+  \begin{theorem}
+    $\alcompS{2^\omega}$ implies $\pl F\kmarkwin2\mengame{R_\omega}$
+  \end{theorem}
+\end{frame}
 
 \begin{frame}
-Questions? Thanks for listening!
+  \begin{theorem}
+    $\alcompS{2^\omega}$ implies $\pl F\kmarkwin2\mengame{R_\omega}$
+  \end{theorem}
+
+  \begin{proof}
+    Proceeds by showing that $[0,1]$ is relatively robustly Menger (as
+    a subspace of $R_\omega$). Let $f_C$ witness $\alcompS{[0,1]}$.
+
+    \vpause
+
+    Choose a finite subcover of $\mc V$ for $[0,1]\setminus C_{\mc V}$.
+    Let $r_{\mc V}(x)=0$ for $x\not\in C_{\mc V}$, and
+    $r_{\mc V}(x)= f_{C_{\mc V}}(x)$ otherwise. Then $c(\mc V,n)$ is
+    finitely coverable by $\mc V$ and $p(\mc U,\mc V,n+1)$ is just finite.
+  \end{proof}
+\end{frame}
+
+\section{Questions}
+
+\begin{frame}
+  Some questions:
+
+  \begin{itemize}
+    \item $\alcompS\kappa$ implies $\pl F\kmarkwin2\fillgameInt\kappa$...
+    what about the other direction?
+    \item Is there a space with $\pl F\win\mengame{X}$ but
+    $\pl F\notkmarkwin2\mengame{X}$?
+    \item Is there a non-$\sigma$-relatively-robustly-Menger space where
+    $\pl F\kmarkwin2\mengame{X}$?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  Questions from any of you? Thanks!
 \end{frame}
 
 
