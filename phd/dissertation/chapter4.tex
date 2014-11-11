@@ -131,6 +131,12 @@ If $D$ is a symmetric open entourage, then we assume $\frac{1}{2}D$ is
 also a symmetric open entourage. Note that if $D$ is an open symmetric
 entourage, then $D[x]$ is an open neighborhood of $x$.
 
+\begin{thm}
+  A symmetric open neighborhood $U$ of $\Delta$ is a symmetric open entourage
+  if and only if there exist open neighborhoods $U_n$ of $\Delta$ for $n<\omega$
+  such that $U=U_0$ and $U_{n+1}\circ U_{n+1}\subseteq U_n$.
+\end{thm}
+
 
 
 \section{Games on uniformizable spaces}
@@ -223,23 +229,23 @@ showed a strong connection in \cite{MR3239205}.
   If $X$ is proximal, then $X$ is a $W$-space.
 \end{thm}
 
-We similarly may consider clustering versions of the Bell games.
-(TODO: will I actually use this game?)
+% We similarly may consider clustering versions of the Bell games.
+% (TODO: will I actually use this game?)
 
-\begin{defn}
-  Let $\bellClusGame{X}$ ($\bellClusHardGame{X}$) denote the
-  \term{Bell clustering game} (\term{hard Bell clustering game}) which
-  proceeds analogously to $\bellConGame{X}$ ($\bellConHardGame{X}$), except
-  that $\pl D$ need only ensure that $\<p_0,p_1,\dots\>$ clusters
-  in $X$ in order to win.
-\end{defn}
+% \begin{defn}
+%   Let $\bellClusGame{X}$ ($\bellClusHardGame{X}$) denote the
+%   \term{Bell clustering game} (\term{hard Bell clustering game}) which
+%   proceeds analogously to $\bellConGame{X}$ ($\bellConHardGame{X}$), except
+%   that $\pl D$ need only ensure that $\<p_0,p_1,\dots\>$ clusters
+%   in $X$ in order to win.
+% \end{defn}
 
-\begin{defn}
-  A uniformizable space $X$ is \term{almost proximal} if
-  $\pl D \win \bellClusGame{X}$.
-\end{defn}
+% \begin{defn}
+%   A uniformizable space $X$ is \term{almost proximal} if
+%   $\pl D \win \bellClusGame{X}$.
+% \end{defn}
 
-Or we eliminate the secondary winning condition to create a stronger
+We may eliminate the secondary winning condition to create a stronger
 variant of the game.
 
 \begin{defn}
@@ -621,8 +627,9 @@ but not paracompact.
 
 \section{Limited information results}
 
-Many of the results shown in \cite{MR3239205} and \cite{nyikosProximalPreprint}
-have limited information analogs.
+We have generalized many of the results originally shown by Bell \cite{MR3239205}
+and Nyikos \cite{nyikosProximalPreprint} by considering limited information
+strategies.
 
 \begin{thm}
 For all $x\in X$:
@@ -786,13 +793,13 @@ function, repsectively.
       $
         \pl D\ktactwin{k+1}\bellConGame{X\cup\{\infty\}}
           \Leftrightarrow
-        O\tactwin\bellConGame{X\cup\{\infty\}}
+        \pl D\tactwin\bellConGame{X\cup\{\infty\}}
       $
     \item
       $
         \pl D\kmarkwin{k+1}\bellConGame{X\cup\{\infty\}}
           \Leftrightarrow
-        O\markwin\bellConGame{X\cup\{\infty\}}
+        \pl D\markwin\bellConGame{X\cup\{\infty\}}
       $
   \end{itemize}
 \end{cor}
@@ -815,7 +822,7 @@ function, repsectively.
 \end{prop}
 
 \begin{proof}
-  If $\sigma$ witnesses $\pl O\ktactwin{k}\bellConGame{X}$,
+  If $\sigma$ witnesses $\pl D\ktactwin{k+2}\bellConGame{X}$,
   let $\tau(\emptyset)=\sigma(\emptyset)$ and
     \[
       \tau(\<q\>)
@@ -834,29 +841,6 @@ function, repsectively.
   the proof for the second part is analogous.
 \end{proof}
 
-\begin{prop}
-  $\pl D \prewin \bellConGame{X}$ implies $X$ is first countable.
-\end{prop}
-
-\begin{proof}
-  Result follows as $\pl O \prewin \gruConGame{X}{x}$ for all $x\in X$.
-\end{proof}
-
-% \begin{defn}
-%   Scattered Eberlein compact spaces are known as \term{strong Eberlein
-%   compact} spaces.
-% \end{defn}
-
-% \begin{thm}[folklore]
-%   Scattered compact first-countable spaces are metrizable.
-% \end{thm}
-
-% \begin{cor}
-%   If $X$ is scattered compact and $\pl D \prewin\bellConGame{X}$,
-%   then $X$ is metrizable.
-% \end{cor}
-
-
 \begin{thm}
   If $H$ is a closed subset of $X$, then
     $
@@ -867,32 +851,35 @@ function, repsectively.
   where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
 \end{thm}
 
-% \begin{proof}
-%   Let $\sigma\circ L$ witness $\pl D \limitwin \bellConGame{X}$. We define
-%   $\tau\circ L$ for $\pl D$ in $\bellConGame{H}$ as follows:
-%     \[
-%       \tau\circ L(p\rest n)
-%         =
-%       \sigma\circ L(p\rest n)
-%         \cap
-%       H^2
-%     \]
+\begin{proof}
+  The perfect information result is due to Bell.
 
-%   Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
-%   $\sigma\circ L$, so either
-%     \[
-%       \bigcap_{n<\omega}
-%       \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
-%       [p(n)]
-%         \subseteq
-%       \bigcap_{n<\omega}
-%       \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
-%       [p(n)]
-%         =
-%       \emptyset
-%     \]
-%   or $p$ converges in $X$, and thus converges in $H$.
-% \end{proof}
+  Let $\sigma\circ L$ witness $\pl D \limitwin \bellConGame{X}$. We define
+  $\tau\circ L$ for $\pl D$ in $\bellConGame{H}$ as follows:
+    \[
+      \tau\circ L(p\rest n)
+        =
+      \sigma\circ L(p\rest n)
+        \cap
+      H^2
+    \]
+
+  Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
+  $\sigma\circ L$, so either
+    \[
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
+      [p(n)]
+        \subseteq
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
+      [p(n)]
+        =
+      \emptyset
+    \]
+  or $p:\omega\to H$ converges in $X$, and thus converges its closed subset
+  $H$.
+\end{proof}
 
 
 % \begin{thm}
