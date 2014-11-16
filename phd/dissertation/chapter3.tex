@@ -184,6 +184,38 @@ as well.
   strategy for $\pl O$ in $\gruConGame{X}{S}$ as well.
 \end{proof}
 
+\begin{prop} For any $x\in X$ and $k<\omega$,
+  \begin{itemize}
+    \item
+      $
+      \pl O\ktactwin{k+1}\gruConGame{X}{x}
+        \Leftrightarrow
+      \pl O\tactwin\gruConGame{X}{x}
+      $
+    \item
+      $
+      \pl O\kmarkwin{k+1}\gruConGame{X}{x}
+        \Leftrightarrow
+      \pl O\markwin\gruConGame{X}{x}
+      $
+  \end{itemize}
+\end{prop}
+
+
+\begin{proof}
+  If $\sigma$ witnesses $\pl O\ktactwin{k+1}\gruConGame{X}{x}$,
+  let $\tau(\emptyset)=\sigma(\emptyset)$ and
+    \[
+      \tau(\<q\>)
+        =
+      \bigcap_{i< k}
+      \sigma(\<\underbrace{x,\dots,x}_{k-i},q,\underbrace{x,\dots,x}_{i+1}\>)
+    \]
+
+  Then $\tau$ is easily verified to be a winning tactic, and
+  the proof for the second part is analogous.
+\end{proof}
+
 Two types of questions emerge from these results.
 
 \begin{ques}

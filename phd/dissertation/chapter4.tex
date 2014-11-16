@@ -629,53 +629,65 @@ but not paracompact or uniformly locally compact.
 
 \section{Limited information results}
 
-We have generalized many of the results originally shown by Bell \cite{MR3239205}
+One may generalize many of the results originally shown by Bell \cite{MR3239205}
 and Nyikos \cite{nyikosProximalPreprint} by considering limited information
 strategies.
 
 \begin{thm}
-For all $x\in X$:
+Let $k<\omega$. For all $x\in X$:
   \begin{itemize}
     \item
-      $\pl D\ktactwin{2k} \bellConGame{X} \Rightarrow \pl O \ktactwin{k} \gruConGame{X}{x}$
+      $
+        \pl D\ktactwin{2k} \bellConGame{X}
+          \Rightarrow
+        \pl O \ktactwin{k} \gruConGame{X}{x}
+      $
     \item
-      $\pl D\kmarkwin{2k} \bellConGame{X} \Rightarrow \pl O \kmarkwin{k} \gruConGame{X}{x}$
+      $
+        \pl D\kmarkwin{2k} \bellConGame{X}
+          \Rightarrow
+        \pl O \kmarkwin{k} \gruConGame{X}{x}
+      $
     \item
-      $\pl D\win \bellConGame{X} \Rightarrow \pl O \win \gruConGame{X}{x}$
+      $
+        \pl D\win \bellConGame{X}
+          \Rightarrow
+        \pl O \win \gruConGame{X}{x}
+      $
   \end{itemize}
 \end{thm}
 
 \begin{proof}
 The perfect-information result was originally shown by Bell.
+Let $L_k$ represent either the $k$-tactical fog-of-war $\nu_k$,
+the $k$-Markov fog-of-war $\mu_k$, or the identity $id$.
 
-Let $\sigma\circ \nu_{2k}$ witness $\pl D \ktactwin{2k} \bellConGame{X}$,
-where $\nu_k$ is the $k$-tactical fog-of-war which removes all information
-except the final $k$ moves of the opponent.
-
-We define the $k$-tactical strategy $\tau$ for $\gruConGame{X}{x}$ such that
+Let $\sigma\circ L_{2k}$ be a winning strategy for $\pl D$ in $\bellConGame{X}$.
+We define the strategy $\tau\circ L_k$ for $\gruConGame{X}{x}$ such that
   \[
-    \tau\circ \nu_k(t)
+    \tau\circ {L}_k(t)
       =
-    \sigma\circ \nu_{2k}(\<x,t(0),\dots,x,t(|t|-1)\>)[x]
+    \sigma\circ {L}_{2k} \Big(\<x,t(0),\dots,x,t(|t|-1)\>\Big)[x]
       \cap
-    \sigma\circ \nu_{2k}(\<x,t(0),\dots,x,t(|t|-1),x\>)[x]
+    \sigma\circ {L}_{2k} \Big(\<x,t(0),\dots,x,t(|t|-1),x\>\Big)[x]
   \]
 
-Let $p$ attack $\tau$. Consider the attack $q$ against the winning strategy
-$\sigma\circ \nu_{2k}$ such that $q(2n)=x$ and $q(2n+1)=p(n)$, and let
-$D_n=\sigma\circ \nu_{2k}(q\rest n)$ and $E_n=\bigcap_{m\leq n}D_m$.
+Let $p$ attack $\tau$ such that $p(n)\in\bigcap_{m\leq n}\tau\circ L_k(t)$.
+Consider the attack $q$ against the winning strategy
+$\sigma\circ {L}_{2k}$ such that $q(2n)=x$ and $q(2n+1)=p(n)$.
+Let $D_n=\sigma\circ {L}_{2k}(q\rest n)$ and $E_n=\bigcap_{m\leq n}D_m$.
 
 Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$.
 Note also for any $n<\omega$ that
     \[
       p(n) \in
-      \bigcap_{m\leq n}\tau\circ \nu_k(p\rest m)
+      \bigcap_{m\leq n}\tau\circ {L}_k(p\rest m)
     \]
     \[
       =
       \bigcap_{m\leq n}\left(
-        \sigma\circ \nu_{2k}(\<x,p(0),\dots,x,p(m-1)\>)[x]\cap
-        \sigma\circ \nu_{2k}(\<x,p(0),\dots,x,p(m-1),x\>)[x]
+        \sigma\circ {L}_{2k}(\<x,p(0),\dots,x,p(m-1)\>)[x]\cap
+        \sigma\circ {L}_{2k}(\<x,p(0),\dots,x,p(m-1),x\>)[x]
       \right)
     \]
     \[
@@ -687,18 +699,18 @@ Note also for any $n<\omega$ that
       \bigcap_{m\leq 2n+1} D_m[x]=E_{2n+1}[x]
     \]
 so by the symmetry of $E_{2n+1}$, $x\in E_{2n+1}[p(n)]= E_{2n+1}[q(2n+1)]$.
-Thus $x\in \bigcap_{n<\omega} E_n[q(n)]\not=\emptyset$, and since $\sigma$ is
-a winning $2k$-tactic, the attack $q$ converges. Since $q(2n)=x$, $q$ must
-converge to $x$. Thus its subsequence $p$ converges to $x$, and $\tau$ is a
-winning $k$-tactic for $\pl O$ in $\gruConGame{X}{x}$.
+Also, $q(2n+1)=p(n)\in E_{2n}[x]=E_{2n}[q(2n)]$ and
+$p(n)\in E_{2n+1}[x] \Rightarrow q(2n+2)=x\in E_{2n+1}[p(n)]=E_{2n+1}[q(2n+1)]$,
+making $q$ a legal attack.
 
-The proofs of the other two implications follow analogously by
-replacing $\nu_i$ with the $i$-Markov fog-of-war $\mu_i$ or the identity
-function, repsectively.
+Then as $x\in \bigcap_{n<\omega} E_n[q(n)]\not=\emptyset$, and $\sigma$ is
+a winning strategy, the attack $q$ converges. Since $q(2n)=x$, $q$ must
+converge to $x$. Thus its subsequence $p$ converges to $x$, and $\tau\circ L_k$
+is a winning strategy for $\pl O$ in $\gruConGame{X}{x}$.
 \end{proof}
 
 \begin{thm}
-  Let $X\cup\{\infty\}$ be a uniformizable space such that $X$ is discrete,
+  Let $X\cup\{\infty\}$ be a uniformizable space with points in $X$ isolated,
   and $k<\omega$. Then
   \begin{itemize}
     \item
@@ -724,67 +736,33 @@ function, repsectively.
 
 \begin{proof}
   The perfect-information result is due to Nyikos.
+  Let $L_k$ represent either the $k$-tactical fog-of-war $\nu_k$,
+  the $k$-Markov fog-of-war $\mu_k$, or the identity $id$.
 
   The right-to-left implications have already been shown.
   For any open neighborhood $U$ of $\infty$,
-  $D(U)=\Delta\cup U^2$ is an open symmetric entourage of $X$.
+  $D(U)=\Delta\cup U^2$ is an entourage of $X$.
 
-  Let $\sigma\circ\nu_k$ witness
-  $\pl D \ktactwin{k}\gruConGame{X\cap\{\infty\}}{\infty}$. We then define
-  the $k$-tactic $\tau$ such that
+  Let $\sigma\circ{L}_k$ be a winning strategy for
+  $\gruConGame{X\cap\{\infty\}}{\infty}$.
+  We then define the strategy $\tau\circ L_k$ such that
     \[
-      \tau\circ\nu_k(t) = D(\sigma\circ\nu_k(t))
+      \tau\circ{L}_k(t) = D(\sigma\circ{L}_k(t))
     \]
 
   Let $p$ attack $\tau$ such that
-  $\bigcap_{n<\omega}\tau\circ\nu_k(p\rest n)[p(n)]\not=\emptyset$.
+  $\bigcap_{n<\omega}\tau\circ{L}_k(p\rest n)[p(n)]\not=\emptyset$.
 
-  If $\infty\in\bigcap_{n<\omega}\tau\circ\nu_k(p\rest n)[p(n)]$, it follows
-  that $p$
-  is an attack on $\sigma\circ\nu_k$. Since $\sigma\circ\nu_k$ is a winning
-  strategy, it follows
-  that $q$ and its subsequence $p$ must coverge to $\infty$.
+  If $\infty\in\bigcap_{n<\omega}\tau\circ{L}_k(p\rest n)[p(n)]$, it follows
+  that $p$ is a legal attack on $\sigma\circ{L}_k$. Since $\sigma\circ{L}_k$
+  is a winning strategy, it follows that $p\to\infty$.
 
-  Otherwise, $\infty\not\in\tau\circ\nu_k(p\rest N)[p(N)]$ for some $N<\omega$,
+  Otherwise, $\infty\not\in\tau\circ{L}_k(p\rest N)[p(N)]$ for some $N<\omega$,
   and then
-  $\tau\circ\nu_k(p\rest N)[p(N)]=\{p(N)\}$ implies $p\to p(N)$.
+  $\tau\circ{L}_k(p\rest N)[p(N)]=\{p(N)\}$ implies $p\to p(N)$.
 
-  Thus $\tau$ is a winning $k$-tactic. The other implications may
-  be proven analogously by
-  replacing $\nu_i$ with the $i$-Markov fog-of-war $\mu_i$ or the identity
-  function, repsectively.
-\end{proof}
-
-\begin{prop} For any $x\in X$ and $k<\omega$,
-  \begin{itemize}
-    \item
-      $
-      \pl O\ktactwin{k+1}\gruConGame{X}{x}
-        \Leftrightarrow
-      \pl O\tactwin\gruConGame{X}{x}
-      $
-    \item
-      $
-      \pl O\kmarkwin{k+1}\gruConGame{X}{x}
-        \Leftrightarrow
-      \pl O\markwin\gruConGame{X}{x}
-      $
-  \end{itemize}
-\end{prop}
-
-
-\begin{proof}
-  If $\sigma$ witnesses $\pl O\ktactwin{k+1}\gruConGame{X}{x}$,
-  let $\tau(\emptyset)=\sigma(\emptyset)$ and
-    \[
-      \tau(\<q\>)
-        =
-      \bigcap_{i< k}
-      \sigma(\<\underbrace{x,\dots,x}_{k-i},q,\underbrace{x,\dots,x}_{i+1}\>)
-    \]
-
-  Then $\tau$ is easily verified to be a winning tactic, and
-  the proof for the second part is analogous.
+  Thus $\tau\circ L_k$ is a winning strategy for
+  $\gruConGame{X\cup\{\infty\}}{\infty}$.
 \end{proof}
 
 \begin{cor}
@@ -806,7 +784,13 @@ function, repsectively.
   \end{itemize}
 \end{cor}
 
-\begin{prop} For any uniform space $X$ and $k<\omega$,
+\begin{proof}
+  The equivalencies hold for $\gruConGame{X}{x}$.
+\end{proof}
+
+A close result may be obtained for arbitrary uniformizable spaces.
+
+\begin{prop} For any uniformizable space $X$ and $k<\omega$,
   \begin{itemize}
     \item
       $
@@ -824,64 +808,65 @@ function, repsectively.
 \end{prop}
 
 \begin{proof}
-  If $\sigma$ witnesses $\pl D\ktactwin{k+2}\bellConGame{X}$,
-  let $\tau(\emptyset)=\sigma(\emptyset)$ and
+  If $\sigma$ is a winning $k+2$-tactic, then define $\tau$ by
     \[
-      \tau(\<q\>)
+      \tau (s)
         =
-      \bigcap_{i<k+2}
-      \sigma(\<\underbrace{q,\dots,q}_{i+1}\>)
-    \]
-    \[
-      \tau(\<q,q'\>)
-        =
-      \bigcap_{i<k+2}
-      \sigma(\<\underbrace{q,\dots,q}_{k+1-i},\underbrace{q',\dots,q'}_{i+1}\>)
+      \bigcap_{t\in \ran{s}^{<k+2}}
+      \sigma(t)
     \]
 
-  Then $\tau$ is easily verified to be a winning strategy, and
-  the proof for the second part is analogous.
+  If $\sigma$ is a winning $k+2$-mark, then define $\tau$ by
+    \[
+      \tau (s,n)
+        =
+      \bigcap_{t\in \ran{s}^{<k+2} \atop {m\leq(k+2)n}}
+      \sigma(t,m)
+    \]
+
+  In either case, the proof that $\tau$ is a winning limited information
+  strategy is routine.
 \end{proof}
 
-\begin{thm}
-  If $H$ is a closed subset of $X$, then
-    $
-      \pl D \limitwin \bellConGame{X}
-        \Rightarrow
-      \pl D \limitwin \bellConGame{H}
-    $
-  where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
-\end{thm}
+% \begin{thm}
+%   If $H$ is a closed subset of $X$, then
+%     $
+%       \pl D \limitwin \bellConGame{X}
+%         \Rightarrow
+%       \pl D \limitwin \bellConGame{H}
+%     $
+%   where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
+% \end{thm}
 
-\begin{proof}
-  The perfect information result is due to Bell.
+% \begin{proof}
+%   The perfect information result is due to Bell.
 
-  Let $\sigma\circ L$ witness $\pl D \limitwin \bellConGame{X}$. We define
-  $\tau\circ L$ for $\pl D$ in $\bellConGame{H}$ as follows:
-    \[
-      \tau\circ L(p\rest n)
-        =
-      \sigma\circ L(p\rest n)
-        \cap
-      H^2
-    \]
+%   Let $\sigma\circ L$ witness $\pl D \limitwin \bellConGame{X}$. We define
+%   $\tau\circ L$ for $\pl D$ in $\bellConGame{H}$ as follows:
+%     \[
+%       \tau\circ L(p\rest n)
+%         =
+%       \sigma\circ L(p\rest n)
+%         \cap
+%       H^2
+%     \]
 
-  Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
-  $\sigma\circ L$, so either
-    \[
-      \bigcap_{n<\omega}
-      \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
-      [p(n)]
-        \subseteq
-      \bigcap_{n<\omega}
-      \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
-      [p(n)]
-        =
-      \emptyset
-    \]
-  or $p:\omega\to H$ converges in $X$, and thus converges its closed subset
-  $H$.
-\end{proof}
+%   Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
+%   $\sigma\circ L$, so either
+%     \[
+%       \bigcap_{n<\omega}
+%       \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
+%       [p(n)]
+%         \subseteq
+%       \bigcap_{n<\omega}
+%       \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
+%       [p(n)]
+%         =
+%       \emptyset
+%     \]
+%   or $p:\omega\to H$ converges in $X$, and thus converges its closed subset
+%   $H$.
+% \end{proof}
 
 
 % \begin{thm}
