@@ -1,26 +1,26 @@
 %!TEX root = dissertation.tex
 % ^ leave for LaTeXTools build functionality
 
-\chapter{Bell's Game}
+\chapter{Bell's Convergence Games}
 
 A very recent development related to Gruenhage's convergence and
 clustering games comes from
-Jocelyn Bell, used to study the uniform box product of uniform spaces.
+Jocelyn Bell.
 
 
 
-\section{Uniform Spaces}
+\section{A Game on Uniform Spaces}
 
 \begin{defn}
   A \term{uniformity} on a set $X$ is a filter $\mb D$ of subsets of $X^2$,
-  known as \term{entourages}, such that $\bigcap\mb D=\Delta=\{\<x,x\>:x\in X\}$
-  and, for each entourage $D\in\mb D$:
+  known as \term{$\mb D$-entourages}, such that
+  $\bigcap\mb D=\Delta=\{\<x,x\>:x\in X\}$ and, for each entourage $D\in\mb D$:
   \begin{itemize}
-    \item There exists $\frac{1}{2}D\in\mb D$ such that
+    \item There exists ${E}\in\mb D$ such that
       \[
-        \frac{1}{2}D\circ\frac{1}{2}D
+        {E}\circ{E}
           =
-        \left\{\<x,z\>:\exists y\in X\left(\<x,y\>,\<y,z\>\in\frac{1}{2}D\right)\right\}
+        \left\{\<x,z\>:\exists y\in X\left(\<x,y\>,\<y,z\>\in{E}\right)\right\}
           \subseteq
         D
       \]
@@ -38,7 +38,7 @@ closing it under the superset operation.
 A uniformity is a generalization of a metric.
 
 \begin{defn}
-  For an entourage $D\in\mb D$ and a point $x\in X$, the
+  For a $\mb D$-entourage $D$ and a point $x\in X$, the
   \term{$D$-ball around $x$} is the set $D[x]=\{y:\<x,y\>\in D\}$.
 \end{defn}
 
@@ -48,17 +48,43 @@ A uniformity is a generalization of a metric.
   where $D_\epsilon = \{\<x,y\>:d(x,y)<\epsilon\}$.
 \end{defn}
 
+
+Bell first introduced what she called the ``proximal game'' in \cite{MR3239205}.
+This game was used to prove that the
+$\sigma$-product of spaces for which $\pl D$ has a winning strategy is
+collectionwise normal, as well as to show the collectionwise normality
+of certain uniform box products.
+
+\begin{game}
+  Let $\bellUniGame{X, \mb D}$ denote the \term{Bell uniform space game}
+  with players $\pl D$, $\pl P$ which
+  proceeds as follows for a uniform space $X$ with uniformity $\mb D$. In round
+  $0$, $\pl D$ chooses a $\mb D$-entourage $D_0$, followed by $\pl P$ choosing a
+  point $p_0\in X$. In round $n+1$, $\pl D$ chooses a $\mb D$-entourage
+  $D_{n+1}$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
+
+  $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges
+  with respect to the uniformity $\mb D$ (there exists $N<\omega$ such that
+  $p(n)\in D[x]$ for $n\geq N$), or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$.
+\end{game}
+
+The game was originally used to provide a nice proof that the
+$\sigma$-product of metrizable spaces is collectionwise normal, as well as to
+show the collectionwise normality of certain uniform box products.
+
+\section{Topologizing Bell's Game}
+
 Like metrics, uniformities induce natural topological structures.
 
 \begin{defn}
-  The \term{uniform topology} for a space $X$ with uniformity $\mb D$ is given
-  by letting $U$ be open if for each $x\in U$, there exists $D\in\mathbb{D}$
+  The \term{uniform topology} induced by a uniformity $\mb D$ on $X$
+  declares $U$ open if for each $x\in U$, there exists $D\in\mathbb{D}$
   such that $D[x]\subseteq U$.
 \end{defn}
 
 \begin{thm}
-  The uniform topology for a space $X$ with uniformity $\mb D$ is the coarsest
-  topology such that for each $x\in X$ and $D\in\mathbb{D}$,
+  The \term{uniform topology} induced by a uniformity $\mb D$ on $X$ is the
+  coarsest topology such that for each $x\in X$ and $D\in\mathbb{D}$,
   $D[x]$ is a neighborhood (not necessarily open) of $x$.
 \end{thm}
 
@@ -67,29 +93,39 @@ Like metrics, uniformities induce natural topological structures.
   of $x$ for each $x\in X$, and let $U$ be open in the uniform topology.
   For each $x\in U$, there exists $D_x\in\mathbb{D}$ such that
   $D_x[x]\subseteq U$, and since $D_x[x]$ is a neighborhood of $x$, there
-  is $U_x\in \mc T$ such that $x\in U_x\subseteq D_x[x]$. Since
-  $U=\bigcup_{x\in U}U_x\in \mc T$, the result follows as $\mc T$ contains the
-  uniform topology.
+  is $U_x\in \mc T$ such that $x\in U_x\subseteq D_x[x]$. Thus
+  $\mc T$ contains the uniform topology.
 \end{proof}
 
-The uniform topology
-for a metric uniformity is simply the usual metric topology, and $D_\epsilon[x]$
-is the usual metric $\epsilon$-ball around $x$.
-
-We require a few known results on uniform spaces. See e.g. \cite{MR1039321}
-for proofs.
-
-\begin{thm}
-  Every uniform topology is $T_{3\frac{1}{2}}$.
-\end{thm}
+The uniform topology for a metric uniformity is simply the usual metric
+topology, and $D_\epsilon[x]$ is the usual metric $\epsilon$-ball around $x$.
 
 \begin{defn}
-  A topology on $X$ is \term{uniformizable} if there exists
-  a uniformity whose uniform topology equals the topology on $X$.
+  A topological space $X$ is \term{uniformizable} if there exists
+  a uniformity which induces the given topology on $X$.
 \end{defn}
 
+Bell's game may thus be used to characterize the structure of uniformizable
+spaces.
+
+\begin{defn}
+  A uniformizable space $X$ is \term{proximal} if there exists a compatible
+  uniformity $\mb D$ such that $\pl D\win\bellUniGame{X,\mb D}$.
+\end{defn}
+
+However, since the focus of this manuscript is on topological spaces,
+it will be useful to recharacterize the proximal property in terms of a
+topological game. This may be attained by considering a few known results on
+uniform spaces. See e.g. \cite{MR2048350} for proofs.
+
 \begin{thm}
-  Every $T_{3\frac{1}{2}}$ topology is uniformizable.
+  Every uniform topology is $T_{3\frac{1}{2}}$, and
+  every $T_{3\frac{1}{2}}$ topology is uniformizable.
+\end{thm}
+
+\begin{thm}
+  The union of all uniformities which induce a particular topology is itself
+  a uniformity and induces the same topology.
 \end{thm}
 
 \begin{defn}
@@ -97,21 +133,48 @@ for proofs.
   finer than all uniformities which induce the given topology.
 \end{defn}
 
+\begin{defn}
+  For a uniformizable space $X$, a \term{universal entourage} $D$ is a
+  $\mb D$-entourage of the universal uniformity $\mb D$.
+\end{defn}
+
 \begin{thm}
-  Every uniformizable topology is induced by its universal uniformity.
+  For every uniformizable space, if $D$ is a neighborhood of the diagonal
+  $\Delta$  such that there exist neighborhoods $D_n$ of $\Delta$ with
+  $D\supseteq D_0$ and $D_n \supseteq D_{n+1}$, then $D$ is a universal
+  entourage.
+\end{thm}
+
+\begin{thm}
+  Every neighborhood of the diagonal is a universal entourage for
+  paracompact uniformizable spaces.
 \end{thm}
 
 \begin{defn}
-  For a uniformizable space $X$, a \term{symmetric open entourage} $D$ is an
-  entourage of the universal uniformity such that
-  \begin{itemize}
-    \item $D$ is open in the product topology on $X^2$
-    \item $D$ is symmetric; that is, $D=D^{-1}$.
-  \end{itemize}
+  An \term{open symmetric $\mb D$-entourage} $D$ is a $\mb D$-entourage
+  which is open in the product topology induced by $\mb D$ and where
+  $D=D^{-1}$.
 \end{defn}
 
+\begin{thm}
+  For every $\mb D$-entourage $D$, there exists an open symmetric
+  $\mb D$-entourage $U\subseteq D$.
+\end{thm}
+
+We will simply use the word \term{entourage} to refer to open symmetric
+universal entourages. Note that if $D$ is an
+entourage, then $D[x]$ is an open neighborhood of $x$.
+
+\begin{defn}
+  For every entourage $D$, let $\frac{1}{2^n}D$ denote entourages for $n<\omega$
+  such that $\frac{1}{1}D=D$ and
+  $\frac{1}{2^{n+1}}D\circ\frac{1}{2^{n+1}}D\subseteq\frac{1}{2^n}D$.
+\end{defn}
+
+The proof of the following is routine.
+
 \begin{prop}
-  If $X$ is a uniformizable space, then for all $x\in X$ and symmetric open
+  If $X$ is a uniformizable space, then for all $x\in X$ and
   entourages $D$:
     \[
       x\in \frac{1}{2}D[y]\text{ and } y\in\frac{1}{2}D[z] \Rightarrow x\in D[z]
@@ -122,82 +185,40 @@ for proofs.
     \]
 \end{prop}
 
-\begin{thm}
-  For every entourage $D$ in the universal uniformity on $X$, there exists a
-  symmetric open entourage $U\subseteq D$.
-\end{thm}
 
-If $D$ is a symmetric open entourage, then we assume $\frac{1}{2}D$ is
-also a symmetric open entourage. Note that if $D$ is an open symmetric
-entourage, then $D[x]$ is an open neighborhood of $x$.
-
-\begin{thm}
-  A symmetric open neighborhood $U$ of $\Delta$ is a symmetric open entourage
-  if and only if there exist open neighborhoods $U_n$ of $\Delta$ for $n<\omega$
-  such that $U=U_0$ and $U_{n+1}\circ U_{n+1}\subseteq U_n$.
-\end{thm}
-
-
-
-\section{Games on uniformizable spaces}
-
-\begin{game}
-  Let $\bellUniGame{X, \mb D}$ denote the \term{Bell uniform space game} with
-  players $\pl D$, $\pl P$ which
-  proceeds as follows for a uniform space $X$ with uniformity $\mb D$. In round
-  $0$, $\pl D$ chooses an entourage $D_0$, followed by $\pl P$ choosing a point
-  $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage $D_{n+1}$, followed
-  by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
-
-  $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges
-  with respect to the uniformity $\mb D$,
-  or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$.\footnote{
-    A sequence $p$ converges to $x$ with respect to a uniformity $\mb D$
-    if for every entourage $D\in\mb D$, there exists $N<\omega$ such that
-    $p(n)\in D[x]$ for $n\geq N$.
-  } $\pl P$ wins otherwise.
-\end{game}
-
-This original formulation was called the ``proximal game'' in \cite{MR3239205}.
-The game was used to prove that the
-$\sigma$-product of spaces for which $\pl D$ has a winning strategy is
-collectionwise normal, as well as to show the collectionwise normality
-of certain uniform box products.
-
-\begin{defn}
-  A uniformizable space $X$ is \term{proximal} if it has a compatible uniformity
-  $\mb D$ such that $\pl D\win\bellUniGame{X,\mb D}$.
-\end{defn}
-
-\begin{prop}
-  Every metric space is proximal.
-\end{prop}
-
-Considering the universal uniformity, we may
-consider purely topological variations of this game.
+The natural adaptation of Bell's game simply replaces the $\mb D$-entourages
+of the uniform space with the (open symmetric universal) entourages of
+a uniformizable space.
 
 \begin{game}
   Let $\bellConHardGame{X}$ denote the \term{hard Bell convergence game} with
   players $\pl D$, $\pl P$ which proceeds as follows for
   a uniformizable space $X$. In round $0$,
-  $\pl D$ chooses a symmetric open entourage $D_0$, followed by $\pl P$
-  choosing a point $p_0\in X$. In round $n+1$, $\pl D$ chooses a symmetric
-  open entourage $D_{n+1}$, followed
-  by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
+  $\pl D$ chooses an entourage $D_0$, followed by $\pl P$
+  choosing a point $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage
+  $D_{n+1}$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
 
   $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges in $X$,
   or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$. $\pl P$ wins otherwise.
 \end{game}
 
+Like $\gruConGameHard{X}{x}$, $\pl D$ may choose to intersect her
+plays with her previous plays given perfect information. Since this cannot
+be guaranteed with limited information, a simpler variation for $\pl D$
+may also be considered, which will be the focus of this chapter.
+
 \begin{game}
-  Let $\bellConGame{X}$ denote the \term{Bell convergence game} with players $\pl D$,
-  $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except for the
-  following. Let $E_n=\bigcap_{m\leq n}D_n$, where $D_n$ is the entourage played
-  by $\pl D$ in round $n$.
+  Let $\bellConGame{X}$ denote the \term{Bell convergence game} with players
+  $\pl D$, $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except
+  for the following. Let $E_n=\bigcap_{m\leq n}D_n$, where $D_n$ is the
+  entourage played by $\pl D$ in round $n$.
   Then $\pl P$ must ensure that $p_{n+1}\in E_n[p_n]$,
   and $\pl D$ wins when either $\<p_0,p_1,\dots\>$ converges in $X$
   or $\bigcap_{n<\omega}E_n[p_n] = \emptyset$.
 \end{game}
+
+These games are all essentially equivalent with respect to perfect
+information for $\pl D$.
 
 \begin{thm}
   $\pl D\win\bellConHardGame{X}$ if and only if
@@ -216,37 +237,33 @@ consider purely topological variations of this game.
   where $\mb D$ is the universal uniformity, showing $X$ is proximal.
   Finally, if $X$ is proximal, then there exists a winning strategy $\sigma$
   for $\bellUniGame{X,\mb D}$ where $\mb D$ is a uniformity inducing the
-  topology on $X$. Let $\tau$ be defined by $\tau(s)=O(\sigma(s))$ where
-  $O(D)$ is an open symmetric entourage which is a subset of $D$; $\tau$
-  is easily seen to be a winning strategy for $\pl D$ in $\bellConHardGame{X}$.
+  topology on $X$. Then a winning strategy for $\pl D$ in $\bellConHardGame{X}$
+  may be constructed by converting every $\mb D$-entourage into a smaller
+  open symmetric universal entourage.
 \end{proof}
 
-The hard and normal variants $\bellConHardGame{X}$, $\bellConGame{X}$ mirror the
-hard and normal variants of Gruenhage's convergence game. In fact, Bell
-showed a strong connection in \cite{MR3239205}.
+Bell showed the following results in \cite{MR3239205}.
 
 \begin{thm}
-  If $X$ is proximal, then $X$ is a $W$-space.
+  If $X$ is metrizable, then $\pl D \prewin \bellConGame{X}$.
 \end{thm}
 
-% We similarly may consider clustering versions of the Bell games.
-% (TODO: will I actually use this game?)
+\begin{thm}
+  If $\pl D \win \bellConGame{X}$, then
+  $\pl O \win \gruConGame{X}{x}$ for all $x\in X$.
+  Thus proximal spaces are $W$ spaces.
+\end{thm}
 
-% \begin{defn}
-%   Let $\bellClusGame{X}$ ($\bellClusHardGame{X}$) denote the
-%   \term{Bell clustering game} (\term{hard Bell clustering game}) which
-%   proceeds analogously to $\bellConGame{X}$ ($\bellConHardGame{X}$), except
-%   that $\pl D$ need only ensure that $\<p_0,p_1,\dots\>$ clusters
-%   in $X$ in order to win.
-% \end{defn}
+\begin{thm}
+  Every closed subspace of a proximal space is proximal.
+\end{thm}
 
-% \begin{defn}
-%   A uniformizable space $X$ is \term{almost proximal} if
-%   $\pl D \win \bellClusGame{X}$.
-% \end{defn}
+\begin{thm}
+  Every $\Sigma$-product of proximal spaces is proximal.
+\end{thm}
 
-We may eliminate the secondary winning condition to create a stronger
-variant of the game.
+Bell suggested that $\pl D$ ``absolutely wins'' her uniform space game
+if the points played by $\pl P$ always converge, inspiring the following game.
 
 \begin{defn}
   Let $\bellAbsConGame{X}$ denote the
@@ -261,24 +278,14 @@ variant of the game.
   $\pl D \win \bellAbsConGame{X}$.
 \end{defn}
 
-Proximal spaces have strong preservation properties, demonstrated in
-\cite{MR3239205}.
-
-\begin{thm}
-  Every closed subspace of a proximal space is proximal.
-\end{thm}
-
-\begin{thm}
-  Every $\Sigma$-product of proximal spaces is proximal.
-\end{thm}
-
-Gruenhage and the author showed in \cite{MR3227201} that Bell's game
-yields an internal characterization of Corson compact spaces, answering
-a question of Nyikos in \cite{nyikosProximalPreprint}.
-
 
 
 \section{Characterizing Corson compactness}
+
+Gruenhage and the author showed in \cite{MR3227201} that Bell's uniform space
+game yields an internal characterization of Corson compact spaces, answering
+a question of Nyikos in \cite{nyikosProximalPreprint}. We include a proof
+of this result using the topological version of the game instead.
 
 \begin{defn}
   A compact space is \term{Corson compact} if it is homeomorphic to a compact
@@ -292,16 +299,12 @@ Nyikos observed the following in \cite{nyikosProximalPreprint}.
 \end{prop}
 
 \begin{proof}
-  The real line is proximal, and closed subsets of $\Sigma$-products of proximal
-  spaces are proximal.
+  The real line is metrizable and thus proximal, and closed subsets of
+  $\Sigma$-products of proximal spaces are proximal.
 \end{proof}
 
-Following this observation, Nyikos asked if Bell's game actually provided an
-internal characterization of Corson compactness. The author, working with
-Gary Gruenhage, answered this question in the affirmative in \cite{MR3227201}.
-
-To see this, we require a result of Gruenhage which gives another game
-characterization of Corson compactness, found in \cite{MR752278}.
+A result of Gruenhage
+\cite{MR752278} gives a useful game characterization of Corson compactness.
 
 \begin{thm}
   A compact space is Corson compact if and only if
@@ -311,13 +314,13 @@ characterization of Corson compactness, found in \cite{MR752278}.
 Thus our desired result will follow if we may show that a winning strategy
 in $\bellConGame{X}$ may be used to construct a winning strategy in
 $\gruConGame{X^2}{\Delta}$. However, due to the secondary winning condition
-for $\pl D$ in $\bellConGame{X}$ ($\bigcap_{n<\omega}E_n[p_n]=\emptyset$),
+for $\pl D$ in $\bellConGame{X}$,
 it will be more convenient if we may use a winning strategy for $\pl D$
 in $\bellAbsConGame{X}$ instead.
 
 \begin{defn}
   A uniformizable space $X$ is \term{uniformly locally compact} if there
-  exists an open symmetric entourage $D$ such that $\cl{D[x]}$ is compact
+  exists an entourage $D$ such that $\cl{D[x]}$ is compact
   for all $x$.
 \end{defn}
 
@@ -327,11 +330,11 @@ locally compact.
 
 \begin{thm}
   A uniformizable space is uniformly locally compact if and only if it is
-  locally compact and paracompact. (See e.g. \cite{MR2040233}.)
+  locally compact and paracompact. \cite{MR2040233}
 \end{thm}
 
 As an example, $\omega_1$ with the linear order topology is locally compact,
-but not paracompact.
+but not paracompact or uniformly locally compact.
 
 \begin{thm}
   If $X$ is a uniformly locally compact space, then
@@ -340,13 +343,12 @@ but not paracompact.
 \end{thm}
 
 \begin{proof}
-  Let $L$ be an open symmetric entourage such that $\cl{L[x]}$ is compact
+  Let $L$ be an entourage such that $\cl{L[x]}$ is compact
   for all $x$.
   Let $\sigma$ be a strategy witnessing $\pl D\win \bellConGame{X}$.
-  Without loss of generality, we may assume such that
-  $\sigma(t)\subseteq L$
-  (so $\cl{\sigma(t)[x]}\subseteq\cl{L[x]}$ is compact), and that
+  Without loss of generality, we may assume $\sigma(t)\subseteq L$ and that
   $t \supseteq s$ implies $\sigma(t)\subseteq \frac{1}{4}\sigma(s)$.
+  Note then that $\cl{\sigma(t)[x]}\subseteq\cl{L[x]}$ is compact.
 
   Let $\tau(t)=\frac{1}{2}\sigma(t)$. If $p$ attacks $\tau$
   in $\bellAbsConGame{X}$, then
@@ -396,10 +398,10 @@ but not paracompact.
 \end{proof}
 
 
-\begin{thm}
+\begin{lem}
   If $\pl D\win\bellAbsConGame{X}$, then $\pl O\win\gruConGame{X}{H}$ for
   all compact $H$ in $X$.
-\end{thm}
+\end{lem}
 
 
 \begin{proof}
@@ -612,10 +614,10 @@ but not paracompact.
 \end{proof}
 
 
-\begin{cor}
+\begin{thm}
   A compact space is Corson compact if and only if
   $\pl D \win\bellConGame{X}$.
-\end{cor}
+\end{thm}
 
 \begin{proof}
   If $\pl D \win\bellConGame{X}$, then $\pl D \win\bellConGame{X^2}$.
