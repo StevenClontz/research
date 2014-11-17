@@ -255,13 +255,18 @@ Bell showed the following results in \cite{MR3239205}.
 \end{thm}
 
 \begin{thm}
+  Proximal spaces are collectionwise normal.
+\end{thm}
+
+\begin{thm}
   Every closed subspace of a proximal space is proximal.
 \end{thm}
 
 \begin{thm}
-  Every $\Sigma$-product of proximal spaces is proximal.
+  Every sigma-product of proximal spaces is proximal.
 \end{thm}
 
+Since the empty intersection winning condition of her game can obfuscate things,
 Bell suggested that $\pl D$ ``absolutely wins'' her uniform space game
 if the points played by $\pl P$ always converge, inspiring the following game.
 
@@ -828,52 +833,209 @@ A close result may be obtained for arbitrary uniformizable spaces.
   strategy is routine.
 \end{proof}
 
-% \begin{thm}
-%   If $H$ is a closed subset of $X$, then
-%     $
-%       \pl D \limitwin \bellConGame{X}
-%         \Rightarrow
-%       \pl D \limitwin \bellConGame{H}
-%     $
-%   where $\limitwin$ is any of $\win$, $\ktactwin{k}$, or $\kmarkwin{k}$.
-% \end{thm}
 
-% \begin{proof}
-%   The perfect information result is due to Bell.
+\begin{thm}
+  Let $X$ be a uniformizable space and $H$ be a closed subset of $X$.
+  If $k<\omega$, then
+  \begin{itemize}
+    \item
+      $
+        \pl D \ktactwin{k} \bellConGame{X}
+          \Leftrightarrow
+        \pl D \ktactwin{k} \bellConGame{H}
+      $
+    \item
+      $
+        \pl D \kmarkwin{k} \bellConGame{X}
+          \Leftrightarrow
+        \pl D \kmarkwin{k} \bellConGame{H}
+      $
+    \item
+      $
+        \pl D \win \bellConGame{X}
+          \Leftrightarrow
+        \pl D \win \bellConGame{H}
+      $
+  \end{itemize}
+\end{thm}
 
-%   Let $\sigma\circ L$ witness $\pl D \limitwin \bellConGame{X}$. We define
-%   $\tau\circ L$ for $\pl D$ in $\bellConGame{H}$ as follows:
-%     \[
-%       \tau\circ L(p\rest n)
-%         =
-%       \sigma\circ L(p\rest n)
-%         \cap
-%       H^2
-%     \]
+\begin{proof}
+  The perfect-information result was originally shown by Bell.
+  Let $L_k$ represent either the $k$-tactical fog-of-war $\nu_k$,
+  the $k$-Markov fog-of-war $\mu_k$, or the identity $id$.
 
-%   Let $p$ attack $\tau\circ L$. $p$ also attacks the winning strategy
-%   $\sigma\circ L$, so either
-%     \[
-%       \bigcap_{n<\omega}
-%       \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
-%       [p(n)]
-%         \subseteq
-%       \bigcap_{n<\omega}
-%       \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
-%       [p(n)]
-%         =
-%       \emptyset
-%     \]
-%   or $p:\omega\to H$ converges in $X$, and thus converges its closed subset
-%   $H$.
-% \end{proof}
+  Let $\sigma\circ L_k$ be a winning strategy for $\pl D$ in $\bellConGame{X}$.
+  We define the strategy $\tau\circ L_k$ for $\pl D$ in $\bellConGame{H}$ as
+  follows:
+    \[
+      \tau\circ L(p\rest n)
+        =
+      \sigma\circ L(p\rest n)
+        \cap
+      H^2
+    \]
 
+  Let $p$ attack $\tau\circ L_k$. $p$ also attacks the winning strategy
+  $\sigma\circ L_k$, so either
+    \[
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\tau\circ L(p\rest n)\right)
+      [p(n)]
+        \subseteq
+      \bigcap_{n<\omega}
+      \left(\bigcap_{m\leq n}\sigma\circ L(p\rest n)\right)
+      [p(n)]
+        =
+      \emptyset
+    \]
+  or $p:\omega\to H$ converges in $X$, and thus converges in $H$ as $H$ is
+  closed.
+\end{proof}
 
-% \begin{thm}
-%   If $\pl D\limitwin \bellConGame{X_i}$ for $i<\omega$, then
-%   $\pl D\limitwin \bellConGame{\prod_{i<\omega}X_i}$, where $\limitwin$ is either
-%   $\win$ or $\kmarkwin{k}$.
-% \end{thm}
+Bell showed the following to obtain a result of Mary Ellen Rudin \cite{MR716576}
+as a corollary.
+
+\begin{thm}
+  A sigma-product of proximal spaces is proximal.
+\end{thm}
+
+\begin{cor}
+  A sigma-product of metrizable spaces is collectionwise normal.
+\end{cor}
+
+A sketch of the proof: $\pl D$ may use the winning strategies for the
+proximal spaces coordinate-wise to ensure that either every coordinate
+converges, or one coordinate intersects to the empty set. But in order to do
+this throughout the entire game, perfect information is used in a non-trival
+way to remember all coordinates for which $\pl P$ played a point with
+non-zero value in that coordinate. But for countable products, this memory
+may be replaced with knowledge of the round number.
+
+\begin{lem}
+  Let $D_\alpha$ be an entourage of $X_\alpha$ for $\alpha<\kappa$. Then
+  $P_\alpha(D_\alpha)=\{\<x,y\>:\<x(\alpha),y(\alpha)\>\in D_\alpha\}$
+  is an entourage of $\prod_{\alpha<\kappa} X_\alpha$.
+\end{lem}
+
+\begin{proof}
+  Let $D_\alpha\supseteq U_0$ and $U_{n+1}\circ U_{n+1}\subseteq U_n$ for
+  neighborhoods $U_n$ of the diagonal of $X_\alpha$. Then note that
+  $P_\alpha(U_{n})$ is a neighborhood of the diagonal of
+  $\prod_{\alpha<\kappa} X_\alpha$. Thus as
+  $P_\alpha(D_\alpha) \supseteq P_\alpha(U_0)$ and
+  $P_\alpha(U_{n+1})\circ P_\alpha(U_{n+1})\subseteq P_\alpha(U_{n})$,
+  we conclude $P_\alpha(D_\alpha)$ is an entourage.
+\end{proof}
+
+\begin{thm}
+  If $\pl D\kmarkwin{k} \bellConGame{X_i}$ for $i<\omega$, then
+  $\pl D\kmarkwin{k} \bellConGame{\prod_{i<\omega}X_i}$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma_i$ be a winning $k$-mark for $\pl D$ in $\bellConGame{X_i}$.
+  For $s\in \left(\prod_{i<\omega}X_i\right)^{\leq k}$,
+  let $s_i \in X_i^{\leq k}$ such that $s(j)(i)=s_i(j)$ for $j\in\dom(s)$.
+  Recall that $\nu_k$ removes all but the last $k$ elements of a finite
+  sequence, and for an countably infinite sequence $p$,
+  let $p\rest^k n=\nu_k(p\rest n)$.
+
+  Define the $k$-mark $\tau$ for $\pl D$ in $\bellConGame{\prod_{i<\omega}X_i}$
+  by
+    \[
+      \tau(s,n)
+        =
+      \bigcap_{i\leq n}
+      P_i(\sigma_i(s_i,n))
+    \]
+  and let $p\in\left(\prod_{i<\omega}X_i\right)^\omega$ be a legal attack
+  against $\tau$, so the following must hold for $m,n<\omega$:
+    \[
+      p(n+1)
+        \in
+      \left(\bigcap_{j\leq n}\tau(p\rest^k j,j)\right)[p(n)]
+        =
+      \left(\bigcap_{i\leq j\leq n}P_i(\sigma_i(p_i\rest^k j,j))\right)[p(n)]
+    \]
+    \[
+      p_m(m+n+1)
+        \in
+      \left(\bigcap_{j\leq n}\sigma_m(p_m\rest^k(m+j),m+j)\right)[p_m(m+n)]
+    \]
+
+  For $m<\omega$, attack $\sigma_m$ with $q_m\in X_m^\omega$ defined by
+  $q_m(n)=p_m(m+n)$. Note that
+    \[
+      q_m(n+1) = p_m(m+n+1)
+        \in
+      \left(\bigcap_{j\leq n}\sigma_m(p_m\rest^k(m+j),m+j)\right)[p_m(m+n)]
+    \]
+    \[
+        \subseteq
+      \left(\bigcap_{j\leq n}\sigma_m(q_m\rest^k(j),j)\right)[q_m(n)]
+    \]
+  so $q_m$ is a legal attack.
+
+  If for some $m<\omega$,
+    \[
+      \emptyset
+        =
+      \left(\bigcap_{n<\omega} \sigma_m(q_m\rest^k n,n)\right)[q_m(n)]
+        \supseteq
+      \left(\bigcap_{n<\omega} \sigma_m(p_m\rest^k(m+n),n)\right)[p_m(m+n)]
+    \]
+    \[
+        \supseteq
+      \left(\bigcap_{n<\omega} \sigma_m(p_m\rest^k(m+n),m+n)\right)[p_m(m+n)]
+    \]
+    \[
+        =
+      \left(\bigcap_{m\leq n<\omega} \sigma_m(p_m\rest^k n,n)\right)[p_m(n)]
+    \]
+  then
+    \[
+      \bigcap_{n<\omega} \left(
+        \bigcap_{j\leq n} \tau(p\rest^k j,j)
+      \right)[p(n)]
+        =
+      \bigcap_{n<\omega} \left(
+        \bigcap_{i\leq j\leq n} P_i(\sigma_i(p_m\rest^k j,j))
+      \right)[p(n)]
+    \]
+    \[
+        \subseteq
+      \bigcap_{m\leq n<\omega} \left(
+        \bigcap_{m\leq j\leq n} P_m(\sigma_m(p_m\rest^k j,j))
+      \right)[p(n)]
+        \subseteq
+      \bigcap_{m\leq n<\omega} \left(
+        \bigcap_{m\leq n} P_m(\sigma_m(p_m\rest^k n,n))
+      \right)[p(n)]
+    \]
+    \[
+        =
+      \bigcap_{m\leq n<\omega} \left(
+        \bigcap_{m\leq n} P_m(\sigma_m(p_m\rest^k n,n)[p_m(n)])
+      \right)
+        =
+      \bigcap_{m\leq n<\omega}
+      P_m(\sigma_m(p_m\rest^k n,n)[p_m(n)])
+    \]
+    \[
+        =
+      P_m \left(
+        \bigcap_{m\leq n<\omega}\sigma_m(p_m\rest^k n,n)[p_m(n)]
+      \right)
+        =
+      P_m(\emptyset)
+        =
+      \emptyset
+    \]
+
+  Otherwise for all $m<\omega$, $q_m$ converges to some $x_m\in X_m$,
+  then $p_m$ converges to $x_m\in X_m$ and thus $p$ converges. This
+  shows that $\tau$ is a winning $k$-mark.
+\end{proof}
 
 % (TODO: I expect I should be able to do some clever things
 % assuming $S(\kappa,\omega,\omega)$ to get a similar result for sigma
