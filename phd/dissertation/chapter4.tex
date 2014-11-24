@@ -51,7 +51,7 @@ A uniformity is a generalization of a metric.
 
 Bell first introduced what she called the ``proximal game'' in \cite{MR3239205}.
 This game was used to prove that the
-$\sigma$-product of spaces for which $\pl D$ has a winning strategy is
+$\Sigma$-product of spaces for which $\pl D$ has a winning strategy is
 collectionwise normal, as well as to show the collectionwise normality
 of certain uniform box products.
 
@@ -67,10 +67,6 @@ of certain uniform box products.
   with respect to the uniformity $\mb D$ (there exists $N<\omega$ such that
   $p(n)\in D[x]$ for $n\geq N$), or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$.
 \end{game}
-
-The game was originally used to provide a nice proof that the
-$\sigma$-product of metrizable spaces is collectionwise normal, as well as to
-show the collectionwise normality of certain uniform box products.
 
 \section{Topologizing Bell's Game}
 
@@ -141,8 +137,8 @@ uniform spaces. See e.g. \cite{MR2048350} for proofs.
 \begin{thm}
   For every uniformizable space, if $D$ is a neighborhood of the diagonal
   $\Delta$  such that there exist neighborhoods $D_n$ of $\Delta$ with
-  $D\supseteq D_0$ and $D_n \supseteq D_{n+1}$, then $D$ is a universal
-  entourage.
+  $D\supseteq D_0$ and $D_n \supseteq D_{n+1}\circ D_{n+1}$, then $D$ is a
+  universal entourage.
 \end{thm}
 
 \begin{thm}
@@ -263,7 +259,7 @@ Bell showed the following results in \cite{MR3239205}.
 \end{thm}
 
 \begin{thm}
-  Every sigma-product of proximal spaces is proximal.
+  Every $\Sigma$-product of proximal spaces is proximal.
 \end{thm}
 
 Since the empty intersection winning condition of her game can obfuscate things,
@@ -668,7 +664,8 @@ Let $L_k$ represent either the $k$-tactical fog-of-war $\nu_k$,
 the $k$-Markov fog-of-war $\mu_k$, or the identity $id$.
 
 Let $\sigma\circ L_{2k}$ be a winning strategy for $\pl D$ in $\bellConGame{X}$.
-We define the strategy $\tau\circ L_k$ for $\gruConGame{X}{x}$ such that
+We define the strategy $\tau\circ L_k$ for $\pl O$ in $\gruConGame{X}{x}$ such
+that
   \[
     \tau\circ {L}_k(t)
       =
@@ -896,11 +893,11 @@ Bell showed the following to obtain a result of Mary Ellen Rudin \cite{MR716576}
 as a corollary.
 
 \begin{thm}
-  A sigma-product of proximal spaces is proximal.
+  A $\Sigma$-product of proximal spaces is proximal.
 \end{thm}
 
 \begin{cor}
-  A sigma-product of metrizable spaces is collectionwise normal.
+  A $\Sigma$-product of metrizable spaces is collectionwise normal.
 \end{cor}
 
 A sketch of the proof: $\pl D$ may use the winning strategies for the
@@ -934,8 +931,8 @@ may be replaced with knowledge of the round number.
 
 \begin{proof}
   Let $\sigma_i$ be a winning $k$-mark for $\pl D$ in $\bellConGame{X_i}$.
-  For $s\in \left(\prod_{i<\omega}X_i\right)^{\leq k}$,
-  let $s_i \in X_i^{\leq k}$ such that $s(j)(i)=s_i(j)$ for $j\in\dom(s)$.
+  For $s\in \left(\prod_{i<\omega}X_i\right)^{\leq \omega}$,
+  let $s_i \in X_i^{\leq \omega}$ such that $s(j)(i)=s_i(j)$ for $j\in\dom(s)$.
   Recall that $\nu_k$ removes all but the last $k$ elements of a finite
   sequence, and for an countably infinite sequence $p$,
   let $p\rest^k n=\nu_k(p\rest n)$.
@@ -1036,107 +1033,3 @@ may be replaced with knowledge of the round number.
   then $p_m$ converges to $x_m\in X_m$ and thus $p$ converges. This
   shows that $\tau$ is a winning $k$-mark.
 \end{proof}
-
-% (TODO: I expect I should be able to do some clever things
-% assuming $S(\kappa,\omega,\omega)$ to get a similar result for sigma
-% products of dimension $\kappa$.)
-
-% \begin{lem}
-%   $\pl O\prewin\gruClusGame{X}{S}$ if and only if $\pl O\prewin\gruConGame{X}{S}$.
-% \end{lem}
-
-% \begin{thm}
-%   For any predetermined absolutely proximal space $X$,
-%   $\pl O\prewin \gruConGame{X}{H}$ for all compact $H\subseteq X$.
-% \end{thm}
-
-
-% \begin{ex}
-%   Let $X=I\times 2$ be the Alexandrov double interval. Then
-%   $\pl D \not\prewin \bellConGame{X}$, but $\pl D \markwin \bellConGame{X}$.
-% \end{ex}
-
-% \begin{thm}
-%   For any uniformly locally compact space $X$,
-%       $\pl D\prewin \bellConGame{X} \Leftrightarrow \pl D\prewin \bellClusGame{X}$
-% \end{thm}
-
-% \begin{prop}
-% If $\pl D \prewin \bellConGame{X}$, then $X$ has a $G_\delta$ diagonal.
-% \end{prop}
-
-
-% \begin{ex}
-% The Sorgenfrey line $S$ has a $G_\delta$ diagonal but $\pl P\win\bellConGame{S}$.
-% \end{ex}
-
-% \begin{cor}
-%   For $X$ with uniformity $\mathbb{D}$ inducing the compact Hausdorff topology
-%   $\tau$, the following are equivalent:
-%     \begin{enumerate}[(a)]
-%       \item $\pl D \prewin \bellConGame{X}$
-%       \item $\pl D \prewin \bellClusGame{X}$
-%       \item $X$ has a $G_\delta$ diagonal
-%       \item $\mathbb{D}$ is metrizable
-%       \item $\tau$ is metrizable
-%     \end{enumerate}
-% \end{cor}
-
-
-% \begin{thm}
-%   A uniformly locally compact space with a $G_\delta$ diagonal is metrizable.
-% \end{thm}
-
-% \begin{cor}
-%   If $X$ is uniformly locally compact, then $\pl D \prewin \bellConGame{X}$
-%   implies $X$'s topology is metrizable.
-% \end{cor}
-
-% \begin{ex}
-%   Let $R$ be the Michael Line. Then $\pl P\win \bellConGame{X}$.
-% \end{ex}
-
-% \begin{proof}
-%   During round $0$, $\pl P$ may choose $m(0)=0$ and $p(0)=1$,
-%   and during round $n+1$,
-%   $\pl P$ may choose $m(n+1)>m(n)$ and
-%   $p(n+1)=p(n)+\frac{1}{10^{m(n+1)}}$ such that $p$ is a legal attack.
-
-%   It follows that $p$ ``converges'' to
-%   $x=\sum_{n<\omega}\frac{1}{10^{m(n)}}$, except $x$ is an irrational
-%   number composed of $1$s separated by strings of $0$s of strictly
-%   increasing size.
-% \end{proof}
-
-% \begin{ex}
-%   Let $\omega_1$ be given a ladder topology:
-%     \begin{itemize}
-%       \item All successor ordinals are isolated.
-%       \item Strictly increasing sequences (ladders) $L_\alpha:\omega\to\alpha$
-%             are defined for each limit ordinal $\alpha$ such that $L_\alpha$ converges to $\alpha$ in the order topology, and each limit
-%             $\alpha$ is given neighborhoods of the form
-%             $L(\alpha,m)=\{\alpha\}\cup\{L_\alpha(n):n\geq m\}$.
-%       \item $\omega_1=\bigcup_{\alpha\in\omega_1^L} L(\alpha,0)$
-%     \end{itemize}
-
-%   Let
-%     \[
-%       A(\alpha,n)
-%         =
-%       [L(\alpha,0)\setminus L(\alpha,n)]^1
-%         \cup
-%       \{\oneptcomp\omega_1 \setminus (L(\alpha,0)\setminus L(\alpha,n))\}
-%     \]
-%     \[
-%       B(\alpha)
-%         =
-%       \{L(\alpha,0), \oneptcomp\omega_1 \setminus L(\alpha,0)\}
-%     \]
-
-%   Finite refinements of $A(\alpha,n)$ and $B(\alpha)$ give partitions
-%   witnessing a uniformization of the ladder topology.
-
-%   Then $\bellConGame{\oneptcomp\omega_1}$ is indetermined.
-% \end{ex}
-
-% (TODO: finish proof)
