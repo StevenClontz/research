@@ -3,73 +3,231 @@
 
 \chapter{Gruenhage's Locally Finite Games}
 
-placeholder
+A variation of $\gruConGame{X}{x}$, also due to Gruenhage,
+may be used to characterize various covering properties, particularly
+for locally compact spaces. We assume all spaces are $T_1$.
 
-% Results pertaining to the Locally Finite games related to $W$ games.
+\section{Characterizations using $\gruKPGame{X}$, $\gruKLGame{X}$}
 
-% \section{Characterizations using $\gruKPGame{X}$, $\gruKLGame{X}$}
+\begin{game}
+  Let $\gruKPGame{X}$ denote the \term{Gruenhage compact/point game}
+  with players $\pl K$, $\pl P$. During round $n$, $\pl K$ chooses
+  a compact subset $K_n$ of $X$, followed by $\pl P$ choosing a point
+  $p_n\in X$ such that $p_n\not\in \bigcup_{m\leq n}K_m$.
 
-% \begin{thm}(G)
-%   The following are equivalent for a locally compact space $X$:
-%     \begin{itemize}
-%       \item $X$ is paracompact
-%       \item $\pl K \uparrow \gruKLGame{X}$.
-%     \end{itemize}
-% \end{thm}
+  $\pl K$ wins the game if the collection $\{\{p_n\}:n<\omega\}$ is locally
+  finite in the space, and $\pl P$ wins otherwise.
+\end{game}
 
-% \begin{thm}(G)
-%   The following are equivalent for a locally compact space $X$:
-%     \begin{itemize}
-%       \item $X$ is metacompact
-%       \item $\pl K \tactwin \gruKPGame{X}$.
-%     \end{itemize}
-% \end{thm}
+This game is often formulated by requiring that the collection
+$\{\{p_n\}:n<\omega\}$ be discrete. With the knowledge of at least the latest
+move of the opponent, $\pl K$ may guarantee that if $\{\{p_n\}:n<\omega\}$
+is locally finite then it is also discrete, since she may require
+$p_n\in K_{n+1}$. Thus this formulation is essentially equivalent to the usual
+formulation for all existing applications.
 
-% \begin{thm}(G)
-%   The following are equivalent for a locally compact space $X$:
-%     \begin{itemize}
-%       \item $X$ is $\sigma$-metacompact
-%       \item $\pl K \markwin \gruKPGame{X}$.
-%     \end{itemize}
-% \end{thm}
+We may relate this game to $\gruConGame{X}{x}$ as follows:
 
-% \begin{obs}
-%   The following are equivalent for any space $X$:
-%     \begin{itemize}
-%       \item $X$ is compact
-%       \item $\pl K \ktactwin{0} \gruKPGame{X}$.
-%     \end{itemize}
-% \end{obs}
+\begin{thm}
+  If $X$ is locally compact, then for $k<2$:
+    \begin{itemize}
+      \item $\pl K\win\gruKPGame{X}$ if and only if
+        $\pl O\win\gruConGame{\oneptcomp{X}}{\infty}$.
+      \item $\pl K\kmarkwin{k}\gruKPGame{X}$ if and only if
+        $\pl O\kmarkwin{k}\gruConGame{\oneptcomp{X}}{\infty}$.
+      \item $\pl K\ktactwin{k}\gruKPGame{X}$ if and only if
+        $\pl O\ktactwin{k}\gruConGame{\oneptcomp{X}}{\infty}$.
+    \end{itemize}
+\end{thm}
 
-% \begin{thm}
-%   $P \markwin G_{K,P}(X)$ where $X$ is a first-countable non-locally
-%   countably compact space.
-% \end{thm}
+\begin{proof}
+  Let $L$ be any of $\nu_0$, $\nu_1$, $\mu_0$, $\mu_1$, or the identity.
+  For any sequence $s$ of points in $\oneptcomp X$, let $s'$ be the
+  subsequence of non-$\infty$ points in $s$.
 
-% \begin{thm}
-%   $P \not\tactwin G_{K,P}(M)$ where $M$ is the metric fan space.
-% \end{thm}
+  If $\sigma\circ L$ is a winning strategy for $\pl K$ in $\gruKPGame{X}$, let
+  $\tau\circ L$ be a strategy for $\pl O$ in $\gruConGame{\oneptcomp X}{\infty}$
+  such that $\tau(L(s)) = \oneptcomp X\setminus \sigma(L(s)')$. Then for
+  any legal attack $p$ against $\tau$, $p'$ is a legal attack against $\sigma$.
+  (The proof of this claim uses the fact that $k<2$.)
+  If $p'$ is a finite sequence, then $p$ converges to $\infty$.
+  Otherwise, the set $\{\{p'(n)\}:n<\omega\}$ is locally finite in $X$, so
+  $\{p'(n):n<\omega\}$ is a closed discrete subset of $X$. Then for every
+  neighborhood $U$ of $\infty$, $X\setminus U$ is contained in a compact set,
+  so it cannot contain a closed discrete subset. Thus $p'$ and $p$
+  converge to $\infty$.
 
-% \begin{thm}
-%   The following are equivalent for any locally compact space $X$:
-%     \begin{itemize}
-%       \item $X$ is Lindel\"of.
-%       \item $X$ is $\sigma$-compact.
-%       \item $X$ is hemicompact.
-%       \item $\pl K \prewin G_{K,L}(X)$.
-%       \item $\pl K \prewin G_{K,P}(X)$.
-%     \end{itemize}
-% \end{thm}
+  If $\sigma\circ L$ is a winning strategy for $\pl O$ in
+  $\gruConGame{\oneptcomp X}{\infty}$, let $\tau\circ L$ be a strategy for
+  $\pl K$ in $\gruKPGame{X}$ such that $\tau(L(s))= X\setminus\sigma(L(s))$.
+  Then for any legal attack $p$ against $\tau$, $p$ is a legal attack against
+  $\sigma$, so the sequence $p$ converges to $\infty$. For any point $x\in X$
+  distinct from the $p(n)$, we may choose a neighborhood $U_x$ of $x$ in $X$
+  missing every point in $p(n)$.
+  For every $n<\omega$, we may choose a neighborhood $U_{p(n)}$ of $p(n)$ in
+  $X$ which misses every distinct $p(m)$. Thus $\{\{p(n)\}:n<\omega\}$ is a
+  locally finite collection.
+\end{proof}
 
-% \begin{thm}
-%   The following are equivalent for any Hausdorff $k$-space $X$:
-%     \begin{itemize}
-%       \item $X$ is hemicompact.
-%       \item $X$ is $k_{\omega}$.
-%       \item $\pl K \prewin \gruKLGame{X}$.
-%       \item $\pl K \prewin \gruKPGame{X}$.
-%     \end{itemize}
-% \end{thm}
+The reason why $\gruConGame{\oneptcomp X}{\infty}$ and $\gruKPGame{X}$ are
+not completely equivalent is due to the fact that $\pl P$ may hide information
+from $\pl O$ by playing $\infty$. These moves cannot trivially be ignored
+using a $k$-limited information strategy for $k\geq 2$, since $\pl P$ may
+ensure that only one ``useful'' move may be seen by $\pl K$ at a time by playing
+$k$ $\infty$s between each non-$\infty$.
+
+Applications of limited information strategies for $\pl K$ are already known;
+see \cite{MR858337}.
+
+\begin{thm}
+  The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is metacompact
+      \item $\pl K \tactwin \gruKPGame{X}$.
+    \end{itemize}
+\end{thm}
+
+\begin{thm}
+  The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is $\sigma$-metacompact
+      \item $\pl K \markwin \gruKPGame{X}$.
+    \end{itemize}
+\end{thm}
+
+In addition, it's trivial to show the following.
+
+\begin{prop}
+  The following are equivalent for any space $X$:
+    \begin{itemize}
+      \item $X$ is compact
+      \item $\pl K \ktactwin{0} \gruKPGame{X}$.
+    \end{itemize}
+\end{prop}
+
+\begin{proof}
+  A $0$-tactic is seeded with zero information about the moves of the opponent
+  or the round number, so it must be a constant function valued at $X$.
+\end{proof}
+
+A similar game may be considered by allowing the second player to choose
+compact sets rather than points, which also provided in \cite{MR858337}
+a game-theoretic characterization of a covering property for locally compact
+spaces.
+
+\begin{game}
+  Let $\gruKLGame{X}$ denote the \term{Gruenhage compact/compact game}
+  with players $\pl K$, $\pl L$. This game proceeds analogously to
+  $\gruKPGame{X}$, except the second player $\pl L$ chooses comapct sets $L_n$
+  missing $\bigcup_{m\leq n}K_n$,
+  and $\pl K$ wins if the collection $\{L_n:n<\omega\}$ is locally finite.
+\end{game}
+
+As above, this formulation is equivalent to requiring $\{L_n:n<\omega\}$ be
+discrete when considering strategies for $\pl K$ which use at least the latest
+move of $\pl L$.
+
+\begin{thm}
+  The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is paracompact
+      \item $\pl K \win \gruKLGame{X}$.
+    \end{itemize}
+\end{thm}
+
+
+\section{Predetermined strategies for $\gruKPGame{X}$, $\gruKLGame{X}$}
+
+Adding knowledge of the round number to a tactic changes the characterization
+from metacompact to $\sigma$-metacompact. In fact, the analogous result holds
+for $0$-tactics to $0$-marks, known as predetermined strategies since they
+rely only on the round number and not the moves of the opponent.
+
+\begin{thm}
+  If $X$ is a locally compact Lindel\"of space, then $\pl K \prewin G_{K,L}(X)$.
+\end{thm}
+
+\begin{proof}
+  For each $x\in X$, let $U_x$ be an open neighborhood of $x$ with $\cl{U_x}$
+  compact. Then as $X$ is Lindel\"of, choose $x_n\in X$ for $n<\omega$ such that
+  $\{U_{x_n}:n<\omega\}$ covers $X$. Define the predetermined strategy $\sigma$
+  for $\pl K$ by $\sigma(n)=\cl{U_{x_n}}$.
+
+  Let $L:\omega\to \mc K(X)$ legally attack $\sigma$, so
+  $L(n)\cap\bigcup_{m\leq n}\sigma(m)=\emptyset$. For each $x\in X$,
+  choose $n<\omega$ with $x\in U_{x_n}$. Then $U_{x_n}$ is a neighborhood of
+  $x$ which intersects finitely many $L(n)$, so $\{L(n):n<\omega\}$ is
+  locally finite.
+\end{proof}
+
+\begin{defn}
+  A space $X$ is \textbf{hemicompact} if there exist compact sets $K_n$ for
+  $n<\omega$ such that every compact set in $X$ is a subset of some $K_n$.
+\end{defn}
+
+\begin{thm}
+  If $\pl K\prewin \gruKPGame{X}$, then $X$ is hemicompact.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a winning predetermined strategy for $\pl K$ in
+  $\gruKPGame{X}$. If $C\in \mc K(X)$ is compact, then for each $x\in C$ let
+  $U_x$ be an open neighborhood of $x$ which intersects finitely many
+  $\sigma(n)$. Thus there exists an open neighborhood of $C$ which intersects
+  finitely many $\sigma(n)$.
+\end{proof}
+
+\begin{cor}
+  The following are equivalent for any locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is Lindel\"of.
+      \item $X$ is $\sigma$-compact.
+      \item $X$ is hemicompact.
+      \item $\pl K \prewin \gruKPGame{X}$.
+      \item $\pl K \prewin \gruKLGame{X}$.
+    \end{itemize}
+\end{cor}
+
+\section{Compactly generated spaces}
+
+\begin{defn}
+  A space $X$ is \term{compactly generated} if a set is closed if and
+  only if its intersection is closed in every compact subspace. Such
+  spaces are also known as \term{$k$-spaces}.
+\end{defn}
+
+All locally compact spaces are $k$-spaces. As will be shown,
+the games $\gruKPGame{X}$, $\gruKLGame{X}$ are equivalent for $\pl K$'s
+predetermined strategies in Hausdorff $k$-spaces.
+
+\begin{defn}
+  A space $X$ is a $k_\omega$-space if there exist compact sets $K_n$ for
+  $n<\omega$ such that a set is closed if and
+  only if its intersection is closed in every subspace $K_n$.
+\end{defn}
+
+\begin{thm}
+  If $X$ is a Hausdorff hemicompact $k$-space, then
+  $\pl K \prewin \gruKLGame{X}$.
+\end{thm}
+
+\begin{proof}
+  Let $K_n$ witness hemicompactness for $X$. Define the predetermined strategy
+  $\sigma$ for $\pl K$ by $\sigma(n)=K_n$.
+
+  Let $L:\omega\to\mc{K}(X)$ be a legal attack against $\sigma$, and let
+  $L_\omega = \bigcup_{n<\omega}L_(n)$. For each compact set (TODO FINISH)
+\end{proof}
+
+\begin{cor}
+  The following are equivalent for any Hausdorff $k$-space $X$:
+    \begin{itemize}
+      \item $X$ is hemicompact.
+      \item $X$ is $k_{\omega}$.
+      \item $\pl K \prewin \gruKPGame{X}$.
+      \item $\pl K \prewin \gruKLGame{X}$.
+    \end{itemize}
+\end{cor}
 
 % \section{Non-locally compact spaces}
 
