@@ -5,7 +5,8 @@
 
 A variation of $\gruConGame{X}{x}$, also due to Gruenhage,
 may be used to characterize various covering properties, particularly
-for locally compact spaces. We assume all spaces are $T_1$.
+for locally compact spaces. All spaces are assumed to be $T_1$ in this
+chapter.
 
 \section{Characterizations using $\gruKPGame{X}$, $\gruKLGame{X}$}
 
@@ -192,7 +193,7 @@ rely only on the round number and not the moves of the opponent.
 
 \begin{defn}
   A space $X$ is \term{compactly generated} if a set is closed if and
-  only if its intersection is closed in every compact subspace. Such
+  only if its intersection with every compact set is closed. Such
   spaces are also known as \term{$k$-spaces}.
 \end{defn}
 
@@ -203,27 +204,52 @@ predetermined strategies in Hausdorff $k$-spaces.
 \begin{defn}
   A space $X$ is a $k_\omega$-space if there exist compact sets $K_n$ for
   $n<\omega$ such that a set is closed if and
-  only if its intersection is closed in every subspace $K_n$.
+  only if its intersection with every $K_n$ is closed.
 \end{defn}
 
 \begin{thm}
-  If $X$ is a Hausdorff hemicompact $k$-space, then
+  If $X$ is a $k_\omega$-space, then
   $\pl K \prewin \gruKLGame{X}$.
 \end{thm}
 
 \begin{proof}
-  Let $K_n$ witness hemicompactness for $X$. Define the predetermined strategy
-  $\sigma$ for $\pl K$ by $\sigma(n)=K_n$.
+  Let $K_n$ witness that $X$ is a $k_\omega$-space. Define the predetermined
+  strategy $\sigma$ for $\pl K$ by $\sigma(n)=K_n$.
 
   Let $L:\omega\to\mc{K}(X)$ be a legal attack against $\sigma$, and let
-  $L_\omega = \bigcup_{n<\omega}L_(n)$. For each compact set (TODO FINISH)
+  $L_{\omega\setminus n} = \bigcup_{n\leq m<\omega}L(m)$. Then as
+    \[
+      L_{\omega\setminus n}\cap K_n
+        =
+      \bigcup_{n\leq m< p}L(m) \cap \sigma(p)
+    \]
+  is compact for each $p<\omega$, $L_{\omega\setminus n}$ is closed.
+
+  For each $x\in X$, $x\in \sigma(p)$ for some $p$, so
+  $x\in X\setminus L_{\omega\setminus p}$ which misses all but finitely
+  many $L(n)$, showing that $\{L(n):n<\omega\}$ is locally finite and
+  $\sigma$ is a winning predetermined strategy.
 \end{proof}
 
+\begin{prop}
+  Hemicompact $k$-spaces are $k_\omega$-spaces.
+\end{prop}
+
+\begin{proof}
+  Let $K_n$ for $n<\omega$ witness hemicompactness.
+  If $C\cap K_n$ is closed for each $n<\omega$, then let $K$ be any compact
+  set. Since $K\subseteq K_n$ for some $n<\omega$, $C\cap K$ is closed, and
+  therefore $C$ is closed.
+\end{proof}
+
+As we've already seen that $\pl K \prewin \gruKPGame{X}$ implies
+hemicompactness:
+
 \begin{cor}
-  The following are equivalent for any Hausdorff $k$-space $X$:
+  The following are equivalent for any $k$-space $X$:
     \begin{itemize}
-      \item $X$ is hemicompact.
       \item $X$ is $k_{\omega}$.
+      \item $X$ is hemicompact.
       \item $\pl K \prewin \gruKPGame{X}$.
       \item $\pl K \prewin \gruKLGame{X}$.
     \end{itemize}
