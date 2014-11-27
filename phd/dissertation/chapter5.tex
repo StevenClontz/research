@@ -304,8 +304,8 @@ ultrafilter $\mc F$, denoted $\omega\cup\{\mc F\}$.
 \end{thm}
 
 \begin{proof}
-  Let $\sigma$ be a predetermined strategy for $\pl K$, and define the
-  counterattack $H:\omega\to\mc K(X)$ by
+  Let $\sigma$ be a predetermined strategy for $\pl K$, and define the legal
+  counter-attack $H:\omega\to\mc K(X)$ by
   $H(n)=(n\cup\sigma(n+1))\setminus\sigma(n)$. Then for any neighborhood
   $U_S$ of $\mc F$, $S$ is infinite, and since
   $\bigcup_{n<\omega} H(n)\supseteq\omega\setminus\sigma(0)$, $U_S$ meets
@@ -324,40 +324,94 @@ ultrafilter $\mc F$, denoted $\omega\cup\{\mc F\}$.
   $\sigma(n)=n^2\cup\{\mc F\}$.
 
   Consider the set of all legal attacks $A\subseteq\omega^\omega$ by
-  $\pl P$ against $\sigma$. For $n<\omega$, note that for any $f\in A$,
-  $f$ maps only $n$ points into $n^2$, so the range of $f$ is coinfinite.
-  Then $\mc I=\{\ran f : f\in A\}$ is an ideal, and if
-  $\mc F\supseteq\{\omega\setminus I: I\in\mc I\}$, then $\sigma$ is a
+  $\pl P$ against $\sigma$. For $\{f_i:i\leq m\}\in [A]^{<\omega}$ and
+  $m<n<\omega$, each $f_i$ maps only $n$ points into $n^2$, so
+  $\bigcup_{i\leq m}\ran{f_i}$ is coinfinite.
+  Then $\mc G'=\{\omega\setminus\ran f : f\in A\}$ is contained in a free
+  ultrafilter $\mc G$, and if $\mc F=\mc G$, then $\sigma$ is a
   winning predetermined strategy.
 \end{proof}
 
-% \begin{prop}
-%   If a selective ultrafilter $\mathcal{F}$ exists (independent of ZFC),
-%   then $K \not\prewin \gruKPGame{X}$
-%   for $X=\omega \cup \{\mathcal{F}\}\subset \beta\omega$.
-% \end{prop}
+It is not possible to prove that $\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}$
+for arbitrary free ultrafilters in $ZFC$.
 
-% \begin{thm}
-%   Then there is an ultrafilter $\mathcal{F}$ such that
-%   then $K \prewin \gruKPGame{X}$ and $K \tactwin \gruKPGame{X}$
-%   for $X=\omega \cup \{\mathcal{F}\}\subset \beta\omega$.
-% \end{thm}
+\begin{defn}
+  A \term{selective ultrafilter} $\mc F$ is a free ultrafilter with the
+  property that for every
+  partition $\{B_n : n < \omega\}$ of nonempty subsets of $\omega$ such that
+  $B_n \not\in \mathcal{F}$ for all $n$, there exists $A \in \mc{F}$ such
+  that $|A \cap B_n|=1$ for all $n$.
+\end{defn}
 
-% \begin{thm}
-%   Let $M$ be the \term{metric fan}, a non-locally compact $k$ space.
-%   Then $P \win \gruKPGame{M}$.
-% \end{thm}
+\begin{thm}
+  CH implies the existence of a selective ultrafilter.
+  \cite{MR0080902}
+\end{thm}
 
-% \begin{thm}
-%   Let $S$ be the \term{sequential fan}, a non-locally compact $k$ space.
-%   Then $K \prewin \gruKPGame{S}$ and $K\tactwin \gruKPGame{S}$.
-% \end{thm}
+\begin{thm}
+  If $\mc F$ is a selective ultrafilter, then
+  $\pl K\not\prewin \gruKPGame{\omega\cup\{\mc F\}}$.
+\end{thm}
 
-% (TODO: Maybe consider claim
-% $K \prewin \gruKPGame{X}$ $\Rightarrow$ $X$ is a $k$-space)
+\begin{proof}
+  Let $\sigma$ be a predetermined strategy for $\pl K$ such that
+  $\sigma(n)\supset\bigcup_{m<n}\sigma(m)$.
+  Then define $B_n=\omega\cap(\sigma(n+1)\setminus\sigma(n))$. Since $B_n$
+  is always nonempty finite, $B_n\not\in\mc F$ and there exists $A\in \mc F$
+  such that $|A\cap B_n|=1$.
+
+  Define the legal counter-attack $p:\omega\to\omega\cup\{\mc F\}$ by
+  $p(n)\in A\cap B_n=A\cap(\sigma(n+1)\setminus\sigma(n))$. Since
+  $A=(A\cap\sigma(0))\cup\{p(n):n<\omega\}$, $\{p(n):n<\omega\}\in\mc F$.
+  Therefore, every neighborhood of $\mc F$ intersects infinitely many of
+  the $p(n)$, and $p$ defeats the predetermined strategy $\sigma$.
+\end{proof}
+
+Of particular note is that the author knows of no examples of a
+non-$k$-space such that $K\prewin\gruKPGame{X}$.
+
+\begin{ques}
+  Does $K\prewin\gruKPGame{X}$ imply $X$ is a $k$-space?
+\end{ques}
 
 
+\section{$k+1$-tactics and marks for $\gruKPGame{X}$}
 
+While $\pl O\ktactwin{k+1}\gruConGame{\oneptcomp X}{\infty}$ implies
+$\pl O\tactwin\gruConGame{\oneptcomp X}{\infty}$, and likewise for Markov
+strategies, this result cannot be
+immediately extended to $\gruKPGame{X}$. However, this section will
+demonstrate a non-trivial example of a space $\mb X$ for which
+$\pl K\win\gruKPGame{\mb X}$ but $\pl K\not\kmarkwin{k}\gruKPGame{\mb X}$
+for any $k<\omega$.
+
+\begin{defn}
+  An $L$-space is a herditarally Lindel\"of, non-separable space.
+\end{defn}
+
+\begin{thm}
+  Under $CH$(?), there exists a zero-dimensional, compact $L$-space.
+  Furthermore, there exists a point-countable collection of clopen sets
+  $\mc U=\{U_\alpha:\alpha<\omega_1\}$ in $X$ such
+  that every point-finite subcollection of $\mc U$ is countable.
+\end{thm}
+
+\begin{proof}
+  (TODO or find citation)
+\end{proof}
+
+\begin{defn}
+  Let $\mb X=(X\times 2^{<\omega})\cup 2^\omega$ denote a Cantor tree
+  of zero-dimensional, compact $L$-spaces $X$ with a point-countable collection
+  of clopen sets $\mc U=\{U_\alpha:\alpha<\omega_1\}$ such
+  that every point-finite subcollection of $\mc U$ is countable.
+  The topology on $\mb X$ is
+  given by decaring $U\times\{s\}$ to be an open
+  neighborhood of $\<x,s\>\in X\times 2^{<\omega}$ for each
+  open neighborhood $U$ of $x$ in $X$, and declaring
+  $(U_\alpha\times\{f\rest n: m\leq n<\omega\})\cup\{f\}$ to be an open
+  neighborhood of $f\in 2^\omega$ for each $\alpha<\omega_1$ and $m<\omega$.
+\end{defn}
 
 
 % \section{Cantor tree space example}
