@@ -137,10 +137,11 @@ move of $\pl L$.
 \end{thm}
 
 
-\section{Predetermined strategies for $\gruKPGame{X}$, $\gruKLGame{X}$}
+\section{Locally compact spaces and predetermined strategies}
 
-Adding knowledge of the round number to a tactic changes the characterization
-from metacompact to $\sigma$-metacompact. In fact, the analogous result holds
+As mentioned above, adding knowledge of the round number to a tactic changes the
+characterization from metacompact to $\sigma$-metacompact. In fact, the
+analogous result holds
 for $0$-tactics to $0$-marks, known as predetermined strategies since they
 rely only on the round number and not the moves of the opponent.
 
@@ -189,7 +190,7 @@ rely only on the round number and not the moves of the opponent.
     \end{itemize}
 \end{cor}
 
-\section{Compactly generated spaces}
+\section{Compactly generated spaces and predetermined strategies}
 
 \begin{defn}
   A space $X$ is \term{compactly generated} if a set is closed if and
@@ -219,7 +220,7 @@ predetermined strategies in Hausdorff $k$-spaces.
   Let $L:\omega\to\mc{K}(X)$ be a legal attack against $\sigma$, and let
   $L_{\omega\setminus n} = \bigcup_{n\leq m<\omega}L(m)$. Then as
     \[
-      L_{\omega\setminus n}\cap K_n
+      L_{\omega\setminus n}\cap K_p
         =
       \bigcup_{n\leq m< p}L(m) \cap \sigma(p)
     \]
@@ -255,12 +256,80 @@ hemicompactness:
     \end{itemize}
 \end{cor}
 
-% \section{Non-locally compact spaces}
+\section{Non-equivalence of $\gruKPGame{X}$, $\gruKLGame{X}$}
 
-% \begin{prop}
-%   If $X=\omega\cup\mathcal{F}\subset\beta\omega$ (a non-$k$ space),
-%   then $K\not\prewin \gruKLGame{X}$.
-% \end{prop}
+For $k$-spaces, it has been shown that $\gruKPGame{X}$ and $\gruKLGame{X}$
+are equivalent with respect to $\pl K$'s winning predetermined strategies.
+Looking at a subspace of the Stone-Cech compactification $\beta\omega$ of
+$\omega$ reveals an example for which the predetermined strategies are not
+equivalent.
+
+\begin{defn}
+  An \term{ultrafilter} on a cardinal $\kappa$ is a maximal filter of non-empty
+  subsets of $\kappa$. For each $\alpha\in \kappa$, the ultrafilter
+  $\mc F_\alpha$ containing all supersets of $\{\alpha\}$ is called a
+  \term{principal ultrafilter}. All
+  ultrafilters not of this form are called \term{free ultrafilters}.
+\end{defn}
+
+\begin{defn}
+  The \term{Stone-Cech compactification} of a cardinal
+  $\kappa$ is the space $\beta\kappa$ consisting
+  of all ultrafilters on $\kappa$, with open sets of the form
+  $U_S=\{\mc F\in\beta\kappa : S\in\mc F\}$ for $S\subseteq \kappa$.
+\end{defn}
+
+From these definitions it is easily verified that principal ultrafilters
+are isolated, so $\kappa$ with the discrete topology may be viewed as
+a dense open subspace of $\beta\kappa$. $\beta\kappa$ is also compact, so
+$\pl K\ktactwin{0}\gruKLGame{\beta\kappa}$; of greater interest is the subspace
+of $\beta\omega$ consisting of all principal ultrafilters and a single free
+ultrafilter $\mc F$, denoted $\omega\cup\{\mc F\}$.
+
+\begin{lem}
+  All compact subsets of $\omega\cup\{\mc F\}\subset\beta\omega$ are finite.
+  In particular, the difference of compact sets in $\omega\cup\{\mc F\}$
+  is compact.
+\end{lem}
+
+\begin{proof}
+  Let $I=\{n_i:i<\omega\}\cup\{\mc F\}$ be infinite.
+  Then $\{U_{\omega\setminus\{n_i:i\geq j\}}:j<\omega\}$ is an open cover of
+  $I\cup\{\mc F\}$ with no finite subcover.
+\end{proof}
+
+\begin{thm}
+  $\pl K\not\prewin \gruKLGame{\omega\cup\{\mc F\}}$ for any free
+  ultrafilter $\mc F$.
+\end{thm}
+
+\begin{proof}
+  Let $\sigma$ be a predetermined strategy for $\pl K$, and define the
+  counterattack $H:\omega\to\mc K(X)$ by
+  $H(n)=(n\cup\sigma(n+1))\setminus\sigma(n)$. Then for any neighborhood
+  $U_S$ of $\mc F$, $S$ is infinite, and since
+  $\bigcup_{n<\omega} H(n)\supseteq\omega\setminus\sigma(0)$, $U_S$ meets
+  infinitely many of the finite $H(n)$. Thus $\sigma$ is not a winning
+  predetermined strategy.
+\end{proof}
+
+\begin{thm}
+  There exists a free ultrafilter $\mc F$ such that
+  $\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}$.
+\end{thm}
+
+\begin{proof}
+  Let $\mc F$ be any free ultrafilter, and
+  define the predetermined strategy $\sigma$ by
+  $\sigma(n)=n^2\cup\{\mc F\}$.
+
+  Consider the set of all legal attacks $A\subseteq\omega^\omega$ by
+  $\pl P$ against $\sigma$. For $n<\omega$, note that for any $f\in A$,
+  $f$ maps only $n$ points into $n^2$, so the range of $f$ is coinfinite.
+  Then $\mc I=\{\ran f : f\in A\}$ is an ideal, and if
+  $\mc F\supseteq\{\omega\setminus I: I\in\mc I\}$, then $\sigma$ is a
+  winning predetermined strategy.
+\end{proof}
 
 % \begin{prop}
 %   If a selective ultrafilter $\mathcal{F}$ exists (independent of ZFC),
