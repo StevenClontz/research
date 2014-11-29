@@ -385,53 +385,190 @@ demonstrate a non-trivial example of a space $\mb X$ for which
 $\pl K\win\gruKPGame{\mb X}$ but $\pl K\not\kmarkwin{k}\gruKPGame{\mb X}$
 for any $k<\omega$.
 
-\begin{defn}
-  An $L$-space is a herditarally Lindel\"of, non-separable space.
-\end{defn}
-
 \begin{thm}
-  Under $CH$(?), there exists a zero-dimensional, compact $L$-space.
-  Furthermore, there exists a point-countable collection of clopen sets
-  $\mc U=\{U_\alpha:\alpha<\omega_1\}$ in $X$ such
-  that every point-finite subcollection of $\mc U$ is countable.
+  There exists a compact, zero-dimensional topological space $X$
+  such that $X$ has a point-countable cover
+  $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of
+  clopen sets which is not $\sigma$-point-finite.
 \end{thm}
 
 \begin{proof}
-  (TODO or find citation)
+  (TODO)
 \end{proof}
 
 \begin{defn}
-  Let $\mb X=(X\times 2^{<\omega})\cup 2^\omega$ denote a Cantor tree
-  of zero-dimensional, compact $L$-spaces $X$ with a point-countable collection
-  of clopen sets $\mc U=\{U_\alpha:\alpha<\omega_1\}$ such
-  that every point-finite subcollection of $\mc U$ is countable.
+  Let $\mb X=(X\times 2^{<\omega})\cup C$ denote a Cantor tree
+  of copies of a zero-dimensional, compact space $X$ with a point-countable
+  cover $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of
+  clopen sets which is not $\sigma$-point-finite, along with an uncountable
+  subset of the Cantor set
+  $C=\{c_\alpha:\alpha<\omega_1\}\in [2^\omega]^{\omega_1}$.
   The topology on $\mb X$ is
-  given by decaring $U\times\{s\}$ to be an open
+  given by decaring $U\times\{s\}$ to be a open
   neighborhood of $\<x,s\>\in X\times 2^{<\omega}$ for each
   open neighborhood $U$ of $x$ in $X$, and declaring
-  $(U_\alpha\times\{f\rest n: m\leq n<\omega\})\cup\{f\}$ to be an open
-  neighborhood of $f\in 2^\omega$ for each $\alpha<\omega_1$ and $m<\omega$.
+  $B_{\alpha,n}=(U_\alpha\times\{f\rest n: m\leq n<\omega\})\cup\{f\}$ to be
+  an clopen neighborhood of $\alpha\in\omega_1$ for each $m<\omega$.
 \end{defn}
 
+\begin{lem}
+  Let $F\in \omega_1^{<\omega}$ and $m<\omega$.
+  Then $K_F$, $K_F'$, $L_m$ are compact in $\mb X$ as defined below.
+  \[
+    K_F = \bigcup_{\alpha \in F} B_{\alpha,0}
+  \]
+  \[
+    A = \{z^\frown \<1\> : z \in \{0\}^{<\omega}\}
+  \]
+  \[
+    K_F' = K_F \setminus (X \times A)
+  \]
+  \[
+    L_m = X \times 2^{<m}
+  \]
+  Furthermore, every compact set is contained in a union of $K_F'$, $L_m$
+  for some $F\in C^{<\omega}$ and $m<\omega$.
+\end{lem}
 
-% \section{Cantor tree space example}
+\begin{proof}
+  $K_F$ contains $C_F=\{c_\alpha: \alpha\in F\}\subseteq C$, so any
+  cover of basic open sets must include $B_{\alpha,n_\alpha}$ for each
+  $\alpha\in F$, and the remaining uncovered portion of $K_F$ is a finite
+  union of copies of closed subsets of compact $X$. Then $K_F'$ is also
+  compact as it is a closed subset of $K_F$, and $L_m$ is compact as it
+  is a finite union of copies of compact $X$.
 
-% \begin{ex}
-%   Let $X$ be a zero-dimensional, compact L-space
-%   (hereditarally Lindeloff and non-separable).
-%   It is a fact that there exists a point-countable collection
-%   $\mathcal{U}=\{U_\alpha : \alpha<\omega_1\}$ of clopen sets in $X$, and it is
-%   also true that any point-finite subcollection of $\mathcal{U}$ is countable.
+  Let $D$ be compact. Consider the open cover
+    \[
+      \{
+        B_{\alpha,0}
+      :
+        \alpha<\omega_1
+      \}
+      \cup
+      \{
+        X\times\{s\}
+      :
+        s\in 2^{<\omega}
+      \}
+    \]
+  and note that the finite subcover for $D$ is a refinement of some
+  $K_F'$ and $L_m$.
+\end{proof}
 
-%   Let $C = \{c_\alpha : \alpha <\omega_1\}$ be any uncountable subset of the
-%   Cantor space $2^\omega$. Let $X_s = X \times \{s\}$ for each
-%   $s \in 2^{<\omega}$, and $U_{\alpha,s} = U_\alpha \times \{s\}$.
+\begin{thm}
+  $\pl K\win\gruKPGame{\mb X}$.
+\end{thm}
 
-%   Finally, let \[\mathbb{X} = C \cup \bigcup_{s\in 2^{<\omega}} X_s\] be a
-%   tree of $2^{<\omega}$ copies of $X$, and where
-%   \[c_\alpha \cup \bigcup_{n < \omega} U_{\alpha, x_\alpha \restriction n}\]
-%   is an open set about each $c_\alpha$.
-% \end{ex}
+\begin{proof}
+  Since $\{U_\alpha:\alpha<\omega_1\}$ is a point-countable cover,
+  for each $x\in X$ let $\alpha_{x,n}<\omega_1$ yield
+  ordinals such that $x\in U_{\alpha_{x,n}}$ for $n<\omega$.
+
+  Let $M:\mb X\times \omega\to \mc K(\mb X)$ as follows:
+    \[
+      M(x,n)
+        =
+      \left\{
+        \begin{array}{lcl}
+          K_{\{\alpha_{x',m}:m\leq n\}}
+        & : &
+          x = \<x',s\> \in X\times 2^{<\omega}
+        \\
+          K_{\{\alpha\}}
+        & : &
+          x = c_\alpha \in C
+        \end{array}
+      \right.
+    \]
+  and use $M$ to define the strategy $\sigma$ for each $a\in\mb X^{<\omega}$:
+    \[
+      \sigma(a)
+        =
+      L_{|a|}
+        \cup
+      \bigcup_{i\leq |a|}
+      M(a(i),|a|)
+    \]
+
+  Let $p:\omega\to\mb X$ be a legal attack against $\sigma$. Then as
+  $p(n)\not\in L_n$, for each $x=\<x',s\>\in X\times 2^{<\omega}$,
+  $X\times\{s\}$ is an open neighborhood of $x$ which contains finitely
+  many $p(n)$.
+
+  Then consider $x=c_\alpha$ for some $\alpha<\omega_1$. Then if
+  $p(n)=\<x',s\>$ for some $n<\omega$, $x'\in U_\alpha$ or
+  $p(n)=c_\alpha$, then
+  $\alpha = \alpha_{p(n),N}$ for some $N<\omega$ and $p(m)\not\in B_{\alpha,0}$
+  for $n+N<m<\omega$. Otherwise, $p(m)\not\in B_{\alpha,0}$ for any $m<\omega$.
+  Either way, $B_{\alpha,0}$ is a neighborhood of $x$ which contains finitely
+  many $p(n)$. Therefore, $\sigma$ is a winning strategy.
+\end{proof}
+
+We will show that there does not exist any winning $k$-Markov strategy for
+$\pl K$ in this game. Knowledge of round number does not assist $\pl K$,
+since she may force $\pl P$ to either stay within $C$, or to seed a growing
+integer by forcing her to play outside $L_{|s|+1}$ in response to
+$\<x,s\>\in X\times 2^{<\omega}$.
+
+\begin{lem}
+  If $\pl K\markwin\gruKPGame{\mathbb{X}}$, then
+  $\pl K\tactwin\gruKPGame{\mathbb{X}}$.
+\end{lem}
+
+\begin{proof}
+  TODO
+  % Let $\sigma$ be a winning mark for $\pl K$ such that $m\leq n$ and
+  % $r$ a subsequence of $s$ implies $\sigma(r,m)\subseteq\sigma(s,n)$.
+  % Define $n:\mb X\to\omega$ by
+  %   \[
+  %     n(x)
+  %       =
+  %     \left\{
+  %       \begin{array}{lcl}
+  %         |s|+1
+  %       & : &
+  %         x = \<x',s\> \in X\times 2^{<\omega}
+  %       \\
+  %         0
+  %       & : &
+  %         x \in C
+  %       \end{array}
+  %     \right.
+  %   \]
+  % and use $n$ to define the $k+1$-tactic $\tau$ by
+  %   \[
+  %     \tau(\emptyset)=\sigma(\emptyset,0)
+  %   \]
+  %   \[
+  %     \tau(t\concat\<x\>)
+  %       =
+  %     L_{n(x)}
+  %       \cup
+  %     \{x\}
+  %       \cup
+  %     \sigma(t\concat\<x\>,n(x))
+  %   \]
+
+  % Let $p:\omega\to\mb X$ be a legal attack by $\pl P$ against $\tau$.
+  % If $p(n)\in C$ for $n>N$, then since no $p(n)$ may be repeated,
+  % $\{\{p(n)\}:N<n<\omega\}$ is a discrete collection, making
+  % $\{\{p(n)\}:n<\omega\}$ locally finite.
+
+  % Otherwise, let $q:\omega\to X\times 2^{<\omega}$ be the subsequence of $p$
+  % removing points in $C$. If $q(0)=p(0)$, then
+  %   \[
+  %     q(0)
+  %       =
+  %     p(0)
+  %       \not\in
+  %     \tau(\emptyset)
+  %       =
+  %     \sigma(\emptyset,0)
+  %   \]
+  % and for any other $q(n)=p(m+1)=$
+\end{proof}
+
 
 % \begin{prop}
 % $K \win \gruKPGame{\mathbb{X}}$.
