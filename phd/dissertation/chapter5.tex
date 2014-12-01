@@ -375,7 +375,7 @@ non-$k$-space such that $K\prewin\gruKPGame{X}$.
 \end{ques}
 
 
-\section{$k+1$-tactics and marks for $\gruKPGame{X}$}
+\section{Tactics and marks for $\gruKPGame{X}$}
 
 While $\pl O\ktactwin{k+1}\gruConGame{\oneptcomp X}{\infty}$ implies
 $\pl O\tactwin\gruConGame{\oneptcomp X}{\infty}$, and likewise for Markov
@@ -411,14 +411,16 @@ for any $k<\omega$.
   an clopen neighborhood of $\alpha\in\omega_1$ for each $m<\omega$.
 \end{defn}
 
-\begin{lem}
-  Let $F\in \omega_1^{<\omega}$ and $m<\omega$.
-  Then $K_F$, $K_F'$, $L_m$ are compact in $\mb X$ as defined below.
+\begin{defn}
+  Let $F\in \omega_1^{<\omega}$ and $m,n<\omega$.
   \[
     K_F = \bigcup_{\alpha \in F} B_{\alpha,0}
   \]
   \[
-    A = \{z^\frown \<1\> : z \in \{0\}^{<\omega}\}
+    z_n:n\to\{0\}
+  \]
+  \[
+    A = \{z_n^\frown \<1\> : n<\omega\}
   \]
   \[
     K_F' = K_F \setminus (X \times A)
@@ -426,6 +428,10 @@ for any $k<\omega$.
   \[
     L_m = X \times 2^{<m}
   \]
+\end{defn}
+
+\begin{lem}
+  Then $K_F$, $K_F'$, $L_m$ are compact in $\mb X$.
   Furthermore, every compact set is contained in a union of $K_F'$, $L_m$
   for some $F\in C^{<\omega}$ and $m<\omega$.
 \end{lem}
@@ -517,56 +523,119 @@ $\<x,s\>\in X\times 2^{<\omega}$.
 \end{lem}
 
 \begin{proof}
-  TODO
-  % Let $\sigma$ be a winning mark for $\pl K$ such that $m\leq n$ and
-  % $r$ a subsequence of $s$ implies $\sigma(r,m)\subseteq\sigma(s,n)$.
-  % Define $n:\mb X\to\omega$ by
-  %   \[
-  %     n(x)
-  %       =
-  %     \left\{
-  %       \begin{array}{lcl}
-  %         |s|+1
-  %       & : &
-  %         x = \<x',s\> \in X\times 2^{<\omega}
-  %       \\
-  %         0
-  %       & : &
-  %         x \in C
-  %       \end{array}
-  %     \right.
-  %   \]
-  % and use $n$ to define the $k+1$-tactic $\tau$ by
-  %   \[
-  %     \tau(\emptyset)=\sigma(\emptyset,0)
-  %   \]
-  %   \[
-  %     \tau(t\concat\<x\>)
-  %       =
-  %     L_{n(x)}
-  %       \cup
-  %     \{x\}
-  %       \cup
-  %     \sigma(t\concat\<x\>,n(x))
-  %   \]
+  Let $\sigma$ be a winning mark for $\pl K$ such that $m\leq n$ and
+  $\ran r \subseteq \ran s$ implies $\sigma(r,m)\subseteq\sigma(s,n)$.
+  Define $r:\mb X\to\omega$ by
+    \[
+      r(x)
+        =
+      \left\{
+        \begin{array}{lcl}
+          |s|
+        & : &
+          x = \<x',s\> \in X\times 2^{<\omega}
+        \\
+          0
+        & : &
+          x \in C
+        \end{array}
+      \right.
+    \]
+  and use $r$ to define the tactic $\tau$ by
+    \[
+      \tau(\emptyset)
+        =
+      \sigma(\emptyset,0)
+    \]
+    \[
+      \tau(\<x\>)
+        =
+      L_{r(x)+1}
+        \cup
+      \{x\}
+        \cup
+      \sigma(\<x\>,r(x))
+    \]
 
-  % Let $p:\omega\to\mb X$ be a legal attack by $\pl P$ against $\tau$.
-  % If $p(n)\in C$ for $n>N$, then since no $p(n)$ may be repeated,
-  % $\{\{p(n)\}:N<n<\omega\}$ is a discrete collection, making
-  % $\{\{p(n)\}:n<\omega\}$ locally finite.
+  Let $p:\omega\to\mb X$ be a legal attack by $\pl P$ against $\tau$.
+  If $p(n)\in C$ for $n>N$, then since no $p(n)$ may be repeated,
+  $\{\{p(n)\}:N<n<\omega\}$ is a discrete collection, making
+  $\{\{p(n)\}:n<\omega\}$ locally finite.
 
-  % Otherwise, let $q:\omega\to X\times 2^{<\omega}$ be the subsequence of $p$
-  % removing points in $C$. If $q(0)=p(0)$, then
-  %   \[
-  %     q(0)
-  %       =
-  %     p(0)
-  %       \not\in
-  %     \tau(\emptyset)
-  %       =
-  %     \sigma(\emptyset,0)
-  %   \]
-  % and for any other $q(n)=p(m+1)=$
+  Otherwise, let $q:\omega\to X\times 2^{<\omega}$ be the subsequence of $p$
+  removing points in $C$ with $p(f(i))=q(i)$ (note $f(i)\geq i$).
+  It follows that
+    \[
+      q(0)
+        =
+      p(f(0))
+        \not\in
+      \tau(\emptyset)
+        \cup
+      \bigcup_{m<f(0)}\tau(\<p(m)\>)
+        \supseteq
+      \tau(\emptyset)
+        =
+      \sigma(\emptyset,0)
+    \]
+
+  Denoting $q(n)=\<x_n',s_n\>$, it's trivial to note that $|s_0|\geq 0$.
+  Assuming that $|s_m|\geq m$ for $m\leq n$,
+  it then follows that
+    \[
+      q(n+1)
+        =
+      p(f(n+1))
+        \not\in
+      \tau(\emptyset)
+        \cup
+      \bigcup_{m<f(n+1)}\tau(\<p(m)\>)
+    \]
+    \[
+        \supseteq
+      \tau(\emptyset)
+        \cup
+      \bigcup_{m\leq n}\tau(\<p(f(m))\>)
+        =
+      \tau(\emptyset)
+        \cup
+      \bigcup_{m\leq n}\tau(\<q(m)\>)
+    \]
+    \[
+        \supseteq
+      \sigma(\emptyset,0)
+        \cup
+      \bigcup_{m\leq n}\sigma(\<q(m)\>,|s_m|)
+        \supseteq
+      \sigma(\emptyset,0)
+        \cup
+      \bigcup_{m\leq n}\sigma(\<q(m)\>,m)
+    \]
+  and $q(n+1)\not\in\tau(\<q(n)\>)\supseteq L_{|s_n|+1}$ gives
+  $|s_{n+1}|\geq|s_n|+1\geq n+1$.
+  Thus $q$ is a legal attack on the winning Markov strategy $\sigma$, so
+  the collection $\{\{q(n)\}:n<\omega\}$ is locally finite.
+  and it follows that $\{\{p(n)\}:n<\omega\}$ is also locally finite.
+\end{proof}
+
+\begin{lem}
+  If $\pl K\kmarkwin{k+1}\gruKPGame{\mathbb{X}}$, then
+  $\pl K\markwin\gruKPGame{\mathbb{X}}$.
+\end{lem}
+
+\begin{proof}
+  Let $\sigma$ be a winning $k+1$-mark for $\pl K$ such that for
+  $s\in[\mb X]^{\leq k+1}$ and $n<\omega$, there exist
+  $F(s,n)\in[\omega_1]^{<\omega}$ and $m(s,n)<\omega$ with
+  \[
+    \sigma(s,n)
+      \subseteq
+    K_{F(s,n)}'
+      \cup
+    L_{m(s,n)}
+  \]
+  Also, it may be assumed that $i<n$ and $\ran r \subseteq \ran s$ implies
+  $F(r,i)\subseteq F(s,n)$ and $m(r,i)\leq m(s,n)$, as well as $n\leq m(s,n)$.
 \end{proof}
 
 

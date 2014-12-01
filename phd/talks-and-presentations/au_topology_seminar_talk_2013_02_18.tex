@@ -1,4 +1,6 @@
-\input{./header.tex}
+\input{../../header.tex}
+
+\newcommand{\close}[1]{\overline{#1}}
 
 
 
@@ -24,45 +26,45 @@ Let $\mc{B}$ be a clopen base for $X$ of cardinality $2^\omega$ which is a refin
 \end{proof}
 
 \begin{definition}
-Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a topological sum of $2^{<\omega}$ copies of $X$ along with a discrete copy of a subspace $C \subseteq 2^\omega$ of the Cantor Set, and add open (in fact, compact) neighborhoods of the form: 
+Using the $X$ from Theorem \ref{basic_x}, let \[\mathbb{X} = (X \times 2^{<\omega}) \cup 2^\omega\] compose a topological sum of $2^{<\omega}$ copies of $X$ along with a discrete copy of a subspace $C \subseteq 2^\omega$ of the Cantor Set, and add open (in fact, compact) neighborhoods of the form:
   \[
     B_c = c \cup (U_c \times \{c\rest n : n < \omega\})
   \]
 as seen in Figure \ref{fig:cantor_tree}.
 \end{definition}
 
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=6in]{cantor_tree_open.pdf}
-  \caption{The Cantor Tree space $\mathbb{X}$}
-  \label{fig:cantor_tree}
-\end{figure}
+% \begin{figure}[p]
+%   \centering
+%   \includegraphics[width=6in]{cantor_tree_open.pdf}
+%   \caption{The Cantor Tree space $\mathbb{X}$}
+%   \label{fig:cantor_tree}
+% \end{figure}
 
 \begin{definition}
-Let $S\in[C]^{<\omega}$ and $m<\omega$. Define 
+Let $S\in[C]^{<\omega}$ and $m<\omega$. Define
   \[
     K_S = \bigcup_{c \in S} B_c
-  \] 
-  \[ 
+  \]
+  \[
     A = \{z^\frown \<1\> : z \in 1^{<\omega}\}
-  \] 
-  \[ 
+  \]
+  \[
     K^*_S = K_S \setminus (X \times A)
-  \] 
+  \]
   \[
     L_m = X \times 2^{<m}
-  \] 
+  \]
 and observe that every compact set is dominated by the compact set $K^*_S \cup L_m$ for some $S,m$.
 
 Intuitively, $K^*_S$ collects the branches of $U_c$ converging up to each $c \in S$ while avoiding the copy of $X$ for each $s$ in an antichain $A$, and $L_m$ collects the copies of $X$ with $|s| < m$ at the base of the tree. (See Figure \ref{fig:cantor_tree_compact})
 \end{definition}
 
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=6in]{cantor_tree_compact.pdf}
-  \caption{$K^*_S$ and $L_m$}
-  \label{fig:cantor_tree_compact}
-\end{figure}
+% \begin{figure}[p]
+%   \centering
+%   \includegraphics[width=6in]{cantor_tree_compact.pdf}
+%   \caption{$K^*_S$ and $L_m$}
+%   \label{fig:cantor_tree_compact}
+% \end{figure}
 
 \begin{definition}
 $\lfkpgame{\mathbb{X}}$ is a topological game consisting of players $K$ and $P$. During each round, $K$ chooses a compact subset of $\mathbb{X}$, and $P$ chooses a point outside of any compact set previously played by $K$. $K$ wins the game if the set of points chosen by $P$ throughout all rounds of the game are locally finite in the space.
@@ -87,9 +89,9 @@ $K \win \lfkpgame{\mathbb{X}}$
 \begin{proof}
 Let $x\in X$. $C^x = \{c \in C : x \in U_c\}$ is a countable collection by the point-countability of $\mc{U}$, so label its elements as $\{c^x_n: n<\omega\}$.
 
-$K$ may use the strategy 
+$K$ may use the strategy
   \[
-    \sigma(\<x_0,s_0\>,\dots,\<x_{n-1},s_{n-1}\>) = 
+    \sigma(\<x_0,s_0\>,\dots,\<x_{n-1},s_{n-1}\>) =
     \bigcup_{i < n} K_{\{c^{x_i}_0,\dots,c^{x_i}_{n-1}\}} \cup L_{|s_i|+1}
   \]
 
@@ -103,14 +105,14 @@ $K\not\tactwin\lfkpgame{\mathbb{X}}$.
 \begin{proof}
 This is actually a corollary of Gruenhage's theorem in \cite{G2}: $\mathbb{X}$ is locally compact (each point is either in some $X$ or in some $B_c$) but not metacompact (any cover of $C$ necessarily will have infinite overlap at some $X \times \{s\}$). However, we proceed with a direct game-theoretic proof.
 
-Suppose that $\sigma(\<x,s\>)$ was a winning tactical strategy for $K$ and define the compact set 
+Suppose that $\sigma(\<x,s\>)$ was a winning tactical strategy for $K$ and define the compact set
   \[
     \sigma'(x,n) = \bigcup_{|s|\leq n} \sigma(\<x,s\>)
   \]
 
 There exists some $f: C \to \omega$ such that for all $x\in U_c$, $\sigma'(x,f(c))$ covers some $B_c \setminus L_m$. (If not, $P$ counters by simply always playing in $B_c \setminus L_m$.)
 
-Recall that $\mc{U}$ is not the union of the countably-many point-finite collections, and 
+Recall that $\mc{U}$ is not the union of the countably-many point-finite collections, and
   \[
     \mc{U} = \bigcup_{n<\omega} \{U_c : f(c) = n\}
   \]
@@ -126,7 +128,7 @@ $K\not\ktactwin{2}\lfkpgame{\mathbb{X}}$.
 \begin{proof}
 Suppose $\sigma(\<x,s\>,\<y,t\>)$ was a winning 2-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x,y,n)\in [C]^{<\omega}$ (increasing on $n$) and $n<m(x,y,n)<\omega$ such that for each $(x,y)$,
   \[
-    \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq 
+    \bigcup_{s,t \in 2^{\leq n}} \sigma(\<x,s\>,\<y,t\>) \subseteq
     K^*_{S(x,y,n)} \cup L_{m(x,y,n)}
   \]
 and so we assume
@@ -135,9 +137,9 @@ and so we assume
     K^*_{S(x,y,\max(|s|,|t|))} \cup L_{m(x,y,\max(|s|,|t|))}
   \]
 
-Select an arbitrary point $x' \in X$. We define a tactical strategy 
+Select an arbitrary point $x' \in X$. We define a tactical strategy
   \[
-  \tau(x,s) = 
+  \tau(x,s) =
   K^*_{S(x,x',m(x,x',|s|)+1)} \cup L_{m(x,x',m(x,x',|s|)+1)}
   \]
 We complete the proof by showing $\tau$ is a winning tactical strategy (a contradiction).
@@ -156,7 +158,7 @@ We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
   \[
     |s_i| <
     m(x_i,x',|s_i|)+1 =
-    |{z_{m(x_i,x',|s_i|)}}^\frown\<1\>| 
+    |{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|
   \]
   \[
     <
@@ -175,7 +177,7 @@ Note that $m(x,y,\max(|s|,|t|))$ is increasing throughout this play of the game 
   \]
   \[
     \leq
-    |s_{i+1}| 
+    |s_{i+1}|
   \]
   \[
     <
@@ -213,7 +215,7 @@ which we can see here:
     |{z_{m(x_{i+1},x',|s_{i+1}|)}}^\frown\<1\>|
   \]
 
-We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
+We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids
   \[
   L_{m(x_{i},x',\max(|s_{i}|,|{z_{m(x_i,x',|s_i|)}}^\frown\<1\>|))}
   \]
@@ -226,7 +228,7 @@ since
 
 Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, for $h\leq i$ it avoided
   \[
-    K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} = 
+    K^*_{S(x_h,x',m(x_h,x',|s_h|)+1)} =
     K^*_{S(x_h,x',\max(|s_h|,|{z_{m(x_h,x',|s_h|)}}^\frown\<1\>|))}
   \]
 and when $h<i$, we see it avoids:
@@ -253,7 +255,7 @@ The proof proceeds in parallel to the proof of $K\not\ktactwin{2}\lfkpgame{\math
 
 Suppose $\sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)$ was a winning $(k+1)$-tactical strategy. Without loss of generality we assume it ignores order. We may define $S(x_0,\dots,x_{k},n)\in [C]^{<\omega}$ (increasing on $n$) and $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each $(x_0,\dots,x_{k})$,
   \[
-    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq 
+    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}} \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>) \subseteq
     K^*_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
   \]
 and so we assume
@@ -262,7 +264,7 @@ and so we assume
     K^*_{S(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))} \cup L_{m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
   \]
 
-Select an arbitrary point $x' \in X$. Let $M^0(x,n)=m(x,x',\dots,x',n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$. We define a tactical strategy 
+Select an arbitrary point $x' \in X$. Let $M^0(x,n)=m(x,x',\dots,x',n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$. We define a tactical strategy
   \[
   \tau(x,s) = K^*_{S(x,x',\dots,x',M^{k-1}(x,|s|)+1)} \cup L_{m(x,x',\dots,x',M^{k-1}(x,|s|)+1)}
   \]
@@ -274,18 +276,18 @@ Suppose
 \]
 successfully countered $\tau$ by clustering at $c\in C$ (the strategy trivially prevents clustering elsewhere). Let $z_n = \<0,\dots,0\>$ with $n$ zeros. We claim
 \[
-  \<x_0, s_0\>, 
+  \<x_0, s_0\>,
   \<x', {z_{M^0(x_0,|s_0|)}}^\frown\<1\>\>,
-  \<x', {z_{M^1(x_0,|s_0|)}}^\frown\<1\>\>, 
-  \dots, 
+  \<x', {z_{M^1(x_0,|s_0|)}}^\frown\<1\>\>,
+  \dots,
   \<x', {z_{M^{k-1}(x_0,|s_0|)}}^\frown\<1\>\>,
 \]
 \[
-  \<x_1, s_1\>, 
-  \<x', {z_{M^0(x_1,|s_1|)}}^\frown\<1\>\>, 
-  \<x', {z_{M^1(x_1,|s_1|)}}^\frown\<1\>\>, 
-  \dots, 
-  \<x', {z_{M^{k-1}(x_1,|s_1|)}}^\frown\<1\>\>, 
+  \<x_1, s_1\>,
+  \<x', {z_{M^0(x_1,|s_1|)}}^\frown\<1\>\>,
+  \<x', {z_{M^1(x_1,|s_1|)}}^\frown\<1\>\>,
+  \dots,
+  \<x', {z_{M^{k-1}(x_1,|s_1|)}}^\frown\<1\>\>,
   \dots
 \]
 is a successful counter to $\sigma$.
@@ -295,14 +297,14 @@ We will need the fact that, as $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$:
     |s_i| <
     M^0(x_i,|s_i|)+1 =
     |{z_{M^0(x_i,|s_i|)}}^\frown\<1\>| <
-    M^0(x_i,M^0(x_i,|s_i|)+1)+1 
+    M^0(x_i,M^0(x_i,|s_i|)+1)+1
   \]
   \[
     =
     M^1(x_i,|s_i|)+1 =
     |{z_{M^1(x_i,|s_i|)}}^\frown\<1\>| <
     \dots <
-    |{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>| 
+    |{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|
   \]
   \[
     =
@@ -325,7 +327,7 @@ Note that $m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))$ is increasing throughout 
   \]
   \[
     \leq
-    |s_{i+1}| 
+    |s_{i+1}|
   \]
   \[
     <
@@ -396,7 +398,7 @@ which we can see here:
     |{z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
   \]
 
-We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids 
+We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids
   \[
   L_{m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))}
   \]
@@ -421,15 +423,15 @@ since
 
 Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, for $h\leq i$ it avoided
   \[
-    K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)} 
+    K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)}
   \]
   \[
-    = 
+    =
     K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
   \]
 and when $h<i$, we see it avoids both:
   \[
-    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
   \]
   \[
     =
@@ -445,7 +447,7 @@ and when $h<i$, we see it avoids both:
   \]
 and:
   \[
-    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))} 
+    K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
   \]
   \[
     =
@@ -487,7 +489,7 @@ and observe that since for any legal play of the game, the round number $n \leq 
   Topology Appl. 23 (1986), 291-297
 
 \bibitem{Michael}
-  G. Gruenhage and E. Michael, 
+  G. Gruenhage and E. Michael,
   \emph{A result on shrinkable open covers}.
   Proceedings of the 1983 topology conference (Houston, Tex., 1983), 1983, pp. 37–43.
 
@@ -498,8 +500,8 @@ and observe that since for any legal play of the game, the round number $n \leq 
 
 \bibitem{Watson}
   S. Watson,
-  \emph{Locally compact normal meta-Lindel\"of spaces may not be paracompact: 
-  an application of uniformization and Suslin lines}. 
+  \emph{Locally compact normal meta-Lindel\"of spaces may not be paracompact:
+  an application of uniformization and Suslin lines}.
   Proc. Amer. Math. Soc. 98 (1986), no. 4, 676–680.
 
 \end{thebibliography}
