@@ -232,6 +232,9 @@ predetermined strategies in Hausdorff $k$-spaces.
   $\sigma$ is a winning predetermined strategy.
 \end{proof}
 
+The following result was observed in \cite{MR540599}; a proof is provided
+for convenience.
+
 \begin{prop}
   Hemicompact $k$-spaces are $k_\omega$-spaces.
 \end{prop}
@@ -381,15 +384,14 @@ While $\pl O\ktactwin{k+1}\gruConGame{\oneptcomp X}{\infty}$ implies
 $\pl O\tactwin\gruConGame{\oneptcomp X}{\infty}$, and likewise for Markov
 strategies, this result cannot be
 immediately extended to $\gruKPGame{X}$. However, this section will
-demonstrate a non-trivial example of a space $\mb X$ for which
-$\pl K\win\gruKPGame{\mb X}$ but $\pl K\not\kmarkwin{k}\gruKPGame{\mb X}$
+demonstrate a non-trivial example of a space $\pmb X$ for which
+$\pl K\win\gruKPGame{\pmb X}$ but $\pl K\not\kmarkwin{k}\gruKPGame{\pmb X}$
 for any $k<\omega$.
 
 \begin{thm}
   There exists a compact, zero-dimensional topological space $X$
   such that $X$ has a point-countable cover
-  $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of
-  clopen sets which is not $\sigma$-point-finite.
+  $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of distinct clopen sets.
 \end{thm}
 
 \begin{proof}
@@ -397,18 +399,19 @@ for any $k<\omega$.
 \end{proof}
 
 \begin{defn}
-  Let $\mb X=(X\times 2^{<\omega})\cup C$ denote a Cantor tree
+  Let $\pmb X=(X\times 2^{<\omega})\cup C$ denote a Cantor tree
   of copies of a zero-dimensional, compact space $X$ with a point-countable
   cover $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of
   clopen sets which is not $\sigma$-point-finite, along with an uncountable
   subset of the Cantor set
   $C=\{c_\alpha:\alpha<\omega_1\}\in [2^\omega]^{\omega_1}$.
-  The topology on $\mb X$ is
+  The topology on $\pmb X$ is
   given by decaring $U\times\{s\}$ to be a open
   neighborhood of $\<x,s\>\in X\times 2^{<\omega}$ for each
   open neighborhood $U$ of $x$ in $X$, and declaring
-  $B_{\alpha,n}=(U_\alpha\times\{f\rest n: m\leq n<\omega\})\cup\{f\}$ to be
-  an clopen neighborhood of $\alpha\in\omega_1$ for each $m<\omega$.
+  $B_{\alpha,n}=(U_\alpha\times\{c_\alpha\rest n: m\leq n<\omega\})\cup\{c_\alpha\}$
+  to be a clopen neighborhood of $c_\alpha\in C$ for each $\alpha<\omega_1$,
+  $m<\omega$.
 \end{defn}
 
 \begin{defn}
@@ -417,10 +420,10 @@ for any $k<\omega$.
     K_F = \bigcup_{\alpha \in F} B_{\alpha,0}
   \]
   \[
-    z_n:n\to\{0\}
+    a_n = \{\<i,0\>:i<n\}\cup\{\<n,1\>\}
   \]
   \[
-    A = \{z_n^\frown \<1\> : n<\omega\}
+    A = \{a_n : n<\omega\}
   \]
   \[
     K_F' = K_F \setminus (X \times A)
@@ -431,7 +434,7 @@ for any $k<\omega$.
 \end{defn}
 
 \begin{lem}
-  Then $K_F$, $K_F'$, $L_m$ are compact in $\mb X$.
+  Then $K_F$, $K_F'$, $L_m$ are compact in $\pmb X$.
   Furthermore, every compact set is contained in a union of $K_F'$, $L_m$
   for some $F\in C^{<\omega}$ and $m<\omega$.
 \end{lem}
@@ -439,8 +442,8 @@ for any $k<\omega$.
 \begin{proof}
   $K_F$ contains $C_F=\{c_\alpha: \alpha\in F\}\subseteq C$, so any
   cover of basic open sets must include $B_{\alpha,n_\alpha}$ for each
-  $\alpha\in F$, and the remaining uncovered portion of $K_F$ is a finite
-  union of copies of closed subsets of compact $X$. Then $K_F'$ is also
+  $\alpha\in F$, and the remaining uncovered portion of $K_F$ is a closed
+  subset of a finite union of copies of compact $X$. Then $K_F'$ is also
   compact as it is a closed subset of $K_F$, and $L_m$ is compact as it
   is a finite union of copies of compact $X$.
 
@@ -458,12 +461,12 @@ for any $k<\omega$.
         s\in 2^{<\omega}
       \}
     \]
-  and note that the finite subcover for $D$ is a refinement of some
-  $K_F'$ and $L_m$.
+  and note that the finite subcover for $D$ contains subsets of some
+  $K_F' \cup L_m$.
 \end{proof}
 
 \begin{thm}
-  $\pl K\win\gruKPGame{\mb X}$.
+  $\pl K\win\gruKPGame{\pmb X}$.
 \end{thm}
 
 \begin{proof}
@@ -471,44 +474,45 @@ for any $k<\omega$.
   for each $x\in X$ let $\alpha_{x,n}<\omega_1$ yield
   ordinals such that $x\in U_{\alpha_{x,n}}$ for $n<\omega$.
 
-  Let $M:\mb X\times \omega\to \mc K(\mb X)$ as follows:
+  Let $M:\pmb X\times \omega\to \mc K(\pmb X)$ as follows:
     \[
-      M(x,n)
+      M(\pmb x,n)
         =
       \left\{
         \begin{array}{lcl}
-          K_{\{\alpha_{x',m}:m\leq n\}}
+          K_{\{\alpha_{x,m}:m\leq n\}}
         & : &
-          x = \<x',s\> \in X\times 2^{<\omega}
+          \pmb x = \<x,s\> \in X\times 2^{<\omega}
         \\
           K_{\{\alpha\}}
         & : &
-          x = c_\alpha \in C
+          \pmb x = c_\alpha \in C
         \end{array}
       \right.
     \]
-  and use $M$ to define the strategy $\sigma$ for each $a\in\mb X^{<\omega}$:
+  and use $M$ to define the strategy $\sigma$ for each $\pmb a\in\pmb X^{<\omega}$:
     \[
-      \sigma(a)
+      \sigma(\pmb a)
         =
-      L_{|a|}
+      L_{|\pmb a|}
         \cup
-      \bigcup_{i\leq |a|}
-      M(a(i),|a|)
+      \bigcup_{i< |\pmb a|}
+      M(\pmb a(i),|\pmb a|)
     \]
 
-  Let $p:\omega\to\mb X$ be a legal attack against $\sigma$. Then as
-  $p(n)\not\in L_n$, for each $x=\<x',s\>\in X\times 2^{<\omega}$,
-  $X\times\{s\}$ is an open neighborhood of $x$ which contains finitely
-  many $p(n)$.
+  Let $\pmb p:\omega\to\pmb X$ be a legal attack against $\sigma$. Then as
+  $\pmb p(n)\not\in L_n$, for each $\pmb x=\<x,s\>\in X\times 2^{<\omega}$,
+  $X\times\{s\}$ is an open neighborhood of $\pmb x$ which contains finitely
+  many $\pmb p(n)$.
 
-  Then consider $x=c_\alpha$ for some $\alpha<\omega_1$. Then if
-  $p(n)=\<x',s\>$ for some $n<\omega$, $x'\in U_\alpha$ or
-  $p(n)=c_\alpha$, then
-  $\alpha = \alpha_{p(n),N}$ for some $N<\omega$ and $p(m)\not\in B_{\alpha,0}$
-  for $n+N<m<\omega$. Otherwise, $p(m)\not\in B_{\alpha,0}$ for any $m<\omega$.
-  Either way, $B_{\alpha,0}$ is a neighborhood of $x$ which contains finitely
-  many $p(n)$. Therefore, $\sigma$ is a winning strategy.
+  Then consider $\pmb x=c_\alpha$ for some $\alpha<\omega_1$, and let $n<\omega$.
+  Then if $\pmb p(n)=\<x,s\>$ with $\alpha = \alpha_{x,N}$ for some $N<\omega$,
+  then $\pmb p(m)\not\in B_{\alpha,0}$ for $\max(n,N)<m<\omega$.
+  Or, if $\pmb p(n)=c_\alpha$, then
+  $\pmb p(m)\not\in B_{\alpha,0}$ for $n<m<\omega$.
+  Otherwise, $\pmb p(m)\not\in B_{\alpha,0}$ for any $m<\omega$.
+  In any case, $B_{\alpha,0}$ is a neighborhood of $\pmb x$ which contains finitely
+  many $\pmb p(n)$. Therefore, $\sigma$ is a winning strategy.
 \end{proof}
 
 We will show that there does not exist any winning $k$-Markov strategy for
@@ -518,137 +522,183 @@ integer by forcing her to play outside $L_{|s|+1}$ in response to
 $\<x,s\>\in X\times 2^{<\omega}$.
 
 \begin{lem}
-  If $\pl K\markwin\gruKPGame{\mathbb{X}}$, then
-  $\pl K\tactwin\gruKPGame{\mathbb{X}}$.
+  If $\pl K\kmarkwin{k+1}\gruKPGame{\pmb X}$, then
+  $\pl K\ktactwin{k+1}\gruKPGame{\pmb X}$.
 \end{lem}
 
 \begin{proof}
-  Let $\sigma$ be a winning mark for $\pl K$ such that $m\leq n$ and
+  Let $\sigma$ be a winning $k+1$-mark for $\pl K$ such that $m\leq n$ and
   $\ran r \subseteq \ran s$ implies $\sigma(r,m)\subseteq\sigma(s,n)$.
-  Define $r:\mb X\to\omega$ by
+  For a sequence $p$, let $p\rest^k n=\nu_k(p\rest n)$ give the last $k$
+  terms of $p\rest n$.
+
+  Define $r:\pmb X\to\omega$ by
     \[
-      r(x)
+      r(\pmb x)
         =
       \left\{
         \begin{array}{lcl}
           |s|
         & : &
-          x = \<x',s\> \in X\times 2^{<\omega}
+          \pmb x = \<x,s\> \in X\times 2^{<\omega}
         \\
           0
         & : &
-          x \in C
+          \pmb x \in C
         \end{array}
       \right.
     \]
-  and use $r$ to define the tactic $\tau$ by
+  and use $r$ to define the $k+1$-tactic $\tau$ by
     \[
       \tau(\emptyset)
         =
       \sigma(\emptyset,0)
     \]
     \[
-      \tau(\<x\>)
+      \tau(\pmb t\concat\<\pmb x\>)
         =
-      L_{r(x)+1}
+      L_{r(\pmb x)+1}
         \cup
-      \{x\}
+      \{\pmb x\}
         \cup
-      \sigma(\<x\>,r(x))
+      \sigma(\pmb t\concat\<\pmb x\>,r(\pmb x)+1)
     \]
 
-  Let $p:\omega\to\mb X$ be a legal attack by $\pl P$ against $\tau$.
-  If $p(n)\in C$ for $n>N$, then since no $p(n)$ may be repeated,
-  $\{\{p(n)\}:N<n<\omega\}$ is a discrete collection, making
-  $\{\{p(n)\}:n<\omega\}$ locally finite.
+  Let $\pmb p:\omega\to\pmb X$ be a legal attack by $\pl P$ against $\tau$.
+  If $\pmb p(n)\in C$ for $N<n<\omega$, then since no $\pmb p(n)$ may be legally
+  repeated, $\{\{\pmb p(n)\}:N<n<\omega\}$ is a discrete collection, making
+  $\{\{\pmb p(n)\}:n<\omega\}$ locally finite.
 
-  Otherwise, let $q:\omega\to X\times 2^{<\omega}$ be the subsequence of $p$
-  removing points in $C$ with $p(f(i))=q(i)$ (note $f(i)\geq i$).
+  Otherwise, let $f\in\omega^\omega$ be increasing and define
+  $\pmb q:\omega\to X\times 2^{<\omega}$ such that $\pmb q(i)=\pmb p(f(i))$,
+  and $\pmb p(j)\in X\times 2^{<\omega}$ implies there is some $i$ with $j=f(i)$.
   It follows that
     \[
-      q(0)
+      \pmb q(0)
         =
-      p(f(0))
+      \pmb p(f(0))
         \not\in
-      \tau(\emptyset)
-        \cup
-      \bigcup_{m<f(0)}\tau(\<p(m)\>)
+      \bigcup_{m\leq f(0)}\tau(\pmb p \rest^{k+1} m)
         \supseteq
       \tau(\emptyset)
         =
       \sigma(\emptyset,0)
     \]
 
-  Denoting $q(n)=\<x_n',s_n\>$, it's trivial to note that $|s_0|\geq 0$.
+  Denoting $\pmb q(n)=\<x_n,s_n\>$, it's trivial to note that $|s_0|\geq 0$.
   Assuming that $|s_m|\geq m$ for $m\leq n$,
   it then follows that
     \[
-      q(n+1)
+      \pmb q(n+1)
         =
-      p(f(n+1))
+      \pmb p(f(n+1))
         \not\in
-      \tau(\emptyset)
-        \cup
-      \bigcup_{m<f(n+1)}\tau(\<p(m)\>)
+      \bigcup_{m\leq f(n+1)}\tau(\pmb p\rest^{k+1} m)
     \]
     \[
         \supseteq
-      \tau(\emptyset)
+      \bigcup_{m\leq n}\tau(\pmb q\rest^{k+1} m)
+        \supseteq
+      \sigma(\emptyset,0)
         \cup
-      \bigcup_{m\leq n}\tau(\<p(f(m))\>)
+      \bigcup_{m < n}\sigma(\pmb q\rest^{k+1} (m+1),|s_m|+1)
+    \]
+    \[
+        \supseteq
+      \sigma(\emptyset,0)
+        \cup
+      \bigcup_{m < n}\sigma(\pmb q\rest^{k+1} (m+1),m+1)
+    \]
+  and
+    \[
+      \pmb q(n+1)
+        \not\in
+      \tau(\pmb q\rest^{k+1} (n+1))
+        \supseteq
+      L_{r(\pmb q(n))}
         =
-      \tau(\emptyset)
-        \cup
-      \bigcup_{m\leq n}\tau(\<q(m)\>)
+      L_{|s_n|+1}
     \]
-    \[
-        \supseteq
-      \sigma(\emptyset,0)
-        \cup
-      \bigcup_{m\leq n}\sigma(\<q(m)\>,|s_m|)
-        \supseteq
-      \sigma(\emptyset,0)
-        \cup
-      \bigcup_{m\leq n}\sigma(\<q(m)\>,m)
-    \]
-  and $q(n+1)\not\in\tau(\<q(n)\>)\supseteq L_{|s_n|+1}$ gives
-  $|s_{n+1}|\geq|s_n|+1\geq n+1$.
-  Thus $q$ is a legal attack on the winning Markov strategy $\sigma$, so
-  the collection $\{\{q(n)\}:n<\omega\}$ is locally finite.
-  and it follows that $\{\{p(n)\}:n<\omega\}$ is also locally finite.
+  gives $|s_{n+1}|\geq|s_n|+1\geq n+1$.
+  Thus $\pmb q$ is a legal attack on the winning $k+1$-Markov strategy
+  $\sigma$, so the collection $\{\{\pmb q(n)\}:n<\omega\}$ is locally finite.
+  and it follows that $\{\{\pmb p(n)\}:n<\omega\}$ is also locally finite.
 \end{proof}
 
 \begin{lem}
-  If $\pl K\kmarkwin{k+1}\gruKPGame{\mathbb{X}}$, then
-  $\pl K\markwin\gruKPGame{\mathbb{X}}$.
+  If $\pl K\ktactwin{k+2}\gruKPGame{\pmb X}$, then
+  $\pl K\ktactwin{k+1}\gruKPGame{\pmb X}$.
 \end{lem}
 
 \begin{proof}
-  Let $\sigma$ be a winning $k+1$-mark for $\pl K$ such that for
-  $s\in[\mb X]^{\leq k+1}$ and $n<\omega$, there exist
-  $F(s,n)\in[\omega_1]^{<\omega}$ and $m(s,n)<\omega$ with
-  \[
-    \sigma(s,n)
-      \subseteq
-    K_{F(s,n)}'
-      \cup
-    L_{m(s,n)}
-  \]
-  Also, it may be assumed that $i<n$ and $\ran r \subseteq \ran s$ implies
-  $F(r,i)\subseteq F(s,n)$ and $m(r,i)\leq m(s,n)$, as well as $n\leq m(s,n)$.
+  \newcommand{\hi}{\text{height}}
+  \newcommand{\de}{\text{depth}}
+  Fix an arbitrary $y\in X$. For $\pmb t\in \pmb X^{<\omega}$, define the
+  following:
+    \begin{itemize}
+      \item $\hi(\pmb t)<\omega$ satisfying
+            $|s|\leq \hi(\pmb t)$ for each
+            $\<x,s\>\in(X\times 2^{<\omega})\cap \ran{\pmb t}$
+      \item $\de(\pmb t)\in [X]^{<\omega}$ satisfying
+            $x\in\de(\pmb t)$ for each
+            $\<x,s\>\in(X\times 2^{<\omega})\cap \ran{\pmb t}$
+      % \item $\pmb R(\pmb t)\in [\pmb X^{<\omega}]^{<\omega}$ such that
+      %       $\pmb r\in \pmb R(\pmb t)$
+      %       satisfies one of the following:
+      %   \begin{itemize}
+      %     \item $\pmb r(i)=c$ where $c\in C\cap\ran{\pmb t}$
+      %     \item $\pmb r(i)=\<x,s\>$ where $s\leq\hi(\pmb t)$,
+      %                                     $x\in\de(\pmb t)$
+      %     \item $\pmb r(i)=\<y,s\>$ where $s\leq\hi(\pmb t)$
+      %   \end{itemize}
+    \end{itemize}
+
+  For each compact set $C$, define $F(C)\in[\omega_1]^{<\omega}$ and
+  $m(C)<\omega$ such that $C\subseteq K'_{F(C)}\cup L_{m(C)}$.
+
+  Let $\sigma$ be a winning $k+2$-tactic for $\pl K$.
+  For $\pmb t\in \pmb X^{<\omega}$, let $\pmb r\preceq \pmb t$ denote that
+  $\pmb r$ is a subsequence of a permutation of $\pmb t$, and let
+  $\pmb r\preceq_i \pmb t$ denote that $\pmb r$ is a subsequence of a
+  permutation of $\pmb t\concat\<\<y,s\>\>$ for some $s\in 2^{\leq i}$.
+
+  Let $M(\pmb t)=\max_{\pmb r\preceq \pmb t} m(\sigma(\pmb r\rest^{k+2}))$.
+  We construct a $k+1$-tactic $\tau$ for $\pl K$ as follows:
+    \[
+      \tau(\pmb t)
+        =
+      \bigcup_{\pmb r\preceq_{|M(\pmb t)|} \pmb t}
+      \sigma(\pmb r)
+    \]
+  Let $\pmb p:\omega\to\pmb X$ be a legal attack against $\tau$, so
+    \[
+      \pmb p(n)
+        \not\in
+      \bigcup_{m\leq n}
+      \tau(\pmb p\rest^{k+1} m)
+    \]
+  Define the attack $\pmb q:\omega\to\pmb X$ as follows for $i<\omega$,
+  $j<k+1$:
+    \[
+      \pmb q((k+2)i+j) = \pmb p((k+1)i+j)
+    \]
+    \[
+      \pmb q((k+2)i+(k+1)) = \<y,a_{|M()|}\>
+    \]
+
 \end{proof}
 
 
 % \begin{prop}
-% $K \win \gruKPGame{\mathbb{X}}$.
+% $K \win \gruKPGame{\pmb X}$.
 % \end{prop}
 
 % \begin{thm}(cor of G, game-theoretic proof by me)
-% $K\not\tactwin\gruKPGame{\mathbb{X}}$.
+% $K\not\tactwin\gruKPGame{\pmb X}$.
 % \end{thm}
 
 % \begin{thm}
-% $K\not\ktactwin{k}\gruKPGame{\mathbb{X}}$.
+% $K\not\ktactwin{k}\gruKPGame{\pmb X}$.
 % \end{thm}
 
 
