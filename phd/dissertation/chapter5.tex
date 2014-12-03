@@ -634,52 +634,69 @@ $\<x,s\>\in X\times 2^{<\omega}$.
   Let $\sigma$ be a winning $(k+1)$-tactical strategy, and without loss of
   generality assume it ignores order.
 
-  Define $S(x_0,\dots,x_{k},n)\in [C]^{<\omega}$ (increasing on $n$) and
-  $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each
-  $\<x_0,\dots,x_{k}\>\in X^{k+1}$,
+  Define $F(x_0,\dots,x_{k},n)\in [C]^{<\omega}$ and
+  $m(x_0,\dots,x_{k},n)\in\omega\setminus(n+1)$, both increasing on $n$,
+  such that for each $\<x_0,\dots,x_{k}\>\in X^{k+1}$,
   \[
     \bigcup_{s_0,\dots,s_k \in 2^{\leq n}}
     \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)
       \subseteq
-    K'_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
-  \]
-  and assume without loss of generality that
-  \[
-    \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)
-      =
-    K'_{S(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
-      \cup
-    L_{m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
+    K'_{F(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
   \]
 
   Select an arbitrary point $y \in X$.
-  Let $M^0(x,n)=m(x,y,\dots,y,n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$, and
-  define the tactical strategy $\tau$ as follows:
+  Let
+    \[
+      M^0(x,n)=n
+    \]
+    \[
+      M^{i+1}(x,n)=m(x,y,\dots,y,M^i(x,n)+1)
+    \]
+  and define the tactical strategy $\tau$ as follows:
   \[
-    \tau(\<x,s\>)
+    \tau(\emptyset)
       =
-    K'_{S(x,y,\dots,y,M^k(x,|s|)+1)}
+    \sigma(\emptyset)
+  \]
+  \[
+    \tau(\<c_\alpha\>)
+      =
+    \{c_\alpha\}
+  \]
+  \[
+    \tau(\<\<x,s\>\>)
+      =
+    K'_{F(x,y,\dots,y,M^k(x,|s|)+1)}
       \cup
-    L_{M^k(x,|s|)+1}
+    L_{m(x,y,\dots,y,M^k(x,|s|)+1)}
   \]
 
-  Let $\pmb p:\omega\to X\times 2^{<\omega}$ be a legal attack against
-  $\tau$, such that $\pmb p(n)=\<x_n,s_n\>$.
+  Let $\pmb p:\omega\to \pmb X$ be a legal attack against
+  $\tau$, and assume $\pmb p(n)=\<x_n,s_n\>\in X\times 2^{<\omega}$.
   Then consider the attack $\pmb q:\omega\to X\times 2^{<\omega}$ against
-  $\sigma$ defined by
+  $\sigma$ defined by, for $n<\omega$ and $i<k$,
     \[
       \pmb q((k+1)n)=\pmb p(n)=\<x_n,s_n\>
     \]
     \[
-      \pmb q((k+1)n+(i+1))=\<y, a_{M^i(x_n,|s_n|)}\>
+      \pmb q((k+1)n+(i+1))=\<y, a_{M^{i+1}(x_n,|s_n|)}\>
     \]
-  for $i<k$.
 
-  Since $\pmb p(n+1)\not\in\tau(\pmb p(n))$, it follows that
-  $|s_{n+1}|\geq M^{i+1}(x_n,|s_n|)+1$; furthermore, for $i<k$,
+  Since
+    \[
+      \<x_{n+1},s_{n+1}\>
+        =
+      \pmb p(n+1)
+        \not\in
+      \tau(\<\pmb p(n)\>)
+        \supseteq
+      L_{M^{k+1}(x_n,|s_n|)+1}
+    \]
+  it follows that
+  $|s_{n+1}|\geq M^{i+1}(x_n,|s_n|)+1$ for $i<k$; furthermore,
     \[
       |s_n|
-        <
+        \leq
       M^i(x_n,|s_n|)
         <
       M^i(x_n,|s_n|)+1
@@ -693,181 +710,54 @@ $\<x,s\>\in X\times 2^{<\omega}$.
   so the second coordinate of $\pmb q(n)$ is always strictly increasing.
 
   By the definition of $\tau$,
-  $\pmb q((k+1)n)=\pmb p(n)\not\in\sigma(\pmb q\rest^{k+1} (k+1)n)$.
-  Since $\pmb q((k+1)n+(i+1))=\<y, a_{M^i(x_n,|s_n|)}\>\in X\times A$,
-  $\pmb q((k+1)n+(i+1))\not\in K'_F$ for any $F\in[\omega_1]^{<\omega}$.
+    \[
+      \pmb q((k+1)n)
+        =
+      \pmb p(n)
+        \not\in
+      \bigcup_{m\leq n}
+      \tau(\pmb p\rest^1 m)
+        \supseteq
+      \bigcup_{m\leq (k+1)n}
+      \sigma(\pmb q\rest^{k+1} m)
+    \]
+
+  Since
+    \[
+      \pmb q((k+1)n+(i+1))
+        =
+      \<y, a_{M^{i+1}(x_n,|s_n|)}\>
+        \in
+      X\times A
+    \]
+  it follows that $\pmb q((k+1)n+(i+1))\not\in K'_F$ for any
+  $F\in[\omega_1]^{<\omega}$.
 
   Then it's sufficient to note that
     \[
-      |a_{M^0(x_n,|s_n|)}|
-        >
-      M^0(x_n,|s_n|)
-        =
-      m(x_n,y,\dots,y,|s_n|)
-    \]
-  and
-    \[
       |a_{M^{i+1}(x_n,|s_n|)}|
-        >
-      M^{i+1}(x_n,|s_n|)
         =
+      M^{i+1}(x_n,|s_n|) + 1
+        >
       m(x_n,y,\dots,y,M^i(x_n,|s_n|)+1)
     \]
   to show that
-  $\pmb q((k+1)n+(i+1))\not\in\sigma(\pmb q\rest^{k+1} (k+1)n+(i+1))$.
+    \[
+      \pmb q((k+1)n+(i+1))
+        =
+      \<y, a_{M^{i+1}(x_n,|s_n|)}\>
+        \not\in
+      L_{m(x_n,y,\dots,y,M^i(x_n,|s_n|)+1)}
+    \]
+  and therefore $\pmb q((k+1)n+(i+1))$ is a legal move.
 
+  As a result, $\pmb q$ is a legal attack against $\sigma$, and
+  $\{\{\pmb q(n)\}:n<\omega\}\supseteq\{\{\pmb p(n)\}:n<\omega\}$ are
+  both locally finite.
 
-
-
-
-
-
-% Note that $m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))$ is increasing throughout this play of the game versus $\sigma$:
-%   \[
-%     m(x_i,x',\dots,x',\max(|s_i|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
-%   \]
-%   \[
-%     =
-%     m(x_i,x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
-%   \]
-%   \[
-%     =
-%     m(x_i,x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
-%   \]
-%   \[
-%     \leq
-%     |s_{i+1}|
-%   \]
-%   \[
-%     <
-%     M^0(x_{i+1},|s_{i+1}|)
-%   \]
-%   \[
-%     =
-%     m(x_{i+1},x',\dots,x',|s_{i+1}|)
-%   \]
-%   \[
-%     =
-%     m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
-%   \]
-%   \[
-%     =
-%     |{z_{m(x_{i+1},x',\dots,x',|s_{i+1}|)}}|
-%   \]
-%   \[
-%     =
-%     |{z_{M^0(x_{i+1},|s_{i+1}|)}}|
-%   \]
-%   \[
-%     <
-%     |{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
-%   \]
-%   \[
-%     <
-%     m(x_{i+1},x',\dots,x',|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
-%   \]
-%   \[
-%     =
-%     m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^1(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i},|s_{i}|)}}^\frown\<1\>|))
-%   \]
-%   \[
-%     \vdots
-%   \]
-%   \[
-%     <
-%     m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|))
-%   \]
-
-% We turn to showing that $\<x', {z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>\>$ is always a legal move. Since ${z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>$ is on the antichain avoided by any $K^*$, the problem is reduced to showing that this move isn't forbidden by
-%   \[
-%     L_{m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{i},|s_{i}|)}}^\frown\<1\>|))}
-%   \]
-%   \[
-%     =
-%     L_{m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)}
-%   \]
-% which we can see here:
-%   \[
-%     m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
-%   \]
-%   \[
-%     =
-%     m(x_{i+1},x',\dots,x',M^{j-1}(x_{i+1},|s_{i+1}|)+1)
-%   \]
-%   \[
-%     =
-%     M^0(x_{i+1},M^{j-1}(x_{i+1},|s_{i+1}|)+1)
-%   \]
-%   \[
-%     =
-%     M^j(x_{i+1},s_{i+1})
-%   \]
-%   \[
-%     <
-%     |{z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
-%   \]
-
-% We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids
-%   \[
-%   L_{m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))}
-%   \]
-% since
-%   \[
-%     m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
-%   \]
-%   \[
-%     =
-%     m(x_{i},x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
-%   \]
-%   \[
-%     =
-%     m(x_{i},x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
-%   \]
-%   \[
-%     \leq
-%     |s_{i+1}|
-%   \]
-
-
-
-% Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, for $h\leq i$ it avoided
-%   \[
-%     K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)}
-%   \]
-%   \[
-%     =
-%     K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
-%   \]
-% and when $h<i$, we see it avoids both:
-%   \[
-%     K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
-%   \]
-%   \[
-%     =
-%     K^*_{S(x_{h+1},x',\dots,x',|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|)}
-%   \]
-%   \[
-%     =
-%     K^*_{S(x_{h+1},x',\dots,x',M^{j-1}(x_{h+1},|s_{h+1}|)+1)}
-%   \]
-%   \[
-%     \subseteq
-%     K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
-%   \]
-% and:
-%   \[
-%     K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
-%   \]
-%   \[
-%     =
-%     K^*_{S(x_{h+1},x',\dots,x',|s_{k+1}|)}
-%   \]
-%   \[
-%     \subseteq
-%     K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
-%   \]
-
-
+  Finally, if the range of $\pmb p$ intersects $C$, those moves may be safely
+  ignored as they cannot be repeated and lay in a closed discrete set,
+  so the proof is complete.
 \end{proof}
 
 
