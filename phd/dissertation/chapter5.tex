@@ -626,65 +626,247 @@ $\<x,s\>\in X\times 2^{<\omega}$.
 \end{proof}
 
 \begin{lem}
-  If $\pl K\ktactwin{k+2}\gruKPGame{\pmb X}$, then
-  $\pl K\ktactwin{k+1}\gruKPGame{\pmb X}$.
+  If $\pl K\ktactwin{k+1}\gruKPGame{\pmb X}$, then
+  $\pl K\tactwin\gruKPGame{\pmb X}$.
 \end{lem}
 
 \begin{proof}
-  \newcommand{\hi}{\text{height}}
-  \newcommand{\de}{\text{depth}}
-  Fix an arbitrary $y\in X$. For $\pmb t\in \pmb X^{<\omega}$, define the
-  following:
-    \begin{itemize}
-      \item $\hi(\pmb t)<\omega$ satisfying
-            $|s|\leq \hi(\pmb t)$ for each
-            $\<x,s\>\in(X\times 2^{<\omega})\cap \ran{\pmb t}$
-      \item $\de(\pmb t)\in [X]^{<\omega}$ satisfying
-            $x\in\de(\pmb t)$ for each
-            $\<x,s\>\in(X\times 2^{<\omega})\cap \ran{\pmb t}$
-      % \item $\pmb R(\pmb t)\in [\pmb X^{<\omega}]^{<\omega}$ such that
-      %       $\pmb r\in \pmb R(\pmb t)$
-      %       satisfies one of the following:
-      %   \begin{itemize}
-      %     \item $\pmb r(i)=c$ where $c\in C\cap\ran{\pmb t}$
-      %     \item $\pmb r(i)=\<x,s\>$ where $s\leq\hi(\pmb t)$,
-      %                                     $x\in\de(\pmb t)$
-      %     \item $\pmb r(i)=\<y,s\>$ where $s\leq\hi(\pmb t)$
-      %   \end{itemize}
-    \end{itemize}
+  Let $\sigma$ be a winning $(k+1)$-tactical strategy, and without loss of
+  generality assume it ignores order.
 
-  For each compact set $C$, define $F(C)\in[\omega_1]^{<\omega}$ and
-  $m(C)<\omega$ such that $C\subseteq K'_{F(C)}\cup L_{m(C)}$.
+  Define $S(x_0,\dots,x_{k},n)\in [C]^{<\omega}$ (increasing on $n$) and
+  $n<m(x_0,\dots,x_{k},n)<\omega$ such that for each
+  $\<x_0,\dots,x_{k}\>\in X^{k+1}$,
+  \[
+    \bigcup_{s_0,\dots,s_k \in 2^{\leq n}}
+    \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)
+      \subseteq
+    K'_{S(x_0,\dots,x_{k},n)} \cup L_{m(x_0,\dots,x_{k},n)}
+  \]
+  and assume without loss of generality that
+  \[
+    \sigma(\<x_0,s_0\>,\dots,\<x_{k},s_{k}\>)
+      =
+    K'_{S(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
+      \cup
+    L_{m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))}
+  \]
 
-  Let $\sigma$ be a winning $k+2$-tactic for $\pl K$.
-  For $\pmb t\in \pmb X^{<\omega}$, let $\pmb r\preceq \pmb t$ denote that
-  $\pmb r$ is a subsequence of a permutation of $\pmb t$, and let
-  $\pmb r\preceq_i \pmb t$ denote that $\pmb r$ is a subsequence of a
-  permutation of $\pmb t\concat\<\<y,s\>\>$ for some $s\in 2^{\leq i}$.
+  Select an arbitrary point $y \in X$.
+  Let $M^0(x,n)=m(x,y,\dots,y,n)$ and $M^{i+1}(x,n)=M^0(x,M^i(x,n)+1)$, and
+  define the tactical strategy $\tau$ as follows:
+  \[
+    \tau(\<x,s\>)
+      =
+    K'_{S(x,y,\dots,y,M^k(x,|s|)+1)}
+      \cup
+    L_{M^k(x,|s|)+1}
+  \]
 
-  Let $M(\pmb t)=\max_{\pmb r\preceq \pmb t} m(\sigma(\pmb r\rest^{k+2}))$.
-  We construct a $k+1$-tactic $\tau$ for $\pl K$ as follows:
+  Let $\pmb p:\omega\to X\times 2^{<\omega}$ be a legal attack against
+  $\tau$, such that $\pmb p(n)=\<x_n,s_n\>$.
+  Then consider the attack $\pmb q:\omega\to X\times 2^{<\omega}$ against
+  $\sigma$ defined by
     \[
-      \tau(\pmb t)
+      \pmb q((k+1)n)=\pmb p(n)=\<x_n,s_n\>
+    \]
+    \[
+      \pmb q((k+1)n+(i+1))=\<y, a_{M^i(x_n,|s_n|)}\>
+    \]
+  for $i<k$.
+
+  Since $\pmb p(n+1)\not\in\tau(\pmb p(n))$, it follows that
+  $|s_{n+1}|\geq M^{i+1}(x_n,|s_n|)+1$; furthermore, for $i<k$,
+    \[
+      |s_n|
+        <
+      M^i(x_n,|s_n|)
+        <
+      M^i(x_n,|s_n|)+1
+        \leq
+      M^{i+1}(x_n,|s_n|)
+        <
+      M^{i+1}(x_n,|s_n|)+1
+        \leq
+      |s_{n+1}|
+    \]
+  so the second coordinate of $\pmb q(n)$ is always strictly increasing.
+
+  By the definition of $\tau$,
+  $\pmb q((k+1)n)=\pmb p(n)\not\in\sigma(\pmb q\rest^{k+1} (k+1)n)$.
+  Since $\pmb q((k+1)n+(i+1))=\<y, a_{M^i(x_n,|s_n|)}\>\in X\times A$,
+  $\pmb q((k+1)n+(i+1))\not\in K'_F$ for any $F\in[\omega_1]^{<\omega}$.
+
+  Then it's sufficient to note that
+    \[
+      |a_{M^0(x_n,|s_n|)}|
+        >
+      M^0(x_n,|s_n|)
         =
-      \bigcup_{\pmb r\preceq_{|M(\pmb t)|} \pmb t}
-      \sigma(\pmb r)
+      m(x_n,y,\dots,y,|s_n|)
     \]
-  Let $\pmb p:\omega\to\pmb X$ be a legal attack against $\tau$, so
+  and
     \[
-      \pmb p(n)
-        \not\in
-      \bigcup_{m\leq n}
-      \tau(\pmb p\rest^{k+1} m)
+      |a_{M^{i+1}(x_n,|s_n|)}|
+        >
+      M^{i+1}(x_n,|s_n|)
+        =
+      m(x_n,y,\dots,y,M^i(x_n,|s_n|)+1)
     \]
-  Define the attack $\pmb q:\omega\to\pmb X$ as follows for $i<\omega$,
-  $j<k+1$:
-    \[
-      \pmb q((k+2)i+j) = \pmb p((k+1)i+j)
-    \]
-    \[
-      \pmb q((k+2)i+(k+1)) = \<y,a_{|M()|}\>
-    \]
+  to show that
+  $\pmb q((k+1)n+(i+1))\not\in\sigma(\pmb q\rest^{k+1} (k+1)n+(i+1))$.
+
+
+
+
+
+
+
+% Note that $m(x_0,\dots,x_{k},\max(|s_0|,\dots,|s_k|))$ is increasing throughout this play of the game versus $\sigma$:
+%   \[
+%     m(x_i,x',\dots,x',\max(|s_i|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+%   \]
+%   \[
+%     =
+%     m(x_i,x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
+%   \]
+%   \[
+%     =
+%     m(x_i,x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
+%   \]
+%   \[
+%     \leq
+%     |s_{i+1}|
+%   \]
+%   \[
+%     <
+%     M^0(x_{i+1},|s_{i+1}|)
+%   \]
+%   \[
+%     =
+%     m(x_{i+1},x',\dots,x',|s_{i+1}|)
+%   \]
+%   \[
+%     =
+%     m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+%   \]
+%   \[
+%     =
+%     |{z_{m(x_{i+1},x',\dots,x',|s_{i+1}|)}}|
+%   \]
+%   \[
+%     =
+%     |{z_{M^0(x_{i+1},|s_{i+1}|)}}|
+%   \]
+%   \[
+%     <
+%     |{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
+%   \]
+%   \[
+%     <
+%     m(x_{i+1},x',\dots,x',|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
+%   \]
+%   \[
+%     =
+%     m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^1(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i},|s_{i}|)}}^\frown\<1\>|))
+%   \]
+%   \[
+%     \vdots
+%   \]
+%   \[
+%     <
+%     m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|))
+%   \]
+
+% We turn to showing that $\<x', {z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>\>$ is always a legal move. Since ${z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>$ is on the antichain avoided by any $K^*$, the problem is reduced to showing that this move isn't forbidden by
+%   \[
+%     L_{m(x_{i+1},x',\dots,x',\max(|s_{i+1}|,|{z_{M^0(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{i},|s_{i}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{i},|s_{i}|)}}^\frown\<1\>|))}
+%   \]
+%   \[
+%     =
+%     L_{m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)}
+%   \]
+% which we can see here:
+%   \[
+%     m(x_{i+1},x',\dots,x',|{z_{M^{j-1}(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|)
+%   \]
+%   \[
+%     =
+%     m(x_{i+1},x',\dots,x',M^{j-1}(x_{i+1},|s_{i+1}|)+1)
+%   \]
+%   \[
+%     =
+%     M^0(x_{i+1},M^{j-1}(x_{i+1},|s_{i+1}|)+1)
+%   \]
+%   \[
+%     =
+%     M^j(x_{i+1},s_{i+1})
+%   \]
+%   \[
+%     <
+%     |{z_{M^j(x_{i+1},|s_{i+1}|)}}^\frown\<1\>|
+%   \]
+
+% We can conclude by showing that $\<x_{i+1},s_{i+1}\>$ is always a legal move. We can see it avoids
+%   \[
+%   L_{m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))}
+%   \]
+% since
+%   \[
+%     m(x_{i},x',\dots,x',\max(|s_{i}|,|{z_{M^0(x_i,|s_i|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|))
+%   \]
+%   \[
+%     =
+%     m(x_{i},x',\dots,x',|{z_{M^{k-1}(x_i,|s_i|)}}^\frown\<1\>|)
+%   \]
+%   \[
+%     =
+%     m(x_{i},x',\dots,x',M^{k-1}(x_i,|s_i|)+1)
+%   \]
+%   \[
+%     \leq
+%     |s_{i+1}|
+%   \]
+
+
+
+% Since $\<x_{i+1},s_{i+1}\>$ was legal against $\tau$, for $h\leq i$ it avoided
+%   \[
+%     K^*_{S(x_h,x',\dots,x',M^{k-1}(x_h,|s_h|)+1)}
+%   \]
+%   \[
+%     =
+%     K^*_{S(x_h,x',\dots,x',\max(|s_h|,|{z_{M^{0}(x_h,|s_h|)}}^\frown\<1\>|,\dots,|{z_{M^{k-1}(x_h,|s_h|)}}^\frown\<1\>|))}
+%   \]
+% and when $h<i$, we see it avoids both:
+%   \[
+%     K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,\dots,|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|,|{z_{M^{j}(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
+%   \]
+%   \[
+%     =
+%     K^*_{S(x_{h+1},x',\dots,x',|{z_{M^{j-1}(x_{h+1},|s_{h+1}|)}}^\frown\<1\>|)}
+%   \]
+%   \[
+%     =
+%     K^*_{S(x_{h+1},x',\dots,x',M^{j-1}(x_{h+1},|s_{h+1}|)+1)}
+%   \]
+%   \[
+%     \subseteq
+%     K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
+%   \]
+% and:
+%   \[
+%     K^*_{S(x_{h+1},x',\dots,x',\max(|s_{h+1}|,|{z_{M^0(x_{h},|s_{h}|)}}^\frown\<1\>|,\dots,|{z_{M^{k}(x_{h},|s_{h}|)}}^\frown\<1\>|))}
+%   \]
+%   \[
+%     =
+%     K^*_{S(x_{h+1},x',\dots,x',|s_{k+1}|)}
+%   \]
+%   \[
+%     \subseteq
+%     K^*_{S(x_{h+1},x',\dots,x',M^{k-1}(x_{h+1},|s_{h+1}|)+1)}
+%   \]
+
 
 \end{proof}
 
