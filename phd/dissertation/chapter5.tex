@@ -384,29 +384,17 @@ While $\pl O\ktactwin{k+1}\gruConGame{\oneptcomp X}{\infty}$ implies
 $\pl O\tactwin\gruConGame{\oneptcomp X}{\infty}$, and likewise for Markov
 strategies, this result cannot be
 immediately extended to $\gruKPGame{X}$. However, this section will
-demonstrate a non-trivial example of a space $\pmb X$ for which
+demonstrate a non-trivial example of a locally-compact space $\pmb X$ for which
 $\pl K\win\gruKPGame{\pmb X}$ but $\pl K\not\kmarkwin{k}\gruKPGame{\pmb X}$
 for any $k<\omega$.
-
-\begin{thm}
-  There exists a compact, zero-dimensional topological space $X$
-  such that $X$ has a point-countable cover
-  $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of distinct clopen sets.
-\end{thm}
-
-\begin{proof}
-  (TODO)
-\end{proof}
 
 \begin{defn}
   Let $\pmb X=(X\times 2^{<\omega})\cup C$ denote a Cantor tree
   of copies of a zero-dimensional, compact space $X$ with a point-countable
-  cover $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of
-  clopen sets which is not $\sigma$-point-finite, along with an uncountable
-  subset of the Cantor set
+  cover $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of distinct
+  clopen sets, along with an uncountable subset of the Cantor set
   $C=\{c_\alpha:\alpha<\omega_1\}\in [2^\omega]^{\omega_1}$.
-  The topology on $\pmb X$ is
-  given by decaring $U\times\{s\}$ to be a open
+  The topology on $\pmb X$ is given by decaring $U\times\{s\}$ to be a open
   neighborhood of $\<x,s\>\in X\times 2^{<\omega}$ for each
   open neighborhood $U$ of $x$ in $X$, and declaring
   $B_{\alpha,n}=(U_\alpha\times\{c_\alpha\rest n: m\leq n<\omega\})\cup\{c_\alpha\}$
@@ -625,6 +613,10 @@ $\<x,s\>\in X\times 2^{<\omega}$.
   and it follows that $\{\{\pmb p(n)\}:n<\omega\}$ is also locally finite.
 \end{proof}
 
+\begin{cor}
+  $\pmb X$ is $\sigma$-metacompact if and only if $\pmb X$ is metacompact.
+\end{cor}
+
 \begin{lem}
   If $\pl K\ktactwin{k+1}\gruKPGame{\pmb X}$, then
   $\pl K\tactwin\gruKPGame{\pmb X}$.
@@ -760,18 +752,67 @@ $\<x,s\>\in X\times 2^{<\omega}$.
   so the proof is complete.
 \end{proof}
 
+Therefore if $\pmb X$ can be constructed which is not metacompact, then
+$\pl K$ lacks a $k$-Markov strategy for any $k<\omega$.
 
-% \begin{prop}
-% $K \win \gruKPGame{\pmb X}$.
-% \end{prop}
+\begin{thm}
+  $\pmb X$ is metacompact
+    if and only if
+  $\{U_\alpha:\alpha<\omega_1\}$ is $\sigma$-point-finite.
+\end{thm}
 
-% \begin{thm}(cor of G, game-theoretic proof by me)
-% $K\not\tactwin\gruKPGame{\pmb X}$.
-% \end{thm}
+\begin{proof}
+  Let $\omega_1=\bigcup_{n<\omega}A_n$ such that
+  $\{U_\alpha:\alpha\in A_n\}$ is point-finite for each $n<\omega$.
 
-% \begin{thm}
-% $K\not\ktactwin{k}\gruKPGame{\pmb X}$.
-% \end{thm}
+  Let $\mc U$ be a cover of $\pmb X$, and for each $s\in 2^\omega$
+  let $\mc V_s$ be a finite open refinement of $\mc C$ covering the compact
+  set $X\times\{s\}$. Then let $\mc W_n = \{B_{\alpha,n_\alpha}:\alpha\in A_n\}$
+  be an open refinement of $\mc C$ for each $n<\omega$, and note that it
+  is point-finite. It follows that
+  $\mc U' = \bigcup_{s\in 2^{<\omega}} \mc V_s \cup \bigcup_{n<\omega} \mc W_n$
+  is an open $\sigma$-point-finite refinement of $\mc U$, so $\pmb X$
+  is $\sigma$-metacompact, and therefore it is metacompact.
 
+  For the other direction, consider the open cover
+  $\mc U = \{B_{\alpha,0}:\alpha<\omega_1\}$ of the closed subset $C$ of
+  metacompact $\pmb X$, and let $\{B_{\alpha,n_\alpha}:\alpha<\omega_1\}$ be
+  a point-finite refinement. Then
+  $\mc U_s = \{ U_\alpha : c_\alpha \rest n_\alpha = s\}$ is
+  point-finite for $s\in 2^{<\omega}$ and
+  $U_\alpha\in\mc U_{c_\alpha\rest n_\alpha}$ for each $\alpha<\omega_1$.
+  Therefore $\mc U = \bigcup_{s\in 2^{<\omega}} \mc U_s$ is
+  $\sigma$-point-finite.
+\end{proof}
 
+The following example was suggested by Gary Gruenhage.
 
+\begin{thm}
+  There exists a compact, zero-dimensional topological space $X$
+  with a clopen cover $\{U_\alpha : \alpha<\omega_1\}$ of distinct
+  sets which is not $\sigma$-point-finite.
+\end{thm}
+
+\begin{proof}
+  Let $Y$ be a zero-dimensional Corson compact space which is not Eberlein
+  compact; one such space was constructed in \cite{Marciszewski1991291}
+  and let $X=Y^2$.
+  Then by characterizations of Corson and Eberlien compacts found in
+  \cite{MR752278},
+  $Y^2\setminus\Delta$ is meta-Lindel\"of but not $\sigma$-metacompact, so
+  there exists a point-countable clopen cover $\mc U$ of $Y^2\setminus\Delta$
+  which is not $\sigma$-point-finite. Then $\mc U\cup\{X\}$ is a point-countable
+  clopen cover of $X$ which is not $\sigma$-point-finite.
+\end{proof}
+
+\begin{cor}
+  There exists a space $X$ such that $\pl K\win\gruKPGame{X}$ but
+  $\pl K\not\kmarkwin{k} \gruKPGame{X}$ for all $k<\omega$.
+\end{cor}
+
+So the following question remains open:
+
+\begin{ques}
+  Does $\pl K\ktactwin{k+1}\gruKPGame{X}$ imply
+  $\pl K\tactwin\gruKPGame{X}$ always? What about for Markov strategies?
+\end{ques}
