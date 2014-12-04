@@ -210,7 +210,7 @@ We now may rigorously define the notion of ``forcing'' a win in a game.
   for that player.
 
   If a winning strategy exists for a player $\pl A$ in the game $G$, then we
-  write $\pl A \win G$. Otherwise, we write $\pl A \not\win G$.
+  write $\pl A \win G$. Otherwise, we write $\pl A \notwin G$.
 \end{defn}
 
 To show that a winning strategy exists for a player (i.e. $\pl A\win G$),
@@ -221,7 +221,7 @@ legal attack, and prove that the result of the game is a victory for that
 player.
 
 If we wish to show that a winning strategy does not exist for a player
-(i.e. $\pl A\not\win G$), we
+(i.e. $\pl A\notwin G$), we
 often consider an arbitrary legal strategy, and use it to define a legal
 \term{counter-attack} for the opponent. If we can prove that the result of
 the game for that strategy and counter-attack is a victory for the opponent,
@@ -339,7 +339,7 @@ This yields a classical result.
 
 \begin{proof}
   $\pl A\win \bakergame{\mathbb{R}}$, since $a_n$ must converge to some
-  real number. This implies $\pl B\not\win \bakergame{\mathbb{R}}$, and thus
+  real number. This implies $\pl B\notwin \bakergame{\mathbb{R}}$, and thus
   $\mathbb{R}$ is not countable.
 \end{proof}
 
@@ -349,7 +349,7 @@ strategy for a player in a topological game characterizes a property of the
 topological space in question.
 
 \begin{thm}
-$\pl E\not\win \bmgame{X}$ if and only if $X$ is a Baire space.
+$\pl E\notwin \bmgame{X}$ if and only if $X$ is a Baire space.
 \cite{MR0431104}
 \end{thm}
 
