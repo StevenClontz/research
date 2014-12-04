@@ -1,7 +1,7 @@
 %!TEX root = dissertation.tex
 % ^ leave for LaTeXTools build functionality
 
-\chapter{Menger's Game and Rothberger's Game}
+\chapter{Menger's Game}
 
 In 1924 Karl Menger introduced a covering property generalizing
 $\sigma$-compactness \cite{custom31879423}.
@@ -944,139 +944,139 @@ $2$-Mark\"ov strategy for $\menGame{R_\omega}$ as well.
 \end{proof}
 
 
-\section{Rothberger game}
+% \section{Rothberger game}
 
-We conclude this chapter with some results on another variation of the
-Menger property and game.
+% We conclude this chapter with some results on another variation of the
+% Menger property and game.
 
-\begin{defn}
-  A space $X$ is Rothberger if for every sequence $\<\mc U_0,\mc U_1,\dots\>$
-  of open covers of $X$ there exists a sequence
-  $\<S_0,S_1,\dots\>$ such that $S_n\in\mc U_n$
-  and $\{S_n:n<\omega\}$ is a cover of $X$.
-\end{defn}
+% \begin{defn}
+%   A space $X$ is Rothberger if for every sequence $\<\mc U_0,\mc U_1,\dots\>$
+%   of open covers of $X$ there exists a sequence
+%   $\<S_0,S_1,\dots\>$ such that $S_n\in\mc U_n$
+%   and $\{S_n:n<\omega\}$ is a cover of $X$.
+% \end{defn}
 
-\begin{game}
-  Let $\rothGame{X}$ denote the \term{Rothberger game} with players $\pl C$,
-  $\pl S$.
-  In round $n$, $\pl C$ chooses an open cover $\mc U_n$, followed by $\pl S$
-  choosing a subset $S_n$ of $X$ contained in some open set in $\mc U_n$.
-  $\pl S$ wins the game if $X = \bigcup_{n<\omega}S_n$,
-  and $\pl C$ wins otherwise.
-\end{game}
+% \begin{game}
+%   Let $\rothGame{X}$ denote the \term{Rothberger game} with players $\pl C$,
+%   $\pl S$.
+%   In round $n$, $\pl C$ chooses an open cover $\mc U_n$, followed by $\pl S$
+%   choosing a subset $S_n$ of $X$ contained in some open set in $\mc U_n$.
+%   $\pl S$ wins the game if $X = \bigcup_{n<\omega}S_n$,
+%   and $\pl C$ wins otherwise.
+% \end{game}
 
-\begin{thm}
-  $X$ is Rothberger if and only if $\pl C\notwin\rothGame{X}$.
-  \cite{MR1279482}
-\end{thm}
+% \begin{thm}
+%   $X$ is Rothberger if and only if $\pl C\notwin\rothGame{X}$.
+%   \cite{MR1279482}
+% \end{thm}
 
-(TODO: cite)
+% (TODO: cite)
 
-\begin{thm}
-  Let $X$ be a compact $T_2$ space. The following are equivalent:
-    \begin{itemize}
-      \item $X$ is Rothberger
-      \item $X$ is scattered
-      \item $\pl S\win\rothGame{X}$
-      \item $\pl C\notwin\rothGame{X}$
-    \end{itemize}
-\end{thm}
+% \begin{thm}
+%   Let $X$ be a compact $T_2$ space. The following are equivalent:
+%     \begin{itemize}
+%       \item $X$ is Rothberger
+%       \item $X$ is scattered
+%       \item $\pl S\win\rothGame{X}$
+%       \item $\pl C\notwin\rothGame{X}$
+%     \end{itemize}
+% \end{thm}
 
-Another game exists which is ``perfect information equivalent'' to the
-Rothberger game.
+% Another game exists which is ``perfect information equivalent'' to the
+% Rothberger game.
 
-\begin{game}
-  Let $\rothAltGame{X}$ denote the \term{alternate Rothberger game} with
-  players $\pl P$, $\pl O$. In round $n$, $\pl P$ chooses a point $p_n\in X$,
-  followed by $\pl O$ choosing a neighborhood $O_n$ of $p_n$.
-  $\pl P$ wins if $X=\bigcup_{n<\omega} O_n$; $\pl O$ wins otherwise.
-\end{game}
+% \begin{game}
+%   Let $\rothAltGame{X}$ denote the \term{alternate Rothberger game} with
+%   players $\pl P$, $\pl O$. In round $n$, $\pl P$ chooses a point $p_n\in X$,
+%   followed by $\pl O$ choosing a neighborhood $O_n$ of $p_n$.
+%   $\pl P$ wins if $X=\bigcup_{n<\omega} O_n$; $\pl O$ wins otherwise.
+% \end{game}
 
-(TODO: cite Galvin (Indeterminacy of Point Open Games?) )
+% (TODO: cite Galvin (Indeterminacy of Point Open Games?) )
 
-\begin{thm}
-  $\pl P\win\rothAltGame{X}$ if and only if $\pl S\win\rothGame{X}$;
-  $\pl O\win\rothAltGame{X}$ if and only if $\pl C\win\rothGame{X}$.
-\end{thm}
+% \begin{thm}
+%   $\pl P\win\rothAltGame{X}$ if and only if $\pl S\win\rothGame{X}$;
+%   $\pl O\win\rothAltGame{X}$ if and only if $\pl C\win\rothGame{X}$.
+% \end{thm}
 
-\newpage
+% \newpage
 
-An analogous relationship exists for the winning limited information
-strategies.
+% An analogous relationship exists for the winning limited information
+% strategies.
 
-\begin{thm}
-  $P\prewin\rothAltGame{X}$ if and only if $S\markwin\rothGame{X}$;
-  $O\markwin\rothAltGame{X}$ if and only if $C\prewin\rothGame{X}$.
-\end{thm}
+% \begin{thm}
+%   $P\prewin\rothAltGame{X}$ if and only if $S\markwin\rothGame{X}$;
+%   $O\markwin\rothAltGame{X}$ if and only if $C\prewin\rothGame{X}$.
+% \end{thm}
 
-\begin{proof}
-  TODO
-\end{proof}
+% \begin{proof}
+%   TODO
+% \end{proof}
 
-As it turns out, $\pl S$ requires a lot of structure on $X$ in order to
-guarantee victory with a Markov strategy in the Rothberger game.
+% As it turns out, $\pl S$ requires a lot of structure on $X$ in order to
+% guarantee victory with a Markov strategy in the Rothberger game.
 
-\begin{defn}
-  TODO: almost countable
-\end{defn}
+% \begin{defn}
+%   TODO: almost countable
+% \end{defn}
 
-\begin{thm}
-  For any space $X$, the following are equivalent:
-  \begin{itemize}
-    \item $S\markwin\rothGame{X}$
-    \item $P\prewin\rothAltGame{X}$
-    \item $X$ is almost countable
-  \end{itemize}
-\end{thm}
+% \begin{thm}
+%   For any space $X$, the following are equivalent:
+%   \begin{itemize}
+%     \item $S\markwin\rothGame{X}$
+%     \item $P\prewin\rothAltGame{X}$
+%     \item $X$ is almost countable
+%   \end{itemize}
+% \end{thm}
 
-\begin{proof}
-  TODO
-\end{proof}
+% \begin{proof}
+%   TODO
+% \end{proof}
 
-\begin{thm}
-  For any $T_1$ space $X$, the following are equivalent:
-  \begin{itemize}
-    \item $S\markwin\rothGame{X}$
-    \item $P\prewin\rothAltGame{X}$
-    \item $X$ is almost countable
-    \item $X$ is countable
-  \end{itemize}
-\end{thm}
+% \begin{thm}
+%   For any $T_1$ space $X$, the following are equivalent:
+%   \begin{itemize}
+%     \item $S\markwin\rothGame{X}$
+%     \item $P\prewin\rothAltGame{X}$
+%     \item $X$ is almost countable
+%     \item $X$ is countable
+%   \end{itemize}
+% \end{thm}
 
-Let $\kappa\cup\{\infty\}$ be a ``weak Lindel\"of-ication'' of
-discrete $\kappa>\omega$ such that open neighborhoods of $\infty$ contain
-$\kappa\setminus\omega$. This space is an example of an almost countable
-space which is not countable.
+% Let $\kappa\cup\{\infty\}$ be a ``weak Lindel\"of-ication'' of
+% discrete $\kappa>\omega$ such that open neighborhoods of $\infty$ contain
+% $\kappa\setminus\omega$. This space is an example of an almost countable
+% space which is not countable.
 
-\begin{thm}
-  The following are equivalent for points-$G_\delta$ $X$:
-    \begin{itemize}
-      \item $S\win\rothGame{X}$
-      \item $P\win\rothAltGame{X}$
-      \item $S\markwin\rothGame{X}$
-      \item $P\prewin\rothAltGame{X}$
-      \item $X$ is Rothberger
-      \item $X$ is almost countable
-      \item $X$ is countable
-    \end{itemize}
-\end{thm}
+% \begin{thm}
+%   The following are equivalent for points-$G_\delta$ $X$:
+%     \begin{itemize}
+%       \item $S\win\rothGame{X}$
+%       \item $P\win\rothAltGame{X}$
+%       \item $S\markwin\rothGame{X}$
+%       \item $P\prewin\rothAltGame{X}$
+%       \item $X$ is Rothberger
+%       \item $X$ is almost countable
+%       \item $X$ is countable
+%     \end{itemize}
+% \end{thm}
 
-\begin{proof}
-  TODO
-\end{proof}
+% \begin{proof}
+%   TODO
+% \end{proof}
 
-\begin{cor}
-  The following are equivalent for compact points-$G_\delta$ $X$:
-    \begin{itemize}
-      \item $S\win\rothGame{X}$
-      \item $P\win\rothAltGame{X}$
-      \item $S\markwin\rothGame{X}$
-      \item $P\prewin\rothAltGame{X}$
-      \item $C\notwin\rothGame{X}$
-      \item $O\notwin\rothAltGame{X}$
-      \item $X$ is scattered
-      \item $X$ is Rothberger
-      \item $X$ is almost countable
-      \item $X$ is countable
-    \end{itemize}
-\end{cor}
+% \begin{cor}
+%   The following are equivalent for compact points-$G_\delta$ $X$:
+%     \begin{itemize}
+%       \item $S\win\rothGame{X}$
+%       \item $P\win\rothAltGame{X}$
+%       \item $S\markwin\rothGame{X}$
+%       \item $P\prewin\rothAltGame{X}$
+%       \item $C\notwin\rothGame{X}$
+%       \item $O\notwin\rothAltGame{X}$
+%       \item $X$ is scattered
+%       \item $X$ is Rothberger
+%       \item $X$ is almost countable
+%       \item $X$ is countable
+%     \end{itemize}
+% \end{cor}
