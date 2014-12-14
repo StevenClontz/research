@@ -339,10 +339,10 @@ It is not possible to prove that $\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}$
 for arbitrary free ultrafilters in $ZFC$.
 
 \begin{defn}
-  A \term{selective ultrafilter} $\mc F$ is a free ultrafilter with the
+  A \term{selective ultrafilter} $\mc S$ is a free ultrafilter with the
   property that for every
   partition $\{B_n : n < \omega\}$ of nonempty subsets of $\omega$ such that
-  $B_n \not\in \mathcal{F}$ for all $n$, there exists $A \in \mc{F}$ such
+  $B_n \not\in \mc{S}$ for all $n$, there exists $A \in \mc{S}$ such
   that $|A \cap B_n|=1$ for all $n$.
 \end{defn}
 
@@ -352,20 +352,20 @@ for arbitrary free ultrafilters in $ZFC$.
 \end{thm}
 
 \begin{thm}
-  If $\mc F$ is a selective ultrafilter, then
-  $\pl K\notprewin \gruKPGame{\omega\cup\{\mc F\}}$.
+  If $\mc S$ is a selective ultrafilter, then
+  $\pl K\notprewin \gruKPGame{\omega\cup\{\mc S\}}$.
 \end{thm}
 
 \begin{proof}
   Let $\sigma$ be a predetermined strategy for $\pl K$ such that
   $\sigma(n)\supset\bigcup_{m<n}\sigma(m)$.
   Then define $B_n=\omega\cap(\sigma(n+1)\setminus\sigma(n))$. Since $B_n$
-  is always nonempty finite, $B_n\not\in\mc F$ and there exists $A\in \mc F$
+  is always nonempty finite, $B_n\not\in\mc F$ and there exists $A\in \mc S$
   such that $|A\cap B_n|=1$.
 
-  Define the legal counter-attack $p:\omega\to\omega\cup\{\mc F\}$ by
+  Define the legal counter-attack $p:\omega\to\omega\cup\{\mc S\}$ by
   $p(n)\in A\cap B_n=A\cap(\sigma(n+1)\setminus\sigma(n))$. Since
-  $A=(A\cap\sigma(0))\cup\{p(n):n<\omega\}$, $\{p(n):n<\omega\}\in\mc F$.
+  $A=(A\cap\sigma(0))\cup\{p(n):n<\omega\}$, $\{p(n):n<\omega\}\in\mc S$.
   Therefore, every neighborhood of $\mc F$ intersects infinitely many of
   the $p(n)$, and $p$ defeats the predetermined strategy $\sigma$.
 \end{proof}

@@ -3,10 +3,175 @@
 
 \chapter{Introduction}
 
-Basic overview of combinatorial games, topological games, limited info strategies,
-and applications in topology.
+Topological games have been studied since the 1930s to characterize
+properties of topological spaces. Generally speaking, a topological game $G(X)$
+is a two player game defined for each topological space $X$ such that a
+topological property $P$ is characterized by a player $\pl A$
+having a so-called ``winning'' strategy for $G(X)$ which cannot be countered
+by the opponent, denoted $\pl A\win G(X)$.
 
+The study of limited information strategies in topological games involves
+the following observation. If the existence of a winning strategy for a player
+in $G(X)$ characterizes property $P$, then the existence of a winning strategy
+which doesn't require perfect information about the history of the game
+characterizes a (perhaps non-strictly) stronger property $Q$.
 
-% \section{heading}
+This document is organized into five chapters in addition to this introductory
+chapter. The second provides preliminary definitions and conventions used
+throughout the paper, and the remaining chapters each consider different
+topological games from the literature and extend results on these games
+by considering limited information strategies.
 
-% \subsection{other heading}
+The first game considered is Gruenhage's convergence game $\gruConGame{X}{x}$,
+originally called the $W$-game and introduced in \cite{MR0428275} to
+answer a question of Phil Zenor, and later used to characterize the $W$-space
+property generalizing first-countability. With regards to limited information
+and the one-point compactification of an uncountable cardinal, denoted
+$\oneptcomp\kappa$, Peter Nyikos
+noted that the first player $\pl O$ has a winning tactical strategy considering
+only the most recent move of the opponent, denoted
+$\pl O\tactwin\gruConGame{\oneptcomp\kappa}{\infty}$. If the game is
+slightly altered to $\gruConGameHard{X}{x}$, perfect information strategies are
+preserved. However, Nyikos demonstrated that $\pl O$ lacks a winning Markov
+strategy considering only the most recent move of the opponent and the round
+number, denoted $\pl O\notmarkwin\gruConGameHard{\oneptcomp\kappa}{\infty}$.
+This result has been extended as follows:
+
+\begin{thm*}
+  $\pl O\notkmarkwin{k}\gruConGameHard{\oneptcomp\kappa}{\infty}$ for
+  $\kappa>\omega$, $k<\omega$.
+  That is, $\pl O$ cannot force a win in the game with a $k$-Markov strategy
+  which only considers $k$ previous moves of the opponent and the round number.
+\end{thm*}
+
+The game is made easier for $\pl O$ by weakening the game to
+$\gruClusGameHard{X}{x}$, exchanging the convergence requirement with
+clustering. In this scenario, the author has shown the size of the
+uncountable cardinal $\kappa$ matters.
+
+\begin{thm*}
+  $\pl O\markwin\gruClusGameHard{\oneptcomp\kappa}{\infty}$ if and only if
+  $\kappa\leq\omega_1$.
+\end{thm*}
+
+Based upon this game is a relatively new game from the literature,
+Bell's ``proximal'' game $\bellConGame{X}$. Peter Nyikos noted that
+Corson compact spaces satisfy $\pl D\win\bellConGame{X}$, and asked if this
+in fact was a characterization of Corson compacts. The author
+answered this question with Gary Gruenhage in $\cite{MR3227201}$.
+
+\begin{thm*}
+  Among compact Hausdorff spaces, $X$ is Corson compact if and only if
+  $\pl D\win\bellConGame{X}$.
+\end{thm*}
+
+Many perfect information results on $\bellConGame{X}$ may be easily extended to
+limited information analogs, but others are more elusive. Bell showed
+in \cite{MR3239205} that $\pl D\win\bellConGame{X}$ extends to arbitrary
+sigma-products, but the proof makes non-trivial use of perfect information.
+Thus for $k$-Markov strategies, the result has only been shown to hold for
+countable products.
+
+\begin{thm*}
+  For $k<\omega$, if $\pl D\kmarkwin{k}\bellConGame{X_i}$ for all $i<\omega$,
+  then $\pl D\kmarkwin{k}\bellConGame{\prod_{i<\omega} X_i}$.
+\end{thm*}
+
+Another game due to Gruenhage is the compact-point game $\gruKPGame{X}$
+which may be used to characterize metacompactness and $\sigma$-metacompactness
+among locally compact spaces using tactical and Markov strategies. Using
+predetermined strategies which only consider the round number:
+
+\begin{thm*}
+  For locally compact spaces, $\pl K\prewin\gruKPGame{X}$ if and only if
+  $X$ is hemicompact.
+\end{thm*}
+
+The compact-compact variation $\gruKLGame{X}$ may be used to characterize
+paracompactness among locally compact spaces
+using perfect information strategies.
+However, the existence of winning predetermined strategies for $\gruKLGame{X}$
+coincides
+with $\gruKPGame{X}$ when considering locally compact or even compactly generated
+spaces. By investigating the subspace $\omega\cup\{\mc F\}$ of the Stone-Cech
+compactification $\beta\omega$ consisting of a single free ultrafilter,
+a distinction between the two games is revealed.
+
+\begin{thm*}
+  There exists a free ultrafilter $\mc F$ such that
+  $\pl K \prewin\gruKPGame{\omega\cup\{\mc F\}}$, but
+  $\pl K \notprewin\gruKLGame{\omega\cup\{\mc F\}}$ for any free
+  ultrafilter $\mc F$.
+\end{thm*}
+\begin{thm*}
+  Assuming $CH$, there exists a free ultrafilter $\mc S$ such that
+  $\pl K \notprewin\gruKPGame{\omega\cup\{\mc S\}}$.
+\end{thm*}
+
+A winning $k+1$-Markov strategy for $\gruConGame{X}{x}$ may be improved to
+a winning Markov strategy; however, it remains open whether this same
+result holds true for $\gruKPGame{X}$. The chapter on $\gruKPGame{X}$ concludes
+with a class of spaces which may seem to provide a counterexample at first,
+however:
+
+\begin{thm*}
+  The space $\pmb X$ satisfies $\pl K\win\gruKPGame{\pmb X}$, but
+  $\pl K\notkmarkwin{k}\gruKPGame{\pmb X}$ for all $k<\omega$.
+\end{thm*}
+
+The final chapter is based upon one of the oldest topological games:
+the Menger game $\menGame{X}$, characterizing Menger's covering property.
+In this game, $k$-Markov strategies need only consider at most
+two moves of the opponent.
+
+\begin{thm*}
+  $\pl F\kmarkwin{k+2}\menGame{X}$ if and only if
+  $\pl F\kmarkwin{2}\menGame{X}$.
+\end{thm*}
+
+For a one-point Lindel\"of-ication $\oneptlind\kappa$ of discrete $\kappa$,
+the topological game $\menGame{\oneptlind\kappa}$ is equivalent to a
+set-theoretic game $\cloFillIntGame{\kappa}$ with respect to $\pl F$'s $k$-Markov
+strategies. Using this game, one may see the following.
+
+This game has similarities to a game introduced by
+Scheepers \cite{MR1129143}, who also introduced a set-theoretic axiom
+$\alcompS\kappa$ to study it. This axiom may also be applied to study
+$\menGame{\oneptlind\kappa}$.
+
+\begin{thm*}
+  Assume $\alcompS{\kappa}$. Then
+  $\pl F\kmarkwin{2}\menGame{\oneptlind\kappa}$.
+\end{thm*}
+
+Scheepers observed that $\alcompS{\omega_1}$ is a theorem of $ZFC$.
+
+\begin{thm*}
+  $\pl F\kmarkwin{2}\menGame{\oneptlind\omega_1}$ but
+  $\pl F\notmarkwin\menGame{\oneptlind\omega_1}$.
+\end{thm*}
+
+Telgarsky \cite{MR753073} and Scheepers \cite{MR1273523} provided different
+proofs to show that among metrizable spaces, $\pl F\markwin\menGame{X}$
+characterizes $\sigma$-compactness. These results may be extended by considering
+Markov strategies. Recall that for Lindel\"of spaces, metrizability is
+characterized by regularity and second-countability.
+
+\begin{thm*}
+  For regular spaces, $\pl F\markwin\menGame{X}$ if and only if
+  $X$ is $\sigma$-compact.
+\end{thm*}
+
+\begin{thm*}
+  For second-countable spaces, $\pl F\markwin\menGame{X}$ if and only if
+  $\pl F\win\menGame{X}$.
+\end{thm*}
+
+The topological property characterized by $\pl F\kmarkwin{2}\menGame{X}$
+seems to be heretofore unstudied. The final chapter concludes by
+introducing the sufficient robustly Menger property, and uses it to study the
+space $R_\omega$ finer than the usual Euclidean real line.
+
+\begin{thm*}
+  Assume $\alcompS{2^\omega}$. Then $\pl F\kmarkwin{2}\menGame{R_\omega}$.
+\end{thm*}
