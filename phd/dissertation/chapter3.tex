@@ -335,10 +335,23 @@ for Markov strategies in the ``normal'' version of the $W$ game, they are
   $\infty$ contains infinitely many points of $p$, so $p$ clusters at $\infty$.
 \end{proof}
 
-However, knowledge of the round number is critical.
+However, knowledge of the round number is critical. First recall the
+following ``closing-up lemma'' (see \cite{MR597342}):
+
+\begin{lem}
+  For any function $f:\omega_1^{<\omega}\to\omega_1$, the following set is closed
+  and unbounded in $\omega_1$:
+    \[
+      \{
+        \alpha<\omega_1
+      :
+        s\in\alpha^{<\omega} \Rightarrow f(s)\subseteq\alpha
+      \}
+    \]
+\end{lem}
 
 \begin{thm}
-  $O\notktactwin{k}\gruClusGameHard{\oneptcomp\omega_1}{\infty}$.
+  $\pl O\notktactwin{k}\gruClusGameHard{\oneptcomp\omega_1}{\infty}$.
 \end{thm}
 
 \begin{proof}
@@ -353,7 +366,7 @@ However, knowledge of the round number is critical.
         s\in\alpha^{\leq k}
           \Rightarrow
         \oneptcomp\omega_1\setminus\sigma(s)
-        \subset \alpha
+        \subseteq \alpha
       \}
     \]
   is closed and unbounded. Let $a_\sigma:\omega_1\to C_\sigma$ be an order
@@ -392,7 +405,7 @@ is not sufficient to construct a limited information strategy, due to a
 similar argument.
 
 \begin{thm}
-  $O\notkmarkwin{k}\gruClusGameHard{\oneptcomp\omega_2}{\infty}$.
+  $\pl O\notkmarkwin{k}\gruClusGameHard{\oneptcomp\omega_2}{\infty}$.
 \end{thm}
 
 \begin{proof}
@@ -407,7 +420,7 @@ similar argument.
         s\in\alpha^{<\omega}
           \Rightarrow
         \oneptcomp\omega_2\setminus\sigma\circ\mu_k(s)
-        \subset \alpha
+        \subseteq \alpha
       \}
     \]
   is closed and unbounded. (Recall that $\mu_k$ is the
@@ -467,24 +480,35 @@ A natural superspace of a Fort space is the sigma-product of a discrete
 cardinal.
 
 \begin{defn}
-  Let $\Sigma_{y} \prod_{\alpha<\kappa}X_\alpha$ be a \term{sigma-product} of
-  $X$ with dimension $\kappa$ for each $y\in \prod_{\alpha<\kappa}X_\alpha$,
-  the subset of the usual Tychonoff product space $\prod_{\alpha<\kappa}X_\alpha$
-  such that $x\in \Sigma_y \prod_{\alpha<\kappa}X_\alpha$
-  if and only if $\{\alpha<\kappa : x(\alpha)\not=y(\alpha)\}$ is countable.
+  Let
+    \[
+      \sum_{\alpha<\kappa}^y X_\alpha
+        =
+      \left\{
+        x \in \prod_{\alpha<\kappa} X_\alpha
+         :
+        |\{x(\alpha)\not=y(\alpha):\alpha<\kappa\}|\leq\omega
+      \right\}
+    \]
+  denote the \term{sigma-product}
+  of $\{X_\alpha:\alpha<\kappa\}$ with base point
+  $y\in \prod_{\alpha<\kappa}X_\alpha$. The topology on this space
+  is given by the subspace topology.
 
-  Unless otherwise specified, we assume $0\in X_\alpha$ for all $\alpha<\kappa$
-  and $y=\vec 0$, and write $\Sigma \prod_{\alpha<\kappa}X_\alpha$.
+  Note also the following syntactic sugar:
+  $\sum_{\alpha<\kappa}X_\alpha=\sum_{\alpha<\kappa}^{\vec 0}X_\alpha$,
+  $\sum^{y} X^\kappa = \sum_{\alpha<\kappa}^{y} X$, and
+  $\sum X^\kappa = \sum_{\alpha<\kappa}^{\vec 0} X$.
 \end{defn}
 
 \begin{prop}
   $\oneptcomp\kappa$ is homeomorphic to the space
   \[
-    \{
-    x\in \Sigma 2^\kappa
+    \left\{
+    x\in \sum 2^\kappa
       :
-    x(\alpha)=0 \text{ for all but one } \alpha<\kappa
-    \}
+    |\{\alpha<\kappa:x(\alpha)=1\}|\leq 1
+    \right\}
   \]
 \end{prop}
 
@@ -493,7 +517,7 @@ cardinal.
   \[
     x_\alpha(\beta) =
     \left\{
-      \begin{array}{ll}
+      \begin{array}{l@{\,:\,}l}
         0 & \beta\not=\alpha \\
         1 & \beta=\alpha
       \end{array}
@@ -514,7 +538,7 @@ limited information strategy to investigate.
 
 \begin{defn}
   For a game $G=\<M,W\>$ and \term{coding strategy} or \term{code}
-  $\sigma:M^2\to M$, the \term{$\sigma$-coding fog-of-war}
+  $\sigma:M^{\leq2}\to M$, the \term{$\sigma$-coding fog-of-war}
   $\gamma_\sigma: M^{<\omega}\to M^{\leq2}$ is the function defined such that
     \[
       \gamma_\sigma(\emptyset) = \emptyset

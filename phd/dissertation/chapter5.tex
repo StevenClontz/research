@@ -75,10 +75,15 @@ not completely equivalent is due to the fact that $\pl P$ may hide information
 from $\pl O$ by playing $\infty$. These moves cannot trivially be ignored
 using a $k$-limited information strategy for $k\geq 2$, since $\pl P$ may
 ensure that only one ``useful'' move may be seen by $\pl K$ at a time by playing
-$k$ $\infty$s between each non-$\infty$.
+$k$ $\infty$'s between each non-$\infty$.
 
 Applications of limited information strategies for $\pl K$ are already known;
 see \cite{MR858337}.
+
+\begin{defn}
+  A space is \term{metacompact} if for every open cover $\mc U$ there exists a
+  point-finite open refinement $\mc V$ of $\mc U$ also covering the space.
+\end{defn}
 
 \begin{thm}
   The following are equivalent for a locally compact space $X$:
@@ -87,6 +92,12 @@ see \cite{MR858337}.
       \item $\pl K \tactwin \gruKPGame{X}$.
     \end{itemize}
 \end{thm}
+
+\begin{defn}
+  A space is \term{$\sigma$-metacompact} if for every open cover $\mc U$ there
+  exist point-finite open refinements $\mc V_n$ of $\mc U$ such that
+  $\bigcup_{n<\omega}\mc V_n$ also covers the space.
+\end{defn}
 
 \begin{thm}
   The following are equivalent for a locally compact space $X$:
@@ -112,14 +123,14 @@ In addition, it's trivial to show the following.
 \end{proof}
 
 A similar game may be considered by allowing the second player to choose
-compact sets rather than points, which also provided in \cite{MR858337}
-a game-theoretic characterization of a covering property for locally compact
+compact sets rather than points, which provided in \cite{MR858337}
+a game-theoretic characterization of paracompactness for locally compact
 spaces.
 
 \begin{game}
   Let $\gruKLGame{X}$ denote the \term{Gruenhage compact/compact game}
   with players $\pl K$, $\pl L$. This game proceeds analogously to
-  $\gruKPGame{X}$, except the second player $\pl L$ chooses comapct sets $L_n$
+  $\gruKPGame{X}$, except the second player $\pl L$ chooses compact sets $L_n$
   missing $\bigcup_{m\leq n}K_n$,
   and $\pl K$ wins if the collection $\{L_n:n<\omega\}$ is locally finite.
 \end{game}
@@ -127,6 +138,11 @@ spaces.
 As above, this formulation is equivalent to requiring $\{L_n:n<\omega\}$ be
 discrete when considering strategies for $\pl K$ which use at least the latest
 move of $\pl L$.
+
+\begin{defn}
+  A space is \term{paracompact} if for every open cover $\mc U$ there exists a
+  locally-finite open refinement $\mc V$ of $\mc U$ also covering the space.
+\end{defn}
 
 \begin{thm}
   The following are equivalent for a locally compact space $X$:
@@ -163,7 +179,7 @@ rely only on the round number and not the moves of the opponent.
 \end{proof}
 
 \begin{defn}
-  A space $X$ is \textbf{hemicompact} if there exist compact sets $K_n$ for
+  A space $X$ is \term{hemicompact} if there exist compact sets $K_n$ for
   $n<\omega$ such that every compact set in $X$ is a subset of some $K_n$.
 \end{defn}
 
@@ -175,8 +191,10 @@ rely only on the round number and not the moves of the opponent.
   Let $\sigma$ be a winning predetermined strategy for $\pl K$ in
   $\gruKPGame{X}$. If $C\in \mc K(X)$ is compact, then for each $x\in C$ let
   $U_x$ be an open neighborhood of $x$ which intersects finitely many
-  $\sigma(n)$. Thus there exists an open neighborhood of $C$ which intersects
-  finitely many $\sigma(n)$.
+  $\sigma(n)$. Choose $x_i\in C$ for $i<n<\omega$ such that
+  $\{U_{x_i}:i<n\}$ covers $C$. Then $\bigcup_{i<n}U_{x_i}$ contains $C$
+  and intersects finitely many $\sigma(n)$, and thus
+  $\{\bigcup_{m\leq n}\sigma(m):n<\omega\}$ witnesses hemicompactness.
 \end{proof}
 
 \begin{cor}
@@ -335,8 +353,9 @@ ultrafilter $\mc F$, denoted $\omega\cup\{\mc F\}$.
   winning predetermined strategy.
 \end{proof}
 
-It is not possible to prove that $\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}$
-for arbitrary free ultrafilters in $ZFC$.
+It is not possible to prove in $ZFC$ that
+$\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}$
+for arbitrary free ultrafilters.
 
 \begin{defn}
   A \term{selective ultrafilter} $\mc S$ is a free ultrafilter with the
@@ -397,7 +416,7 @@ for any $k<\omega$.
   The topology on $\pmb X$ is given by decaring $U\times\{s\}$ to be a open
   neighborhood of $\<x,s\>\in X\times 2^{<\omega}$ for each
   open neighborhood $U$ of $x$ in $X$, and declaring
-  $B_{\alpha,n}=(U_\alpha\times\{c_\alpha\rest n: m\leq n<\omega\})\cup\{c_\alpha\}$
+  $B_{\alpha,m}=(U_\alpha\times\{c_\alpha\rest n: m\leq n<\omega\})\cup\{c_\alpha\}$
   to be a clopen neighborhood of $c_\alpha\in C$ for each $\alpha<\omega_1$,
   $m<\omega$.
 \end{defn}
@@ -422,7 +441,7 @@ for any $k<\omega$.
 \end{defn}
 
 \begin{lem}
-  Then $K_F$, $K_F'$, $L_m$ are compact in $\pmb X$.
+  $K_F$, $K_F'$, and $L_m$ are compact in $\pmb X$.
   Furthermore, every compact set is contained in a union of $K_F'$, $L_m$
   for some $F\in C^{<\omega}$ and $m<\omega$.
 \end{lem}
@@ -493,7 +512,7 @@ for any $k<\omega$.
   $X\times\{s\}$ is an open neighborhood of $\pmb x$ which contains finitely
   many $\pmb p(n)$.
 
-  Then consider $\pmb x=c_\alpha$ for some $\alpha<\omega_1$, and let $n<\omega$.
+  Now consider $\pmb x=c_\alpha$ for some $\alpha<\omega_1$, and let $n<\omega$.
   Then if $\pmb p(n)=\<x,s\>$ with $\alpha = \alpha_{x,N}$ for some $N<\omega$,
   then $\pmb p(m)\not\in B_{\alpha,0}$ for $\max(n,N)<m<\omega$.
   Or, if $\pmb p(n)=c_\alpha$, then
@@ -795,8 +814,8 @@ The following example was suggested by Gary Gruenhage.
 
 \begin{proof}
   Let $Y$ be a zero-dimensional Corson compact space which is not Eberlein
-  compact; one such space was constructed in \cite{Marciszewski1991291}
-  and let $X=Y^2$.
+  compact; one such space was constructed in \cite{Marciszewski1991291}.
+  >et $X=Y^2$.
   Then by characterizations of Corson and Eberlien compacts found in
   \cite{MR752278},
   $Y^2\setminus\Delta$ is meta-Lindel\"of but not $\sigma$-metacompact, so
@@ -806,13 +825,16 @@ The following example was suggested by Gary Gruenhage.
 \end{proof}
 
 \begin{cor}
-  There exists a space $X$ such that $\pl K\win\gruKPGame{X}$ but
-  $\pl K\notkmarkwin{k} \gruKPGame{X}$ for all $k<\omega$.
+  There exists a locally compact space $X$ such that $\pl K\win\gruKPGame{X}$
+  but $\pl K\notkmarkwin{k} \gruKPGame{X}$ for all $k<\omega$.
 \end{cor}
 
-So the following question remains open:
+So the following questions remain open:
 
 \begin{ques}
   Does $\pl K\ktactwin{k+1}\gruKPGame{X}$ imply
-  $\pl K\tactwin\gruKPGame{X}$ always? What about for Markov strategies?
+  $\pl K\tactwin\gruKPGame{X}$ for all locally compact spaces?
+  Equivalently, is metacompactness characterized by
+  $\pl K\ktactwin{k+1}\gruKPGame{X}$ for all locally compact spaces?
+  What about for Markov strategies and $\sigma$-metacompactness?
 \end{ques}

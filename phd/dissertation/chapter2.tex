@@ -3,8 +3,47 @@
 
 \chapter{Definitions and Examples}
 
-This chapter outlines the topological and game-theoretic preliminaries
+This chapter outlines the set-theoretic and game-theoretic preliminaries
 required for this paper.
+
+\section{Set Theory}
+
+In general, all required set-theoretic concepts are taken from Kunen's
+text \cite{MR597342}.
+
+\begin{defn}
+  Define \term{ordinals} and \term{cardinals} as in Kunen's text.
+  In particular, $0=\emptyset$, $\omega=\{0,1,2,\dots\}$,
+  $\omega_1$ is the smallest uncountable ordinal, and
+  $\alpha+1=\alpha\cup\{\alpha\}$. The order on ordinals and cardinals
+  is given by $\alpha<\beta$ if and only if $\alpha\in\beta$.
+\end{defn}
+
+\begin{defn}
+  Let $R^D$ denote the set of functions from $D$ to $R$. For an ordinal
+  $\alpha$, $R^{<\alpha}=\bigcup_{\beta<\alpha}R^\beta$ and
+  $R^{\leq\alpha}=\bigcup_{\beta\leq\alpha}R^\beta$.
+\end{defn}
+
+\begin{defn}
+  A \term{sequence} is a function $f\in A^\omega$, denoted
+  $f=\<f(0),f(1),\dots\>$.
+  A \term{finite sequence} is a function
+  $t\in A^{<\omega}$, denoted $t=\<t(0),\dots,t(|t|-1)\>$.
+\end{defn}
+
+Ordered pairs, triples, etc. are considered to be finite sequences.
+
+\begin{defn}
+  For $s,t\in A^{<\omega}$, let $s\concat t\in A^{<\omega}$ be the
+  \term{concatenation} of $s$ and $t$, so that $(s\concat t)(i)=s(i)$
+  for $i<|s|$, and $(s\concat t)(i+|s|)=t(i)$ for $i<|t|$.
+\end{defn}
+
+\begin{defn}
+  For $f:D\to R$ and $A\subseteq D$, let $f\rest A : A\to R$ be the
+  \term{restriction} of $f$ to $A$.
+\end{defn}
 
 \section{Games}
 
@@ -15,7 +54,7 @@ and one of the players is declared the winner of that playthrough.
 
 Games may be modeled mathematically in various ways,
 but we will find it convenient to think of them in terms defined by
-Gale and Stewart. \cite{MR0054922}
+Gale and Stewart \cite{MR0054922}.
 
 \begin{defn}
   A \term{game} is a tuple $\<M,W\>$ such that
@@ -93,14 +132,14 @@ Baker \cite{noMRbaker}.
 
 \begin{game}
   Let $\bakergame{X}$ denote a game with players $\pl A$ and $\pl B$,
-  defined for each subset $A\subset \mathbb{R}$.
+  defined for each subset $X\subset \mathbb{R}$.
   In round $0$, $\pl A$ chooses a number $a_0$, followed by $\pl B$ choosing
   a number $b_0$ such that $a_0<b_0$.
   In round $n+1$, $\pl A$ chooses a number $a_{n+1}$ such that
   $a_n<a_{n+1}<b_n$, followed by $\pl B$ choosing a number $b_{n+1}$ such that
   $a_{n+1}<b_{n+1}<b_n$.
 
-  $\pl A$ wins the game if the sequence $\<a_n:n<\omega\>$ limits to a
+  $\pl A$ wins the game if the sequence $\<a_n:n<\omega\>$ converges to a
   point in $X$, and $\pl B$ wins otherwise.
 \end{game}
 
@@ -272,64 +311,26 @@ considering the following proposition.
 
 \begin{proof}
   Adapted from \cite{noMRbaker}.
-  Let $X=\{x_0,x_1,\dots\}$. Let $i(a,b)$ be the least integer such that
+  Let $X=\{x_i:i<\omega\}$. Let $i(a,b)$ be the least integer such that
   $a<x_{i(x,y)}<b$, if it exists. We define a strategy $\sigma$ for $\pl B$
   such that:
   \begin{itemize}
-    \item $\sigma(\<a_0\>)=x_{i(a_0,\infty)}$.
-          If $i(a_0,\infty)$ does not exist, then the choice of $\sigma(\<a_0\>)$
-          is arbitary, say, $a_0+1$.
-    \item $\sigma(\<a_0,...,a_{n+1}\>)=x_{i(a_{n+1},b_n)}$, where
-          $b_n=\sigma(\<a_0,\dots,a_n\>)$.
-          If $i(a_{n+1},b_n)$ does not exist, then the choice of
-          $\sigma(\<a_0,...,a_{n+1}\>)$ is arbitrary, say,
-          $
-            \sigma(\<a_0,...,a_{n+1}\>)
-              =
-            \frac{a_{n+1}+b_n}{2}
-          $.
+    \item If $i(a_0,\infty)$ exists, $\sigma(\<a_0\>)=x_{i(a_0,\infty)}$.
+    \item Let $b_n=\sigma(\<a_0,\dots,a_n\>)$
+          If $i(a_{n+1},b_n)$ exists,
+          $\sigma(\<a_0,...,a_{n+1}\>)=x_{i(a_{n+1},b_n)}$.
+    \item Otherwise, the choice of $\sigma(t)$ may be any legal move.
   \end{itemize}
 
   Observe that $\sigma$ is a legal strategy according to the rules of the game
   since $a_0<\sigma(\<a_0\>)$ and $a_{n+1}<\sigma(\<a_0,\dots,a_{n+1}\>)<b_n$.
-  We claim this is a winning strategy for $\pl B$. Let $a=\<a_0,a_1,\dots\>$
-  be a legal attack by $\pl A$ against $\sigma$: we will show that the
-  resulting playthrough is a victory for $\pl B$, that is,
-  $\lim_{n\to\infty} a_n\not\in X$. Let $b_n=\sigma(\<a_0,\dots,a_n\>)$.
-  Note that
-    \[
-      a_0<a_1<\dots<\lim_{n\to\infty}a_n<\dots<b_1<b_0
-    \]
-
-  If $i(a_0,\infty)$ does not exist, then $a_0$ is greater than every element
-  of $X$, and thus
-  $\lim_{n\to\infty} a_n \not\in X$. A similar argument follows if some
-  $i(a_{n+1},b_n)$ does not exist.
-
-  Otherwise,
-    \[
-      i(a_0,\infty)<i(a_1,b_0)<i(a_2,b_1)<\dots
-    \]
-  and for each $i<\omega$, one of the following must hold.
-    \begin{itemize}
-      \item $i<i(a_0,\infty)$. Then $x_i\leq a_0<\lim_{n\to\infty}a_n$.
-      \item $i = i(a_0,\infty)$. Then $x_i=b_0>\lim_{n\to\infty}a_n$.
-      \item $i(a_0,\infty)<i<i(a_1,b_0)$.
-            Then $x_i\leq a_1<\lim_{n\to\infty}a_n$ or
-            $x_i\geq b_0>\lim_{n\to\infty}a_n$.
-      \item $i = i(a_{n+1},b_n)$ for some $n<\omega$.
-            Then $x_i=b_{n+1}>\lim_{n\to\infty}a_n$.
-      \item $i(a_{n+1},b_n)<i<i(a_{n+2},b_{n+1})$ for some $n<\omega$.
-            Then $x_i\leq a_{n+2}<\lim_{n\to\infty}a_n$ or
-            $x_i\geq b_{n+1}>\lim_{n\to\infty}a_n$.
-    \end{itemize}
-  In any case, $x_i\not=\lim_{n\to\infty}a_n$, and thus
-  $\lim_{n\to\infty}a_n\not\in X$.
+  Note every $x_i$
+  was either chosen by $\pl B$ during a round, or it was illegal to choose.
+  In either case, there exist $a_n,b_n$ with $x_i\not\in(a_n,b_n)$, so
+  $\lim_{n\to\infty}a_n\not\in X$ and thus $\sigma$ is a winning strategy.
 \end{proof}
 
-More informally, $\pl B$ can force a win by enumerating the countable set
-$X$ and playing every legal choice by the end of the game.
-This yields a classical result.
+This yields the classical result from undergraduate set theory.
 
 \begin{cor}
   $\mathbb{R}$ is uncountable.
