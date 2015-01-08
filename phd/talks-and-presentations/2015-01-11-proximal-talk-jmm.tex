@@ -250,21 +250,22 @@
 \subsection{Example}
 
 \begin{frame}
+  \small
   Canonical example: \term{Banach-Mazur Game} (1935) \cite{MR666400}
 
-  \vspacing
+  \begin{figure}
+    \includegraphics[width=0.6\linewidth]{bmGame.pdf}
+  \end{figure}
 
-  (insert image here)
+  \pause
 
-  \vpause
-
-  The first player wins the game if the intersection of all the chosen
-  open sets is empty.
+  The first player $\pl N$ wins the game if the intersection of all the chosen
+  open sets is nonempty.
 
   \pause
 
   \begin{theorem}
-    $X$ is Baire if and only if the first player lacks a winning strategy
+    $X$ is Baire if and only if $\pl N$ lacks a winning strategy
     in the Banach Mazur game.
   \end{theorem}
 
@@ -276,12 +277,15 @@
 \subsection{Proximal Game}
 
 \begin{frame}
-  \term{Proximal Game} {\tiny for compact $T_1$ zero-dimensional spaces} (2011)
+  \term{Proximal Game} (2011)
   \cite{MR3239205}
 
   \vspacing
 
-  (insert image here)
+  \begin{figure}
+    \includegraphics[width=0.8\linewidth]{proximalGame.pdf}
+  \end{figure}
+  {\tiny for compact $T_1$ $0$-dim spaces}
 
   \vpause
 
@@ -291,7 +295,7 @@
 \end{frame}
 
 \begin{frame}
-  Some results related to the Proximal Game due to Bell:
+  Some results related to the Proximal Game due to Jocelyn Bell:
 
   \begin{proposition}
     If $X$ is metrizable, then $X$ is proximal.
@@ -332,42 +336,82 @@
   \pause
 
   C. and Gruenhage showed in \cite{MR3227201} that any compact proximal
-  space must be Corson compact, using another game-theoretic characterization:
+  space must be Corson compact, using another game-theoretic characterization
+  of Corson compact due to Gruenhage:
 \end{frame}
 
 \subsection{Showing proximal compact implies Corson compact}
 
 \begin{frame}
+  \small
+  \term{Diagonal Game} (1984) \cite{MR752278}:
 
-  \term{Grunehage's Diagonal Game} (1984) \cite{MR752278}:
-
-  \vspacing
-
-  (show picture here)
+  \begin{figure}
+    \includegraphics[width=0.7\linewidth]{diagonalGame.pdf}
+  \end{figure}
+  {\tiny for compact $T_1$ $0$-dim spaces}
 
   \vpause
 
-  The first player $\pl O$ wins the game if the points chosen by the
-  second player $\pl P$ converge.
+  The first player $\pl O$ wins the game if any open set containing the
+  diagonal also contains infinitely many of $\pl P$'s chosen points.
 
   \begin{theorem}
-    If $\pl O$ has a winning strategy for Gruenhage's Diagonal Game
+    If $\pl O$ has a winning strategy for the diagonal game
     and $X$ is compact, then $X$ is Corson compact.
   \end{theorem}
 \end{frame}
 
 \begin{frame}
-  The trick involves adapting a winning strategy by $\pl D$ in Bell's proximal
-  game to be a winning strategy for $\pl O$ in Gruenhage's diagonal game.
+  One may use a winning strategy $\sigma$ for $\pl D$ in the proximal game to
+  construct a strategy $\tau$ for $\pl O$ in the diagonal game.
 
+  \begin{figure}
+    \includegraphics[width=0.7\linewidth]{convertingStrategy.pdf}
+  \end{figure}
+\end{frame}
 
+\begin{frame}
+  In general:
+  \[
+    \tau(a)
+      =
+    \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))}
+    \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
+  \]
+
+  \vspacing
+
+  Using the strategy $\tau$ defined for every proximal compact space,
+  $\pl O$ cannot be defeated in the diagonal game, and therefore all
+  proximal compacts are Corson compact. \qed
+\end{frame}
+
+\section{Questions and References}
+
+\begin{frame}
+  Open questions:
+
+  \begin{itemize}
+    \item If compactness is dropped, does the proximal game characterize
+    all copies of \textit{closed} subspaces of a $\Sigma$-product of reals?
+    (Nyikos)
+    \item If the winning strategy for the proximal game is \term{Markov}
+    (relies on only the latest move and round number) for a compact space,
+    does that imply that the space is \term{Eberlein} compact?
+    (This holds for the diagonal game.)
+  \end{itemize}
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
   \tiny
   \bibliographystyle{plain}
   \bibliography{../dissertation/bibliography}
+\end{frame}
+
+\begin{frame}
+  Any questions?
 \end{frame}
 
 
