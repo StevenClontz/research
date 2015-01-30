@@ -58,7 +58,7 @@ Gale and Stewart \cite{MR0054922}.
 
 \begin{defn}
   A \term{game} is a tuple $\<M,W\>$ such that
-  $W\subseteq M^{\omega}$. $M$ is set of \term{moves} for
+  $W\subseteq M^{\omega}$. $M$ is the set of \term{moves} for
   the game, and $M^{\omega}$ is the set of all possible
   \term{playthroughs} of the game.
 
@@ -208,7 +208,7 @@ We shall make the notion of forcing a win in a game rigorous by introducing
 \end{defn}
 
 Intuitively, a strategy is a rule for one of the players on how to play
-the game based upon the previous (finite) moves of her opponent, while an
+the game based upon the previous (finite) moves of the opponent, while an
 attack is a fixed strike by an opponent indexed by round number.
 
 
@@ -239,7 +239,7 @@ attack is a fixed strike by an opponent indexed by round number.
     \]
 \end{defn}
 
-We now may rigorously define the notion of ``forcing'' a win in a game.
+We now rigorously define the notion of ``forcing'' a win in a game.
 
 \begin{defn}
   A strategy $\sigma$ is a \term{winning strategy} for a player if for
@@ -403,11 +403,13 @@ is winning for that player.
 
 \begin{defn}
   If a winning $k$-tactical strategy exists for a player $\pl A$ in the game
-  $G$, then we write $\pl A \ktactwin{k} G$. If $k=1$, then $\pl A \tactwin G$.
+  $G$, then we write $\pl A \ktactwin{k} G$. If $k=1$, then
+  we may write $\pl A \tactwin G$.
 
   If a winning $k$-Markov strategy exists for a player $\pl A$ in the game
-  $G$, then we write $\pl A \kmarkwin{k} G$. If $k=1$, then $\pl A \markwin G$,
-  and if $k=0$, then $\pl A \prewin G$.
+  $G$, then we write $\pl A \kmarkwin{k} G$. If $k=1$, then we may write
+  $\pl A \markwin G$;
+  if $k=0$, then we may write $\pl A \prewin G$.
 \end{defn}
 
 The existence of a winning limited information strategy can characterize a
@@ -415,9 +417,9 @@ stronger property than the property characterized by a perfect information
 strategy.
 
 \begin{defn}
-  $X$ is an \term{$\alpha$-favorable space}
+  $X$ is said to be an \term{$\alpha$-favorable space}
   when $\pl N \tactwin \bmgame{X}$.
-  $X$ is a \term{weakly $\alpha$-favorable space}
+  $X$ is said to be a \term{weakly $\alpha$-favorable space}
   when $\pl N \win \bmgame{X}$.
 \end{defn}
 
