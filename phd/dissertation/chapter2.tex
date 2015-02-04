@@ -61,7 +61,6 @@ Gale and Stewart \cite{MR0054922}.
   $W\subseteq M^{\omega}$. $M$ is the set of \term{moves} for
   the game, and $M^{\omega}$ is the set of all possible
   \term{playthroughs} of the game.
-
   $W$ is the set of \term{winning playthroughs} or \term{victories} for the
   first player, and $M^{\omega}\setminus W$ is the set of victories for the
   second player. ($W$ is often called the \term{payoff set} for the
@@ -209,7 +208,8 @@ We shall make the notion of forcing a win in a game rigorous by introducing
 
 Intuitively, a strategy is a rule for one of the players on how to play
 the game based upon the previous (finite) moves of the opponent, while an
-attack is a fixed strike by an opponent indexed by round number.
+attack is a fixed sequence of moves determined by the opponent before
+the game begins.
 
 
 \begin{defn}
@@ -262,9 +262,9 @@ If we wish to show that a winning strategy does not exist for a player
 often consider an arbitrary legal strategy, and use it to define a legal
 \term{counter-attack} for the opponent. If we can prove that the result of
 the game for that strategy and counter-attack is a victory for the opponent,
-then a winning strategy does not exist.
+then a winning strategy does not exist for that player.
 
-Unlike finite games, is not the case that a winning strategy must exist for
+Unlike finite games, it is not the case that a winning strategy must exist for
 one of the players in an infinite game.
 
 \begin{defn}
