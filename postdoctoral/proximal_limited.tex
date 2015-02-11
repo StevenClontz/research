@@ -58,6 +58,13 @@
     $\sigmaProdTwo\kappa=\{x\in2^\kappa:|\{\alpha:x(\alpha)=1\}|<\omega\}$.
   \end{definition}
 
+  \begin{theorem}[Gruenhage]
+    For compact spaces $X$,
+    $X$ is strong Eberlein compact if and only if
+    $X$ is scattered and $X$ is a $W$-space
+    ($\pl O\win\gruConGame{X}{x}$ for all $x\in X$).
+  \end{theorem}
+
   \begin{theorem}
     If $X$ is strong Eberlein compact, then
     $\pl D\tactwin\bellAbsConGame{X}$.
@@ -87,6 +94,131 @@
 
     Since every strong Eberlein compact $X$ embeds as a closed subset of
     $\sigmaProdTwo\kappa$, it follows that $\pl D\tactwin\bellAbsConGame X$.
+  \end{proof}
+
+  \begin{theorem}\label{cantorCopy}
+    If $X$ contains a copy of the Cantor set, then
+    $\pl D\nottactwin\bellConGame{X}$.
+  \end{theorem}
+
+  \begin{proof}
+    The result follows from showing that
+    $\pl D\nottactwin\bellAbsConGame{2^\omega}$ (any copy of the Cantor
+    set within a Hausdorff space is a compact and thus closed subspace).
+    Let $\sigma$ be a tactic for $\pl D$ in $\bellAbsConGame{2^\omega}$
+    and let $D_k=\{\<f,g\>:f\rest k = g\rest k\}$. Since $\{D_k:k<\omega\}$
+    is a base for the uniformity on $2^\omega$, we may fix $k(f)<\omega$
+    for each $f\in2^\omega$ such that $D_{k(f)}\subseteq\sigma(\<f\>)$.
+
+    Then there exists $k<\omega$ such that $\{f:k=k(f)\}$ is uncountable,
+    and therefore there exist distinct $f,g$ such that $k=k(f)=k(g)$ and
+    $f\rest k=g\rest k$. Then $p:\omega\to2^\omega$ defined by
+    $p(2n)=f$ and $p(2n+1)=g$ is an attack against $\sigma$ which
+    obviously doesn't converge. This attack is legal since
+    $f\in D_k[g]\subseteq\sigma(\<g\>)[g]$ and
+    $g\in D_k[f]\subseteq\sigma(\<f\>)[f]$.
+  \end{proof}
+
+  \begin{lemma}
+    Every non-scattered Corson compact space contains a homeomorphic
+    copy of the Cantor set.
+  \end{lemma}
+
+  \begin{proof}
+    Every non-scattered space contains a closed subspace without
+    isolated points. Let $X$ be such a subspace, and assume that this
+    Corson compact is embedded in $\SigmaProdR\kappa$. Let
+    $B_{\alpha,\epsilon}(x)=\{y: d(x(\alpha),y(\alpha))<\epsilon\}$.
+    For each $x\in X$ and $n<\omega$, let $\beta(x,n)<\kappa$ be defined
+    such that
+    $\{\alpha:x(\alpha)\not=0\}=\{\beta(x,n):n<\omega\}$.
+
+    Choose an arbitrary $x_\emptyset\in X$ and $\epsilon_0>0$, and
+    and let $A_0=\emptyset$.
+
+    Suppose then that for some $n<\omega$,
+    $x_s\in X$ is defined for all $s\in 2^n$,
+    and $\epsilon_n>0$ and $A_n\in[\kappa]^{<\omega}$ are defined.
+    Since each $x_s$ is not isolated in $X$, let $U_s$ be the open
+    set
+      \[
+        U_s
+          =
+        X
+          \cap
+        \bigcap_{\alpha\in A_{|s|}} B_{\alpha,\epsilon_{|s|}}(x_s)
+      \]
+    and choose $x_{s\concat\<0\>},x_{s\concat\<1\>}\in U_s$ distinct.
+    Then let $\alpha_s<\kappa$ such that
+    $x_{s\concat\<0\>}(\alpha_s)\not=x_{s\concat\<1\>}(\alpha_s)$.
+    Let
+      \[
+        A_{n+1}
+          =
+        \{\alpha_s:s\in2^{\leq n}\}
+          \cup
+        \{\beta(x_s,i):s\in2^{\leq n},i\leq n\}
+      \]
+
+    Then choose $0<\epsilon_{n+1}<\frac{1}{2}\epsilon_n$ such that
+    \[
+      B_{\alpha_s,\epsilon_{n+1}}(x_s\concat\<0\>)
+        \cap
+      B_{\alpha_s,\epsilon_{n+1}}(x_s\concat\<1\>)
+        =
+      \emptyset
+    \]
+    and
+    \[
+      \overline{
+        \bigcap_{\alpha\in A_{n+1}}
+        B_{\alpha,\epsilon_{n+1}}(x_s\concat\<0\>)
+      }
+        \cup
+      \overline{
+        \bigcap_{\alpha\in A_{n+1}}
+        B_{\alpha,\epsilon_{n+1}}(x_s\concat\<1\>)
+      }
+        \subseteq
+      \bigcap_{\alpha\in A_n} B_{\alpha,\epsilon_n}(x_s)
+    \]
+    for all $s\in 2^n$.
+
+    Let $x_f=\lim_{n<\omega} x_{f\rest n}\in X$
+    for each $f\in 2^\omega$. We claim $C=\{x_f:f\in 2^\omega\}$
+    is a copy of the Cantor set. This will follow if we can show that
+    $\{U_s:s\in 2^{<\omega}\}$ is a base for $C$, since it has
+    the structure of the Cantor tree.
+
+    Consider $x_f$ for some $f\in 2^\omega$, and a subbasic open ball
+    $B_{\alpha,\epsilon}(x_f)$. Observe that
+    $x_f\in\bigcap_{n<\omega} U_{f\rest n}$ since
+    $x_{f\rest n}\in U_{f\rest m}$ for all $m<n<\omega$.
+
+    If $\alpha\in\{\beta(x_s,n):s\in2^{<\omega},n<\omega\}$, choose
+    $k<\omega$ with $\alpha\in A_k$. Then choose $l<\omega$ such that
+    $\epsilon_l<\epsilon$. Then
+    $U_{f\rest(l+k)}\subseteq B_{\alpha,\epsilon}(x_f)$.
+
+    Otherwise, $x_g(\alpha)=0$ for all $g\in2^\omega$, and
+    $C\subseteq B_{\alpha,\epsilon}(x_f)$.
+  \end{proof}
+
+  \begin{corollary}
+    For compact spaces $X$,
+    $X$ is strong Eberlein compact if and only if
+    $\pl D\tactwin\bellConGame{X}$.
+  \end{corollary}
+
+  \begin{proof}
+    Suppose $X$ is not strong Eberlien compact; then $X$ is either
+    not a $W$-space or not scattered.
+    If $\pl D\notwin\bellConGame{X}$, then the result follows immediately,
+    which only leaves non-scattered proximal compact to be considered.
+    But non-scattered proximal compacts are non-scattered Corson compacts,
+    and thus contain
+    a copy of the Cantor set, so the result follows from Theorem
+    \ref{cantorCopy}.
   \end{proof}
 
 \end{document}
