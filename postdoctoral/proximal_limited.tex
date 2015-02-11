@@ -5,54 +5,6 @@
 
 \begin{document}
 
-  \begin{example}
-    $\pl D\tactwin \bellConGame{\oneptcomp\kappa}$,
-    so $\pl D\markwin \bellConGame{(\oneptcomp\kappa)^\omega}$.
-  \end{example}
-
-  % probably false
-  % \begin{theorem}
-  %   If $\alcompS\kappa$ holds, then
-  %   $\pl D\kmarkwin2 \bellConGame{\SigmaProdTwo\kappa}$.
-  % \end{theorem}
-
-  % \begin{proof}
-  %   For $x\in\SigmaProdTwo\kappa$, let
-  %     \[
-  %     \text{diff}(x,y)
-  %       =
-  %     \{\alpha:x(\alpha)\not=y(\alpha)\}
-  %       \in
-  %     [\kappa]^{\leq\omega}
-  %     \]
-
-  %   For an entourage $D$ of a space $X_\alpha$, let
-  %   $P_\alpha(D)=\{\<x,y\>:\<x(\alpha),y(\alpha)\>\in D\}$ be an
-  %   entourage of $\prod_{\alpha<\kappa}X_\alpha$.
-  %   Let $f_A:A\to\omega$ witness $\alcompS\kappa$ for
-  %   $A\in[\kappa]^{<\omega}$.
-
-  %   Then define a $2$-mark $\sigma$ for $\pl D$ in
-  %   $\bellConGame{\SigmaProdTwo\kappa}$ such that:
-  %     \[
-  %       \sigma(\<x,y\>,n+2)
-  %         =
-  %       \bigcap\{
-  %       P_{\alpha}(\Delta)
-  %         :
-  %       f_{\text{diff}(x,y)}(\alpha)\not=f_{\text{supp}(y)}(\alpha)
-  %       \}
-  %     \]
-
-  %   Let $\alpha<\kappa$ and consider an arbitrary legal attack
-  %   $p:\omega\to\SigmaProdTwo\kappa$. The result follows if we show
-  %   that $p_\alpha:\omega\to2$ where $p_\alpha(n)=p(n)(\alpha)$
-  %   converges.
-
-  %   If $p_\alpha(n)=0$ or $1$ for cofinitely many $n$, then we are done.
-  %   Otherwise,
-  % \end{proof}
-
   \begin{definition}
     A space $X$ is \term{strong Eberlein compact} if it embeds in
     $\sigmaProdTwo\kappa=\{x\in2^\kappa:|\{\alpha:x(\alpha)=1\}|<\omega\}$.
@@ -200,7 +152,8 @@
     $\epsilon_l<\epsilon$. Then
     $U_{f\rest(l+k)}\subseteq B_{\alpha,\epsilon}(x_f)$.
 
-    Otherwise, $x_g(\alpha)=0$ for all $g\in2^\omega$, and
+    Otherwise, $x_s(\alpha)=0$ for all $s\in2^{<\omega}$, so
+    $x_g(\alpha)=0$ for all $g\in2^\omega$ and therefore
     $C\subseteq B_{\alpha,\epsilon}(x_f)$.
   \end{proof}
 
@@ -220,5 +173,57 @@
     a copy of the Cantor set, so the result follows from Theorem
     \ref{cantorCopy}.
   \end{proof}
+
+  \newpage
+
+  Miscellaneous:
+
+  \begin{example}
+    $\pl D\tactwin \bellConGame{\oneptcomp\kappa}$,
+    so $\pl D\markwin \bellConGame{(\oneptcomp\kappa)^\omega}$.
+  \end{example}
+
+  % probably false
+  % \begin{theorem}
+  %   If $\alcompS\kappa$ holds, then
+  %   $\pl D\kmarkwin2 \bellConGame{\SigmaProdTwo\kappa}$.
+  % \end{theorem}
+
+  % \begin{proof}
+  %   For $x\in\SigmaProdTwo\kappa$, let
+  %     \[
+  %     \text{diff}(x,y)
+  %       =
+  %     \{\alpha:x(\alpha)\not=y(\alpha)\}
+  %       \in
+  %     [\kappa]^{\leq\omega}
+  %     \]
+
+  %   For an entourage $D$ of a space $X_\alpha$, let
+  %   $P_\alpha(D)=\{\<x,y\>:\<x(\alpha),y(\alpha)\>\in D\}$ be an
+  %   entourage of $\prod_{\alpha<\kappa}X_\alpha$.
+  %   Let $f_A:A\to\omega$ witness $\alcompS\kappa$ for
+  %   $A\in[\kappa]^{<\omega}$.
+
+  %   Then define a $2$-mark $\sigma$ for $\pl D$ in
+  %   $\bellConGame{\SigmaProdTwo\kappa}$ such that:
+  %     \[
+  %       \sigma(\<x,y\>,n+2)
+  %         =
+  %       \bigcap\{
+  %       P_{\alpha}(\Delta)
+  %         :
+  %       f_{\text{diff}(x,y)}(\alpha)\not=f_{\text{supp}(y)}(\alpha)
+  %       \}
+  %     \]
+
+  %   Let $\alpha<\kappa$ and consider an arbitrary legal attack
+  %   $p:\omega\to\SigmaProdTwo\kappa$. The result follows if we show
+  %   that $p_\alpha:\omega\to2$ where $p_\alpha(n)=p(n)(\alpha)$
+  %   converges.
+
+  %   If $p_\alpha(n)=0$ or $1$ for cofinitely many $n$, then we are done.
+  %   Otherwise,
+  % \end{proof}
 
 \end{document}
