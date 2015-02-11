@@ -24,7 +24,7 @@
 
   \begin{proof}
     Consider $\bellAbsConGame{\sigmaProdTwo\kappa}$. Let
-    $\text{supp}(x)=\{\alpha:x(\alpha)=1\}\in[\kappa]^{<\kappa}$.
+    $\text{supp}(x)=\{\alpha:x(\alpha)=1\}\in[\kappa]^{<\omega}$.
 
     Define the tactic $\sigma$ for $\pl D$ such that
       \[
@@ -38,10 +38,11 @@
     Fix a legal attack $p:\omega\to\sigmaProdTwo\kappa$, and let
     $\alpha<\kappa$. If $p_\alpha:\omega\to\sigmaProdTwo\kappa$ defined by
     $p_\alpha(n)=p(n)(\alpha)$ converges, then $\sigma$ is a winning
-    tactic. So assume $p_\alpha(n)\not=0$ for all $n<\omega$.
-    Then $p_\alpha(n)=1$ for some $n$, and as $\alpha\in\text{supp}(p(n))$,
+    tactic. So assume
+    $p_\alpha(n)=1$ for some $n$, and as $\alpha\in\text{supp}(p(n))$,
     $\sigma(p(n))\subseteq P_\alpha(\Delta)$. As $p$ is a legal attack,
     it follows that $p_\alpha(m)=p_\alpha(m+1)$ for all $m>n$, so
+    $p_\alpha$ converges. Otherwise $p_\alpha(n)=0$ for all $n$ so
     $p_\alpha$ converges.
 
     Since every strong Eberlein compact $X$ embeds as a closed subset of
@@ -167,7 +168,7 @@
     Suppose $X$ is not strong Eberlien compact; then $X$ is either
     not a $W$-space or not scattered.
     If $\pl D\notwin\bellConGame{X}$, then the result follows immediately,
-    which only leaves non-scattered proximal compact to be considered.
+    which only leaves non-scattered proximal compact spaces to be considered.
     But non-scattered proximal compacts are non-scattered Corson compacts,
     and thus contain
     a copy of the Cantor set, so the result follows from Theorem
