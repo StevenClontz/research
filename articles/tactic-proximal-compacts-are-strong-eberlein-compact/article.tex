@@ -1,9 +1,9 @@
 \documentclass{amsart}
-% \documentclass[preprint]{elsarticle}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
 
+\usepackage{../../clontzDefinitions}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}[thm]{Proposition}
@@ -15,40 +15,6 @@
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{ex}[thm]{Example}
 \newtheorem{ques}[thm]{Question}
-
-
-\theoremstyle{remark}
-
-\newtheorem{remark}[thm]{Remark}
-
-
-
-\newcommand{\oneptcomp}[1]{{#1}^*}
-
-\newcommand{\mc}{\mathcal}
-
-\newcommand{\<}{\langle}
-\renewcommand{\>}{\rangle}
-
-\renewcommand{\int}[1]{\text{int}(#1)}
-\newcommand{\cl}[1]{\overline{#1}}
-
-\newcommand{\proxgame}[1]{Prox_{D,P}(#1)}
-\newcommand{\congame}[2]{Con_{O,P}(#1,#2)}
-\newcommand{\clusgame}[2]{Clus_{O,P}(#1,#2)}
-
-\usepackage{mathrsfs}
-\newcommand{\pl}[1]{\mathscr{#1}}
-
-\newcommand{\win}{\uparrow}
-\newcommand{\markwin}{\win_{\textrm{mark}}}
-
-\newcommand{\rest}{\restriction}
-\newcommand{\concat}{^\frown}
-
-\newcommand{\term}{\textit}
-
-
 
 
 
@@ -94,8 +60,201 @@ the proximal game are generalized to hold for limited information strategies.
 
 \maketitle
 
-foo \cite{Kunen1981283}
+Two papers published in 2014 introduced the \term{proximal uniform space game}
+$\bellUniGame{X}$ due to Jocelyn Bell. If $X$ is a
+topological space, and there exists a uniform structure inducing its topology
+which gives the first player in this game has a winning stategy,
+then $X$ is said to be a \term{proximal} space. Bell used this
+game as a tool in \cite{MR3239205} for investigating uniform box products,
+and the author showed with Gary Gruenhage in \cite{MR3227201} that
+this game characterizes Corson compactness amongst compact Hausdorff spaces,
+answering a question of Peter Nyikos in \cite{nyikosProximalPreprint}.
 
+All spaces in this paper are assumed to be completely regular, so that they
+have a uniform structure inducing the topology on the space.
+Unlike many game-theoretic topological properties, the game $\bellUniGame{X}$
+for which the proximal property was defined by is not itself a topological game.
+However, by considering entourages of the universal uniformity inducing the
+topology of a space, this original uniform space game may be easily modified to
+a purely topological game $\bellConGame{X}$.
+
+The aim of this paper is to use this topological interpretation of the
+proximal game to give a new game-theoretic characterization of the
+strong Eberlein compactness property. Strong Eberlein compacts are Corson
+compacts, and therefore proximal compact spaces; in fact, it will be shown that
+strong Eberlein compacts are exactly the compact spaces for which the
+first player has a \term{tactical} winning strategy for the proximal game,
+a strategy which relies on only the most recent move of the opponent.
+
+
+\section{Topologizing $\bellUniGame{X}$}
+
+We refer to \cite{MR3227201} for definitions, notation, and basic theorems on
+uniform spaces and the proximal game $\bellUniGame{X}$ (denoted as
+$Prox_{D,P}(X)$ in that paper). In particular recall that:
+
+\begin{defn}
+  $\pl P \win G$ denotes that the player $\pl P$ has a winning strategy
+  in the $\omega$-length game $G$.
+\end{defn}
+
+\begin{defn}
+  $X$ is a \term{proximal} space in the case that there exists a uniformity
+  for $X$ such that $\pl D\win\bellUniGame{X}$.
+\end{defn}
+
+As it turns out, the search for such a uniformity is trivial. We refer to
+\cite{MR2048350} for any non-trivial proofs.
+
+\begin{defn}
+  The \term{universal uniformity} for a uniformizable topology is the
+  union of all uniformities which induce the given topology.
+\end{defn}
+
+\begin{thm}
+  The universal uniformity is itself a uniformity compatibile with
+  the topology on the space.
+\end{thm}
+
+\begin{defn}
+  For a uniformizable space $X$, a \term{universal entourage} $D$ is a
+  entourage of the universal uniformity.
+\end{defn}
+
+\begin{thm}
+  For every uniformizable space, if $D$ is a neighborhood of the diagonal
+  $\Delta$  such that there exist neighborhoods $D_n$ of $\Delta$ with
+  $D\supseteq D_0$ and $D_n \supseteq D_{n+1}\circ D_{n+1}$, then $D$ is a
+  universal entourage.
+\end{thm}
+
+\begin{defn}
+  An \term{open symmetric entourage} $D$ is a entourage
+  which is open in the product topology induced by the uniformity and where
+  $D=D^{-1}$ ($\<x,y\>\in D$ if and only if $\<y,x\>\in D$).
+\end{defn}
+
+\begin{thm}
+  For every entourage $D$, there exists an open symmetric
+  entourage $U\subseteq D$.
+\end{thm}
+
+Due to this theorem, we will simply use the word \term{entourage} to refer
+to open symmetric universal entourages. Note that if $D$ is an
+entourage, then $D[x]$ is an open neighborhood of $x$. One may consider
+$D[x]$ to be an entourage-``ball'' about $x$, generalizing the notion of
+an $\epsilon$-ball given by a metric structure.
+
+In the case that
+the space is paracompact, entourages are even more easily found.
+
+\begin{thm}
+  Every open neighborhood of the diagonal is a universal entourage for
+  paracompact uniformizable spaces.
+\end{thm}
+
+\begin{defn}
+  For every entourage $D$, let $\frac{1}{2^n}D$ denote entourages for $n<\omega$
+  such that $\frac{1}{1}D=D$ and
+  $\frac{1}{2^{n+1}}D\circ\frac{1}{2^{n+1}}D\subseteq\frac{1}{2^n}D$.
+\end{defn}
+
+\subsection{Using (universal) entourages to characterize the proximal property}
+
+The natural adaptation of the original uniform space game $\bellUniGame{X}$
+to a topological game requires the use of the universal uniformity on $X$.
+
+\begin{defn}
+  Let $\bellConHardGame{X}$ denote the \term{hard Bell convergence game} with
+  players $\pl D$, $\pl P$ which proceeds as follows for
+  a uniformizable space $X$. In round $0$,
+  $\pl D$ chooses an entourage $D_0$, followed by $\pl P$
+  choosing a point $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage
+  $D_{n+1}$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
+
+  $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges in $X$,
+  or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$. $\pl P$ wins otherwise.
+\end{defn}
+
+This game is considered ``hard'' due to the requirement that $\pl D$
+keep track of the history of the game to ensure that successive
+moves refine previous moves. This record-keeping may be eliminated by
+requiring that $\pl P$ respect all moves made by $\pl D$ rather than only
+the most recent move.
+
+\begin{defn}
+  Let $\bellConGame{X}$ denote the \term{Bell convergence game} with players
+  $\pl D$, $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except
+  for the following. Let $E_n=\bigcap_{m\leq n}D_n$, where $D_n$ is the
+  entourage played by $\pl D$ in round $n$.
+  Then $\pl P$ must ensure that $p_{n+1}\in E_n[p_n]$,
+  and $\pl D$ wins when either $\<p_0,p_1,\dots\>$ converges in $X$
+  or $\bigcap_{n<\omega}E_n[p_n] = \emptyset$.
+\end{defn}
+
+These games are all essentially equivalent with respect to perfect
+information for $\pl D$.
+
+\begin{thm}
+  $\pl D\win\bellConHardGame{X}$ if and only if
+  $\pl D\win\bellConGame{X}$ if and only if
+  $X$ is proximal.
+\end{thm}
+
+\begin{proof}
+  If $\pl D\win\bellConHardGame{X}$, then we immediately see that
+  $\pl D\win\bellConGame{X}$. If $\sigma$ is a winning strategy for $\pl D$
+  in $\bellConGame{X}$, then $\tau$ defined by
+  $\tau(s)=\bigcap_{t\leq s}\sigma(t)$ is easily seen to be a winning strategy
+  for $\pl D$ in $\bellConHardGame{X}$.
+
+  If $\pl D\win\bellConHardGame{X}$, then $\pl D\win\bellUniGame{X}$
+  for the universal uniformity, showing $X$ is proximal.
+  Finally, if $X$ is proximal, then there exists a winning strategy $\sigma$
+  for $\bellUniGame{X}$ for a uniformity inducing the
+  topology on $X$. Then a winning strategy for $\pl D$ in $\bellConHardGame{X}$
+  may be constructed by converting every entourage in this uniformity
+  into a smaller open symmetric universal entourage.
+\end{proof}
+
+The secondary winning condition in $\bellConGame{X}$
+essentially handles the case where
+$\pl P$'s points converge to a ``hole'' in the space. Uniformly locally
+compact spaces (and in particular, compact spaces) lack such holes, so it
+will be convenient to eliminate this technicality when it is irrelevant.
+
+\begin{defn}
+  Let $\bellAbsConGame{X}$ denote the
+  \term{absolute Bell convergence game} which
+  proceeds analogously to $\bellConGame{X}$, except
+  that $\pl D$ must always ensure that $\<p_0,p_1,\dots\>$ converges
+  in $X$ in order to win.
+\end{defn}
+
+\begin{defn}
+  A uniformizable space $X$ is \term{absolutely proximal} if
+  $\pl D \win \bellAbsConGame{X}$.
+\end{defn}
+
+As was shown in \cite{MR3227201}:
+
+\begin{defn}
+  A uniformizable space $X$ is \term{uniformly locally compact} if there
+  exists an entourage $D$ such that $\cl{D[x]}$ is compact
+  for all $x$.
+\end{defn}
+
+\begin{thm}
+  If $X$ is a uniformly locally compact space, then
+  $\pl D \win \bellConGame{X}$ if and only if
+  $\pl D \win \bellAbsConGame{X}$.
+\end{thm}
+
+
+\section{Limited information generalizations}
+
+
+\newpage
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
 
