@@ -18,13 +18,11 @@
   \end{theorem}
 
   \begin{theorem}
-    If $X$ is strong Eberlein compact, then
-    $\pl D\tactwin\bellAbsConGame{X}$.
+    $\pl D\tactwin\bellAbsConGame{\sigmaProdTwo\kappa}$.
   \end{theorem}
 
   \begin{proof}
-    Consider $\bellAbsConGame{\sigmaProdTwo\kappa}$. Let
-    $\text{supp}(x)=\{\alpha:x(\alpha)=1\}\in[\kappa]^{<\omega}$.
+    Let $\text{supp}(x)=\{\alpha:x(\alpha)=1\}\in[\kappa]^{<\omega}$.
 
     Define the tactic $\sigma$ for $\pl D$ such that
       \[
@@ -44,10 +42,11 @@
     it follows that $p_\alpha(m)=p_\alpha(m+1)$ for all $m>n$, so
     $p_\alpha$ converges. Otherwise $p_\alpha(n)=0$ for all $n$ so
     $p_\alpha$ converges.
-
-    Since every strong Eberlein compact $X$ embeds as a closed subset of
-    $\sigmaProdTwo\kappa$, it follows that $\pl D\tactwin\bellAbsConGame X$.
   \end{proof}
+
+  \begin{corollary}
+    If $X$ is strong Eberlein compact, then $\pl D\tactwin\bellAbsConGame{X}$.
+  \end{corollary}
 
   \begin{theorem}\label{cantorCopy}
     If $X$ contains a copy of the Cantor set, then
@@ -174,6 +173,68 @@
     a copy of the Cantor set, so the result follows from Theorem
     \ref{cantorCopy}.
   \end{proof}
+
+  \newpage
+
+  \begin{definition}
+    A space $X$ is \term{Eberlein compact} if it embeds in
+    $
+      \SigmaStarProdR\kappa
+        =
+      \{
+        x\in2^\kappa
+      :
+        |\{\alpha:|x(\alpha)|\geq \epsilon\}|<\omega
+        \text{ for all } \epsilon > 0
+      \}
+    $.
+  \end{definition}
+
+  \begin{theorem}
+    $\pl D\markwin\bellAbsConGame{\SigmaStarProdR\kappa}$.
+  \end{theorem}
+
+  \begin{proof}
+    Let
+    $
+      \text{supp}_\epsilon(x)
+        =
+      \{\alpha:|x(\alpha)|\geq \epsilon\}
+        \in
+      [\kappa]^{<\omega}
+    $. Let $D_\epsilon$ be the entourage of the diagonal formed by
+    balls of radius $\epsilon$.
+
+    Define the tactic $\sigma$ for $\pl D$ such that
+      \[
+        \sigma(\<x\>,n)
+          =
+        \bigcap\{
+          P_\alpha(D_{2^{-n}}) : \alpha\in\text{supp}_{2^{-n}}(x)
+        \}
+      \]
+
+    % Fix a legal attack $p:\omega\to\sigmaProdTwo\kappa$, and let
+    % $\alpha<\kappa$. If $p_\alpha:\omega\to\sigmaProdTwo\kappa$ defined by
+    % $p_\alpha(n)=p(n)(\alpha)$ converges, then $\sigma$ is a winning
+    % tactic. So assume
+    % $p_\alpha(n)=1$ for some $n$, and as $\alpha\in\text{supp}(p(n))$,
+    % $\sigma(p(n))\subseteq P_\alpha(\Delta)$. As $p$ is a legal attack,
+    % it follows that $p_\alpha(m)=p_\alpha(m+1)$ for all $m>n$, so
+    % $p_\alpha$ converges. Otherwise $p_\alpha(n)=0$ for all $n$ so
+    % $p_\alpha$ converges.
+  \end{proof}
+
+
+
+
+
+
+
+
+
+
+
 
   \newpage
 
