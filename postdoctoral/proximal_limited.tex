@@ -35,13 +35,13 @@
 
     Fix a legal attack $p:\omega\to\sigmaProdTwo\kappa$, and let
     $\alpha<\kappa$. If $p_\alpha:\omega\to\sigmaProdTwo\kappa$ defined by
-    $p_\alpha(n)=p(n)(\alpha)$ converges, then $\sigma$ is a winning
-    tactic. So assume
+    $p_\alpha(n)=p(n)(\alpha)$ converges for each $\alpha<\kappa$,
+    then $\sigma$ is a winning tactic. So assume
     $p_\alpha(n)=1$ for some $n$, and as $\alpha\in\text{supp}(p(n))$,
     $\sigma(p(n))\subseteq P_\alpha(\Delta)$. As $p$ is a legal attack,
     it follows that $p_\alpha(m)=p_\alpha(m+1)$ for all $m>n$, so
     $p_\alpha$ converges. Otherwise $p_\alpha(n)=0$ for all $n$ so
-    $p_\alpha$ converges.
+    $p_\alpha$ converges to $0$.
   \end{proof}
 
   \begin{corollary}
@@ -203,89 +203,51 @@
         \in
       [\kappa]^{<\omega}
     $. Let $D_\epsilon$ be the entourage of the diagonal formed by
-    balls of radius $\epsilon$.
+    balls of radius $\epsilon$. Finally, for $z\in\mb R$
+    and $n<\omega$, let
+      \[
+        \epsilon(z,n)
+          =
+        \min\left(
+          \frac{1}{2^n},
+          \frac{|z|}{2}
+        \right)
+      \]
+    noting in particular that if $|z|\geq\frac{1}{2^n}$, then for any $z'$ with
+    $|z'-z|<\epsilon(z,n)$, it follows that $|z'|\geq\frac{1}{2^{n+1}}$.
 
-    Define the tactic $\sigma$ for $\pl D$ such that
+    Define the mark $\sigma$ for $\pl D$ such that
       \[
         \sigma(\<x\>,n)
           =
         \bigcap\{
-          P_\alpha(D_{2^{-n}}) : \alpha\in\text{supp}_{2^{-n}}(x)
+          P_\alpha(D_{\epsilon(x(\alpha),n)})
+        :
+          \alpha\in\text{supp}_{2^{-n}}(x)
         \}
       \]
 
-    % Fix a legal attack $p:\omega\to\sigmaProdTwo\kappa$, and let
-    % $\alpha<\kappa$. If $p_\alpha:\omega\to\sigmaProdTwo\kappa$ defined by
-    % $p_\alpha(n)=p(n)(\alpha)$ converges, then $\sigma$ is a winning
-    % tactic. So assume
-    % $p_\alpha(n)=1$ for some $n$, and as $\alpha\in\text{supp}(p(n))$,
-    % $\sigma(p(n))\subseteq P_\alpha(\Delta)$. As $p$ is a legal attack,
-    % it follows that $p_\alpha(m)=p_\alpha(m+1)$ for all $m>n$, so
-    % $p_\alpha$ converges. Otherwise $p_\alpha(n)=0$ for all $n$ so
-    % $p_\alpha$ converges.
+    Fix a legal attack $p:\omega\to\SigmaStarProdR\kappa$, and let
+    $\alpha<\kappa$. If $p_\alpha:\omega\to\SigmaStarProdR\kappa$ defined by
+    $p_\alpha(n)=p(n)(\alpha)$ converges for each $\alpha<\kappa$,
+    then $\sigma$ is a winning mark. So assume
+    $|p_\alpha(n)|\geq\frac{1}{2^n}$ for some $n$,
+    and as $\alpha\in\text{supp}(p(n))$,
+    $\sigma(p(n))\subseteq P_\alpha(D_{\epsilon(p_\alpha(n),n)})$.
+    As $p$ is a legal attack, it follows that
+    $|p_\alpha(n+1)-p_\alpha(n)|<\epsilon(p_\alpha(n),n)$, and
+    therefore $|p_\alpha(n+1)|\geq\frac{1}{2^{n+1}}$.
+
+    Thus $|p_\alpha(m)|\geq\frac{1}{2^{m}}$ for all $m\geq n$,
+    and as $\alpha\in\text{supp}(p(m))$,
+    $\sigma(p(m))\subseteq P_\alpha(D_{\epsilon(p_\alpha(m),m)})$.
+    As $p$ is a legal attack, it follows that
+    $|p_\alpha(m+1)-p_\alpha(m)|<\epsilon(p_\alpha(m),m)\leq \frac{1}{2^m}$,
+    and therefore $p_\alpha$ is a Cauchy sequence and converges.
+
+    Otherwise $p_\alpha(n)<2^{-n}$ for all $n$, so $p_\alpha$ converges to $0$.
   \end{proof}
 
 
-
-
-
-
-
-
-
-
-
-
-  \newpage
-
-  Miscellaneous:
-
-  \begin{example}
-    $\pl D\tactwin \bellConGame{\oneptcomp\kappa}$,
-    so $\pl D\markwin \bellConGame{(\oneptcomp\kappa)^\omega}$.
-  \end{example}
-
-  % probably false
-  % \begin{theorem}
-  %   If $\alcompS\kappa$ holds, then
-  %   $\pl D\kmarkwin2 \bellConGame{\SigmaProdTwo\kappa}$.
-  % \end{theorem}
-
-  % \begin{proof}
-  %   For $x\in\SigmaProdTwo\kappa$, let
-  %     \[
-  %     \text{diff}(x,y)
-  %       =
-  %     \{\alpha:x(\alpha)\not=y(\alpha)\}
-  %       \in
-  %     [\kappa]^{\leq\omega}
-  %     \]
-
-  %   For an entourage $D$ of a space $X_\alpha$, let
-  %   $P_\alpha(D)=\{\<x,y\>:\<x(\alpha),y(\alpha)\>\in D\}$ be an
-  %   entourage of $\prod_{\alpha<\kappa}X_\alpha$.
-  %   Let $f_A:A\to\omega$ witness $\alcompS\kappa$ for
-  %   $A\in[\kappa]^{<\omega}$.
-
-  %   Then define a $2$-mark $\sigma$ for $\pl D$ in
-  %   $\bellConGame{\SigmaProdTwo\kappa}$ such that:
-  %     \[
-  %       \sigma(\<x,y\>,n+2)
-  %         =
-  %       \bigcap\{
-  %       P_{\alpha}(\Delta)
-  %         :
-  %       f_{\text{diff}(x,y)}(\alpha)\not=f_{\text{supp}(y)}(\alpha)
-  %       \}
-  %     \]
-
-  %   Let $\alpha<\kappa$ and consider an arbitrary legal attack
-  %   $p:\omega\to\SigmaProdTwo\kappa$. The result follows if we show
-  %   that $p_\alpha:\omega\to2$ where $p_\alpha(n)=p(n)(\alpha)$
-  %   converges.
-
-  %   If $p_\alpha(n)=0$ or $1$ for cofinitely many $n$, then we are done.
-  %   Otherwise,
-  % \end{proof}
 
 \end{document}
