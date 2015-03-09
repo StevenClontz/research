@@ -327,7 +327,7 @@
 
   In doing so I uncovered several new results in general topology,
   advancing research done by
-  G. Gruenhage, P. Nyikos, F. Gavin, R. Telg{\' a}rksy, J. Bell,
+  G. Gruenhage, P. Nyikos, R. Telg{\' a}rksy, J. Bell,
   M. Scheepers, and others.
 \end{frame}
 
@@ -433,6 +433,94 @@
   \end{theorem}
 \end{frame}
 
+
+
+
+\section{Bell's Proximal Game}
+
+\subsection{Definition}
+
+\begin{frame}
+  \small
+  \begin{game}
+  Bell's proximal game $\bellAbsConGame{X}$ for compact zero-dimensional
+  $X$:
+    \begin{figure}
+      \includegraphics[width=0.6\linewidth]{proximalGameAlt.pdf}
+    \end{figure}
+
+  $\pl D$ wins the game if the points chosen by $\pl P$ converge.
+  Otherwise, $\pl P$ wins.
+  \end{game}
+\end{frame}
+
+\subsection{Motivation}
+
+\begin{frame}
+  If $\pl D\win \bellAbsConGame{X}$, then $X$ is called a proximal compact.
+  This game was brought to my attention due to this result: \cite{MR3239205}
+
+  \begin{theorem}
+    Every proximal space is a $W$-space. So
+    $\pl D\win\bellAbsConGame{X} \Rightarrow \pl O\win\gruConGame{X}{x}$
+    for all $x\in X$.
+  \end{theorem}
+
+  \vpause
+
+  Proximal spaces have strong preservation properties, as any
+  closed subset or $\Sigma$-product of proximal spaces is proximal. Since
+  any proximal space is collectionwise normal, Bell's game gives an elegant
+  proof of the classic result:
+
+  \begin{theorem}
+    A $\Sigma$-product of metrizable spaces is collection-wise normal.
+  \end{theorem}
+\end{frame}
+
+\subsection{Results}
+
+\begin{frame}
+  Nyikos \cite{nyikosProximalPreprint} observed that
+  \begin{proposition}
+    Corson compact spaces are proximal.
+  \end{proposition}
+  and asked if the converse holds as well.
+
+  \vpause
+
+  With Gruenhage, I showed that the answer is yes:
+  \begin{theorem}
+    A compact space is Corson compact if and only if it is proximal.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}\small
+  A winning limited information strategy may always be passed down
+  to win in a closed subspace, but Bell's result that winning strategies
+  are preserved for $\Sigma$-products does not quite generalize as well:
+
+  \begin{theorem}
+    For $k<\omega$, if $\pl D\kmarkwin{k}\bellAbsConGame{X_i}$ for all $i<\omega$,
+    then $\pl D\kmarkwin{k}\bellAbsConGame{\prod_{i<\omega} X_i}$.
+  \end{theorem}
+
+  \pause
+
+  Other limited information lemmas proved in my dissertation allowed me
+  to prove a game-theoretic characterization of another compactness property
+  (paper in preparation):
+
+  \begin{theorem}
+    A compact space is strong Eberlein compact if and only if
+    $\pl D\tactwin\bellAbsConGame{X}$.
+  \end{theorem}
+\end{frame}
+
+
+
+
+
 \section{Gruenhage's Locally Finite Games}
 
 \subsection{Definition}
@@ -451,136 +539,163 @@
   \end{game}
 \end{frame}
 
+\subsection{Motivation}
+
+\begin{frame}
+  Gruenhage used these games in \cite{MR752278} to characterize
+  metacompactness and $\sigma$-metacompactness amongst locally compact
+  spaces:
+
+  \begin{theorem}
+    For locally compact spaces, $\pl K\tactwin\gruKPGame{X}$ if and only if
+    $X$ is metacompact.
+  \end{theorem}
+
+  \begin{theorem}
+    For locally compact spaces, $\pl K\markwin\gruKPGame{X}$ if and only if
+    $X$ is $\sigma$-metacompact.
+  \end{theorem}
+\end{frame}
+
+\subsection{Results}
+
+\begin{frame}
+  By removing knowledge of the round number, an analogous result is
+  unsurfaced:
+
+  \begin{theorem}
+    For locally compact spaces, $\pl K\prewin\gruKPGame{X}$ if and only if
+    $X$ is $\sigma$-compact.
+  \end{theorem}
+
+  \pause
+
+  Actually, for locally compact or even compactly-generated spaces,
+  $\pl K\prewin\gruKPGame{X}$ if and only if $\pl K\prewin\gruKLGame{X}$.
+  However, there is a non-compactly-generated counterexample:
+
+  \begin{theorem}
+    There exists a free ultrafilter $\mc F$ such that
+    $\pl K \prewin\gruKPGame{\omega\cup\{\mc F\}}$, but
+    $\pl K \notprewin\gruKLGame{\omega\cup\{\mc F\}}$ for any free
+    ultrafilter $\mc F$.
+  \end{theorem}
+\end{frame}
 
 
-% \subsection{Proximal Game}
 
-% \begin{frame}
-%   \term{Proximal Game} (2014)
-%   \cite{MR3239205}
 
-%   \vspacing
 
-%   \begin{figure}
-%     \includegraphics[width=0.8\linewidth]{proximalGame.pdf}
-%   \end{figure}
-%   {\tiny for compact $T_1$ $0$-dim spaces}
+\section{Menger's Game}
 
-%   \vpause
+\subsection{Definition}
 
-%   The first player $\pl D$ wins the game if the points chosen by the
-%   second player $\pl P$ converge. If $\pl D$ has a winning
-%   strategy for this game, call $X$ \term{proximal}.
-% \end{frame}
+\begin{frame}
+  \small
+  \begin{game}
+  Menger's game $\menGame{X}$ proceeds as follows:
 
-% \begin{frame}
-%   Some results related to the Proximal Game due to Jocelyn Bell:
+  (this space intentionally left blank until I make a picture)
 
-%   \begin{proposition}
-%     If $X$ is metrizable, then $X$ is proximal.
-%   \end{proposition}
+  $\pl F$ wins the game if her finitely coverable subsets
+  union to the space. Otherwise, $\pl C$  wins.
+  \end{game}
+\end{frame}
 
-%   \begin{theorem}
-%     If $X$ is proximal, then $X$ is collectionwise normal.
-%   \end{theorem}
+\subsection{Motivation}
 
-%   \begin{theorem}
-%     $\Sigma$-products and closed subspaces of proximal spaces are proximal.
-%   \end{theorem}
+\begin{frame}
+  A covering property generalizing $\sigma$-compactness is characterized
+  by this game, demonstrated by Hurewicz in the 1920's. \cite{MR1544773}
 
-%   \pause
+  \begin{theorem}
+    A space is Menger if and only if $\pl C\not\win\menGame{X}$.
+  \end{theorem}
 
-%   \begin{corollary}
-%     The $\Sigma$-product of metrizable spaces is collectionwise normal.
-%     \cite{MR0461410} \cite{MR716576}
-%   \end{corollary}
-% \end{frame}
+  \pause
 
-% \section{Main Result}
+  It was originally suspected that Menger subspaces of the real line were
+  exactly the $\sigma$-compact subspaces, but as was shown by Telgarsky
+  and Scheepers, $\sigma$-compact spaces
+  have slightly more structure. \cite{MR753073} \cite{MR1273523}
 
-% \subsection{Corson compact}
+  \begin{theorem}
+    A metrizable space $X$ is $\sigma$-compact if and only if
+    $\pl F\win\menGame{X}$.
+  \end{theorem}
+\end{frame}
 
-% \begin{frame}
-%   A \term{Corson compact} space is a space homeomorphic to a compact
-%   subset of the $\Sigma$-product of real lines.
+\subsection{Results}
 
-%   \vpause
+\begin{frame}
+  By considering Markov strategies, the previous theorem may be factored
+  into two subresults.
 
-%   Peter Nyikos observed:
+  \begin{theorem}
+    A regular space $X$ is $\sigma$-compact if and only if
+    $\pl F\markwin\menGame{X}$.
+  \end{theorem}
+  \begin{theorem}
+    For a second-countable space $X$, $\pl F\win\menGame{X}$ if and only if
+    $\pl F\markwin\menGame{X}$.
+  \end{theorem}
 
-%   \begin{proposition}
-%     Every Corson compact space is proximal compact. \cite{nyikosProximalPreprint}
-%   \end{proposition}
+  Note that since the spaces we are considering are all Lindel\"of,
+  metrizability is characterized by regularity and second-countability.
+\end{frame}
 
-%   \pause
+\subsection{More Motivation}
 
-%   C. and Gruenhage showed in \cite{MR3227201} that any compact proximal
-%   space must be Corson compact, using another game-theoretic characterization
-%   of Corson compact due to Gruenhage:
-% \end{frame}
+\begin{frame}
+  Limited information strategies in topological games such as
+  $\menGame{X}$ often have set-theoretic
+  consequences. The statement $\alcompS\kappa$ due to M. Scheepers
+  \cite{MR1129143} says that there exist
+  almost-compatible functions $f_A:A\to\omega$ for each $A\in[\kappa]^\omega$.
 
-% \subsection{Showing proximal compact implies Corson compact}
+  \begin{theorem}
+    $\alcompS{\omega_1}$ and $\neg\alcompS{(2^\omega)^+}$ are theorems
+    of $ZFC$, but $\alcompS\kappa$ is independent of $ZFC$ for
+    $\omega_1<\kappa\leq 2^\omega$.
+  \end{theorem}
 
-% \begin{frame}
-%   \small
-%   \term{Diagonal Game} (1984) \cite{MR752278}:
+  \begin{theorem}
+    If $\alcompS{\kappa}$ holds, then
+    $\pl F\ktactwin2 \cloFillStrictGame{\kappa}$.
+  \end{theorem}
+\end{frame}
 
-%   \begin{figure}
-%     \includegraphics[width=0.7\linewidth]{diagonalGame.pdf}
-%   \end{figure}
-%   {\tiny for compact $T_1$ $0$-dim spaces}
+\subsection{More Results}
 
-%   \vpause
+\begin{frame}
+  Let $\oneptlind\kappa$ be the one-point ``Lindel\"of-ication'' of
+  discrete $\kappa$.
 
-%   The first player $\pl O$ wins the game if any open set containing the
-%   diagonal also contains infinitely many of $\pl P$'s chosen points.
+  \begin{theorem}
+    \begin{figure}
+      \includegraphics[width=0.6\linewidth]{mengerGameChart.png}
+    \end{figure}
+  \end{theorem}
+\end{frame}
 
-%   \begin{theorem}
-%     For $X$ compact, $\pl O$ has a winning strategy for the diagonal game
-%     if and only if $X$ is Corson compact.
-%   \end{theorem}
-% \end{frame}
+\begin{frame}\small
+  For most of the games in the previous chart, including the Menger game
+  $\menGame{X}$, there's no need to consider larger amounts of limited
+  information.
 
-% \begin{frame}
-%   One may use a winning strategy $\sigma$ for $\pl D$ in the proximal game to
-%   construct a strategy $\tau$ for $\pl O$ in the diagonal game.
+  \begin{theorem}
+    For each $k<\omega$,
+    $\pl F\kmarkwin{k+2}\menGame{X}$ if and only if
+    $\pl F\kmarkwin2\menGame{X}$
+  \end{theorem}
 
-%   \begin{figure}
-%     \includegraphics[width=0.7\linewidth]{convertingStrategy.pdf}
-%   \end{figure}
-% \end{frame}
+  The topological property $\pl F\kmarkwin2\menGame{X}$ seems to
+  depend on the set-theoretic axioms at play.
 
-% \begin{frame}
-%   In general:
-%   \[
-%     \tau(a)
-%       =
-%     \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))}
-%     \frac{1}{4}\sigma(o_s\concat\<h_{s,i}\>)[h_{s,i,j}]
-%   \]
-
-%   \vspacing
-
-%   Using the strategy $\tau$ defined for every proximal compact space,
-%   $\pl O$ cannot be defeated in the diagonal game, and therefore all
-%   proximal compacts are Corson compact. \qed
-% \end{frame}
-
-% \section{Questions and References}
-
-% \begin{frame}
-%   Open questions:
-
-%   \begin{itemize}
-%     \item If compactness is dropped, does the proximal game characterize
-%     all copies of \textit{closed} subspaces of a $\Sigma$-product of reals?
-%     (Nyikos)
-%     \item If the winning strategy for the proximal game is \term{Markov}
-%     (relies on only the latest move and round number) for a compact space,
-%     does that imply that the space is \term{Eberlein} compact?
-%     (This holds for the diagonal game.)
-%   \end{itemize}
-% \end{frame}
+  \begin{theorem}
+    If $\alcompS{2^\omega}$, then $\pl F\kmarkwin2\menGame{R_\omega}$.
+  \end{theorem}
+\end{frame}
 
 
 \begin{frame}[allowframebreaks]
