@@ -728,6 +728,75 @@
   metrizability is characterized by regularity and second-countability.
 \end{frame}
 
+\begin{frame}{
+Proof that $\sigma$-compact $\Leftrightarrow$ $\pl F\markwin\menGame{X}$
+}\small
+  Assume $X$ is regular.
+
+  \vpause
+
+  If $X=\bigcup_{n<\omega} K_n$, then $\pl F$ may choose $K_n$ each round,
+  which is a winning predetermined (and therefore Markov) strategy.
+
+  \vpause
+
+  If $X$ is not $\sigma$-compact,
+  let $\sigma$ be any Markov strategy for $\pl F$. Then for
+    \[
+      R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \sigma(\<\mc{U}\>,n)
+    \]
+  and any open cover $\mc U$ of the space $X$,
+  $\sigma(\<\mc{U}\>,n)$ is a finite subcover of $R_n$. Thus $\cl{R_n}$
+  is compact by the regularity of $X$.
+
+  \vpause
+
+  Since $X$ is not $\sigma$-compact, choose a point $x$ not in any $R_n$.
+  Then there is a sequence of open covers $\mc U_0,\mc U_1,\dots$ for which
+  $x\not\in\sigma(\<\mc U_n\>,n)$ for all $n$, and thus $\sigma$
+  is not a winning Markov strategy.
+\end{frame}
+
+\begin{frame}{
+Proof that $\pl F\win\menGame{X}$ $\Leftrightarrow$ $\pl F\markwin\menGame{X}$
+}\small
+  Assume $X$ is second-countable. Without loss of generality, assume
+  $\pl C$ only chooses coverings using open sets from the countable base
+  $\{U_n:n<\omega\}$.
+
+  \vpause
+
+  If $\pl F$ has a winning Markov strategy, then she has a winning strategy.
+
+  \vpause
+
+  Let $\sigma$ be a winning strategy, and assume $\mc U_t$ is an open cover
+  of basic open sets for each $t\leq s\in\omega^{<\omega}$.
+  % Since $\sigma(\<\mc U_{s\rest1},\dots,\mc U_{s},\mc U\>)$
+  % is finitely coverable by $\mc U$,
+  % there is some $F\in[\omega]^{<\omega}$ such that
+  % $
+  %   \sigma(\<\mc U_{s\rest1},\dots,\mc U_{s},\mc U\>)
+  %     \subseteq
+  %   \bigcup_{n\in F}U_n
+  % $.
+  % Since there are only countably many $F\in[\omega]^{<\omega}$,
+  By exploiting the countable base, we may choose
+  $\mc U_{s\concat\<n\>}$ for each $n<\omega$, such that for every open cover
+  $\mc U$ there exists $n<\omega$ where
+  $
+    \sigma(\<\mc U_{s\rest1},\dots,\mc U_{s},\mc U\>)
+      \subseteq
+    \sigma(\<\mc U_{s\rest1},\dots,\mc U_{s},\mc U_{s\concat\<n\>}\>)
+  $.
+
+  \vpause
+
+  Then
+  $\tau(\<\mc U\>,n)=\sigma(\<\mc U_{f(n)\rest1},\dots,\mc U_{f(n)},\mc U\>$
+  where $f:\omega\to\omega^{<\omega}$ is a bijection is a winning strategy.
+\end{frame}
+
 \subsection{More Motivation}
 
 \begin{frame}
