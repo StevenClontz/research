@@ -433,6 +433,71 @@
   \end{theorem}
 \end{frame}
 
+\begin{frame}{
+  Proof that $\pl O\markwin \gruClusGameHard{\oneptcomp\omega_1}{\infty}$
+}\small
+  For each $\alpha<\omega_1$, let $f_\alpha:\alpha\to\omega$ be injective.
+
+  \vpause
+
+  Note that for each $F\in[\omega_1]^{<\omega}$, there is some $n_F<\omega$
+  such that $f_{\alpha+1}(\beta)<n_F$ for all $\beta,\alpha\in F$.
+
+  \vpause
+
+  Let $\sigma$ be a Markov strategy for $\pl O$ such that
+    \[
+      \sigma(\<\alpha\>,n)
+        \subseteq
+      \oneptcomp\omega_1 \setminus
+      \{\beta<\omega_1:f_{\alpha+1}(\beta)<n\}
+    \]
+  for $\alpha<\omega_1$.
+
+  \vpause
+
+  Thus as any legal counterattack cannot have finite range in $\omega_1$
+  without repeating $\infty$ co-finitely,
+  $\sigma$ is a winning Markov strategy. $\qed$
+\end{frame}
+
+\begin{frame}{
+  Proof that $\pl O\nottactwin\gruClusGameHard{\oneptcomp\omega_1}{\infty}$
+}\small
+  Let $\sigma$ be a tactic for $\pl O$ in
+  $\gruClusGameHard{\oneptcomp\omega_1}{\infty}$.
+
+  \vpause
+
+  Then this set is closed and unbounded in $\omega_1$:
+    \[
+      C_\sigma
+        =
+      \{
+        \alpha<\omega_1
+          :
+        \beta<\alpha
+          \Rightarrow
+        \oneptcomp\omega_1\setminus\sigma(\<\beta\>)
+        \subseteq \alpha
+      \}
+    \]
+
+  \vpause
+
+  If $a_\sigma:\omega_1\to C_\sigma$ is an order isomorphism, then
+  there is $n<\omega$ such that $a_\sigma(n)\in\sigma(\<a_\sigma(\omega)\>)$.
+
+  \vpause
+
+  Then since $a_\sigma(\omega)>a_\sigma(n)$ implies
+  $a_\sigma(\omega)\in\sigma(\<a_\sigma(n)\>)$
+  (by the definition of $C_\sigma$), it follows that
+  $\<a_\sigma(n),a_\sigma(\omega),a_\sigma(n),a_\sigma(\omega),\dots\>$
+  is a legal counterattack against $\sigma$ which does not cluster at
+  $\infty$. $\qed$
+\end{frame}
+
 
 
 
@@ -716,15 +781,17 @@
   \end{theorem}
 \end{frame}
 
+\section{}
+
+\begin{frame}
+  Any questions?
+\end{frame}
+
 
 \begin{frame}[allowframebreaks]
   \tiny
   \bibliographystyle{plain}
   \bibliography{../dissertation/bibliography}
-\end{frame}
-
-\begin{frame}
-  Any questions?
 \end{frame}
 
 
