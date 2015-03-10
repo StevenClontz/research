@@ -8,7 +8,7 @@
 % - The talk is between 15min and 45min long.
 % - Style is ornate.
 
-
+\usepackage{amssymb}
 
 % Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
 %
@@ -209,7 +209,7 @@
 \newcommand{\term}{\textit}
 
 
-\newcommand{\bmGame}[1]{{BM}_{E,N}(#1)}
+\newcommand{\bmGame}[1]{{BM}_{N,E}(#1)}
 
 
 
@@ -263,7 +263,7 @@
     $\bmGame{X}$ (1935) \cite{MR666400}
 
     \begin{figure}
-      \includegraphics[width=0.6\linewidth]{bmGame.pdf}
+      \includegraphics[width=0.6\linewidth]{bmGameAlt.pdf}
     \end{figure}
 
   The first player $\pl N$ wins the game if the intersection of all the chosen
@@ -306,7 +306,7 @@
   \vpause
 
   This is stronger than weak
-  $\alpha$-favorability, characterized by $\pl E\win\bmGame{X}$.
+  $\alpha$-favorability \cite{MR817083}, characterized by $\pl E\win\bmGame{X}$.
   In this case $\pl E$ still has a winning strategy, but it may
   rely on perfect information of the history of the game.
 \end{frame}
@@ -582,6 +582,24 @@
   \end{theorem}
 \end{frame}
 
+\begin{frame}
+  For the related game $\gruConGame{X}{x}$, a $(k+1)$-tactic/mark may always
+  be improved to only use the most recent move of the opponent. If this
+  also holds for $\gruKPGame{X}$, then metacompactness and
+  $\sigma$-metacompactness may would be characterized by the existence
+  of any winning $(k+1)$-tactic/mark.
+
+  \vpause
+
+  Due to a technical difference in the games, it's unclear if this is true.
+  However, for a tricky non-$\sigma$-metacompact example $\pmb X$:
+
+  \begin{theorem}
+    $\pl K\win\gruKPGame{\pmb X}$ but
+    $\pl K\notkmarkwin{k}\gruKPGame{\pmb X}$.
+  \end{theorem}
+\end{frame}
+
 
 
 
@@ -594,8 +612,9 @@
   \small
   \begin{game}
   Menger's game $\menGame{X}$ proceeds as follows:
-
-  (this space intentionally left blank until I make a picture)
+    \begin{figure}
+      \includegraphics[width=0.6\linewidth]{mengerGame.pdf}
+    \end{figure}
 
   $\pl F$ wins the game if her finitely coverable subsets
   union to the space. Otherwise, $\pl C$  wins.
