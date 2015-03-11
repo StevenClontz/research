@@ -209,7 +209,7 @@
 \newcommand{\term}{\textit}
 
 
-\newcommand{\bmGame}[1]{{BM}_{N,E}(#1)}
+\newcommand{\bmGame}[1]{{BM}_{E,N}(#1)}
 
 
 
@@ -266,15 +266,15 @@
       \includegraphics[width=0.6\linewidth]{bmGameAlt.pdf}
     \end{figure}
 
-  The first player $\pl N$ wins the game if the intersection of all the chosen
-  open sets is nonempty.
+  The first player $\pl E$ wins the game if the intersection of all the chosen
+  open sets is empty.
   \end{game}
 \end{frame}
 
 \begin{frame}
   \begin{theorem}
-    $X$ is Baire if and only if $\pl N$ lacks a winning strategy
-    in the Banach Mazur game ($\pl N\not\win\bmGame{X}$).
+    $X$ is Baire if and only if $\pl E$ lacks a winning strategy
+    in the Banach Mazur game ($\pl E\not\win\bmGame{X}$).
   \end{theorem}
 
   \pause
@@ -293,21 +293,21 @@
 
   \begin{theorem}
     $X$ is $\alpha$-favorable $\Rightarrow$
-    $X$ is weakly $\alpha$-favorable $\Rightarrow$
+    $X$ is Choquet $\Rightarrow$
     $X$ is Baire
   \end{theorem}
 
   \pause
 
-  $\alpha$-favorability is characterized by $\pl E\tactwin\bmGame{X}$:
+  $\alpha$-favorability is characterized by $\pl N\tactwin\bmGame{X}$:
   player $\pl E$ has a \term{tactical} winning strategy which only considers
   the most recent move of the opponent.
 
   \vpause
 
-  This is stronger than weak
-  $\alpha$-favorability \cite{MR817083}, characterized by $\pl E\win\bmGame{X}$.
-  In this case $\pl E$ still has a winning strategy, but it may
+  This is stronger than the Choquet property \cite{MR817083},
+  characterized by $\pl N\win\bmGame{X}$.
+  In this case $\pl N$ still has a winning strategy, but it may
   rely on perfect information of the history of the game.
 \end{frame}
 
