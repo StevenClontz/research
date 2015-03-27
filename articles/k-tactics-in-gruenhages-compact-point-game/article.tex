@@ -49,16 +49,17 @@ $\sigma$-metacompact spaces}
 
 
 \begin{abstract}
-Gary Gruenhage showed in \cite{MR858337} that metacompactness and
+Gary Gruenhage showed in \cite{MR858337} that metacompactness and\break
 $\sigma$-metacompactness may be characterized for locally compact spaces
-by way of a certain topological game using limited information strategies
+by way of a certain topological game using limited information strategies:
+strategies
 which consider only the most recent move of the opponent (tactical/stationary
 strategies) and possibly the round number (Markov strategies). This paper
 demonstrates a non-trivial example of a space for which a winning strategy
 exists but every limited information strategy considering a maximum of $k$
 moves of the opponent and the round number may be defeated. The question
 follows: are metacompactness and $\sigma$-metacompactness characterized by
-winning $k$-tactical and $k$-Markov strategies?
+winning $k$-tactical and $k$-Markov strategies for $k>1$?
 \end{abstract}
 
 
@@ -69,7 +70,7 @@ winning $k$-tactical and $k$-Markov strategies?
 Consider the following topological game.
 
 \begin{game}
-  Let $\gruKPGame{X}$ denote the \term{Gruenhage compact/point game}
+  Let $\gruKPGame{X}$ denote \term{Gruenhage's compact/point game}
   with players $\pl K$, $\pl P$. During round $n$, $\pl K$ chooses
   a compact subset $K_n$ of $X$, followed by $\pl P$ choosing a point
   $p_n\in X$ such that $p_n\not\in \bigcup_{m\leq n}K_m$.
@@ -83,36 +84,35 @@ Consider the following topological game.
   $\sigma:M^{<\omega}\to M$; intuitively, this is a fixed rule for one player's
   choices in consideration of her opponent's moves. If using such a strategy
   always results in a win for the player $\pl P$ using it, then it is called a
-  \term{winning strategy} and we write $\pl P\win G$.
+  \term{winning strategy}. If a winning strategy exists for $\pl P$ in the
+  game $G$, then we write $\pl P\win G$.
 \end{definition}
 
 When $G(X)$ is a topological game played with space $X$, then $\pl P\win G(X)$
 and $\pl P\not\win G(X)$ are topological properties of the space $X$.
 
-The above game was used by the author's adviser Gary Gruenhage in
+$\gruKPGame{X}$ was used by Gary Gruenhage in
 \cite{MR858337} to characterize
 metacompactness (every open cover of the space has a point-finite open
 refinement covering the space) and $\sigma$-metacompactness
 (every open cover of the space has a $\sigma$-point-finite open refinement
-covering the space) in locally compact spaces. However, the characterization
+covering the space) in locally compact spaces. This characterization
 considers so-called \term{limited information strategies} which do not use
 full information of the history of the game.
 
 \begin{definition}
   A $k$-tactical strategy for a game $G$ with moveset $M$ is a function
   $\sigma:M^{\leq k}\to M$; intuitively, it is a strategy which only considers
-  the previous $k$ moves of the opponent. If using such a strategy
-  always results in a win for the player $\pl P$ using it, then
-  we write $\pl P\ktactwin{k} G$.
+  the previous $k$ moves of the opponent. If a winning $k$-tactical strategy
+  exists for $\pl P$ in the game $G$, then we write $\pl P\ktactwin{k} G$.
 \end{definition}
 
 \begin{definition}
   A $k$-Markov strategy for a game $G$ with moveset $M$ is a function
   $\sigma:M^{\leq k}\times\omega\to M$; intuitively, it is a strategy which
   only considers the previous $k$ moves of the opponent and the round number.
-  If using such a strategy
-  always results in a win for the player $\pl P$ using it, then
-  we write $\pl P\kmarkwin{k} G$.
+  If a winning $k$-Markov strategy exists for
+  $\pl P$ in the game $G$, then we write $\pl P\kmarkwin{k} G$.
 \end{definition}
 
 We will call $k$-tactical strategies ``$k$-tactics'' and $k$-Markov strategies
@@ -285,12 +285,13 @@ $\gruConGame{\onePtComp X}{\infty}$ unavailable in $\gruKPGame{X}$.
 In fact, a generalization of the above proof for a $(k+2)$-mark would not
 hold.
 
-For instance, suppose $\pl P$ wants to use a winning $2$-tactic $\sigma$ from
+For instance, suppose $\pl O$ wants to use a winning $2$-tactic $\sigma$
+for $\pl K$ in
 $\gruKPGame{X}$ to create a winning $2$-tactic for
-$\gruConGame{\onePtComp X}{\infty}$. If $\pl P$ is attacked by
-$\<x_0,\infty,x_2,\infty,\dots\>$, then $\pl P$ must ensure that the $x_{2n}$
-converge without using the point $\infty\not\in X$.
-It's difficult to see how, as $\pl P$ may not take advantage of
+$\gruConGame{\onePtComp X}{\infty}$. If $\pl O$ is attacked by
+$\<x_0,\infty,x_2,\infty,\dots\>$, then $\pl O$ must ensure that the $x_{2n}$
+converge without considering the point $\infty\not\in X$.
+It's difficult to see how, as $\pl O$ may not take advantage of
 $\sigma(\<x_{2n},x_{2n+2}\>)$;
 $x_{2n},x_{2n+2}$ are not consecutive moves in the original game.
 
@@ -358,12 +359,12 @@ should be able to find a counterexample. Gruenhage suggested the following
 class of spaces to the author:
 
 \begin{definition}
-  Let $\pmb X=(X\times 2^{<\omega})\cup C$ denote a Cantor tree
+  Let $\mb X=(X\times 2^{<\omega})\cup C$ denote a Cantor tree
   of copies of a zero-dimensional, compact space $X$ with a point-countable
   cover $\mc{U} = \{U_\alpha : \alpha<\omega_1\}$ of distinct
   clopen sets, along with an uncountable subset of the Cantor set
   $C=\{c_\alpha:\alpha<\omega_1\}\in [2^\omega]^{\omega_1}$.
-  The topology on $\pmb X$ is given by decaring $U\times\{s\}$ to be a open
+  The topology on $\mb X$ is given by decaring $U\times\{s\}$ to be a open
   neighborhood of $\<x,s\>\in X\times 2^{<\omega}$ for each
   open neighborhood $U$ of $x$ in $X$, and declaring
   $
@@ -395,18 +396,18 @@ class of spaces to the author:
 \end{definition}
 
 Figure \ref{fig:pmbX} provides a rough illustration of
-$\pmb X$, $L_m$ (the triangle at the base), and $K_F'$
+$\mb X$, $L_m$ (the triangle at the base), and $K_F'$
 (the branches of open sets descending from $C$).
 
 \begin{figure}
   \centering
   \includegraphics[width=\linewidth]{pmbX.pdf}
-  \caption{$\pmb X$, with $L_m$ and $K_F'$}
+  \caption{$\mb X$, with $L_m$ and $K_F'$}
   \label{fig:pmbX}
 \end{figure}
 
 \begin{lemma}
-  $K_F$, $K_F'$, and $L_m$ are compact in $\pmb X$.
+  $K_F$, $K_F'$, and $L_m$ are compact in $\mb X$.
   Furthermore, every compact set is contained in a union of $K_F'$, $L_m$
   for some $F\in C^{<\omega}$ and $m<\omega$.
 \end{lemma}
@@ -438,7 +439,7 @@ $\pmb X$, $L_m$ (the triangle at the base), and $K_F'$
 \end{proof}
 
 \begin{theorem}
-  $\pl K\win\gruKPGame{\pmb X}$.
+  $\pl K\win\gruKPGame{\mb X}$.
 \end{theorem}
 
 \begin{proof}
@@ -446,7 +447,7 @@ $\pmb X$, $L_m$ (the triangle at the base), and $K_F'$
   for each $x\in X$ let $\alpha_{x,n}<\omega_1$ yield
   ordinals such that $x\in U_{\alpha_{x,n}}$ for $n<\omega$.
 
-  Let $M:\pmb X\times \omega\to \mc K(\pmb X)$ as follows:
+  Let $M:\mb X\times \omega\to \mc K(\mb X)$ as follows:
     \[
       M(\pmb x,n)
         =
@@ -463,7 +464,7 @@ $\pmb X$, $L_m$ (the triangle at the base), and $K_F'$
       \right.
     \]
   and use $M$ to define the strategy $\sigma$ for each
-  $\pmb a\in\pmb X^{<\omega}$:
+  $\pmb a\in\mb X^{<\omega}$:
     \[
       \sigma(\pmb a)
         =
@@ -473,7 +474,7 @@ $\pmb X$, $L_m$ (the triangle at the base), and $K_F'$
       M(\pmb a(i),|\pmb a|)
     \]
 
-  Let $\pmb p:\omega\to\pmb X$ be a legal attack against $\sigma$. Then as
+  Let $\pmb p:\omega\to\mb X$ be a legal attack against $\sigma$. Then as
   $\pmb p(n)\not\in L_n$, for each $\pmb x=\<x,s\>\in X\times 2^{<\omega}$,
   $X\times\{s\}$ is an open neighborhood of $\pmb x$ which contains finitely
   many $\pmb p(n)$.
@@ -489,20 +490,21 @@ $\pmb X$, $L_m$ (the triangle at the base), and $K_F'$
   many $\pmb p(n)$. Therefore, $\sigma$ is a winning strategy.
 \end{proof}
 
-One might hope then that $\pl K\nottactwin\gruKPGame{\pmb X}$ but
-$\pl K\ktactwin{2}\gruKPGame{\pmb X}$, giving us our counterexample.
-However, we will see that in fact, any winning $k$-mark for $\pl K$ may
+One might hope then that $\pl K\nottactwin\gruKPGame{\mb X}$ but
+$\pl K\ktactwin{2}\gruKPGame{\mb X}$, giving us our counterexample.
+However, we will see that in fact, any winning $k$-tactic or even
+$k$-mark for $\pl K$ may
 be improved to a winning tactic by exploiting the structure of the Cantor tree.
 
-In particular, knowledge of round number does not assist $\pl K$,
+We first show that knowledge of round number does not assist $\pl K$,
 since she may force $\pl P$ to either stay within $C$, or to seed a growing
 integer which could be used in place of the round number
 by forcing her to play outside $L_{|s|+1}$ in response to
 $\<x,s\>\in X\times 2^{<\omega}$.
 
 \begin{lemma}
-  If $\pl K\kmarkwin{(k+1)}\gruKPGame{\pmb X}$, then
-  $\pl K\ktactwin{(k+1)}\gruKPGame{\pmb X}$.
+  If $\pl K\kmarkwin{(k+1)}\gruKPGame{\mb X}$, then
+  $\pl K\ktactwin{(k+1)}\gruKPGame{\mb X}$.
 \end{lemma}
 
 \begin{proof}
@@ -511,7 +513,7 @@ $\<x,s\>\in X\times 2^{<\omega}$.
   For a sequence $p$, let $p\rest^k n=\nu_k(p\rest n)$ give the last $k$
   terms of $p\rest n$.
 
-  Define $r:\pmb X\to\omega$ by
+  Define $r:\mb X\to\omega$ by
     \[
       r(\pmb x)
         =
@@ -543,7 +545,7 @@ $\<x,s\>\in X\times 2^{<\omega}$.
       \sigma(\pmb t\concat\<\pmb x\>,r(\pmb x)+1)
     \]
 
-  Let $\pmb p:\omega\to\pmb X$ be a legal attack by $\pl P$ against $\tau$.
+  Let $\pmb p:\omega\to\mb X$ be a legal attack by $\pl P$ against $\tau$.
   If $\pmb p(n)\in C$ for $N<n<\omega$, then since no $\pmb p(n)$ may be legally
   repeated, $\{\{\pmb p(n)\}:N<n<\omega\}$ is a discrete collection, making
   the points $p(n)$ locally finite.
@@ -605,7 +607,7 @@ $\<x,s\>\in X\times 2^{<\omega}$.
 \end{proof}
 
 \begin{corollary}
-  $\pmb X$ is $\sigma$-metacompact if and only if $\pmb X$ is metacompact.
+  $\mb X$ is $\sigma$-metacompact if and only if $\mb X$ is metacompact.
 \end{corollary}
 
 On the other hand, recalling a maximum of $k+1$ moves is only as good as
@@ -616,8 +618,8 @@ be locally finite (and therefore not directly benefit $\pl P$), but would
 at least succeed in overloading $\pl K$'s limited memory.
 
 \begin{lemma}
-  If $\pl K\ktactwin{(k+1)}\gruKPGame{\pmb X}$, then
-  $\pl K\tactwin\gruKPGame{\pmb X}$.
+  If $\pl K\ktactwin{(k+1)}\gruKPGame{\mb X}$, then
+  $\pl K\tactwin\gruKPGame{\mb X}$.
 \end{lemma}
 
 \begin{proof}
@@ -661,7 +663,7 @@ at least succeed in overloading $\pl K$'s limited memory.
     L_{m(x,y,\dots,y,M^k(x,|s|)+1)}
   \]
 
-  Let $\pmb p:\omega\to \pmb X$ be a legal attack against
+  Let $\pmb p:\omega\to \mb X$ be a legal attack against
   $\tau$, and assume $\pmb p(n)=\<x_n,s_n\>\in X\times 2^{<\omega}$.
   Then consider the attack $\pmb q:\omega\to X\times 2^{<\omega}$ against
   $\sigma$ defined by, for $n<\omega$ and $i<k$,
@@ -751,18 +753,18 @@ at least succeed in overloading $\pl K$'s limited memory.
 \end{proof}
 
 So our hopes for a counterexample to our main question
-in $\pmb X$ are thusly defeated. Our
+in $\mb X$ are thusly defeated. Our
 consolation prize will be to show that for a certain choice of $X$
-and $\{U_\alpha:\alpha<\omega_1\}$, $\pmb X$ is at least
-an example of a space which allows a winning strategy for $\gruKPGame{\pmb X}$
+and $\{U_\alpha:\alpha<\omega_1\}$, $\mb X$ is at least
+an example of a space which allows a winning strategy for $\gruKPGame{\mb X}$
 but no winning $k$-tactics or $k$-marks.
 
 To this end, we will show that $\{U_\alpha:\alpha<\omega_1\}$ may be chosen
-such that $\pmb X$ is not metacompact, and therefore
+such that $\mb X$ is not metacompact, and therefore
 $\pl K$ lacks a $k$-Markov strategy for any $k<\omega$.
 
 \begin{theorem}
-  $\pmb X$ is metacompact
+  $\mb X$ is metacompact
     if and only if
   $\{U_\alpha:\alpha<\omega_1\}$ is $\sigma$-point-finite.
 \end{theorem}
@@ -771,18 +773,18 @@ $\pl K$ lacks a $k$-Markov strategy for any $k<\omega$.
   Let $\omega_1=\bigcup_{n<\omega}A_n$ such that
   $\{U_\alpha:\alpha\in A_n\}$ is point-finite for each $n<\omega$.
 
-  Let $\mc U$ be a cover of $\pmb X$, and for each $s\in 2^\omega$
+  Let $\mc U$ be a cover of $\mb X$, and for each $s\in 2^\omega$
   let $\mc V_s$ be a finite open refinement of $\mc C$ covering the compact
   set $X\times\{s\}$. Then let $\mc W_n = \{B_{\alpha,n_\alpha}:\alpha\in A_n\}$
   be an open refinement of $\mc C$ for each $n<\omega$, and note that it
   is point-finite. It follows that
   $\mc U' = \bigcup_{s\in 2^{<\omega}} \mc V_s \cup \bigcup_{n<\omega} \mc W_n$
-  is an open $\sigma$-point-finite refinement of $\mc U$, so $\pmb X$
+  is an open $\sigma$-point-finite refinement of $\mc U$, so $\mb X$
   is $\sigma$-metacompact, and therefore it is metacompact.
 
   For the other direction, consider the open cover
   $\mc U = \{B_{\alpha,0}:\alpha<\omega_1\}$ of the closed subset $C$ of
-  metacompact $\pmb X$, and let $\{B_{\alpha,n_\alpha}:\alpha<\omega_1\}$ be
+  metacompact $\mb X$, and let $\{B_{\alpha,n_\alpha}:\alpha<\omega_1\}$ be
   a point-finite refinement. Then
   $\mc U_s = \{ U_\alpha : c_\alpha \rest n_\alpha = s\}$ is
   point-finite for $s\in 2^{<\omega}$ and
