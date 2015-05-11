@@ -248,6 +248,73 @@
     Otherwise $p_\alpha(n)<2^{-n}$ for all $n$, so $p_\alpha$ converges to $0$.
   \end{proof}
 
+  % \begin{theorem} % is compact necessary? probably.
+  %   If \(X\) is compact and \(\pl D\markwin\bellAbsConGame{X}\), then
+  %   \(X^2\setminus\Delta\) is \(\sigma\)-metacompact.
+  % \end{theorem}
+
+  % \begin{proof}
+  %   Recall that uniformizable spaces
+  %   have a base of cozero (in particular, \(F_\sigma\)) sets.
+  %   Let \(\mc U=\{U_\alpha:\alpha<\kappa\}\) be an open cover of
+  %   \(X^2\setminus\Delta\); without loss of generality assume it contains
+  %   \(F_\sigma\) sets with compact closures.
+  %   Let \(\sigma\) be a Markov strategy for \(\pl D\) in
+  %   \(\bellAbsConGame{X}\); without loss of generality assume that
+  %   \(\sigma(\<x\>,n)\supseteq\cl{\sigma(\<x\>,n+1)}\).
+  %   Let \(\tau(x,y,n)=\sigma(\<x\>,n)\cap\sigma(\<y\>,n)\) for each
+  %   \(x,y\in X\).
+
+  %   Note that if there is \(\<x,y\>\in X^2\setminus\Delta\) such that
+  %   \(\<x,y\>\in\tau(x,y,n)\) for all \(n\), then
+  %   \(\<x,y,x,y,\dots\>\) is a legal counterattack to \(\sigma\) which
+  %   does not converge.
+  %   Otherwise, for each \(\<x,y\>\in X^2\setminus\Delta\),
+  %   let \(n_{x,y}\) satisfy
+  %   \(\<x,y\>\not\in\tau(x,y,n_{x,y})\), and let
+  %   \(\upsilon(x,y)=\tau(x,y,n_{x,y})\).
+
+  %   Let \(K(\<x,y\>)=X^2\setminus\upsilon(x,y)\).
+
+  %   We wish to find \(\mc U_\alpha\subseteq \mc U\) such that
+  %     \begin{itemize}
+  %       \item \(|\mc U_\alpha|\leq\omega\)
+  %       \item
+  %         \(
+  %           \{
+  %             U_\beta
+  %           :
+  %             \beta<\alpha
+  %           \}
+  %             \subseteq
+  %           \bigcup_{\beta<\alpha}\mc U_\beta
+  %         \)
+  %       \item
+  %         Let
+  %         \(
+  %           N_\alpha
+  %             =
+  %           (\bigcup\mc U_\alpha)
+  %             \setminus
+  %           (\bigcup\bigcup_{\beta<\alpha}\mc U_\beta)
+  %         \).
+  %         There exists \(S_\alpha\in[N_\alpha]^{\leq\omega}\) such that
+  %         \[
+  %           N_\alpha
+  %             \subseteq
+  %           \bigcup_{\<x,y\>\in S_\alpha}\upsilon(x,y)
+  %             \subseteq
+  %           \bigcup\mc U_\alpha
+  %         \]
+  %     \end{itemize}
+
+  %   Let \(\mc U_0=\emptyset\) and \(\mc U_{\alpha}=\emptyset\) for limit
+  %   ordinals \(\alpha\).
+
+  %   Let \(S_{\alpha+1,0}=\emptyset\) and
+  %   \(\mc U_{\alpha+1,0}=\{U_{\alpha}\}\).
+  %   % Then \(S_{\alpha+1,n+1}=)
+  % \end{proof}
 
 
 \end{document}
