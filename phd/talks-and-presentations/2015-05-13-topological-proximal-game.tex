@@ -59,10 +59,11 @@
 {Limited information strategies for a topological proximal game}
 
 \subtitle
-{Spring Topology Conference 2015} % (optional)
+{Spring Topology and Dynamics Conference 2015\\
+Bowling Green State University} % (optional)
 
 \author%[Author, Another] % (optional, use only with lots of authors)
-{Steven~Clontz~http://stevenclontz.com}%\inst{1} \and S.~Another\inst{2}}
+{Steven~Clontz}%\inst{1} \and S.~Another\inst{2}}
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 
@@ -112,7 +113,7 @@
 
 
 \begin{document}
-% \renewcommand{\pause}{}
+\renewcommand{\pause}{}
 \newcommand{\vspacing}{\vspace{1em}}
 \newcommand{\vpause}{\pause\vspacing}
 
@@ -121,7 +122,7 @@
 \end{frame}
 
 
-\section{Bell's Proximal Game}
+\section{Proximal Game}
 
 \subsection{Definition}
 
@@ -143,8 +144,9 @@
 \begin{frame}
   If $\pl D\win \bellAbsConGame{X}$, then $X$ is called an
   \term{absolutely proximal space}.
-  ``Absolutely proximal'' is a strengthening of ``proximal'', but these
-  concepts coincide for (uniformlly locally) compact spaces.
+  ``Absolutely proximal'' is a strengthening of ``proximal'' characterized
+  by an easier game (for \(\pl D\)), but these games are equivalent for
+  compact spaces.
 
   \vpause
 
@@ -188,7 +190,7 @@
 \end{frame}
 
 
-\section{Topologizing Bell's game}
+\section{Topological proximal game}
 
 \subsection{Uniform Spaces}
 
@@ -223,7 +225,8 @@
 
   As it turns out, the union of all uniformities inducing a topology is
   itself a uniformity inducing that topology, called the
-  \term{universal uniformity}. Furthermore, $\pl D\win\bellAbsConGame{X}$
+  \term{fine} or \term{universal uniformity}.
+  Furthermore, $\pl D\win\bellAbsConGame{X}$
   if and only if $\pl D$ is required to choose from the universal uniformity.
 
   \vpause
@@ -232,11 +235,11 @@
 \end{frame}
 
 \begin{frame}
-  From Willard's topology text \cite{MR2048350}, we have such
-  a characterization:
+  If you look in the right textbook \cite{MR2048350}, you'll
+  find the answer:
 
   \begin{theorem}
-    A neighborhood $U$ of the diagonal is a universal uniformity if
+    A neighborhood $U$ of the diagonal is a universal entourage if
     and only if there
     exist neighborhoods $U_n$ for $n<\omega$ where $U=U_0$ and
     $U_{n+1}\circ U_{n+1}\subseteq U_n$.
@@ -244,16 +247,15 @@
 
   \pause
 
-  As a bonus, for strongly collectionwise normal
-  ($\Leftarrow$ paracompact) spaces, \textit{all} neighborhoods of
-  the diagonal have this property.
+  As a bonus, for paracompact spaces, \textit{all} neighborhoods of
+  the diagonal have this property (entourages may be converted to open
+  covers and then star-refined).
 
   \vpause
 
-  So we topologize Bell's game by
-  saying an ``entourage'' is any (open symmetric) neighborhood of the
-  diagonal with this property, and discard the need to consider a
-  specific uniform structure.
+  So we topologize Bell's game by simply calling the open symmetric
+  neighborhoods of the diagonal with the above property ``entourages'',
+  and discard the need to consider a specific uniform structure.
 \end{frame}
 
 
@@ -270,8 +272,9 @@
   previous moves of the opponent. ($\pl A\ktactwin{k} G$)
 
   \vpause
-  A \term{$k$-Markov strategy} only uses the round number and the last $k$
-  previous moves of the opponent. ($\pl A\kmarkwin{k} G$)
+  A \term{$k$-Markov strategy} only uses the last $k$
+  previous moves of the opponent and the round number.
+  ($\pl A\kmarkwin{k} G$)
 
   \vpause
   If omitted, assume $k=1$.
@@ -280,7 +283,7 @@
 \subsection{Lemmas and generalizations}
 
 \begin{frame}\small
-  Bell showed that a winning perfect information strategy may always
+  Bell observed that a winning perfect information strategy may always
   be passed down to win in a closed subspace.
 
   \begin{proposition}
@@ -290,7 +293,7 @@
 
   \pause
 
-  This actually holds in general:
+  This also holds for limited information strategies:
 
   \begin{proposition}
     If $\pl D\ktactwin{k}\bellAbsConGame{X}$, then
@@ -322,8 +325,8 @@
 \end{frame}
 
 \begin{frame}
-  We settle for considering a countable product instead (but still require
-  knowledge of the round number).
+  If we allow ourselves the round number, we may at least handle countable
+  products:
 
   \begin{theorem}
     If $\pl D\kmarkwin{k}\bellAbsConGame{X_i}$ for $i<\omega$,
@@ -379,6 +382,27 @@
   \begin{lemma}
     $\pl D\nottactwin\bellAbsConGame{2^\omega}$.
   \end{lemma}
+\end{frame}
+
+\begin{frame}
+  A neat corollary:
+
+  \pause
+
+  \begin{itemize}
+  \item For compact spaces, \(\pl O\win\gruConGame{X^2}{\Delta}\) if and only
+  if \(\pl D\win\bellAbsConGame{X}\).
+  \end{itemize}
+
+  \pause
+
+  but:
+
+  \begin{itemize}
+  \item Any metric space satisfies \(\pl O\tactwin\gruConGame{X^2}{\Delta}\),
+  but \(\pl D\tactwin\bellAbsConGame{X}\) implies zero-dimensionality for
+  compact spaces.
+  \end{itemize}
 \end{frame}
 
 
