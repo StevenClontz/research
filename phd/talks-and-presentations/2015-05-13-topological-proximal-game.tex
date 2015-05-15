@@ -113,7 +113,7 @@ Bowling Green State University} % (optional)
 
 
 \begin{document}
-\renewcommand{\pause}{}
+% \renewcommand{\pause}{}
 \newcommand{\vspacing}{\vspace{1em}}
 \newcommand{\vpause}{\pause\vspacing}
 
@@ -219,19 +219,24 @@ Bowling Green State University} % (optional)
 
 \begin{frame}
   Our goal is to obtain a purely topological characterization of the
-  proximal properties.
+  proximal property.
 
   \vpause
 
   As it turns out, the union of all uniformities inducing a topology is
   itself a uniformity inducing that topology, called the
   \term{fine} or \term{universal uniformity}.
-  Furthermore, $\pl D\win\bellAbsConGame{X}$
-  if and only if $\pl D$ is required to choose from the universal uniformity.
+  Furthermore, the proximal property is agnostic to which uniformity
+  is chosen for the space's topology.
 
   \vpause
 
-  This reduces our goal to characterizing the universal entourages.
+  If there's a winning strategy for $\pl D$ given any uniformity for
+  the topology on $X$, then
+  that strategy also works with the universal uniformity for $X$
+  containing it.
+  This reduces our goal to characterizing the entourages of the
+  universal uniformity.
 \end{frame}
 
 \begin{frame}
@@ -253,8 +258,8 @@ Bowling Green State University} % (optional)
 
   \vpause
 
-  So we topologize Bell's game by simply calling the open symmetric
-  neighborhoods of the diagonal with the above property ``entourages'',
+  So we topologize Bell's game by simply saying an ``entourage''
+  is any open symmetric neighborhood of the diagonal with the above property,
   and discard the need to consider a specific uniform structure.
 \end{frame}
 
@@ -333,8 +338,11 @@ Bowling Green State University} % (optional)
     then $\pl D\kmarkwin{k}\bellAbsConGame{\prod_{i<\omega} X_i}$.
   \end{theorem}
 
-  Probable counter-example for generalization:
-  $\pl D\notmarkwin\bellAbsConGame{\sum_{\alpha<\omega_1} 2}$?
+  It seems likely that
+  $\pl D\notmarkwin\bellAbsConGame{\sum_{\alpha<\omega_1} 2}$,
+  but I don't have a proof. Whether
+  $\pl D\kmarkwin{2}\bellAbsConGame{\sum_{\alpha<\omega_1} 2}$
+  holds is less clear.
 \end{frame}
 
 \subsection{An application}
@@ -400,8 +408,8 @@ Bowling Green State University} % (optional)
 
   \begin{itemize}
   \item Any metric space satisfies \(\pl O\tactwin\gruConGame{X^2}{\Delta}\),
-  but \(\pl D\tactwin\bellAbsConGame{X}\) implies zero-dimensionality for
-  compact spaces.
+  but for compact spaces, \(\pl D\tactwin\bellAbsConGame{X}\) implies
+  \(X\) is scattered.
   \end{itemize}
 \end{frame}
 
