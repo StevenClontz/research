@@ -6,6 +6,8 @@
 \newcommand{\kmarkwin}[1]{\underset{#1\text{-mark}}{\uparrow}}
 \newcommand{\ktactwin}[1]{\underset{#1\text{-tact}}{\uparrow}}
 \newcommand{\codewin}{\underset{\text{code}}{\uparrow}}
+\newcommand{\flexmarkwin}{\underset{\text{flexmark}}{\uparrow}}
+\newcommand{\semiflexmarkwin}{\underset{\text{semiflexmark}}{\uparrow}}
 \newcommand{\limitwin}{\underset{\text{limit}}{\uparrow}}
 \newcommand{\notwin}{\not\uparrow}
 \newcommand{\notprewin}{\underset{\text{pre}}{\not\uparrow}}
@@ -14,6 +16,8 @@
 \newcommand{\notkmarkwin}[1]{\underset{#1\text{-mark}}{\not\uparrow}}
 \newcommand{\notktactwin}[1]{\underset{#1\text{-tact}}{\not\uparrow}}
 \newcommand{\notcodewin}{\underset{\text{code}}{\not\uparrow}}
+\newcommand{\notflexmarkwin}{\underset{\text{flexmark}}{\not\uparrow}}
+\newcommand{\notsemiflexmarkwin}{\underset{\text{semiflexmark}}{\uparrow}}
 \newcommand{\notlimitwin}{\underset{\text{limit}}{\not\uparrow}}
 
 \newcommand{\oneptcomp}[1]{#1^\star} % deprecated
@@ -37,10 +41,17 @@
 \newcommand{\rothGame}[1]{Roth_{C,S}\left({#1}\right)}
 \newcommand{\rothAltGame}[1]{Roth_{P,O}\left({#1}\right)}
 
+% deprecated, use Scheeper's name instead
 \newcommand{\cloFillStrictGame}[1]{Fill^{\cup,\subset}_{C,F}\left({#1}\right)}
 \newcommand{\cloFillGame}[1]{Fill^{\cup,\subseteq}_{C,F}\left({#1}\right)}
 \newcommand{\cloFillInitialGame}[1]{Fill^{1,\subseteq}_{C,F}\left({#1}\right)}
 \newcommand{\cloFillIntGame}[1]{Fill^{\cap}_{C,F}\left({#1}\right)}
+
+\newcommand{\schFillStrictGame}[1]{Sch^{\cup,\subset}_{C,F}\left({#1}\right)}
+\newcommand{\schFillGame}[1]{Sch^{\cup,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\schFillWeakGame}[1]{Sch^{\cup}_{C,F}\left({#1}\right)}
+\newcommand{\schFillInitialGame}[1]{Sch^{1,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\schFillIntGame}[1]{Sch^{\cap}_{C,F}\left({#1}\right)}
 
 \newcommand{\bellUniGame}[1]{Bell_{D,P}^{\textrm{uni}}\left({#1}\right)}
 \newcommand{\bellConGame}[1]{Bell_{D,P}^{\rightharpoonup}\left({#1}\right)}

@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+
+\usepackage{../clontzStyle}
+\usepackage{../clontzDefinitions}
+
+\begin{document}
+
+  \begin{definition}
+    A \term{flexibly Markov} strategy for a game \(\<G,M\>\)
+    is a pair of functions
+    \(\<\sigma,\rho\>\in M^{M\times\omega}\times M^{M^{<\omega}}\).
+    Intuitively, \(\sigma\) is a Markov strategy using a single move
+    of the opponent and the round number, and \(\tau\) is a strategy
+    which applies the Markov strategy to each of the opponent's
+    previous moves individually each round.
+
+    Let \(\sigma':M^{<\omega}\to M^{<\omega}\) be
+    defined by \(|\sigma'(s)|=|s|\) and
+    \(\sigma'(s)(m)=\sigma(s(m),|s|)\).
+    Then more rigorously, \(\<\sigma,\rho\>\)
+    is a winning flexibly Markov strategy if and only if
+    \(\tau:M^{<\omega}\to M\) defined by
+    \(\tau(s)=\rho\circ\sigma'(s)\) is a winning strategy.
+  \end{definition}
+
+  \begin{definition}
+    A \term{semi-flexibly Markov} strategy for a game \(\<G,M\>\)
+    is a pair of functions
+    \(\<\sigma,\phi\>\in M^{M\times\omega}\times\omega^{\omega}\).
+    Intuitively, \(\sigma\) is a Markov strategy using a single move
+    of the opponent and the round number, and \(\phi\) is a strategy
+    for choosing how far in the past the move of the opponent should be
+    chosen.
+
+    More rigorously, \(\<\sigma,\phi\>\) is a winning semi-flexibly
+    Markov strategy if and only if \(\tau:M^{<\omega}\to M\) defined
+    by \(\tau(s)=\sigma(s(|s|-1-\phi(|s|)),|s|)\) is a winning
+    strategy.
+  \end{definition}
+
+  \begin{proposition}
+    \(\pl F\semiflexmarkwin\schFillWeakGame{\kappa}\)
+  \end{proposition}
+
+  \begin{proof}
+    Let \(\phi\) satisfy \(|\phi^{-1}(n)|=\omega\) and
+    \(\sigma(C,n)=C\rest n\). Then since \(\sigma\) sees every move
+    of \(\pl C\) infinitely often, it follows that it covers every move
+    of \(\pl C\).
+  \end{proof}
+
+  \begin{proposition}
+    For compact \(X\),
+    \(\pl D\win\bellAbsConGame{X}\) if and only if
+    \(\pl D\flexmarkwin\bellAbsConGame{X}\)
+  \end{proposition}
+
+  \begin{proof}
+    The forward direction is the only interesting direction. In this case,
+    \(X\) is Corson compact and embeddable in the \(\Sigma\)-product of
+    reals.
+    Let \(\phi\) satisfy \(|\phi^{-1}(n)|=\omega\), and let \(supp(x)\)
+    be the countable support of \(x\), with
+    \(supp_{n+1}(x)\supseteq supp_{n}(x)\) finite and
+    \(\bigcup_{n<\omega}supp_n(x)=supp(x)\).
+
+    Let \(\sigma(x,n)=D(2^{-n},supp_n(x))\). Then since \(\sigma\) sees
+    every move infinitely often, the non-zero coordinates are all Cauchy
+    and converge.
+  \end{proof}
+
+
+\end{document}
