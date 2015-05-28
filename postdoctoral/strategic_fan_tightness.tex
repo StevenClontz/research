@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+
+\usepackage{../clontzStyle}
+\usepackage{../clontzDefinitions}
+
+\begin{document}
+
+  \begin{definition}
+    Let \(\menGame{X}\) be the Menger game played on \(X\).
+    Let \(\barmanDowFanGame{X}{x}\) be the countable fan tightness
+    game introduced by Barman and Dow in \cite{MR2678950}: \(\pl B\)
+    chooses a set \(B_n\) with \(x\in\cl{B_n}\), followed by
+    \(\pl F\) choosing \(F_n\in[B_n]^{<\omega}\), where \(\pl F\)
+    wins if \(x\in\cl{\bigcup_{n<\omega} F_n}\).
+  \end{definition}
+
+  \begin{theorem}
+    \(X^k\) is Menger for all \(k<\omega\) if and only if
+    \(C_p(X)\) has countable fan tightness.
+  \end{theorem}
+
+  \begin{proof}
+    Arhangel'ski{\u\i} in \cite{MR526012}.
+  \end{proof}
+
+  \begin{theorem}
+    If \(\pl F\markwin\menGame{X}\), then
+    \(\pl F\markwin\barmanDowFanGame{C_p(X)}{\vec 0}\).
+  \end{theorem}
+
+  \begin{proof}
+    Essentially \cite[2.6]{MR2868880}, once one observes that
+    \(\pl F\markwin\menGame{X}\) characterizes
+    \(\sigma\)-relative-compactness (equivalent to \(\sigma\)-compactness
+    in regular spaces). Note further that this
+    property is preserved for finite powers.
+  \end{proof}
+
+  \begin{theorem}
+    If \(\pl F\win\menGame{X^k}\) for all \(k<\omega\), then
+    \(\pl F\win\barmanDowFanGame{C_p(X)}{\vec 0}\).
+  \end{theorem}
+
+  \begin{proof}
+    For a sequence of blades
+    \(s\concat\<B\>\in(\mc P(X))^{\leq\omega}\) satisfying
+    \(\vec 0\in \cl{s(i)}\) for all \(i<|s|\), let
+    \(t_k^m(s\concat\<B\>)\) be the sequence defined by
+      \[
+        t_k^m(s\concat\<B\>)(i)
+          =
+        \{
+          (f^{-1}[(-2^{-i-m},2^{-i-m})])^k
+        :
+          f\in s\concat\<B\>(i)
+        \}
+      \]
+    for each \(i\leq|s|\). In the case \(i=|s|\), note
+      \[
+        t_k^m(s\concat\<B\>)(|s|)
+          =
+        \{
+          (f^{-1}[(-2^{-|s|-m},2^{-|s|-m})])^k
+        :
+          f\in B
+        \}
+      \]
+
+    We claim that \(t_k(s\concat\<B\>)(i)\) is an open cover of \(X^k\) for
+    each \(i\leq|s|\).
+    Indeed, for \(\alpha\in X^k\), \(U(\vec 0,\text{ran}\alpha,2^{-i-m})\) is
+    an open neighborhood of \(\vec 0\), and thus must hit some
+    \(f\in s\concat\<B\>(i)\). Note then that
+    \(\alpha\in(f^{-1}[(-2^{-i-m},2^{-i-m})])^k\).
+
+    For a sequence \(s\) of length \(\leq\omega\), define its offset by
+    \(n\), \(s\offset n\), as follows. Let
+    \(s\offset n=\emptyset\) when \(n\geq|s|\) and otherwise
+    satsify \(|s\offset n|+n=|s|\) and \(s\offset n(i)=s(n+i)\).
+
+    If \(\sigma_k\) is the winning strategy for \(\pl F\) in \(\menGame{X^k}\),
+    then let \(\tau^m\) be a strategy for \(\pl F\) in
+    \(\barmanDowFanGame{C_p(X)}{\vec 0}\) satisfying
+      \[
+        \sigma_k(t_k^m(s\concat\<B\>))
+          \subseteq
+        \{
+          (f^{-1}[(-2^{-|s|-m},2^{-|s|-m})])^k
+        :
+          f\in \tau^m(s\concat\<B\>)
+        \}
+      \]
+    and \(\tau\) be a winning strategy satisfying
+      \[
+        \tau(s\concat\<B\>)
+          =
+        \bigcup_{m\leq|s|}
+        \tau^m((s\offset m)\concat\<B\>)
+      \]
+
+    Attack \(\tau\) with \(a\). Let \(\alpha\in X^k\) and \(m<\omega\).
+    Since \(t_k^m(a\offset m)\) is an attack on \(\sigma\) in
+    \(\menGame{X^k}\), there is some \(n<\omega\) where
+    \(\alpha\in\bigcup\sigma_k(t_k^m((a\offset m)\rest(n+1)))\),
+    and therefore \(\alpha\in (f^{-1}[(-2^{-n-m},2^{-n-m})])^k\) for
+    some \(f\in\tau^m((a\offset m)\rest(n+1))\), so
+    \(
+      f
+        \in
+      U(\vec 0,\text{ran}\alpha,2^{-n})
+        \cap
+      \tau(a\rest(n+m+1))
+    \).
+  \end{proof}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{../bibliography}
+
+\end{document}
