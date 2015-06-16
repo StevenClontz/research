@@ -373,9 +373,8 @@
 
   \pause
 
-  Since metrizable \(+\) Lindel\"of
-  \(\Leftrightarrow\) regular \(+\) second countable, we again have
-  Telgarsky/Scheepers's result for metrizable spaces.
+  The result then follows as metrizable \(+\) Lindel\"of
+  \(\Leftrightarrow\) regular \(+\) second countable.
 \end{frame}
 
 \subsection{$k>1$}
@@ -544,24 +543,37 @@
   \pause
 
   \begin{proposition}
-    \(\kappa>2^\omega\) implies \(\neg\alcompS\kappa\).
+    \(\kappa>\mathfrak c\) implies \(\neg\alcompS\kappa\).
   \end{proposition}
 
   \pause
 
   \begin{theorem}
-    \(\alcompS{2^\omega}\) is a theorem of \(ZFC+CH\) and consistent with
-    \(ZFC+\neg CH\).
+    For any cardinal \(\kappa\), \(ZFC+\alcompS\kappa\)
+    is consistent.
   \end{theorem}
+
+\end{frame}
+
+\begin{frame}
+
+  Let \(\mathfrak z\) be the supremum of cardinals \(\kappa\) where
+  \(\alcompS{\kappa}\).
 
   \pause
 
   \begin{question}
-    Let \(\mathfrak s\) be the smallest cardinal such that
-    \(\alcompS{\mathfrak s}\). What is the relationship of \(\mathfrak s\)
+    \(S(\mathfrak z)\)?
+  \end{question}
+
+  \pause
+
+  \begin{question}
+    What is the relationship of \(\mathfrak z\)
     to other small cardinals such as
     \(\mathfrak t\), \(\mathfrak b\), \(\mathfrak d\), etc.?
   \end{question}
+
 \end{frame}
 
 \begin{frame}[fragile]
@@ -609,22 +621,17 @@
 
 \begin{frame}
   \begin{definition}
-    A subspace \(Y\) of \(X\) is \term{relatively robustly Menger}
-    if there exist functions \(r_{\mc V}:Y\to\omega\)
+    A space \(X\) is \term{robustly Menger}
+    if there exist functions \(r_{\mc V}:X\to\omega\)
     for each open cover \(\mc V\) of \(X\) such that
     for all open covers \(\mc U,\mc V\) and numbers \(n<\omega\),
     the following sets are finitely coverable by \(\mc V\):
       \[
-        c(\mc V,n)=\{ x\in Y : r_{\mc V}(x)\leq n\}
+        c(\mc V,n)=\{ x\in X : r_{\mc V}(x)\leq n\}
       \]
       \[
-        p(\mc U,\mc V,n+1)=\{ x\in Y : n<r_{\mc U}(x)<r_{\mc V}(x)\}
+        p(\mc U,\mc V,n+1)=\{ x\in X : n<r_{\mc U}(x)<r_{\mc V}(x)\}
       \]
-  \end{definition}
-
-  \begin{definition}
-    A space \(X\) is \term{robustly Menger} if it is relatively robustly
-    Menger to itself.
   \end{definition}
 \end{frame}
 
@@ -686,7 +693,7 @@
   \pause
 
   \begin{theorem}
-    \(\alcompS{2^\omega}\) implies \(R_\omega\) is robustly Menger.
+    \(\alcompS{\mathfrak c}\) implies \(R_\omega\) is robustly Menger.
   \end{theorem}
 
   \pause
