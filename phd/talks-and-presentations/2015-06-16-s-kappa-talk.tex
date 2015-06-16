@@ -433,13 +433,12 @@
   but this is easily remedied.
 
   \begin{game}
-    Let \(\schFillInitialGame\kappa\) denote the
-    \term{initial countable-finite game}
-    in which each round \(\pl C\) chooses \(C_n\in[\kappa]^{\leq\omega}\)
-    such that \(C_n\supseteq \bigcup_{i<n}C_i\),
+    Let \(\schFillIntGame\kappa\) denote the
+    \term{intersection countable-finite game}
+    in which each round \(\pl C\) chooses \(C_n\in[\kappa]^{\leq\omega}\),
     followed by \(\pl F\) choosing \(F_n\in[C_n]^{<\omega}\).
 
-    \(\pl F\) wins if \(\bigcup_{n<\omega}F_n\supseteq C_0\),
+    \(\pl F\) wins if \(\bigcup_{n<\omega}F_n\supseteq \bigcap_{n<\omega}C_n\),
     and \(\pl C\) wins otherwise.
   \end{game}
 
@@ -469,42 +468,225 @@
   \end{game}
 
   \begin{game}
-    Let \(\schFillIntGame\kappa\) denote the
-    \term{intersection countable-finite game}
-    in which each round \(\pl C\) chooses \(C_n\in[\kappa]^{\leq\omega}\),
+    Let \(\schFillInitialGame\kappa\) denote the
+    \term{initial countable-finite game}
+    in which each round \(\pl C\) chooses \(C_n\in[\kappa]^{\leq\omega}\)
+    such that \(C_n\supseteq \bigcup_{i<n}C_i\),
     followed by \(\pl F\) choosing \(F_n\in[C_n]^{<\omega}\).
 
-    \(\pl F\) wins if \(\bigcup_{n<\omega}F_n\supseteq \bigcap_{n<\omega}C_n\),
+    \(\pl F\) wins if \(\bigcup_{n<\omega}F_n\supseteq C_0\),
     and \(\pl C\) wins otherwise.
   \end{game}
 \end{frame}
 
 \begin{frame}[fragile]\small
-\begin{theorem}
-\begin{tikzpicture}
-  \matrix (m) [matrix of nodes,row sep=3em,column sep=1em,minimum width=2em]
-  {
-    \(\pl F \kmarkwin{k}\menGame{\oneptlind\kappa}\) & &
-    \(\pl F \kmarkwin{k}\schFillIntGame\kappa\) \\
+  \begin{theorem}
+  \begin{tikzpicture}
+    \matrix (m) [matrix of nodes,row sep=2em,column sep=0.5em,minimum width=2em]
+    {
+      \(\pl F \kmarkwin{2}\menGame{\oneptlind\kappa}\) & &
+      \(\pl F \kmarkwin{2}\schFillIntGame\kappa\) \\
 
-    \(\pl F \kmarkwin{k}\schFillInitialGame\kappa\) & &
-    \(\pl F \kmarkwin{k}\schFillGame\kappa\) \\
+      \(\pl F \kmarkwin{2}\schFillInitialGame\kappa\) & &
+      \(\pl F \kmarkwin{2}\schFillGame\kappa\) \\
 
-    &
-    \(\pl F \ktactwin{k}\schFillStrictGame\kappa\) \\
-  };
-  \path[>=latex,->]
-    (m-1-1) edge (m-2-1)
-    (m-1-3) edge (m-2-3)
-    (m-3-2) edge (m-2-1)
-    (m-3-2) edge (m-2-3);
-  \path[>=latex,<->]
-    (m-1-1) edge (m-1-3)
-    (m-2-1) edge (m-2-3);
-\end{tikzpicture}
-\end{theorem}
+      &
+      \(\pl F \ktactwin{2}\schFillStrictGame\kappa\) \\
+    };
+    \path[>=latex,->]
+      (m-1-1) edge (m-2-1)
+      (m-1-3) edge (m-2-3)
+      (m-3-2) edge (m-2-1)
+      (m-3-2) edge (m-2-3);
+    \path[>=latex,<->]
+      (m-1-1) edge (m-1-3)
+      (m-2-1) edge (m-2-3);
+  \end{tikzpicture}
+  \end{theorem}
+
+  \pause
+
+  Observe that there is no direct implication connecting
+  \(\pl F \kmarkwin{2}\menGame{\oneptlind\kappa}\) and
+  \(\pl F \ktactwin{2}\schFillStrictGame\kappa\).
 \end{frame}
 
+\subsection{$\alcompS\kappa$}
+
+\begin{frame}
+  The following was introduced by Scheepers to study \(k\)-tactics
+  in his original countable-finite game.
+
+  \pause
+
+  \begin{definition}
+    For two functions \(f,g\) we say \(f\) is
+    \term{almost compatible} with
+    \(g\) (\(f\alcomp g\)) if
+    \(\left|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}\right|<\omega\).
+  \end{definition}
+
+  \pause
+
+  \begin{definition}
+    \(\alcompS\kappa\) states that there exist functions
+    \(f_A:A\to\omega\) for each \(A\in[\kappa]^{\leq\omega}\) such that
+    \(|\{\alpha\in A:f_A(\alpha)\leq n\}|<\omega\) for all \(n<\omega\) and
+    \(f_A\alcomp f_B\) for all \(A,B\in[\kappa]^\omega\).
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{proposition}
+    \(\alcompS{\omega_1}\).
+  \end{proposition}
+
+  \pause
+
+  \begin{proposition}
+    \(\kappa>2^\omega\) implies \(\neg\alcompS\kappa\).
+  \end{proposition}
+
+  \pause
+
+  \begin{theorem}
+    \(\alcompS{2^\omega}\) is a theorem of \(ZFC+CH\) and consistent with
+    \(ZFC+\neg CH\).
+  \end{theorem}
+\end{frame}
+
+\begin{frame}[fragile]
+  \begin{theorem}\tiny
+  \begin{center}
+  \begin{tikzpicture}
+    \matrix (m) [matrix of nodes,row sep=2em,column sep=0.5em,minimum width=2em]
+    {
+      &[3em]
+      \(\pl F \kmarkwin{2}\menGame{\oneptlind\kappa}\) & &
+      \(\pl F \kmarkwin{2}\schFillIntGame\kappa\) \\
+
+      \(\alcompS\kappa\) &[3em]
+      \(\pl F \kmarkwin{2}\schFillInitialGame\kappa\) & &
+      \(\pl F \kmarkwin{2}\schFillGame\kappa\) \\
+
+      &[3em] &
+      \(\pl F \ktactwin{2}\schFillStrictGame\kappa\) \\
+    };
+    \path[>=latex,->]
+      (m-2-1) edge (m-1-2)
+      (m-2-1) edge (m-2-2)
+      (m-2-1) edge (m-3-3)
+      (m-1-2) edge (m-2-2)
+      (m-1-4) edge (m-2-4)
+      (m-3-3) edge (m-2-2)
+      (m-3-3) edge (m-2-4);
+    \path[>=latex,<->]
+      (m-1-2) edge (m-1-4)
+      (m-2-2) edge (m-2-4);
+  \end{tikzpicture}
+  \end{center}
+  \end{theorem}
+
+  \pause
+
+  \begin{question}
+    Should all the arrows be two-sided?
+  \end{question}
+\end{frame}
+
+\section{Applications}
+
+\subsection{Robustly Menger}
+
+\begin{frame}
+  \begin{definition}
+    A subspace \(Y\) of \(X\) is \term{relatively robustly Menger}
+    if there exist functions \(r_{\mc V}:Y\to\omega\)
+    for each open cover \(\mc V\) of \(X\) such that
+    for all open covers \(\mc U,\mc V\) and numbers \(n<\omega\),
+    the following sets are finitely coverable by \(\mc V\):
+      \[
+        c(\mc V,n)=\{ x\in Y : r_{\mc V}(x)\leq n\}
+      \]
+      \[
+        p(\mc U,\mc V,n+1)=\{ x\in Y : n<r_{\mc U}(x)<r_{\mc V}(x)\}
+      \]
+  \end{definition}
+
+  \begin{definition}
+    A space \(X\) is \term{robustly Menger} if it is relatively robustly
+    Menger to itself.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    \(\pl F\markwin\menGame{X}\) implies
+    \(X\) is robustly Menger implies
+    \(\pl F\kmarkwin{2}\menGame{X}\).
+  \end{theorem}
+
+  \pause
+
+  \begin{theorem}
+    $\alcompS\kappa$ implies $\oneptlind\kappa$ is robustly Menger.
+  \end{theorem}
+
+  \pause
+
+  \begin{question}
+    Does \(\pl F\kmarkwin{2}\menGame{X}\) imply
+    \(X\) is robustly Menger?
+  \end{question}
+\end{frame}
+
+\subsection{Refined real lines}
+
+\begin{frame}
+  \begin{example}
+    Let \(R_{\mb Q}\) be the real line with the basis generated by
+    open intervals with or without the rationals removed.
+  \end{example}
+
+  \pause
+
+  \begin{theorem}
+    \(R_{\mb Q}\) is second countable and
+    \(\pl F\win\menGame{R_{\mb Q}}\).
+  \end{theorem}
+
+  \begin{corollary}
+    \(\pl F\markwin\menGame{R_{\mb Q}}\), even though it isn't
+    \(\sigma\)-compact.
+  \end{corollary}
+\end{frame}
+
+\begin{frame}
+  \begin{example}
+    Let \(R_{\omega}\) be the real line with the basis generated by
+    open intervals with any countable set removed.
+  \end{example}
+
+  \pause
+
+  \begin{theorem}
+    \(\pl F\win\menGame{R_\omega}\), but
+    \(\pl F\notmarkwin\menGame{R_\omega}\).
+  \end{theorem}
+
+  \pause
+
+  \begin{theorem}
+    \(\alcompS{2^\omega}\) implies \(R_\omega\) is robustly Menger.
+  \end{theorem}
+
+  \pause
+
+  \begin{question}
+    Does there exist a space such that \(\pl F\win\menGame{X}\)
+    but \(X\) is not robustly Menger or \(\pl F\notkmarkwin{2}\menGame{X}\)?
+  \end{question}
+\end{frame}
 
 \section*{}
 
