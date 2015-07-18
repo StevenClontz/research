@@ -62,7 +62,7 @@
 \newcommand{\bellAbsConHardGame}[1]{Bell_{D,P}^{\to,\star}\left({#1}\right)}
 
 
-
+%deprecated, use SigmaPowers below
 \newcommand{\SigmaProdR}[1]{\Sigma\mathbb{R}^{#1}}
 \newcommand{\SigmaStarProdR}[1]{\Sigma^\star\mathbb{R}^{#1}}
 \newcommand{\SigmaProdTwo}[1]{\Sigma2^{#1}}
@@ -125,8 +125,57 @@
 \newcommand{\bmGame}[1]{{BM}_{E,N}(#1)}
 
 
+% http://tex.stackexchange.com/a/251107/79754
+\usepackage{amsmath}
+\usepackage{graphicx}
+\makeatletter
+\newcommand{\sumlower}{\mathop{\mathpalette\@sumlower{\,}}\slimits@}
+\newcommand{\@sumlower}[2]{%
+  \vphantom{\sum}%
+  \sbox\z@{$\m@th#1\sum$}%
+  \dimen@=\ht\z@ \advance\dimen@\dp\z@
+  \dimen\tw@=\wd\z@
+  \ifx#1\displaystyle\dimen@=.9\dimen@\fi
+  \ooalign{%
+    \hidewidth
+    $\vcenter{%
+     \vspace{.1\dimen@}%
+     \hbox{$\m@th\@demotestyle#1#2$\kern.3\dimen\tw@}%
+     \ifx#1\scriptstyle\kern-.25ex\fi}$\hidewidth\cr
+    $\vcenter{\hbox{%
+      \resizebox{!}{\dimen@}{$\m@th\sigma$}%
+    }\ifx#1\scriptstyle\kern-.25ex\fi}$\cr
+  }%
+}
+\newcommand\@demotestyle[1]{%
+  \ifx#1\displaystyle
+  \else
+    \ifx#1\textstyle
+      \scriptstyle
+    \else
+      \scriptscriptstyle
+    \fi
+  \fi
+}
+\newcommand{\sumstar}{\mathop{\sum\kern-1ex\star}\slimits@}
+\makeatother
 
+\newcommand{\SigmaProd}{\sum}
+\newcommand{\SigmaPower}[2]{{\Sigma#1^#2}}
+\newcommand{\SigmaPowerR}[1]{{\SigmaPower{\mathbb{R}}{#1}}}
+\newcommand{\SigmaPowerTwo}[1]{{\SigmaPower{2}{#1}}}
 
+\newcommand{\SigmaStarProd}{\sumstar}
+\newcommand{\SigmaStarPower}[2]{{\Sigma^\star#1^#2}}
+\newcommand{\SigmaStarPowerR}[1]{{\SigmaStarPower{\mathbb{R}}{#1}}}
+\newcommand{\SigmaStarPowerTwo}[1]{{\SigmaStarPower{2}{#1}}}
+
+\newcommand{\sigmaProd}{\sumlower}
+\newcommand{\sigmaPower}[2]{{\sigma#1^#2}}
+\newcommand{\sigmaPowerR}[1]{{\sigmaPower{\mathbb{R}}{#1}}}
+\newcommand{\sigmaPowerTwo}[1]{{\sigmaPower{2}{#1}}}
+
+\newcommand{\supp}{\textrm{supp}}
 
 
 % For a QED-like ending...

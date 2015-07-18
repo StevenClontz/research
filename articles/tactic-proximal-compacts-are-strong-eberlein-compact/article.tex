@@ -5,16 +5,16 @@
 
 \usepackage{../../clontzDefinitions}
 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{cor}[thm]{Corollary}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 
 \theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{ex}[thm]{Example}
-\newtheorem{ques}[thm]{Question}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
 
 
 
@@ -48,210 +48,569 @@ Auburn, AL 36830}
 
 
 \begin{abstract}
-The author and G. Gruenhage previously showed that J. Bell's proximal game may
-be used to characterize Corson compactness in compact Hausdorff spaces.
-Using limited information strategies, the proximal game may also be
-used to characterize the strong Eberlein compactness property.
-In doing so, a purely topological characterization of the proximal game
-is introduced, and several existing results on
-the proximal game are generalized to hold for limited information strategies.
+  The author and G. Gruenhage previously showed that J. Bell's proximal game
+  may be used to characterize Corson compactness in compact Hausdorff spaces.
+  Using limited information strategies, the proximal game may also be
+  used to characterize the strong Eberlein compactness property.
+  In doing so, a purely topological characterization of the proximal game
+  is introduced, and several existing results on
+  the proximal game have analogues considering limited information strategies.
 \end{abstract}
 
 
 \maketitle
 
-Two papers published in 2014 introduced the \term{proximal uniform space game}
-$\bellUniGame{X}$ due to Jocelyn Bell. If $X$ is a
-topological space, and there exists a uniform structure inducing its topology
-which gives the first player in this game has a winning stategy,
-then $X$ is said to be a \term{proximal} space. Bell used this
-game as a tool in \cite{MR3239205} for investigating uniform box products,
-and the author showed with Gary Gruenhage in \cite{MR3227201} that
-this game characterizes Corson compactness amongst compact Hausdorff spaces,
-answering a question of Peter Nyikos in \cite{nyikosProximalPreprint}.
+  Two papers published in 2014 introduced the
+  \term{proximal uniform space game}
+  \(\bellUniGame{X}\) due to Jocelyn Bell. If \(X\) is a
+  topological space, and there exists a uniform structure inducing its topology
+  which gives the first player in this game has a winning stategy,
+  then \(X\) is said to be a \term{proximal} space. Bell used this
+  game as a tool in \cite{MR3239205} for investigating uniform box products,
+  and the author showed with Gary Gruenhage in \cite{MR3227201} that
+  this game characterizes Corson compactness amongst compact Hausdorff spaces,
+  answering a question of Peter Nyikos in \cite{nyikosProximalPreprint}.
 
-All spaces in this paper are assumed to be completely regular, so that they
-have a uniform structure inducing the topology on the space.
-Unlike many game-theoretic topological properties, the game $\bellUniGame{X}$
-for which the proximal property was defined by is not itself a topological game.
-However, by considering entourages of the universal uniformity inducing the
-topology of a space, this original uniform space game may be easily modified to
-a purely topological game $\bellConGame{X}$.
+  All spaces in this paper are assumed to be \(T_{3\frac{1}{2}}\), so that they
+  have a uniform structure inducing the topology on the space.
+  Unlike many game-theoretic topological properties, the game \(\bellUniGame{X}\)
+  for which the proximal property was defined by is not itself a topological
+  game. However, by considering entourages of the universal uniformity
+  inducing the topology of a space, this original uniform space game may be
+  easily modified to the purely topological games
+  \(\bellConGame{X}\), \(\bellAbsConGame{X}\).
 
-The aim of this paper is to use this topological interpretation of the
-proximal game to give a new game-theoretic characterization of the
-strong Eberlein compactness property. Strong Eberlein compacts are Corson
-compacts, and therefore proximal compact spaces; in fact, it will be shown that
-strong Eberlein compacts are exactly the compact spaces for which the
-first player has a \term{tactical} winning strategy for the proximal game,
-a strategy which relies on only the most recent move of the opponent.
-
-
-\section{Topologizing $\bellUniGame{X}$}
-
-We refer to \cite{MR3227201} for definitions, notation, and basic theorems on
-uniform spaces and the proximal game $\bellUniGame{X}$ (denoted as
-$Prox_{D,P}(X)$ in that paper). In particular recall that:
-
-\begin{defn}
-  $\pl P \win G$ denotes that the player $\pl P$ has a winning strategy
-  in the $\omega$-length game $G$.
-\end{defn}
-
-\begin{defn}
-  $X$ is a \term{proximal} space in the case that there exists a uniformity
-  for $X$ such that $\pl D\win\bellUniGame{X}$.
-\end{defn}
-
-As it turns out, the search for such a uniformity is trivial. We refer to
-\cite{MR2048350} for any non-trivial proofs.
-
-\begin{defn}
-  The \term{universal uniformity} for a uniformizable topology is the
-  union of all uniformities which induce the given topology.
-\end{defn}
-
-\begin{thm}
-  The universal uniformity is itself a uniformity compatibile with
-  the topology on the space.
-\end{thm}
-
-\begin{defn}
-  For a uniformizable space $X$, a \term{universal entourage} $D$ is a
-  entourage of the universal uniformity.
-\end{defn}
-
-\begin{thm}
-  For every uniformizable space, if $D$ is a neighborhood of the diagonal
-  $\Delta$  such that there exist neighborhoods $D_n$ of $\Delta$ with
-  $D\supseteq D_0$ and $D_n \supseteq D_{n+1}\circ D_{n+1}$, then $D$ is a
-  universal entourage.
-\end{thm}
-
-\begin{defn}
-  An \term{open symmetric entourage} $D$ is a entourage
-  which is open in the product topology induced by the uniformity and where
-  $D=D^{-1}$ ($\<x,y\>\in D$ if and only if $\<y,x\>\in D$).
-\end{defn}
-
-\begin{thm}
-  For every entourage $D$, there exists an open symmetric
-  entourage $U\subseteq D$.
-\end{thm}
-
-Due to this theorem, we will simply use the word \term{entourage} to refer
-to open symmetric universal entourages. Note that if $D$ is an
-entourage, then $D[x]$ is an open neighborhood of $x$. One may consider
-$D[x]$ to be an entourage-``ball'' about $x$, generalizing the notion of
-an $\epsilon$-ball given by a metric structure.
-
-In the case that
-the space is paracompact, entourages are even more easily found.
-
-\begin{thm}
-  Every open neighborhood of the diagonal is a universal entourage for
-  paracompact uniformizable spaces.
-\end{thm}
-
-\begin{defn}
-  For every entourage $D$, let $\frac{1}{2^n}D$ denote entourages for $n<\omega$
-  such that $\frac{1}{1}D=D$ and
-  $\frac{1}{2^{n+1}}D\circ\frac{1}{2^{n+1}}D\subseteq\frac{1}{2^n}D$.
-\end{defn}
-
-\subsection{Using (universal) entourages to characterize the proximal property}
-
-The natural adaptation of the original uniform space game $\bellUniGame{X}$
-to a topological game requires the use of the universal uniformity on $X$.
-
-\begin{defn}
-  Let $\bellConHardGame{X}$ denote the \term{hard Bell convergence game} with
-  players $\pl D$, $\pl P$ which proceeds as follows for
-  a uniformizable space $X$. In round $0$,
-  $\pl D$ chooses an entourage $D_0$, followed by $\pl P$
-  choosing a point $p_0\in X$. In round $n+1$, $\pl D$ chooses an entourage
-  $D_{n+1}$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
-
-  $\pl D$ wins in the case that either $\<p_0,p_1,\dots\>$ converges in $X$,
-  or $\bigcap_{n<\omega}D_n[p_n] = \emptyset$. $\pl P$ wins otherwise.
-\end{defn}
-
-This game is considered ``hard'' due to the requirement that $\pl D$
-keep track of the history of the game to ensure that successive
-moves refine previous moves. This record-keeping may be eliminated by
-requiring that $\pl P$ respect all moves made by $\pl D$ rather than only
-the most recent move.
-
-\begin{defn}
-  Let $\bellConGame{X}$ denote the \term{Bell convergence game} with players
-  $\pl D$, $\pl P$ which proceeds analogously to $\bellConHardGame{X}$, except
-  for the following. Let $E_n=\bigcap_{m\leq n}D_n$, where $D_n$ is the
-  entourage played by $\pl D$ in round $n$.
-  Then $\pl P$ must ensure that $p_{n+1}\in E_n[p_n]$,
-  and $\pl D$ wins when either $\<p_0,p_1,\dots\>$ converges in $X$
-  or $\bigcap_{n<\omega}E_n[p_n] = \emptyset$.
-\end{defn}
-
-These games are all essentially equivalent with respect to perfect
-information for $\pl D$.
-
-\begin{thm}
-  $\pl D\win\bellConHardGame{X}$ if and only if
-  $\pl D\win\bellConGame{X}$ if and only if
-  $X$ is proximal.
-\end{thm}
-
-\begin{proof}
-  If $\pl D\win\bellConHardGame{X}$, then we immediately see that
-  $\pl D\win\bellConGame{X}$. If $\sigma$ is a winning strategy for $\pl D$
-  in $\bellConGame{X}$, then $\tau$ defined by
-  $\tau(s)=\bigcap_{t\leq s}\sigma(t)$ is easily seen to be a winning strategy
-  for $\pl D$ in $\bellConHardGame{X}$.
-
-  If $\pl D\win\bellConHardGame{X}$, then $\pl D\win\bellUniGame{X}$
-  for the universal uniformity, showing $X$ is proximal.
-  Finally, if $X$ is proximal, then there exists a winning strategy $\sigma$
-  for $\bellUniGame{X}$ for a uniformity inducing the
-  topology on $X$. Then a winning strategy for $\pl D$ in $\bellConHardGame{X}$
-  may be constructed by converting every entourage in this uniformity
-  into a smaller open symmetric universal entourage.
-\end{proof}
-
-The secondary winning condition in $\bellConGame{X}$
-essentially handles the case where
-$\pl P$'s points converge to a ``hole'' in the space. Uniformly locally
-compact spaces (and in particular, compact spaces) lack such holes, so it
-will be convenient to eliminate this technicality when it is irrelevant.
-
-\begin{defn}
-  Let $\bellAbsConGame{X}$ denote the
-  \term{absolute Bell convergence game} which
-  proceeds analogously to $\bellConGame{X}$, except
-  that $\pl D$ must always ensure that $\<p_0,p_1,\dots\>$ converges
-  in $X$ in order to win.
-\end{defn}
-
-\begin{defn}
-  A uniformizable space $X$ is \term{absolutely proximal} if
-  $\pl D \win \bellAbsConGame{X}$.
-\end{defn}
-
-As was shown in \cite{MR3227201}:
-
-\begin{defn}
-  A uniformizable space $X$ is \term{uniformly locally compact} if there
-  exists an entourage $D$ such that $\cl{D[x]}$ is compact
-  for all $x$.
-\end{defn}
-
-\begin{thm}
-  If $X$ is a uniformly locally compact space, then
-  $\pl D \win \bellConGame{X}$ if and only if
-  $\pl D \win \bellAbsConGame{X}$.
-\end{thm}
+  The aim of this paper is to use this topological interpretation of the
+  proximal game to give a new game-theoretic characterization of the
+  strong Eberlein compactness property. Strong Eberlein compacts are Corson
+  compacts, and therefore proximal compact spaces; in fact, it will be shown
+  that strong Eberlein compacts are exactly the compact spaces for which the
+  first player has a \term{tactical} winning strategy for the proximal game,
+  a strategy which relies on only the most recent move of the opponent.
 
 
-\section{Limited information generalizations}
+\section{Topologizing \(\bellUniGame{X}\)}
+
+  We refer to \cite{MR3227201} for definitions, notation, and basic theorems on
+  uniform spaces and the proximal game \(\bellUniGame{X}\) (denoted as
+  \(Prox_{D,P}(X)\) in that paper). In particular recall that:
+
+  \begin{definition}
+    \(\pl P \win G\) denotes that the player \(\pl P\) has a winning strategy
+    in the \(\omega\)-length game \(G\).
+  \end{definition}
+
+  \begin{definition}
+    \(X\) is a \term{proximal} space in the case that there exists a uniformity
+    for \(X\) such that \(\pl D\win\bellUniGame{X}\).
+  \end{definition}
+
+  As it turns out, the search for such a uniformity is trivial.
+
+  \begin{definition}
+    The \term{universal uniformity} for a uniformizable topology is the
+    union of all uniformities which induce the given topology.
+  \end{definition}
+
+  \begin{theorem}[\cite{MR2048350}]
+    The universal uniformity is itself a uniformity compatibile with
+    its given topology.
+  \end{theorem}
+
+  \begin{definition}
+    For a uniformizable space \(X\), a \term{universal entourage} \(D\) is a
+    entourage of the universal uniformity.
+  \end{definition}
+
+  \begin{theorem}[\cite{MR2048350}]
+    For every uniformizable space, if \(D\) is a neighborhood of the diagonal
+    \(\Delta\)  such that there exist neighborhoods \(D_n\) of \(\Delta\) with
+    \(D\supseteq D_0\) and
+    \(D_n \supseteq D_{n+1}\circ D_{n+1}\), then \(D\) is a
+    universal entourage.
+  \end{theorem}
+
+  \begin{definition}
+    For every entourage \(D\) and \(n<\omega\), let \(\frac{1}{2^n}D\)
+    denote an entourage such that \(\frac{1}{1}D=D\) and
+    \(\frac{1}{2^{n+1}}D\circ\frac{1}{2^{n+1}}D\subseteq\frac{1}{2^n}D\).
+  \end{definition}
+
+  \begin{definition}
+    An \term{open symmetric entourage} \(D\) is a entourage
+    which is open in the product topology induced by the uniformity and where
+    \(D=D^{-1}=\{\<y,x\>:\<x,y\>\in D\}\).
+  \end{definition}
+
+  \begin{theorem}
+    For every entourage \(D\), there exists an open symmetric
+    entourage \(U\subseteq D\).
+  \end{theorem}
+
+  Due to this theorem, we will simply use the word \term{entourage} to refer
+  to open symmetric universal entourages. Note that if \(D\) is an
+  entourage, then \(D[x]=\{y:\<x,y\>\in D\}\) is an open neighborhood of \(x\).
+  One may consider
+  \(D[x]\) to be an entourage-``ball'' about \(x\), generalizing the notion of
+  an \(\epsilon\)-ball given by a metric structure.
+
+  In the case that
+  the space is paracompact, entourages are even more easily found.
+
+  \begin{theorem}[\cite{MR2048350}]
+    Every open neighborhood of the diagonal is a universal entourage for
+    paracompact uniformizable spaces.
+  \end{theorem}
+
+\subsection{Using universal entourages to characterize the proximal property}
+
+  The natural adaptation of the original uniform space game \(\bellUniGame{X}\)
+  to a topological game requires the use of the universal uniformity on \(X\).
+
+  \begin{definition}
+    Let \(\bellConHardGame{X}\) denote the \term{hard Bell convergence game} with
+    players \(\pl D\), \(\pl P\) which proceeds as follows for
+    a uniformizable space \(X\). In round \(0\),
+    \(\pl D\) chooses an entourage \(D_0\), followed by \(\pl P\)
+    choosing a point \(p_0\in X\). In round \(n+1\),
+    \(\pl D\) chooses an entourage
+    \(D_{n+1}\), followed by \(\pl P\) choosing a point \(p_{n+1}\in D_n[p_n]\).
+
+    \(\pl D\) wins in the case that either
+    \(\<p_0,p_1,\dots\>\) converges in \(X\),
+    or \(\bigcap_{n<\omega}D_n[p_n] = \emptyset\). \(\pl P\) wins otherwise.
+  \end{definition}
+
+  This game is considered ``hard'' due to the requirement that \(\pl D\)
+  keep track of the history of the game to ensure that successive
+  moves refine previous moves. This record-keeping may be eliminated by
+  requiring that \(\pl P\) respect all moves made by \(\pl D\) rather than only
+  the most recent move.
+
+  \begin{definition}
+    Let \(\bellConGame{X}\) denote the \term{Bell convergence game} with players
+    \(\pl D\), \(\pl P\) which proceeds analogously to \(\bellConHardGame{X}\),
+    except for the following. Let \(E_n=\bigcap_{m\leq n}D_n\), where \(D_n\) is
+    the entourage played by \(\pl D\) in round \(n\).
+    Then \(\pl P\) must ensure that \(p_{n+1}\in E_n[p_n]\),
+    and \(\pl D\) wins when either \(\<p_0,p_1,\dots\>\) converges in \(X\)
+    or \(\bigcap_{n<\omega}E_n[p_n] = \emptyset\).
+  \end{definition}
+
+  These games are all essentially equivalent with respect to perfect
+  information for \(\pl D\).
+
+  \begin{theorem}
+    \(\pl D\win\bellConHardGame{X}\) if and only if
+    \(\pl D\win\bellConGame{X}\) if and only if
+    \(X\) is proximal.
+  \end{theorem}
+
+  \begin{proof}
+    If \(\pl D\win\bellConHardGame{X}\), then we immediately see that
+    \(\pl D\win\bellConGame{X}\).
+    If \(\sigma\) is a winning strategy for \(\pl D\)
+    in \(\bellConGame{X}\), then \(\tau\) defined by
+    \(\tau(s)=\bigcap_{t\leq s}\sigma(t)\) is easily seen to be a winning
+    strategy for \(\pl D\) in \(\bellConHardGame{X}\).
+
+    If \(\pl D\win\bellConHardGame{X}\), then \(\pl D\win\bellUniGame{X}\)
+    for the universal uniformity, showing \(X\) is proximal.
+    Finally, if \(X\) is proximal, then there exists a winning strategy
+    \(\sigma\) for \(\bellUniGame{X}\) for a uniformity inducing the
+    topology on \(X\). Then a winning strategy for \(\pl D\) in
+    \(\bellConHardGame{X}\) may be constructed by converting every
+    entourage in this uniformity into a smaller open symmetric universal
+    entourage.
+  \end{proof}
+
+  The secondary winning condition in \(\bellConGame{X}\)
+  allows for a space to be incomplete: \(\pl D\win\bellConGame{\mb Q}\) by
+  playing \(D_{2^{-n}}=\{\<x,y\>:d(x,y)<2^{-n}\}\) in each round. This
+  forces \(\pl P\)'s sequence to be Cauchy, and thus it either converges to
+  a rational, or the sets \(D_{2^{-n}}[x_n]\) will have empty intersection
+  (where the irrational point of convergence would be). Uniformly locally
+  compact spaces (and in particular, compact spaces) lack such holes, so it
+  will be convenient to eliminate this technicality when it is irrelevant.
+
+  \begin{definition}
+    Let \(\bellAbsConGame{X}\) denote the
+    \term{absolute Bell convergence game} which
+    proceeds analogously to \(\bellConGame{X}\), except
+    that \(\pl D\) must always ensure that \(\<p_0,p_1,\dots\>\) converges
+    in \(X\) in order to win.
+  \end{definition}
+
+  \begin{definition}
+    A uniformizable space \(X\) is \term{absolutely proximal} if
+    \(\pl D \win \bellAbsConGame{X}\).
+  \end{definition}
+
+  As was shown in \cite{MR3227201}:
+
+  \begin{definition}
+    A uniformizable space \(X\) is \term{uniformly locally compact} if there
+    exists an entourage \(D\) such that \(\cl{D[x]}\) is compact
+    for all \(x\).
+  \end{definition}
+
+  \begin{theorem}\label{uniformlyLocallyCompact}
+    If \(X\) is a uniformly locally compact space, then
+    \(\pl D \win \bellConGame{X}\) if and only if
+    \(\pl D \win \bellAbsConGame{X}\).
+  \end{theorem}
+
+  So absolutely proximal compacts are simply proximal compacts (and therefore
+  Corson compacts).
+
+
+\section{Limited information analogues}
+
+  First recall the definitions of the following limited information strategies.
+
+  \begin{definition}
+    A \term{\(k\)-tactical strategy} or \term{\(k\)-tactic}
+    is a strategy which considers only the most recent move of the opponent.
+
+    If \(\pl P\) has a winning \(k\)-tactic for a game \(G\), we write
+    \(\pl P\ktactwin{k} G\). If omitted, assume \(k=1\).
+  \end{definition}
+
+  \begin{definition}
+    A \term{\(k\)-Markov strategy} or \term{\(k\)-mark} is a strategy
+    which considers only the round number and most recent move of the
+    opponent.
+
+    If \(\pl P\) has a winning \(k\)-mark for a game \(G\), we write
+    \(\pl P\kmarkwin{k} G\). If omitted, assume \(k=1\).
+  \end{definition}
+
+  Limited information strategies may be used to strengthen game-theoretic
+  topological properties.
+
+  \begin{definition}
+    A uniformizable space \(X\) is \term{(absolutely) tactic-proximal} if
+    \(\pl D \tactwin \bellConGame{X}\) (\(\pl D \tactwin \bellAbsConGame{X}\)).
+  \end{definition}
+
+  \begin{definition}
+    A uniformizable space \(X\) is \term{(absolutely) Markov-proximal} if
+    \(\pl D \markwin \bellConGame{X}\) (\(\pl D \markwin \bellAbsConGame{X}\)).
+  \end{definition}
+
+  As in Theorem \ref{uniformlyLocallyCompact}, the ``absolutely''
+  is redundant in the above definitions when \(X\) is uniformly locally compact,
+  so the absolute Bell convergence game will be used for convenience in the
+  context of compact spaces.
+
+  Some results of Bell may be generalized to hold for such limited information
+  strategies. The proofs of the following propositions are straight forward.
+
+  \begin{proposition}
+    Let \(X\) be a uniformizable space and \(H\) be a closed subset of \(X\).
+    If \(k<\omega\), then
+    \begin{itemize}
+      \item
+       \(
+          \pl D \ktactwin{k} \bellConGame{X}
+            \Rightarrow
+          \pl D \ktactwin{k} \bellConGame{H}
+       \)
+      \item
+       \(
+          \pl D \kmarkwin{k} \bellConGame{X}
+            \Rightarrow
+          \pl D \kmarkwin{k} \bellConGame{H}
+       \)
+      \item
+       \(
+          \pl D \win \bellConGame{X}
+            \Rightarrow
+          \pl D \win \bellConGame{H}
+       \)
+    \end{itemize}
+  \end{proposition}
+
+  \begin{proposition}
+    Let \(X\) be a uniformizable space and \(H\) be a closed subset of \(X\).
+    If \(k<\omega\), then
+    \begin{itemize}
+      \item
+       \(
+          \pl D \ktactwin{k} \bellAbsConGame{X}
+            \Rightarrow
+          \pl D \ktactwin{k} \bellAbsConGame{H}
+       \)
+      \item
+       \(
+          \pl D \kmarkwin{k} \bellAbsConGame{X}
+            \Rightarrow
+          \pl D \kmarkwin{k} \bellAbsConGame{H}
+       \)
+      \item
+       \(
+          \pl D \win \bellAbsConGame{X}
+            \Rightarrow
+          \pl D \win \bellAbsConGame{H}
+       \)
+    \end{itemize}
+  \end{proposition}
+
+  Less obvious is the following.
+
+  \begin{definition}
+    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
+    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
+    The \term{\(\Sigma\)-product} \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
+    with base point \(z\) is given by
+    \[
+      \SigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        =
+      \left\{
+        x\in \prod_{\alpha<\kappa}X_\alpha
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|\leq\omega
+      \right\}
+    \]
+    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write \(\SigmaPower{X}{\kappa}=\SigmaProd_{\alpha<\kappa}^z X\).
+  \end{definition}
+
+  \begin{theorem}[\cite{MR3239205}]
+    If \(X_\alpha\) is proximal for all \(\alpha<\kappa\),
+    then \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\) is proximal for any
+    base point \(z\).
+    If \(X_\alpha\) is absolutely proximal for all \(\alpha<\kappa\),
+    then \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\) is absolutely
+    proximal for any base point \(z\).
+  \end{theorem}
+
+\subsection{\(\Sigma^\star\)- and \(\sigma\)-Products}
+
+  We may consider smaller subspaces of
+  \(X^\kappa\) than given by \(\SigmaPower{X}{\kappa}\).
+
+  \begin{definition}
+    Let \(X\) be a metrizable space with
+    compatible metric \(d\), and let \(z\in X^\kappa\).
+    The \term{\(\Sigma^\star\)-product}
+    \(\SigmaStarProd_{\alpha<\kappa}^{z}X\)
+    with base point \(z\) is given by
+    \[
+      \SigmaStarProd_{\alpha<\kappa}^{z}X
+        =
+      \left\{
+        x\in \prod_{\alpha<\kappa}X
+      :
+        n<\omega
+      \Rightarrow
+        \left|\left\{
+          \alpha<\kappa:d(x(\alpha),z(\alpha))>\frac{1}{2^n}
+        \right\}\right|
+        <\omega
+      \right\}
+    \]
+    When \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write
+    \(\SigmaStarPower{X}{\kappa}=\SigmaStarProd_{\alpha<\kappa}^z X\).
+  \end{definition}
+
+  \begin{definition}
+    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
+    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
+    The \term{\(\sigma\)-product} \(\sigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
+    with base point \(z\) is given by
+    \[
+      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        =
+      \left\{
+        x\in \prod_{\alpha<\kappa}X_\alpha
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|<\omega
+      \right\}
+    \]
+    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
+  \end{definition}
+
+  Of course,
+    \[
+      \sigmaPower{X}{\kappa}
+        \subseteq
+      \SigmaStarPower{X}{\kappa}
+        \subseteq
+      \SigmaPower{X}{\kappa}
+        \subseteq
+      X^\kappa
+    \]
+  for metrizable \(X\), and
+    \[
+      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        \subseteq
+      \SigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        \subseteq
+      \prod_{\alpha<\kappa}X_\alpha
+    \]
+  for all spaces \(X_\alpha\) and base points \(z\).
+
+  Just as \(\Sigma\) products preserve winning perfect-information strategies,
+  we will show that these product subspaces preserve certain
+  winning limited-information strategies.
+
+  \begin{definition}
+    For a metric space \(\<X,d\>\), let
+    \(E_\epsilon=\{\<x,y\>:d(x,y)<\epsilon\}\). Note that \(E_\epsilon\)
+    is an (open symmetric) entrouage on \(X\).
+  \end{definition}
+
+  \begin{proposition}
+    For any metrizable space \(X\),
+    \(\pl D\kmarkwin{0}\bellConGame{X}\).
+    For any completely metrizable space \(X\),
+    \(\pl D\kmarkwin{0}\bellAbsConGame{X}\).
+  \end{proposition}
+
+  \begin{proof}
+    Essentially shown by Bell in her paper: in either case,
+    \(\pl D\) chooses \(E_{1/2^{n}}\)
+    during round \(n\), forcing legal attacks by \(\pl P\) to be Cauchy.
+  \end{proof}
+
+  As an aside, this next proposition may be proved similarly
+  using \(E_{d(x,y)/2}\).
+
+  \begin{proposition}
+    For any metrizable space \(X\),
+    \(\pl D\ktactwin{2}\bellConGame{X}\).
+    For any completely metrizable space \(X\),
+    \(\pl D\ktactwin{2}\bellAbsConGame{X}\).
+  \end{proposition}
+
+  We will exploit the last move of the
+  opponent to obtain winning Markov strategies under
+  \(\Sigma^\star\) products.
+
+  \begin{proposition}
+    If \(X_\alpha\) is a uniformizable space for \(\alpha<\kappa\),
+    and \(D_\alpha\) is an entourage of \(X_\alpha\) for
+    \(\alpha\in F\in[\kappa]^{<\omega}\), then
+      \[
+        P(\{\<\alpha,D_\alpha\>:\alpha\in F\})
+          =
+        \{
+          \<x,y\>\in\left(\prod_{\alpha<\kappa}X_\alpha\right)^2
+        :
+          \alpha\in F
+        \Rightarrow
+          \<x(\alpha),y(\alpha)\>\in D_\alpha
+        \}
+      \]
+    is an entourage of \(\prod_{\alpha<\kappa}X_\alpha\).
+  \end{proposition}
+
+  \begin{theorem}
+    For any metrizable space \(X\) and \(z\in X^\kappa\),
+    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+    If \(X\) is completely metrizable, then
+    \(\pl D\markwin\bellAbsConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+  \end{theorem}
+
+  \begin{proof}
+    For \(x\in\SigmaStarProd_{\alpha<\kappa}^z X\), let
+      \[
+        \supp_n(x)
+          =
+        \left\{
+          \alpha<\kappa
+        :
+          d(x(\alpha),z(\alpha))>\frac{1}{2^n}
+        \right\}
+          \in
+        \kappa^{<\omega}
+      \]
+    where \(d\) is a (complete) metric compatible with the topology on \(X\).
+
+    Define a strategy \(\sigma\) for \(\pl D\) by
+      \[
+        \sigma(\emptyset,0)
+          =
+        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+      \]
+      \[
+        \sigma(\<p\>,n+1)
+          =
+        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        P(\{
+          \<\alpha,E_{1/2^n}\>
+            :
+          \alpha\in\supp_n(p)
+        \})
+      \]
+  \end{proof}
+
+\subsection{Eberlein and Strong Eberlein Compacts}
+
+  We recall some convenient definitions for a few strengthenings of
+  compactness.
+
+  \begin{definition}
+    A \term{Corson compact} space is a compact space which may be embedded in
+    \[
+      \SigmaProdR\kappa
+        =
+      \{
+        x\in \mb R^\kappa
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=0\}|\leq\omega
+      \}
+    \]
+  \end{definition}
+
+  \begin{definition}
+    An \term{Eberlein compact} space is a compact space which may be embedded in
+    \[
+      \SigmaStarProdR\kappa
+        =
+      \{
+        x\in \mb R^\kappa
+      :
+        n<\omega
+          \Rightarrow
+        |\{\alpha<\kappa:|x(\alpha)|>\frac{1}{2^n}\}|<\omega
+      \}
+    \]
+  \end{definition}
+
+  \begin{definition}
+    A \term{strong Eberlein compact} space is a compact space which may
+    be embedded in
+    \[
+      \sigmaProdTwo\kappa
+        =
+      \{
+        x\in 2^\kappa
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=0\}|<\omega
+      \}
+    \]
+  \end{definition}
+
+  Obviously, strong Eberlein compacts are Eberlein compact, and Eberlein
+  compacts are Corson compact. Nyikos observed in
+  \cite{MR3288115} that as the \(\Sigma\)-product of proximal spaces
+  are proximal and the closed subspaces of proximal spaces are proximal (both
+  results of Bell in \cite{MR3239205}),
+  any compact subspace of \(\SigmaProdR\kappa\) (that is, any Corson compact)
+  must itself be proximal. With some more work, this implication may also
+  be reversed.
+
+  \begin{theorem}[\cite{MR3227201}]
+    A compact space is proximal if and only if it is Corson compact.
+  \end{theorem}
+
+  Let us first investigate limited information analogues of Nyikos's
+  observation.
 
 
 \newpage
@@ -270,7 +629,7 @@ As was shown in \cite{MR3227201}:
 % \section{Definitions and Properites of Uniform Spaces}
 %  We relate some definitions and properties of uniform spaces.
 
-% \begin{defn}
+% \begin{definition}
 %   A \term{uniform space} is a pair $\<X,\mc{D}\>$ where $X$ is a set, and $\mc{D}$ is a uniformity. A \term{uniformity} is a filter on subsets of $X^2$, called \term{entourages}, such that for each entourage $D\in \mc D$:
 %   \begin{itemize}
 %       \item $D$ is reflexive, i.e., the diagonal $\Delta=\{\<x,x\>:x\in X\}\subseteq D$.
@@ -280,11 +639,11 @@ As was shown in \cite{MR3227201}:
 %           2\left(\frac{1}{2}D\right)=\frac{1}{2}D\circ \frac{1}{2}D=\left\{\<x,z\>:\exists y\left(\<x,y\>,\<y,z\>\in \frac{1}{2}D\right)\right\}\subseteq D.
 %         \]
 %     \end{itemize}
-% \end{defn}
+% \end{definition}
 
-% \begin{defn}
+% \begin{definition}
 %   The \term{uniform topology} induced by a uniformity declares a set $U$ to be open if for every $x\in U$, there is some $D\in\mc D$ with $x\in D[x]=\{y: \<x,y\>\in D\}\subseteq U$.   A topological space $X$ is said to be \term{uniformizable} if there is a uniformity $D$ on $X$ which induces its topology.
-% \end{defn}
+% \end{definition}
 
 % We now list some basic results about uniformities and uniform spaces.  One may see \cite{e}, for example, for proofs.
 
@@ -301,20 +660,20 @@ As was shown in \cite{MR3227201}:
 
 % We quickly note two properites of $\frac{1}{2}D$.
 
-% \begin{prop}
+% \begin{proposition}
 %   If $x\in \frac{1}{2}D[y]$ and $y\in \frac{1}{2}D[z]$, then $x\in D[z]$.
-% \end{prop}
+% \end{proposition}
 
 % \begin{proof}
 %   Directly from the definition of $\frac{1}{2}D$. Note that the same result holds if we assumed instead that $y\in \frac{1}{2}D[x]$ or $z\in \frac{1}{2}D[y]$, since $\frac{1}{2}D$ is assumed to be symmetric.
 % \end{proof}
 
-% \begin{prop}
+% \begin{proposition}
 %   If $X$ is a uniform space, then for all $x\in X$ and symmetric entourages $D$:
 %     \[
 %       \frac{1}{2}D[x]\subseteq \cl{\frac{1}{2}D[x]}\subseteq D[x]
 %     \]
-% \end{prop}
+% \end{proposition}
 
 % \begin{proof}
 %   If $y$ is a limit point of $\frac{1}{2}D[x]$, then $\frac{1}{2}D[y]$ must intersect $\frac{1}{2}D[x]$ at some $z$. It follows then that $y\in D[x]$.
@@ -325,7 +684,7 @@ As was shown in \cite{MR3227201}:
 % The theory of proximal uniform spaces relies on the following $\omega$-length
 % game introduced in \cite{b}:
 
-% \begin{defn}
+% \begin{definition}
 %   The \textbf{proximal game} $\proxgame{X}$ of length $\omega$ played on a uniform space $X$ with two players $\pl D$, $\pl P$ proceeds as follows:
 %     \begin{itemize}
 %       \item In the initial round $0$, $\pl D$ chooses an open symmetric entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$.
@@ -337,23 +696,23 @@ As was shown in \cite{MR3227201}:
 %   condition; however, it's easily verified that player $\pl D$
 %   has a winning strategy in one if and only if she has a winning strategy in
 %   the other.}
-% \end{defn}
+% \end{definition}
 
 % We may assume that if $\sigma$ is a winning strategy for $\pl D$, then $D_{n+1}=\sigma (x_0,x_1,...,x_n)$ is contained in something smaller than $D_n$, e.g., $\frac{1}{4}D_n$.  That is because a sequence of legal moves by $\pl P$ with $\pl D$ using the refined strategy is also a legal sequence of moves with $\pl D$ using the original strategy.
 
-% \begin{defn}
+% \begin{definition}
 %   If a player $\pl A$ has a winning strategy in a game $G$, we write $\pl A\win G$. Otherwise, we write $\pl A\not\win G$.
-% \end{defn}
+% \end{definition}
 
-% \begin{defn}
+% \begin{definition}
 %   A uniform space $\<X,\mathcal D\>$ is said to be \term{proximal} if and only if $\pl D\win\proxgame{X}$.  A topological space is \term{proximal} iff it admits  a compatible uniformity (i.e., one which induces its topology) which is proximal.
-% \end{defn}
+% \end{definition}
 
 % \section{Proximal Games and $W$ Games}
 
 % The second author introduced the following game in \cite{ginfinite}.
 
-% \begin{defn}
+% \begin{definition}
 %   The \textbf{$W$-convergence game} $\congame{X}{H}$ of length $\omega$ played on a topological space $X$ and set $H\subseteq X$ with two players $\pl O$, $\pl P$ proceeds as follows:
 %     \begin{itemize}
 %       \item In the initial round $0$, $\pl O$ chooses an open neighborhood $O_0$ of $H$, followed by $\pl P$ choosing a point $p_0\in O_0$.
@@ -362,21 +721,21 @@ As was shown in \cite{MR3227201}:
 %   At the conclusion of the game, $\pl O$ wins if $\<p_0,p_1,\dots\>$ converges to $H$ (every open neighborhood of $H$ contains all but finitely many points of the sequence), and $\pl P$ wins otherwise.
 
 %   In the case of $H=\{x\}$, we abuse notation and write $\congame{X}{x}$.
-% \end{defn}
+% \end{definition}
 
-% \begin{defn}
+% \begin{definition}
 %   A topological space $X$ is said to be a \term{$W$-space} if and only if for every $x\in X$, $\pl O\win \congame{X}{x}$.
-% \end{defn}
+% \end{definition}
 
 % We find it useful to consider a (seemingly) weaker version of this game.
 
-% \begin{defn}
+% \begin{definition}
 %   The \textbf{$W$-clustering game} $\clusgame{X}{H}$ proceeds identically to $\congame{X}{H}$, except that $\pl O$ need only force $p$ to cluster at $H$ (every open neighborhood of $H$ contains infinitely many points of the sequence).
-% \end{defn}
+% \end{definition}
 
-% \begin{thm}
+% \begin{theorem}
 %   $\pl O\win\congame{X}{H}$ if and only if $\pl O \win\clusgame{X}{H}$
-% \end{thm}
+% \end{theorem}
 
 % \begin{proof}
 %   Shown for $H=\{x\}$ in \cite{ginfinite}, but the analogous proof works for arbitrary $H$. The forward implication is immediate. Let $\sigma$ be a strategy for $\pl O$ witnessing $\pl O\win \clusgame{X}{H}$. Note $\sigma$ is a function whose domain is all possible partial attacks by $\pl P$ (finite sequences of points in $X$), and whose range is the open neighborhoods of $H$, such that for any legal attack $p=\<p_0,p_1,\dots\>$ against $\sigma$, it follows that $p$ must cluster at $H$.
@@ -388,9 +747,9 @@ As was shown in \cite{MR3227201}:
 %   Since no infinite subsequence of $p$ can be completely missed by an open neighborhood of $H$, it follows that $p$ converges to $H$.
 % \end{proof}
 
-% \begin{thm}\cite{b}
+% \begin{theorem}\cite{b}
 %   All proximal spaces are $W$-spaces.
-% \end{thm}
+% \end{theorem}
 
 
 % The idea of Bell's proof of the above result is to consider the result of an attack on the winning strategy for $\pl D$ in $\proxgame{X}$ which alternates between points chosen by $\pl P$ in $\congame{X}{x}$ and the particular point $x$ itself. Since the intersection $\bigcap_{n<\omega} D_n[p_n]$ must contain $x$, the sequence must converge, and since the sequence contains $x$ infinitely often, it must converge to $x$.
@@ -398,22 +757,22 @@ As was shown in \cite{MR3227201}:
 
 % While there is not much trouble in ensuring the nonempty intersection of\\ $\bigcap_{n<\omega} D_n[p_n]$ for this particular proof, we turn to a stronger version of $\proxgame{X}$, also introduced by Bell, which avoids the issue entirely.
 
-% \begin{defn}
+% \begin{definition}
 %   The \term{absolutely proximal game}  proceeds identially to $\proxgame{X}$, except that $\pl D$ may only win in the case that $\<p_0,p_1,\dots\>$ converges.
-% \end{defn}
+% \end{definition}
 
 % Obviously, all absolutely proximal spaces are proximal. We are interested in when we have equivalence.
 
-% \begin{defn}
+% \begin{definition}
 %   A uniform space is \term{uniformly locally compact} if there exists an open symmetric entourage $L$ such that $\cl{L[x]}$ is a compact neighborhood of $x$ for all $x\in X$.  A topological space is uniformly locally compact if it admits a compatible uniformly locally compact uniformity.
-% \end{defn}
+% \end{definition}
 
 
 % Obviously every compact space is uniformly locally compact, but not every locally compact space is uniformly locally compact.  For example, the space of countable ordinals is locally compact, but does not admit a compatible uniformly locally compact uniformity.
 
-% \begin{thm}
+% \begin{theorem}
 %   A uniformly locally compact space $X$ is proximal if and only if it is absolutely proximal.
-% \end{thm}
+% \end{theorem}
 
 % \begin{proof}
 %   Let $L$ be a uniformly locally compact entourage. Let $\sigma$ be a strategy for $\pl D$ witnessing $\pl D\win \proxgame{X}$. Without loss of generality, we may assume such that $\sigma(p\rest n)\subseteq L$ for all partial attacks $p\rest n$ (so $\cl{\sigma(p\rest n)[x]}\subseteq\cl{L[x]}$ is compact), and that $n > m$ implies $\sigma(p\rest n)\subseteq \frac{1}{4}\sigma(p\rest m)$.
@@ -467,14 +826,14 @@ As was shown in \cite{MR3227201}:
 
 % We recall  the definition of Corson compact.
 
-% \begin{defn}
+% \begin{definition}
 %   A space is said to be \term{Corson compact} if and only if it is homeomorphic to a compact set within the $\Sigma$-product $\Sigma\mathbb{R}^\kappa$ of $\kappa$-many real lines, that is:
 %     \[
 %       \Sigma\mathbb{R}^\kappa
 %         =
 %       \{x\in \mathbb{R}^\kappa: |\{\alpha:x(\alpha)\not=0\}|\leq\omega\}
 %     \]
-% \end{defn}
+% \end{definition}
 
 
 % Since proximal spaces are closed under closed subsets and $\Sigma$-products \cite{b}, it follows (as noted by Nyikos) that every Corson compact is proximal.
@@ -487,16 +846,16 @@ As was shown in \cite{MR3227201}:
 
 % However, the given characterization of Corson compact is less useful when proving the other direction.  Instead we use the following game characterization due to the second author.
 
-% \begin{thm}\cite{gcovering}
+% \begin{theorem}\cite{gcovering}
 %   A space $X$ is Corson compact if and only if $X$ is compact and $\pl O\win\congame{X^2}{\Delta}$.
-% \end{thm}
+% \end{theorem}
 
 
 % The following contains the meat of our proof of the title result.
 
-% \begin{thm}
+% \begin{theorem}
 %   For any absolutely proximal space $X$, $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
-% \end{thm}
+% \end{theorem}
 
 % \begin{proof}
 %   Let $\sigma$ be a winning strategy for $\pl D$ in the absolutely proximal
@@ -660,9 +1019,9 @@ As was shown in \cite{MR3227201}:
 
 % The equivalency result follows as a quick corollary.
 
-% \begin{cor}
+% \begin{corollary}
 %   For any compact space $X$, $X$ is proximal if and only if $X$ is Corson compact.
-% \end{cor}
+% \end{corollary}
 
 % \begin{proof}
 %   The reverse implication was noted earlier. If $X$ is compact proximal, then so is $X^2$. By the previous theorem, $\pl O\win\congame{X^2}{\Delta}$, which is a characterization of Corson compact.
