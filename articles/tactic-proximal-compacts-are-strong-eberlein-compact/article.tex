@@ -16,6 +16,8 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}[theorem]{Question}
 
+\parskip=0.5em
+
 
 
 \begin{document}
@@ -101,8 +103,25 @@ Auburn, AL 36830}
   \end{definition}
 
   \begin{definition}
-    \(X\) is a \term{proximal} space in the case that there exists a uniformity
-    for \(X\) such that \(\pl D\win\bellUniGame{X}\).
+    Let \(\bellUniGame{X,\mb D}\) denote the
+    \term{proximal uniform space game} with
+    players \(\pl D\), \(\pl P\) which proceeds as follows for
+    a space \(X\) with uniformity \(\mb D\). In round \(0\),
+    \(\pl D\) chooses an entourage \(D_0\in\mb D\), followed by \(\pl P\)
+    choosing a point \(p_0\in X\). In round \(n+1\),
+    \(\pl D\) chooses an entourage
+    \(D_{n+1}\in\mb D\),
+    followed by \(\pl P\) choosing a point \(p_{n+1}\in D_n[p_n]\).
+
+    \(\pl D\) wins in the case that either
+    \(\<p_0,p_1,\dots\>\) converges in \(X\),
+    or \(\bigcap_{n<\omega}D_n[p_n] = \emptyset\). \(\pl P\) wins otherwise.
+  \end{definition}
+
+  \begin{definition}
+    A uniformizable space \(X\) is \term{proximal}
+    in the case that there exists a uniformity
+    \(\mb D\) for \(X\) such that \(\pl D\win\bellUniGame{X,\mb D}\).
   \end{definition}
 
   As it turns out, the search for such a uniformity is trivial.
@@ -497,13 +516,13 @@ Auburn, AL 36830}
       \[
         P(\{\<\alpha,D_\alpha\>:\alpha\in F\})
           =
-        \{
+        \left\{
           \<x,y\>\in\left(\prod_{\alpha<\kappa}X_\alpha\right)^2
         :
           \alpha\in F
         \Rightarrow
           \<x(\alpha),y(\alpha)\>\in D_\alpha
-        \}
+        \right\}
       \]
     is an entourage of \(\prod_{\alpha<\kappa}X_\alpha\).
   \end{proposition}
@@ -511,8 +530,6 @@ Auburn, AL 36830}
   \begin{theorem}
     For any metrizable space \(X\) and \(z\in X^\kappa\),
     \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
-    If \(X\) is completely metrizable, then
-    \(\pl D\markwin\bellAbsConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
   \end{theorem}
 
   \begin{proof}
@@ -528,7 +545,7 @@ Auburn, AL 36830}
           \in
         \kappa^{<\omega}
       \]
-    where \(d\) is a (complete) metric compatible with the topology on \(X\).
+    where \(d\) is a metric compatible with the topology on \(X\).
 
     Define a strategy \(\sigma\) for \(\pl D\) by
       \[
@@ -542,11 +559,65 @@ Auburn, AL 36830}
         \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
           \cap
         P(\{
-          \<\alpha,E_{1/2^n}\>
+          \<\alpha,E_{1/2^{n+1}}\>
             :
           \alpha\in\supp_n(p)
         \})
       \]
+
+    Let \(a:\omega\to \SigmaStarProd_{\alpha<\kappa}^z X\) be a legal
+    attack by \(\pl P\) against \(\sigma\), so
+      \[
+        \<a(n+1),a(n+2)\>
+          \in
+        \bigcap_{m\leq n}
+        \sigma(\<a(m)\>,m+1)
+      \]
+      \[
+          =
+        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        \bigcap_{m\leq n}
+        P(\{
+          \<\alpha,E_{1/2^{m+1}}\>
+            :
+          \alpha\in\supp_m(a(m))
+        \})
+      \]
+    and let \(\alpha<\kappa\).
+
+    If \(d(a(m+1)(\alpha),z(\alpha))\leq\frac{1}{2^m}\) for all but finite
+    \(m<\omega\), then  \(\lim_{n<\omega}a(n)(\alpha)=z(\alpha)\).
+    Otherwise, we have \(\alpha\in\supp_m(a(m))\) for infinitely many
+    \(m<\omega\).
+
+    If
+    \(\bigcap_{n<\omega}\sigma(\<a(n)\>,n+1)[a(n+1)]=\emptyset\), then
+    \(\pl D\) has already won
+    \(\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+    Otherwise there exists a nonstrictly increasing
+    unbounded function \(f\in\omega^\omega\) with
+    \(\bigcap_{n<\omega}E_{1/2^{f(n)+1}}[a(n+1)(\alpha)]\not=\emptyset\).
+    Since the diameter of these sets approaches \(0\), the intersection is
+    a singleton \(x\); furthermore, the \(\alpha\) coordinate of \(a\) must
+    then converge to \(x\). We conclude that
+    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+  \end{proof}
+
+  A similar result (with a less technical proof) holds for tactics and
+  \(\sigma\)-products.
+
+  \begin{theorem}
+    Let \(X_\alpha\) be a uniformizable space for \(\alpha<\kappa\)
+    and \(z\in \prod_{\alpha<\kappa}X_\alpha\).
+    If
+    \(\pl D\tactwin\bellConGame{X_\alpha}\) for all \(\alpha<\kappa\),
+    then
+    \(\pl D\tactwin\bellConGame{\sigmaProd_{\alpha<\kappa}^z X_\alpha}\).
+  \end{theorem}
+
+  \begin{proof}
+    TODO
   \end{proof}
 
 \subsection{Eberlein and Strong Eberlein Compacts}
@@ -556,44 +627,17 @@ Auburn, AL 36830}
 
   \begin{definition}
     A \term{Corson compact} space is a compact space which may be embedded in
-    \[
-      \SigmaProdR\kappa
-        =
-      \{
-        x\in \mb R^\kappa
-      :
-        |\{\alpha<\kappa:x(\alpha)\not=0\}|\leq\omega
-      \}
-    \]
+    \(\SigmaProdR\kappa\).
   \end{definition}
 
   \begin{definition}
-    An \term{Eberlein compact} space is a compact space which may be embedded in
-    \[
-      \SigmaStarProdR\kappa
-        =
-      \{
-        x\in \mb R^\kappa
-      :
-        n<\omega
-          \Rightarrow
-        |\{\alpha<\kappa:|x(\alpha)|>\frac{1}{2^n}\}|<\omega
-      \}
-    \]
+    An \term{Eberlein compact} space is a compact space which may be embedded
+    in \(\SigmaStarProdR\kappa\).
   \end{definition}
 
   \begin{definition}
     A \term{strong Eberlein compact} space is a compact space which may
-    be embedded in
-    \[
-      \sigmaProdTwo\kappa
-        =
-      \{
-        x\in 2^\kappa
-      :
-        |\{\alpha<\kappa:x(\alpha)\not=0\}|<\omega
-      \}
-    \]
+    be embedded in \(\sigmaProdTwo\kappa\).
   \end{definition}
 
   Obviously, strong Eberlein compacts are Eberlein compact, and Eberlein
