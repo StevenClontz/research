@@ -13,6 +13,7 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{game}[theorem]{Game}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}[theorem]{Question}
 
@@ -56,7 +57,8 @@ Auburn, AL 36830}
   used to characterize the strong Eberlein compactness property.
   In doing so, a purely topological characterization of the proximal game
   is introduced, and several existing results on
-  the proximal game have analogues considering limited information strategies.
+  the proximal game are given
+  analogues considering limited information strategies.
 \end{abstract}
 
 
@@ -102,7 +104,7 @@ Auburn, AL 36830}
     in the \(\omega\)-length game \(G\).
   \end{definition}
 
-  \begin{definition}
+  \begin{game}
     Let \(\bellUniGame{X,\mb D}\) denote the
     \term{proximal uniform space game} with
     players \(\pl D\), \(\pl P\) which proceeds as follows for
@@ -116,7 +118,7 @@ Auburn, AL 36830}
     \(\pl D\) wins in the case that either
     \(\<p_0,p_1,\dots\>\) converges in \(X\),
     or \(\bigcap_{n<\omega}D_n[p_n] = \emptyset\). \(\pl P\) wins otherwise.
-  \end{definition}
+  \end{game}
 
   \begin{definition}
     A uniformizable space \(X\) is \term{proximal}
@@ -186,7 +188,7 @@ Auburn, AL 36830}
   The natural adaptation of the original uniform space game \(\bellUniGame{X}\)
   to a topological game requires the use of the universal uniformity on \(X\).
 
-  \begin{definition}
+  \begin{game}
     Let \(\bellConHardGame{X}\) denote the \term{hard Bell convergence game} with
     players \(\pl D\), \(\pl P\) which proceeds as follows for
     a uniformizable space \(X\). In round \(0\),
@@ -198,7 +200,7 @@ Auburn, AL 36830}
     \(\pl D\) wins in the case that either
     \(\<p_0,p_1,\dots\>\) converges in \(X\),
     or \(\bigcap_{n<\omega}D_n[p_n] = \emptyset\). \(\pl P\) wins otherwise.
-  \end{definition}
+  \end{game}
 
   This game is considered ``hard'' due to the requirement that \(\pl D\)
   keep track of the history of the game to ensure that successive
@@ -206,7 +208,7 @@ Auburn, AL 36830}
   requiring that \(\pl P\) respect all moves made by \(\pl D\) rather than only
   the most recent move.
 
-  \begin{definition}
+  \begin{game}
     Let \(\bellConGame{X}\) denote the \term{Bell convergence game} with players
     \(\pl D\), \(\pl P\) which proceeds analogously to \(\bellConHardGame{X}\),
     except for the following. Let \(E_n=\bigcap_{m\leq n}D_n\), where \(D_n\) is
@@ -214,7 +216,7 @@ Auburn, AL 36830}
     Then \(\pl P\) must ensure that \(p_{n+1}\in E_n[p_n]\),
     and \(\pl D\) wins when either \(\<p_0,p_1,\dots\>\) converges in \(X\)
     or \(\bigcap_{n<\omega}E_n[p_n] = \emptyset\).
-  \end{definition}
+  \end{game}
 
   These games are all essentially equivalent with respect to perfect
   information for \(\pl D\).
@@ -245,9 +247,9 @@ Auburn, AL 36830}
 
   The secondary winning condition in \(\bellConGame{X}\)
   allows for a space to be incomplete: \(\pl D\win\bellConGame{\mb Q}\) by
-  playing \(D_{2^{-n}}=\{\<x,y\>:d(x,y)<2^{-n}\}\) in each round. This
+  playing \(E_{1/2^n}=\{\<x,y\>:d(x,y)<\frac{1}{2^n}\}\) in each round. This
   forces \(\pl P\)'s sequence to be Cauchy, and thus it either converges to
-  a rational, or the sets \(D_{2^{-n}}[x_n]\) will have empty intersection
+  a rational, or the sets \(E_{1/2^n}[x_n]\) will have empty intersection
   (where the irrational point of convergence would be). Uniformly locally
   compact spaces (and in particular, compact spaces) lack such holes, so it
   will be convenient to eliminate this technicality when it is irrelevant.
@@ -399,9 +401,6 @@ Auburn, AL 36830}
     If \(X_\alpha\) is proximal for all \(\alpha<\kappa\),
     then \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\) is proximal for any
     base point \(z\).
-    If \(X_\alpha\) is absolutely proximal for all \(\alpha<\kappa\),
-    then \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\) is absolutely
-    proximal for any base point \(z\).
   \end{theorem}
 
 \subsection{\(\Sigma^\star\)- and \(\sigma\)-Products}
@@ -547,14 +546,14 @@ Auburn, AL 36830}
       \]
     where \(d\) is a metric compatible with the topology on \(X\).
 
-    Define a strategy \(\sigma\) for \(\pl D\) by
+    Define a strategy \(\tau\) for \(\pl D\) by
       \[
-        \sigma(\emptyset,0)
+        \tau(\emptyset,0)
           =
         \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
       \]
       \[
-        \sigma(\<p\>,n+1)
+        \tau(\<p\>,n+1)
           =
         \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
           \cap
@@ -566,12 +565,12 @@ Auburn, AL 36830}
       \]
 
     Let \(a:\omega\to \SigmaStarProd_{\alpha<\kappa}^z X\) be a legal
-    attack by \(\pl P\) against \(\sigma\), so
+    attack by \(\pl P\) against \(\tau\), so
       \[
         \<a(n+1),a(n+2)\>
           \in
         \bigcap_{m\leq n}
-        \sigma(\<a(m)\>,m+1)
+        \tau(\<a(m)\>,m+1)
       \]
       \[
           =
@@ -592,9 +591,8 @@ Auburn, AL 36830}
     \(m<\omega\).
 
     If
-    \(\bigcap_{n<\omega}\sigma(\<a(n)\>,n+1)[a(n+1)]=\emptyset\), then
-    \(\pl D\) has already won
-    \(\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+    \(\bigcap_{n<\omega}\tau(\<a(n)\>,n+1)[a(n+1)]=\emptyset\), then
+    \(\pl D\) has already won.
     Otherwise there exists a nonstrictly increasing
     unbounded function \(f\in\omega^\omega\) with
     \(\bigcap_{n<\omega}E_{1/2^{f(n)+1}}[a(n+1)(\alpha)]\not=\emptyset\).
@@ -604,7 +602,7 @@ Auburn, AL 36830}
     \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
   \end{proof}
 
-  A similar result (with a less technical proof) holds for tactics and
+  A similar result holds for tactics and
   \(\sigma\)-products.
 
   \begin{theorem}
@@ -617,7 +615,83 @@ Auburn, AL 36830}
   \end{theorem}
 
   \begin{proof}
-    TODO
+    For \(x\in\sigmaProd_{\alpha<\kappa}^z X_\alpha\), let
+      \[
+        \supp(x)
+          =
+        \left\{
+          \alpha<\kappa
+        :
+          x(\alpha)\not=z(\alpha)
+        \right\}
+          \in
+        \kappa^{<\omega}
+      \]
+    and let \(\tau_\alpha\) be a winning strategy for \(\pl D\) in
+    \(\bellConGame{X_\alpha}\) for \(\alpha<\kappa\).
+
+    Define a strategy \(\tau\) for \(\pl D\) by
+      \[
+        \tau(\emptyset)
+          =
+        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
+      \]
+      \[
+        \tau(\<p\>)
+          =
+        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        P(\{
+          \<\alpha,\tau_\alpha(p(\alpha))\>
+            :
+          \alpha\in\supp(p)
+        \})
+      \]
+
+    Let \(a:\omega\to \sigmaProd_{\alpha<\kappa}^z X\) be a legal
+    attack by \(\pl P\) against \(\tau\), so
+      \[
+        \<a(n+1),a(n+2)\>
+          \in
+        \bigcap_{m\leq n}
+        \tau(\<a(m)\>)
+      \]
+      \[
+          =
+        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        \bigcap_{m\leq n}
+        P(\{
+          \<\alpha,\tau_\alpha(a(m)(\alpha))\>
+            :
+          \alpha\in\supp(a(m))
+        \})
+      \]
+    and let \(\alpha<\kappa\).
+
+    If \(a(m+1)(\alpha)=z(\alpha)\) for all but finite
+    \(m<\omega\), then  \(\lim_{n<\omega}a(n)(\alpha)=z(\alpha)\).
+    Otherwise, we have \(\alpha\in\supp(a(m))\) for infinitely many
+    \(m<\omega\).
+
+    TODO: wrap this up unless it's wrong
+    (it's not needed to get the
+    main result)
+    % If
+    % \(\bigcap_{n<\omega}\tau(\<a(n)\>)[a(n+1)]=\emptyset\), then
+    % \(\pl D\) has already won.
+    % Otherwise there exists a nonstrictly increasing
+    % unbounded function \(f\in\omega^\omega\) with
+    % \(
+    %   \bigcap_{n<\omega}
+    %   \sigma_\alpha(a(f(n))(\alpha))[a(n+1)(\alpha)]
+    %     \not=
+    %   \emptyset
+    % \).
+    % Since the diameter of these sets approaches \(0\), the intersection is
+    % a singleton \(x\); furthermore, the \(\alpha\) coordinate of \(a\) must
+    % then converge to \(x\). We conclude that
+    % \(\pl D\tactwin\bellConGame{\sigmaProd_{\alpha<\kappa}^z X}\).
   \end{proof}
 
 \subsection{Eberlein and Strong Eberlein Compacts}
@@ -643,19 +717,259 @@ Auburn, AL 36830}
   Obviously, strong Eberlein compacts are Eberlein compact, and Eberlein
   compacts are Corson compact. Nyikos observed in
   \cite{MR3288115} that as the \(\Sigma\)-product of proximal spaces
-  are proximal and the closed subspaces of proximal spaces are proximal (both
-  results of Bell in \cite{MR3239205}),
-  any compact subspace of \(\SigmaProdR\kappa\) (that is, any Corson compact)
-  must itself be proximal. With some more work, this implication may also
-  be reversed.
+  are proximal and the closed subspaces of proximal spaces are proximal:
 
-  \begin{theorem}[\cite{MR3227201}]
-    A compact space is proximal if and only if it is Corson compact.
+  \begin{corollary}
+    Corson compacts are proximal.
+  \end{corollary}
+
+  By the previous section we may now obtain analogues of this observation.
+
+  \begin{corollary}
+    Eberlein compacts are Markov-proximal. Strong Eberlein compacts are
+    tactic-proximal.
+  \end{corollary}
+
+  The author showed with Gary Gruenhage in \cite{MR3227201} that
+  Nyikos's observation can actually be reversed. The result required an
+  earlier game characterization of Corson compactness due to Gruenhage.
+
+  \begin{game}
+    Let \(\gruConGame{X}{S}\) denote
+    \term{Gruenhage's convergence game} with
+    players \(\pl O\), \(\pl P\) which proceeds as follows for a space
+    \(X\) and a set \(S\). In round \(n\),
+    \(\pl O\) chooses an open set \(U_n\subseteq X^2\) containing
+    \(S\), followed by \(\pl P\)
+    choosing a point \(p_n\in \bigcap_{m\leq n}U_m\).
+
+    \(\pl O\) wins in the case that
+    \(\<p_0,p_1,\dots\>\) converges to the set \(S\); that is,
+    any open set containing \(S\) contains all but finite \(p_n\).
+    \(\pl P\) wins otherwise.
+  \end{game}
+
+  When \(S=\{x\}\), we abuse notation and write simply
+  \(\gruConGame{X}{x}\).
+
+  \begin{corollary}[\cite{MR752278},\cite{MR858337}]
+    A compact space \(X\) is Corson compact if and only if
+    \(\pl O\win\gruConGame{X^2}{\Delta}\).
+    A compact space \(X\) is Eberlein compact if and only if
+    \(\pl O\markwin\gruConGame{X^2}{\Delta}\).
+  \end{corollary}
+
+  In particular note that Corson compactness is characterized by both
+  \(\pl O\win\gruConGame{X^2}{\Delta}\) and
+  \(\pl D\win\bellAbsConGame{X}\). We will see that these games are not
+  equivalent with respect to limited information strategies, but the following
+  results are useful.
+
+  \begin{theorem}
+    Let \(k<\omega\). For all \(x\in X\):
+    \begin{itemize}
+      \item
+        \(
+          \pl D\ktactwin{2k} \bellConGame{X}
+            \Rightarrow
+          \pl O \ktactwin{k} \gruConGame{X}{x}
+        \)
+      \item
+        \(
+          \pl D\kmarkwin{2k} \bellConGame{X}
+            \Rightarrow
+          \pl O \kmarkwin{k} \gruConGame{X}{x}
+        \)
+      \item
+        \(
+          \pl D\win \bellConGame{X}
+            \Rightarrow
+          \pl O \win \gruConGame{X}{x}
+        \)
+    \end{itemize}
   \end{theorem}
 
-  Let us first investigate limited information analogues of Nyikos's
-  observation.
+  \begin{proof}
+    The perfect-information result was proven in Bell's
+    original paper \cite{MR3239205}. We proceed by proving the
+    Markov-information result, and note that the tactical-information
+    result may be proven by simply dropping usage of
+    the round number from the given proof.
 
+    Let \(\sigma\) be a winning \(2k\)-mark for \(\pl D\) in
+    \(\bellConGame{X}\); without loss of generality, assume that
+    \(\sigma(t,n)\subseteq\sigma(s,m)\) whenever \(n\geq m\) and
+    \(s\) is a permutation of a subsequence of \(t\).
+    We define the \(k\)-mark \(\tau\) for \(\pl O\) in
+    \(\gruConGame{X}{x}\) such that
+      \[
+        \tau(t,n)
+          =
+        \sigma\Big(\<t(0),\dots,x,t(|t|-1),x\>,2n+1\Big)[x]
+      \]
+
+    Let \(p\) be a legal attack against \(\tau\).
+    Consider the attack \(q\) against the winning \(2k\)-mark
+    \(\sigma\) such that \(q(2n)=x\) and \(q(2n+1)=p(n)\).
+    Let \(D_n\) be the entourage played according to \(\sigma\)
+    in round \(n\) versus \(q\), and \(E_n=\bigcap_{m\leq n}D_m\).
+
+    TODO: finish
+
+    % Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$.
+    % Note also for any $n<\omega$ that
+    %     \[
+    %       p(n) \in
+    %       \bigcap_{m\leq n}\tau\circ {L}_k(p\rest m)
+    %     \]
+    %     \[
+    %       =
+    %       \bigcap_{m\leq n}\left(
+    %         \sigma\circ {L}_{2k}(\<x,p(0),\dots,x,p(m-1)\>)[x]\cap
+    %         \sigma\circ {L}_{2k}(\<x,p(0),\dots,x,p(m-1),x\>)[x]
+    %       \right)
+    %     \]
+    %     \[
+    %       =
+    %       \bigcap_{m\leq n}\left(
+    %         D_{2m}[x]\cap
+    %         D_{2m+1}[x]
+    %       \right) =
+    %       \bigcap_{m\leq 2n+1} D_m[x]=E_{2n+1}[x]
+    %     \]
+    % so by the symmetry of $E_{2n+1}$, $x\in E_{2n+1}[p(n)]= E_{2n+1}[q(2n+1)]$.
+    % Also, $q(2n+1)=p(n)\in E_{2n}[x]=E_{2n}[q(2n)]$ and
+    % $p(n)\in E_{2n+1}[x] \Rightarrow q(2n+2)=x\in E_{2n+1}[p(n)]=E_{2n+1}[q(2n+1)]$,
+    % making $q$ a legal attack.
+
+    % Then as $x\in \bigcap_{n<\omega} E_n[q(n)]\not=\emptyset$, and $\sigma$ is
+    % a winning strategy, the attack $q$ converges. Since $q(2n)=x$, $q$ must
+    % converge to $x$. Thus its subsequence $p$ converges to $x$, and $\tau\circ L_k$
+    % is a winning strategy for $\pl O$ in $\gruConGame{X}{x}$.
+  \end{proof}
+
+  The presence of a Cantor set determines the success of \(\pl D\)'s
+  tactial strategies in \(\bellConGame{X}\).
+
+  \begin{lemma}
+    Tactic-proximal spaces cannot contain a copy of the Cantor set.
+  \end{lemma}
+
+  \begin{proof}
+    The result will follow once we show
+    \(\pl D\nottactwin\bellAbsConGame{2^\omega}\).
+    Let \(\sigma\) be a tactic for \(\pl D\) in \(\bellAbsConGame{2^\omega}\)
+    and let \(D_k=\{\<f,g\>:f\rest k = g\rest k\}\). Since \(\{D_k:k<\omega\}\)
+    is a base for the universal uniformity on \(2^\omega\)
+    (namely, all open neighborhoods of the diagonal),
+    we may fix \(k(f)<\omega\)
+    for each \(f\in2^\omega\) such that \(D_{k(f)}\subseteq\sigma(\<f\>)\).
+
+    Then there exists \(k<\omega\) such that \(\{f:k(f)=k\}\) is uncountable,
+    and therefore there exist distinct \(f,g\in2^\omega\)
+    such that \(k=k(f)=k(g)\) and
+    \(f\rest k=g\rest k\). Then \(p:\omega\to2^\omega\) defined by
+    \(p(2n)=f\) and \(p(2n+1)=g\) is an attack against \(\sigma\) which
+    obviously doesn't converge. This attack is legal since
+    \(f\in D_k[g]\subseteq\sigma(\<g\>)[g]\) and
+    \(g\in D_k[f]\subseteq\sigma(\<f\>)[f]\), so \(\sigma\) is not a winning
+    tactic.
+  \end{proof}
+
+  \begin{lemma}
+    Every non-scattered Corson compact space contains a homeomorphic
+    copy of the Cantor set.
+  \end{lemma}
+
+  \begin{proof}
+    Every non-scattered space contains a closed subspace without
+    isolated points. Let \(X\) be such a subspace, and assume that this
+    Corson compact is embedded in \(\SigmaProdR\kappa\). Let
+    \(B_{\alpha,\epsilon}(x)=\{y: d(x(\alpha),y(\alpha))<\epsilon\}\).
+    For each \(x\in X\) and \(n<\omega\), let \(\beta(x,n)<\kappa\) be defined
+    such that
+    \(\supp(x)=\{\beta(x,n):n<\omega\}\).
+
+    Choose an arbitrary \(x_\emptyset\in X\) and \(\epsilon_0>0\), and
+    and let \(A_0=\emptyset\).
+
+    Suppose then that for some \(n<\omega\),
+    \(x_s\in X\) is defined for all \(s\in 2^n\),
+    and \(\epsilon_n>0\) and \(A_n\in[\kappa]^{<\omega}\) are defined.
+    Since each \(x_s\) is not isolated in \(X\), let \(U_s\) be the open
+    set
+      \[
+        U_s
+          =
+        X
+          \cap
+        \bigcap_{\alpha\in A_{|s|}} B_{\alpha,\epsilon_{|s|}}(x_s)
+      \]
+    and choose \(x_{s\concat\<0\>},x_{s\concat\<1\>}\in U_s\) distinct.
+    Then let \(\alpha_s<\kappa\) such that
+    \(x_{s\concat\<0\>}(\alpha_s)\not=x_{s\concat\<1\>}(\alpha_s)\).
+    Let
+      \[
+        A_{n+1}
+          =
+        \{\alpha_s:s\in2^{\leq n}\}
+          \cup
+        \{\beta(x_s,i):s\in2^{\leq n},i\leq n\}
+      \]
+
+    Then choose \(0<\epsilon_{n+1}<\frac{1}{2}\epsilon_n\) such that
+    \[
+      B_{\alpha_s,\epsilon_{n+1}}(x_s\concat\<0\>)
+        \cap
+      B_{\alpha_s,\epsilon_{n+1}}(x_s\concat\<1\>)
+        =
+      \emptyset
+    \]
+    and
+    \[
+      \overline{
+        \bigcap_{\alpha\in A_{n+1}}
+        B_{\alpha,\epsilon_{n+1}}(x_s\concat\<0\>)
+      }
+        \cup
+      \overline{
+        \bigcap_{\alpha\in A_{n+1}}
+        B_{\alpha,\epsilon_{n+1}}(x_s\concat\<1\>)
+      }
+        \subseteq
+      \bigcap_{\alpha\in A_n} B_{\alpha,\epsilon_n}(x_s)
+    \]
+    for all \(s\in 2^n\).
+
+    Let \(x_f=\lim_{n<\omega} x_{f\rest n}\in X\)
+    for each \(f\in 2^\omega\). We claim \(C=\{x_f:f\in 2^\omega\}\)
+    is a copy of the Cantor set. This will follow if we can show that
+    \(\{U_s:s\in 2^{<\omega}\}\) is a base for \(C\), since it has
+    the structure of the Cantor tree.
+
+    Consider \(x_f\) for some \(f\in 2^\omega\), and a subbasic open ball
+    \(B_{\alpha,\epsilon}(x_f)\). Observe that
+    \(x_f\in\bigcap_{n<\omega} U_{f\rest n}\) since
+    \(x_{f\rest n}\in U_{f\rest m}\) for all \(m<n<\omega\).
+
+    If \(\alpha\in\{\beta(x_s,n):s\in2^{<\omega},n<\omega\}\), choose
+    \(k<\omega\) with \(\alpha\in A_k\). Then choose \(l<\omega\) such that
+    \(\epsilon_l<\epsilon\). Then
+    \(U_{f\rest(l+k)}\subseteq B_{\alpha,\epsilon}(x_f)\).
+
+    Otherwise, \(x_s(\alpha)=0\) for all \(s\in2^{<\omega}\), so
+    \(x_g(\alpha)=0\) for all \(g\in2^\omega\) and therefore
+    \(C\subseteq B_{\alpha,\epsilon}(x_f)\).
+  \end{proof}
+
+  A new game characterization of strong Eberlein compactness follows
+  from the above and an earlier characterization by Gruenhage.
+
+  \begin{theorem}
+    For compact spaces \(X\),
+    \(X\) is strong Eberlein compact if and only if
+    \(X\) is scattered and \(\pl O\win\gruConGame{X}{x}\) for all \(x\in X\).
+  \end{theorem}
 
 \newpage
 \bibliographystyle{plain}
