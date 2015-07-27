@@ -254,13 +254,13 @@ Auburn, AL 36830}
   compact spaces (and in particular, compact spaces) lack such holes, so it
   will be convenient to eliminate this technicality when it is irrelevant.
 
-  \begin{definition}
+  \begin{game}
     Let \(\bellAbsConGame{X}\) denote the
     \term{absolute Bell convergence game} which
     proceeds analogously to \(\bellConGame{X}\), except
     that \(\pl D\) must always ensure that \(\<p_0,p_1,\dots\>\) converges
     in \(X\) in order to win.
-  \end{definition}
+  \end{game}
 
   \begin{definition}
     A uniformizable space \(X\) is \term{absolutely proximal} if
@@ -281,8 +281,7 @@ Auburn, AL 36830}
     \(\pl D \win \bellAbsConGame{X}\).
   \end{theorem}
 
-  So absolutely proximal compacts are simply proximal compacts (and therefore
-  Corson compacts).
+  So absolutely proximal compacts are simply proximal compacts.
 
 
 \section{Limited information analogues}
@@ -321,7 +320,7 @@ Auburn, AL 36830}
 
   As in Theorem \ref{uniformlyLocallyCompact}, the ``absolutely''
   is redundant in the above definitions when \(X\) is uniformly locally compact,
-  so the absolute Bell convergence game will be used for convenience in the
+  so the absolute Bell convergence game may be used for convenience in the
   context of compact spaces.
 
   Some results of Bell may be generalized to hold for such limited information
@@ -694,6 +693,155 @@ Auburn, AL 36830}
     % \(\pl D\tactwin\bellConGame{\sigmaProd_{\alpha<\kappa}^z X}\).
   \end{proof}
 
+  It will be useful to compare Bell's game with an earlier game due to
+  Gruenhage.
+
+  \begin{game}
+    Let \(\gruConGame{X}{S}\) denote
+    \term{Gruenhage's convergence game} with
+    players \(\pl O\), \(\pl P\) which proceeds as follows for a space
+    \(X\) and a set \(S\). In round \(n\),
+    \(\pl O\) chooses an open set \(U_n\subseteq X^2\) containing
+    \(S\), followed by \(\pl P\)
+    choosing a point \(p_n\in \bigcap_{m\leq n}U_m\).
+
+    \(\pl O\) wins in the case that
+    \(\<p_0,p_1,\dots\>\) converges to the set \(S\); that is,
+    any open set containing \(S\) contains all but finite \(p_n\).
+    \(\pl P\) wins otherwise.
+  \end{game}
+
+  When \(S=\{x\}\), we abuse notation and write simply
+  \(\gruConGame{X}{x}\).
+
+  \begin{definition}
+    Let \(A\) be any set, \(n<\omega\), and \(f\in A^n\).
+    \(f\rest k\in A^{\min(k,n)}\) is the \term{restriction} of \(f\)
+    to \(k\), yielding the first \(k\) terms of
+    \(f\) when \(k<n\) (and otherwise equaling \(f\) itself).
+    \(f\last k\in A^{\min(k,n)}\) is the \term{suffix} of \(f\)
+    to \(k\), yielding the last \(k\) terms of
+    \(f\) when \(k<n\) (and otherwise equaling \(f\) itself).
+  \end{definition}
+
+  \begin{definition}
+    Let \(A\) be any set, \(n\leq\omega\), and \(f,g\in A^{n}\).
+    \(f\concat g\) is the \term{concatenation} of \(f\) and \(g\), so
+    \(f\concat g(i)=f(i)\) and \(f\concat g(n+i)=g(i)\) for \(i<n\).
+    \(f\zip g\) is the \term{zip} of \(f\) and \(g\), so
+    \(f\zip g(2i)=f(i)\) and \(f\zip g(2i+1)=g(i)\) for \(i<n\).
+  \end{definition}
+
+  \begin{theorem}
+    Let \(k<\omega\). For all \(x\in X\):
+    \begin{itemize}
+      \item
+        \(
+          \pl D\ktactwin{2k} \bellConGame{X}
+            \Rightarrow
+          \pl O \ktactwin{k} \gruConGame{X}{x}
+        \)
+      \item
+        \(
+          \pl D\kmarkwin{2k} \bellConGame{X}
+            \Rightarrow
+          \pl O \kmarkwin{k} \gruConGame{X}{x}
+        \)
+      \item
+        \(
+          \pl D\win \bellConGame{X}
+            \Rightarrow
+          \pl O \win \gruConGame{X}{x}
+        \)
+    \end{itemize}
+  \end{theorem}
+
+  \begin{proof}
+    The perfect-information result was proven in Bell's
+    original paper \cite{MR3239205}. We proceed by proving the
+    Markov-information result, and note that the tactical-information
+    result may be proven by simply dropping usage of
+    the round number from the given proof.
+
+    Let \(\sigma\) be a winning \(2k\)-mark for \(\pl D\) in
+    \(\bellConGame{X}\).
+    Let \(\chi_n\in X^n\) have constant value \(x\) for \(n\leq\omega\).
+    We define the \(k\)-mark \(\tau\) for \(\pl O\) in
+    \(\gruConGame{X}{x}\) such that
+      \[
+        \tau(t,n)
+          =
+        \sigma\Big(
+          \chi_{|t|} \zip t
+        ,2n\Big)[x]
+        \cap
+        \sigma\Big(
+          \<x\> \concat(t\zip\chi_{|t|}) \rest 2k
+        ,2n+1\Big)[x]
+      \]
+
+    Let \(p\) be a legal attack against \(\tau\) in \(\gruConGame{X}{x}\).
+    Consider the attack \(q=\chi_\omega\zip p\) against the winning
+    \(2k\)-mark \(\sigma\) in \(\bellConGame{X}\).
+    Let \(D_n=\sigma(q\rest n\last 2k,n)\) be the entourage played according
+    to \(\sigma\) in round \(n\), and \(E_n=\bigcap_{m\leq n}D_m\).
+
+    Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$.
+    Note also for any $n<\omega$ that
+        \[
+          p(n) \in
+          \bigcap_{m\leq n}\tau(p\rest m\last k, m)
+        \]
+        \[
+          =
+          \bigcap_{m\leq n}\Big(
+            \sigma\big(
+              \chi_{\min(m,k)} \zip (p\rest m\last k)
+            ,2m\big)[x]
+            \cap
+            \sigma\big(
+              \<x\> \concat((p\rest m\last k)\zip
+              \chi_{\chi_{\min(m,k)}}) \rest 2k
+            ,2m+1\big)[x]
+          \Big)
+        \]
+        \[
+          =
+          \bigcap_{m\leq n}\Big(
+            \sigma\big(
+              q\rest 2m\last 2k
+            ,2m\big)[x]
+            \cap
+            \sigma\big(
+              q\rest 2m+1\last 2k
+            ,2m+1\big)[x]
+          \Big)
+        \]
+        \[
+          =
+          \bigcap_{m\leq n}\left(
+            D_{2m}[x]\cap
+            D_{2m+1}[x]
+          \right) =
+          \bigcap_{m\leq 2n+1} D_m[x]=E_{2n+1}[x]
+        \]
+    so by the symmetry of \(E_{2n+1}\),
+      \[
+        q(2n+2)=x\in E_{2n+1}[p(n)]= E_{2n+1}[q(2n+1)]
+      \]
+    and
+      \[
+        q(2n+1)=p(n)\in E_{2n+1}[x]\subseteq E_{2n}[x]=E_{2n}[q(2n)]
+      \]
+    making \(q\) a legal attack against \(\sigma\).
+
+    Then as \(x\in \bigcap_{n<\omega} E_n[q(n)]\not=\emptyset\),
+    and \(\sigma\) is a winning strategy, the attack $q$ converges.
+    Since \(q(2n)=x\), \(q\) must converge to \(x\). Thus its subsequence
+    \(p\) converges to \(x\), and \(\tau\)
+    is a winning \(k\)-mark for \(\pl O\) in \(\gruConGame{X}{x}\).
+  \end{proof}
+
 \subsection{Eberlein and Strong Eberlein Compacts}
 
   We recall some convenient definitions for a few strengthenings of
@@ -734,122 +882,20 @@ Auburn, AL 36830}
   Nyikos's observation can actually be reversed. The result required an
   earlier game characterization of Corson compactness due to Gruenhage.
 
-  \begin{game}
-    Let \(\gruConGame{X}{S}\) denote
-    \term{Gruenhage's convergence game} with
-    players \(\pl O\), \(\pl P\) which proceeds as follows for a space
-    \(X\) and a set \(S\). In round \(n\),
-    \(\pl O\) chooses an open set \(U_n\subseteq X^2\) containing
-    \(S\), followed by \(\pl P\)
-    choosing a point \(p_n\in \bigcap_{m\leq n}U_m\).
-
-    \(\pl O\) wins in the case that
-    \(\<p_0,p_1,\dots\>\) converges to the set \(S\); that is,
-    any open set containing \(S\) contains all but finite \(p_n\).
-    \(\pl P\) wins otherwise.
-  \end{game}
-
-  When \(S=\{x\}\), we abuse notation and write simply
-  \(\gruConGame{X}{x}\).
-
-  \begin{corollary}[\cite{MR752278},\cite{MR858337}]
+  \begin{theorem}[\cite{MR752278},\cite{MR858337}]
     A compact space \(X\) is Corson compact if and only if
     \(\pl O\win\gruConGame{X^2}{\Delta}\).
     A compact space \(X\) is Eberlein compact if and only if
     \(\pl O\markwin\gruConGame{X^2}{\Delta}\).
-  \end{corollary}
+  \end{theorem}
 
   In particular note that Corson compactness is characterized by both
   \(\pl O\win\gruConGame{X^2}{\Delta}\) and
   \(\pl D\win\bellAbsConGame{X}\). We will see that these games are not
-  equivalent with respect to limited information strategies, but the following
-  results are useful.
-
-  \begin{theorem}
-    Let \(k<\omega\). For all \(x\in X\):
-    \begin{itemize}
-      \item
-        \(
-          \pl D\ktactwin{2k} \bellConGame{X}
-            \Rightarrow
-          \pl O \ktactwin{k} \gruConGame{X}{x}
-        \)
-      \item
-        \(
-          \pl D\kmarkwin{2k} \bellConGame{X}
-            \Rightarrow
-          \pl O \kmarkwin{k} \gruConGame{X}{x}
-        \)
-      \item
-        \(
-          \pl D\win \bellConGame{X}
-            \Rightarrow
-          \pl O \win \gruConGame{X}{x}
-        \)
-    \end{itemize}
-  \end{theorem}
-
-  \begin{proof}
-    The perfect-information result was proven in Bell's
-    original paper \cite{MR3239205}. We proceed by proving the
-    Markov-information result, and note that the tactical-information
-    result may be proven by simply dropping usage of
-    the round number from the given proof.
-
-    Let \(\sigma\) be a winning \(2k\)-mark for \(\pl D\) in
-    \(\bellConGame{X}\); without loss of generality, assume that
-    \(\sigma(t,n)\subseteq\sigma(s,m)\) whenever \(n\geq m\) and
-    \(s\) is a permutation of a subsequence of \(t\).
-    We define the \(k\)-mark \(\tau\) for \(\pl O\) in
-    \(\gruConGame{X}{x}\) such that
-      \[
-        \tau(t,n)
-          =
-        \sigma\Big(\<t(0),\dots,x,t(|t|-1),x\>,2n+1\Big)[x]
-      \]
-
-    Let \(p\) be a legal attack against \(\tau\).
-    Consider the attack \(q\) against the winning \(2k\)-mark
-    \(\sigma\) such that \(q(2n)=x\) and \(q(2n+1)=p(n)\).
-    Let \(D_n\) be the entourage played according to \(\sigma\)
-    in round \(n\) versus \(q\), and \(E_n=\bigcap_{m\leq n}D_m\).
-
-    TODO: finish
-
-    % Certainly, $x\in E_{2n}[x]= E_{2n}[q(2n)]$ for any $n<\omega$.
-    % Note also for any $n<\omega$ that
-    %     \[
-    %       p(n) \in
-    %       \bigcap_{m\leq n}\tau\circ {L}_k(p\rest m)
-    %     \]
-    %     \[
-    %       =
-    %       \bigcap_{m\leq n}\left(
-    %         \sigma\circ {L}_{2k}(\<x,p(0),\dots,x,p(m-1)\>)[x]\cap
-    %         \sigma\circ {L}_{2k}(\<x,p(0),\dots,x,p(m-1),x\>)[x]
-    %       \right)
-    %     \]
-    %     \[
-    %       =
-    %       \bigcap_{m\leq n}\left(
-    %         D_{2m}[x]\cap
-    %         D_{2m+1}[x]
-    %       \right) =
-    %       \bigcap_{m\leq 2n+1} D_m[x]=E_{2n+1}[x]
-    %     \]
-    % so by the symmetry of $E_{2n+1}$, $x\in E_{2n+1}[p(n)]= E_{2n+1}[q(2n+1)]$.
-    % Also, $q(2n+1)=p(n)\in E_{2n}[x]=E_{2n}[q(2n)]$ and
-    % $p(n)\in E_{2n+1}[x] \Rightarrow q(2n+2)=x\in E_{2n+1}[p(n)]=E_{2n+1}[q(2n+1)]$,
-    % making $q$ a legal attack.
-
-    % Then as $x\in \bigcap_{n<\omega} E_n[q(n)]\not=\emptyset$, and $\sigma$ is
-    % a winning strategy, the attack $q$ converges. Since $q(2n)=x$, $q$ must
-    % converge to $x$. Thus its subsequence $p$ converges to $x$, and $\tau\circ L_k$
-    % is a winning strategy for $\pl O$ in $\gruConGame{X}{x}$.
-  \end{proof}
+  equivalent with respect to limited information strategies.
 
   The presence of a Cantor set determines the success of \(\pl D\)'s
-  tactial strategies in \(\bellConGame{X}\).
+  tactical strategies in \(\bellConGame{X}\).
 
   \begin{lemma}
     Tactic-proximal spaces cannot contain a copy of the Cantor set.
@@ -965,464 +1011,120 @@ Auburn, AL 36830}
   A new game characterization of strong Eberlein compactness follows
   from the above and an earlier characterization by Gruenhage.
 
-  \begin{theorem}
+  \begin{theorem}[\cite{MR752278}]
     For compact spaces \(X\),
     \(X\) is strong Eberlein compact if and only if
     \(X\) is scattered and \(\pl O\win\gruConGame{X}{x}\) for all \(x\in X\).
   \end{theorem}
 
-\newpage
+  \begin{corollary}\label{mainResult}
+    For compact spaces \(X\),
+    \(X\) is strong Eberlein compact if and only if
+    \(X\) is tactic-proximal.
+  \end{corollary}
+
+  \begin{proof}
+    Assume \(X\) is not strong Eberlein compact. One of two things must hold.
+      \begin{enumerate}
+        \item
+          If \(\pl O\notwin\gruConGame{X}{x}\) for some \(x\in X\), then
+          \(\pl D\notwin \bellConGame{X}\) and therefore
+          \(\pl D\nottactwin \bellConGame{X}\).
+        \item
+          If \(X\) is not scattered, it contains a homeomorphic copy
+          of the Cantor space \(2^\omega\). Since
+          \(\pl D\nottactwin \bellConGame{2^\omega}\),
+          we have
+          \(\pl D\nottactwin \bellConGame{X}\).
+      \end{enumerate}
+    Thus \(X\) is not tactic-proximal.
+  \end{proof}
+
+\section{Comparing \(\bellConGame{X}\) and \(\gruConGame{X^2}{\Delta}\)}
+
+  As mentioned above, for compact spaces \(X\) it's true that
+  \(\pl D\win\bellConGame{X}\) if and only if
+  \(\pl O\win\gruConGame{X^2}{\Delta}\). Indeed these games are very similar;
+  since \(X\) is (para)compact, both \(\pl D\) and \(\pl O\) are simply
+  choosing neighborhoods of the diagonal, aiming for some sort of convergence.
+
+  For tactical information, we may easily find examples for which
+  these games diverge.
+
+  \begin{example}
+    Let \(X\) be metrizable.
+      \begin{enumerate}
+        \item
+          \(\pl O\tactwin\gruConGame{X^2}{\Delta}\)
+        \item
+          \(\pl O\kmarkwin{0}\gruConGame{X^2}{\Delta}\)
+        \item
+          \(\pl D\ktactwin{2}\bellConGame{X}\)
+        \item
+          \(\pl D\kmarkwin{0}\bellConGame{X}\)
+      \end{enumerate}
+    However, \(\pl D\nottactwin\bellConGame{X}\) if \(X\) is non-scattered
+    and compact.
+  \end{example}
+
+  \begin{proof}
+    Let \(d\) be a compatible metric for the topology on \(X\).
+    Then \(\sigma\) as defined for each case below is a winning strategy.
+    \begin{enumerate}
+      \item
+        \[
+          \sigma(\<x\>)
+            =
+          E_{d(x(0),x(1))/2}
+        \]
+      \item
+        \[
+          \sigma(n)
+            =
+          E_{1/2^n}
+        \]
+      \item (as noted earlier)
+        \[
+          \sigma(\<x,y\>)
+            =
+          E_{d(x,y)/2}
+        \]
+      \item (as noted earlier)
+        \[
+          \sigma(n)
+            =
+          E_{1/2^n}
+        \]
+    \end{enumerate}
+    Finally, recall that \(\pl D\nottactwin\bellConGame{X}\)
+    when \(X\) is non-scattered Corson compact.
+  \end{proof}
+
+  Effectively, the fact that \(\pl O\) can see two coordinates (\(\pl P\)
+  chooses points in \(X^2\)) gives her an extra edge to use in a game
+  of limited information.
+
+  Perhaps the most interesting open question involves Markov strategies.
+  We've already seen that \(\pl D\markwin\bellAbsConGame{X}\) for Eberlein
+  compacts, so:
+
+  \begin{corollary}
+    For compact \(X\),
+    \(\pl O\markwin\gruConGame{X^2}{\Delta}\) implies
+    \(\pl D\markwin\bellAbsConGame{X}\).
+  \end{corollary}
+
+  \begin{question}
+    For compact \(X\),
+    does \(\pl D\markwin\bellAbsConGame{X}\) imply
+    \(\pl O\markwin\gruConGame{X^2}{\Delta}\) (that is,
+    \(X\) is Eberlein compact)?
+  \end{question}
+
+  Note that the scope of the above question may be reduced to Corson
+  compact spaces, but the author does not have a proof nor counterexample.
+
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
-
-% A common generalization of metric spaces is the idea of a \term{uniform space}.  A uniform space is a determined by a collection of supersets of the diagonal in the square (called \term{entourages})  satisfying certain conditions.  A uniformity induces in a natural way a topology on $X$, called the \term{uniform topology}.  A topological space $X$ is \term{uniformizable} if there is  a uniformity on $X$ which generates its topology.   Any completely regular space is uniformizable.  See the next section for more complete definitions of these concepts and some of their basic properties.
-
-% Jocelyn Bell introduced the concept of proximal spaces in her doctoral dissertation while working on some uniform box product problems due to her advisor Scott Williams.  Proximal spaces are defined to be the spaces $X$ for which there is a compatible uniformity on $X$ such that the entourage picker has a winning strategy in a certain $\omega$-length game. Every metric space is easily seen to be proximal. Bell has shown that proximal spaces are collectionwise normal, countably paracompact, and have strong preservation properties, particularly, closed subpaces and  $\Sigma$-products of proximal spaces are  proximal \cite{b}.  The power of these results is illustrated by the fact that the difficult result, due independently to M.E. Rudin \cite{ru} and S.P. Gul'ko \cite{gu}, that $\Sigma$-products of metrizable spaces are normal, follows as an immediate corollary.
-
-% In \cite{nproximal}, Peter Nyikos observed that Bell's results imply that compact subspaces of the $\Sigma$-product of real lines, known as Corson compacts, must be proximal. He asked the natural question as to whether any proximal compact must then be Corson compact. Using a characterization of Corson compact due to the second author in \cite{gcovering}, we  answer that question in the affirmative.
-
-
-% In this paper, all topological spaces are assumed to be completely regular.
-
-% \section{Definitions and Properites of Uniform Spaces}
-%  We relate some definitions and properties of uniform spaces.
-
-% \begin{definition}
-%   A \term{uniform space} is a pair $\<X,\mc{D}\>$ where $X$ is a set, and $\mc{D}$ is a uniformity. A \term{uniformity} is a filter on subsets of $X^2$, called \term{entourages}, such that for each entourage $D\in \mc D$:
-%   \begin{itemize}
-%       \item $D$ is reflexive, i.e., the diagonal $\Delta=\{\<x,x\>:x\in X\}\subseteq D$.
-%       \item Its inverse $D^{-1}=\{\<y,x\>:\<x,y\>\in D\}\in \mc D$.
-%       \item There exists $\frac{1}{2}D\in\mc D$ such that
-%         \[
-%           2\left(\frac{1}{2}D\right)=\frac{1}{2}D\circ \frac{1}{2}D=\left\{\<x,z\>:\exists y\left(\<x,y\>,\<y,z\>\in \frac{1}{2}D\right)\right\}\subseteq D.
-%         \]
-%     \end{itemize}
-% \end{definition}
-
-% \begin{definition}
-%   The \term{uniform topology} induced by a uniformity declares a set $U$ to be open if for every $x\in U$, there is some $D\in\mc D$ with $x\in D[x]=\{y: \<x,y\>\in D\}\subseteq U$.   A topological space $X$ is said to be \term{uniformizable} if there is a uniformity $D$ on $X$ which induces its topology.
-% \end{definition}
-
-% We now list some basic results about uniformities and uniform spaces.  One may see \cite{e}, for example, for proofs.
-
-
-
-% \begin{itemize}
-%  \item Every uniform topology is completely regular, and every completely regular space is uniformizable.
-% \item  For every entourage $D$, there is an open symmetric entourage $E\subseteq D$. That is, $\<x,y\>\in E \Leftrightarrow \<y,x\> \in E$, and $E$ is open in $X^2$ with the usual product topology induced by the uniform topology on $X$.
-% \item  If $D$ is an open entourage, then for all $x\in X$, $D[x]$ is an open neighborhood of $x$.
-% \end{itemize}
-
-% We will make frequent use of $\frac{1}{2}D$ in this paper.  Of course, $\frac{1}{2}D$ is not unique, but for convenience we will assume that for each $D\in \mathcal D$, a unique $\frac{1}{2}D$ has been chosen, which  by the second item above may be assumed to be open and symmetric.  Then we define $\frac{1}{4}D=\frac{1}{2}(\frac{1}{2}D)$,
-% $\frac{1}{8}D=\frac{1}{2}(\frac{1}{4}D)$, and so on.
-
-% We quickly note two properites of $\frac{1}{2}D$.
-
-% \begin{proposition}
-%   If $x\in \frac{1}{2}D[y]$ and $y\in \frac{1}{2}D[z]$, then $x\in D[z]$.
-% \end{proposition}
-
-% \begin{proof}
-%   Directly from the definition of $\frac{1}{2}D$. Note that the same result holds if we assumed instead that $y\in \frac{1}{2}D[x]$ or $z\in \frac{1}{2}D[y]$, since $\frac{1}{2}D$ is assumed to be symmetric.
-% \end{proof}
-
-% \begin{proposition}
-%   If $X$ is a uniform space, then for all $x\in X$ and symmetric entourages $D$:
-%     \[
-%       \frac{1}{2}D[x]\subseteq \cl{\frac{1}{2}D[x]}\subseteq D[x]
-%     \]
-% \end{proposition}
-
-% \begin{proof}
-%   If $y$ is a limit point of $\frac{1}{2}D[x]$, then $\frac{1}{2}D[y]$ must intersect $\frac{1}{2}D[x]$ at some $z$. It follows then that $y\in D[x]$.
-% \end{proof}
-
-% \subsection{The Proximal Game}
-
-% The theory of proximal uniform spaces relies on the following $\omega$-length
-% game introduced in \cite{b}:
-
-% \begin{definition}
-%   The \textbf{proximal game} $\proxgame{X}$ of length $\omega$ played on a uniform space $X$ with two players $\pl D$, $\pl P$ proceeds as follows:
-%     \begin{itemize}
-%       \item In the initial round $0$, $\pl D$ chooses an open symmetric entourage $D_0$, followed by $\pl P$ choosing a point $p_0\in X$.
-%       \item In round $n+1$, $\pl D$ chooses an open symmetric entourage $D_{n+1}\subseteq D_n$, followed by $\pl P$ choosing a point $p_{n+1}\in D_n[p_n]$.
-%     \end{itemize}
-%   At the conclusion of the game, $\pl D$ wins if either $\bigcap_{n<\omega}D_n[p_n]=\emptyset$ or $\<p_0,p_1,\dots\>$ converges, and $\pl P$ wins otherwise.
-%   \footnote{It's worth noting that a widely distributed preprint of Bell's
-%   paper considered $4D_n$ in place of $D_n$ for the winning
-%   condition; however, it's easily verified that player $\pl D$
-%   has a winning strategy in one if and only if she has a winning strategy in
-%   the other.}
-% \end{definition}
-
-% We may assume that if $\sigma$ is a winning strategy for $\pl D$, then $D_{n+1}=\sigma (x_0,x_1,...,x_n)$ is contained in something smaller than $D_n$, e.g., $\frac{1}{4}D_n$.  That is because a sequence of legal moves by $\pl P$ with $\pl D$ using the refined strategy is also a legal sequence of moves with $\pl D$ using the original strategy.
-
-% \begin{definition}
-%   If a player $\pl A$ has a winning strategy in a game $G$, we write $\pl A\win G$. Otherwise, we write $\pl A\not\win G$.
-% \end{definition}
-
-% \begin{definition}
-%   A uniform space $\<X,\mathcal D\>$ is said to be \term{proximal} if and only if $\pl D\win\proxgame{X}$.  A topological space is \term{proximal} iff it admits  a compatible uniformity (i.e., one which induces its topology) which is proximal.
-% \end{definition}
-
-% \section{Proximal Games and $W$ Games}
-
-% The second author introduced the following game in \cite{ginfinite}.
-
-% \begin{definition}
-%   The \textbf{$W$-convergence game} $\congame{X}{H}$ of length $\omega$ played on a topological space $X$ and set $H\subseteq X$ with two players $\pl O$, $\pl P$ proceeds as follows:
-%     \begin{itemize}
-%       \item In the initial round $0$, $\pl O$ chooses an open neighborhood $O_0$ of $H$, followed by $\pl P$ choosing a point $p_0\in O_0$.
-%       \item In round $n+1$, $\pl O$ chooses an open neigborhood $O_{n+1}\subseteq O_n$ of $H$, followed by $\pl P$ choosing a point $p_{n+1}\in O_{n+1}$.
-%     \end{itemize}
-%   At the conclusion of the game, $\pl O$ wins if $\<p_0,p_1,\dots\>$ converges to $H$ (every open neighborhood of $H$ contains all but finitely many points of the sequence), and $\pl P$ wins otherwise.
-
-%   In the case of $H=\{x\}$, we abuse notation and write $\congame{X}{x}$.
-% \end{definition}
-
-% \begin{definition}
-%   A topological space $X$ is said to be a \term{$W$-space} if and only if for every $x\in X$, $\pl O\win \congame{X}{x}$.
-% \end{definition}
-
-% We find it useful to consider a (seemingly) weaker version of this game.
-
-% \begin{definition}
-%   The \textbf{$W$-clustering game} $\clusgame{X}{H}$ proceeds identically to $\congame{X}{H}$, except that $\pl O$ need only force $p$ to cluster at $H$ (every open neighborhood of $H$ contains infinitely many points of the sequence).
-% \end{definition}
-
-% \begin{theorem}
-%   $\pl O\win\congame{X}{H}$ if and only if $\pl O \win\clusgame{X}{H}$
-% \end{theorem}
-
-% \begin{proof}
-%   Shown for $H=\{x\}$ in \cite{ginfinite}, but the analogous proof works for arbitrary $H$. The forward implication is immediate. Let $\sigma$ be a strategy for $\pl O$ witnessing $\pl O\win \clusgame{X}{H}$. Note $\sigma$ is a function whose domain is all possible partial attacks by $\pl P$ (finite sequences of points in $X$), and whose range is the open neighborhoods of $H$, such that for any legal attack $p=\<p_0,p_1,\dots\>$ against $\sigma$, it follows that $p$ must cluster at $H$.
-
-%   For every partial attack $a$, let $S(a)$ contain all subsequences of $a$. We then define $\tau(p\rest n)=\bigcap_{b\in S(p\rest n)}\sigma(b)$. If $p$ attacks the strategy $\tau$ for $\congame{X}{H}$, then it also is a legal attack against $\sigma$ in $\clusgame{X}{H}$, so $p$ clusters at $H$.
-
-%   But not only that: let $q$ be a subsequence of $p$. If $q\rest n$ is a legal partial attack against $\sigma$ and $q\rest n$ is a subsequence of $p\rest m$ with $q(n)=p(m)$, then since $q(n)=p(m)\in\tau(p\rest m)\subseteq\sigma(q\rest n)$, $q\rest n+1$ is a legal partial attack against $\sigma$ as well. Thus $q$ is a legal attack against $\sigma$ in $\clusgame{X}{H}$, so $q$ clusters at $H$.
-
-%   Since no infinite subsequence of $p$ can be completely missed by an open neighborhood of $H$, it follows that $p$ converges to $H$.
-% \end{proof}
-
-% \begin{theorem}\cite{b}
-%   All proximal spaces are $W$-spaces.
-% \end{theorem}
-
-
-% The idea of Bell's proof of the above result is to consider the result of an attack on the winning strategy for $\pl D$ in $\proxgame{X}$ which alternates between points chosen by $\pl P$ in $\congame{X}{x}$ and the particular point $x$ itself. Since the intersection $\bigcap_{n<\omega} D_n[p_n]$ must contain $x$, the sequence must converge, and since the sequence contains $x$ infinitely often, it must converge to $x$.
-
-
-% While there is not much trouble in ensuring the nonempty intersection of\\ $\bigcap_{n<\omega} D_n[p_n]$ for this particular proof, we turn to a stronger version of $\proxgame{X}$, also introduced by Bell, which avoids the issue entirely.
-
-% \begin{definition}
-%   The \term{absolutely proximal game}  proceeds identially to $\proxgame{X}$, except that $\pl D$ may only win in the case that $\<p_0,p_1,\dots\>$ converges.
-% \end{definition}
-
-% Obviously, all absolutely proximal spaces are proximal. We are interested in when we have equivalence.
-
-% \begin{definition}
-%   A uniform space is \term{uniformly locally compact} if there exists an open symmetric entourage $L$ such that $\cl{L[x]}$ is a compact neighborhood of $x$ for all $x\in X$.  A topological space is uniformly locally compact if it admits a compatible uniformly locally compact uniformity.
-% \end{definition}
-
-
-% Obviously every compact space is uniformly locally compact, but not every locally compact space is uniformly locally compact.  For example, the space of countable ordinals is locally compact, but does not admit a compatible uniformly locally compact uniformity.
-
-% \begin{theorem}
-%   A uniformly locally compact space $X$ is proximal if and only if it is absolutely proximal.
-% \end{theorem}
-
-% \begin{proof}
-%   Let $L$ be a uniformly locally compact entourage. Let $\sigma$ be a strategy for $\pl D$ witnessing $\pl D\win \proxgame{X}$. Without loss of generality, we may assume such that $\sigma(p\rest n)\subseteq L$ for all partial attacks $p\rest n$ (so $\cl{\sigma(p\rest n)[x]}\subseteq\cl{L[x]}$ is compact), and that $n > m$ implies $\sigma(p\rest n)\subseteq \frac{1}{4}\sigma(p\rest m)$.
-
-%   Let $\tau(p\rest n)=\frac{1}{2}\sigma(p\rest n)$. If $p$ attacks $\tau$, then
-%     \[
-%       p(n+1)
-%         \in
-%       \tau(p\rest n)[p(n)]
-%         =
-%       \frac{1}{2}\sigma(p\rest n)[p(n)]
-%     \]
-
-%     and for
-
-%     \[
-%       x
-%         \in
-%       \cl{\sigma(p\rest (n+1))[p(n+1)]}
-%         \subseteq
-%       \cl{\frac{1}{4}\sigma(p\rest n)[p(n+1)]}
-%         \subseteq
-%       \frac{1}{2}\sigma(p\rest n)[p(n+1)]
-%     \]
-
-%   we can conclude $x\in\sigma(p\rest n)[p(n)]$. Thus
-
-%     \[
-%       \sigma(p\rest (n+1))[p(n+1)]
-%         \subseteq
-%       \cl{\sigma(p\rest (n+1))[p(n+1)]}
-%         \subseteq
-%       \sigma(p\rest n)[p(n)]
-%     \]
-
-%   Finally, note that since $\tau$ yields subsets of $\sigma$, then $p$ attacks the winning strategy $\sigma$ in $\proxgame{X}$, but since the intersection of a descending chain of nonempty compact sets is nonempty, we have
-
-%     \[
-%       \bigcap_{n<\omega} \sigma(p\rest n)[p(n)]
-%         =
-%       \bigcap_{n<\omega} \cl{\sigma(p\rest n)[p(n)]}
-%         \not=
-%       \emptyset.
-%     \]
-
-%   We conclude that $p$ converges.
-% \end{proof}
-
-
-% \section{Corson Compacts and Proximal Compacts}
-
-% We recall  the definition of Corson compact.
-
-% \begin{definition}
-%   A space is said to be \term{Corson compact} if and only if it is homeomorphic to a compact set within the $\Sigma$-product $\Sigma\mathbb{R}^\kappa$ of $\kappa$-many real lines, that is:
-%     \[
-%       \Sigma\mathbb{R}^\kappa
-%         =
-%       \{x\in \mathbb{R}^\kappa: |\{\alpha:x(\alpha)\not=0\}|\leq\omega\}
-%     \]
-% \end{definition}
-
-
-% Since proximal spaces are closed under closed subsets and $\Sigma$-products \cite{b}, it follows (as noted by Nyikos) that every Corson compact is proximal.
-
-
-
-
-
-
-
-% However, the given characterization of Corson compact is less useful when proving the other direction.  Instead we use the following game characterization due to the second author.
-
-% \begin{theorem}\cite{gcovering}
-%   A space $X$ is Corson compact if and only if $X$ is compact and $\pl O\win\congame{X^2}{\Delta}$.
-% \end{theorem}
-
-
-% The following contains the meat of our proof of the title result.
-
-% \begin{theorem}
-%   For any absolutely proximal space $X$, $\pl O\win \congame{X}{H}$ for all compact $H\subseteq X$.
-% \end{theorem}
-
-% \begin{proof}
-%   Let $\sigma$ be a winning strategy for $\pl D$ in the absolutely proximal
-%   game such that $p\supsetneq q$ implies $\sigma(p)\subseteq \frac{1}{4}\sigma(q)$.
-%   For any sequence $t=\<t_0,t_1,\dots\>$, let $o(t)=\<t_1,t_3,\dots\>$
-%   be the subsequence of $t$
-%   consisting of its odd-indexed terms. We proceed by constructing a winning
-%   strategy for $\pl O$ in $\clusgame{X}{H}$. Since $\pl O\win\clusgame{X}{H}$
-%   if and only if $\pl O\win\congame{X}{H}$, the result will follow.
-
-%   \bigskip
-
-% First we define a tree $T(\emptyset)$. Our aim is to define an open set
-%   \[
-%     \bigcup_{i,j<m_\emptyset}
-%       \frac{1}{4}\sigma(\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]
-%     =
-%     \bigcup_{\<i,h_{\emptyset,i},j\>\in\max(T(\emptyset))}
-%       \frac{1}{4}\sigma(o(\emptyset)\concat\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]
-%   \]
-% which contains $H$, and $\pl O$ will use this as the inital move in her winning
-% strategy for $\clusgame{X}{H}$.
-
-%   \begin{itemize}
-%     \item Choose $m_\emptyset<\omega$, $h_{\emptyset,i}\in H$ for $i<m_\emptyset$, and $h_{\emptyset,i,j}\in H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}$ for $i,j<m_\emptyset$ such that
-%       \[
-%         \left\{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]:i<m_\emptyset\right\}
-%       \]
-%     is a cover for $H$ and such that for each $i<m_\emptyset$
-%       \[
-%         \left\{\frac{1}{4}\sigma(\<h_{\emptyset,i}\>)[h_{\emptyset,i,j}]:j<m_\emptyset\right\}
-%       \]
-%     is a cover for $H\cap\cl{\frac{1}{4}\sigma(\emptyset)[h_{\emptyset,i}]}$.
-
-%     (The indexings $i\mapsto h_{\emptyset,i}$ and
-%     $\<i,j\>\mapsto h_{\emptyset,i, j}$ need not be
-%     one-to-one; repetition of points is allowed.)
-%     \item Let $\<i,h_{\emptyset,i},j\>$ and its initial segments be in
-%     $T(\emptyset)$ for $i,j<m_\emptyset$.
-%   \end{itemize}
-
-
-
-% \bigskip
-
-% Now suppose that $a$ is a finite
-% sequence of moves by $\pl P$ in $\clusgame{X}{H}$ for which $\pl O$ replied with
-%   \[
-%     \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))}
-%       \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
-%   \]
-% as a part of her winning strategy for some tree $T(a)\supseteq T(\emptyset)$.
-% As we will soon guarantee, any nonempty $s$ will be of the form
-% $\<i_0,h_0,j_0,x_0,\dots\>$ so that
-% $o(s)\concat\<h_{s,i}\> = \<h_0,x_0,\dots,h_{s,i}\>\in X^{<\omega}$
-% corresponds to a partial attack against $\sigma$ by the proximal game's $\pl P$.
-% We then define $T(a\concat\<x\>)$ for each of the legal responses
-%   \[
-%     x\in
-%       \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(a))}
-%       \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
-%   \]
-% by the clustering game's $\pl P$ as follows:
-
-%   \begin{itemize}
-%     \item Fix $s\concat\<i,h_{s,i},j\>\in\max(T(a))$ such that
-%       $x\in \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$.
-%       Then $s\concat\<i,h_{s,i},j\>$ is the only node of $T(a)$ that will be
-%       extended in this step. Let $t=s\concat\<i,h_{s,i},j,x\>$.
-%     \item Note that, assuming $o(s)\concat\<h_{s,i}\>$ is a legal partial attack against $\sigma$, then
-%       \[
-%         x
-%           \in
-%         \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
-%           \subseteq
-%         \frac{1}{4}\sigma(o(s))[h_{s,i,j}]
-%       \]
-%     and
-%       \[
-%         h_{s,i,j}
-%           \in
-%         \cl{\frac{1}{4}\sigma(o(s))[h_{s,i}]}
-%           \subseteq
-%         \frac{1}{2}\sigma(o(s))[h_{s,i}]
-%       \]
-%     implies
-%       \[
-%         x
-%           \in
-%         \sigma(o(s))[h_{s,i}]
-%       \]
-%     and thus $o(s)\concat\<h_{s,i},x\>=o(t)$ is a legal partial attack against $\sigma$.
-%     \item Choose $m_t<\omega$, $h_{t,k}\in H\cap \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}$ for $k<m_t$, and $h_{t,k,l}\in H\cap\cl{\frac{1}{4}\sigma(o(t))[h_{t,k}]}$ for $k,l<m_t$ such that
-%       \[
-%         \left\{\frac{1}{4}\sigma(o(t))[h_{t,k}]:k<m_t\right\}
-%       \]
-%     is a cover for $H\cap \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}$ and such that for each $k<m_t$
-%       \[
-%         \left\{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,k,l}]:l<m_t\right\}
-%       \]
-%     is a cover for $H\cap\cl{\frac{1}{4}\sigma(o(t))[h_{t,k}]}$.
-%     \item Note that, assuming $o(t)$ is a legal partial attack against $\sigma$, then
-%       \[
-%         h_{t,k}
-%           \in
-%         \cl{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]}
-%           \subseteq
-%         \frac{1}{2}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
-%       \]
-%     and
-%       \[
-%         x
-%           \in
-%         \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
-%       \]
-%     implies
-%       \[
-%         h_{t,k}
-%           \in
-%         \sigma(o(s)\concat\<h_{s,i}\>)[x]
-%       \]
-%     and thus $o(t)\concat\<h_{t,k}\>$ is a legal partial attack against $\sigma$.
-
-%     \item Let $T(a\concat\<x\>)\supseteq T(a)$, and for each $k,l<m_t$,
-%     also let $t\concat\<k,h_{t,k},l\>$ and all of its initial segments be in
-%     $T(a\concat\<x\>)$.
-%   \end{itemize}
-
-%     \bigskip
-
-%  This completes the construction of  $ T(a\concat\<x\>)$. Note that assuming
-%     \[
-%       \left\{\frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}] : s\concat\<i,h_{s,i},j\>\in\max(T(a))\right\}
-%     \]
-%   covers $H$, then since
-%     \[
-%       \left\{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,k,l}] : s\concat\<i,h_{s,i},j,x,k,h_{t,k},l\>\in\max(T(a\concat\<x\>))\setminus\max(T(a))\right\}
-%     \]
-%   covers $H\cap \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]$, we have that
-%     \[
-%       \left\{\frac{1}{4}\sigma(o(t)\concat\<h_{t,k}\>)[h_{t,k,l}] : t\concat\<k,h_{t,k},l\>\in\max(T(a\concat\<x\>))\right\}
-%     \]
-%   covers $H$.
-
-%   Hence we may define the strategy $\tau$ for $\pl O$ in $\clusgame{X}{H}$ such that:
-%   \[
-%     \tau(p\rest n) = \bigcup_{s\concat\<i,h_{s,i},j\>\in\max(T(p\rest n))} \frac{1}{4}\sigma(o(s)\concat\<h_{s,i}\>)[h_{s,i,j}]
-%   \]
-
-%   If $p$ is an attack by $\pl P$ against $\tau$, then it follows that $T(p\rest n)$ is defined for all $n<\omega$, so let $T(p)=\bigcup_{n<\omega} T(p\rest n)$. We note $T(p)$ is an infinite tree with finite levels:
-%     \begin{itemize}
-%       \item $\emptyset$ has exactly $m_\emptyset$ successors $\<i\>$.
-%       \item $s\concat\<i\>$ has exactly one successor $s\concat\<i,h_{s,i}\>$
-%       \item $s\concat\<i,h_{s,i}\>$ has exactly $m_s$ successors $s\concat\<i,h_{s,i},j\>$
-%       \item $s\concat\<i,h_{s,i},j\>$ has either no successors or exactly one successor $s\concat\<i,h_{s,i},j,x\>$
-%       \item $t=s\concat\<i,h_{s,i},j,x\>$ has exactly $m_t$ successors $t\concat\<k\>$
-%     \end{itemize}
-
-%   Hence $T(p)$ has an infinite branch $q'=\<i_0,h_0,j_0,x_0,i_1,h_1,j_1,x_1,\dots\>$.   Let $q=o(q')=\<h_0,x_0,h_1,x_1,\dots\>$. Note that by the construction of $T(p)$, $q$ is an attack on the winning strategy $\sigma$ in the absolutely proximal game, so it must converge. Since every other term of $q$ is in $H$, it must converge to $H$. Then since $o(q)$ is a subsequence of $p$, $p$ must cluster at $H$.
-% \end{proof}
-
-% The equivalency result follows as a quick corollary.
-
-% \begin{corollary}
-%   For any compact space $X$, $X$ is proximal if and only if $X$ is Corson compact.
-% \end{corollary}
-
-% \begin{proof}
-%   The reverse implication was noted earlier. If $X$ is compact proximal, then so is $X^2$. By the previous theorem, $\pl O\win\congame{X^2}{\Delta}$, which is a characterization of Corson compact.
-% \end{proof}
-
-
-
-
-% \begin{thebibliography}{99}
-% \bibitem{b}
-%  J. Bell,
-%   \emph{An infinite game with topological consequences}, preprint.
-
-% \bibitem{e}
-%   R. Engelking,
-%   \emph{General topology}, Revised and completed edition, Heldermann Verlag, Berlin, 1989.
-
-
-
-
-%   \bibitem{ginfinite}
-%  G. Gruenhage,
-%   \emph{Infinite games and generalizations of first-countable spaces}, Gen. Top. Appl. 6(1976), 339-352.
-
-% \bibitem{gcovering}
-%   G. Gruenhage,
-%   \emph{Covering properties on $X^2\setminus\Delta$, $W$-sets, and compact subsets of $\Sigma$-products},
-%   Topology Appl. 17 (1984), no. 3, 287–-304.
-
-
-% \bibitem{gu} S.P. Gul'ko, \emph{On properties of sets lying in $\Sigma$-products}, Dokl. Akad. Nauk. SSSR 237(1977), 505--508, Soviet Math. Dokl. 18(1977), 1438--1442.
-
-% % \bibitem{k}
-% % K. Kunen,
-% % \emph{Set theory. An introduction to independence proofs.},
-% % Studies in Logic and the Foundations of Mathematics, 102, North-Holland Publishing Co., Amsterdam, 1983.
-
-% \bibitem{nproximal}
-%   P.J. Nyikos,
-%   \emph{Proximal and semi-proximal spaces}, preprint.
-
-% \bibitem{ru} M.E. Rudin, \emph{The shrinking property}, Canad. Math. Bull. 26(1983), no. 4, 385-388.
-
-% \end{thebibliography}
 
 \end{document}
