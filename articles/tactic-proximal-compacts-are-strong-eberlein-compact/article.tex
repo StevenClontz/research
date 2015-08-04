@@ -126,7 +126,9 @@ Auburn, AL 36830}
     \(\mb D\) for \(X\) such that \(\pl D\win\bellUniGame{X,\mb D}\).
   \end{definition}
 
-  As it turns out, the search for such a uniformity is trivial.
+  As we will see, only one uniformity need be considered when searching
+  for this witness. For the convenience of the reader, we provide the following
+  definitions and facts.
 
   \begin{definition}
     The \term{universal uniformity} for a uniformizable topology is the
@@ -138,17 +140,12 @@ Auburn, AL 36830}
     its given topology.
   \end{theorem}
 
-  \begin{definition}
-    For a uniformizable space \(X\), a \term{universal entourage} \(D\) is a
-    entourage of the universal uniformity.
-  \end{definition}
-
-  \begin{theorem}[\cite{MR2048350}]
+  \begin{theorem}[\cite{MR2048350}]\label{halvingEntrouages}
     For every uniformizable space, if \(D\) is a neighborhood of the diagonal
     \(\Delta\)  such that there exist neighborhoods \(D_n\) of \(\Delta\) with
     \(D\supseteq D_0\) and
-    \(D_n \supseteq D_{n+1}\circ D_{n+1}\), then \(D\) is a
-    universal entourage.
+    \(D_n \supseteq D_{n+1}\circ D_{n+1}\), then \(D\) is an
+    entourage of the universal uniformity.
   \end{theorem}
 
   \begin{definition}
@@ -169,14 +166,15 @@ Auburn, AL 36830}
   \end{theorem}
 
   Due to this theorem, we will simply use the word \term{entourage} to refer
-  to open symmetric universal entourages. Note that if \(D\) is an
+  to open symmetric entourages of the universal uniformity for
+  a given topological space. Note that if \(D\) is an
   entourage, then \(D[x]=\{y:\<x,y\>\in D\}\) is an open neighborhood of \(x\).
   One may consider
   \(D[x]\) to be an entourage-``ball'' about \(x\), generalizing the notion of
   an \(\epsilon\)-ball given by a metric structure.
 
   In the case that
-  the space is paracompact, entourages are even more easily found.
+  the space is paracompact, entourages are very easily described.
 
   \begin{theorem}[\cite{MR2048350}]
     Every open neighborhood of the diagonal is a universal entourage for
@@ -202,11 +200,22 @@ Auburn, AL 36830}
     or \(\bigcap_{n<\omega}D_n[p_n] = \emptyset\). \(\pl P\) wins otherwise.
   \end{game}
 
-  This game is considered ``hard'' due to the requirement that \(\pl D\)
-  keep track of the history of the game to ensure that successive
-  moves refine previous moves. This record-keeping may be eliminated by
-  requiring that \(\pl P\) respect all moves made by \(\pl D\) rather than only
-  the most recent move.
+  To be clear,
+  there's practically no difference between \(\bellConHardGame{X}\) and
+  \(\bellUniGame{X,\mb D}\) where \(\mb D\) is the universal uniformity;
+  any choice by \(\pl D\) in \(\bellUniGame{X,\mb D}\) may be improved to
+  an open symmetric choice for \(\pl D\) in either game.
+
+  This game is labeled as ``hard'' due to the requirement that \(\pl D\)
+  keep track of the entire history of the game if she wishes to
+  ensure that successive moves refine previous moves.
+  Put another way, any perfect information strategy \(\sigma\)
+  may be improved to a better perfect information strategy \(\tau\) by letting
+  \(\tau(s)=\bigcap_{t\leq s}\sigma(t)\).
+
+  In the study of limited information strategies, it's preferable to
+  consider games for which the opponent must respect all previous moves
+  of the player using limited information in the first place.
 
   \begin{game}
     Let \(\bellConGame{X}\) denote the \term{Bell convergence game} with players
@@ -218,8 +227,7 @@ Auburn, AL 36830}
     or \(\bigcap_{n<\omega}E_n[p_n] = \emptyset\).
   \end{game}
 
-  These games are all essentially equivalent with respect to perfect
-  information for \(\pl D\).
+  The proximal property may now be characterized using either game.
 
   \begin{theorem}
     \(\pl D\win\bellConHardGame{X}\) if and only if
@@ -244,6 +252,14 @@ Auburn, AL 36830}
     entourage in this uniformity into a smaller open symmetric universal
     entourage.
   \end{proof}
+
+  The proximal property may now be considered without familiarity of
+  the theory of uniform spaces: in either game, \(\pl D\) is simply choosing
+  open symmetric neighborhoods of the diagonal with the property in
+  Theorem \ref{halvingEntrouages}
+  (a property always given when the space is paracompact).
+
+\subsection{Absolutely proximal}
 
   The secondary winning condition in \(\bellConGame{X}\)
   allows for a space to be incomplete: \(\pl D\win\bellConGame{\mb Q}\) by
