@@ -136,6 +136,7 @@
   \sbox\z@{$\m@th#1\sum$}%
   \dimen@=\ht\z@ \advance\dimen@\dp\z@
   \dimen\tw@=\wd\z@
+  \displaystyle\dimen@=.6\dimen@
   \ifx#1\displaystyle\dimen@=.9\dimen@\fi
   \ooalign{%
     \hidewidth
