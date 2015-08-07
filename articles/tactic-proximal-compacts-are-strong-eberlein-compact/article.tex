@@ -77,14 +77,15 @@ Auburn, AL 36830}
 
   All spaces in this paper are assumed to be \(T_{3\frac{1}{2}}\), so that they
   have a uniform structure inducing the topology on the space.
-  Unlike many game-theoretic topological properties, the game \(\bellUniGame{X}\)
+  Unlike many game-theoretic topological properties, the game
+  \(\bellUniGame{X}\)
   for which the proximal property was defined by is not itself a topological
   game. However, by considering entourages of the universal uniformity
   inducing the topology of a space, this original uniform space game may be
-  easily modified to the purely topological games
-  \(\bellConGame{X}\), \(\bellAbsConGame{X}\).
+  trivially modified to the purely topological game \(\bellConGame{X}\).
 
-  The aim of this paper is to use this topological interpretation of the
+  The aim of this paper is to use limited information strategies in
+  this topological interpretation of the
   proximal game to give a new game-theoretic characterization of the
   strong Eberlein compactness property. Strong Eberlein compacts are Corson
   compacts, and therefore proximal compact spaces; in fact, it will be shown
@@ -323,24 +324,8 @@ Auburn, AL 36830}
 
   Limited information strategies may be used to strengthen game-theoretic
   topological properties.
-
-  \begin{definition}
-    A uniformizable space \(X\) is \term{(absolutely) tactic-proximal} if
-    \(\pl D \tactwin \bellConGame{X}\) (\(\pl D \tactwin \bellAbsConGame{X}\)).
-  \end{definition}
-
-  \begin{definition}
-    A uniformizable space \(X\) is \term{(absolutely) Markov-proximal} if
-    \(\pl D \markwin \bellConGame{X}\) (\(\pl D \markwin \bellAbsConGame{X}\)).
-  \end{definition}
-
-  As in Theorem \ref{uniformlyLocallyCompact}, the ``absolutely''
-  is redundant in the above definitions when \(X\) is uniformly locally compact,
-  so the absolute Bell convergence game may be used for convenience in the
-  context of compact spaces.
-
   Some results of Bell may be generalized to hold for such limited information
-  strategies. The proofs of the following propositions are straight forward.
+  strategies. The proofs of the following propositions are straightforward.
 
   \begin{proposition}
     Let \(X\) be a uniformizable space and \(H\) be a closed subset of \(X\).
@@ -392,7 +377,7 @@ Auburn, AL 36830}
     \end{itemize}
   \end{proposition}
 
-  Less obvious is the following.
+\subsection{Products and strengthenings of compactness}
 
   \begin{definition}
     Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
@@ -418,7 +403,7 @@ Auburn, AL 36830}
     base point \(z\).
   \end{theorem}
 
-\subsection{\(\Sigma^\star\)- and \(\sigma\)-Products}
+  It's this result which TODO
 
   We may consider smaller subspaces of
   \(X^\kappa\) than given by \(\SigmaPower{X}{\kappa}\).
@@ -495,6 +480,9 @@ Auburn, AL 36830}
     \(E_\epsilon=\{\<x,y\>:d(x,y)<\epsilon\}\). Note that \(E_\epsilon\)
     is an (open symmetric) entrouage on \(X\).
   \end{definition}
+
+  Note that by definition, a \(0\)-Markov strategy uses zero moves of
+  the opponent, and only considers the round number.
 
   \begin{proposition}
     For any metrizable space \(X\),
@@ -689,7 +677,7 @@ Auburn, AL 36830}
     Otherwise, we have \(\alpha\in\supp(a(m))\) for infinitely many
     \(m<\omega\).
 
-    TODO: wrap this up unless it's wrong
+    TODO: wrap this up
     (it's not needed to get the
     main result)
     % If
@@ -1068,7 +1056,7 @@ Auburn, AL 36830}
   these games diverge.
 
   \begin{example}
-    Let \(X\) be metrizable.
+    Let \(X\) be compact and metrizable.
       \begin{enumerate}
         \item
           \(\pl O\tactwin\gruConGame{X^2}{\Delta}\)
@@ -1079,8 +1067,7 @@ Auburn, AL 36830}
         \item
           \(\pl D\kmarkwin{0}\bellConGame{X}\)
       \end{enumerate}
-    However, \(\pl D\nottactwin\bellConGame{X}\) if \(X\) is non-scattered
-    and compact.
+    However, \(\pl D\nottactwin\bellConGame{X}\) if \(X\) is non-scattered.
   \end{example}
 
   \begin{proof}
@@ -1138,7 +1125,7 @@ Auburn, AL 36830}
   \end{question}
 
   Note that the scope of the above question may be reduced to Corson
-  compact spaces, but the author does not have a proof nor counterexample.
+  compact spaces, but the author does not have a proof or counterexample.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
