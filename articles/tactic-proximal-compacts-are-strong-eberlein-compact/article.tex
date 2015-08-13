@@ -92,6 +92,8 @@ Auburn, AL 36830}
   that strong Eberlein compacts are exactly the compact spaces for which the
   first player has a \term{tactical} winning strategy for the proximal game,
   a strategy which relies on only the most recent move of the opponent.
+  This is the only known purely game-theoretic internal characterization of
+  strong Eberlein compactness among compact spaces.
 
 
 \section{Topologizing \(\bellUniGame{X}\)}
@@ -123,7 +125,7 @@ Auburn, AL 36830}
 
   \begin{definition}
     A uniformizable space \(X\) is \term{proximal}
-    in the case that there exists a uniformity
+    in the case that there exists a compatible uniformity
     \(\mb D\) for \(X\) such that \(\pl D\win\bellUniGame{X,\mb D}\).
   \end{definition}
 
@@ -207,8 +209,7 @@ Auburn, AL 36830}
   there's practically no difference between \(\bellConHardGame{X}\) and
   \(\bellUniGame{X,\mb D}\) where \(\mb D\) is the universal uniformity;
   any choice by \(\pl D\) in \(\bellUniGame{X,\mb D}\) may be improved to
-  an open symmetric choice for \(\pl D\) in either game. (Of course, the
-  requirement that entourages be open and symmetric is just a convenience.)
+  an open symmetric choice for \(\pl D\) in either game.
 
   This game is labeled as ``hard'' due to the requirement that \(\pl D\)
   keep track of the entire history of the game if she wishes to
@@ -220,7 +221,7 @@ Auburn, AL 36830}
 
   In the study of limited information strategies, it's preferable to
   consider games for which the opponent must respect all previous moves
-  of the player using limited information in the first place.
+  of the player restricted to limited information in the first place.
 
   \begin{game}
     Let \(\bellConGame{X}\) denote the \term{Bell convergence game} with players
@@ -248,36 +249,38 @@ Auburn, AL 36830}
     \(\tau(s)=\bigcap_{t\leq s}\sigma(t)\) is easily seen to be a winning
     strategy for \(\pl D\) in \(\bellConHardGame{X}\).
 
-    If \(\pl D\win\bellConHardGame{X}\), then \(\pl D\win\bellUniGame{X}\)
-    for the universal uniformity, showing \(X\) is proximal.
+    If \(\pl D\win\bellConHardGame{X}\), then
+    \(\pl D\win\bellUniGame{X,\mb D}\) where \(\mb D\) is
+    the universal uniformity, showing \(X\) is proximal.
     Finally, if \(X\) is proximal, then there exists a winning strategy
-    \(\sigma\) for \(\bellUniGame{X}\) for a uniformity inducing the
+    \(\sigma\) for \(\bellUniGame{X}\) for a uniformity \(\mb D\) inducing the
     topology on \(X\). Then a winning strategy for \(\pl D\) in
     \(\bellConHardGame{X}\) may be constructed by converting every
-    entourage in this uniformity into a smaller open symmetric universal
-    entourage.
+    entourage in this uniformity into a smaller open symmetric
+    entourage of \(\mb D\), and the result follows as \(\mb D\) is
+    contained in the universal uniformity.
   \end{proof}
 
   The proximal property may now be considered without familiarity of
   the theory of uniform spaces: in either game, \(\pl D\) is simply choosing
   open symmetric neighborhoods of the diagonal with the property in
   Theorem \ref{halvingEntrouages}
-  (a property always given when the space is paracompact).
+  (a property always present when the space is paracompact).
 
 \subsection{Absolutely proximal}
 
   The secondary winning condition in \(\bellConGame{X}\)
   allows for a space to be incomplete: \(\pl D\win\bellConGame{\mb Q}\) by
-  playing \(E_{1/2^n}=\{\<x,y\>:d(x,y)<\frac{1}{2^n}\}\) in each round. This
+  playing \(V_{1/2^n}=\{\<x,y\>:d(x,y)<\frac{1}{2^n}\}\) in each round. This
   forces \(\pl P\)'s sequence to be Cauchy, and thus it either converges to
-  a rational, or the sets \(E_{1/2^n}[x_n]\) will have empty intersection
+  a rational, or the sets \(V_{1/2^n}[x_n]\) will have empty intersection
   (where the irrational point of convergence would be). Uniformly locally
   compact spaces (and in particular, compact spaces) lack such holes, so it
   will be convenient to eliminate this technicality when it is irrelevant.
 
   \begin{game}
     Let \(\bellAbsConGame{X}\) denote the
-    \term{absolute Bell convergence game} which
+    \term{Bell absolute convergence game} which
     proceeds analogously to \(\bellConGame{X}\), except
     that \(\pl D\) must always ensure that \(\<p_0,p_1,\dots\>\) converges
     in \(X\) in order to win.
@@ -897,9 +900,10 @@ Auburn, AL 36830}
         \bigcap_{N\leq m\leq n}
         \tau_\alpha(a_\alpha(m))
       \]
-    So \(a_\alpha\last N\) is a legal attack against the
+    So the subsequence \(a_\alpha'\) obtained by omitting the terms of
+    \(a_\alpha\) before \(N\) is a legal attack against the
     winning tactic \(\tau_\alpha\), and therefore either
-    \(a_\alpha\) converges, or
+    \(a_\alpha'\) and \(a_\alpha\) converge, or
       \[
         \bigcap_{N\leq n<\omega}
         \left(
@@ -949,6 +953,10 @@ Auburn, AL 36830}
 
   We can show that among compact spaces, the tactic-proximal property is
   necessary and sufficent for strong Eberlein compactness.
+  However, the techniques used in showing this are different than those
+  used to characterize Corson compactness with the proximal property in
+  \cite{MR3227201}.
+
   The presence of a Cantor set determines the success of \(\pl D\)'s
   tactical strategies in \(\bellConGame{X}\).
 
