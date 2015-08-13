@@ -596,21 +596,28 @@ Auburn, AL 36830}
 \subsection{\(\Sigma^\star\)-products and Eberlein compacts}
 
   \begin{definition}
-    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
-    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
-    The \term{\(\sigma\)-product} \(\sigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
+    Let \(X\) be a metrizable space with
+    compatible metric \(d\), and let \(z\in X^\kappa\).
+    The \term{\(\Sigma^\star\)-product}
+    \(\SigmaStarProd_{\alpha<\kappa}^{z}X\)
     with base point \(z\) is given by
     \[
-      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
+      \SigmaStarProd_{\alpha<\kappa}^{z}X
         =
       \left\{
-        x\in \prod_{\alpha<\kappa}X_\alpha
+        x\in \prod_{\alpha<\kappa}X
       :
-        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|<\omega
+        n<\omega
+      \Rightarrow
+        \left|\left\{
+          \alpha<\kappa:d(x(\alpha),z(\alpha))>\frac{1}{2^n}
+        \right\}\right|
+        <\omega
       \right\}
     \]
-    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
+    When \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write
+    \(\SigmaStarPower{X}{\kappa}=\SigmaStarProd_{\alpha<\kappa}^z X\).
   \end{definition}
 
   Just as \(\Sigma\) products preserve winning perfect-information strategies,
@@ -620,7 +627,7 @@ Auburn, AL 36830}
   \begin{definition}
     For a metric space \(\<X,d\>\), let
     \(V_\epsilon=\{\<x,y\>:d(x,y)<\epsilon\}\). Note that \(V_\epsilon\)
-    is an (open symmetric) entrouage on \(X\).
+    is an (open symmetric) entourage on \(X\).
   \end{definition}
 
   Note that by definition, a \(0\)-Markov strategy uses zero moves of
@@ -793,6 +800,12 @@ Auburn, AL 36830}
     then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
   \end{definition}
 
+  The reader may anticipate our next goal: \(\Sigma\)-products
+  preserve winning perfect information strategies, and
+  \(\Sigma^\star\)-products preserve winning Markov strategies, so
+  we aim to show that \(\sigma\)-products preserve winning
+  tactical strategies.
+
   \begin{theorem}
     Let \(X_\alpha\) be a uniformizable space for \(\alpha<\kappa\)
     and \(z\in \prod_{\alpha<\kappa}X_\alpha\).
@@ -911,8 +924,7 @@ Auburn, AL 36830}
     is empty, verifying that \(\tau\) is a winning tactic.
   \end{proof}
 
-  The proof of the following is similar (and trivial if one is
-  only considering uniformly locally compact spaces).
+  The proof of the following is similar.
 
   \begin{theorem}
     Let \(X_\alpha\) be a uniformizable space for \(\alpha<\kappa\)
