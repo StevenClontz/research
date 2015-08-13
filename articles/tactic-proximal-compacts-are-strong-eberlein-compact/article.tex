@@ -127,9 +127,11 @@ Auburn, AL 36830}
     \(\mb D\) for \(X\) such that \(\pl D\win\bellUniGame{X,\mb D}\).
   \end{definition}
 
-  As we will see, only one uniformity need be considered when searching
-  for this witness. For the convenience of the reader, we provide the following
-  definitions and facts.
+  The aim of this section is to give an alternate characterization of
+  proximal spaces using a slight variation of \(\bellUniGame{X,\mb D}\)
+  which is purely topological. While the proof is trivial, the
+  following definitions and theorems will be useful in investigating the main
+  result.
 
   \begin{definition}
     The \term{universal uniformity} for a uniformizable topology is the
@@ -161,10 +163,10 @@ Auburn, AL 36830}
     \(D=D^{-1}=\{\<y,x\>:\<x,y\>\in D\}\).
   \end{definition}
 
-  \begin{theorem}
+  \begin{proposition}
     For every entourage \(D\), there exists an open symmetric
     entourage \(U\subseteq D\).
-  \end{theorem}
+  \end{proposition}
 
   Due to this theorem, we will simply use the word \term{entourage} to refer
   to open symmetric entourages of the universal uniformity for
@@ -178,14 +180,14 @@ Auburn, AL 36830}
   the space is paracompact, entourages are very easily described.
 
   \begin{theorem}[\cite{MR2048350}]
-    Every open neighborhood of the diagonal is a universal entourage for
+    Every open symmetric neighborhood of the diagonal is an entourage for
     paracompact uniformizable spaces.
   \end{theorem}
 
-\subsection{Using universal entourages to characterize the proximal property}
-
-  The natural adaptation of the original uniform space game \(\bellUniGame{X}\)
-  to a topological game requires the use of the universal uniformity on \(X\).
+  By replacing the entourages of \(\mb D\) in \(\bellUniGame{X,\mb D}\)
+  with the
+  (open symmetric) entourages of the universal uniformity, we obtain
+  a purely topological game.
 
   \begin{game}
     Let \(\bellConHardGame{X}\) denote the \term{hard Bell convergence game} with
@@ -205,14 +207,16 @@ Auburn, AL 36830}
   there's practically no difference between \(\bellConHardGame{X}\) and
   \(\bellUniGame{X,\mb D}\) where \(\mb D\) is the universal uniformity;
   any choice by \(\pl D\) in \(\bellUniGame{X,\mb D}\) may be improved to
-  an open symmetric choice for \(\pl D\) in either game.
+  an open symmetric choice for \(\pl D\) in either game. (Of course, the
+  requirement that entourages be open and symmetric is just a convenience.)
 
   This game is labeled as ``hard'' due to the requirement that \(\pl D\)
   keep track of the entire history of the game if she wishes to
   ensure that successive moves refine previous moves.
   Put another way, any perfect information strategy \(\sigma\)
   may be improved to a better perfect information strategy \(\tau\) by letting
-  \(\tau(s)=\bigcap_{t\leq s}\sigma(t)\).
+  \(\tau(s)=\bigcap_{t\leq s}\sigma(t)\) (where \(t\leq s\) means \(t\) is a
+  subsequence of \(s\)).
 
   In the study of limited information strategies, it's preferable to
   consider games for which the opponent must respect all previous moves
@@ -230,7 +234,7 @@ Auburn, AL 36830}
 
   The proximal property may now be characterized using either game.
 
-  \begin{theorem}
+  \begin{theorem}\label{topologicalProximalGames}
     \(\pl D\win\bellConHardGame{X}\) if and only if
     \(\pl D\win\bellConGame{X}\) if and only if
     \(X\) is proximal.
@@ -298,12 +302,10 @@ Auburn, AL 36830}
     \(\pl D \win \bellAbsConGame{X}\).
   \end{theorem}
 
-  So absolutely proximal compacts are simply proximal compacts.
+  So all proximal compacts are absoluately proximal compacts.
 
 
 \section{Limited information analogues}
-
-  First recall the definitions of the following limited information strategies.
 
   \begin{definition}
     A \term{\(k\)-tactical strategy} or \term{\(k\)-tactic}
@@ -377,335 +379,15 @@ Auburn, AL 36830}
     \end{itemize}
   \end{proposition}
 
-\subsection{Products and strengthenings of compactness}
-
-  \begin{definition}
-    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
-    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
-    The \term{\(\Sigma\)-product} \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
-    with base point \(z\) is given by
-    \[
-      \SigmaProd_{\alpha<\kappa}^{z}X_\alpha
-        =
-      \left\{
-        x\in \prod_{\alpha<\kappa}X_\alpha
-      :
-        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|\leq\omega
-      \right\}
-    \]
-    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write \(\SigmaPower{X}{\kappa}=\SigmaProd_{\alpha<\kappa}^z X\).
-  \end{definition}
-
-  \begin{theorem}[\cite{MR3239205}]
-    If \(X_\alpha\) is proximal for all \(\alpha<\kappa\),
-    then \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\) is proximal for any
-    base point \(z\).
-  \end{theorem}
-
-  It's this result which TODO
-
-  We may consider smaller subspaces of
-  \(X^\kappa\) than given by \(\SigmaPower{X}{\kappa}\).
-
-  \begin{definition}
-    Let \(X\) be a metrizable space with
-    compatible metric \(d\), and let \(z\in X^\kappa\).
-    The \term{\(\Sigma^\star\)-product}
-    \(\SigmaStarProd_{\alpha<\kappa}^{z}X\)
-    with base point \(z\) is given by
-    \[
-      \SigmaStarProd_{\alpha<\kappa}^{z}X
-        =
-      \left\{
-        x\in \prod_{\alpha<\kappa}X
-      :
-        n<\omega
-      \Rightarrow
-        \left|\left\{
-          \alpha<\kappa:d(x(\alpha),z(\alpha))>\frac{1}{2^n}
-        \right\}\right|
-        <\omega
-      \right\}
-    \]
-    When \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write
-    \(\SigmaStarPower{X}{\kappa}=\SigmaStarProd_{\alpha<\kappa}^z X\).
-  \end{definition}
-
-  \begin{definition}
-    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
-    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
-    The \term{\(\sigma\)-product} \(\sigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
-    with base point \(z\) is given by
-    \[
-      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
-        =
-      \left\{
-        x\in \prod_{\alpha<\kappa}X_\alpha
-      :
-        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|<\omega
-      \right\}
-    \]
-    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
-  \end{definition}
-
-  Of course,
-    \[
-      \sigmaPower{X}{\kappa}
-        \subseteq
-      \SigmaStarPower{X}{\kappa}
-        \subseteq
-      \SigmaPower{X}{\kappa}
-        \subseteq
-      X^\kappa
-    \]
-  for metrizable \(X\), and
-    \[
-      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
-        \subseteq
-      \SigmaProd_{\alpha<\kappa}^{z}X_\alpha
-        \subseteq
-      \prod_{\alpha<\kappa}X_\alpha
-    \]
-  for all spaces \(X_\alpha\) and base points \(z\).
-
-  Just as \(\Sigma\) products preserve winning perfect-information strategies,
-  we will show that these product subspaces preserve certain
-  winning limited-information strategies.
-
-  \begin{definition}
-    For a metric space \(\<X,d\>\), let
-    \(E_\epsilon=\{\<x,y\>:d(x,y)<\epsilon\}\). Note that \(E_\epsilon\)
-    is an (open symmetric) entrouage on \(X\).
-  \end{definition}
-
-  Note that by definition, a \(0\)-Markov strategy uses zero moves of
-  the opponent, and only considers the round number.
-
-  \begin{proposition}
-    For any metrizable space \(X\),
-    \(\pl D\kmarkwin{0}\bellConGame{X}\).
-    For any completely metrizable space \(X\),
-    \(\pl D\kmarkwin{0}\bellAbsConGame{X}\).
-  \end{proposition}
-
-  \begin{proof}
-    Essentially shown by Bell in her paper: in either case,
-    \(\pl D\) chooses \(E_{1/2^{n}}\)
-    during round \(n\), forcing legal attacks by \(\pl P\) to be Cauchy.
-  \end{proof}
-
-  As an aside, this next proposition may be proved similarly
-  using \(E_{d(x,y)/2}\).
-
-  \begin{proposition}
-    For any metrizable space \(X\),
-    \(\pl D\ktactwin{2}\bellConGame{X}\).
-    For any completely metrizable space \(X\),
-    \(\pl D\ktactwin{2}\bellAbsConGame{X}\).
-  \end{proposition}
-
-  We will exploit the last move of the
-  opponent to obtain winning Markov strategies under
-  \(\Sigma^\star\) products.
-
-  \begin{proposition}
-    If \(X_\alpha\) is a uniformizable space for \(\alpha<\kappa\),
-    and \(D_\alpha\) is an entourage of \(X_\alpha\) for
-    \(\alpha\in F\in[\kappa]^{<\omega}\), then
-      \[
-        P(\{\<\alpha,D_\alpha\>:\alpha\in F\})
-          =
-        \left\{
-          \<x,y\>\in\left(\prod_{\alpha<\kappa}X_\alpha\right)^2
-        :
-          \alpha\in F
-        \Rightarrow
-          \<x(\alpha),y(\alpha)\>\in D_\alpha
-        \right\}
-      \]
-    is an entourage of \(\prod_{\alpha<\kappa}X_\alpha\).
-  \end{proposition}
-
-  \begin{theorem}
-    For any metrizable space \(X\) and \(z\in X^\kappa\),
-    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
-  \end{theorem}
-
-  \begin{proof}
-    For \(x\in\SigmaStarProd_{\alpha<\kappa}^z X\), let
-      \[
-        \supp_n(x)
-          =
-        \left\{
-          \alpha<\kappa
-        :
-          d(x(\alpha),z(\alpha))>\frac{1}{2^n}
-        \right\}
-          \in
-        \kappa^{<\omega}
-      \]
-    where \(d\) is a metric compatible with the topology on \(X\).
-
-    Define a strategy \(\tau\) for \(\pl D\) by
-      \[
-        \tau(\emptyset,0)
-          =
-        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
-      \]
-      \[
-        \tau(\<p\>,n+1)
-          =
-        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
-          \cap
-        P(\{
-          \<\alpha,E_{1/2^{n+1}}\>
-            :
-          \alpha\in\supp_n(p)
-        \})
-      \]
-
-    Let \(a:\omega\to \SigmaStarProd_{\alpha<\kappa}^z X\) be a legal
-    attack by \(\pl P\) against \(\tau\), so
-      \[
-        \<a(n+1),a(n+2)\>
-          \in
-        \bigcap_{m\leq n}
-        \tau(\<a(m)\>,m+1)
-      \]
-      \[
-          =
-        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
-          \cap
-        \bigcap_{m\leq n}
-        P(\{
-          \<\alpha,E_{1/2^{m+1}}\>
-            :
-          \alpha\in\supp_m(a(m))
-        \})
-      \]
-    and let \(\alpha<\kappa\).
-
-    If \(d(a(m+1)(\alpha),z(\alpha))\leq\frac{1}{2^m}\) for all but finite
-    \(m<\omega\), then  \(\lim_{n<\omega}a(n)(\alpha)=z(\alpha)\).
-    Otherwise, we have \(\alpha\in\supp_m(a(m))\) for infinitely many
-    \(m<\omega\).
-
-    If
-    \(\bigcap_{n<\omega}\tau(\<a(n)\>,n+1)[a(n+1)]=\emptyset\), then
-    \(\pl D\) has already won.
-    Otherwise there exists a nonstrictly increasing
-    unbounded function \(f\in\omega^\omega\) with
-    \(\bigcap_{n<\omega}E_{1/2^{f(n)+1}}[a(n+1)(\alpha)]\not=\emptyset\).
-    Since the diameter of these sets approaches \(0\), the intersection is
-    a singleton \(x\); furthermore, the \(\alpha\) coordinate of \(a\) must
-    then converge to \(x\). We conclude that
-    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
-  \end{proof}
-
-  A similar result holds for tactics and
-  \(\sigma\)-products.
-
-  \begin{theorem}
-    Let \(X_\alpha\) be a uniformizable space for \(\alpha<\kappa\)
-    and \(z\in \prod_{\alpha<\kappa}X_\alpha\).
-    If
-    \(\pl D\tactwin\bellConGame{X_\alpha}\) for all \(\alpha<\kappa\),
-    then
-    \(\pl D\tactwin\bellConGame{\sigmaProd_{\alpha<\kappa}^z X_\alpha}\).
-  \end{theorem}
-
-  \begin{proof}
-    For \(x\in\sigmaProd_{\alpha<\kappa}^z X_\alpha\), let
-      \[
-        \supp(x)
-          =
-        \left\{
-          \alpha<\kappa
-        :
-          x(\alpha)\not=z(\alpha)
-        \right\}
-          \in
-        \kappa^{<\omega}
-      \]
-    and let \(\tau_\alpha\) be a winning strategy for \(\pl D\) in
-    \(\bellConGame{X_\alpha}\) for \(\alpha<\kappa\).
-
-    Define a strategy \(\tau\) for \(\pl D\) by
-      \[
-        \tau(\emptyset)
-          =
-        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
-      \]
-      \[
-        \tau(\<p\>)
-          =
-        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
-          \cap
-        P(\{
-          \<\alpha,\tau_\alpha(p(\alpha))\>
-            :
-          \alpha\in\supp(p)
-        \})
-      \]
-
-    Let \(a:\omega\to \sigmaProd_{\alpha<\kappa}^z X\) be a legal
-    attack by \(\pl P\) against \(\tau\), so
-      \[
-        \<a(n+1),a(n+2)\>
-          \in
-        \bigcap_{m\leq n}
-        \tau(\<a(m)\>)
-      \]
-      \[
-          =
-        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
-          \cap
-        \bigcap_{m\leq n}
-        P(\{
-          \<\alpha,\tau_\alpha(a(m)(\alpha))\>
-            :
-          \alpha\in\supp(a(m))
-        \})
-      \]
-    and let \(\alpha<\kappa\).
-
-    If \(a(m+1)(\alpha)=z(\alpha)\) for all but finite
-    \(m<\omega\), then  \(\lim_{n<\omega}a(n)(\alpha)=z(\alpha)\).
-    Otherwise, we have \(\alpha\in\supp(a(m))\) for infinitely many
-    \(m<\omega\).
-
-    TODO: wrap this up
-    (it's not needed to get the
-    main result)
-    % If
-    % \(\bigcap_{n<\omega}\tau(\<a(n)\>)[a(n+1)]=\emptyset\), then
-    % \(\pl D\) has already won.
-    % Otherwise there exists a nonstrictly increasing
-    % unbounded function \(f\in\omega^\omega\) with
-    % \(
-    %   \bigcap_{n<\omega}
-    %   \sigma_\alpha(a(f(n))(\alpha))[a(n+1)(\alpha)]
-    %     \not=
-    %   \emptyset
-    % \).
-    % Since the diameter of these sets approaches \(0\), the intersection is
-    % a singleton \(x\); furthermore, the \(\alpha\) coordinate of \(a\) must
-    % then converge to \(x\). We conclude that
-    % \(\pl D\tactwin\bellConGame{\sigmaProd_{\alpha<\kappa}^z X}\).
-  \end{proof}
-
-  It will be useful to compare Bell's game with an earlier game due to
-  Gruenhage.
+  Bell observed a relationship between her game and another convergence
+  game due to Gary Gruenhage.
 
   \begin{game}
     Let \(\gruConGame{X}{S}\) denote
     \term{Gruenhage's convergence game} with
     players \(\pl O\), \(\pl P\) which proceeds as follows for a space
     \(X\) and a set \(S\). In round \(n\),
-    \(\pl O\) chooses an open set \(U_n\subseteq X^2\) containing
+    \(\pl O\) chooses an open set \(U_n\) containing
     \(S\), followed by \(\pl P\)
     choosing a point \(p_n\in \bigcap_{m\leq n}U_m\).
 
@@ -715,7 +397,7 @@ Auburn, AL 36830}
     \(\pl P\) wins otherwise.
   \end{game}
 
-  When \(S=\{x\}\), we abuse notation and write simply
+  When \(S=\{x\}\), we abuse notation and write
   \(\gruConGame{X}{x}\).
 
   \begin{definition}
@@ -846,58 +528,415 @@ Auburn, AL 36830}
     is a winning \(k\)-mark for \(\pl O\) in \(\gruConGame{X}{x}\).
   \end{proof}
 
-\subsection{Eberlein and Strong Eberlein Compacts}
+\subsection{Products and strengthenings of compactness}
 
-  We recall some convenient definitions for a few strengthenings of
-  compactness.
+  \begin{definition}
+    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
+    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
+    The \term{\(\Sigma\)-product} \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
+    with base point \(z\) is given by
+    \[
+      \SigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        =
+      \left\{
+        x\in \prod_{\alpha<\kappa}X_\alpha
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|\leq\omega
+      \right\}
+    \]
+    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write \(\SigmaPower{X}{\kappa}=\SigmaProd_{\alpha<\kappa}^z X\).
+  \end{definition}
+
+  \begin{theorem}[\cite{MR3239205}]
+    If \(X_\alpha\) is proximal for all \(\alpha<\kappa\),
+    then \(\SigmaProd_{\alpha<\kappa}^{z}X_\alpha\) is proximal for any
+    base point \(z\).
+  \end{theorem}
+
+  It's this result which yielded the following observation by Nyikos in
+  \cite{MR3288115}.
 
   \begin{definition}
     A \term{Corson compact} space is a compact space which may be embedded in
     \(\SigmaProdR\kappa\).
   \end{definition}
 
+  \begin{corollary}\label{nyikosObservation}
+    Corson compacts are proximal.
+  \end{corollary}
+
+  Nyikos asked if the result could be reversed, which the author answered
+  with Gary Gruenhage in \cite{MR3227201} in the affirmative.
+
+  \begin{theorem}
+    A compact space \(X\) is Corson compact if and only if it is
+    proximal.
+  \end{theorem}
+
+  This result required an
+  earlier game characterization of Corson compactness due to Gruenhage.
+
+  \begin{theorem}[\cite{MR752278}]
+    A compact space \(X\) is Corson compact if and only if
+    \(\pl O\win\gruConGame{X^2}{\Delta}\).
+  \end{theorem}
+
+  So Corson compactness is characterized by both
+  \(\pl O\win\gruConGame{X^2}{\Delta}\) and
+  \(\pl D\win\bellAbsConGame{X}\) for compact spaces.
+  However, we will see that these games are not
+  equivalent with respect to limited information strategies.
+
+  In the study of limited information strategies in \(\bellAbsConGame{X}\),
+  it is natural to consider \(\Sigma^\star\)- and \(\sigma\)-products
+  in place of \(\Sigma\)-products.
+
+
+\subsection{\(\Sigma^\star\)-products and Eberlein compacts}
+
+  \begin{definition}
+    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
+    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
+    The \term{\(\sigma\)-product} \(\sigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
+    with base point \(z\) is given by
+    \[
+      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        =
+      \left\{
+        x\in \prod_{\alpha<\kappa}X_\alpha
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|<\omega
+      \right\}
+    \]
+    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
+  \end{definition}
+
+  Just as \(\Sigma\) products preserve winning perfect-information strategies,
+  we will show that \(\Sigma^\star\) products preserve winning
+  Markov strategies.
+
+  \begin{definition}
+    For a metric space \(\<X,d\>\), let
+    \(V_\epsilon=\{\<x,y\>:d(x,y)<\epsilon\}\). Note that \(V_\epsilon\)
+    is an (open symmetric) entrouage on \(X\).
+  \end{definition}
+
+  Note that by definition, a \(0\)-Markov strategy uses zero moves of
+  the opponent, and only considers the round number.
+
+  \begin{proposition}
+    For any metrizable space \(X\),
+    \(\pl D\kmarkwin{0}\bellConGame{X}\).
+    For any completely metrizable space \(X\),
+    \(\pl D\kmarkwin{0}\bellAbsConGame{X}\).
+  \end{proposition}
+
+  \begin{proof}
+    Essentially shown by Bell in her paper: in either case,
+    \(\pl D\) chooses \(V_{1/2^{n}}\)
+    during round \(n\), forcing legal attacks by \(\pl P\) to be Cauchy.
+  \end{proof}
+
+  As an aside, this next proposition may be proved similarly
+  using \(V_{d(x,y)/2}\).
+
+  \begin{proposition}
+    For any metrizable space \(X\),
+    \(\pl D\ktactwin{2}\bellConGame{X}\).
+    For any completely metrizable space \(X\),
+    \(\pl D\ktactwin{2}\bellAbsConGame{X}\).
+  \end{proposition}
+
+  We will exploit the last move of the
+  opponent to obtain winning Markov strategies under
+  \(\Sigma^\star\) products.
+
+  \begin{proposition}
+    If \(X_\alpha\) is a uniformizable space for \(\alpha<\kappa\),
+    and \(D_\alpha\) is an entourage of \(X_\alpha\) for
+    \(\alpha\in F\in[\kappa]^{<\omega}\), then
+      \[
+        P(\{\<\alpha,D_\alpha\>:\alpha\in F\})
+          =
+        \left\{
+          \<x,y\>\in\left(\prod_{\alpha<\kappa}X_\alpha\right)^2
+        :
+          \alpha\in F
+        \Rightarrow
+          \<x(\alpha),y(\alpha)\>\in D_\alpha
+        \right\}
+      \]
+    is an entourage of \(\prod_{\alpha<\kappa}X_\alpha\).
+  \end{proposition}
+
+  \begin{theorem}
+    For any metrizable space \(X\) and \(z\in X^\kappa\),
+    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+  \end{theorem}
+
+  \begin{proof}
+    For \(x\in\SigmaStarProd_{\alpha<\kappa}^z X\), let
+      \[
+        \supp_n(x)
+          =
+        \left\{
+          \alpha<\kappa
+        :
+          d(x(\alpha),z(\alpha))>\frac{1}{2^n}
+        \right\}
+          \in
+        \kappa^{<\omega}
+      \]
+    where \(d\) is a metric compatible with the topology on \(X\).
+
+    Define a strategy \(\tau\) for \(\pl D\) by
+      \[
+        \tau(\emptyset,0)
+          =
+        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+      \]
+      \[
+        \tau(\<p\>,n+1)
+          =
+        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        P(\{
+          \<\alpha,V_{1/2^{n+1}}\>
+            :
+          \alpha\in\supp_n(p)
+        \})
+      \]
+
+    Let \(a:\omega\to \SigmaStarProd_{\alpha<\kappa}^z X\) be a legal
+    attack by \(\pl P\) against \(\tau\), so
+      \[
+        \<a(n+1),a(n+2)\>
+          \in
+        \bigcap_{m\leq n}
+        \tau(\<a(m)\>,m+1)
+      \]
+      \[
+          =
+        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        \bigcap_{m\leq n}
+        P(\{
+          \<\alpha,V_{1/2^{m+1}}\>
+            :
+          \alpha\in\supp_m(a(m))
+        \})
+      \]
+    and let \(\alpha<\kappa\).
+
+    If \(d(a(m+1)(\alpha),z(\alpha))\leq\frac{1}{2^m}\) for all but finite
+    \(m<\omega\), then  \(\lim_{n<\omega}a(n)(\alpha)=z(\alpha)\).
+    Otherwise, we have \(\alpha\in\supp_m(a(m))\) for infinitely many
+    \(m<\omega\).
+
+    If
+    \(\bigcap_{n<\omega}\tau(\<a(n)\>,n+1)[a(n+1)]=\emptyset\), then
+    \(\pl D\) has already won.
+    Otherwise there exists a nonstrictly increasing
+    unbounded function \(f\in\omega^\omega\) with
+    \(\bigcap_{n<\omega}V_{1/2^{f(n)+1}}[a(n+1)(\alpha)]\not=\emptyset\).
+    Since the diameter of these sets approaches \(0\), the intersection is
+    a singleton \(\{x\}\); furthermore, the \(\alpha\) coordinate of \(a\)
+    must then converge to \(x\). We conclude that
+    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+  \end{proof}
+
+  Note that we may obtain an analogous observation to Corollary
+  \ref{nyikosObservation}.
+
   \begin{definition}
     An \term{Eberlein compact} space is a compact space which may be embedded
     in \(\SigmaStarProdR\kappa\).
   \end{definition}
 
-  \begin{definition}
-    A \term{strong Eberlein compact} space is a compact space which may
-    be embedded in \(\sigmaProdTwo\kappa\).
-  \end{definition}
-
-  Obviously, strong Eberlein compacts are Eberlein compact, and Eberlein
-  compacts are Corson compact. Nyikos observed in
-  \cite{MR3288115} that as the \(\Sigma\)-product of proximal spaces
-  are proximal and the closed subspaces of proximal spaces are proximal:
-
   \begin{corollary}
-    Corson compacts are proximal.
+    Eberlein compacts are Markov-proximal.
   \end{corollary}
 
-  By the previous section we may now obtain analogues of this observation.
+  It's natural to ask (particularly considering the results of the next
+  section) whether this too may be reversed.
 
-  \begin{corollary}
-    Eberlein compacts are Markov-proximal. Strong Eberlein compacts are
-    tactic-proximal.
-  \end{corollary}
+  \begin{question}\label{mainQuestion}
+    Must all Markov-proximal compacts be Eberlein compact?
+  \end{question}
 
-  The author showed with Gary Gruenhage in \cite{MR3227201} that
-  Nyikos's observation can actually be reversed. The result required an
-  earlier game characterization of Corson compactness due to Gruenhage.
+  One might suspect that the answer is yes in light of the following fact:
 
-  \begin{theorem}[\cite{MR752278},\cite{MR858337}]
-    A compact space \(X\) is Corson compact if and only if
-    \(\pl O\win\gruConGame{X^2}{\Delta}\).
+  \begin{theorem}[\cite{MR858337}]
     A compact space \(X\) is Eberlein compact if and only if
     \(\pl O\markwin\gruConGame{X^2}{\Delta}\).
   \end{theorem}
 
-  In particular note that Corson compactness is characterized by both
-  \(\pl O\win\gruConGame{X^2}{\Delta}\) and
-  \(\pl D\win\bellAbsConGame{X}\). We will see that these games are not
-  equivalent with respect to limited information strategies.
+\subsection{\(\sigma\)-products and strong Eberlein compacts}
 
+  \begin{definition}
+    Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
+    and \(z\in\prod_{\alpha<\kappa}X_\alpha\).
+    The \term{\(\sigma\)-product} \(\sigmaProd_{\alpha<\kappa}^{z}X_\alpha\)
+    with base point \(z\) is given by
+    \[
+      \sigmaProd_{\alpha<\kappa}^{z}X_\alpha
+        =
+      \left\{
+        x\in \prod_{\alpha<\kappa}X_\alpha
+      :
+        |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|<\omega
+      \right\}
+    \]
+    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
+  \end{definition}
+
+  \begin{theorem}
+    Let \(X_\alpha\) be a uniformizable space for \(\alpha<\kappa\)
+    and \(z\in \prod_{\alpha<\kappa}X_\alpha\).
+    If
+    \(\pl D\tactwin\bellConGame{X_\alpha}\) for all \(\alpha<\kappa\),
+    then
+    \(\pl D\tactwin\bellConGame{\sigmaProd_{\alpha<\kappa}^z X_\alpha}\).
+  \end{theorem}
+
+  \begin{proof}
+    For \(x\in\sigmaProd_{\alpha<\kappa}^z X_\alpha\), let
+      \[
+        \supp(x)
+          =
+        \left\{
+          \alpha<\kappa
+        :
+          x(\alpha)\not=z(\alpha)
+        \right\}
+          \in
+        \kappa^{<\omega}
+      \]
+    and let \(\tau_\alpha\) be a winning strategy for \(\pl D\) in
+    \(\bellConGame{X_\alpha}\) for \(\alpha<\kappa\).
+
+    Define a strategy \(\tau\) for \(\pl D\) by
+      \[
+        \tau(\emptyset)
+          =
+        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
+      \]
+      \[
+        \tau(\<p\>)
+          =
+        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        P(\{
+          \<
+            \alpha,
+            \tau_\alpha(p(\alpha))\cap\tau_\alpha(z(\alpha))
+          \>
+            :
+          \alpha\in\supp(p)
+        \})
+      \]
+
+    Let \(a:\omega\to \sigmaProd_{\alpha<\kappa}^z X\) be a legal
+    attack by \(\pl P\) against \(\tau\), so
+      \[
+        \<a(n+1),a(n+2)\>
+          \in
+        \bigcap_{m\leq n}
+        \tau(\<a(m)\>)
+      \]
+      \[
+          =
+        \left(\sigmaProd_{\alpha<\kappa}^z X\right)^2
+          \cap
+        \bigcap_{m\leq n}
+        P(\{
+          \<
+            \alpha,
+            \tau_\alpha(a(m)(\alpha))\cap\tau_\alpha(z(\alpha))
+          \>
+            :
+          \alpha\in\supp(a(m))
+        \})
+      \]
+    and let \(\alpha<\kappa\).
+    Let \(a_\alpha:\omega\to X_\alpha\) satisfy
+    \(a_\alpha(n)=a(n)(\alpha)\).
+
+    Of course if \(a_\alpha(n)=z(\alpha)\) for all \(n<\omega\), then
+    \(a_\alpha\to z(\alpha)\).
+    Otherwise, let \(N<\omega\) be minimal with \(a_\alpha(N)\not=z(\alpha)\).
+    Then for \(n\geq N\),
+      \[
+        \<a_\alpha(n+1),a_\alpha(n+2)\>
+          =
+        \<a(n+1)(\alpha),a(n+2)(\alpha)\>
+      \]
+      \[
+          \in
+        \bigcap_{m\leq n,\alpha\in\supp(a(m))}
+        \tau_\alpha(a(m)(\alpha))\cap\tau_\alpha(z(\alpha))
+      \]
+      \[
+          \subseteq
+        \bigcap_{N\leq m\leq n}
+        \tau_\alpha(a_\alpha(m))
+      \]
+    So \(a_\alpha\last N\) is a legal attack against the
+    winning tactic \(\tau_\alpha\), and therefore either
+    \(a_\alpha\) converges, or
+      \[
+        \bigcap_{N\leq n<\omega}
+        \left(
+          \bigcap_{N\leq m\leq n}
+          \tau_\alpha(a_\alpha(m))
+        \right)
+        [a_\alpha(n+1)]
+          =
+        \emptyset
+      \]
+
+    We conclude that either \(a\) converges on each coordinate
+    \(\alpha<\kappa\), or the intersection
+      \[
+        \bigcap_{n<\omega}
+        \left(
+          \bigcap_{m\leq n}
+          \tau(\<a(m)\>)
+        \right)
+        [a(n+1)]
+      \]
+    is empty, verifying that \(\tau\) is a winning tactic.
+  \end{proof}
+
+  The proof of the following is similar (and trivial if one is
+  only considering uniformly locally compact spaces).
+
+  \begin{theorem}
+    Let \(X_\alpha\) be a uniformizable space for \(\alpha<\kappa\)
+    and \(z\in \prod_{\alpha<\kappa}X_\alpha\).
+    If
+    \(\pl D\tactwin\bellAbsConGame{X_\alpha}\) for all \(\alpha<\kappa\),
+    then
+    \(\pl D\tactwin\bellAbsConGame{\sigmaProd_{\alpha<\kappa}^z X_\alpha}\).
+  \end{theorem}
+
+  We again obtain an analogous observation to Corollary
+  \ref{nyikosObservation}.
+
+  \begin{definition}
+    A \term{strong Eberlein compact} space is a compact space which
+    may be embedded in \(\sigmaProdTwo\kappa\).
+  \end{definition}
+
+  \begin{corollary}
+    Strong Eberlein compacts are tactic-proximal.
+  \end{corollary}
+
+  We can show that among compact spaces, the tactic-proximal property is
+  necessary and sufficent for strong Eberlein compactness.
   The presence of a Cantor set determines the success of \(\pl D\)'s
   tactical strategies in \(\bellConGame{X}\).
 
@@ -1052,8 +1091,8 @@ Auburn, AL 36830}
   since \(X\) is (para)compact, both \(\pl D\) and \(\pl O\) are simply
   choosing neighborhoods of the diagonal, aiming for some sort of convergence.
 
-  For tactical information, we may easily find examples for which
-  these games diverge.
+  For tactical information, we may easily see how
+  these games differ.
 
   \begin{example}
     Let \(X\) be compact and metrizable.
@@ -1078,25 +1117,25 @@ Auburn, AL 36830}
         \[
           \sigma(\<x\>)
             =
-          E_{d(x(0),x(1))/2}
+          V_{d(x(0),x(1))/2}
         \]
       \item
         \[
           \sigma(n)
             =
-          E_{1/2^n}
+          V_{1/2^n}
         \]
       \item (as noted earlier)
         \[
           \sigma(\<x,y\>)
             =
-          E_{d(x,y)/2}
+          V_{d(x,y)/2}
         \]
       \item (as noted earlier)
         \[
           \sigma(n)
             =
-          E_{1/2^n}
+          V_{1/2^n}
         \]
     \end{enumerate}
     Finally, recall that \(\pl D\nottactwin\bellConGame{X}\)
@@ -1107,25 +1146,11 @@ Auburn, AL 36830}
   chooses points in \(X^2\)) gives her an extra edge to use in a game
   of limited information.
 
-  Perhaps the most interesting open question involves Markov strategies.
-  We've already seen that \(\pl D\markwin\bellAbsConGame{X}\) for Eberlein
-  compacts, so:
+  With respect to these games,
+  question \ref{mainQuestion} could be restated as follows:
+  is \(\pl O\markwin\gruConGame{X^2}{\Delta}\) equivalent to
+  \(\pl D\markwin\bellConGame{X}\) for compact spaces \(X\)?
 
-  \begin{corollary}
-    For compact \(X\),
-    \(\pl O\markwin\gruConGame{X^2}{\Delta}\) implies
-    \(\pl D\markwin\bellAbsConGame{X}\).
-  \end{corollary}
-
-  \begin{question}
-    For compact \(X\),
-    does \(\pl D\markwin\bellAbsConGame{X}\) imply
-    \(\pl O\markwin\gruConGame{X^2}{\Delta}\) (that is,
-    \(X\) is Eberlein compact)?
-  \end{question}
-
-  Note that the scope of the above question may be reduced to Corson
-  compact spaces, but the author does not have a proof or counterexample.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
