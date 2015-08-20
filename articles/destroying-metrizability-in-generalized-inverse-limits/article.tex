@@ -58,9 +58,9 @@ The following characterization of u.s.c. functions (from \cite{i m paper}) is we
 
 If $X$, $Y$, and $Z$ are non-empty compact Hausdorff spaces and $f : X \rightarrow 2^{Y}$ and $g: Y \rightarrow 2^{Z}$ are u.s.c., then the composition $g \circ f : X \rightarrow 2^{Z}$ is the u.s.c. function given by $(g \circ f)(x) = \{z \in Z \ | \ $There exists $y \in Y$ such that $y \in f(x)$ and $z \in g(y)\}$. In the special case where $f: X \rightarrow 2^{X}$, we denote $f \circ f$ by $f^2$. If $f^2 = f$, then we say $f$ is \emph{idempotent}.
 
-Let $\kappa$ be an ordinal. (We follow the convention of set theory in which an ordinal is equal to the set of its predecessors. For more detailed background on ordinals, see, for example, \cite{Kunen}.) Suppose that for each $\alpha \in \kappa$, $X_{\alpha}$ is a non-empty compact Hausdorff space and whenever $\alpha \le \beta \in \kappa$, the set-valued function $f_{\alpha \beta} : X_{\beta} \rightarrow 2^{X_{\alpha}}$ is u.s.c. (With this notation, $f_{\alpha \alpha}$ always denotes the identity on $X_{\alpha}$.) Suppose further that, whenever $\alpha \le \beta \le \eta \in \kappa$, we have $f_{\alpha \beta} \circ f_{\beta \eta} = f_{\alpha \eta}$. Then the collection $\textbf{f} = \{ f_{\alpha \beta} \ | \ \alpha \le \beta \in \kappa\}$ of u.s.c. functions is said to be \emph{exact}. In this case, we say $\<X_{\alpha}, f_{\alpha \beta}, \kappa\>$ is an \emph{inverse limit system}; the \emph{inverse limit}, $\varprojlim \<X_{\alpha}, f_{\alpha \beta}, \kappa\>$, of this system is $\{ \textbf{x} \in \prod_{\alpha \in \kappa} X_{\alpha} \ | \ x_{\alpha} \in f_{\alpha \beta}(x_{\beta})$ for all $\alpha \le \beta \in \kappa\}$. (In keeping with tradition, a boldface $\textbf{x}$ always denotes an element of $\prod_{\alpha \in \kappa} X_{\alpha}$; the $\alpha$th coordinate of such an $\textbf{x}$ will be denoted $\textbf{x}(\alpha)$.)  We call the u.s.c. functions $f_{\alpha \beta}$ the \emph{bonding functions} of the inverse limit, and each $X_{\alpha}$ is called a \emph{factor space} of the inverse limit.
+Let $\kappa$ be an ordinal. (We follow the convention of set theory in which an ordinal is equal to the set of its predecessors. For more detailed background on ordinals, see, for example, \cite{Kunen}.) Suppose that for each $\alpha \in \kappa$, $X_{\alpha}$ is a non-empty compact Hausdorff space and whenever $\alpha \le \beta \in \kappa$, the set-valued function $f_{\alpha \beta} : X_{\beta} \rightarrow 2^{X_{\alpha}}$ is u.s.c. (With this notation, $f_{\alpha \alpha}$ always denotes the identity on $X_{\alpha}$.) Suppose further that, whenever $\alpha \le \beta \le \eta \in \kappa$, we have $f_{\alpha \beta} \circ f_{\beta \eta} = f_{\alpha \eta}$. Then the collection $\textbf{f} = \{ f_{\alpha \beta} \ | \ \alpha \le \beta \in \kappa\}$ of u.s.c. functions is said to be \emph{exact}. In this case, we say $\{X_{\alpha}, f_{\alpha \beta}, \kappa\}$ is an \emph{inverse limit system}; the \emph{inverse limit}, $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \kappa\}$, of this system is $\{ \textbf{x} \in \prod_{\alpha \in \kappa} X_{\alpha} \ | \ x_{\alpha} \in f_{\alpha \beta}(x_{\beta})$ for all $\alpha \le \beta \in \kappa\}$. (In keeping with tradition, a boldface $\textbf{x}$ always denotes an element of $\prod_{\alpha \in \kappa} X_{\alpha}$; the $\alpha$th coordinate of such an $\textbf{x}$ will be denoted $\textbf{x}(\alpha)$.)  We call the u.s.c. functions $f_{\alpha \beta}$ the \emph{bonding functions} of the inverse limit, and each $X_{\alpha}$ is called a \emph{factor space} of the inverse limit.
 
-Because it can be difficult to check if a large collection of u.s.c. functions is exact, a much more tractable case would be that of an inverse limit system with a single idempotent bonding function $f$. That is, suppose $X$ is a non-empty compact Hausdorff space and $f: X \rightarrow 2^{X}$ is an idempotent u.s.c. function. If $X_{\alpha} = X$ for each $\alpha \in \kappa$ and $f_{\alpha \beta} = f$ for each $\alpha < \beta \in \kappa$, then $\<X_{\alpha}, f_{\alpha \beta}, \kappa\> = \<X, f, \kappa\>$ is an \emph{inverse limit system with the single bonding function $f$}, and we denote the inverse limit of the system as $\varprojlim \<X, f, \kappa\>$. (Of course, since $f$ is idempotent, the collection $\textbf{f}$ of bonding functions is automatically exact.) We note that, although the only continuous idempotent surjective function from a compact Hausdorff space $X$ to itself is the identity map, there are many non-trivial examples of u.s.c. idempotent surjective functions on $X$; see Figure \ref{idempotentUsc} for examples.
+Because it can be difficult to check if a large collection of u.s.c. functions is exact, a much more tractable case would be that of an inverse limit system with a single idempotent bonding function $f$. That is, suppose $X$ is a non-empty compact Hausdorff space and $f: X \rightarrow 2^{X}$ is an idempotent u.s.c. function. If $X_{\alpha} = X$ for each $\alpha \in \kappa$ and $f_{\alpha \beta} = f$ for each $\alpha < \beta \in \kappa$, then $\{X_{\alpha}, f_{\alpha \beta}, \kappa\} = \{X, f, \kappa\}$ is an \emph{inverse limit system with the single bonding function $f$}, and we denote the inverse limit of the system as $\varprojlim \{X, f, \kappa\}$. (Of course, since $f$ is idempotent, the collection $\textbf{f}$ of bonding functions is automatically exact.) We note that, although the only continuous idempotent surjective function from a compact Hausdorff space $X$ to itself is the identity map, there are many non-trivial examples of u.s.c. idempotent surjective functions on $X$; see Figure \ref{idempotentUsc} for examples.
 
 \begin{figure}
 \begin{center}
@@ -135,15 +135,15 @@ Finally, we demonstrate that $z\in(y,1]$ results in a contradiction. Let $f(z)=[
 \end{proof}
 
 \begin{lemma} \label{general lemma}
-If $f:[0,1] \to 2^{[0,1]}$ is u.s.c. and idempotent and $G(f)$ satisfies condition $\Gamma$, then $\varprojlim\<[0,1],f,\kappa\>$ contains a copy of $\kappa + 1$.
+If $f:[0,1] \to 2^{[0,1]}$ is u.s.c. and idempotent and $G(f)$ satisfies condition $\Gamma$, then $\varprojlim\{[0,1],f,\kappa\}$ contains a copy of $\kappa + 1$.
 \end{lemma}
 
 \begin{proof}
-As $G(f)$ satisfies $\Gamma$, let us say without loss of generality that $\<x,x\>, \<y,y\>$ and $\<x,y\>$ are elements of $G(f)$. $\varprojlim\<[0,1],f,\kappa\>$ contains the points $\textbf{x}_\alpha$ for $\alpha\leq\kappa$, defined by $\textbf{x}_\alpha(\beta)=y$ for $\beta<\alpha$ and $\textbf{x}_\alpha(\beta)=x$ otherwise. It's easy to see that $\{\textbf{x}_\alpha:\alpha\leq\kappa\}$ is a copy of $\kappa+1$.
+As $G(f)$ satisfies $\Gamma$, let us say without loss of generality that $\<x,x\>, \<y,y\>$ and $\<x,y\>$ are elements of $G(f)$. $\varprojlim\{[0,1],f,\kappa\}$ contains the points $\textbf{x}_\alpha$ for $\alpha\leq\kappa$, defined by $\textbf{x}_\alpha(\beta)=y$ for $\beta<\alpha$ and $\textbf{x}_\alpha(\beta)=x$ otherwise. It's easy to see that $\{\textbf{x}_\alpha:\alpha\leq\kappa\}$ is a copy of $\kappa+1$.
 \end{proof}
 
 \begin{theorem} \label{main theorem}
-If $f:[0,1]\to C([0,1])$ is u.s.c., idempotent, and surjective, but $f\not=\iota$, then $\varprojlim\<[0,1],f,\kappa\>$ contains a copy of $\kappa+1$.
+If $f:[0,1]\to C([0,1])$ is u.s.c., idempotent, and surjective, but $f\not=\iota$, then $\varprojlim\{[0,1],f,\kappa\}$ contains a copy of $\kappa+1$.
 \end{theorem}
 
 \begin{proof}
@@ -164,7 +164,7 @@ If $f = \iota$, then of course the inverse limit is homeomorphic to $[0,1]$. So,
 
 The following example helped inspire the main theorem of this paper.
 
-\begin{example} \label{ex1} Let $f: [0,1] \rightarrow C([0,1])$ be given by $f(0) = [0,1]$ and $f(x) = \{1\}$ for each $x \ne 0$. Then $\varprojlim \langle [0,1], f, \kappa \rangle$ is metric exactly when $\kappa$ is a countable ordinal.
+\begin{example} \label{ex1} Let $f: [0,1] \rightarrow C([0,1])$ be given by $f(0) = [0,1]$ and $f(x) = \{1\}$ for each $x \ne 0$. Then $\varprojlim \{ [0,1], f, \kappa \}$ is metric exactly when $\kappa$ is a countable ordinal.
 \end{example}
 
 \begin{proof} $f$ is u.s.c. because $G(f)$ is closed, and obviously $f$ is continuum-valued and surjective. Since $f([0,1]) = [0,1]$ and $f(\{1\}) = \{1\}$, by Lemma \ref{idemlemma}, $f$ is idempotent. Thus, Corollary \ref{main corr} applies. (Note that one could also verify directly that $G(f)$ satisfies condition $\Gamma$ because $G(f)$ contains the ordered pairs $\langle 0,0 \rangle, \langle 1,1 \rangle, \langle 0,1 \rangle$).
@@ -178,14 +178,14 @@ We give one more simple example to show that the surjectivity of the bonding fun
 \begin{example} \label{ex2} Let $f: [0,1] \rightarrow C([0,1])$ be given by $f(x) = \{x\}$ for $0 \le x < 1/2$ and $f(x) = 1/2$ for $x \ge 1/2$.
 \end{example}
 
-Clearly $f$ is u.s.c. and idempotent and $f \ne \iota$; however, $G(f)$ does not satisfy condition $\Gamma$. Indeed, $\varprojlim \langle [0,1], f, \kappa \rangle$ is homeomorphic to a metric arc for all $\kappa > 0$.
+Clearly $f$ is u.s.c. and idempotent and $f \ne \iota$; however, $G(f)$ does not satisfy condition $\Gamma$. Indeed, $\varprojlim \{ [0,1], f, \kappa \}$ is homeomorphic to a metric arc for all $\kappa > 0$.
 
 \bibliographystyle{plain}
 \begin{thebibliography}{10}
 
 \smallskip
 
-\bibitem{alster} Alster, K., and Pol, Roman. "On function spaces of compact subspaces of $\Sigma$-products of the real line." Fundamenta Mathematicae 107.2 (1980): 135-143.
+\bibitem{alster} Alster, K., and Pol, Roman. ``On function spaces of compact subspaces of $\Sigma$-products of the real line.'' Fundamenta Mathematicae 107.2 (1980): 135-143.
 
 \smallskip
 
