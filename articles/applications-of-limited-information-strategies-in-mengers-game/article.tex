@@ -5,6 +5,9 @@
 
 \usepackage{../../clontzDefinitions}
 
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -43,9 +46,6 @@ Charlotte, NC 28262}
 \urladdr{stevenclontz.com}
 
 \keywords{Menger's property, Menger's game, limited information strategies}
-% \begin{keyword}
-%   Proximal\sep absolutely proximal\sep Corson compact\sep uniform space\sep \(W\)-space
-% \end{keyword}
 
 \subjclass[2010]{03E35, 54D20, 54D45, 91A44}
 
@@ -88,15 +88,27 @@ None of these implications may be reversed; the irrationals are a simple example
 of a Lindel\"of space which is not Menger, and we'll see several examples of
 Menger spaces which are not \(\sigma\)-compact.
 
-It can be shown via a non-trivial
-proof that the following game can be used to characterize the Menger property.
+It will be convenient to consider subsets of \(X\) rather than subsets of
+the open covers.
 
 \begin{definition}
-  For each cover \(\mc U\) of \(X\), \(S\subseteq X\) is \term{\(\mc U\)-finite} if
-  there exists a finite subcollection of \(\mc U\) which covers \(C\).
+  For each cover \(\mc U\) of \(X\), \(S\subseteq X\) is
+  \term{\(\mc U\)-finite} if
+  there exists a finite subcollection of \(\mc U\) which covers \(S\).
 \end{definition}
 
 Of course, a compact space is \(\mc U\)-finite for all open covers \(\mc U\).
+
+\begin{proposition}
+  A space \(X\) is Menger if and only if
+  for every sequence \(\<\mc U_0,\mc U_1,\dots\>\)
+  of open covers of \(X\) there exists a sequence
+  \(\<F_0,F_1,\dots\>\) such that \(F_n\subseteq X\), \(F_n\) is
+  \(\mc U_n\)-finite, and \(X=\bigcup_{n<\omega}F_n\).
+\end{proposition}
+
+This is the characterization we will use in this paper.
+A game version of the Menger property is also often considered.
 
 \begin{game}
   Let \(\menGame{X}\) denote the \term{Menger game} with players \(\pl C\), \(\pl F\).
@@ -107,38 +119,61 @@ Of course, a compact space is \(\mc U\)-finite for all open covers \(\mc U\).
   and \(\pl C\) wins otherwise.
 \end{game}
 
-\begin{theorem}
-  A space \(X\) is Menger if and only if \(\pl C\notwin\menGame{X}\)
-  \cite{MR1544773}.
+As with the Menger property, authors usually characterize this game using
+finite subsets \(\mc F_n\)
+of \(\mc U_n\) instead (and often refer to it as \(G(\mc O,\mc O)\) as
+with the selection property above).
+This is obviously equivalent in the case of perfect
+information, and is also equivalent
+in the case of limited information, provided \(\pl F\)
+knows \(\mc U_n\) during round \(n\). However, we make this change as we
+will investigate \(0\)-Markov strategies which consider no moves of
+the opponent, and instead rely only on the current round number.
+
+This game may be used to characterize the Menger property.
+
+\begin{definition}
+  If \(\pl A\) has a winning strategy for a game \(G\) (which defeats every
+  possible counterattack by her opponent), then we write \(\pl A\win G\).
+\end{definition}
+
+\begin{theorem}[Hurewicz \cite{MR1544773}]
+  A space \(X\) is Menger if and only if \(\pl C\notwin\menGame{X}\).
 \end{theorem}
 
-The typical characterization of the Menger game involves \(\pl F\) choosing
-a finite subcollection \(\mc F_n\) of \(\mc U_n\), but it is easy to see that the
-characterization given above is equivalent, and will be convenient for use
-in our proofs.
 
+\section{Limited information strategies}
 
-\section{Markov strategies}
+Recall the following definitions.
 
-To the author's knowledge, no other direct work has been done on limited
-information strategies pertaining to the Menger game, although as we'll see
-there are results which can be sharpened when considering them.
-However, we immediately see that tactics are not of any real interest.
+\begin{definition}
+  A \(k\)-tactical strategy for a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M^{\leq k}\to M\); intuitively, it is a strategy which only considers
+  the previous \(k\) moves of the opponent. If a winning \(k\)-tactical strategy
+  exists for \(\pl P\) in the game \(G\), then we write \(\pl P\ktactwin{k} G\).
+\end{definition}
+
+\begin{definition}
+  A \(k\)-Markov strategy for a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M^{\leq k}\times\omega\to M\); intuitively, it is a strategy which
+  only considers the previous \(k\) moves of the opponent and the round number.
+  If a winning \(k\)-Markov strategy exists for
+  \(\pl P\) in the game \(G\), then we write \(\pl P\kmarkwin{k} G\).
+\end{definition}
+
+We will call \(k\)-tactical strategies ``\(k\)-tactics'' and \(k\)-Markov strategies
+``\(k\)-marks''. If the \(k\) is omitted then it is assumed that \(k=1\). In
+addition, note that some authors refer to tactics as
+\term{stationary strategies}.
+
+Tactics will be of interest in a game discussed later; proving
+the following is an easy exercise.
 
 \begin{proposition}
   \(X\) is compact if and only if
   \(\pl F \tactwin \menGame{X}\) if and only if
-  \(\pl F \ktactwin{k} \menGame{X}\).
+  \(\pl F \ktactwin{k+1} \menGame{X}\) for some \(k<\omega\).
 \end{proposition}
-
-\begin{proof}
-  If \(\sigma\) is a winning \(k\)-tactic, then for each open cover \(\mc U\),
-  \(\sigma\) defeats the attack \(\<\mc U,\mc U,\dots\>\). Then
-  \[
-    \bigcup_{i\leq k} \sigma(\<\underbrace{\mc U,\dots,\mc U}_i\>) = X
-  \]
-  and \(X\) is \(\mc U\)-finite.
-\end{proof}
 
 Essentially, because \(\pl C\) may repeat the same finite sequence of open covers,
 \(\pl F\) needs to be seeded with knowledge of the round number to prevent being
@@ -219,48 +254,27 @@ space has this property.
   sets containing it.
 \end{definition}
 
-\begin{theorem}
-  \(\pl F \notmarkwin \menGame{\oneptlind{\omega_1}}\).
-\end{theorem}
-
-\begin{proof}
-  This result will later follow from the fact that
-  \(\oneptlind\omega_1\) is not a \(\sigma\)-compact space (all its compact subsets
-  are finite).
-
-  For now, let \(\sigma\) be a Markov strategy for \(\pl F\). For
-  each \(\alpha<\omega_1\), let \(\mc U_\alpha\) be the open cover
-  \(\{\{\beta\}:\beta<\alpha\}\cup\{\oneptlind{\omega_1}\setminus\alpha\}\) of
-  \(\oneptlind{\omega_1}\), and set \(F(\alpha,n)\) to be the finite set
-  \(\alpha\cap\sigma(\<\mc U_\alpha\>,n)\).
-
-  If
-    \(
-      P_n =
-      \{\beta: \beta < \alpha < \omega_1 \Rightarrow \beta \in F(\alpha,n)\}
-    \),
-  then \(P_n\subseteq F(\sup(P_n)+1,n)\). Thus \(P_n\) is finite for \(n<\omega\).
-  Choose \(\beta\in\omega_1\setminus \bigcup_{n<\omega}P_n\)
-  and \(\alpha_n>\beta\) such that \(\beta\not\in F(\alpha_n,n)\).
-  Then \(\pl C\) may attack
-  \(\sigma\) with \(\<\mc U_{\alpha_0}, \mc U_{\alpha_1},\dots\>\),
-  and it follows that
-  \(\beta\not\in \bigcup_{n<\omega}F(\alpha_n,n)\) and
-  \(\beta\not\in \bigcup_{n<\omega}\sigma(\<\mc U_{\alpha_n}\>,n)\).
-\end{proof}
+\begin{proposition}
+  \(\pl F \notmarkwin \menGame{\oneptlind{\omega_1}}\); in fact,
+  \(\oneptlind{\omega_1}\) is not \(\sigma\)-compact.
+\end{proposition}
 
 The greatest advantage of a strategy which has knowledge of two or more previous
 moves of the opponent, versus only knowledge of the most recent move, is the
 ability to react to changes from one round to the next. It's this ability to
 react that will give \(\pl F\) her winning \(2\)-Markov strategy in the Menger
-game on \(\oneptlind\omega_1\).
+game on \(\oneptlind\omega_1\). This may be proven directly; however, we will
+postpone giving a proof so that we may take advantage of an equivalent
+game characterization of this property.
 
-For inspiration, we turn to a game whose \(n\)-tactics were studied by Marion
-Scheepers in \cite{MR1129143} which has similar goals to the Menger game when
-played upon \(\oneptlind\kappa\).
+\section{Scheepers' filling games}
+
+We now turn to a related game whose \(k\)-tactics were studied by Marion
+Scheepers in \cite{MR1129143}.
 
 \begin{game}
-  Let \(\cloFillStrictGame\kappa\) denote the \term{strict union filling game}
+  Let \(\schFillStrictGame\kappa\) denote
+  \term{Scheepers' strict union filling game}
   with two players \(\pl C\), \(\pl F\). In round \(0\), \(\pl C\) chooses
   \(C_0\in[\kappa]^{\leq\omega}\), followed by \(\pl F\) choosing
   \(F_0\in[\kappa]^{<\omega}\). In round \(n+1\), \(\pl C\) chooses
@@ -268,8 +282,8 @@ played upon \(\oneptlind\kappa\).
   by \(\pl F\) choosing \(F_{n+1}\in[\kappa]^{<\omega}\).
 
   \(\pl F\) wins the game if
-  \(\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n\); otherwise, \(\pl C\)
-  wins.
+  \(\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n\); otherwise,
+  \(\pl C\) wins.
 \end{game}
 
 In \(\menGame{\oneptlind\kappa}\), \(\pl C\) essentially chooses a countable set
@@ -277,76 +291,78 @@ to not include in her neighborhood of \(\infty\), followed by \(\pl F\) choosing
 a finite subset of this complement to cover during each round. Thus,
 \(\pl F\) need only be concerned with the \textit{intersection} of the
 countable sets chosen by \(\pl C\) in \(\menGame{\oneptlind\kappa}\), rather
-than the union as in \(\cloFillStrictGame\kappa\).
+than the union as in \(\schFillStrictGame\kappa\).
 
-Another difference: Scheepers required that \(\pl C\) always choose strictly
-growing countable sets. The reasoning is clear: if the goal is to study tactics,
-then \(\pl C\) cannot be allowed to trap \(\pl F\) in a loop by repeating the same
+Another difference between these games:
+Scheepers required that \(\pl C\) always choose strictly
+growing countable sets. If the goal is to study tactics,
+then \(\pl C\) cannot be allowed to trap \(\pl F\) in a loop by
+repeating the same
 moves. But by eliminating this requirement, the study can then turn to Markov
 strategies, bringing the game further in line with the Menger game played upon
 \(\oneptlind\kappa\).
 
 We introduce a few games to make the relationship between Scheeper's
-\(\cloFillStrictGame\kappa\) and \(\menGame{\oneptlind\kappa}\) more precise.
+\(\schFillStrictGame\kappa\) and \(\menGame{\oneptlind\kappa}\) more precise.
 
 \begin{game}
-  Let \(\cloFillGame\kappa\) denote the
+  Let \(\schFillGame\kappa\) denote the
   \term{union filling game} which proceeds analogously
-  to \(\cloFillStrictGame\kappa\), except that \(\pl C\)'s restriction in round \(n+1\)
+  to \(\schFillStrictGame\kappa\), except that \(\pl C\)'s restriction in round \(n+1\)
   is reduced to \(C_{n+1}\supseteq C_n\).
 \end{game}
 
 \begin{game}
-  Let \(\cloFillInitialGame\kappa\) denote the
+  Let \(\schFillInitialGame\kappa\) denote the
   \term{initial filling game} which proceeds analogously
-  to \(\cloFillGame\kappa\), except that \(\pl F\) wins whenever
+  to \(\schFillGame\kappa\), except that \(\pl F\) wins whenever
   \(\bigcup_{n<\omega}F_n\supseteq C_0\).
 \end{game}
 
 \begin{game}
-  Let \(\cloFillIntGame\kappa\) denote the
+  Let \(\schFillIntGame\kappa\) denote the
   \term{intersection filling game} which proceeds analogously
-  to \(\cloFillInitialGame\kappa\), except that \(\pl C\) may choose any
+  to \(\schFillInitialGame\kappa\), except that \(\pl C\) may choose any
   \(C_n\in[\kappa]^{\leq\omega}\) each round, and \(\pl F\) wins whenever
   \(\bigcup_{n<\omega}F_n\supseteq\bigcap_{n<\omega}C_n\).
 \end{game}
 
 \begin{figure}[h]
 \begin{center}
-% \begin{tikzpicture}
-%   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-%   {
-%     \pl F \kmarkwin{k}\menGame{\oneptlind\kappa} &
-%     \pl F \kmarkwin{k}\cloFillIntGame\kappa \\
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+  {
+    \pl F \kmarkwin{k+1}\menGame{\oneptlind\kappa} &
+    \pl F \kmarkwin{k+1}\schFillIntGame\kappa \\
 
-%     \pl F \kmarkwin{k}\cloFillInitialGame\kappa &
-%     \pl F \kmarkwin{k}\cloFillGame\kappa \\
+    \pl F \kmarkwin{k+1}\schFillInitialGame\kappa &
+    \pl F \kmarkwin{k+1}\schFillGame\kappa \\
 
-%     &
-%     \pl F \ktactwin{k}\cloFillStrictGame\kappa \\
-%   };
-%   \path[>=latex,->]
-%     (m-1-1) edge (m-2-1)
-%     (m-1-2) edge (m-2-2)
-%     (m-3-2) edge (m-2-2);
-%   \path[>=latex,<->]
-%     (m-1-1) edge (m-1-2)
-%     (m-2-1) edge (m-2-2);
-% \end{tikzpicture}
+    &
+    \pl F \ktactwin{k+1}\schFillStrictGame\kappa \\
+  };
+  \path[>=latex,->]
+    (m-1-1) edge (m-2-1)
+    (m-1-2) edge (m-2-2)
+    (m-3-2) edge (m-2-2);
+  \path[>=latex,<->]
+    (m-1-1) edge (m-1-2)
+    (m-2-1) edge (m-2-2);
+\end{tikzpicture}
 \end{center}
-\caption{Diagram of Filling/Menger game implications}
+\caption{Diagram of Scheepers/Menger game implications}
 \label{fillingGamesDiagram}
 \end{figure}
 
 \begin{theorem}
-For any cardinal \(\kappa>\omega\) and integer \(k<\omega\),
+For any cardinal \(\kappa\geq\omega\) and integer \(k<\omega\),
 Figure \ref{fillingGamesDiagram} holds.
 \end{theorem}
 
 \begin{proof}
-  \(\pl F \kmarkwin{k}\menGame{\oneptlind\kappa}
+  \(\pl F \kmarkwin{k+1}\menGame{\oneptlind\kappa}
     \Rightarrow
-  \pl F \kmarkwin{k}\cloFillIntGame\kappa\):
+  \pl F \kmarkwin{k+1}\schFillIntGame\kappa\):
   Let \(\sigma\) be a winning \(k\)-mark for \(\pl F\) in
   \(\menGame{\oneptlind\kappa}\). Let \(\mc U(C)\) (resp. \(\mc U(s)\)) convert each
   countable subset \(C\) of \(\kappa\) (resp. finite sequence \(s\) of such subsets)
@@ -357,13 +373,13 @@ Figure \ref{fillingGamesDiagram} holds.
         =
       C\cap\sigma(\mc U(s\concat\<C\>),n)
     \]
-  is a winning \(k\)-mark for \(\pl F\) in \(\cloFillIntGame\kappa\).
+  is a winning \((k+1)\)-mark for \(\pl F\) in \(\schFillIntGame\kappa\).
 
-  \(\pl F \kmarkwin{k}\cloFillIntGame\kappa
+  \(\pl F \kmarkwin{k+1}\schFillIntGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\menGame{\oneptlind\kappa}\):
+  \pl F \kmarkwin{k+1}\menGame{\oneptlind\kappa}\):
   Let \(\sigma\) be a winning \(k\)-mark for \(\pl F\) in
-  \(\cloFillIntGame\kappa\). Let \(C(\mc U)\) (resp. \(C(s)\)) convert each open
+  \(\schFillIntGame\kappa\). Let \(C(\mc U)\) (resp. \(C(s)\)) convert each open
   cover \(\mc U\) of \(\oneptlind\kappa\) (resp. finite sequence \(s\) of such covers)
   into a countable set \(C\) which is the complement of some neighborhood of
   \(\infty\) in \(\mc U\) (resp. finite sequence of such countable sets).
@@ -375,19 +391,19 @@ Figure \ref{fillingGamesDiagram} holds.
         \cup
       \sigma(C(s\concat\<\mc U)\>),n)
     \]
-  is a winning \(k\)-mark for \(\pl F\) in \(\menGame{\oneptlind\kappa}\).
+  is a winning \((k+1)\)-mark for \(\pl F\) in \(\menGame{\oneptlind\kappa}\).
 
-  \(\pl F \kmarkwin{k}\cloFillIntGame\kappa
+  \(\pl F \kmarkwin{k+1}\schFillIntGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\cloFillInitialGame\kappa\):
+  \pl F \kmarkwin{k+1}\schFillInitialGame\kappa\):
   Let \(\sigma\) be a winning \(k\)-mark for \(\pl F\) in
-  \(\cloFillIntGame\kappa\). \(\sigma\) is also a winning \(k\)-mark for \(\pl F\)
-  in \(\cloFillInitialGame\kappa\).
+  \(\schFillIntGame\kappa\). \(\sigma\) is also a winning \(k\)-mark for \(\pl F\)
+  in \(\schFillInitialGame\kappa\).
 
-  \(\pl F \kmarkwin{k}\cloFillInitialGame\kappa
+  \(\pl F \kmarkwin{k+1}\schFillInitialGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\cloFillGame\kappa\): Let \(\sigma\) be a winning \(k\)-mark for \(\pl F\) in
-  \(\cloFillInitialGame\kappa\). For each finite sequence \(s\), let \(t\preceq s\) mean \(t\)
+  \pl F \kmarkwin{k+1}\schFillGame\kappa\): Let \(\sigma\) be a winning \(k\)-mark for \(\pl F\) in
+  \(\schFillInitialGame\kappa\). For each finite sequence \(s\), let \(t\preceq s\) mean \(t\)
   is a final subsequence of \(s\). Then \(\tau\) defined by
     \[
       \tau(s\concat\<C\>,n)
@@ -395,20 +411,21 @@ Figure \ref{fillingGamesDiagram} holds.
       \bigcup_{t\preceq s, m\leq n}
       \sigma(t\concat\<C\>,m)
     \]
-  is a winning \(k\)-mark for \(\pl F\) in \(\cloFillGame\kappa\).
+  is a winning \((k+1)\)-mark for \(\pl F\) in \(\schFillGame\kappa\).
 
-  \(\pl F \kmarkwin{k}\cloFillGame\kappa
+  \(\pl F \kmarkwin{k+1}\schFillGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\cloFillInitialGame\kappa\):
+  \pl F \kmarkwin{k+1}\schFillInitialGame\kappa\):
   Let \(\sigma\) be a winning \(k\)-mark for \(\pl F\) in
-  \(\cloFillGame\kappa\). \(\sigma\) is also a winning \(k\)-mark for \(\pl F\)
-  in \(\cloFillInitialGame\kappa\).
+  \(\schFillGame\kappa\). \(\sigma\) is also a winning
+  \((k+1)\)-mark for \(\pl F\)
+  in \(\schFillInitialGame\kappa\).
 
-  \(\pl F \ktactwin{k}\cloFillStrictGame\kappa
+  \(\pl F \ktactwin{k+1}\schFillStrictGame\kappa
     \Rightarrow
-  \pl F \kmarkwin{k}\cloFillGame\kappa\):
+  \pl F \kmarkwin{k+1}\schFillGame\kappa\):
   Let \(\sigma\) be a winning \(k\)-tactic for \(\pl F\) in
-  \(\cloFillStrictGame\kappa\). For each countable subset \(C\) of \(\kappa\), let \(C+n\)
+  \(\schFillStrictGame\kappa\). For each countable subset \(C\) of \(\kappa\), let \(C+n\)
   be the union of \(C\) with the \(n\) least ordinals in \(\kappa\setminus C\).
   Then \(\tau\) defined by
     \[
@@ -416,10 +433,10 @@ Figure \ref{fillingGamesDiagram} holds.
         =
       \sigma(\<C_0+(n-i),\dots,C_i+n\>)
     \]
-  is a winning \(k\)-mark for \(\pl F\) in \(\cloFillGame\kappa\).
+  is a winning \((k+1)\)-mark for \(\pl F\) in \(\schFillGame\kappa\).
 \end{proof}
 
-While we have not proven a direct implication between the Menger game and
+While we have not shown a direct implication between the Menger game and
 Scheeper's original filling game, Scheepers introduced the statement
 \(\alcompS\kappa\) relating to the almost-compatability of functions
 from countable subsets of \(\kappa\) into \(\omega\) which may be applied to
@@ -445,7 +462,7 @@ both.
 \end{definition}
 
 Scheepers went on to show that \(\alcompS\kappa\) implies
-\(\pl F \ktactwin2 \cloFillStrictGame\kappa\). This proof, along with the following
+\(\pl F \ktactwin2 \schFillStrictGame\kappa\). This proof, along with the following
 facts, give us inspiration for
 finding a winning \(2\)-Markov strategy in the Menger game played on
 \(\oneptlind\kappa\).
@@ -468,32 +485,32 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 
 \begin{figure}[h]
 \begin{center}
-% \begin{tikzpicture}
-%   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-%   {
-%     &
-%     \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
-%     \pl F \kmarkwin2\cloFillIntGame\kappa \\
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+  {
+    &
+    \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
+    \pl F \kmarkwin2\schFillIntGame\kappa \\
 
-%     \alcompS\kappa &
-%     \pl F \kmarkwin2\cloFillInitialGame\kappa &
-%     \pl F \kmarkwin2\cloFillGame\kappa \\
+    \alcompS\kappa &
+    \pl F \kmarkwin2\schFillInitialGame\kappa &
+    \pl F \kmarkwin2\schFillGame\kappa \\
 
-%     &
-%     &
-%     \pl F \ktactwin2\cloFillStrictGame\kappa \\
-%   };
-%   \path[>=latex,->]
-%     (m-2-1) edge (m-1-2)
-%     (m-2-1) edge (m-2-2)
-%     (m-2-1) edge (m-3-3)
-%     (m-1-2) edge (m-2-2)
-%     (m-1-3) edge (m-2-3)
-%     (m-3-3) edge (m-2-3);
-%   \path[>=latex,<->]
-%     (m-1-2) edge (m-1-3)
-%     (m-2-2) edge (m-2-3);
-% \end{tikzpicture}
+    &
+    &
+    \pl F \ktactwin2\schFillStrictGame\kappa \\
+  };
+  \path[>=latex,->]
+    (m-2-1) edge (m-1-2)
+    (m-2-1) edge (m-2-2)
+    (m-2-1) edge (m-3-3)
+    (m-1-2) edge (m-2-2)
+    (m-1-3) edge (m-2-3)
+    (m-3-3) edge (m-2-3);
+  \path[>=latex,<->]
+    (m-1-2) edge (m-1-3)
+    (m-2-2) edge (m-2-3);
+\end{tikzpicture}
 \end{center}
 \caption{Diagram of Filling/Menger game implications with \(\alcompS\kappa\)}
 \label{fillingGamesDiagram2}
@@ -505,9 +522,9 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 \end{theorem}
 
 \begin{proof}
-  Since \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\cloFillStrictGame\kappa\) was
+  Since \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\) was
   a main result of \cite{MR1129143}, it is sufficient to show that
-  \(\alcompS\kappa\Rightarrow \pl F \kmarkwin2\cloFillIntGame\kappa\).
+  \(\alcompS\kappa\Rightarrow \pl F \kmarkwin2\schFillIntGame\kappa\).
 
   Let \(f_A\) for \(A\in[\kappa]^{\leq\omega}\) witness \(\alcompS\kappa\). We define
   the \(2\)-mark \(\sigma\) as follows:
@@ -540,40 +557,40 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 
 \begin{figure}[h]
 \begin{center}
-% \begin{tikzpicture}
-%   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-%   {
-%      \pl F \markwin \menGame{X} &
-%      \pl F \kmarkwin2 \menGame{X} &
-%      \pl F \win \menGame{X} &
-%      \pl C \notwin \menGame{X} \\
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+  {
+     \pl F \markwin \menGame{X} &
+     \pl F \kmarkwin2 \menGame{X} &
+     \pl F \win \menGame{X} &
+     \pl C \notwin \menGame{X} \\
 
-%      \text{Markov Menger} &
-%      2\text{-Markov Menger} &
-%      \text{Perfect Menger} &
-%      \text{Menger} \\
-%   };
-%   \path[>=latex,<->]
-%     (m-1-1) edge (m-2-1)
-%     (m-1-2) edge (m-2-2)
-%     (m-1-3) edge (m-2-3)
-%     (m-1-4) edge (m-2-4);
-%   \path[>=latex,->]
-%     (m-1-1) edge (m-1-2)
-%     (m-2-1) edge (m-2-2)
-%     (m-1-2) edge (m-1-3)
-%     (m-2-2) edge (m-2-3)
-%     (m-1-3) edge (m-1-4)
-%     (m-2-3) edge (m-2-4);
-%   \path[>=latex,->,bend right=30, dotted]
-%     (m-1-2) edge node {\( \not \)} (m-1-1)
-%     (m-2-2) edge node {\( \not \)} (m-2-1)
-%     (m-1-4) edge node {\( \not \)} (m-1-3)
-%     (m-2-4) edge node {\( \not \)} (m-2-3);
-%   \path[>=latex,->,bend right=30, dotted]
-%     (m-1-3) edge node {\( ? \)} (m-1-2)
-%     (m-2-3) edge node {\( ? \)} (m-2-2);
-% \end{tikzpicture}
+     \text{Markov Menger} &
+     2\text{-Markov Menger} &
+     \text{Perfect Menger} &
+     \text{Menger} \\
+  };
+  \path[>=latex,<->]
+    (m-1-1) edge (m-2-1)
+    (m-1-2) edge (m-2-2)
+    (m-1-3) edge (m-2-3)
+    (m-1-4) edge (m-2-4);
+  \path[>=latex,->]
+    (m-1-1) edge (m-1-2)
+    (m-2-1) edge (m-2-2)
+    (m-1-2) edge (m-1-3)
+    (m-2-2) edge (m-2-3)
+    (m-1-3) edge (m-1-4)
+    (m-2-3) edge (m-2-4);
+  \path[>=latex,->,bend right=30, dotted]
+    (m-1-2) edge node {\( \not \)} (m-1-1)
+    (m-2-2) edge node {\( \not \)} (m-2-1)
+    (m-1-4) edge node {\( \not \)} (m-1-3)
+    (m-2-4) edge node {\( \not \)} (m-2-3);
+  \path[>=latex,->,bend right=30, dotted]
+    (m-1-3) edge node {\( ? \)} (m-1-2)
+    (m-2-3) edge node {\( ? \)} (m-2-2);
+\end{tikzpicture}
 \end{center}
 \caption{Diagram of covering properties related to the Menger game}
 \label{menSpec}
