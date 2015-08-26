@@ -443,10 +443,8 @@ from countable subsets of \(\kappa\) into \(\omega\) which may be applied to
 both.
 
 \begin{definition}
-  For two functions \(f,g\) we say \(f\) is \textbf{\(\mu\)-almost compatible} with
-  \(g\) (\(f\alcomp_\mu g\)) if \(|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\mu\).
-  If \(\mu=\omega\) then we say \(f,g\) are \textbf{almost compatible}
-  (\(f\alcomp g\)).
+  For two functions \(f,g\) we say \(f\) is \textbf{almost compatible} with
+  \(g\) (\(f\alcomp g\)) if \(|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega\).
 \end{definition}
 
 \begin{definition}
@@ -468,16 +466,17 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 \(\oneptlind\kappa\).
 
 \begin{theorem}
-  \(\alcompS{\omega_1}\) and \(\kappa>2^\omega\Rightarrow\neg\alcompS\kappa\)
+  \(\alcompS{\omega_1}\) and \(\neg\alcompS{\mf c^+}\)
   are theorems of \(ZFC\).
-  \(\alcompS{2^\omega}\) is a theorem of \(ZFC+CH\) and consistent with
+  \(\alcompS{\mf c}\) is a theorem of \(ZFC+CH\) and consistent with
   \(ZFC+\neg CH\).
 \end{theorem}
 
 \begin{proof}
-  For \(\alcompS{\omega_1}\), look at pg. 70 of \cite{MR597342}; this of course
-  implies \(\alcompS{2^\omega}\) under \(CH\).
-  \(\neg\alcompS{(2^\omega)^+}\) is shown by a cardinality argument
+  For \(\alcompS{\omega_1}\), consider the construction of an Aronzajn tree
+  as in \cite{MR597342}; this of course
+  implies \(\alcompS{\mf c}\) under \(CH\).
+  \(\neg\alcompS{\mf c^+}\) is shown by a cardinality argument
   in \cite{MR1129143}.
   The consistency result under \(ZFC+\neg CH\)
   is a lemma for the main theorem in \cite{MR1129143}.
@@ -606,12 +605,12 @@ we do not know if the middle two properties are actually distinct.
 \end{question}
 
 Note that while it's consistent that
-\(\pl F\kmarkwin2\menGame{\oneptlind{(2^\omega)}}\), \(\oneptlind{\kappa}\)
-for \(\kappa>2^\omega\) is a candidate to answer the above question.
+\(\pl F\kmarkwin2\menGame{\oneptlind{\mf c}}\), \(\oneptlind{\kappa}\)
+for \(\kappa>\mf c\) is a candidate to answer the above question.
 
 We are also interested in non-game-theoretic characterizations of these
-covering properties. It has been known for some time that for metrizable spaces,
-winning Menger spaces are exactly the \(\sigma\)-compact spaces, shown first
+covering properties. It has been known for some time that metrizable perfect
+Menger spaces are exactly the metrizable \(\sigma\)-compact spaces, shown first
 by Telgarksy in \cite{MR753073} and later directly by Scheepers in
 \cite{MR1273523}.
 
@@ -623,35 +622,10 @@ spaces without any separation axioms.
   cover of \(X\), there exists a finite subcollection which covers \(Y\).
 \end{definition}
 
-For example, any bounded subset of Euclidean space is relatively compact
-whether it is closed or not. Actually, relative compactness can be thought
-of as an analogue of boundedness for regular spaces.
-
 \begin{proposition}
   For regular spaces, \(Y\) is relatively compact to \(X\) if and only if
   \(\cl Y\) is compact in \(X\).
-  \footnote{
-    It should be noted that some authors define relative compactness in
-    this way, but such a definition creates pathological implications for
-    non-regular spaces. For example, the singleton containing
-    the particular point of an infinite space with the particular point topology
-    would not be relatively compact since its closure is not compact, even
-    though it is finite.
-  }
 \end{proposition}
-
-\begin{proof}
-  For any space, any subset of a compact set is relatively compact.
-
-  Assume \(Y\) is relatively compact, let \(\mc U\) be an open cover of \(\cl Y\),
-  and define \(x\in V_x\subseteq \cl{V_x}\subseteq U_x \in \mc U\) for each
-  \(x\in X\). Then if we take a subcollection \(\mc F = \{V_{x_i} : i<n\}\) covering
-  \(Y\) by relative compactness, then \(\{U_{x_i}:i<n\}\) is a finite subcollection
-  of \(\mc U\) covering \(\cl Y\), showing compactness.
-\end{proof}
-
-We now begin the process of factoring out Scheeper's proof to reveal the
-limited information implications at work.
 
 \begin{lemma}
   Let \(\sigma(\mc{U}, n)\) be a Markov strategy for \(F\) in
@@ -682,15 +656,15 @@ limited information implications at work.
   The following are equivalent:
   \begin{itemize}
     \item \(X\) is \(\sigma\)-relatively-compact
-    \item \(\pl F \prewin \menGame X\)
+    \item \(\pl F \kmarkwin0 \menGame X\)
     \item \(\pl F \markwin \menGame X\)
   \end{itemize}
 \end{corollary}
 
 \begin{proof}
   If \(X=\bigcup_{n<\omega} R_n\) for \(R_n\) relatively compact, then
-  \(\sigma(n)=R_n\) is a winning predetermined strategy, which yields a
-  winning Markov strategy. The previous lemma finishes the proof.
+  \(\sigma(n)=R_n\) is a winning \(0\)-mark, which of course gives a
+  winning \(1\)-mark. The previous lemma finishes the proof.
 \end{proof}
 
 \begin{corollary}
@@ -698,7 +672,7 @@ limited information implications at work.
   \begin{itemize}
     \item \(X\) is \(\sigma\)-compact
     \item \(X\) is \(\sigma\)-relatively-compact
-    \item \(\pl F \prewin \menGame X\)
+    \item \(\pl F \kmarkwin0 \menGame X\)
     \item \(\pl F \markwin \menGame X\)
   \end{itemize}
 \end{corollary}
@@ -758,7 +732,7 @@ this way:
   Let \(X\) be a second-countable space. The following are equivalent:
   \begin{itemize}
     \item \(X\) is \(\sigma\)-relatively-compact
-    \item \(F \prewin \menGame{X}\)
+    \item \(F \kmarkwin0 \menGame{X}\)
     \item \(F \markwin \menGame{X}\)
     \item \(F \win \menGame{X}\)
   \end{itemize}
@@ -769,14 +743,14 @@ this way:
   \begin{itemize}
     \item \(X\) is \(\sigma\)-compact
     \item \(X\) is \(\sigma\)-relatively-compact
-    \item \(F \prewin \menGame{X}\)
+    \item \(F \kmarkwin0 \menGame{X}\)
     \item \(F \markwin \menGame{X}\)
     \item \(F \win \menGame{X}\)
   \end{itemize}
 \end{corollary}
 
 \begin{proof}
-  Each property implies Lindel\"of, so \(X\) may be assumed to be
+  Each bullet implies \(X\) is Lindel\"of, so \(X\) may be assumed to be
   regular and second-countable.
 \end{proof}
 
@@ -785,7 +759,7 @@ this way:
 \section{Robustly Lindel\"of}
 
 To help describe \(\pl F\kmarkwin2\menGame{X}\) topologically, we introduce a
-subset variant of the Menger game and a related covering property.
+slight variant of the Menger game and a related covering property.
 
 \begin{game}
   Let \(\menGame{X,Y}\) denote the \term{Menger subspace game} which proceeds
@@ -906,7 +880,7 @@ Note of course that \(\menGame{X,X}=\menGame{X}\).
   is finite.
 \end{proof}
 
-We may also consider common (non-regular) counterexamples which are finer
+We may also consider common counterexamples which are finer
 than the usual Euclidean line.
 
 \begin{definition}
@@ -914,29 +888,17 @@ than the usual Euclidean line.
   intervals with or without the rationals removed.
 \end{definition}
 
-\begin{theorem}
+\begin{example}
   \(R_{\mathbb Q}\) is non-regular and non-\(\sigma\)-compact, but is
   second-countable and \(\sigma\)-relatively-compact.
-\end{theorem}
+\end{example}
 
 \begin{proof}
-  Compact sets in \(R_{\mathbb Q}\) can be shown to not contain open intervals,
+  Compact sets in \(R_{\mathbb Q}\) cannot contain open intervals,
   and thus are nowhere dense in nonmeager \(\mathbb R\),
   so \(R_{\mathbb Q}\) is not \(\sigma\)-compact. The usual base of
   intervals with rational endpoints (with or without rationals removed)
-  witnesses second-countability.
-
-  To see that \(R_{\mathbb Q}\) is \(\sigma\)-relatively compact, consider
-  \([a,b]\setminus\mathbb{Q}\). Let \(\mc U\) be a cover of \(R_{\mathbb Q}\), and
-  let \(\mc U'\) fill in the missing rationals for any open set in \(\mc U\).
-  There is a finite subcover \(\mc V'\subseteq \mc U'\) for \([a,b]\) since
-  \(\mc U'\) contains open sets from the Euclidean topology. Let
-  \(\mc V= \{V\setminus\mathbb{Q}:V\in V'\}\): this is a finite refinment of
-  \(\mc U\) covering \([a,b]\setminus\mathbb{Q}\), so \([a,b]\setminus\mathbb{Q}\)
-  is relatively compact. It follows then that \(R_{\mathbb Q}\setminus\mathbb Q\)
-  is \(\sigma\)-relatively-compact, and since \(\mathbb Q\) is countable,
-  \(R_{\mathbb Q}\) is \(\sigma\)-relatively-compact. Non-regularity follows since
-  regular and \(\sigma\)-relatively-compact implies \(\sigma\)-compact.
+  witnesses second-countability, and \([-n,n]\) is relatively compact.
 \end{proof}
 
 \begin{definition}
@@ -944,68 +906,62 @@ than the usual Euclidean line.
   intervals with countably many points removed.
 \end{definition}
 
-\begin{theorem}
+\begin{example}
   \(R_\omega\) is non-regular, non-second-countable, and
   non-\(\sigma\)-relatively-compact, but \(\pl F\win\menGame{R_\omega}\).
-\end{theorem}
+\end{example}
 
 \begin{proof}
-  The closure of any open set is its closure in the usual Euclidean topology,
-  so \(R_\omega\) is not regular. If \(S\supseteq\{s_n:n<\omega\}\) for \(s_n\)
+  If \(S\supseteq\{s_n:n<\omega\}\) for \(s_n\)
   discrete, then \(U_m=R_\omega\setminus\{s_n:m<n<\omega\}\) yields an
   infinite cover \(\{U_m:m<\omega\}\) with no finite subcollection covering \(S\),
   showing that all relatively compact sets are finite, and \(R_\omega\) is not
   \(\sigma\)-relatively-compact.
 
   Define the winning strategy \(\sigma\) for \(\pl F\) in \(\menGame{R_\omega}\) as
-  follows: let \(\sigma(\mc{U}_0,\dots,\mc{U}_{2n})=[-n,n]\setminus C_n\)
+  follows: let \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n}\>)=[-n,n]\setminus C_n\)
   for some countable \(C_n=\{c_{n,m}: m<\omega\}\),
-  and let \(\sigma(\mc{U}_0,\dots,\mc{U}_{2n+1})=\{c_{i,j} : i,j < n\}\).
-  Non-second-countable follows since
-  second-countable and \(\pl F\win\menGame{X}\) implies
-  \(\sigma\)-relatively-compact.
+  and let \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n+1}\>)=\{c_{i,j} : i,j < n\}\).
 \end{proof}
 
-We will soon see that, assuming \(\alcompS{2^\omega}\), \(\pl F\) has a winning
+We will soon see that, assuming \(\alcompS{\mf c}\), \(\pl F\) has a winning
 \(2\)-Mark\"ov strategy for \(\menGame{R_\omega}\) as well.
 
 \begin{proposition}
-  Let \(\limitwin\) be either \(\kmarkwin{k}\) or \(\win\).
-  If \(X=\bigcup_{i<\omega} X_i\) and \(\pl F \limitwin \menGame{X,X_i}\)
-  for \(i<\omega\), then \(\pl F \limitwin \menGame{X}\)
+  If \(X=\bigcup_{i<\omega} X_i\) and \(\pl F \kmarkwin{k} \menGame{X,X_i}\)
+  for \(i<\omega\), then \(\pl F \kmarkwin{k} \menGame{X}\)
 \end{proposition}
 
 \begin{proof}
-  Let \(L\) be the \(k\)-Markov fog-of-war \(\mu_k\) (resp. the identity),
-  and let \(\sigma_i\) be a \(k\)-Markov strategy (resp. perfect information
-  strategy) for \(\pl F\) in \(\menGame{X,X_i}\).
+  Let \(\sigma_i\) be a \(k\)-Markov strategy
+  for \(\pl F\) in \(\menGame{X,X_i}\).
 
-  We define the \(k\)-Markov strategy (resp. perfect information strategy)
+  We define the \(k\)-Markov strategy
   \(\sigma\) for \(\menGame{X}\) as follows:
     \[
-      \sigma\circ L(\<\mc U_0,\dots,\mc U_n\>)
+      \sigma(\<\mc U_0,\dots,\mc U_n\>)
         =
       \bigcup_{i\leq n}
-      \sigma_i\circ L(\<\mc U_i,\dots,\mc U_n\>)
+      \sigma_i(\<\mc U_i,\dots,\mc U_n\>)
     \]
 
   Let \(\<\mc U_0,\mc U_1,\dots\>\) be a successful counter-attack by \(\pl C\)
   against \(\sigma\). Then there exists \(x\in X_i\) for
   some \(i<\omega\) such that \(x\) is not covered by
-  \(\bigcup_{n<\omega}\sigma\circ L(\<\mc U_0,\dots,\mc U_n\>)\).
+  \(\bigcup_{n<\omega}\sigma(\<\mc U_0,\dots,\mc U_n\>)\).
   It follows that \(x\) is not covered by
-  \(\bigcup_{n<\omega}\sigma_i\circ L(\<\mc U_i,\dots,\mc U_{i+n}\>)\),
+  \(\bigcup_{n<\omega}\sigma_i(\<\mc U_i,\dots,\mc U_{i+n}\>)\),
   and \(\<\mc U_i,\mc U_{i+1},\dots\>\) is a successful counter-attack
   by \(\pl C\) against \(\sigma_i\).
 \end{proof}
 
-\begin{theorem}
-  If \(\alcompS{2^\omega}\), then \(\pl F\kmarkwin2\menGame{R_\omega}\).
+\begin{theorem}[\(\alcompS{\mf c}\)]
+  \(\pl F\kmarkwin2\menGame{R_\omega}\).
 \end{theorem}
 
 \begin{proof}
   It's sufficient to show that \([0,1]\subseteq R_\omega\) is relatively
-  robustly Menger. Let \(f_A\) witness \(\alcompS{2^\omega}\)
+  robustly Menger. Let \(f_A\) witness \(\alcompS{\mf c}\)
   for \(A\in[[a,b]]^{\leq\omega}\).
   For each open cover \(\mc U\), let \(A_{\mc U}\) be
   such that \([0,1]\setminus A_{\mc U}\) is \(\mc U\)-finite.
