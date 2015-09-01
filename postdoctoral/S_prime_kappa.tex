@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+
+\usepackage{../clontzStyle}
+\usepackage{../clontzDefinitions}
+
+\begin{document}
+
+  \begin{remark}
+    Scheeper's \(S(\kappa)\) requiring injections is stronger than my
+    \(S'(\kappa)\) requiring finite-to-one maps. Dow suggests that
+    \(S'(\omega_2)\) holds in ZFC. Here's my writeup of his argument.
+  \end{remark}
+
+  \begin{definition}
+    A topological space is said to be \(\omega\)-bounded if each countable
+    subset of the space has compact closure.
+  \end{definition}
+
+  \begin{claim*}
+    There exists a topology on \(\omega_2\) which is locally countable
+    and \(\aleph_0\)-bounded.
+  \end{claim*}
+
+  \begin{proposition}
+    A space which is locally countable and \(\omega\)-bounded is also
+    locally compact, locally second-countable, and scattered.
+  \end{proposition}
+
+  \begin{proof}
+    A countable neighborhood has compact closure by \(\omega\)-boundedness,
+    which gives local compactness.
+
+    By local countability, we have local secound-countability.
+
+    TODO: figure out trick to get scattered.
+  \end{proof}
+
+  \begin{theorem*}
+    \(S'(\omega_2)\).
+  \end{theorem*}
+
+  \begin{proof}
+    For \(\alpha<\omega_2\), let \(W_\alpha\) be the
+    intersection of a countable and compact neighborhood in the claimed topology
+    on \(\omega_2\).
+  \end{proof}
+
+\end{document}
