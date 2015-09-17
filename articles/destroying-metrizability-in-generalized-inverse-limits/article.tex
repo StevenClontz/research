@@ -149,11 +149,22 @@ A detailed study of inverse limits with a single idempotent surjective u.s.c. bo
 \begin{lemma} \label{idemlemma}  Let $X$ be a compact Hausdorff space and let $f: X \rightarrow 2^{X}$ be u.s.c. Then $f$ is idempotent if and only if, whenever $f(x) = A$ for some $x \in X$ and $A \subseteq X$, $f(A) = A$.
 \end{lemma}
 
+Ingram and Mahavier showed in \cite{i m paper} that $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is non-empty and compact. They also found that
+if $f_{\alpha \beta}$ is always continuum-valued, then $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is also connected, and therefore a Hausdorff continuum. Greenwood and Kennedy showed in \cite{greenwood kennedy} that there is a non-continuum-valued u.s.c. surjective idempotent bonding map $f$ for which $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is disconnected.
+
 \section{Main Results}
 
 We now focus on the case of an inverse limit with a single idempotent, surjective, u.s.c. bonding function $f: [0,1] \rightarrow C([0,1])$. The main goal of this paper is to prove that if such an $f$ is not the identity and $\kappa$ is a nonzero ordinal, then the inverse limit $\varprojlim \{[0,1], f, \kappa\}$ is metric exactly when the index set $\kappa$ is countable.
 
-Let us say a subset $S$ of $[0,1]^2$ satisfies condition $\Gamma$ if, for some $x, y \in [0,1]$ with $x \ne y$, $\<x,x\> \in S$, $\<y,y\> \in S$, and either $\<x,y\>$ or $\<y,x\> \in S$. Let $\Delta = \{\<a,a\> \ | \ a \in [0,1]\}$, and notice that $[0,1]^2 \setminus \Delta$ is the union of two disjoint open sets.
+Let us say a subset $S$ of $[0,1]^2$ satisfies condition $\Gamma$ if, for some $x, y \in [0,1]$ with $x \ne y$, $\<x,x\> \in S$, $\<y,y\> \in S$, and either $\<x,y\>$ or $\<y,x\> \in S$; see Figure \ref{conditionGamma}. Let $\Delta = \{\<a,a\> \ | \ a \in [0,1]\}$, and notice that $[0,1]^2 \setminus \Delta$ is the union of two disjoint open sets.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=\linewidth]{idempotent_usc_4.pdf}
+\end{center}
+\caption{Non-trivial u.s.c. surjections satisfying condition $\Gamma$}
+\label{conditionGamma}
+\end{figure}
 
 \begin{lemma} \label{first lemma}
 If $f: [0,1] \rightarrow C([0,1])$ is u.s.c., then for some $x \in [0,1]$, $\<x,x\> \in G(f)$.
@@ -224,14 +235,18 @@ Let $\kappa$ be a nonzero ordinal. If $f:[0,1]\to C([0,1])$ is u.s.c., idempoten
 The result follows immediately from Lemma \ref{big lemma} and Lemma \ref{general lemma}.
 \end{proof}
 
-A \textit{Corson compact} space is a compact space which embeds in a $\Sigma$-product of real lines (see \cite{alster}). All compact metric spaces are embeddable in $\mathbb R^\omega$ and therefore Corson compact.
+Note that when $\kappa\geq\omega_1$, $\omega_1\in\kappa+1$ is a point of non-first-countability; therefore any space containing $\kappa+1$ as a subspace is nonmetrizable.
+
+The presence of $\kappa+1$ prevents more than just metrizability, however. Let $\Sigma\mathbb R^\kappa\subseteq \mathbb R^\kappa$ denote the \textit{Sigma-product} of $\kappa$ copies of $\mathbb R$: the subspace for which each sequence has only countably many coordinates of nonzero value. A \textit{Corson compact} space is a compact space which embeds in $\Sigma\mathbb R^\kappa$ for some $\kappa$ (see \cite{alster}).
+
+All compact metric spaces are embeddable in $\mathbb R^\omega=\Sigma\mathbb R^\omega$ and therefore Corson compact. In addition, every closed subspace of a Corson compact is Corson compact. While $\Sigma\mathbb R^\kappa$ is not first-countable for $\kappa\geq\omega_1$, any subspace holds the weaker notion of being a $W$-space as defined by Gruenhage in \cite{gruenhage}. However, $\omega_1+1$ does not, as every countable sequence of ordinals less than $\omega_1$ is bounded above and therefore cannot converge to $\omega_1$ itself; therefore any space containing $\kappa+1$ for $\kappa\geq\omega_1$ cannot even be Corson compact.
 
 \begin{corollary} \label{main corr}
 An inverse limit with a single u.s.c., idempotent, surjective bonding function $f: [0,1] \rightarrow C([0,1])$ and index set $\kappa$, a nonzero ordinal, is only metric (in fact, Corson compact) in the case that $\kappa$ is countable or the bonding map is trivial.
 \end{corollary}
 
 \begin{proof}
-If $f = \iota$, then of course the inverse limit is homeomorphic to $[0,1]$. So, suppose $f \ne \iota$. If $\kappa$ is countable, then because the inverse limit is a subspace of $[0,1]^{\kappa}$, it is metric. However, if $\kappa$ is uncountable, then by Theorem \ref{main theorem}, the inverse limit contains a copy of the non-Corson compact space $\kappa + 1$.
+If $f = \iota$, then of course the inverse limit is homeomorphic to $[0,1]$. So, suppose $f \ne \iota$. If $\kappa$ is countable, then because the inverse limit is a subspace of $[0,1]^{\kappa}$, it is metrizable. However, if $\kappa$ is uncountable, then by Theorem \ref{main theorem}, the inverse limit contains a copy of $\kappa + 1$, preventing metrizability and Corson compactness.
 \end{proof}
 
 \section{Examples}
@@ -245,7 +260,6 @@ The following example helped inspire the main theorem of this paper.
 \end{proof}
 
 The discussion of this example in \cite{varagona} implies that this inverse limit is homeomorphic to $Y = (\kappa \times [0,1)) \cup \{\< \kappa, 0 \>\}$ (with the lexicographic order topology) whenever $\kappa$ is a nonzero limit ordinal. If $0 < \kappa < \omega_1$, $Y$ is a metric arc. However, when $\kappa = \omega_1$, $Y$ is the compactified long line, a non-metric space.
-\
 
 We give one more simple example to show that the surjectivity of the bonding function $f$ is necessary.
 
@@ -265,6 +279,15 @@ Clearly $f$ is u.s.c. and idempotent and $f \ne \iota$; however, $G(f)$ does not
 
 \bibitem{char roe} Wlodzimierz J. Charatonik and Robert P. Roe, {\it On Mahavier Products}, Topology and its Applications,
 166, (2014), 92-97.
+
+\smallskip
+
+\bibitem{greenwood kennedy} Greenwood, Sina and Kennedy, Judy, {\it Connected generalized inverse limits}, Topology and its Applications,
+159 (2012), no. 1, 57–68.
+
+\smallskip
+
+\bibitem{gruenhage} G. Gruenhage, {\it Infinite games and generalizations of first-countable spaces}, Gen. Topol. Appl., 6 (1976), pp. 339–352
 
 \smallskip
 
