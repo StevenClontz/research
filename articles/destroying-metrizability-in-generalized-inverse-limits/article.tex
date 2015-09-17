@@ -150,13 +150,13 @@ A detailed study of inverse limits with a single idempotent surjective u.s.c. bo
 \end{lemma}
 
 Ingram and Mahavier showed in \cite{i m paper} that $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is non-empty and compact. They also found that
-if $f_{\alpha \beta}$ is always continuum-valued, then $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is also connected, and therefore a Hausdorff continuum. Greenwood and Kennedy showed in \cite{greenwood kennedy} that there is a non-continuum-valued u.s.c. surjective idempotent bonding map $f$ for which $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is disconnected.
+if $f_{\alpha \beta}$ is always continuum-valued, then $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is also connected, and therefore a Hausdorff continuum. Varagona generalized these results for other index sets (including ordinals $\kappa$) in Theorems 2.1 and 2.2 of \cite{varagona}. Greenwood and Kennedy showed in \cite{greenwood kennedy} that there is a non-continuum-valued u.s.c. surjective idempotent bonding map $f$ for which $\varprojlim \{X_{\alpha}, f, \omega\}$ is disconnected.
 
 \section{Main Results}
 
 We now focus on the case of an inverse limit with a single idempotent, surjective, u.s.c. bonding function $f: [0,1] \rightarrow C([0,1])$. The main goal of this paper is to prove that if such an $f$ is not the identity and $\kappa$ is a nonzero ordinal, then the inverse limit $\varprojlim \{[0,1], f, \kappa\}$ is metric exactly when the index set $\kappa$ is countable.
 
-Let us say a subset $S$ of $[0,1]^2$ satisfies condition $\Gamma$ if, for some $x, y \in [0,1]$ with $x \ne y$, $\<x,x\> \in S$, $\<y,y\> \in S$, and either $\<x,y\>$ or $\<y,x\> \in S$; see Figure \ref{conditionGamma}. Let $\Delta = \{\<a,a\> \ | \ a \in [0,1]\}$, and notice that $[0,1]^2 \setminus \Delta$ is the union of two disjoint open sets.
+Let us say a subset $S$ of $[0,1]^2$ satisfies \textit{condition $\Gamma$} if, for some $x, y \in [0,1]$ with $x \ne y$, $\<x,x\> \in S$, $\<y,y\> \in S$, and either $\<x,y\>$ or $\<y,x\> \in S$; see Figure \ref{conditionGamma}. Let $\Delta = \{\<a,a\> \ | \ a \in [0,1]\}$, and notice that $[0,1]^2 \setminus \Delta$ is the union of two disjoint open sets.
 
 \begin{figure}
 \begin{center}
@@ -218,6 +218,8 @@ If $z\in(x,y]$, then the result follows immediately.
 
 Finally, we demonstrate that $z\in(y,1]$ results in a contradiction. Let $f(z)=[0,d]\subseteq[0,z)$. Since $[0,d]=f(z)=f(f(z))=f([0,d])$, there is some $z'\in[0,d]\subseteq[0,z)$ satisfying $0\in f(z')$, even though $z$ was chosen to be minimal.
 \end{proof}
+
+Note that while we have assumed that $f:[0,1]\to C([0,1])$ (which also guarantees that the inverse limit is a continuum), it is an open question whether $\Gamma$ must also hold for any surjective idempotent u.s.c. $f:[0,1]\to 2^{[0,1]}$ (regardless if the inverse limit remains connected).
 
 \begin{lemma} \label{general lemma}
 Let $\kappa$ be a nonzero ordinal. If $f:[0,1] \to 2^{[0,1]}$ is u.s.c. and idempotent and $G(f)$ satisfies condition $\Gamma$, then $\varprojlim\{[0,1],f,\kappa\}$ contains a copy of $\kappa + 1$.
