@@ -123,7 +123,7 @@ This short paper focuses on the case of an inverse limit with a single idempoten
 
 We begin with some useful notation. Let $X$ be a non-empty compact Hausdorff space. Then we denote by $2^X$ the set of all non-empty compact subsets of $X$. We say a subset $A$ of $X$ is a \emph{continuum} if $A$ is non-empty, compact and connected. $C(X)$ denotes the set of all elements of $2^X$ that are continua.
 
-Suppose $X$ and $Y$ are non-empty compact Hausdorff spaces. Then the set-valued function $f: X \rightarrow 2^{Y}$ is said to be \emph{upper semi-continuous} (u.s.c.) at $x \in X$ if, for every open set $V$ in $Y$ with $f(x) \subseteq V$, there exists an open set $U$ in $X$ with $x \in U$ and $f(u) \subseteq V$ for each $u \in U$. If $f$ is u.s.c. at each $x \in X$, we simply say \emph{$f$ is u.s.c.} If $f: X \rightarrow 2^{Y}$ is a set-valued function, then the \emph{graph of $f$}, denoted $G(f)$, is given by $G(f) = \{\langle x , y \rangle \in X \times Y \ | \ y \in f(x)\}$. (Note that, to help distinguish between ordered pairs and intervals on a linearly ordered space, we will use pointed brackets to denote ordered pairs, e.g., $\langle x , y \rangle$, whereas intervals are given in the traditional way with brackets or parentheses, e.g., $(a,b), [c,d]$, etc.) The set-valued function $f: X \rightarrow 2^{Y}$ is said to be \emph{surjective} if, for every $y \in Y$, there exists $x \in X$ with $y \in f(x)$. If a u.s.c. function $f: X \rightarrow 2^{Y}$ has the property that $f(x)$ is connected for each $x \in X$, then $f$ is \emph{continuum-valued}, and we denote this by writing  $f: X \rightarrow C(Y).$ The \emph{identity on} $X$ is the u.s.c. function $\iota$ given by $\iota(x) = \{x\}$ for all $x \in X$; we may simply say the \emph{identity} (or, more simply, $\iota$) when the space $X$ is understood from context.
+Suppose $X$ and $Y$ are non-empty compact Hausdorff spaces. Then the set-valued function $f: X \rightarrow 2^{Y}$ is said to be \emph{upper semi-continuous} (u.s.c.) at $x \in X$ if, for every open set $V$ in $Y$ with $f(x) \subseteq V$, there exists an open set $U$ in $X$ with $x \in U$ and $f(u) \subseteq V$ for each $u \in U$. If $f$ is u.s.c. at each $x \in X$, we simply say \emph{$f$ is u.s.c.} If $f: X \rightarrow 2^{Y}$ is a set-valued function, then the \emph{graph of $f$}, denoted $G(f)$, is given by $G(f) = \{\langle x , y \rangle \in X \times Y \ | \ y \in f(x)\}$. (Note that, to help distinguish between ordered pairs and intervals on a linearly ordered space, we will use pointed brackets to denote ordered pairs, e.g., $\langle x , y \rangle$, whereas intervals are given in the traditional way with brackets or parentheses, e.g., $(a,b), [c,d]$, etc.) The set-valued function $f: X \rightarrow 2^{Y}$ is said to be \emph{surjective} if, for every $y \in Y$, there exists $x \in X$ with $y \in f(x)$. If a u.s.c. function $f: X \rightarrow 2^{Y}$ has the property that $f(x)$ is connected for each $x \in X$, then $f$ is \emph{continuum-valued}, and we denote this by writing  $f: X \rightarrow C(Y).$ The \emph{identity on} $X$ (also called the \emph{trivial} function on $X$) is the u.s.c. function $\iota$ given by $\iota(x) = \{x\}$ for all $x \in X$; we may simply say the \emph{identity} (or, more simply, $\iota$) when the space $X$ is understood from context.
 
 The following characterization of u.s.c. functions (from \cite{i m paper}) is well-known and often more convenient to work with than the original definition:
 
@@ -134,7 +134,7 @@ If $X$, $Y$, and $Z$ are non-empty compact Hausdorff spaces and $f : X \rightarr
 
 Let $\kappa$ be an ordinal. (We follow the convention of set theory in which an ordinal is equal to the set of its predecessors. For more detailed background on ordinals, see, for example, \cite{Kunen}.) Suppose that for each $\alpha \in \kappa$, $X_{\alpha}$ is a non-empty compact Hausdorff space and whenever $\alpha \le \beta \in \kappa$, the set-valued function $f_{\alpha \beta} : X_{\beta} \rightarrow 2^{X_{\alpha}}$ is u.s.c. (With this notation, $f_{\alpha \alpha}$ is always the identity $\iota$ on $X_{\alpha}$.) Suppose further that, whenever $\alpha \le \beta \le \eta \in \kappa$, we have $f_{\alpha \beta} \circ f_{\beta \eta} = f_{\alpha \eta}$. Then the collection $\textbf{f} = \{ f_{\alpha \beta} \ | \ \alpha \le \beta \in \kappa\}$ of u.s.c. functions is said to be \emph{exact}. In this case, we say $\{X_{\alpha}, f_{\alpha \beta}, \kappa\}$ is an \emph{inverse limit system}; the \emph{inverse limit}, $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \kappa\}$, of this system is $\{ \textbf{x} \in \prod_{\alpha \in \kappa} X_{\alpha} \ | \ x_{\alpha} \in f_{\alpha \beta}(x_{\beta})$ for all $\alpha \le \beta \in \kappa\}$. (In keeping with tradition, a boldface $\textbf{x}$ always denotes an element of $\prod_{\alpha \in \kappa} X_{\alpha}$; the $\alpha$th coordinate of such an $\textbf{x}$ will be denoted $\textbf{x}(\alpha)$.)  We call the u.s.c. functions $f_{\alpha \beta}$ the \emph{bonding functions} of the inverse limit, and each $X_{\alpha}$ is called a \emph{factor space} of the inverse limit.
 
-Because it can be difficult to check if a large collection of u.s.c. functions is exact, a much more tractable case would be that of an inverse limit system with a single idempotent bonding function $f$. That is, suppose $X$ is a non-empty compact Hausdorff space and $f: X \rightarrow 2^{X}$ is an idempotent u.s.c. function. If $X_{\alpha} = X$ for each $\alpha \in \kappa$ and $f_{\alpha \beta} = f$ for each $\alpha < \beta \in \kappa$, then $\{X_{\alpha}, f_{\alpha \beta}, \kappa\} = \{X, f, \kappa\}$ is an \emph{inverse limit system with the single bonding function $f$}, and we denote the inverse limit of the system as $\varprojlim \{X, f, \kappa\}$. (Of course, since $f$ is idempotent, the collection $\textbf{f}$ of bonding functions is automatically exact.) We note that, although the only continuous idempotent surjective function from a compact Hausdorff space $X$ to itself is the identity map, there are many non-trivial examples of u.s.c. idempotent surjective functions on $X$; see Figure \ref{idempotentUsc} for examples.
+Because it can be difficult to check if a large collection of u.s.c. functions is exact, a much more tractable case would be that of an inverse limit system with a single idempotent bonding function $f$. That is, suppose $X$ is a non-empty compact Hausdorff space and $f: X \rightarrow 2^{X}$ is an idempotent u.s.c. function. If $X_{\alpha} = X$ for each $\alpha \in \kappa$ and $f_{\alpha \beta} = f$ for each $\alpha < \beta \in \kappa$, then $\{X_{\alpha}, f_{\alpha \beta}, \kappa\} = \{X, f, \kappa\}$ is an \emph{inverse limit system with the single bonding function $f$}, and we denote the inverse limit of the system as $\varprojlim \{X, f, \kappa\}$. (Of course, since $f$ is idempotent, the collection $\textbf{f}$ of bonding functions is automatically exact.) We note that, although the only continuous idempotent surjective function from a compact Hausdorff space $X$ to itself is the identity map, there are many nontrivial examples of u.s.c. idempotent surjective functions on $X$; see Figure \ref{idempotentUsc} for examples.
 
 \begin{figure}
 \begin{center}
@@ -149,8 +149,7 @@ A detailed study of inverse limits with a single idempotent surjective u.s.c. bo
 \begin{lemma} \label{idemlemma}  Let $X$ be a compact Hausdorff space and let $f: X \rightarrow 2^{X}$ be u.s.c. Then $f$ is idempotent if and only if, whenever $f(x) = A$ for some $x \in X$ and $A \subseteq X$, $f(A) = A$.
 \end{lemma}
 
-Ingram and Mahavier showed in \cite{i m paper} that $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is non-empty and compact. They also found that
-if $f_{\alpha \beta}$ is always continuum-valued, then $\varprojlim \{X_{\alpha}, f_{\alpha \beta}, \omega\}$ is also connected, and therefore a Hausdorff continuum. Varagona generalized these results for other index sets (including ordinals $\kappa$) in Theorems 2.1 and 2.2 of \cite{varagona}. Greenwood and Kennedy showed in \cite{greenwood kennedy} that there is a non-continuum-valued u.s.c. surjective idempotent bonding map $f$ for which $\varprojlim \{X_{\alpha}, f, \omega\}$ is disconnected.
+By applying results by Ingram and Mahavier \cite{ingram mahavier} and by Charatonik and Roe \cite{char roe}, Varagona stated theorems (2.1 and 2.2 in \cite{varagona}) that imply $\varprojlim \{[0,1], f, \kappa\}$ is a continuum when $f$ is u.s.c., idempotent, and continuum-valued (and $\kappa > 0$). On the other hand, Greenwood and Kennedy showed in \cite{greenwood kennedy} that there is a non-continuum-valued u.s.c. surjective idempotent bonding function $f$ (with a connected graph) for which $\varprojlim \{[0,1], f, \omega\}$ is disconnected.
 
 \section{Main Results}
 
@@ -162,7 +161,7 @@ Let us say a subset $S$ of $[0,1]^2$ satisfies \textit{condition $\Gamma$} if, f
 \begin{center}
 \includegraphics[width=\linewidth]{idempotent_usc_4.pdf}
 \end{center}
-\caption{Non-trivial u.s.c. surjections satisfying condition $\Gamma$}
+\caption{Idempotent u.s.c. functions with highlighted points illustrating condition $\Gamma$}
 \label{conditionGamma}
 \end{figure}
 
@@ -219,7 +218,7 @@ If $z\in(x,y]$, then the result follows immediately.
 Finally, we demonstrate that $z\in(y,1]$ results in a contradiction. Let $f(z)=[0,d]\subseteq[0,z)$. Since $[0,d]=f(z)=f(f(z))=f([0,d])$, there is some $z'\in[0,d]\subseteq[0,z)$ satisfying $0\in f(z')$, even though $z$ was chosen to be minimal.
 \end{proof}
 
-Note that while we have assumed that $f:[0,1]\to C([0,1])$ (which also guarantees that the inverse limit is a continuum), it is an open question whether $\Gamma$ must also hold for any surjective idempotent u.s.c. $f:[0,1]\to 2^{[0,1]}$ (regardless if the inverse limit remains connected).
+Note that while we have assumed that $f:[0,1]\to C([0,1])$ (which also guarantees that the inverse limit is a continuum), it is an open question whether $\Gamma$ must also hold for any nontrivial surjective idempotent u.s.c. $f:[0,1]\to 2^{[0,1]}$ (regardless of whether the inverse limit remains connected).
 
 \begin{lemma} \label{general lemma}
 Let $\kappa$ be a nonzero ordinal. If $f:[0,1] \to 2^{[0,1]}$ is u.s.c. and idempotent and $G(f)$ satisfies condition $\Gamma$, then $\varprojlim\{[0,1],f,\kappa\}$ contains a copy of $\kappa + 1$.
@@ -237,11 +236,11 @@ Let $\kappa$ be a nonzero ordinal. If $f:[0,1]\to C([0,1])$ is u.s.c., idempoten
 The result follows immediately from Lemma \ref{big lemma} and Lemma \ref{general lemma}.
 \end{proof}
 
-Note that when $\kappa\geq\omega_1$, $\omega_1\in\kappa+1$ is a point of non-first-countability; therefore any space containing $\kappa+1$ as a subspace is nonmetrizable.
+Note that when $\kappa\geq\omega_1$, $\omega_1\in\kappa+1$ is a point of non-first-countability; therefore, any space containing $\kappa+1$ as a subspace is nonmetrizable.
 
 The presence of $\kappa+1$ prevents more than just metrizability, however. Let $\Sigma\mathbb R^\kappa\subseteq \mathbb R^\kappa$ denote the \textit{Sigma-product} of $\kappa$ copies of $\mathbb R$: the subspace for which each sequence has only countably many coordinates of nonzero value. A \textit{Corson compact} space is a compact space which embeds in $\Sigma\mathbb R^\kappa$ for some $\kappa$ (see \cite{alster}).
 
-All compact metric spaces are embeddable in $\mathbb R^\omega=\Sigma\mathbb R^\omega$ and therefore Corson compact. In addition, every closed subspace of a Corson compact is Corson compact. While $\Sigma\mathbb R^\kappa$ is not first-countable for $\kappa\geq\omega_1$, any subspace holds the weaker notion of being a $W$-space as defined by Gruenhage in \cite{gruenhage}. However, $\omega_1+1$ does not, as every countable sequence of ordinals less than $\omega_1$ is bounded above and therefore cannot converge to $\omega_1$ itself; therefore any space containing $\kappa+1$ for $\kappa\geq\omega_1$ cannot even be Corson compact.
+All compact metric spaces are embeddable in $\mathbb R^\omega=\Sigma\mathbb R^\omega$ and therefore Corson compact. In addition, every closed subspace of a Corson compact space is Corson compact. While $\Sigma\mathbb R^\kappa$ is not first-countable for $\kappa\geq\omega_1$, any subspace of $\Sigma\mathbb R^\kappa$ has the weaker property of being \textit{Fr\'echet-Urysohn}: each limit point of a set is converged to by a countable sequence in the set. However, $\omega_1+1$ is not Fr\'echet-Urysohn, as every countable sequence of ordinals less than $\omega_1$ is bounded above and therefore cannot converge to $\omega_1$ itself. Therefore, any space containing $\kappa+1$ for $\kappa\geq\omega_1$ cannot even be Corson compact.
 
 \begin{corollary} \label{main corr}
 An inverse limit with a single u.s.c., idempotent, surjective bonding function $f: [0,1] \rightarrow C([0,1])$ and index set $\kappa$, a nonzero ordinal, is only metric (in fact, Corson compact) in the case that $\kappa$ is countable or the bonding map is trivial.
@@ -285,11 +284,7 @@ Clearly $f$ is u.s.c. and idempotent and $f \ne \iota$; however, $G(f)$ does not
 \smallskip
 
 \bibitem{greenwood kennedy} Greenwood, Sina and Kennedy, Judy, {\it Connected generalized inverse limits}, Topology and its Applications,
-159 (2012), no. 1, 57–68.
-
-\smallskip
-
-\bibitem{gruenhage} G. Gruenhage, {\it Infinite games and generalizations of first-countable spaces}, Gen. Topol. Appl., 6 (1976), pp. 339–352
+159 (2012), no. 1, 57-68.
 
 \smallskip
 
@@ -325,4 +320,3 @@ Clearly $f$ is u.s.c. and idempotent and $f \ne \iota$; however, $G(f)$ does not
 \end{thebibliography}
 
 \end{document}
-
