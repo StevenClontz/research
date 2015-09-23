@@ -70,7 +70,8 @@ Recall the following definition.
   \(|\mc F_n|<\omega\), and \(\bigcup_{n<\omega}\mc F_n\) is a cover of \(X\).
 \end{definition}
 
-Note that many authors refer to this property as \(S_{fin}(\mc O,\mc O)\),
+Note that many authors refer to this property as \(S_{fin}(\mc O,\mc O)\)
+\cite{MR1378387},
 where \(\mc O\) is the collection of open covers of \(X\), and
 \(S_{fin}(A,B)\) denotes the selection property such that for each
 sequence in \(A^\omega\), there are finite subsets of each entry for which
@@ -121,8 +122,8 @@ A game version of the Menger property is also often considered.
 
 As with the Menger property, authors usually characterize this game using
 finite subsets \(\mc F_n\)
-of \(\mc U_n\) instead (and often refer to it as \(G(\mc O,\mc O)\) as
-with the selection property above).
+of \(\mc U_n\) instead (and often refer to it as the selection game
+\(G_{fin}(\mc O,\mc O)\)).
 This is obviously equivalent in the case of perfect
 information, and is also equivalent
 in the case of limited information, provided \(\pl F\)
@@ -242,6 +243,9 @@ see the change from one cover to another.
   Thus \(\tau\) is a winning \(2\)-mark.
 \end{proof}
 
+It's worth noting that the above proof holds for any selection game of
+the form \(G_{fin}(A,B)\).
+
 A natural question arises: is there an example of a space \(X\) for which
 \(\pl F\kmarkwin{2}\menGame{X}\) but \(\pl F\notmarkwin\menGame{X}\)? We quickly
 see that perhaps the simplest example of a Lindel\"of non-\(\sigma\)-compact
@@ -254,18 +258,17 @@ space has this property.
   sets containing it.
 \end{definition}
 
-\begin{proposition}
-  \(\pl F \notmarkwin \menGame{\oneptlind{\omega_1}}\); in fact,
-  \(\oneptlind{\omega_1}\) is not \(\sigma\)-compact.
-\end{proposition}
+One may prove directly that
+  \(\pl F \notmarkwin \menGame{\oneptlind{\omega_1}}\)
+without much effort; however, we postpone stating this until we have
+shown that being Markov Menger is equivalent to being \(\sigma\)-compact
+in regular spaces.
 
 The greatest advantage of a strategy which has knowledge of two or more previous
 moves of the opponent, versus only knowledge of the most recent move, is the
 ability to react to changes from one round to the next. It's this ability to
-react that will give \(\pl F\) her winning \(2\)-Markov strategy in the Menger
-game on \(\oneptlind\omega_1\). This may be proven directly; however, we will
-postpone giving a proof so that we may take advantage of an equivalent
-game characterization of this property.
+react that often allows a player to wield a winning \(2\)-Markov strategy when
+a winning \(1\)-Markov strategy does not exist.
 
 \section{Scheepers' filling games}
 
@@ -438,7 +441,7 @@ Figure \ref{fillingGamesDiagram} holds.
 
 While we have not shown a direct implication between the Menger game and
 Scheeper's original filling game, Scheepers introduced the statement
-\(\alcompS\kappa\) relating to the almost-compatability of functions
+\(\alcompS\kappa\) relating to the almost-compatability of injective functions
 from countable subsets of \(\kappa\) into \(\omega\) which may be applied to
 both.
 
@@ -448,15 +451,9 @@ both.
 \end{definition}
 
 \begin{definition}
-  \(\alcompS\kappa\) states that there exist functions
+  \(\alcompS\kappa\) states that there exist injective functions
   \(f_A:A\to\omega\) for each \(A\in[\kappa]^{\leq\omega}\) such that
-  \(|\{\alpha\in A:f_A(\alpha)\leq n\}|<\omega\) for all \(n<\omega\) and
   \(f_A\alcomp f_B\) for all \(A,B\in[\kappa]^\omega\).
-  \footnote{
-  This is equivalent to the original characterization given in
-  \cite{MR1129143}: there exist injections \(g_A:A\to\omega\)
-  such that \(g_A\alcomp g_B\) for all \(A,B\in[\kappa]^\omega\) and \(A\subset B\).
-  }
 \end{definition}
 
 Scheepers went on to show that \(\alcompS\kappa\) implies
@@ -566,7 +563,7 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 
      \text{Markov Menger} &
      2\text{-Markov Menger} &
-     \text{Perfect Menger} &
+     \text{Strategic Menger} &
      \text{Menger} \\
   };
   \path[>=latex,<->]
@@ -612,7 +609,8 @@ We are also interested in non-game-theoretic characterizations of these
 covering properties. It has been known for some time that metrizable perfect
 Menger spaces are exactly the metrizable \(\sigma\)-compact spaces, shown first
 by Telgarksy in \cite{MR753073} and later directly by Scheepers in
-\cite{MR1273523}.
+\cite{MR1273523}. It's Scheepers' technique which gives inspiration to
+the following.
 
 In the interest of generality, we will first characterize the Markov Menger
 spaces without any separation axioms.
@@ -627,23 +625,25 @@ spaces without any separation axioms.
   \(\cl Y\) is compact in \(X\).
 \end{proposition}
 
+%TODO cite source?
+
 \begin{lemma}
   Let \(\sigma(\mc{U}, n)\) be a Markov strategy for \(F\) in
-  \(\menGame{X}\), and \(\mathfrak{C}\) collect all open covers of \(X\). Then the
+  \(\menGame{X}\), and \(\mc{O}\) collect all open covers of \(X\). Then the
   set
     \[
-      R_n = \bigcap_{\mc{U}\in\mathfrak{C}} \sigma(\mc{U},n)
+      R_n = \bigcap_{\mc{U}\in\mc{O}} \sigma(\mc{U},n)
     \]
   is relatively compact to \(X\). If \(\sigma\) is a winning
   Markov startegy, then \(\bigcup_{n<\omega} R_n = X\).
 \end{lemma}
 
 \begin{proof}
-  First, for every open cover \(\mc U\in\mathfrak C\),
+  First, for every open cover \(\mc U\in\mc{O}\),
   \(R_n\subseteq\sigma(\mc U,n)\) is covered by a finite subcollection of \(\mc U\).
 
   Suppose that \(x \not\in R_n\) for any \(n<\omega\). Then for each \(n\),
-  pick \(\mc{U}_n\in\mathfrak{C}\) such that \(x\not\in \sigma(\mc{U}_n,n)\). Then
+  pick \(\mc{U}_n\in\mc{O}\) such that \(x\not\in \sigma(\mc{U}_n,n)\). Then
   \(\pl C\) may counter \(\sigma\) with the attack \(\<\mc U_0,\mc U_1,\dots\>\).
 \end{proof}
 
@@ -677,9 +677,12 @@ spaces without any separation axioms.
   \end{itemize}
 \end{corollary}
 
-For Lindel\"of spaces, metrizability is characterized by regularity and
-second-countability, the latter of which was essentially used by Scheepers in
-this way:
+\begin{corollary}
+  \(\pl F\notmarkwin\menGame{\oneptlind{\omega_1}}\).
+\end{corollary}
+
+Note that for Lindel\"of spaces, metrizability is characterized by regularity
+and second-countability.
 
 \begin{lemma}
   Let \(X\) be a second-countable space. \(\pl F\win\menGame{X}\) if and only if
@@ -704,7 +707,7 @@ this way:
   such that for any basic open cover \(\mc V\), there exists \(n<\omega\) where
   \(\mc F(s,\mc V)=\mc F(s,\mc U_{s\concat\<n\>})\).
 
-  Let \(t:\omega\to\omega^{<\omega}\) be a bijection. We define the Mark\"ov
+  Let \(t:\omega\to\omega^{<\omega}\) be a bijection. We define the Markov
   strategy \(\tau\) as follows:
   \[
     \tau(\<\mc V\>, n)
@@ -925,32 +928,47 @@ than the usual Euclidean line.
 \end{proof}
 
 We will soon see that, assuming \(\alcompS{\mf c}\), \(\pl F\) has a winning
-\(2\)-Mark\"ov strategy for \(\menGame{R_\omega}\) as well.
+\(2\)-Markov strategy for \(\menGame{R_\omega}\) as well.
 
 \begin{proposition}
-  If \(X=\bigcup_{i<\omega} X_i\) and \(\pl F \kmarkwin{k} \menGame{X,X_i}\)
-  for \(i<\omega\), then \(\pl F \kmarkwin{k} \menGame{X}\)
+  If \(X=\bigcup_{i<\omega} X_i\) and \(\pl F \kmarkwin{2} \menGame{X,X_i}\)
+  for \(i<\omega\), then \(\pl F \kmarkwin{2} \menGame{X}\)
 \end{proposition}
 
 \begin{proof}
-  Let \(\sigma_i\) be a \(k\)-Markov strategy
+  Let \(\sigma_i\) be a \(2\)-Markov strategy
   for \(\pl F\) in \(\menGame{X,X_i}\).
 
-  We define the \(k\)-Markov strategy
+  We define the \(2\)-Markov strategy
   \(\sigma\) for \(\menGame{X}\) as follows:
     \[
-      \sigma(\<\mc U_0,\dots,\mc U_n\>)
+      \sigma(\<\mc U\>,0) = \sigma_0(\<\mc U\>,0)
+    \]
+    \[
+      \sigma(\<\mc U,\mc V\>,n+1)
         =
-      \bigcup_{i\leq n}
-      \sigma_i(\<\mc U_i,\dots,\mc U_n\>)
+      \bigcup_{i,j\leq n}
+      \sigma_i(\<\mc V\>,0)
+        \cup
+      \sigma_i(\<\mc U,\mc V\>,j+1)
     \]
 
   Let \(\<\mc U_0,\mc U_1,\dots\>\) be a successful counter-attack by \(\pl C\)
   against \(\sigma\). Then there exists \(x\in X_i\) for
-  some \(i<\omega\) such that \(x\) is not covered by
-  \(\bigcup_{n<\omega}\sigma(\<\mc U_0,\dots,\mc U_n\>)\).
-  It follows that \(x\) is not covered by
-  \(\bigcup_{n<\omega}\sigma_i(\<\mc U_i,\dots,\mc U_{i+n}\>)\),
+  some \(i<\omega\) such that \(x\) is not contained in
+  \[
+    \sigma(\<\mc U_0\>,0)
+      \cup
+    \bigcup_{n<\omega}
+    \sigma(\<\mc U_n,\mc U_{n+1}\>,n+1)
+  \]
+  It then follows that \(x\) is not contained in
+  \[
+    \sigma_i(\<\mc U_i\>,0)
+      \cup
+    \bigcup_{n<\omega}
+    \sigma_i(\<\mc U_{i+n},\mc U_{i+n+1}\>,n+1)
+  \]
   and \(\<\mc U_i,\mc U_{i+1},\dots\>\) is a successful counter-attack
   by \(\pl C\) against \(\sigma_i\).
 \end{proof}
@@ -982,6 +1000,18 @@ We will soon see that, assuming \(\alcompS{\mf c}\), \(\pl F\) has a winning
     \]
   is finite.
 \end{proof}
+
+The following is left open:
+
+\begin{question}
+  Does there exist a space which is \(2\)-Markov Menger, but not
+  robustly Menger?
+\end{question}
+
+\section*{Acknowlegements}
+
+The author wishes to thank Gary Gruenhage and Alan Dow for their
+very useful comments during the writing of this paper.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
