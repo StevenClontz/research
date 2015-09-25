@@ -616,16 +616,44 @@ In the interest of generality, we will first characterize the Markov Menger
 spaces without any separation axioms.
 
 \begin{definition}
-  A subset \(Y\) of \(X\) is \term{relatively compact} to \(X\) if for every open
+  A subset \(Y\) of \(X\) is \term{relatively compact} to \(X\), or
+  \(Y\) is \term{compact in} \(X\), if for every open
   cover of \(X\), there exists a finite subcollection which covers \(Y\).
 \end{definition}
 
+\begin{definition}
+  A subset \(Y\) of \(X\) is \term{precompact} in \(X\) if
+  \(\text{cl}_X(Y)\) is compact.
+\end{definition}
+
+Some authors use the term
+relative compactness to denote precompactness, which causes
+no confusion in the context of regular spaces.
+
 \begin{proposition}
   For regular spaces, \(Y\) is relatively compact to \(X\) if and only if
-  \(\cl Y\) is compact in \(X\).
+  \(Y\) is precompact in \(X\).
 \end{proposition}
 
-%TODO cite source?
+\begin{proof}
+  Shown by Arhangel'skii in \cite{MR1885790}; a proof is provided for the
+  convenience of the reader.
+
+  Let \(\mc U=\{U_\alpha:\alpha<\kappa\}\) be an
+  open cover of \(\text{cl}_X(Y)\); for \(y\in Y\), apply regularity to get
+  \(V_\alpha\subseteq\text{cl}_X(V_\alpha)\subseteq U_\alpha\)
+  with \(V_\alpha\) open.
+  Use relative compactness to obtain a finite subcollection of
+  \(\{X\setminus\text{cl}_X(Y)\}\cup\{V_\alpha:\alpha<\kappa\}\)
+  covering \(Y\): \(\{V_{\alpha_i}:i<n\}\). Then since
+  \(\bigcup\{\text{cl}_X(V_{\alpha_i}):i<n\}\) is a closed set in \(X\)
+  containing \(Y\), it contains \(\text{cl}_X(Y)\), and thus
+  \(\{U_{\alpha_i}:i<n\}\) is a finite subcollection of \(\mc U\) covering
+  \(\text{cl}_X(Y)\).
+
+  For the reverse direction, simply take a finite subcover of
+  \(\text{cl}_X(Y)\) to obtain a finite subcover of \(Y\).
+\end{proof}
 
 \begin{lemma}
   Let \(\sigma(\mc{U}, n)\) be a Markov strategy for \(F\) in
@@ -973,7 +1001,8 @@ We will soon see that, assuming \(\alcompS{\mf c}\), \(\pl F\) has a winning
   by \(\pl C\) against \(\sigma_i\).
 \end{proof}
 
-\begin{theorem}[\(\alcompS{\mf c}\)]
+\begin{theorem}
+  Assuming \(CH\) or just \(\alcompS{\mf c}\),
   \(\pl F\kmarkwin2\menGame{R_\omega}\).
 \end{theorem}
 
