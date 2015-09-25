@@ -51,17 +51,22 @@ Charlotte, NC 28262}
 
 
 \begin{abstract}
-  I need an abstract
+  As shown by Telgarsky and Scheepers,
+  winning strategies in the Menger game characterize
+  \(\sigma\)-compactness amongst metrizable spaces. This is improved
+  by showing that winning Markov strategies in the Menger game
+  characterize \(\sigma\)-compactness amongst
+  regular spaces, and that winning strategies may be improved to winning
+  Markov strategies in second-countable spaces.
+  An investigation of
+  \(2\)-Markov strategies introduces a new topological property between
+  \(\sigma\)-compact and Menger spaces.
 \end{abstract}
 
 
 \maketitle
 
-I require an introduction.
-
 \section{The Menger property and game}
-
-Recall the following definition.
 
 \begin{definition}
   A space \(X\) is Menger if for every sequence \(\<\mc U_0,\mc U_1,\dots\>\)
@@ -144,8 +149,6 @@ This game may be used to characterize the Menger property.
 
 
 \section{Limited information strategies}
-
-Recall the following definitions.
 
 \begin{definition}
   A \(k\)-tactical strategy for a game \(G\) with moveset \(M\) is a function
@@ -246,10 +249,8 @@ see the change from one cover to another.
 It's worth noting that the above proof holds for any selection game of
 the form \(G_{fin}(A,B)\).
 
-A natural question arises: is there an example of a space \(X\) for which
-\(\pl F\kmarkwin{2}\menGame{X}\) but \(\pl F\notmarkwin\menGame{X}\)? We quickly
-see that perhaps the simplest example of a Lindel\"of non-\(\sigma\)-compact
-space has this property.
+One might wonder if a \(2\)-mark may always be improved to a \(1\)-mark
+as well; this is not the case.
 
 \begin{definition}
   For any cardinal \(\kappa\), let \(\oneptlind\kappa=\kappa\cup\{\infty\}\) denote
@@ -262,22 +263,25 @@ One may prove directly that
   \(\pl F \notmarkwin \menGame{\oneptlind{\omega_1}}\)
 without much effort; however, we postpone stating this until we have
 shown that being Markov Menger is equivalent to being \(\sigma\)-compact
-in regular spaces.
+in regular spaces. Likewise, we postpone proving
+  \(\pl F \kmarkwin2 \menGame{\oneptlind{\omega_1}}\)
+in order to consider an equivalent set-theoretic game.
 
-The greatest advantage of a strategy which has knowledge of two or more previous
+Essentially,
+the greatest advantage of a strategy which has knowledge of two or more previous
 moves of the opponent, versus only knowledge of the most recent move, is the
 ability to react to changes from one round to the next. It's this ability to
 react that often allows a player to wield a winning \(2\)-Markov strategy when
 a winning \(1\)-Markov strategy does not exist.
 
-\section{Scheepers' filling games}
+\section{Scheepers' countable-finite games}
 
 We now turn to a related game whose \(k\)-tactics were studied by Marion
 Scheepers in \cite{MR1129143}.
 
 \begin{game}
   Let \(\schFillStrictGame\kappa\) denote
-  \term{Scheepers' strict union filling game}
+  \term{Scheepers' strict countable-finite union game}
   with two players \(\pl C\), \(\pl F\). In round \(0\), \(\pl C\) chooses
   \(C_0\in[\kappa]^{\leq\omega}\), followed by \(\pl F\) choosing
   \(F_0\in[\kappa]^{<\omega}\). In round \(n+1\), \(\pl C\) chooses
@@ -310,21 +314,21 @@ We introduce a few games to make the relationship between Scheeper's
 
 \begin{game}
   Let \(\schFillGame\kappa\) denote the
-  \term{union filling game} which proceeds analogously
+  \term{Scheepers countable-finite union game} which proceeds analogously
   to \(\schFillStrictGame\kappa\), except that \(\pl C\)'s restriction in round \(n+1\)
   is reduced to \(C_{n+1}\supseteq C_n\).
 \end{game}
 
 \begin{game}
   Let \(\schFillInitialGame\kappa\) denote the
-  \term{initial filling game} which proceeds analogously
+  \term{Scheepers countable-finite initial game} which proceeds analogously
   to \(\schFillGame\kappa\), except that \(\pl F\) wins whenever
   \(\bigcup_{n<\omega}F_n\supseteq C_0\).
 \end{game}
 
 \begin{game}
   Let \(\schFillIntGame\kappa\) denote the
-  \term{intersection filling game} which proceeds analogously
+  \term{Scheepers countable-finite intersection game} which proceeds analogously
   to \(\schFillInitialGame\kappa\), except that \(\pl C\) may choose any
   \(C_n\in[\kappa]^{\leq\omega}\) each round, and \(\pl F\) wins whenever
   \(\bigcup_{n<\omega}F_n\supseteq\bigcap_{n<\omega}C_n\).
@@ -354,12 +358,12 @@ We introduce a few games to make the relationship between Scheeper's
 \end{tikzpicture}
 \end{center}
 \caption{Diagram of Scheepers/Menger game implications}
-\label{fillingGamesDiagram}
+\label{GamesDiagram}
 \end{figure}
 
 \begin{theorem}
 For any cardinal \(\kappa\geq\omega\) and integer \(k<\omega\),
-Figure \ref{fillingGamesDiagram} holds.
+Figure \ref{GamesDiagram} holds.
 \end{theorem}
 
 \begin{proof}
@@ -440,7 +444,7 @@ Figure \ref{fillingGamesDiagram} holds.
 \end{proof}
 
 While we have not shown a direct implication between the Menger game and
-Scheeper's original filling game, Scheepers introduced the statement
+Scheeper's original countable-finite game, Scheepers introduced the statement
 \(\alcompS\kappa\) relating to the almost-compatability of injective functions
 from countable subsets of \(\kappa\) into \(\omega\) which may be applied to
 both.
@@ -508,13 +512,13 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
     (m-2-2) edge (m-2-3);
 \end{tikzpicture}
 \end{center}
-\caption{Diagram of Filling/Menger game implications with \(\alcompS\kappa\)}
-\label{fillingGamesDiagram2}
+\caption{Diagram of Scheeper/Menger game implications with \(\alcompS\kappa\)}
+\label{GamesDiagram2}
 \end{figure}
 
 \begin{theorem}
   \(\alcompS\kappa\) implies the game-theoretic results in
-  Figure \ref{fillingGamesDiagram2}.
+  Figure \ref{GamesDiagram2}.
 \end{theorem}
 
 \begin{proof}
@@ -601,12 +605,8 @@ we do not know if the middle two properties are actually distinct.
   \(\pl F \notkmarkwin2 \menGame{X}\)?
 \end{question}
 
-Note that while it's consistent that
-\(\pl F\kmarkwin2\menGame{\oneptlind{\mf c}}\), \(\oneptlind{\kappa}\)
-for \(\kappa>\mf c\) is a candidate to answer the above question.
-
 We are also interested in non-game-theoretic characterizations of these
-covering properties. It has been known for some time that metrizable perfect
+covering properties. It has been known for some time that metrizable strategic
 Menger spaces are exactly the metrizable \(\sigma\)-compact spaces, shown first
 by Telgarksy in \cite{MR753073} and later directly by Scheepers in
 \cite{MR1273523}. It's Scheepers' technique which gives inspiration to
@@ -789,13 +789,14 @@ and second-countability.
 
 \section{Robustly Menger}
 
-To help describe \(\pl F\kmarkwin2\menGame{X}\) topologically, we introduce a
+To help instigate the topological property \(\pl F\kmarkwin2\menGame{X}\),
+we introduce a
 slight variant of the Menger game and a related covering property.
 
 \begin{game}
   Let \(\menGame{X,Y}\) denote the \term{Menger subspace game} which proceeds
   analogously to the Menger game, except that \(\pl F\) wins whenever
-  \(\bigcup_{n<\omega} \mc F_n\) is a cover for \(Y\subseteq X\).
+  \(Y\subseteq\bigcup_{n<\omega} F_n\).
 \end{game}
 
 Note of course that \(\menGame{X,X}=\menGame{X}\).
@@ -878,8 +879,7 @@ Note of course that \(\menGame{X,X}=\menGame{X}\).
 
 \begin{theorem}
   \(\alcompS\kappa\) implies \(\oneptlind\kappa\) is
-  robustly Menger, and thus
-  \(\pl F\kmarkwin2\menGame{\oneptlind\kappa}\).
+  robustly Menger.
 \end{theorem}
 
 \begin{proof}
@@ -1033,7 +1033,7 @@ We will soon see that, assuming \(\alcompS{\mf c}\), \(\pl F\) has a winning
 The following is left open:
 
 \begin{question}
-  Does there exist a space which is \(2\)-Markov Menger, but not
+  Are all \(2\)-Markov Menger spaces
   robustly Menger?
 \end{question}
 
