@@ -8,7 +8,7 @@
   \begin{remark}
     Scheeper's \(S(\kappa)\) requiring injections is stronger than my
     \(S'(\kappa)\) requiring finite-to-one maps. Dow suggests that
-    \(S'(\omega_2)\) holds in ZFC. Here's my writeup of his argument.
+    \(S'(\omega_\omega)\) holds in ZFC by the following.
   \end{remark}
 
   \begin{definition}
@@ -16,33 +16,89 @@
     subset of the space has compact closure.
   \end{definition}
 
-  \begin{claim*}
-    There exists a topology on \(\omega_2\) which is locally countable
-    and \(\aleph_0\)-bounded.
-  \end{claim*}
-
-  \begin{proposition}
-    A space which is locally countable and \(\omega\)-bounded is also
-    locally compact, locally second-countable, and scattered.
-  \end{proposition}
+  \begin{theorem}
+    There exists a topology on \(\omega_2\) which
+    is \(\omega\)-bounded, locally compact, and locally countable.
+  \end{theorem}
 
   \begin{proof}
-    A countable neighborhood has compact closure by \(\omega\)-boundedness,
-    which gives local compactness.
+    Note that the natural linear order on \(\omega_1\) induces such
+    a topology for it.
 
-    By local countability, we have local secound-countability.
+    Let \(\alpha<\omega_2\), and suppose we've defined compatible topologies on
+    \(\omega_1\cdot (\beta+1)\) for all \(0\leq\beta<\alpha\).
+    If \(\alpha=\beta+1\), then let
+    \(\omega_1\cdot(\alpha+1)=\omega_1\cdot(\beta+2)\) be the topological sum
+    of the previously defined \(\omega_1\cdot(\beta+1)\) and the linear order
+    on \(\omega_1\cdot(\beta+2)\setminus\omega_1\cdot(\beta+1)\cong\omega_1\).
+    Similarly, if \(cf(\alpha)>\omega\), then let \(\omega_1\cdot(\alpha+1)\)
+    be the topological sum of \(\bigcup_{\beta<\alpha}\omega_1\cdot(\beta+1)\)
+    and the linear order on
+    \(\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\cong\omega_1\).
 
-    TODO: figure out trick to get scattered.
+    The remaining case is where \(\alpha\) is the limit of increasing
+    \(\alpha_n\) for \(n<\omega\). Fix a bijection
+    \(
+      f_\alpha
+        :
+      \omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha
+        \to
+      \omega_1\cdot\alpha
+    \). Points in \(\omega_1\cdot(\alpha_n+1)\) for some \(n<\omega\)
+    have their usual base induced by that previously defined topology. So let
+    \(\gamma\in\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\).
+    Basic open neighborhoods of \(\gamma\) are of the form
+    \(
+      [\gamma',\gamma]
+        \cup
+      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
+        \setminus
+      \omega_1\cdot(\alpha_n+1)
+    \),
+    where \(\omega_1\cdot\alpha\leq\gamma'<\gamma\)
+    and \(n<\omega\).
+
+    We wish to show that \(\omega_2\) with the topology induced by
+    \(\bigcup_{\alpha<\omega_2}\omega_1\cdot(\alpha+1)\) is \(\omega\)-bounded,
+    locally compact, and locally countable. If
+    \(\gamma\in\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\) where
+    \(cf(\alpha)\not=\omega\), then we immediately see that it is in a clopen
+    copy of \(\omega_1\) giving us local compactness and local countability
+    immediately. Otherwise, \(\gamma\) has a basic open neighborhood of the form
+    \(
+      [\gamma',\gamma]
+        \cup
+      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
+        \setminus
+      \omega_1\cdot(\alpha_n+1)
+    \),
+    which is obviously countable. Likewise, its closure is compact:
+    the closure operation does not add any ordinals greater than \(\gamma\),
+    and any open cover
+    contains another basic open neighborhood of \(\gamma\) such as
+    \(
+      [\gamma'',\gamma]
+        \cup
+      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
+        \setminus
+      \omega_1\cdot(\alpha_m+1)
+    \)
+    which misses only the compact set \([\gamma',\gamma'']\) and the
+    closure of the countable set
+    \(
+      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
+        \cap
+      \omega_1\cdot(\alpha_{\min(m,n)}+1)
+    \), which will be proven to be compact once we show that
+    \(\omega_1\cdot(\alpha+1)\) is \(\omega\)-bounded for all
+    \(\alpha<\omega_2\). This also will show that \(\omega_2\) with our
+    topology is itself \(\omega\)-compact, finishing the proof.
+
+
   \end{proof}
 
   \begin{theorem*}
-    \(S'(\omega_2)\).
+    \(S'(\omega_\omega)\).
   \end{theorem*}
-
-  \begin{proof}
-    For \(\alpha<\omega_2\), let \(W_\alpha\) be the
-    intersection of a countable and compact neighborhood in the claimed topology
-    on \(\omega_2\).
-  \end{proof}
 
 \end{document}
