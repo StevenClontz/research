@@ -17,112 +17,115 @@
   \end{definition}
 
   \begin{theorem}
-    There exists a topology on \(\omega_2\) which
+    For each \(k<\omega\) there exists a topology on \(\omega_k\) which
     is \(\omega\)-bounded and locally countable.
   \end{theorem}
 
   \begin{proof}
-    Note that the natural linear order on \(\omega_1\) induces such
-    a topology for it.
+    Assume we've defined such a topology for \(\omega_k\)
+    such that \(\gamma+1=[0,\gamma]\) is clopen for all \(\gamma<\omega_k\).
+    Note that the usual linear order on \(\omega_1\) satisfies these requirements.
 
-    Let \(\alpha<\omega_2\), and suppose we've defined compatible topologies on
-    \(\omega_1\cdot (\beta+1)\) for all \(0\leq\beta<\alpha\).
+    Let \(\alpha<\omega_{k+1}\), and suppose we've defined compatible topologies on
+    \(\omega_k\cdot (\beta+1)\) for all \(0\leq\beta<\alpha\).
     If \(\alpha=\beta+1\), then let
-    \(\omega_1\cdot(\alpha+1)=\omega_1\cdot(\beta+2)\) be the topological sum
-    of the previously defined \(\omega_1\cdot(\beta+1)\) and the linear order
-    on \(\omega_1\cdot(\beta+2)\setminus\omega_1\cdot(\beta+1)\cong\omega_1\).
-    Similarly, if \(cf(\alpha)>\omega\), then let \(\omega_1\cdot(\alpha+1)\)
-    be the topological sum of \(\bigcup_{\beta<\alpha}\omega_1\cdot(\beta+1)\)
-    and the linear order on
-    \(\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\cong\omega_1\).
+    \(\omega_k\cdot(\alpha+1)=\omega_k\cdot(\beta+2)\) be the topological sum
+    of the previously defined \(\omega_k\cdot(\beta+1)\) and the
+    previously defined
+    \(\omega_k\cdot(\beta+2)\setminus\omega_k\cdot(\beta+1)\cong\omega_k\).
+    Similarly, if \(cf(\alpha)>\omega\), then let \(\omega_k\cdot(\alpha+1)\)
+    be the topological sum of \(\bigcup_{\beta<\alpha}\omega_k\cdot(\beta+1)\)
+    and the previously defined
+    \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\cong\omega_k\).
 
     The remaining case is where \(\alpha\) is the limit of increasing
     \(\alpha_n\) for \(n<\omega\). Fix a bijection
     \(
       f_\alpha
         :
-      \omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha
+      \omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha
         \to
-      \omega_1\cdot\alpha
-    \). Points in \(\omega_1\cdot(\alpha_n+1)\) for some \(n<\omega\)
+      \omega_k\cdot\alpha
+    \). Points in \(\omega_k\cdot(\alpha_n+1)\) for some \(n<\omega\)
     have their usual base induced by that previously defined topology. So let
-    \(\gamma\in\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\).
+    \(\gamma\in\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\).
     Basic open neighborhoods of \(\gamma\) are of the form
     \(
-      [\gamma',\gamma]
+      W
         \cup
-      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
+      f_\alpha[W]
         \setminus
-      \omega_1\cdot(\alpha_n+1)
+      \omega_k\cdot(\alpha_n+1)
     \),
-    where \(\omega_1\cdot\alpha\leq\gamma'<\gamma\)
-    and \(n<\omega\).
+    where \(n<\omega\) and
+    \(W\subseteq\gamma+1\) is any countable neighborhood of \(\gamma\).
 
-    We wish to show that \(\omega_2\) with the topology induced by
-    \(\bigcup_{\alpha<\omega_2}\omega_1\cdot(\alpha+1)\) is \(\omega\)-bounded
+    We wish to show that \(\omega_{k+1}\) with the topology induced by
+    \(\bigcup_{\alpha<\omega_{k+1}}\omega_k\cdot(\alpha+1)\) is \(\omega\)-bounded
     and locally countable. If
-    \(\gamma\in\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\) where
+    \(\gamma\in\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\) where
     \(cf(\alpha)\not=\omega\), then we immediately see that it is in a clopen
-    copy of \(\omega_1\) giving us local countability
+    copy of \(\omega_k\) giving us local countability
     immediately. Otherwise, \(\gamma\) has a basic open neighborhood of the form
     \(
-      [\gamma',\gamma]
+      W
         \cup
-      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
+      f_\alpha[W]
         \setminus
-      \omega_1\cdot(\alpha_n+1)
+      \omega_k\cdot(\alpha_n+1)
     \),
     which is obviously countable.
 
-    Let \(C\) be a countable subset of \(\omega_1\cdot(\alpha+1)\).
+    Let \(C\) be a countable subset of \(\omega_k\cdot(\alpha+1)\).
     In the case that \(\alpha=\beta+1\), we may use the \(\omega\)-boundedness
-    of each part in the clopen partition \(\omega_1\cdot(\beta+1)\) and
-    \(\omega_1\cdot(\beta+2)\setminus\omega_1\cdot(\beta+1)\cong\omega_1\)
+    of each part in the clopen partition \(\omega_k\cdot(\beta+1)\) and
+    \(\omega_k\cdot(\beta+2)\setminus\omega_k\cdot(\beta+1)\cong\omega_k\)
     to conclude that the closure of \(C\) is compact.
     Similarly, if \(cf(\alpha)>\omega\),
     then we may use the  \(\omega\)-boundedness
     of each part in the clopen partition
-    \(\bigcup_{\beta<\alpha}\omega_1\cdot(\beta+1)\) and
-    \(\omega_1\cdot(\alpha+1)\setminus\omega_1\cdot\alpha\cong\omega_1\)
+    \(\bigcup_{\beta<\alpha}\omega_k\cdot(\beta+1)\) and
+    \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\cong\omega_k\)
     to conclude that the closure of \(C\) is compact.
 
     The remaining case is again where \(\alpha\) is the limit of increasing
     \(\alpha_n\) for \(n<\omega\). Then
-    \(
-      C
-        \subseteq
-      [\gamma',\gamma]
-        \cup
-      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
-    \)
-    for some \(\omega_1\cdot\alpha\leq\gamma'<\gamma<\omega_1\cdot(\alpha+1)\).
-    Its closure is compact:
-    the closure operation does not add any ordinals greater than \(\gamma\),
-    and any open cover
-    contains another basic open neighborhood of \(\gamma\) such as
-    \(
-      [\gamma'',\gamma]
-        \cup
-      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
-        \setminus
-      \omega_1\cdot(\alpha_m+1)
-    \)
-    which misses only the compact set \([\gamma',\gamma'']\) and the
-    closure of the countable set
-    \(
-      f_\alpha[[\omega_1\cdot\alpha,\gamma]]
-        \cap
-      \omega_1\cdot(\alpha_{\min(m,n)}+1)
-    \), which is compact by the \(\omega\)-boundedness of
-    \(\omega_1\cdot(\alpha_{\min(m,n)}+1)\).
+    TODO: generalize for \(k+1\)
+    % \(
+    %   C
+    %     \subseteq
+    %   [\gamma',\gamma]
+    %     \cup
+    %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
+    % \)
+    % for some \(\omega_k\cdot\alpha\leq\gamma'<\gamma<\omega_k\cdot(\alpha+1)\).
+    % Its closure is compact:
+    % the closure operation does not add any ordinals greater than \(\gamma\),
+    % and any open cover
+    % contains another basic open neighborhood of \(\gamma\) such as
+    % \(
+    %   [\gamma'',\gamma]
+    %     \cup
+    %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
+    %     \setminus
+    %   \omega_k\cdot(\alpha_m+1)
+    % \)
+    % which misses only the compact set \([\gamma',\gamma'']\) and the
+    % closure of the countable set
+    % \(
+    %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
+    %     \cap
+    %   \omega_k\cdot(\alpha_{\min(m,n)}+1)
+    % \), which is compact by the \(\omega\)-boundedness of
+    % \(\omega_k\cdot(\alpha_{\min(m,n)}+1)\).
 
-    Finally, since every countable subset of \(\omega_2\) is contained in
-    some \(\omega_1\cdot(\alpha+1)\), we conclude \(\omega_2\) is
+    Finally, since every countable subset of \(\omega_{k+1}\) is contained in
+    some \(\omega_k\cdot(\alpha+1)\), we conclude \(\omega_{k+1}\) is
     \(\omega\)-bounded.
   \end{proof}
 
   \begin{theorem*}
-    \(S'(\omega_2)\).
+    \(S'(\omega_\omega)\).
   \end{theorem*}
 
 \end{document}
