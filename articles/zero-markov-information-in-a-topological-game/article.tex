@@ -1,0 +1,440 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{graphicx}
+
+\usepackage{../../clontzDefinitions}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{game}[theorem]{Game}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+
+
+
+\begin{document}
+
+% \title{Proximal compact spaces are Corson compact\tnoteref{t1}}
+% \tnotetext[t1]{2010 Mathematics Subject Classification. 54E15, 54D30, 54A20.}
+\title{Zero-Markov information in topological games}
+
+% \author[aub]{S.~Clontz\fnref{fn1}}
+% \ead{steven.clontz@auburn.edu}
+% \author[aub]{G.~Gruenhage\fnref{fn2}}
+% \ead{gruengf@auburn.edu}
+
+% \address[aub]{Department of Mathematics, Auburn University,
+%  Auburn, AL 36830}
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics and Statistics, Univeristy of North Carolina
+at Charlotte, Charlotte, NC 28223}
+\email{steven.clontz@gmail.edu}
+\urladdr{clontz.org}
+
+\keywords{topological game, limited information strategy, \(k\)-spaces,
+\(\sigma\)-compact spaces, hemicompact spaces}
+
+\subjclass[2010]{54D20, 54D45}
+
+
+\begin{abstract}
+A \(0\)-Markov strategy in a topological game considers only the round number
+and ignores all moves by the opponent. The existence of a winning \(0\)-Markov
+strategy in either of two games due to Gruenhage characterizes hemicompactness
+in either locally compact or compactly generated spaces. However, there
+exists a non-compactly generated space for which there exists a winning
+\(0\)-Markov strategy in one game but not the other.
+\end{abstract}
+
+
+\maketitle
+
+\section{Introduction}
+
+The following two topological games were introduced by Gary Gruenhage
+in \cite{MR858337}.
+
+\begin{game}
+  Let $\gruKPGame{X}$ denote the \term{Gruenhage compact/point game}
+  with players $\pl K$, $\pl P$ played on a topological space \(X\).
+  During round $n$, $\pl K$ chooses
+  a compact subset $K_n$ of $X$, followed by $\pl P$ choosing a point
+  $p_n\in X$ such that $p_n\not\in \bigcup_{m\leq n}K_m$.
+
+  $\pl K$ wins the game if the collection $\{\{p_n\}:n<\omega\}$ is locally
+  finite in the space, and $\pl P$ wins otherwise.
+\end{game}
+
+\begin{game}
+  Let $\gruKLGame{X}$ denote the \term{Gruenhage compact/compact game}
+  with players $\pl K$, $\pl L$ played on a topological space \(X\).
+  This game proceeds analogously to
+  $\gruKPGame{X}$, except the second player $\pl L$ chooses compact sets $L_n$
+  missing $\bigcup_{m\leq n}K_n$,
+  and $\pl K$ wins if the collection $\{L_n:n<\omega\}$ is locally finite.
+\end{game}
+
+A \term{strategy} for a game defines the move a player makes each round as
+a function of the history of the game (previous moves, the round number, etc.).
+A \term{winning strategy} defeats every possible counterattack by the
+opponent.
+Note that a winning strategy in \(\gruKLGame{X}\) is also a winning strategy
+in \(\gruKPGame{X}\) since singletons are compact.
+In his paper, Gruenhage used these games to characterize several covering
+properties using the existence of various kinds of winning strategies for
+\(\pl K\) in the games. These results hold in the context of
+\term{locally compact} spaces for which every point has a compact neighborhood.
+
+\begin{definition}
+  A space is \term{paracompact} if for every open cover $\mc U$ there exists a
+  locally-finite open refinement $\mc V$ of $\mc U$ also covering the space.
+\end{definition}
+
+\begin{theorem}
+  The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is paracompact
+      \item $\pl K \win \gruKLGame{X}$. (\(\pl K\) has a winning strategy
+      for the game.)
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}
+  A space is \term{metacompact} if for every open cover $\mc U$ there exists a
+  point-finite open refinement $\mc V$ of $\mc U$ also covering the space.
+\end{definition}
+
+\begin{theorem}
+  The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is metacompact
+      \item $\pl K \tactwin \gruKPGame{X}$ (\(\pl K\) has a \term{tactical}
+      winning strategy which only considers the most recent move of
+      the opponent each round)
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}
+  A space is \term{$\sigma$-metacompact} if for every open cover $\mc U$ there
+  exist point-finite open refinements $\mc V_n$ of $\mc U$ such that
+  $\bigcup_{n<\omega}\mc V_n$ also covers the space.
+\end{definition}
+
+\begin{theorem}
+  The following are equivalent for a locally compact space $X$:
+    \begin{itemize}
+      \item $X$ is $\sigma$-metacompact
+      \item $\pl K \markwin \gruKPGame{X}$ (\(\pl K\) has a \term{Markov}
+      winning strategy which only considers the most recent move of
+      the opponent and the round number each round)
+    \end{itemize}
+\end{theorem}
+
+Tactical and Markov strategies are examples of \term{limited information}
+strategies. These may be generalized to \term{\(k\)-tactical} and
+\term{\(k\)-Markov} strategies by allowing the player to use the \(k\)
+most recent moves of the opponent; so \(1\)-tactical strategies are
+simply tactical strategies, and similar for Markov. Of course, if
+\(k<l\) then a winning \(k\)-tactical (resp. Markov) strategy
+is itself a winning \(l\)-tactical (resp. Markov) strategy.
+In \cite{QAClontzPreprint}
+the author investigated \((k+1)\)-tactical/Markov strategies in \(\gruKPGame{X}\)
+and showed that even for a complexly constructed space they can often be
+improved to simply a tactical strategy; it remains open if this is always
+the case.
+
+In this paper we investigate the applications of \(0\)-Markov strategies
+in both \(\gruKPGame{X}\) and \(\gruKLGame{X}\),
+which we will call \term{predetermined} strategies as each move is determined
+completely by the round number of the game and ignores all moves of the
+opponent. It will be shown that for compactly generated spaces that a
+predetermined winning strategy in \(\gruKPGame{X}\) can be used to get a
+predetermined winning strategy in \(\gruKLGame{X}\).
+However, there exists a non-compactly generated space
+for which this does not work out.
+
+\section{Locally compact spaces and predetermined strategies}
+
+It's a known fact \cite{MR2048350} that amongst locally compact spaces the
+following properties are equivalent.
+
+\begin{definition}
+  A space \(X\) is \term{Lindel\"of} if for every open cover of \(X\) there
+  exists a countable subcover.
+\end{definition}
+
+\begin{definition}
+  A space \(X\) is \term{\(\sigma\)-compact} if \(X=\bigcup_{n<\omega}K_n\)
+  for \(K_n\) compact.
+\end{definition}
+
+\begin{definition}
+  A space \(X\) is \term{hemicompact} if \(X=\bigcup_{n<\omega}K_n\)
+  for \(K_n\) compact and every compact subset of \(X\) is contained in some
+  \(K_n\).
+\end{definition}
+
+In general, hemicompact spaces are \(\sigma\)-compact, and \(\sigma\)-compact
+spaces are Lindel\"of. By considering the games \(\gruKPGame{X}\) and
+\(\gruKLGame{X}\) we will obtain an alternate proof that locally compact
+Lindel\"of spaces are hemicompact.
+
+\begin{theorem}
+  If \(X\) is a locally compact Lindel\"of space, then
+  \(\pl K \prewin \gruKLGame{X}\) (\(\pl K\) has a winning \(0\)-Markov
+  a.k.a. predetermined strategy for the game.)
+\end{theorem}
+
+\begin{proof}
+  For each \(x\in X\), let \(U_x\) be an open neighborhood of \(x\) with \(\cl{U_x}\)
+  compact. Then as \(X\) is Lindel\"of, choose \(x_n\in X\) for \(n<\omega\) such that
+  \(\{U_{x_n}:n<\omega\}\) covers \(X\). Define the predetermined strategy \(\sigma\)
+  for \(\pl K\) by \(\sigma(n)=\cl{U_{x_n}}\).
+
+  Let \(L:\omega\to \mc K(X)\) legally attack \(\sigma\), so
+  \(L(n)\cap\bigcup_{m\leq n}\sigma(m)=\emptyset\). For each \(x\in X\),
+  choose \(n<\omega\) with \(x\in U_{x_n}\). Then \(U_{x_n}\) is a neighborhood of
+  \(x\) which intersects finitely many \(L(n)\), so \(\{L(n):n<\omega\}\) is
+  locally finite.
+\end{proof}
+
+\begin{theorem}
+  If \(\pl K\prewin \gruKPGame{X}\), then \(X\) is hemicompact.
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) be a winning predetermined strategy for \(\pl K\) in
+  \(\gruKPGame{X}\). If \(C\in \mc K(X)\) is compact, then for each \(x\in C\) let
+  \(U_x\) be an open neighborhood of \(x\) which intersects finitely many
+  \(\sigma(n)\). Choose \(x_i\in C\) for \(i<n<\omega\) such that
+  \(\{U_{x_i}:i<n\}\) covers \(C\). Then \(\bigcup_{i<n}U_{x_i}\) contains \(C\)
+  and intersects finitely many \(\sigma(n)\), and thus
+  \(\{\bigcup_{m\leq n}\sigma(m):n<\omega\}\) witnesses hemicompactness.
+\end{proof}
+
+\begin{corollary}
+  The following are equivalent for any locally compact space \(X\):
+    \begin{itemize}
+      \item \(X\) is Lindel\"of.
+      \item \(X\) is \(\sigma\)-compact.
+      \item \(X\) is hemicompact.
+      \item \(\pl K \prewin \gruKPGame{X}\).
+      \item \(\pl K \prewin \gruKLGame{X}\).
+    \end{itemize}
+\end{corollary}
+
+\section{Compactly generated spaces and predetermined strategies}
+
+\begin{definition}
+  A space \(X\) is \term{compactly generated} if a set is closed if and
+  only if its intersection with every compact set is closed. Such
+  spaces are also known as \term{\(k\)-spaces}.
+\end{definition}
+
+All locally compact spaces are \(k\)-spaces. As will be shown,
+the games \(\gruKPGame{X}\), \(\gruKLGame{X}\) are equivalent for \(\pl K\)'s
+predetermined strategies in Hausdorff \(k\)-spaces.
+
+\begin{definition}
+  A space \(X\) is a \(k_\omega\)-space if there exist compact sets \(K_n\) for
+  \(n<\omega\) such that a set is closed if and
+  only if its intersection with every \(K_n\) is closed.
+\end{definition}
+
+\begin{theorem}
+  If \(X\) is a \(k_\omega\)-space, then
+  \(\pl K \prewin \gruKLGame{X}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(K_n\) witness that \(X\) is a \(k_\omega\)-space. Define the predetermined
+  strategy \(\sigma\) for \(\pl K\) by \(\sigma(n)=K_n\).
+
+  Let \(L:\omega\to\mc{K}(X)\) be a legal attack against \(\sigma\), and let
+  \(L_{\omega\setminus n} = \bigcup_{n\leq m<\omega}L(m)\). Then as
+    \[
+      L_{\omega\setminus n}\cap K_p
+        =
+      \bigcup_{n\leq m< p}L(m) \cap \sigma(p)
+    \]
+  is compact for each \(p<\omega\), \(L_{\omega\setminus n}\) is closed.
+
+  For each \(x\in X\), \(x\in \sigma(p)\) for some \(p\), so
+  \(x\in X\setminus L_{\omega\setminus p}\) which misses all but finitely
+  many \(L(n)\), showing that \(\{L(n):n<\omega\}\) is locally finite and
+  \(\sigma\) is a winning predetermined strategy.
+\end{proof}
+
+The following result was observed in \cite{MR540599}; a proof is provided
+for convenience.
+
+\begin{proposition}
+  Hemicompact \(k\)-spaces are \(k_\omega\)-spaces.
+\end{proposition}
+
+\begin{proof}
+  Let \(K_n\) for \(n<\omega\) witness hemicompactness.
+  If \(C\cap K_n\) is closed for each \(n<\omega\), then let \(K\) be any compact
+  set. Since \(K\subseteq K_n\) for some \(n<\omega\), \(C\cap K\) is closed, and
+  therefore \(C\) is closed.
+\end{proof}
+
+As we've already seen that \(\pl K \prewin \gruKPGame{X}\) implies
+hemicompactness:
+
+\begin{corollary}
+  The following are equivalent for any \(k\)-space \(X\):
+    \begin{itemize}
+      \item \(X\) is \(k_{\omega}\).
+      \item \(X\) is hemicompact.
+      \item \(\pl K \prewin \gruKPGame{X}\).
+      \item \(\pl K \prewin \gruKLGame{X}\).
+    \end{itemize}
+\end{corollary}
+
+\section{
+Non-equivalence of \(\pl K\prewin\gruKPGame{X}\), \(\pl K\prewin\gruKLGame{X}\)
+}
+
+For \(k\)-spaces, it has been shown that \(\gruKPGame{X}\) and \(\gruKLGame{X}\)
+are equivalent with respect to \(\pl K\)'s winning predetermined strategies.
+Looking at a subspace of the Stone-Cech compactification \(\beta\omega\) of
+\(\omega\) reveals an example for which the predetermined strategies are not
+equivalent.
+
+\begin{definition}
+  An \term{ultrafilter} on a cardinal \(\kappa\) is a maximal filter of non-empty
+  subsets of \(\kappa\). For each \(\alpha\in \kappa\), the ultrafilter
+  \(\mc F_\alpha\) containing all supersets of \(\{\alpha\}\) is called a
+  \term{principal ultrafilter}. All
+  ultrafilters not of this form are called \term{free ultrafilters}.
+\end{definition}
+
+\begin{definition}
+  The \term{Stone-Cech compactification} of a cardinal
+  \(\kappa\) is the space \(\beta\kappa\) consisting
+  of all ultrafilters on \(\kappa\), with open sets of the form
+  \(U_S=\{\mc F\in\beta\kappa : S\in\mc F\}\) for \(S\subseteq \kappa\).
+\end{definition}
+
+From these definitions it is easily verified that principal ultrafilters
+are isolated, so \(\kappa\) with the discrete topology may be viewed as
+a dense open subspace of \(\beta\kappa\).
+We wish to consider the subspace
+of \(\beta\omega\) consisting of all principal ultrafilters and a single free
+ultrafilter \(\mc F\), denoted by \(\omega\cup\{\mc F\}\).
+
+\begin{lemma}
+  All compact subsets of \(\omega\cup\{\mc F\}\subset\beta\omega\) are finite.
+  In particular, the difference of compact sets in \(\omega\cup\{\mc F\}\)
+  is compact.
+\end{lemma}
+
+\begin{proof}
+  Let \(I=\{n_i:i<\omega\}\cup\{\mc F\}\) be infinite.
+  Then \(\{U_{\omega\setminus\{n_i:i\geq j\}}:j<\omega\}\) is an open cover of
+  \(I\cup\{\mc F\}\) with no finite subcover.
+\end{proof}
+
+\begin{theorem}
+  \(\pl K\notprewin \gruKLGame{\omega\cup\{\mc F\}}\) for any free
+  ultrafilter \(\mc F\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) be a predetermined strategy for \(\pl K\), and define the legal
+  counter-attack \(H:\omega\to\mc K(X)\) by
+  \(H(n)=(n\cup\sigma(n+1))\setminus\sigma(n)\). Then for any neighborhood
+  \(U_S\) of \(\mc F\), \(S\) is infinite, and since
+  \(\bigcup_{n<\omega} H(n)\supseteq\omega\setminus\sigma(0)\), \(U_S\) meets
+  infinitely many of the finite \(H(n)\). Thus \(\sigma\) is not a winning
+  predetermined strategy.
+\end{proof}
+
+\begin{theorem}
+  There exists a free ultrafilter \(\mc F\) such that
+  \(\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\mc F\) be any free ultrafilter, and
+  define the predetermined strategy \(\sigma\) by
+  \(\sigma(n)=n^2\cup\{\mc F\}\).
+
+  Consider the set of all legal attacks \(A\subseteq\omega^\omega\) by
+  \(\pl P\) against \(\sigma\). For \(\{f_i:i\leq m\}\in [A]^{<\omega}\) and
+  \(m<n<\omega\), each \(f_i\) maps only \(n\) points into \(n^2\), so
+  \(\bigcup_{i\leq m}\ran{f_i}\) is coinfinite.
+  Then \(\mc G'=\{\omega\setminus\ran f : f\in A\}\) is contained in a free
+  ultrafilter \(\mc G\), and if \(\mc F=\mc G\), then \(\sigma\) is a
+  winning predetermined strategy.
+\end{proof}
+
+It is not possible to prove in \(ZFC\) that
+\(\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}\)
+for arbitrary free ultrafilters.
+
+\begin{definition}
+  A \term{selective ultrafilter} \(\mc S\) is a free ultrafilter with the
+  property that for every
+  partition \(\{B_n : n < \omega\}\) of nonempty subsets of \(\omega\) such that
+  \(B_n \not\in \mc{S}\) for all \(n\), there exists \(A \in \mc{S}\) such
+  that \(|A \cap B_n|=1\) for all \(n\).
+\end{definition}
+
+\begin{theorem}
+  CH implies the existence of a selective ultrafilter.
+  \cite{MR0080902}
+\end{theorem}
+
+\begin{theorem}
+  If \(\mc S\) is a selective ultrafilter, then
+  \(\pl K\notprewin \gruKPGame{\omega\cup\{\mc S\}}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) be a predetermined strategy for \(\pl K\) such that
+  \(\sigma(n)\supset\bigcup_{m<n}\sigma(m)\).
+  Then define \(B_n=\omega\cap(\sigma(n+1)\setminus\sigma(n))\). Since \(B_n\)
+  is always nonempty finite, \(B_n\not\in\mc F\) and there exists \(A\in \mc S\)
+  such that \(|A\cap B_n|=1\).
+
+  Define the legal counter-attack \(p:\omega\to\omega\cup\{\mc S\}\) by
+  \(p(n)\in A\cap B_n=A\cap(\sigma(n+1)\setminus\sigma(n))\). Since
+  \(A=(A\cap\sigma(0))\cup\{p(n):n<\omega\}\), \(\{p(n):n<\omega\}\in\mc S\).
+  Therefore, every neighborhood of \(\mc F\) intersects infinitely many of
+  the \(p(n)\), and \(p\) defeats the predetermined strategy \(\sigma\).
+\end{proof}
+
+Of particular note is that the author knows of no examples of a
+non-\(k\)-space such that \(K\prewin\gruKPGame{X}\).
+
+\begin{question}
+  Does \(K\prewin\gruKPGame{X}\) imply \(X\) is a \(k\)-space?
+\end{question}
+
+
+
+
+\section{Acknowledgements}
+
+The author would like to thank his PhD advisor Gary Gruenhage for his
+support and mentorship while the author developed these results as a part of
+his dissertation.
+
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography}
+
+\end{document}
