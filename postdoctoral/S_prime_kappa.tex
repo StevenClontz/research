@@ -22,11 +22,15 @@
   \end{theorem}
 
   \begin{proof}
-    Assume we've defined such a topology for \(\omega_k\)
-    such that \(\gamma+1=[0,\gamma]\) is clopen for all \(\gamma<\omega_k\).
-    Note that the usual linear order on \(\omega_1\) satisfies these requirements.
+    Assume we've defined an \(\omega\)-bounded topology for \(\omega_k\) such that
+    for each \(\gamma\in\omega_k\) there exists a decreasing countable base
+    \(\{W_{\gamma,n}:n<\omega\}\) such that each
+    \(W_{\gamma,n}\) is countable, compact,
+    and contains no ordinals greater than \(\gamma\).
+    Note that the usual linear order on \(\omega_1\) satisfies this requirement.
 
-    Let \(\alpha<\omega_{k+1}\), and suppose we've defined compatible topologies on
+    Let \(\alpha<\omega_{k+1}\), and suppose we've defined compatible topologies
+    satisfying the induction hypothesis on
     \(\omega_k\cdot (\beta+1)\) for all \(0\leq\beta<\alpha\).
     If \(\alpha=\beta+1\), then let
     \(\omega_k\cdot(\alpha+1)=\omega_k\cdot(\beta+2)\) be the topological sum
@@ -37,91 +41,130 @@
     be the topological sum of \(\bigcup_{\beta<\alpha}\omega_k\cdot(\beta+1)\)
     and the previously defined
     \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\cong\omega_k\).
+    In either case, \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\)
+    is a clopen copy of \(\omega_k\) under the homeomorphism
+    \(\gamma\mapsto\omega_k\cdot\alpha+\gamma\). Then for each
+    \(\gamma\in\omega_k\) we may define the witnessing decreasing countable base
+    \(\{W_{\omega_k\cdot\alpha+\gamma,n}:n<\omega\}\) for
+    \(\omega_k\cdot\alpha+\gamma\) by
+    \(
+      W_{\omega_k\cdot\alpha+\gamma,n}
+        =
+      \{\omega_k\cdot\alpha+\delta:\delta\in W_{\gamma,n}\}
+    \). Note that for \(cf(\alpha)>\omega\),
+    \(\bigcup_{\beta<\alpha}\omega_k\cdot(\beta+1)\) is \(\omega\)-bounded
+    since any countable set is contained in some \(\omega_k\cdot(\beta+1)\);
+    thus in either case \(\omega_k\cdot(\alpha+1)\) is the topological
+    sum of two \(\omega\)-bounded spaces and therefore itself \(\omega\)-bounded.
 
     The remaining case is where \(\alpha\) is the limit of increasing
     \(\alpha_n\) for \(n<\omega\). Fix a bijection
     \(
       f_\alpha
         :
-      \omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha
+      \omega_k
         \to
       \omega_k\cdot\alpha
-    \). Points in \(\omega_k\cdot(\alpha_n+1)\) for some \(n<\omega\)
-    have their usual base induced by that previously defined topology. So let
-    \(\gamma\in\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\).
-    Basic open neighborhoods of \(\gamma\) are of the form
-    \(
-      W
+    \). Let
+    \(\gamma\in\omega_k\) and define
+    \[
+      W_{\omega_k\cdot\alpha+\gamma,n}
+        =
+      \{\omega_k\cdot\alpha+\delta:\delta\in W_{\gamma,n}\}
         \cup
-      f_\alpha[W]
+      f_\alpha[W_{\gamma,0}]
         \setminus
       \omega_k\cdot(\alpha_n+1)
-    \),
-    where \(n<\omega\) and
-    \(W\subseteq\gamma+1\) is any countable neighborhood of \(\gamma\).
+    \]
+    to be the countable decreasing
+    base \(\{W_{\omega_k\cdot\alpha+\gamma,n}:n<\omega\}\)
+    for \(\omega_k\cdot\alpha+\gamma\).
+    Note that \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\) is
+    then a closed (but not open) copy of \(\omega_k\) under the homeomorphism
+    \(\gamma\mapsto\omega_k\cdot\alpha+\gamma\).
 
-    We wish to show that \(\omega_{k+1}\) with the topology induced by
-    \(\bigcup_{\alpha<\omega_{k+1}}\omega_k\cdot(\alpha+1)\) is \(\omega\)-bounded
-    and locally countable. If
-    \(\gamma\in\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\) where
-    \(cf(\alpha)\not=\omega\), then we immediately see that it is in a clopen
-    copy of \(\omega_k\) giving us local countability
-    immediately. Otherwise, \(\gamma\) has a basic open neighborhood of the form
+    We wish to demonstrate the induction hypothesis for
+    \(\omega_k\cdot(\alpha+1)\). Each
+    \(W_{\omega_k\cdot\alpha+\gamma,n}\) is countable and contains no
+    ordinals greater than \(\omega_k\cdot\alpha+\gamma\). To see that it is
+    compact, note that \(\{\omega_k\cdot\alpha+\delta:\delta\in W_{\gamma,n}\}\)
+    is a copy of compact \(W_{\gamma,n}\), and for any basic neighborhood
+    \(W_{\omega_k\cdot\alpha+\gamma,m}\)
+    of \(\omega_k\cdot\alpha+\gamma\), the set
     \(
-      W
-        \cup
-      f_\alpha[W]
-        \setminus
-      \omega_k\cdot(\alpha_n+1)
-    \),
-    which is obviously countable.
+      f_\alpha[W_{\gamma,0}]
+        \cap
+      \omega_k\cdot(\alpha_m+1)
+    \)
+    is a countable subspace of \(\omega_k\cdot(\alpha_m+2)\)
 
-    Let \(C\) be a countable subset of \(\omega_k\cdot(\alpha+1)\).
-    In the case that \(\alpha=\beta+1\), we may use the \(\omega\)-boundedness
-    of each part in the clopen partition \(\omega_k\cdot(\beta+1)\) and
-    \(\omega_k\cdot(\beta+2)\setminus\omega_k\cdot(\beta+1)\cong\omega_k\)
-    to conclude that the closure of \(C\) is compact.
-    Similarly, if \(cf(\alpha)>\omega\),
-    then we may use the  \(\omega\)-boundedness
-    of each part in the clopen partition
-    \(\bigcup_{\beta<\alpha}\omega_k\cdot(\beta+1)\) and
-    \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\cong\omega_k\)
-    to conclude that the closure of \(C\) is compact.
 
-    The remaining case is again where \(\alpha\) is the limit of increasing
-    \(\alpha_n\) for \(n<\omega\). Then
-    TODO: generalize for \(k+1\)
+
+
+    % If \(\gamma\in\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\) where
+    % \(cf(\alpha)\not=\omega\), then we immediately see that it is in a clopen
+    % copy of \(\omega_k\) giving the result immediately. Otherwise,
+    % \(\alpha\) is the limit of increasing
+    % \(\alpha_n\) for \(n<\omega\), and we claim that
+    % \(
+    %   \{\omega_k\cdot\alpha+\delta:\delta\in W\}
+    %     \cup
+    %   f_\alpha[W]
+    %     \setminus
+    %   \omega_k\cdot(\alpha_n+1)
+    % \) is compact. Since \(W\) is compact in \(\omega_k\) and
+    % \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\) is
+    % a closed linear copy of \(\omega_k\), we get that
+    % \(\{\omega_k\cdot\alpha+\delta:\delta\in W\}\) is compact.
+
+    % Let \(C\) be a countable subset of \(\omega_k\cdot(\alpha+1)\).
+    % In the case that \(\alpha=\beta+1\), we may use the \(\omega\)-boundedness
+    % of each part in the clopen partition \(\omega_k\cdot(\beta+1)\) and
+    % \(\omega_k\cdot(\beta+2)\setminus\omega_k\cdot(\beta+1)\cong\omega_k\)
+    % to conclude that the closure of \(C\) is compact.
+    % Similarly, if \(cf(\alpha)>\omega\),
+    % then we may use the  \(\omega\)-boundedness
+    % of each part in the clopen partition
+    % \(\bigcup_{\beta<\alpha}\omega_k\cdot(\beta+1)\) and
+    % \(\omega_k\cdot(\alpha+1)\setminus\omega_k\cdot\alpha\cong\omega_k\)
+    % to conclude that the closure of \(C\) is compact.
+
+    % The remaining case is again where \(\alpha\) is the limit of increasing
+    % \(\alpha_n\) for \(n<\omega\). Then there exists \(\gamma\in\omega_k\)
+    % and a countable neighborhood \(W\subseteq[0,\gamma]\) of \(\gamma\)
+    % such that
     % \(
     %   C
     %     \subseteq
-    %   [\gamma',\gamma]
+    %   \{\omega_k\cdot\alpha+\delta:\delta\in W\}
     %     \cup
-    %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
-    % \)
-    % for some \(\omega_k\cdot\alpha\leq\gamma'<\gamma<\omega_k\cdot(\alpha+1)\).
+    %   f_\alpha[W]
+    % \).
     % Its closure is compact:
-    % the closure operation does not add any ordinals greater than \(\gamma\),
-    % and any open cover
-    % contains another basic open neighborhood of \(\gamma\) such as
+    % the closure operation does not add any ordinals greater than
+    % \(\omega_k\cdot\alpha+\gamma\), and any open cover
+    % contains another basic open neighborhood of \(\omega_k\cdot\alpha+\gamma\)
+    % such as
     % \(
-    %   [\gamma'',\gamma]
+    %   \{\omega_k\cdot\alpha+\delta:\delta\in V\}
     %     \cup
-    %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
+    %   f_\alpha[V]
     %     \setminus
     %   \omega_k\cdot(\alpha_m+1)
     % \)
-    % which misses only the compact set \([\gamma',\gamma'']\) and the
+    % which misses only the compact set
+    % \(\{\omega_k\cdot\alpha+\delta:\delta\in W\setminus V\}\) and the
     % closure of the countable set
-    % \(
-    %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
-    %     \cap
-    %   \omega_k\cdot(\alpha_{\min(m,n)}+1)
-    % \), which is compact by the \(\omega\)-boundedness of
-    % \(\omega_k\cdot(\alpha_{\min(m,n)}+1)\).
+    % % \(
+    % %   f_\alpha[[\omega_k\cdot\alpha,\gamma]]
+    % %     \cap
+    % %   \omega_k\cdot(\alpha_{\min(m,n)}+1)
+    % % \), which is compact by the \(\omega\)-boundedness of
+    % % \(\omega_k\cdot(\alpha_{\min(m,n)}+1)\).
 
-    Finally, since every countable subset of \(\omega_{k+1}\) is contained in
-    some \(\omega_k\cdot(\alpha+1)\), we conclude \(\omega_{k+1}\) is
-    \(\omega\)-bounded.
+    % Finally, since every countable subset of \(\omega_{k+1}\) is contained in
+    % some \(\omega_k\cdot(\alpha+1)\), we conclude \(\omega_{k+1}\) is
+    % \(\omega\)-bounded.
   \end{proof}
 
   \begin{theorem*}
