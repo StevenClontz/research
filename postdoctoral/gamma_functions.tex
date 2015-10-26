@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+
+\usepackage{../clontzStyle}
+\usepackage{../clontzDefinitions}
+
+\begin{document}
+
+  \begin{definition}
+    Let a V-map be a u.s.c. idempotent surjection.
+  \end{definition}
+
+  \begin{definition}
+    For any LOS \(\<L,\leq\>\), let \(\hat L\) be the collection of
+    left-closed subsets of \(L\)
+    (closed subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
+    linearly ordered by \(\subseteq\).
+  \end{definition}
+
+  It's well-known that \(\hat L\) is compact. If \(L\) lacks a least element,
+  \(L\) embeds as a dense subspace (consider the sets
+  \((\leftarrow,l]\) for \(l\in L\)).
+
+  \begin{definition}
+    For any compact LOTS \(K\) with minimum \(0\) and maximum \(1\),
+    let \(\Gamma\) be the V-map on \(K\) where \(\Gamma(0)=K\) and \(\Gamma(t)=\{1\}\)
+    for \(t>0\).
+  \end{definition}
+
+  \begin{theorem}
+    \(X=\varprojlim \{2, \Gamma, L\}\cong \hat L\)
+  \end{theorem}
+
+  \begin{proof}
+    We start by placing an order on \(X\). Let \(\vec x<\vec y\) if
+    there exists \(a\in L\) with \(\vec x(a)=0,\vec y(a)=1\). We claim this is
+    a total order inducing the topology on \(X\).
+
+    We first observe that if \(\vec x(b)=1\), then for all \(a\leq b\),
+    \(\vec x(a)\in\Gamma(1)=\{1\}\). If \(\vec x\not=\vec y\), then assume
+    without loss of generality that \(\vec x(a)=0,\vec y(a)=1\), so
+    \(\vec x<\vec y\). Also, whenever \(\vec x(b)=1\), we have that \(b<a\),
+    so \(\vec y(b)=1\), preventing \(\vec y<\vec x\). Finally if
+    \(\vec x<\vec y\) and \(\vec y<\vec z\), take \(a,b\) with
+    \(\vec x(a)=0\), \(\vec y(a)=1\),\(\vec y(b)=0\),\(\vec z(b)=1\). It
+    follows that \(a<b\) so \(\vec z(a)=1\) and \(\vec x<\vec z\).
+
+    Consider the basic open set \(B(\vec x,F)\) for a finite set
+    \(F\in [L]^{<\omega}\)
+    about the sequence \(\vec x\in X\) which contains all sequences
+    \(\vec y\) agreeing with \(\vec x\) on \(F\). If \(\vec x(a)=1\) for all
+    \(a\in F\), then let \(\vec w\in X\) be \(0\) on the maximum of \(F\),
+    and \(1\) for anything less. It follows that
+    \(B(\vec x,F)=(\vec w,\rightarrow)\). If \(\vec x(a)=0\) for all
+    \(a\in F\), then let \(\vec y\in X\) be \(1\) on the minimum of \(F\),
+    and \(0\) for anything greater. It follows that
+    \(B(\vec x,F)=(\leftarrow,\vec y)\). Finally if \(\vec x(a)=1\) and
+    \(\vec x(b)=0\) for \(a<b\) in \(F\) and nothing between \(a,b\) is in
+    \(F\), then let \(\vec w\in X\) be \(0\) on \(a\)
+    and \(1\) for anything less, and let \(\vec y\in X\) be \(1\) on \(b\)
+    and \(0\) for anything greater. It follows that
+    \(B(\vec x,F)=(\vec w,\vec y)\).
+
+    Let \(\phi\) evaluate each \(\vec x\in X\subseteq 2^L\) as the
+    characteristic function for a subset of \(L\). It's easy to see that
+    \(\phi\) is an order isomorphism between \((X,\leq)\) and \((\hat L,\subseteq)\).
+  \end{proof}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{../bibliography}
+
+\end{document}
