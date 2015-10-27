@@ -3,6 +3,10 @@
 \usepackage{../clontzStyle}
 \usepackage{../clontzDefinitions}
 
+\renewcommand{\int}{\textrm{int}}
+\renewcommand{\cl}{\textrm{cl}}
+\newcommand{\lexTimes}{\times_{\textrm{lex}}}
+
 \begin{document}
 
   \begin{definition}
@@ -10,24 +14,51 @@
   \end{definition}
 
   \begin{definition}
-    For any LOS \(\<L,\leq\>\), let \(\hat L\) be the collection of
-    left-closed subsets of \(L\)
-    (closed subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
+    For any LOS \(\<L,\leq\>\), let \(\check L\) be the collection of
+    leftward subsets of \(L\)
+    (subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
+    linearly ordered by \(\subseteq\), and let \(\hat L\) be the collection
+    of left-open subsets of \(L\) (leftward subsets which are open)
     linearly ordered by \(\subseteq\).
   \end{definition}
 
-  It's well-known that \(\hat L\) is compact. If \(L\) lacks a least element,
-  \(L\) embeds as a dense subspace (consider the sets
-  \((\leftarrow,l]\) for \(l\in L\)).
+  \begin{proposition}
+    \(\check L\), \(\hat L\) are compact.
+  \end{proposition}
+
+  \begin{proof}
+    Each subset \(S\) has a supremum \(\cup S\) and infimum \(\cap S\)
+    (or \(\int(\cap S)\)).
+  \end{proof}
+
+  Note that \(\check L\)
+  this is not a ``compactification'' as \(L\) does not necessarily
+  embed as a dense subspace of \(\check L\): if \(L=I\), we might attempt to embed
+  \(t\mapsto [0,t)\), but then note that the subspace topology induces the
+  reverse Sorgenfrey interval as \(([0,s),[0,t])=([0,s),[0,t)]\) is open.
+  However \(\hat L\) is basically
+  the typical way of compactifying a linearly ordered space \(L\) (actually,
+  left-closed is more typical, but this works similarly and fits our applications
+  later),
+  provided \(L\) lacks a maximum element (otherwise the whole space is an [easily
+  removable] isolated point in \(\hat L\)).
 
   \begin{definition}
     For any compact LOTS \(K\) with minimum \(0\) and maximum \(1\),
-    let \(\Gamma\) be the V-map on \(K\) where \(\Gamma(0)=K\) and \(\Gamma(t)=\{1\}\)
+    let \(\gamma\) be the V-map on \(K\) where \(\gamma(0)=K\) and \(\gamma(t)=\{1\}\)
     for \(t>0\).
   \end{definition}
 
+  \begin{definition}
+    For any LOTS \(M\) with minimum element \(0\),
+    let \(\nu\) be the V-map on \(M\) where \(\nu(0)=K\) and \(\nu(t)=\{t\}\)
+    for \(t>0\).
+  \end{definition}
+
+  Note for \(K=M=2\) that \(\gamma=\nu\).
+
   \begin{theorem}
-    \(X=\varprojlim \{2, \Gamma, L\}\cong \hat L\)
+    \(X=\varprojlim \{2, \nu, L\}\cong \check L\)
   \end{theorem}
 
   \begin{proof}
@@ -36,7 +67,7 @@
     a total order inducing the topology on \(X\).
 
     We first observe that if \(\vec x(b)=1\), then for all \(a\leq b\),
-    \(\vec x(a)\in\Gamma(1)=\{1\}\). If \(\vec x\not=\vec y\), then assume
+    \(\vec x(a)\in\nu(1)=\{1\}\). If \(\vec x\not=\vec y\), then assume
     without loss of generality that \(\vec x(a)=0,\vec y(a)=1\), so
     \(\vec x<\vec y\). Also, whenever \(\vec x(b)=1\), we have that \(b<a\),
     so \(\vec y(b)=1\), preventing \(\vec y<\vec x\). Finally if
@@ -62,8 +93,73 @@
 
     Let \(\phi\) evaluate each \(\vec x\in X\subseteq 2^L\) as the
     characteristic function for a subset of \(L\). It's easy to see that
-    \(\phi\) is an order isomorphism between \((X,\leq)\) and \((\hat L,\subseteq)\).
+    \(\phi\) is an order isomorphism between \(\<X,\leq\>\) and
+    \(\<\check L,\subseteq\>\).
   \end{proof}
+
+  We introduce an alternate definition of an arbitrarily indexed
+  inverse limit.
+
+  \begin{definition}
+    Let \(\varprojlim^\star\{X,f,L\}\subseteq\varprojlim\{X,f,L\}\) satisfy
+    that \(\vec x(a)=\lim_{t\to a}\vec x(t)\) for all \(a\in L\)
+    (for any open neighborhood
+    \(U\)of \(\vec x(a)\) there is \(b<a\) where \(\vec x(t)\in U\)
+    for all \(t\in(b,a]\)).
+  \end{definition}
+
+  \begin{theorem}
+    \(Y=\varprojlim^\star \{2, \nu, L\}\cong \hat L\).
+  \end{theorem}
+
+  \begin{proof}
+    Consider \(Y\) as a subspace of \(X=\varprojlim \{2, \nu, L\}\) with
+    the linear order described above. We claim that if \(\phi\) is the
+    characteristic function for a subset of \(L\), then \(\int\circ\phi\)
+    is an order isomorphsim between \(\<Y,\leq\>\) and
+    \(\<\hat L,\subseteq\>\).
+
+    Let \(A\) be a left-open subset of \(L\). Then let \(\vec x(a)=1\) when
+    \(a\in\cl A\) and \(0\) otherwise. Then \(\vec x\in Y\),
+    \(\phi(\vec x)=\cl A\), and \(\int\circ\phi(\vec x)=\int\cl A=A\).
+
+    Let \(\vec x,\vec y\in Y\). If
+    \(\int\circ\phi(\vec x)=\int\circ\phi(\vec y)=A\), then \(A\) is a
+    left-open set where \(\vec x(a)=\vec y(a)=1\) for \(a\in A\). It follows
+    that if \(b\in\cl A\), then as \(\vec x,\vec y\in Y\),
+    \(\vec x(b)=\vec y(b)=1\) as well. And if \(c\not\in\cl A\), then
+    as \(c\not\in\phi(x)\),
+    \(\vec x(c)=\vec y(c)=0\), so \(\vec x=\vec y\).
+
+    Finally let \(\vec x<\vec y\), so there exists \(a\in L\) with
+    \(\vec x(a)=0,\vec y(a)=1\). Then
+    \(
+      \int\circ\phi(\vec x)
+        \subseteq
+      \phi(\vec x)
+        \subseteq
+      (\leftarrow,a)
+        \subseteq
+      \int\circ\phi(\vec y)
+    \). Thus \(\int\circ\phi\) preserves order.
+  \end{proof}
+
+  \begin{corollary}
+    \(\varprojlim^\star \{2, \nu, \kappa\}=\kappa+1\)
+  \end{corollary}
+
+  % \begin{theorem}
+  %   Let \(K\) be a compact LOTS with minimum \(0\) and maximum \(1\). Then
+  %   \(Z=\varprojlim^\star \{K, \nu, L\}\cong \hat L\lexTimes K / \sim\)
+  %   where \(\lexTimes\) induces the lexicographic ordering on the product,
+  %   \(\<k,1\>\sim\<m,0\>\) when \(k<m\) and \((k,m)=\emptyset\).
+  % \end{theorem}
+
+  % \begin{proof}
+  %   Similar to before, we introduce a linear order to \(Z\) where
+  %   \(\vec x<\vec y\) if there exists \(a\in L\) where \(\vec x(a)=0\) and
+  %   \(\vec y(a)>0\).
+  % \end{proof}
 
 \newpage
 \bibliographystyle{plain}
