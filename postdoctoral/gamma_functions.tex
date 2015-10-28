@@ -19,7 +19,7 @@
     leftward subsets of \(L\)
     (subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
     linearly ordered by \(\subseteq\), and let \(\hat L\) be the collection
-    of left-open subsets of \(L\) (leftward subsets which are open)
+    of left-closed subsets of \(L\) (leftward subsets which are closed)
     linearly ordered by \(\subseteq\).
   \end{definition}
 
@@ -28,20 +28,18 @@
   \end{proposition}
 
   \begin{proof}
-    Each subset \(S\) has a supremum \(\cup S\) and infimum \(\cap S\)
-    (or \(\int(\cap S)\)).
+    Each subset \(S\) has an infimum \(\cap S\) and a supremum \(\cup S\)
+    (or \(\cl(\cap S)\)).
   \end{proof}
 
   Note that \(\check L\)
-  this is not a ``compactification'' as \(L\) does not necessarily
+  is not a ``compactification'' as \(L\) does not necessarily
   embed as a dense subspace of \(\check L\): if \(L=I\), we might attempt to embed
   \(t\mapsto [0,t)\), but then note that the subspace topology induces the
   reverse Sorgenfrey interval as \(([0,s),[0,t])=([0,s),[0,t)]\) is open.
-  However \(\hat L\) is basically
-  the typical way of compactifying a linearly ordered space \(L\) (actually,
-  left-closed is more typical, but this works similarly and fits our applications
-  later),
-  provided \(L\) lacks a maximum element (otherwise the whole space is an [easily
+  However \(\hat L\) is
+  the typical way of compactifying a linearly ordered space \(L\),
+  provided \(L\) lacks a least element (otherwise the empty set is an [easily
   removable] isolated point in \(\hat L\)).
 
   \begin{definition}
@@ -98,6 +96,22 @@
     \(\<\check L,\subseteq\>\).
   \end{proof}
 
+  \begin{corollary}
+    \(
+      \varprojlim \{2, \nu, \alpha\}
+      \cong
+      \alpha+1
+    \)
+    for every ordinal \(\alpha\).
+  \end{corollary}
+
+  \begin{proof}
+    Since \(\check\alpha=\alpha+1\) (actually equals, not just homeomorphic!),
+    we get \(\varprojlim^\star \{2, \nu, \alpha\}
+      \cong \check\alpha =
+    \alpha+1\) for free.
+  \end{proof}
+
   We introduce an alternate definition of an arbitrarily indexed
   inverse limit.
 
@@ -116,68 +130,67 @@
   \begin{proof}
     Consider \(Y\) as a subspace of \(X=\varprojlim \{2, \nu, L\}\) with
     the linear order described above. We claim that if \(\phi\) is the
-    characteristic function for a subset of \(L\), then \(\int\circ\phi\)
+    characteristic function for a subset of \(L\), then \(\phi\)
     is an order isomorphsim between \(\<Y,\leq\>\) and
     \(\<\hat L,\subseteq\>\).
 
-    Let \(A\) be a left-open subset of \(L\). Then let \(\vect x(a)=1\) when
-    \(a\in\cl A\) and \(0\) otherwise. Then \(\vect x\in Y\),
-    \(\phi(\vect x)=\cl A\), and \(\int\circ\phi(\vect x)=\int\cl A=A\).
+    Let \(A\) be a left-closed subset of \(L\). Let \(\vect x(a)=1\) when
+    \(a\in A\) and \(\vect x(a)=0\) otherwise. Then \(\vect x\in Y\) and
+    \(\phi(\vect x)=A\).
 
     Let \(\vect x,\vect y\in Y\). If
-    \(\int\circ\phi(\vect x)=\int\circ\phi(\vect y)=A\), then \(A\) is a
-    left-open set where \(\vect x(a)=\vect y(a)=1\) for \(a\in A\). It follows
-    that if \(b\in\cl A\), then as \(\vect x,\vect y\in Y\),
-    \(\vect x(b)=\vect y(b)=1\) as well. And if \(c\not\in\cl A\), then
-    as \(c\not\in\phi(x)\),
-    \(\vect x(c)=\vect y(c)=0\), so \(\vect x=\vect y\).
+    \(\phi(\vect x)=\phi(\vect y)=A\), then \(A\) is a
+    left-closed set where \(\vect x(a)=\vect y(a)=1\) for \(a\in A\)
+    and \(\vect x(a)=\vect y(a)=0\) otherwise, so \(\vect x=\vect y\).
 
     Finally let \(\vect x<\vect y\), so there exists \(a\in L\) with
-    \(\vect x(a)=0,\vect y(a)=1\). Then
+    \(\vect x(a)=0\), \(\vect y(a)=1\). Then
     \(
-      \int\circ\phi(\vect x)
-        \subseteq
       \phi(\vect x)
         \subseteq
       (\leftarrow,a)
         \subseteq
-      \int\circ\phi(\vect y)
-    \). Thus \(\int\circ\phi\) preserves order.
+      \phi(\vect y)
+    \). Thus \(\phi\) preserves order.
   \end{proof}
 
   \begin{corollary}
     \(
-      \varprojlim \{2, \nu, \alpha\}
-      \cong
       \varprojlim^\star \{2, \nu, \alpha\}
       \cong
       \alpha+1
     \)
-    for every ordinal \(\alpha\).
+    for every infinite limit or finite ordinal \(\alpha\).
   \end{corollary}
 
   \begin{proof}
-    Since \(\hat\alpha=\alpha+1\) (actually equals, not just homeomorphic!),
-    we get \(\varprojlim^\star \{2, \nu, \alpha\}
-      \cong \hat\alpha =
-    \alpha+1\) for free. Then observe that all leftward sets in \(\alpha\) are
-    open: \(A=[0,\min(\alpha+1\setminus A))\).
-    Thus we have
-    \(\varprojlim \{2, \nu, \alpha\}\cong\check\alpha=\hat\alpha=\alpha+1\).
+    If \(\alpha\) is finite, then of course all (leftward) sets are
+    closed and we get \(\hat\alpha=\check\alpha=\alpha+1\) for free.
+    Otherwise, since \(\alpha\) lacks a greatest point, \(\hat\alpha\)
+    is homeomorphic to its usual compactification \(\alpha+1\).
   \end{proof}
+
+  In fact, \(\hat\alpha=\alpha+1\setminus L(\alpha)\) where \(L(\alpha)\)
+  is the colleciton of all limit ordinals less than \(\alpha\), which also
+  shows \(\hat\alpha\cong\alpha\) for infinite successor ordinals \(\alpha\).
 
   \begin{theorem}
     Let \(M\) be a LOTS with minimum \(0\).
-    \(Z=\varprojlim^\star \{M, \nu, L\}\cong \{-\infty\}\cup \hat L\lexTimes M'\)
+    \(
+      Z
+        =
+      \varprojlim^\star \{M, \nu, L\}
+        \cong
+      \{-\infty\}\cup (\hat L\setminus\emptyset)\lexTimes M'
+    \)
     where \(M'=M\setminus\{0\}\),
     \(\lexTimes\) induces the lexicographic ordering on the product,
     and \(-\infty\) is a least element.
   \end{theorem}
 
   \begin{proof}
-    Let \(\rho(\vect x)=\int\{a\in L:\exists b> a(\vect x(b)>0)\}\);
-    this is obviously leftwards, and it's open since for each
-    \(a\in\rho(\vect x)\), \(a\in(\leftarrow,b)\subseteq\rho(\vect x)\).
+    Let \(\rho(\vect x)=\{a\in L:\vect x(a)>0\}\);
+    this is obviously leftwards, and it's closed for all \(\vect x\in Z\).
     Then we give \(Z\) the linear order where \(\vect x<\vect y\) if
     \(\rho(\vect x)\subsetneq\rho(\vect y)\) or both
     \(\rho(\vect x)=\rho(\vect y)\)
@@ -187,9 +200,39 @@
     by \(r(\vect 0)=-\infty\) and \(r(\vect x)=\<\rho(\vect x),m\>\) where
     \(\vect x(l)=m>0\) for some \(l\in L\) otherwise.
 
-    We first show that \(r\) is a bijection. Let \(A\) be left-open
+    We first show that \(r\) is a bijection. Let \(A\) be left-closed
     and \(m\in M'\). Then let \(\vect x_{A,m}\) satisfy \(\vect x_{A,m}(a)=m\)
-    for \(a\in A\) and \(\vect x_{A,m}(a)=0\) otherwise.
+    for \(a\in A\) and \(\vect x_{A,m}(a)=0\) otherwise and note
+    \(\vect x_{A,m}\in Z\), \(r(\vect x_{A,m})=\<A,m\>\). Showing one-to-one
+    is similarly trivial.
+
+    Finally let \(\vect 0<\vect x<\vect y\).
+    If \(\rho(\vect x)\subsetneq\rho(\vect y)\), then \(r(\vect x)<r(\vect y)\).
+    Otherwise \(\rho(\vect x)=\rho(\vect y)\), but \(0<\vect x(l)<\vect y(l)\)
+    for some \(l\in L\) and therefore \(r(\vect x)<r(\vect y)\).
+  \end{proof}
+
+  This gives us the previous result as a corollary:
+  \(
+    \varprojlim^\star \{2, \nu, L\}
+      \cong
+    \{-\infty\}\cup(\hat L\setminus\{\emptyset\})\lexTimes\{1\}
+      \cong
+    \hat L
+  \). Unfortunately, the result is not always compact.
+
+  \begin{example}
+    \(
+      \varprojlim^\star \{I, \nu, I\}
+        \cong
+      \{-\infty\}\cup (0,1]\lexTimes(0,1]
+    \)
+  is not compact.
+  \end{example}
+
+  \begin{proof}
+    The infinite set \(\{\<1-\frac{1}{2^n},1-\frac{1}{2^n}\>:0<n<\omega\}\)
+    is closed discrete.
   \end{proof}
 
 \newpage
