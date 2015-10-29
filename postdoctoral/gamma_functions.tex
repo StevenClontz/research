@@ -198,12 +198,28 @@
   \end{example}
 
   \begin{theorem}
-    If \(K,L\) are compact linearly orders, then
-    \(\varprojlim\{K,\gamma,L\}\cong L\lexTimes K\).
+    If \(K,L\) are compact linear orders with minimums \(0\) and maximums
+    \(1\), then \(\varprojlim\{K,\gamma,L\}\cong L\lexTimes K\).
   \end{theorem}
 
   \begin{proof}
+    For \(\vect x\in\varprojlim\{K,\gamma,L\}\), let
+    \(l_{\vect x}=\sup(\{a\in L:\vect x(a)>0\})\). We say
+    \(\vect x<\vect y\) if either \(l_{\vect x}<l_{\vect y}\) or both
+    \(l=l_{\vect x}=l_{\vect y}\) and \(\vect x(l)<\vect y(l)\).
 
+    We should show that this is a linear order. If \(\vect x<\vect y\), we
+    have two cases for which to show antisymmetry:
+      \begin{itemize}
+        \item \(l_{\vect x}<l_{\vect y}\). Then since
+        \(l_{\vect y}\not< l_{\vect x}\) and
+        \(l_{\vect y}\not= l_{\vect x}\), we have \(\vect y\not<\vect x\).
+        \item \(l_{\vect x}=l_{\vect y}\) and \(\vect x(l)<\vect y(l)\).
+        Then since \(l_{\vect y}\not< l_{\vect x}\) and
+        \(\vect y(l)\not<\vect x(l)\), we have \(\vect y\not<\vect x\).
+      \end{itemize}
+
+    Likewise if \(\vect x<\vect y\) and \(\vect y<\vect z\), TODO
   \end{proof}
 
 \newpage
