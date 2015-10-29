@@ -174,66 +174,66 @@
   is the colleciton of all limit ordinals less than \(\alpha\), which also
   shows \(\hat\alpha\cong\alpha\) for infinite successor ordinals \(\alpha\).
 
-  \begin{theorem}
-    Let \(M\) be a LOTS with minimum \(0\).
-    \(
-      Z
-        =
-      \varprojlim^\star \{M, \nu, L\}
-        \cong
-      \{-\infty\}\cup (\hat L\setminus\emptyset)\lexTimes M'
-    \)
-    where \(M'=M\setminus\{0\}\),
-    \(\lexTimes\) induces the lexicographic ordering on the product,
-    and \(-\infty\) is a least element.
-  \end{theorem}
+  % \begin{theorem}
+  %   Let \(M\) be a LOTS with minimum \(0\).
+  %   \(
+  %     Z
+  %       =
+  %     \varprojlim^\star \{M, \nu, L\}
+  %       \cong
+  %     \{-\infty\}\cup (\hat L\setminus\emptyset)\lexTimes M'
+  %   \)
+  %   where \(M'=M\setminus\{0\}\),
+  %   \(\lexTimes\) induces the lexicographic ordering on the product,
+  %   and \(-\infty\) is a least element.
+  % \end{theorem}
 
-  \begin{proof}
-    Let \(\rho(\vect x)=\{a\in L:\vect x(a)>0\}\);
-    this is obviously leftwards, and it's closed for all \(\vect x\in Z\).
-    Then we give \(Z\) the linear order where \(\vect x<\vect y\) if
-    \(\rho(\vect x)\subsetneq\rho(\vect y)\) or both
-    \(\rho(\vect x)=\rho(\vect y)\)
-    and \(\vect x(l)<\vect y(l)\) for some \(l\in L\).
+  % \begin{proof}
+  %   Let \(\rho(\vect x)=\{a\in L:\vect x(a)>0\}\);
+  %   this is obviously leftwards, and it's closed for all \(\vect x\in Z\).
+  %   Then we give \(Z\) the linear order where \(\vect x<\vect y\) if
+  %   \(\rho(\vect x)\subsetneq\rho(\vect y)\) or both
+  %   \(\rho(\vect x)=\rho(\vect y)\)
+  %   and \(\vect x(l)<\vect y(l)\) for some \(l\in L\).
 
-    Define \(r:Z\to \hat L\lexTimes M\)
-    by \(r(\vect 0)=-\infty\) and \(r(\vect x)=\<\rho(\vect x),m\>\) where
-    \(\vect x(l)=m>0\) for some \(l\in L\) otherwise.
+  %   Define \(r:Z\to \hat L\lexTimes M\)
+  %   by \(r(\vect 0)=-\infty\) and \(r(\vect x)=\<\rho(\vect x),m\>\) where
+  %   \(\vect x(l)=m>0\) for some \(l\in L\) otherwise.
 
-    We first show that \(r\) is a bijection. Let \(A\) be left-closed
-    and \(m\in M'\). Then let \(\vect x_{A,m}\) satisfy \(\vect x_{A,m}(a)=m\)
-    for \(a\in A\) and \(\vect x_{A,m}(a)=0\) otherwise and note
-    \(\vect x_{A,m}\in Z\), \(r(\vect x_{A,m})=\<A,m\>\). Showing one-to-one
-    is similarly trivial.
+  %   We first show that \(r\) is a bijection. Let \(A\) be left-closed
+  %   and \(m\in M'\). Then let \(\vect x_{A,m}\) satisfy \(\vect x_{A,m}(a)=m\)
+  %   for \(a\in A\) and \(\vect x_{A,m}(a)=0\) otherwise and note
+  %   \(\vect x_{A,m}\in Z\), \(r(\vect x_{A,m})=\<A,m\>\). Showing one-to-one
+  %   is similarly trivial.
 
-    Finally let \(\vect 0<\vect x<\vect y\).
-    If \(\rho(\vect x)\subsetneq\rho(\vect y)\), then \(r(\vect x)<r(\vect y)\).
-    Otherwise \(\rho(\vect x)=\rho(\vect y)\), but \(0<\vect x(l)<\vect y(l)\)
-    for some \(l\in L\) and therefore \(r(\vect x)<r(\vect y)\).
-  \end{proof}
+  %   Finally let \(\vect 0<\vect x<\vect y\).
+  %   If \(\rho(\vect x)\subsetneq\rho(\vect y)\), then \(r(\vect x)<r(\vect y)\).
+  %   Otherwise \(\rho(\vect x)=\rho(\vect y)\), but \(0<\vect x(l)<\vect y(l)\)
+  %   for some \(l\in L\) and therefore \(r(\vect x)<r(\vect y)\).
+  % \end{proof}
 
-  This gives us the previous result as a corollary:
-  \(
-    \varprojlim^\star \{2, \nu, L\}
-      \cong
-    \{-\infty\}\cup(\hat L\setminus\{\emptyset\})\lexTimes\{1\}
-      \cong
-    \hat L
-  \). Unfortunately, the result is not always compact.
+  % This gives us the previous result as a corollary:
+  % \(
+  %   \varprojlim^\star \{2, \nu, L\}
+  %     \cong
+  %   \{-\infty\}\cup(\hat L\setminus\{\emptyset\})\lexTimes\{1\}
+  %     \cong
+  %   \hat L
+  % \). Unfortunately, the result is not always compact.
 
-  \begin{example}
-    \(
-      \varprojlim^\star \{I, \nu, I\}
-        \cong
-      \{-\infty\}\cup (0,1]\lexTimes(0,1]
-    \)
-  is not compact.
-  \end{example}
+  % \begin{example}
+  %   \(
+  %     \varprojlim^\star \{I, \nu, I\}
+  %       \cong
+  %     \{-\infty\}\cup (0,1]\lexTimes(0,1]
+  %   \)
+  % is not compact.
+  % \end{example}
 
-  \begin{proof}
-    The infinite set \(\{\<1-\frac{1}{2^n},1-\frac{1}{2^n}\>:0<n<\omega\}\)
-    is closed discrete.
-  \end{proof}
+  % \begin{proof}
+  %   The infinite set \(\{\<1-\frac{1}{2^n},1-\frac{1}{2^n}\>:0<n<\omega\}\)
+  %   is closed discrete.
+  % \end{proof}
 
 \newpage
 \bibliographystyle{plain}
