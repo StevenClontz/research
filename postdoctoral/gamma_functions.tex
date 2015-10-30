@@ -40,7 +40,19 @@
   However \(\hat L\) is
   the typical way of compactifying a linearly ordered space \(L\),
   provided \(L\) lacks a least element (otherwise the empty set is an [easily
-  removable] isolated point in \(\hat L\)).
+  removable] isolated point in \(\hat L\)). Note that we \textbf{always}
+  assume that \(\emptyset\in\hat L\):
+
+  \begin{example}
+    \(\hat I\cong\{-\infty\}\cup I\) where
+    \(\emptyset\mapsto-\infty\) and \([0,t]\mapsto t\).
+  \end{example}
+
+  \begin{example}
+    For limit ordinals \(\alpha\), \(\hat \alpha\cong \alpha+1\),
+    and for all other infinite ordinals, \(\hat\alpha\cong\alpha\).
+    (The addition of a new least isolated point is of course irrelevant).
+  \end{example}
 
   \begin{definition}
     For any compact LOTS \(K\) with minimum \(0\) and maximum \(1\),
@@ -110,7 +122,165 @@
     we get \(\varprojlim^\star \{2, \gamma, \alpha\}
       \cong \check\alpha =
     \alpha+1\) for free.
+    Note that C and Varagona used this in (TODO create citataion) to break
+    metrizability in uncountable-ordinal-indexed inverse limits (for any V-map
+    there exists a two-point set \(2\) such that \(f\rest 2\supseteq\gamma\),
+    that is, ``\(f\) has condition \(\Gamma\)'').
   \end{proof}
+
+  \bigskip
+
+  We may generalize theorem 8 as follows:
+
+  \begin{theorem}
+    If \(M\) is a LOTS with minimum \(0\) and maximum \(1\),
+    then \(\varprojlim\{M,\gamma,L\}\cong \hat L\lexTimes M/\sim\),
+    where \(\<(\leftarrow,l_0],1\>\sim\<(\leftarrow,l_1],0\>\) if
+    \(l_0<l_1\) and \((l_0,l_1)=\emptyset\),
+    and where \(\<A,m\>\sim\<A,m'\>\) if \(A\in\hat L\setminus L\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(\rho(\vect x)=\cl\{l\in L:\vect x(l)>0\}\), \(v(\vect 0)=0\),
+    and \(v(\vect x)=\min\{\vect x(l):l\in\rho(\vect x)\}\) otherwise.
+    Say \(\vect x<\vect y\) if \(\rho(\vect x)\subsetneq\rho(\vect y)\)
+    or both \(\rho(\vect x)=\rho(\vect y)\) and \(v(\vect x)<v(\vect y)\).
+    The reader may verify that this is a linear order on
+    \(\varprojlim\{M,\gamma,L\}\), and
+    \(\theta(\vect x)=\<\rho(\vect x),v(\vect x)\>\in\hat L\lexTimes M/\sim\)
+    preserves order.
+    For each left-closed set \(A\) and \(m\in M\),
+    let \(\vect x_{A,m}(l)=1\) for \(l\in A\) unless \(l\) is the supremum
+    element of \(A\),
+    \(\vect x_{A,m}(l)=m\) if \(l\) is the supremum of \(A\),
+    and \(\vect x_{A,m}(l)=0\) for \(l\not\in A\).
+    To complete the proof, we should demonstrate that the linear order we
+    defined induces the topology of the inverse limit, and that \(\theta\)
+    is a surjection.
+
+    A basic open set in \(\varprojlim\{M,\gamma,L\}\subseteq L^m\)
+    is of the form
+    \([U,F]\) where \(U(l)\) is an open interval in \(M\) for each
+    \(l\in F\in [L]^{<\omega}\), and
+    \([U,F]=\{\vect x:l\in F\Rightarrow\vect x(l)\in U(l)\}\).
+    If we assume that \([U,F]\) is non-empty, one of the following
+    must hold:
+
+    \begin{itemize}
+      \item
+        \(U[l_0]=(a,b)\) for some \(l_0\in F\).
+        Then \([U,F]=[U,\{l_0\}]\), and note that
+        \(
+          [U,\{l_0\}]
+            =
+          (\vect x_{(\leftarrow,l_0],a},\vect x_{(\leftarrow,l_0],b})
+        \).
+      \item
+        \(U(l_0)=(a,1]\) and \(U(l_1)=[0,b)\) for some \(l_0<l_1\in L\)
+        and \([U,F]=[U,\{l_0,l_1\}]\). Then
+        \([U,\{l_0,l_1\}]=(\vect x_{l_0,a},\vect x_{l_1,b})\).
+    \end{itemize}
+    In the other direction, consider \(\vect y\in(\vect x,\vect z)\).
+    \begin{itemize}
+      \item
+        In the case that \(l_0\in\rho(\vect y)\setminus\rho(\vect x)\)
+        and \(l_1\in\rho(\vect z)\setminus\rho(\vect y)\), let
+        \(U(l_0)=(0,1]\), \(U(l_1)=[0,v(\vect z))\) and note
+        \(\vect y\in[U,\{l_0,l_1\}]\subseteq(\vect x,\vect z)\).
+      \item
+        In the case that \(l_0\in\rho(\vect y)\setminus\rho(\vect x)\),
+        \(\rho(\vect y)=\rho(\vect z)\), and \(v(\vect y)<v(\vect z)\),
+        it follows that \(\rho(\vect y)=\rho(\vect z)=(\leftarrow,l_1]\),
+        so let \(U(l_0)=(0,1]\), \(U(l_1)=[0,v(\vect z))\) and note
+        \(\vect y\in[U,\{l_0,l_1\}]\subseteq(\vect x,\vect z)\).
+      \item
+        In the case that
+        \(\rho(\vect x)=\rho(\vect y)\), \(v(\vect x)<v(\vect y)\),
+        and \(l_1\in\rho(\vect z)\setminus\rho(\vect y)\),
+        it follows that \(\rho(\vect x)=\rho(\vect y)=(\leftarrow,l_0]\),
+        so let \(U(l_0)=(v(\vect x),1]\), \(U(l_1)=[0,v(\vect z))\) and note
+        \(\vect y\in[U,\{l_0,l_1\}]\subseteq(\vect x,\vect z)\).
+      \item
+        In the case that
+        \(\rho(\vect x)=\rho(\vect y)=\rho(\vect z)\) and
+        \(v(\vect x)<v(\vect y)<v(\vect z)\),
+        it follows that
+        \(\rho(\vect x)=\rho(\vect y)=\rho(\vect z)=(\leftarrow,l_0]\),
+        so let \(U(l_0)=(v(\vect x),v(\vect z))\) and note
+        \(\vect y\in[U,\{l_0\}]=(\vect x,\vect z)\).
+    \end{itemize}
+
+    We conclude by
+    showing that \(\theta\) is a surjection. If \(B\in\hat L\setminus L\)
+    and \(m\in M\), consider \(\<B,m\>\).
+    \(B\) lacks a supremum in \(L\), so
+    \(\vect x_{B,0}(l)=1\) for \(l\in B\) and \(\vect x_{B,0}(l)=0\) otherwise.
+    So \(\theta(\vect x_{B,0})=\<\cl B,1\>=\<B,1\>\sim\<B,m\>\) for all
+    \(m\in M\). Otherwise, \(B=(\leftarrow,l_1]\) for some \(l_1\in L\).
+    Let \(m>0\).
+    Then
+    \(
+      \theta(\vect x_{(\leftarrow,l_1],m})
+        =
+      \<\cl (\leftarrow,l_1],v(\vect x_{(\leftarrow,l_1],m})\>
+        =
+      \<(\leftarrow,l_1],m\>
+    \).
+    Finally, we want to map onto \(\<(\leftarrow,l_1],0\>\).
+    If there exists \(l_0<l_1\) with \((l_0,l_1)=\emptyset\), then
+    \(
+      \theta(\vect x_{(\leftarrow,l_1],0})
+        =
+      \theta(\vect x_{(\leftarrow,l_0],1})
+        =
+      \<(\leftarrow,l_0],1\>
+    \)
+    will suffice. Otherwise,
+    \(
+      \theta(\vect x_{(\leftarrow,l_1],0})
+        =
+      \<\cl (\leftarrow,l_1),v(\vect x_{(\leftarrow,l_1),0})\>
+        =
+      \<(\leftarrow,l_1],0\>
+    \).
+  \end{proof}
+
+  Here are some applications:
+
+  \begin{example}
+    \(
+      \varprojlim\{2,\gamma,I\}
+        \cong
+      (\hat I\setminus\emptyset)\lexTimes 2
+        \cong
+      I\lexTimes 2
+        \cong
+      \check I
+    \) (of course, this could be found quicker with theorem 8).
+  \end{example}
+
+  \begin{example}
+    \(
+      \varprojlim\{I,\gamma,I\}
+        \cong
+      (\hat I\setminus\emptyset)\lexTimes I
+        \cong
+      I\lexTimes I
+    \).
+  \end{example}
+
+  \begin{example}
+    For infinite ordinals \(\alpha\),
+    \(
+      \varprojlim\{I,\gamma,\alpha\}
+        \cong
+      (\alpha\lexTimes[0,1))\cup\{\infty\}
+    \).
+    In particular, \(\alpha=\kappa\) for an infinite cardinal \(\kappa\)
+    gives the closed long ray of length \(\kappa\).
+  \end{example}
+
+  \bigskip
 
   We introduce an alternate definition of an arbitrarily indexed
   inverse limit.
@@ -166,61 +336,14 @@
   \begin{proof}
     If \(\alpha\) is finite, then of course all (leftward) sets are
     closed and we get \(\hat\alpha=\check\alpha=\alpha+1\) for free.
-    Otherwise, since \(\alpha\) lacks a greatest point, \(\hat\alpha\)
-    is homeomorphic to its usual compactification \(\alpha+1\).
+    Otherwise, as observed previously \(\hat\alpha\)
+    is homeomorphic to its usual compactification \(\alpha+1\) for
+    limit ordinals.
   \end{proof}
 
   In fact, \(\hat\alpha=\alpha+1\setminus L(\alpha)\) where \(L(\alpha)\)
   is the colleciton of all limit ordinals less than \(\alpha\), which also
   shows \(\hat\alpha\cong\alpha\) for infinite successor ordinals \(\alpha\).
-
-  \bigskip
-
-  The ready may verify the following examples:
-
-  \begin{example}
-    \(\varprojlim\{2,\gamma,I\}\cong \check L\lexTimes 1\)
-  \end{example}
-  \begin{example}
-    \(\varprojlim\{I,\gamma,I\}\cong I\lexTimes I\)
-  \end{example}
-  \begin{example}
-    \(\varprojlim\{I,\gamma,\omega\}\cong (\omega\lexTimes[0,1))\cup\{\infty\}\)
-  \end{example}
-  \begin{example}
-    \(\varprojlim\{I,\gamma,\omega+1\}\cong \omega+1\lexTimes I\)
-  \end{example}
-  \begin{example}
-    \(\varprojlim\{I,\gamma,-\omega\}\cong \{-\infty\}\cup(-\omega\lexTimes(0,1])\)
-  \end{example}
-  \begin{example}
-    \(\varprojlim\{I,\gamma,I\}\cong I\lexTimes I\)
-  \end{example}
-
-  \begin{theorem}
-    If \(K,L\) are compact linear orders with minimums \(0\) and maximums
-    \(1\), then \(\varprojlim\{K,\gamma,L\}\cong L\lexTimes K\).
-  \end{theorem}
-
-  \begin{proof}
-    For \(\vect x\in\varprojlim\{K,\gamma,L\}\), let
-    \(l_{\vect x}=\sup(\{a\in L:\vect x(a)>0\})\). We say
-    \(\vect x<\vect y\) if either \(l_{\vect x}<l_{\vect y}\) or both
-    \(l=l_{\vect x}=l_{\vect y}\) and \(\vect x(l)<\vect y(l)\).
-
-    We should show that this is a linear order. If \(\vect x<\vect y\), we
-    have two cases for which to show antisymmetry:
-      \begin{itemize}
-        \item \(l_{\vect x}<l_{\vect y}\). Then since
-        \(l_{\vect y}\not< l_{\vect x}\) and
-        \(l_{\vect y}\not= l_{\vect x}\), we have \(\vect y\not<\vect x\).
-        \item \(l_{\vect x}=l_{\vect y}\) and \(\vect x(l)<\vect y(l)\).
-        Then since \(l_{\vect y}\not< l_{\vect x}\) and
-        \(\vect y(l)\not<\vect x(l)\), we have \(\vect y\not<\vect x\).
-      \end{itemize}
-
-    Likewise if \(\vect x<\vect y\) and \(\vect y<\vect z\), TODO
-  \end{proof}
 
 \newpage
 \bibliographystyle{plain}
