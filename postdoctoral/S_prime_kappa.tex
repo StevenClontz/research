@@ -5,30 +5,135 @@
 
 \begin{document}
 
-  \begin{remark}
-    Scheeper's \(S(\kappa)\) requiring injections is stronger than my
-    \(S'(\kappa)\) requiring finite-to-one maps. Dow suggests that
-    \(S'(\omega_\omega)\) holds in ZFC by the following.
-  \end{remark}
+  (joint work with Alan Dow)
+
+  \begin{definition}
+    Two functions \(f,g\) are almost compatible if
+    \(\{a\in\dom f\cap\dom g:f(a)\not=g(a)\}\) is finite.
+  \end{definition}
+
+  \begin{definition}
+    \(S'(\theta)\) states that there exists a cofinal family
+    \(\mc S\subseteq[\theta]^{\omega}\) and a collection of pairwise
+    almost compatible
+    finite-to-one functions \(\{f_S\in\omega^S:S\in\mc S\}\)
+  \end{definition}
+
+  \begin{definition}
+    \(S(\theta)\) strengthens \(S'(\theta)\) by requiring the collection
+    to contain one-to-one functions.
+  \end{definition}
+
+  We wish to show that Scheeper's original \(S(\theta)\) is strictly stronger
+  than \(S'(\theta)\).
 
   \begin{definition}
     A topological space is said to be \(\omega\)-bounded if each countable
     subset of the space has compact closure.
   \end{definition}
 
-  \begin{theorem}
-    For each \(k<\omega\) there exists a topology on \(\omega_k\) which
-    is \(\omega\)-bounded and locally countable.
-  \end{theorem}
 
-  \begin{proof}
-    TODO: write up Alan's proof
-  \end{proof}
+  % TODO: read through Alan's proof and fit to rest of document
+          \begin{theorem}
+           For each $n\in \omega$, there is a locally countable,
+            $\omega$-bounded topology on $\omega_n$. Note
+            that this means that the closure of any set has
+            the same cardinality and weight as the set.
+          \end{theorem}
+
+
+          To prove the theorem, we must actually prove a stronger lemma.
+
+          \begin{lemma}
+          Assume that $X$ has cardinality at most $\omega_n$ (for
+          any $n\in \omega$),
+          and is locally countable, locally compact, and the closure
+          of each set has the same cardinality as the set.
+          Then $X$ has an $\omega$-bounded extension with the
+          same properties.
+          \end{lemma}
+
+            \begin{proof}
+            We prove this by induction on $n$.
+            In fact, we make our inductive statement that  if $\tilde X$
+            is the extension of $X$, then  $\tilde X \setminus X$ also
+            has cardinality $\omega_n$.
+             If $n=0$,
+              then we can just take the free union of two copies of $X$
+              and then the one-point compactification.
+             So suppose $n>0$ and
+            that $X$ is such a topology on the ordinal $\omega_n$.
+            For each $\alpha<\omega_n$, the closure of the initial
+            segment $\alpha$ is bounded by some $\gamma_\alpha$.
+            Also, because $X$ is locally countable, $\gamma_\alpha$
+            can be chosen so that $\alpha$ is contained  in the interior
+            of $\gamma_\alpha$. There is a cub  $C\subset \omega_n$
+            with the property that for each $\delta\in C$ and $\alpha<\delta$,
+             $\gamma_\alpha$ is also less than $\delta$. This implies
+             that for each $\delta\in C$, the initial segment $\delta$ is
+             open, and if $\delta$ has uncountable cofinality, then
+              $\delta$ is clopen.
+
+              The proof will be easier to visualize if we now
+              identify the points of $X$ with the point set
+               $\omega_n\times \{0\}$ and we will add the points
+                $\omega_n\times \{1\}$ to create the extension.
+             By induction on $\lambda \in C$ we define a topology
+             on $\omega_n\times\{0\}\cup \lambda\times \{1\}$ so that
+             $\omega_n \times \{0\}$ is an open subset. We also ensure,
+             by induction, for each $\alpha<\lambda$,
+             the closure of $\alpha\times 2$ is an
+              $\omega$-bounded  subset of $\lambda\times 2$.
+
+          In the case that $n=1$, then  choose any sequence
+           $\lambda_n : n\in \omega$ increasing cofinal in $\lambda$.
+           If $\lambda $ is a limit in $C$, then we simply take the
+           topology we have constructed so far on $\lambda\times 2$
+           and there's nothing more needs to be done. Otherwise
+          we may assume that $\lambda_0$ is the predecessor
+          of $\lambda\in C$ and
+           we set $Y_\lambda $ to equal the countable set
+            $\overline{\lambda}\setminus \lambda$. For convenience,
+             and with no loss, we assume that $\lambda$ itself is a limit
+             of limits.
+           And we have a topology on
+           $$\lambda_0\times 2 \cup (\lambda \cup Y_\lambda)\times\{0\}~.$$
+            Recursively
+            choose clopen sets $U_n$ in this topology
+             so that $\lambda_0\times 2\subset U_0$,
+             $U_{n}\cup \lambda_{n+1}\times \{0\}$ is contained
+              $ U_{n+1}$ while $U_{n+1}$ is disjoint from $Y_\lambda$.
+              It is easy to see that we can have all the points
+              in $(\lambda\setminus \{\lambda_n : n\in\omega\})\times \{1\}$
+              be isolated, and arrange that $(\lambda_n,1) $ is the
+              point at infinity in the one-point compactification
+              $U_n\cup (\lambda_n\times \{1\})$.
+
+                Now we handle the case $n>1$ and we can shrink $C$
+                and now assume
+                that $C$ is the closure of $\{\lambda\in C : \mbox{cf}(\lambda)>\omega\}$.
+                We again proceed by induction on $\lambda\in C$.  If
+                $\lambda$ is a limit in $C$, then there is nothing to do: we
+                simply have defined an appropriate topology on
+                $\omega_n\times  \{0\}\cup \lambda\times \{1\}$ so that
+                for each $\mu\in C\cap \lambda$ with $\mbox{cf}(\mu)>\omega$,
+                 $\mu\times 2$ is a clopen $\omega$-bounded subspace.
+                In case $\lambda$ is not a limit of $C$, then $\lambda$
+                has uncountable cofinality and a predecessor $\mu\in C$.
+                We therefore have that $\lambda\times\{0\}$ is clopen
+                in $\omega_n\times \{0\}$.
+                 We apply the induction hypothesis
+                to the space $\lambda\times \{0\} \cup \mu\times 2$ to choose
+                the topology on $\lambda\times 2$.
+
+
+            \end{proof}
 
   \begin{definition}
-    A Kurepa family \(\mc K\)
-    is a family of countable sets such that for each \(A\in\mc K\),
-    \(\mc K\rest A=\{K\cap A:K\in\mc K\}\) is countable.
+    A Kurepa family \(\mc K\subseteq[\theta]^{\omega}\) on \(\theta\)
+    satisfies that
+    \(\mc K\rest A=\{K\cap A:K\in\mc K\}\) is countable
+    for each \(A\in[\theta]^\omega\).
   \end{definition}
 
   \begin{corollary}
@@ -42,27 +147,102 @@
     if every Kurepa family of size at most \(\theta\)
     extends to a cofinal Kurepa family, then the same is true of \(\theta^+\).
     So the result follows as
-    every Kurepa family of size \(\omega\) extends to
-    the cofinal Kurepa family \([\omega]^\omega\). (TODO am I understanding
-    this right?)
+    every Kurepa family \(\mc K\) of size \(\omega\) extends to
+    the cofinal Kurepa family \([\bigcup\mc K]^\omega\).
 
     We may alternatively
     obtain the result from the previous topological argument by using the family
     \(\mc K\) of compact sets in the constructed topology on
     \(\omega_k\) as our witness. Of course, every Lindel\"of set in
     a locally countable space is countable. Thus \(\mc K\)
-    is cofinal since for every countable set \(A\), \(\cl A\) is compact
-    and countable.
-    It is Kurepa since for every compact (countable) set \(A\), (TODO).
+    is cofinal in \([\omega_k]^\omega\)
+    since for every countable set \(A\), \(\cl A\) is compact and countable.
+    It is Kurepa since for every countable set \(A\), let (TODO)
   \end{proof}
 
   \begin{theorem}
-    \(S'(\omega_k)\) for each \(k<\omega\).
+    \(S'(\theta)\) holds whenever there exists a cofinal Kurepa family on \(\theta\).
   \end{theorem}
 
   \begin{proof}
-    Let \(k<\omega\), and \(\mc K\) be a cofinal Kurepa family on \(\omega_k\).
-    (TODO finish)
+    Let \(k<\omega\), and \(\mc K=\{K_\alpha:\alpha<\kappa\}\)
+    be a cofinal Kurepa family on \(\theta\).
+    We should define \(f_\alpha:K_\alpha\to\omega\) for each \(\alpha<\kappa\).
+
+    Suppose we've defined pairwise almost compatible
+    \(\{f_\beta:\beta<\alpha\}\). To define
+    \(f_\alpha\), we first recall that \(\mc K\rest K_\alpha\) is countable,
+    so we may choose \(\beta_n<\alpha\) for \(n<\omega\) such that
+    \(
+      \{K_\beta:\beta<\alpha\}\rest K_\alpha \setminus \{\emptyset\}
+        =
+      \{K_\alpha\cap K_{\beta_n}:n<\omega\}
+    \).
+    Let \(K_\alpha=\{\delta_{i,j}:i\leq\omega,j<w_i\}\) where
+    \(w_i\leq\omega\) for each \(i\leq\omega\),
+    \(
+      K_\alpha\cap \left(K_{\beta_n}\setminus\bigcup_{m<n}K_{\beta_m}\right)
+        =
+      \{\delta_{n,j}:j<w_n\}
+    \),
+    and
+    \(
+      K_\alpha\setminus\bigcup_{n<\omega}K_{\beta_n}
+        =
+      \{
+        \delta_{\omega,j}:j<w_\omega
+      \}
+    \).
+    Then let \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) for
+    \(n<\omega\) and \(f_\alpha(\delta_{\omega,j})=j\) otherwise.
+
+    We should show that \(f_\alpha\) is finite-to-one. Let \(n<\omega\).
+    We need only worry about \(\delta_{m,j}\) for \(m\leq n\) since
+    \(f_\alpha(\delta_{m,j})\geq m\). Since each
+    \(f_{\beta_m}\) is finite-to-one, \(f_{\beta_m}(\delta_{m,j})\leq n\)
+    for only finitely many \(j\). Thus \(f_\alpha\) maps to
+    \(n\) only finitely often.
+
+    We now want to demonstrate that \(f_\alpha\sim f_{\beta_n}\) for all
+    \(n<\omega\). We again need only concern ourselves with \(\delta_{m,j}\) for
+    \(m\leq n\) since otherwise \(\delta_{m,j}\not\in K_{\beta_n}\).
+    For \(m=n\), we have
+    \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) which differs
+    from \(f_{\beta_n}(\delta_{n,j})\) for only the finitely many \(j\) which
+    are mapped below \(n\) by \(f_{\beta_n}\).
+    For \(m<n\) and \(\delta_{m,j}\in K_{\beta_n}\),we have
+    \(f_\alpha(\delta_{m,j})=\max(m,f_{\beta_m}(\delta_{m,j}))\) which can
+    only differ
+    from \(f_{\beta_n}(\delta_{m,j})\) for only the finitely many \(j\) which
+    are mapped below \(m\) by \(f_{\beta_m}\) or the finitely many \(j\)
+    for which the
+    almost compatible \(f_{\beta_n}\sim f_{\beta_m}\) differ.
+  \end{proof}
+
+  \begin{corollary}
+    \(S'(\omega_k)\) holds for all \(k<\omega\).
+  \end{corollary}
+
+  As noted in [TODO cite Dow],
+  Jensen's one-gap two-cardinal theorem under \(V=L\) [TODO cite] can be used
+  to show that there exist cofinal Kurepa families on every cardinal.
+
+  \begin{corollary}[\(V=L\)]
+    \(S'(\theta)\) holds for all cardinals.
+  \end{corollary}
+
+  In particular, \(S(\omega_2)\) fails under \(CH\), showing the two are
+  unique. Actually, \(CH\) is not required to have \(S(\omega_2)\) fail.
+
+
+  % TODO: read through Alan's proof and fit to rest of document
+  \begin{theorem}
+    Adding \(\omega_2\) Cohen reals to a model of \(CH\) forces
+    \(\mf c=\omega_2\) and \(\neg S(\omega_2)\).
+  \end{theorem}
+
+  \begin{proof}
+    TODO add Alan's proof
   \end{proof}
 
 \end{document}
