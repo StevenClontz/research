@@ -429,6 +429,10 @@
     fails? (TODO: get Alan to send this argument.)
   \end{theorem}
 
+  \begin{question}
+    Is \(S'(\theta)\) equivalent to having a Kurepa family on \(\theta\)?
+  \end{question}
+
   \section*{Applications!}
 
   \begin{figure}[h]
@@ -466,6 +470,8 @@
 
   \begin{theorem}
     Figure \ref{GamesDiagram2} holds. (Proven in [TODO cite])
+    (Actually, TODO double-check that it works with just S', particularly
+    the strict game)
   \end{theorem}
 
   It was left open if these implications can be reversed. The answer is
@@ -524,4 +530,85 @@
       )
     \). Thus \(\sigma\) is a winning strategy.
   \end{proof}
+
+  \begin{theorem}
+    Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
+    If \(\pl F \kmarkwin2\schFillInitialGame{\omega_{\beta_n}}\) for all
+    \(n<\omega\), then \(\pl F\kmarkwin2\schFillInitialGame{\omega_\alpha}\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
+    \(\schFillInitialGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
+    for \(\pl F\) in \(\schFillInitialGame{\omega_\alpha}\) as follows:
+    \[
+      \sigma(\<C\>,0)
+        =
+      \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
+    \]
+    \[
+      \sigma(\<C,D\>,n+1)
+        =
+      \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
+        \cup
+      \bigcup_{m\leq n}
+      \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
+    \]
+
+    Let \(\<C_0,C_1,\dots\>\) be an attack by
+    \(\pl C\) in \(\schFillInitialGame{\omega_\alpha}\), and
+    \(\alpha\in C_0\).
+    Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
+    attack
+    \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
+    by \(\pl C\) in \(\schFillInitialGame{\omega_{\beta_{N+1}}}\). Since
+    \(\sigma_{N+1}\) is a winning strategy and
+    \(\alpha\in C_{N+1}\cap\omega_{\beta_{N+1}}\), either
+    \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
+    \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
+    \(
+      \alpha
+        \in
+      \sigma_{N+1}(
+        \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
+        ,M+1
+      )
+    \)
+    for some \(M<\omega\) and thus
+    \(
+      \alpha
+        \in
+      \sigma(
+        \<C_{N+M+1},C_{N+M+2}\>,
+        N+M+2
+      )
+    \). Thus \(\sigma\) is a winning strategy.
+  \end{proof}
+
+  \begin{corollary}
+    It is consistent that \(S'(\omega_\omega)\) fails,
+    but as \(S'(\omega_k)\) holds for all \(k<\omega\), we have
+    \(\pl F\kmarkwin2\schFillIntGame{\omega_\omega}\) and
+    \(\pl F\kmarkwin2\schFillInitialGame{\omega_\omega}\).
+  \end{corollary}
+
+  A tricky topological question: does \(\pl F\win\menGame{X}\) imply
+  \(\pl F\kmarkwin2\menGame{X}\)?
+  (C showed that )
+  Under \(V=L\), we cannot hope to find
+  a counterexample using \(X=\oneptlind\kappa\) since
+  \(S'(\kappa)\) and thus \(\pl F\kmarkwin2\schFillIntGame{\kappa}\)
+  always holds.
+
+  \begin{definition}
+    Let \(R_\omega\) be the real numbers with the topology of the usual
+    open intervals with countably many elements removed.
+  \end{definition}
+
+  \begin{theorem}
+    \(\pl F\win\menGame{R_\omega}\).
+    If there exists a Kurepa family on the reals, then
+    \(\pl F\kmarkwin2\menGame{R_\omega}\).
+  \end{theorem}
+
 \end{document}
