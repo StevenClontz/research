@@ -60,14 +60,6 @@
     for \(t>0\).
   \end{definition}
 
-  \begin{definition}
-    For any LOTS \(M\) with minimum element \(0\),
-    let \(\nu\) be the V-map on \(M\) where \(\nu(0)=K\) and \(\nu(t)=\{t\}\)
-    for \(t>0\).
-  \end{definition}
-
-  Note for \(K=M=2\) that \(\gamma=\nu\).
-
   \begin{theorem}
     \(X=\varprojlim \{2, \gamma, L\}\cong \check L\)
   \end{theorem}
@@ -280,7 +272,115 @@
     gives the closed long ray of length \(\kappa\).
   \end{example}
 
-  \bigskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  \newpage
+
+  \begin{definition}
+    For any \(M\) containing a point \(0\),
+    let \(\nu\) be the V-map on \(M\) where \(\nu(0)=M\) and \(\nu(t)=\{t\}\)
+    for \(t>0\).
+  \end{definition}
+
+  Note for \(M=2\) that \(\nu=\gamma\).
+
+  \begin{corollary}
+    \(\varprojlim\{2,\nu,L\}\cong\check L\).
+  \end{corollary}
+
+  \begin{theorem}
+    If \(M\) is \(T_2\) or regular, then
+    \(
+      \varprojlim\{M,\nu,L\}\setminus\{\vect 0\}
+        \cong
+      (\check L\setminus\{\emptyset\})\times(M\setminus\{0\})
+    \) with the usual product topology.
+  \end{theorem}
+
+  \begin{proof}
+    Each point in \(\varprojlim\{M,\nu,L\}\setminus\{\vect 0\}\) is of the
+    form \(\vect x_{A,m}\) where \(A\in\check L\setminus\{\emptyset\}\)
+    and \(m\in M\setminus\{0\}\) defined by \(\vect x_{A,m}(l)=m\) for \(l\in A\)
+    and \(x_{A,m}(l)=0\) otherwise.
+
+    We claim that the bijection \(\theta(\vect x_{A,m})=\<A,m\>\) is a
+    homeomorphism. Note that basic open sets of
+    \(\varprojlim\{M,\nu,L\}\) are of the form \([U,F]\) where \(U(l)\) is
+    an open subset of \(M\) for each \(l\in F\in[L]^{<\omega}\).
+
+    Consider the point \(\<C,m\>\) in the basic open set \(V\times W\) in
+    \((\check L\setminus\{\emptyset\})\times(M\setminus\{0\})\). Note that
+    \(V\) is either of the form \((A,L]\) or \((A,B)\), and we may choose
+    \(l_0\in C\setminus A\). We also may assume that \(W\) misses an open
+    neighborhood \(Z\) of \(0\) as \(M\) is \(T_2\) or regular.
+    In the case that \(V=(A,L]\) we let \(U(l_0)=W\).
+    Then since \(l_0\in C\) and \(m\in W=U(l_0)\), it follows that
+    \(\vect x_{C,m}\in[U,\{l_0\}]\).
+    For any \(\vect x_{D,n}\in[U,\{l_0\}]\) we have that \(\vect x_{D,n}(l_0)=n\in W\);
+    in particular, it's nonzero. So
+    \(A\subsetneq (\leftarrow,l_0]\subseteq D\), putting \(D\in(A,L]=V\). Thus
+    \(\theta(\vect x_{D,n})=\<D,n\>\in V\times W\).
+
+    In the case that \(V=(A,B)\), we may also choose \(l_1\in B\setminus C\).
+    We again let \(U(l_0)=W\), and we also let \(U(l_1)=Z\). Then as
+    \(\vect x_{C,m}(l_0)=m\in W=U(l_0)\) and
+    \(\vect x_{C,m}(l_1)=0\in Z=U(l_1)\), we have shown
+    \(\vect x_{C,m}\in[U,\{l_0,l_1\}]\). For any \(\vect x_{D,n}\in[U,\{l_0,l_1\}]\),
+    \(\vect x_{D,n}(l_0)\in W\) and \(\vect x_{D,n}(l_1)\in Z\).
+    This shows that \(\vect x_{D,n}(l_0)=n\in W\) and \(\vect x_{D,n}(l_1)=0\), so
+    \(
+      A
+        \subsetneq
+      (\leftarrow,l_0]
+        \subseteq
+      D
+        \subsetneq
+      (\leftarrow,l_1]
+        \subseteq
+      B
+    \), putting \(D\in(A,B)=V\). Thus
+    \(\theta(\vect x_{D,n})=\<D,n\>\in V\times W\).
+
+    On the other hand, consider the point \(\vect x_{C,m}\) in the basic
+    open set \([U,F]\). It follows that \(m\in U(l)\) for all \(l\in C\cap F\),
+    and \(0\in U(l)\) for all \(l\in F\setminus C\).
+
+    TODO finish
+  \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  \newpage
 
   We introduce an alternate definition of an arbitrarily indexed
   inverse limit.
