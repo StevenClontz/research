@@ -8,6 +8,11 @@
 \newcommand{\lexTimes}{\times_{\textrm{lex}}}
 \newcommand{\vect}{\vec}
 
+\usepackage{stmaryrd}
+
+\newcommand{\lb}{\llbracket}
+\newcommand{\rb}{\rrbracket}
+
 \begin{document}
 
   \begin{definition}
@@ -30,6 +35,25 @@
   \begin{proof}
     Each subset \(S\) has an infimum \(\cap S\) and a supremum \(\cup S\)
     (or \(\cl(\cap S)\)).
+  \end{proof}
+
+  \begin{theorem}
+    \(\check L\) is metrizable if and only if \(L\) is countable.
+  \end{theorem}
+
+  \begin{proof}
+    If \(L\) is uncountable, let \(\mc B\) be a base for \(\check L\).
+    For each \(l\in L\), there is some neighborhood \(B_l\in\mc B\) of
+    \((\leftarrow,l)\) which is a subset of
+    \([\emptyset,(\leftarrow,l])=[\emptyset,(\leftarrow,l)]\). Each \(B_l\)
+    is unique, so \(\check L\) is compact but not second countable,
+    and therefore nonmetrizable.
+
+    If \(L\) is countable, then note that the union of
+    \(\mc S=\{((\leftarrow,l),L]:l\in L\}\) and
+    \(\mc T=\{[\emptyset,(\leftarrow,l]):l\in L\}\)
+    generates a countable base for \(\check L\). Thus \(\check L\) is
+    compact second-countable, and therefore metrizable.
   \end{proof}
 
   Note that \(\check L\)
@@ -152,25 +176,25 @@
 
     A basic open set in \(\varprojlim\{M,\gamma,L\}\subseteq L^m\)
     is of the form
-    \([U,F]\) where \(U(l)\) is an open interval in \(M\) for each
+    \(\lb U,F \rb\) where \(U(l)\) is an open interval in \(M\) for each
     \(l\in F\in [L]^{<\omega}\), and
-    \([U,F]=\{\vect x:l\in F\Rightarrow\vect x(l)\in U(l)\}\).
-    If we assume that \([U,F]\) is non-empty, one of the following
+    \(\lb U,F\rb=\{\vect x:l\in F\Rightarrow\vect x(l)\in U(l)\}\).
+    If we assume that \(\lb U,F \rb\) is non-empty, one of the following
     must hold:
 
     \begin{itemize}
       \item
         \(U[l_0]=(a,b)\) for some \(l_0\in F\).
-        Then \([U,F]=[U,\{l_0\}]\), and note that
+        Then \(\lb U,F\rb=\lb U,\{l_0\}\rb \), and note that
         \(
-          [U,\{l_0\}]
+          \lb U,\{l_0\}\rb
             =
           (\vect x_{(\leftarrow,l_0],a},\vect x_{(\leftarrow,l_0],b})
         \).
       \item
         \(U(l_0)=(a,1]\) and \(U(l_1)=[0,b)\) for some \(l_0<l_1\in L\)
-        and \([U,F]=[U,\{l_0,l_1\}]\). Then
-        \([U,\{l_0,l_1\}]=(\vect x_{l_0,a},\vect x_{l_1,b})\).
+        and \(\lb U,F\rb=\lb U,\{l_0,l_1\}\rb \). Then
+        \(\lb U,\{l_0,l_1\}\rb =(\vect x_{l_0,a},\vect x_{l_1,b})\).
     \end{itemize}
     In the other direction, consider \(\vect y\in(\vect x,\vect z)\).
     \begin{itemize}
@@ -178,20 +202,20 @@
         In the case that \(l_0\in\rho(\vect y)\setminus\rho(\vect x)\)
         and \(l_1\in\rho(\vect z)\setminus\rho(\vect y)\), let
         \(U(l_0)=(0,1]\), \(U(l_1)=[0,v(\vect z))\) and note
-        \(\vect y\in[U,\{l_0,l_1\}]\subseteq(\vect x,\vect z)\).
+        \(\vect y\in\lb U,\{l_0,l_1\}\rb \subseteq(\vect x,\vect z)\).
       \item
         In the case that \(l_0\in\rho(\vect y)\setminus\rho(\vect x)\),
         \(\rho(\vect y)=\rho(\vect z)\), and \(v(\vect y)<v(\vect z)\),
         it follows that \(\rho(\vect y)=\rho(\vect z)=(\leftarrow,l_1]\),
         so let \(U(l_0)=(0,1]\), \(U(l_1)=[0,v(\vect z))\) and note
-        \(\vect y\in[U,\{l_0,l_1\}]\subseteq(\vect x,\vect z)\).
+        \(\vect y\in\lb U,\{l_0,l_1\}\rb \subseteq(\vect x,\vect z)\).
       \item
         In the case that
         \(\rho(\vect x)=\rho(\vect y)\), \(v(\vect x)<v(\vect y)\),
         and \(l_1\in\rho(\vect z)\setminus\rho(\vect y)\),
         it follows that \(\rho(\vect x)=\rho(\vect y)=(\leftarrow,l_0]\),
         so let \(U(l_0)=(v(\vect x),1]\), \(U(l_1)=[0,v(\vect z))\) and note
-        \(\vect y\in[U,\{l_0,l_1\}]\subseteq(\vect x,\vect z)\).
+        \(\vect y\in\lb U,\{l_0,l_1\}\rb \subseteq(\vect x,\vect z)\).
       \item
         In the case that
         \(\rho(\vect x)=\rho(\vect y)=\rho(\vect z)\) and
@@ -199,7 +223,7 @@
         it follows that
         \(\rho(\vect x)=\rho(\vect y)=\rho(\vect z)=(\leftarrow,l_0]\),
         so let \(U(l_0)=(v(\vect x),v(\vect z))\) and note
-        \(\vect y\in[U,\{l_0\}]=(\vect x,\vect z)\).
+        \(\vect y\in\lb U,\{l_0\}\rb =(\vect x,\vect z)\).
     \end{itemize}
 
     We conclude by
@@ -318,7 +342,7 @@
 
     We claim that the bijection \(\theta(\vect x_{C,m})=\<C,m\>\) is a
     homeomorphism. Note that basic open sets of
-    \(\varprojlim\{M,\nu,L\}\) are of the form \([U,F]\) where \(U(l)\) is
+    \(\varprojlim\{M,\nu,L\}\) are of the form \(\lb U,F \rb\) where \(U(l)\) is
     an open subset of \(M\) for each \(l\in F\in[L]^{<\omega}\).
 
     Consider the point \(\<C,m\>\) in the basic open set \(V\times W\) in
@@ -329,8 +353,8 @@
 
     In the case that \(V=(A,L]\) we let \(U(l_0)=W\).
     Then since \(l_0\in C\) and \(m\in W=U(l_0)\), it follows that
-    \(\vect x_{C,m}\in[U,\{l_0\}]\).
-    For any \(\vect x_{D,n}\in[U,\{l_0\}]\) we have that \(\vect x_{D,n}(l_0)=n\in W\);
+    \(\vect x_{C,m}\in\lb U,\{l_0\}\rb \).
+    For any \(\vect x_{D,n}\in\lb U,\{l_0\}\rb \) we have that \(\vect x_{D,n}(l_0)=n\in W\);
     in particular, it's nonzero. So
     \(A\subsetneq (\leftarrow,l_0]\subseteq D\), putting \(D\in(A,L]=V\). Thus
     \(\theta(\vect x_{D,n})=\<D,n\>\in V\times W\).
@@ -339,7 +363,7 @@
     We again let \(U(l_0)=W\), and we also let \(U(l_1)=Z\). Then as
     \(\vect x_{C,m}(l_0)=m\in W=U(l_0)\) and
     \(\vect x_{C,m}(l_1)=0\in Z=U(l_1)\), we have shown
-    \(\vect x_{C,m}\in[U,\{l_0,l_1\}]\). For any \(\vect x_{D,n}\in[U,\{l_0,l_1\}]\),
+    \(\vect x_{C,m}\in\lb U,\{l_0,l_1\}\rb \). For any \(\vect x_{D,n}\in\lb U,\{l_0,l_1\}\rb \),
     \(\vect x_{D,n}(l_0)\in W\) and \(\vect x_{D,n}(l_1)\in Z\).
     This shows that \(\vect x_{D,n}(l_0)=n\in W\) and \(\vect x_{D,n}(l_1)=0\), so
     \(
@@ -356,7 +380,7 @@
     \(\theta(\vect x_{D,n})=\<D,n\>\in V\times W\).
 
     On the other hand, consider the point \(\vect x_{C,m}\) in the basic
-    open set \([U,F]\) of
+    open set \(\lb U,F \rb\) of
     \(\varprojlim\{M,\nu,L\}\setminus\{\vect 0\}\).
     It follows that \(m\in U(l)\) for all \(l\in F\cap C\),
     and \(0\in U(l)\) for all \(l\in F\setminus C\).
@@ -366,14 +390,14 @@
     So let \(\<D,n\>\in((\leftarrow,l_0),L]\times U'\). Since \(l_0\in D\),
     \(\vect x_{D,n}(l_0)=n\in U'\). Since \(n\not=0\), we have
     \(\vect x_{D,n}(l)=n\in U'\subseteq U(l)\) for all \(l\in F\), so
-    \(\vect x_{D,n}\in[U,F]\).
+    \(\vect x_{D,n}\in\lb U,F\rb\).
 
     If \(F\cap C=\emptyset\), then
     let \(l_1\) be the minimum element of \(F\setminus C\).
     Note \(\<C,m\>\in(\emptyset,(\leftarrow,l_1])\times (M\setminus \{0\})\).
     So let \(\<D,n\>\in(\emptyset,(\leftarrow,l_1])\times (M\setminus \{0\})\).
     Since \(l_1\not\in D\), \(\vect x_{D,n}(l)=0\in U(l)\) for all \(l\in F\),
-    giving \(\vect x_{D,n}\in[U,F]\).
+    giving \(\vect x_{D,n}\in\lb U,F\rb\).
 
     Otherwise, let \(l_0\) be the maximum element of \(F\cap C\) and
     \(l_1\) be the minimum element of \(F\setminus C\).
@@ -386,7 +410,7 @@
     \(\vect x_{D,n}(l_1)=0\in U''\). Furthermore,
     \(\vect x_{D,n}(l)=n\in U'\subseteq U(l)\) for all \(l\in F\cap C\), and
     \(\vect x_{D,n}(l)=0\in U''\subseteq U(l)\) for all \(l\in F\setminus C\),
-    so \(\vect x_{D,n}\in[U,F]\).
+    so \(\vect x_{D,n}\in\lb U,F\rb\).
   \end{proof}
 
   \begin{theorem}
@@ -404,7 +428,7 @@
     \(\theta(\vect 0)\) is sent to the points identified in
     \(\{\emptyset\}\times M\cup\check L\times \{0\}\).
 
-    Consider the basic open neighborhood \([U,F]\) of \(\vect 0\) in
+    Consider the basic open neighborhood \(\lb U,F]\) of \(\vect 0\) in
     \(\varprojlim\{M,\nu,L\}\). Let \(l_1\) be the least element of \(F\),
     and \(U'=\bigcap_{l\in F}U(l)\). Note that
     \(
@@ -420,7 +444,7 @@
       [\emptyset,(\leftarrow,l_1])\times M
     \),
     and note that as \(l_1\not\in C\), \(\vect x_{C,m}(l)=0\in U(l)\) for all
-    \(l\in F\), and thus \(\vect x_{C,m}\in[U,F]\).
+    \(l\in F\), and thus \(\vect x_{C,m}\in\lb U,F\rb\).
     Likewise if we let
     \(
       \vect x_{C,m}
@@ -428,7 +452,7 @@
       \check L\times U'
     \),
     we have that \(x_{C,m}(l)\in U'\subseteq U(l)\) for all \(l\in L\), and
-    thus \(\vect x_{C,m}\in[U,F]\).
+    thus \(\vect x_{C,m}\in\lb U,F\rb\).
 
     Now in \((\check L\times M)/\sim\)
     consider the basic open set formed by the union of
@@ -438,8 +462,8 @@
     so choose \(l_0\in B\) and note that as
     \((\leftarrow,l_0]\subseteq B\) we have
     \([\emptyset,(\leftarrow,l_0])\subseteq[\emptyset,B)=V\).
-    So let \(U(l_0)=W\) and note \(\vect 0\in[U,\{l_0\}]\). For any
-    \(\vect x_{C,m}\in[U,\{l_0\}]\), we have two cases.
+    So let \(U(l_0)=W\) and note \(\vect 0\in\lb U,\{l_0\}\rb \). For any
+    \(\vect x_{C,m}\in\lb U,\{l_0\}\rb \), we have two cases.
 
     If \(l_0\in C\), then \(\vect x_{C,m}(l)=m\in U(l_0)=W\) for all \(l\in C\),
     and \(\vect x_{C,m}(l)=0\in W\) otherwise. Thus
