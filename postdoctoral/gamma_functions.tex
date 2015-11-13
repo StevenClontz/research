@@ -389,6 +389,67 @@
     so \(\vect x_{D,n}\in[U,F]\).
   \end{proof}
 
+  \begin{theorem}
+    If \(M\) is \(T_2\), then
+    \(
+      \varprojlim\{M,\nu,L\}
+        \cong
+      (\check L\times M)/\sim
+    \) with the usual product topology, where \(\sim\) identifies every
+    point in \(\{\emptyset\}\times M\cup\check L\times \{0\}\).
+  \end{theorem}
+
+  \begin{proof}
+    We will extend \(\theta\) as defined in the previous lemma so that
+    \(\theta(\vect 0)\) is sent to the points identified in
+    \(\{\emptyset\}\times M\cup\check L\times \{0\}\).
+
+    Consider the basic open neighborhood \([U,F]\) of \(\vect 0\) in
+    \(\varprojlim\{M,\nu,L\}\). Let \(l_1\) be the least element of \(F\),
+    and \(U'=\bigcap_{l\in F}U(l)\). Note that
+    \(
+      \{\emptyset\}\times M\cup\check L\times \{0\}
+        \subseteq
+      [\emptyset,(\leftarrow,l_1])\times M
+      \cup
+      \check L\times U'
+    \). So let
+    \(
+      \vect x_{C,m}
+        \in
+      [\emptyset,(\leftarrow,l_1])\times M
+    \),
+    and note that as \(l_1\not\in C\), \(\vect x_{C,m}(l)=0\in U(l)\) for all
+    \(l\in F\), and thus \(\vect x_{C,m}\in[U,F]\).
+    Likewise if we let
+    \(
+      \vect x_{C,m}
+        \subseteq
+      \check L\times U'
+    \),
+    we have that \(x_{C,m}(l)\in U'\subseteq U(l)\) for all \(l\in L\), and
+    thus \(\vect x_{C,m}\in[U,F]\).
+
+    Now in \((\check L\times M)/\sim\)
+    consider the basic open set formed by the union of
+    \(V\times M\) containing \(\{\emptyset\}\times M\) and
+    \(\check L\times W\) containing \(\check L\times \{0\}\).
+    \(V=[\emptyset,B)\) for some nonempty leftward set \(B\),
+    so choose \(l_0\in B\) and note that as
+    \((\leftarrow,l_0]\subseteq B\) we have
+    \([\emptyset,(\leftarrow,l_0])\subseteq[\emptyset,B)=V\).
+    So let \(U(l_0)=W\) and note \(\vect 0\in[U,\{l_0\}]\). For any
+    \(\vect x_{C,m}\in[U,\{l_0\}]\), we have two cases.
+
+    If \(l_0\in C\), then \(\vect x_{C,m}(l)=m\in U(l_0)=W\) for all \(l\in C\),
+    and \(\vect x_{C,m}(l)=0\in W\) otherwise. Thus
+    \(\<C,m\>\in\check L\times W\).
+
+    Otherwise \(l_0\not\in C\), and thus \(C\subsetneq(\leftarrow,l_0]\).
+    Then as \(C\in [\emptyset,(\leftarrow,l_0])\subseteq V\),
+    we have \(\<C,m\>\in V\times M\).
+    \end{proof}
+
 
 
 
