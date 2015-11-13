@@ -38,7 +38,7 @@
   \end{proof}
 
   \begin{theorem}
-    \(\check L\) is metrizable if and only if \(L\) is countable.
+    \(\check L\) is second-countable if and only if \(L\) is countable.
   \end{theorem}
 
   \begin{proof}
@@ -46,15 +46,17 @@
     For each \(l\in L\), there is some neighborhood \(B_l\in\mc B\) of
     \((\leftarrow,l)\) which is a subset of
     \([\emptyset,(\leftarrow,l])=[\emptyset,(\leftarrow,l)]\). Each \(B_l\)
-    is unique, so \(\check L\) is compact but not second countable,
-    and therefore nonmetrizable.
+    is unique, so \(\check L\) is not second-countable.
 
     If \(L\) is countable, then note that the union of
     \(\mc S=\{((\leftarrow,l),L]:l\in L\}\) and
     \(\mc T=\{[\emptyset,(\leftarrow,l]):l\in L\}\)
-    generates a countable base for \(\check L\). Thus \(\check L\) is
-    compact second-countable, and therefore metrizable.
+    generates a countable base for \(\check L\).
   \end{proof}
+
+  \begin{corollary}
+    \(\check L\) is metrizable if and only if \(L\) is countable.
+  \end{corollary}
 
   Note that \(\check L\)
   is not a ``compactification'' as \(L\) does not necessarily
@@ -122,6 +124,21 @@
     characteristic function for a subset of \(L\). It's easy to see that
     \(\phi\) is an order isomorphism between \(\<X,\leq\>\) and
     \(\<\check L,\subseteq\>\).
+  \end{proof}
+
+  \begin{corollary}
+    If \(f\) is a non-trivial V-map satisfying condition \(\Gamma\), then
+    \(\varprojlim \{X, f, L\}\) is metrizable if and only if
+    \(X\) is metrizable and \(L\) is countable.
+  \end{corollary}
+
+  \begin{proof}
+    If \(X\) is metrizable and \(L\) is countable, then of course
+    \(\varprojlim \{X,f,L\}\subseteq X^L\) is metrizable. If \(X\) is
+    nonmetrizable, then \(\varprojlim \{X,f,L\}\) cannot be metrizable
+    as it contains a copy of \(X\). Finally, if \(L\) is uncountable,
+    then \(\varprojlim \{X,f,L\}\) cannot be metrizable as it
+    contains a copy of \(\varprojlim \{2,\gamma,L\}\cong\check L\).
   \end{proof}
 
   \begin{corollary}
