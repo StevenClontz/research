@@ -20,6 +20,26 @@
   \end{definition}
 
   \begin{definition}
+    A u.s.c. map \(f\subseteq X^2\)
+    satisfies condition \(\Gamma\) if there exists \(x,y\in X\) such that
+    \(\<x,x\>,\<y,y\>,\<x,y\>\in f\).
+  \end{definition}
+
+  \begin{theorem}
+    Every V-map on a compact connected LOTS satisfies condition \(\Gamma\).
+  \end{theorem}
+
+  This was proven in \cite{CLONTZVARAGONA} for the case \(M\) is a closed
+  interval of real numbers; however, the same proof applies to this more
+  general case.
+
+
+
+
+
+\newpage
+
+  \begin{definition}
     For any LOS \(\<L,\leq\>\), let \(\check L\) be the collection of
     leftward subsets of \(L\)
     (subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
@@ -59,7 +79,8 @@
   \end{corollary}
 
   Note that \(\check L\)
-  is not a ``compactification'' as \(L\) does not necessarily
+  is not a ``compactification'' in the usual sense of word
+  as \(L\) does not necessarily
   embed as a dense subspace of \(\check L\): if \(L=I\), we might attempt to embed
   \(t\mapsto [0,t)\), but then note that the subspace topology induces the
   reverse Sorgenfrey interval as \(([0,s),[0,t])=([0,s),[0,t)]\) is open.
@@ -70,8 +91,8 @@
   assume that \(\emptyset\in\hat L\):
 
   \begin{example}
-    \(\hat I\cong\{-\infty\}\cup I\) where
-    \(\emptyset\mapsto-\infty\) and \([0,t]\mapsto t\).
+    \(\hat I\cong\{-1\}\cup [0,1]\) where
+    \(\emptyset\mapsto-1\) and \([0,t]\mapsto t\).
   \end{example}
 
   \begin{example}
@@ -139,6 +160,18 @@
     as it contains a copy of \(X\). Finally, if \(L\) is uncountable,
     then \(\varprojlim \{X,f,L\}\) cannot be metrizable as it
     contains a copy of \(\varprojlim \{2,\gamma,L\}\cong\check L\).
+  \end{proof}
+
+  \begin{corollary}
+    If \(f\) is a nontrivial V-map
+    and \(K\) is a compact connected LOTS, then
+    \(\varprojlim \{K, f, L\}\) is metrizable if and only if
+    \(K=I\) and \(L\) is countable.
+  \end{corollary}
+
+  \begin{proof}
+    \(I\) is the only nontrivial compact connected metrizable LOTS, and all V-maps
+    on compact connected LOTS satisfy condition \(\Gamma\).
   \end{proof}
 
   \begin{corollary}
