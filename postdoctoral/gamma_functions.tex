@@ -301,22 +301,22 @@
     \(\varprojlim\{2,\nu,L\}\cong\check L\).
   \end{corollary}
 
-  \begin{theorem}
-    If \(M\) is \(T_2\) or regular, then
+  \begin{lemma}
+    If \(M\) is \(T_2\), then
     \(
       \varprojlim\{M,\nu,L\}\setminus\{\vect 0\}
         \cong
       (\check L\setminus\{\emptyset\})\times(M\setminus\{0\})
     \) with the usual product topology.
-  \end{theorem}
+  \end{lemma}
 
   \begin{proof}
     Each point in \(\varprojlim\{M,\nu,L\}\setminus\{\vect 0\}\) is of the
-    form \(\vect x_{A,m}\) where \(A\in\check L\setminus\{\emptyset\}\)
-    and \(m\in M\setminus\{0\}\) defined by \(\vect x_{A,m}(l)=m\) for \(l\in A\)
-    and \(x_{A,m}(l)=0\) otherwise.
+    form \(\vect x_{C,m}\) where \(C\in\check L\setminus\{\emptyset\}\)
+    and \(m\in M\setminus\{0\}\) defined by \(\vect x_{C,m}(l)=m\) for \(l\in C\)
+    and \(x_{C,m}(l)=0\) otherwise.
 
-    We claim that the bijection \(\theta(\vect x_{A,m})=\<A,m\>\) is a
+    We claim that the bijection \(\theta(\vect x_{C,m})=\<C,m\>\) is a
     homeomorphism. Note that basic open sets of
     \(\varprojlim\{M,\nu,L\}\) are of the form \([U,F]\) where \(U(l)\) is
     an open subset of \(M\) for each \(l\in F\in[L]^{<\omega}\).
@@ -325,7 +325,8 @@
     \((\check L\setminus\{\emptyset\})\times(M\setminus\{0\})\). Note that
     \(V\) is either of the form \((A,L]\) or \((A,B)\), and we may choose
     \(l_0\in C\setminus A\). We also may assume that \(W\) misses an open
-    neighborhood \(Z\) of \(0\) as \(M\) is \(T_2\) or regular.
+    neighborhood \(Z\) of \(0\) as \(M\) is \(T_2\).
+
     In the case that \(V=(A,L]\) we let \(U(l_0)=W\).
     Then since \(l_0\in C\) and \(m\in W=U(l_0)\), it follows that
     \(\vect x_{C,m}\in[U,\{l_0\}]\).
@@ -355,10 +356,37 @@
     \(\theta(\vect x_{D,n})=\<D,n\>\in V\times W\).
 
     On the other hand, consider the point \(\vect x_{C,m}\) in the basic
-    open set \([U,F]\). It follows that \(m\in U(l)\) for all \(l\in C\cap F\),
+    open set \([U,F]\) of
+    \(\varprojlim\{M,\nu,L\}\setminus\{\vect 0\}\).
+    It follows that \(m\in U(l)\) for all \(l\in F\cap C\),
     and \(0\in U(l)\) for all \(l\in F\setminus C\).
 
-    TODO finish
+    If \(F\subseteq C\), then let \(l_0\) be the maximum element of \(F\) and
+    \(U'=\bigcap_{l\in F}U(l)\). Note \(\<C,m\>\in((\leftarrow,l_0),L]\times U'\).
+    So let \(\<D,n\>\in((\leftarrow,l_0),L]\times U'\). Since \(l_0\in D\),
+    \(\vect x_{D,n}(l_0)=n\in U'\). Since \(n\not=0\), we have
+    \(\vect x_{D,n}(l)=n\in U'\subseteq U(l)\) for all \(l\in F\), so
+    \(\vect x_{D,n}\in[U,F]\).
+
+    If \(F\cap C=\emptyset\), then
+    let \(l_1\) be the minimum element of \(F\setminus C\).
+    Note \(\<C,m\>\in(\emptyset,(\leftarrow,l_1])\times (M\setminus \{0\})\).
+    So let \(\<D,n\>\in(\emptyset,(\leftarrow,l_1])\times (M\setminus \{0\})\).
+    Since \(l_1\not\in D\), \(\vect x_{D,n}(l)=0\in U(l)\) for all \(l\in F\),
+    giving \(\vect x_{D,n}\in[U,F]\).
+
+    Otherwise, let \(l_0\) be the maximum element of \(F\cap C\) and
+    \(l_1\) be the minimum element of \(F\setminus C\).
+    Let \(U'\subseteq \bigcap_{l\in C\cap F}U(l)\) and
+    \(U''\subseteq \bigcap_{l\in F\setminus C}U(l)\).
+    Note \(\<C,m\>\in((\leftarrow,l_0),(\leftarrow,l_1])\times U'\).
+    So let \(\<D,n\>\in((\leftarrow,l_0),(\leftarrow,l_1])\times U'\).
+    Since \(l_0\in D\) and \(l_1\not\in D\), we have
+    \(\vect x_{D,n}(l_0)=n\in U'\) and
+    \(\vect x_{D,n}(l_1)=0\in U''\). Furthermore,
+    \(\vect x_{D,n}(l)=n\in U'\subseteq U(l)\) for all \(l\in F\cap C\), and
+    \(\vect x_{D,n}(l)=0\in U''\subseteq U(l)\) for all \(l\in F\setminus C\),
+    so \(\vect x_{D,n}\in[U,F]\).
   \end{proof}
 
 
