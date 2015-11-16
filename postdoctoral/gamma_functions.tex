@@ -102,10 +102,15 @@
   \end{example}
 
   \begin{definition}
-    For any compact LOTS \(K\) with minimum \(0\) and maximum \(1\),
-    let \(\gamma\) be the V-map on \(K\) where \(\gamma(0)=K\) and \(\gamma(t)=\{1\}\)
-    for \(t>0\).
+    For any space \(M\) containing the points \(0\) and \(1\),
+    let \(\gamma\) be the surjective u.s.c. map on \(K\) where
+    \(\gamma(0)=M\) and \(\gamma(t)=\{1\}\)
+    for \(t\not=0\).
   \end{definition}
+
+  Note when \(M\) is a Hausdorff continuum, then \(\gamma\) is a V-map.
+  It's usually assumed \(0\) is the minimum and \(1\) is the maximum
+  when \(M\) is a LOTS.
 
   \begin{theorem}
     \(X=\varprojlim \{2, \gamma, L\}\cong \check L\)
@@ -196,9 +201,9 @@
 
   \bigskip
 
-  We may generalize theorem 8 as follows:
+  We may generalize theorem whatevs as follows:
 
-  \begin{theorem}
+  \begin{theorem} %TODO fix first \sim to use A,B instead of l_0,l_1
     If \(M\) is a LOTS with minimum \(0\) and maximum \(1\),
     then \(\varprojlim\{M,\gamma,L\}\cong \hat L\lexTimes M/\sim\),
     where \(\<(\leftarrow,l_0],1\>\sim\<(\leftarrow,l_1],0\>\) if
@@ -345,6 +350,162 @@
     In particular, \(\alpha=\kappa\) for an infinite cardinal \(\kappa\)
     gives the closed long ray of length \(\kappa\).
   \end{example}
+
+
+
+  We now discard the linear order on \(M\). Denote points in the topological
+  sum \(\bigoplus_{l\in \hat L} M\) of \(\hat L\) copies of \(M\)
+  by the ordered pairs \(\<A,m\>\)
+  for \(A\in \hat L\), \(m\in M\). The previous proof may be generalized to
+  show the following:
+
+  \begin{theorem}
+    If \(M\) is a Hausdorff space with points \(0\) and \(1\),
+    then \(\varprojlim\{M,\gamma,L\}\cong \bigoplus_{l\in \hat L} M/\sim\),
+    where \(\<(\leftarrow,l_0],1\>\sim\<(\leftarrow,l_1],0\>\) if
+    \(l_0<l_1\) and \((l_0,l_1)=\emptyset\),
+    and where \(\<A,m\>\sim\<A,m'\>\) if \(A\in\hat L\setminus L\).
+  \end{theorem}
+
+  % \begin{proof}
+  %   Partially order \(M\) by \(0\leq m\leq 1\) for all \(m\in M\).
+  %   Note that the range of any
+  %   \(\vect x\in\varprojlim\{M,\gamma,L\}\) is totally ordered by \(\leq\).
+
+  %   Let \(\rho(\vect x)=\cl\{l\in L:\vect x(l)>0\}\), \(v(\vect 0)=0\),
+  %   and \(v(\vect x)=\min\{\vect x(l):l\in\rho(\vect x)\}\) otherwise.
+  %   Let
+  %   \(\theta(\vect x)=\<\rho(\vect x),v(\vect x)\>\in\hat L\lexTimes M/\sim\).
+  %   For each left-closed set \(A\) and \(m\in M\),
+  %   let \(\vect x_{A,m}(l)=1\) for \(l\in A\) unless \(l\) is the supremum
+  %   element of \(A\),
+  %   \(\vect x_{A,m}(l)=m\) if \(l\) is the supremum of \(A\),
+  %   and \(\vect x_{A,m}(l)=0\) for \(l\not\in A\).
+  %   We wish to show that \(\theta\) is a homeomorphism.
+
+  %   We begin by
+  %   showing that \(\theta\) is a surjection. If \(B\in\hat L\setminus L\)
+  %   and \(m\in M\), consider \(\<B,m\>\).
+  %   \(B\) lacks a supremum in \(L\), so
+  %   \(\vect x_{B,0}(l)=1\) for \(l\in B\) and \(\vect x_{B,0}(l)=0\) otherwise.
+  %   So \(\theta(\vect x_{B,0})=\<\cl B,1\>=\<B,1\>\sim\<B,m\>\) for all
+  %   \(m\in M\). Otherwise, \(B=(\leftarrow,l_1]\) for some \(l_1\in L\).
+  %   Let \(m>0\).
+  %   Then
+  %   \(
+  %     \theta(\vect x_{(\leftarrow,l_1],m})
+  %       =
+  %     \<\cl (\leftarrow,l_1],v(\vect x_{(\leftarrow,l_1],m})\>
+  %       =
+  %     \<(\leftarrow,l_1],m\>
+  %   \).
+  %   Finally, we want to map onto \(\<(\leftarrow,l_1],0\>\).
+  %   If there exists \(l_0<l_1\) with \((l_0,l_1)=\emptyset\), then
+  %   \(
+  %     \theta(\vect x_{(\leftarrow,l_1],0})
+  %       =
+  %     \theta(\vect x_{(\leftarrow,l_0],1})
+  %       =
+  %     \<(\leftarrow,l_0],1\>
+  %   \)
+  %   will suffice. Otherwise,
+  %   \(
+  %     \theta(\vect x_{(\leftarrow,l_1],0})
+  %       =
+  %     \<\cl (\leftarrow,l_1),v(\vect x_{(\leftarrow,l_1),0})\>
+  %       =
+  %     \<(\leftarrow,l_1],0\>
+  %   \).
+
+  %   To see that \(\theta\) is injective, first let
+  %   \(A\subsetneq B\)... TODO
+
+  %   % A basic open set in \(\varprojlim\{M,\gamma,L\}\subseteq L^m\)
+  %   % is of the form
+  %   % \(\lb U,F \rb\) where \(U(l)\) is an open interval in \(M\) for each
+  %   % \(l\in F\in [L]^{<\omega}\), and
+  %   % \(\lb U,F\rb=\{\vect x:l\in F\Rightarrow\vect x(l)\in U(l)\}\).
+  %   % If we assume that \(\lb U,F \rb\) is non-empty, one of the following
+  %   % must hold:
+
+  %   % \begin{itemize}
+  %   %   \item
+  %   %     \(U[l_0]=(a,b)\) for some \(l_0\in F\).
+  %   %     Then \(\lb U,F\rb=\lb U,\{l_0\}\rb \), and note that
+  %   %     \(
+  %   %       \lb U,\{l_0\}\rb
+  %   %         =
+  %   %       (\vect x_{(\leftarrow,l_0],a},\vect x_{(\leftarrow,l_0],b})
+  %   %     \).
+  %   %   \item
+  %   %     \(U(l_0)=(a,1]\) and \(U(l_1)=[0,b)\) for some \(l_0<l_1\in L\)
+  %   %     and \(\lb U,F\rb=\lb U,\{l_0,l_1\}\rb \). Then
+  %   %     \(\lb U,\{l_0,l_1\}\rb =(\vect x_{l_0,a},\vect x_{l_1,b})\).
+  %   % \end{itemize}
+  %   % In the other direction, consider \(\vect y\in(\vect x,\vect z)\).
+  %   % \begin{itemize}
+  %   %   \item
+  %   %     In the case that \(l_0\in\rho(\vect y)\setminus\rho(\vect x)\)
+  %   %     and \(l_1\in\rho(\vect z)\setminus\rho(\vect y)\), let
+  %   %     \(U(l_0)=(0,1]\), \(U(l_1)=[0,v(\vect z))\) and note
+  %   %     \(\vect y\in\lb U,\{l_0,l_1\}\rb \subseteq(\vect x,\vect z)\).
+  %   %   \item
+  %   %     In the case that \(l_0\in\rho(\vect y)\setminus\rho(\vect x)\),
+  %   %     \(\rho(\vect y)=\rho(\vect z)\), and \(v(\vect y)<v(\vect z)\),
+  %   %     it follows that \(\rho(\vect y)=\rho(\vect z)=(\leftarrow,l_1]\),
+  %   %     so let \(U(l_0)=(0,1]\), \(U(l_1)=[0,v(\vect z))\) and note
+  %   %     \(\vect y\in\lb U,\{l_0,l_1\}\rb \subseteq(\vect x,\vect z)\).
+  %   %   \item
+  %   %     In the case that
+  %   %     \(\rho(\vect x)=\rho(\vect y)\), \(v(\vect x)<v(\vect y)\),
+  %   %     and \(l_1\in\rho(\vect z)\setminus\rho(\vect y)\),
+  %   %     it follows that \(\rho(\vect x)=\rho(\vect y)=(\leftarrow,l_0]\),
+  %   %     so let \(U(l_0)=(v(\vect x),1]\), \(U(l_1)=[0,v(\vect z))\) and note
+  %   %     \(\vect y\in\lb U,\{l_0,l_1\}\rb \subseteq(\vect x,\vect z)\).
+  %   %   \item
+  %   %     In the case that
+  %   %     \(\rho(\vect x)=\rho(\vect y)=\rho(\vect z)\) and
+  %   %     \(v(\vect x)<v(\vect y)<v(\vect z)\),
+  %   %     it follows that
+  %   %     \(\rho(\vect x)=\rho(\vect y)=\rho(\vect z)=(\leftarrow,l_0]\),
+  %   %     so let \(U(l_0)=(v(\vect x),v(\vect z))\) and note
+  %   %     \(\vect y\in\lb U,\{l_0\}\rb =(\vect x,\vect z)\).
+  %   % \end{itemize}
+
+  %   % We conclude by
+  %   % showing that \(\theta\) is a surjection. If \(B\in\hat L\setminus L\)
+  %   % and \(m\in M\), consider \(\<B,m\>\).
+  %   % \(B\) lacks a supremum in \(L\), so
+  %   % \(\vect x_{B,0}(l)=1\) for \(l\in B\) and \(\vect x_{B,0}(l)=0\) otherwise.
+  %   % So \(\theta(\vect x_{B,0})=\<\cl B,1\>=\<B,1\>\sim\<B,m\>\) for all
+  %   % \(m\in M\). Otherwise, \(B=(\leftarrow,l_1]\) for some \(l_1\in L\).
+  %   % Let \(m>0\).
+  %   % Then
+  %   % \(
+  %   %   \theta(\vect x_{(\leftarrow,l_1],m})
+  %   %     =
+  %   %   \<\cl (\leftarrow,l_1],v(\vect x_{(\leftarrow,l_1],m})\>
+  %   %     =
+  %   %   \<(\leftarrow,l_1],m\>
+  %   % \).
+  %   % Finally, we want to map onto \(\<(\leftarrow,l_1],0\>\).
+  %   % If there exists \(l_0<l_1\) with \((l_0,l_1)=\emptyset\), then
+  %   % \(
+  %   %   \theta(\vect x_{(\leftarrow,l_1],0})
+  %   %     =
+  %   %   \theta(\vect x_{(\leftarrow,l_0],1})
+  %   %     =
+  %   %   \<(\leftarrow,l_0],1\>
+  %   % \)
+  %   % will suffice. Otherwise,
+  %   % \(
+  %   %   \theta(\vect x_{(\leftarrow,l_1],0})
+  %   %     =
+  %   %   \<\cl (\leftarrow,l_1),v(\vect x_{(\leftarrow,l_1),0})\>
+  %   %     =
+  %   %   \<(\leftarrow,l_1],0\>
+  %   % \).
+  % \end{proof}
 
 
 
