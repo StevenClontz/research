@@ -101,7 +101,7 @@ properties using the existence of various kinds of winning strategies for
   locally-finite open refinement $\mc V$ of $\mc U$ also covering the space.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \cite[Theorem 5]{MR858337}
   The following are equivalent for a locally compact space $X$:
     \begin{itemize}
       \item $X$ is paracompact
@@ -115,7 +115,7 @@ properties using the existence of various kinds of winning strategies for
   point-finite open refinement $\mc V$ of $\mc U$ also covering the space.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \cite[Theorem 2]{MR858337}
   The following are equivalent for a locally compact space $X$:
     \begin{itemize}
       \item $X$ is metacompact
@@ -131,7 +131,7 @@ properties using the existence of various kinds of winning strategies for
   $\bigcup_{n<\omega}\mc V_n$ also covers the space.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \cite[Theorem 3]{MR858337}
   The following are equivalent for a locally compact space $X$:
     \begin{itemize}
       \item $X$ is $\sigma$-metacompact
@@ -284,10 +284,13 @@ for convenience.
 \end{proposition}
 
 \begin{proof}
-  Let \(K_n\) for \(n<\omega\) witness hemicompactness.
-  If \(C\cap K_n\) is closed for each \(n<\omega\), then let \(K\) be any compact
-  set. Since \(K\subseteq K_n\) for some \(n<\omega\), \(C\cap K\) is closed, and
-  therefore \(C\) is closed.
+  Let \(\{K_n:n<\omega\}\) be a collection of compact subsets
+  which witnesses the hemicompactness of the space.
+  Suppose \(C\cap K_n\) is closed for each \(n<\omega\).
+  Let \(K\) be any compact subset of the space.
+  There exists some \(n<\omega\) such that \(K\subseteq K_n\).
+  Then \(C\cap K=(C\cap K_n)\cap K\) is closed. Therefore \(C\)
+  is closed by the definition of \(k\)-space.
 \end{proof}
 
 As we've already seen that \(\pl K \prewin \gruKPGame{X}\) implies
@@ -321,6 +324,10 @@ equivalent.
   ultrafilters not of this form are called \term{free ultrafilters}.
 \end{definition}
 
+In particular note that for any ultrafilter on \(\kappa\) and subset
+\(S\subseteq\kappa\), exactly one of \(S,\kappa\setminus S\) belongs to
+the ultrafilter.
+
 \begin{definition}
   The \term{Stone-Cech compactification} of a cardinal
   \(\kappa\) is the space \(\beta\kappa\) consisting
@@ -330,7 +337,15 @@ equivalent.
 
 From these definitions it is easily verified that principal ultrafilters
 are isolated, so \(\kappa\) with the discrete topology may be viewed as
-a dense open subspace of \(\beta\kappa\).
+a dense open subspace of \(\beta\kappa\), with \(\beta\kappa\setminus\kappa\)
+representing the free ultrafilters on \(\kappa\).
+In that case, one might interpret \(U_S\) as
+\(
+  \{\mc F\in\beta\kappa\setminus\kappa:S\in\mc F\}
+    \cup
+  \{\alpha\in\kappa:\alpha\in S\}
+\).
+
 We wish to consider the subspace
 of \(\beta\omega\) consisting of all principal ultrafilters and a single free
 ultrafilter \(\mc F\), denoted by \(\omega\cup\{\mc F\}\).
@@ -342,9 +357,16 @@ ultrafilter \(\mc F\), denoted by \(\omega\cup\{\mc F\}\).
 \end{lemma}
 
 \begin{proof}
-  Let \(I=\{n_i:i<\omega\}\cup\{\mc F\}\) be infinite.
-  Then \(\{U_{\omega\setminus\{n_i:i\geq j\}}:j<\omega\}\) is an open cover of
-  \(I\cup\{\mc F\}\) with no finite subcover.
+  Let \(n_i<\omega\) be distinct for each \(i<\omega\).
+  Since \(\{n_i:i<\omega\}\) is infinite and discrete, it
+  cannot be compact.
+  So we consider \(I=\{n_i:i<\omega\}\cup\{\mc F\}\).
+  Let \(S=\{n_{2i}:i<\omega\}\). If \(S\in \mc F\), then \(U_S\) is a
+  neighborhood of \(\mc F\) missing \(\{n_{2i+1}:i<\omega\}\), so \(I\)
+  contains a closed infinite discrete set and cannot be compact.
+  Otherwise \(\omega\setminus S\in \mc F\) and \(U_{\omega\setminus S}\)
+  is a neighborhood of \(\mc F\) missing \(\{n_{2i}:i<\omega\}\); again
+  \(I\) contains a closed infinite discrete set and cannot be compact.
 \end{proof}
 
 \begin{theorem}
@@ -357,8 +379,9 @@ ultrafilter \(\mc F\), denoted by \(\omega\cup\{\mc F\}\).
   counter-attack \(H:\omega\to\mc K(X)\) by
   \(H(n)=(n\cup\sigma(n+1))\setminus\sigma(n)\). Then for any neighborhood
   \(U_S\) of \(\mc F\), \(S\) is infinite, and since
-  \(\bigcup_{n<\omega} H(n)\supseteq\omega\setminus\sigma(0)\), \(U_S\) meets
-  infinitely many of the finite \(H(n)\). Thus \(\sigma\) is not a winning
+  \(\bigcup_{n<\omega} H(n)\supseteq\omega\setminus\sigma(0)\)
+  and \(|H(n)|<\omega\), \(U_S\) meets
+  infinitely many of the \(H(n)\). Thus \(\sigma\) is not a winning
   predetermined strategy.
 \end{proof}
 
@@ -381,9 +404,10 @@ ultrafilter \(\mc F\), denoted by \(\omega\cup\{\mc F\}\).
   winning predetermined strategy.
 \end{proof}
 
-It is not possible to prove in \(ZFC\) that
+We now show that it is not possible to prove in \(ZFC\) that
 \(\pl K\prewin \gruKPGame{\omega\cup\{\mc F\}}\)
-for arbitrary free ultrafilters.
+for every free ultrafilter; assuming the continuum hypothesis (\(CH\)),
+we may find a counter-example.
 
 \begin{definition}
   A \term{selective ultrafilter} \(\mc S\) is a free ultrafilter with the
@@ -394,8 +418,8 @@ for arbitrary free ultrafilters.
 \end{definition}
 
 \begin{theorem}
-  CH implies the existence of a selective ultrafilter.
   \cite{MR0080902}
+  CH implies the existence of a selective ultrafilter.
 \end{theorem}
 
 \begin{theorem}
@@ -418,10 +442,10 @@ for arbitrary free ultrafilters.
 \end{proof}
 
 Of particular note is that the author knows of no examples of a
-non-\(k\)-space such that \(K\prewin\gruKPGame{X}\).
+non-\(k\)-space such that \(\pl K\prewin\gruKLGame{X}\).
 
 \begin{question}
-  Does \(K\prewin\gruKPGame{X}\) imply \(X\) is a \(k\)-space?
+  Does \(\pl K\prewin\gruKLGame{X}\) imply \(X\) is a \(k\)-space?
 \end{question}
 
 
