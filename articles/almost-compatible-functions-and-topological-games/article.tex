@@ -91,9 +91,112 @@ Charlotte, NC 28262}
 
 \maketitle
 
-\section{Almost compatible functions}
+\section{Introduction}
 
+  \begin{definition}
+    Two functions \(f,g\) are almost compatible, that is, \(f\sim g\) when
+    \(\{a\in\dom f\cap\dom g:f(a)\not=g(a)\}\) is finite.
+  \end{definition}
 
+  Marion Scheepers used almost compatible functions in \cite{MR1129143} in order
+  to study the existence of limited information strategies on a variation
+  of the meager-nowhere dense game he introduced in \cite{MR1183703}.
+
+  \begin{game}
+    Let \(\schFillStrictGame\kappa\) denote
+    \term{Scheepers' strict countable-finite union game}
+    with two players \(\pl C\), \(\pl F\). In round \(0\), \(\pl C\) chooses
+    \(C_0\in[\kappa]^{\leq\omega}\), followed by \(\pl F\) choosing
+    \(F_0\in[\kappa]^{<\omega}\). In round \(n+1\), \(\pl C\) chooses
+    \(C_{n+1}\in[\kappa]^{\leq\omega}\) such that \(C_{n+1}\supset C_n\), followed
+    by \(\pl F\) choosing \(F_{n+1}\in[\kappa]^{<\omega}\).
+
+    \(\pl F\) wins the game if
+    \(\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n\); otherwise,
+    \(\pl C\) wins.
+  \end{game}
+
+  Of course, with perfect information this game is trivial: during round
+  \(n\) player \(\pl F\) simply chooses \(n\) ordinals from each of the
+  \(n\) countable sets played by \(\pl C\). However, if \(\pl F\) is limited
+  to using information from the last \(k\) moves by \(\pl C\) during each
+  round, the task becomes more difficult. Call such a strategy a
+  \term{\(k\)-tactical strategy} or \term{\(k\)-tactic}; if using the round
+  number is allowed, then the strategy is called a \term{\(k\)-Markov strategy}
+  or a \term{\(k\)-mark}.
+
+  \begin{definition}
+    The statement \(S(\kappa)\) (given as \(S(\kappa,\aleph_0,\omega)\)
+    in \cite{MR1129143}) claims that there exist injections
+    \(f_A:A\to\omega\) for each \(A\in[\kappa]^{\leq\aleph_0}\) such that
+    the collection \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) is pairwise
+    almost compatible.
+  \end{definition}
+
+  In the same paper, Scheepers noted that \(S(\omega_1)\) holds in \(ZFC\),
+  and that it's possible to force \(\mf c\) to be arbitrarily large
+  while preserving \(S(\mf c)\). However, \(S(\mf c^+)\) always fails.
+  This axiom may be applied to obtain a winning \(2\)-tactic for \(\pl F\)
+  in the countable-finite game.
+
+  In \cite{clontzMengerGamePreprint}, Clontz related this game to a game
+  which may be used to characterize the Menger covering property of a
+  topological space.
+
+  \begin{game}
+    Let \(\menGame{X}\) denote the \term{Menger game} with players \(\pl C\),
+    \(\pl F\).
+    In round \(n\), \(\pl C\) chooses an open cover \(\mc U_n\), followed by
+    \(\pl F\)
+    choosing subset \(F_n\) of \(X\) which may be finitely covered by \(\mc U_n\).
+
+    \(\pl F\) wins the game if \(X = \bigcup_{n<\omega}F_n\),
+    and \(\pl C\) wins otherwise.
+  \end{game}
+
+  This characterization is slightly different than the typical characterization
+  in which the second player first chooses a specific
+  finite subcollection \(\mc F_n\) of the cover itself and lets
+  \(F_n=\bigcup \mc F_n\), denoted as \(G_{fin}(\mc O,\mc O)\)
+  in \cite{MR1378387}.
+  However, it's easily seen that these games are equivalent
+  for perfect information strategies (so both characterize
+  the Menger property), and this characterization is
+  more convenient for our concerns.
+
+  \begin{definition}
+    Let \(\oneptlind\kappa=\kappa\cup\{\infty\}\) where \(\kappa\) is
+    discrete and \(\infty\)'s neighborhoods are the co-countable sets
+    containing it.
+  \end{definition}
+
+  The relationship between \(\schFillStrictGame\kappa\) and
+  \(\menGame{\oneptlind\kappa}\) is strong; in both games \(\pl C\) essentially
+  chooses a countable subset of \(\kappa\) followed by \(\pl F\) choosing
+  a finite subset of that choice, and it's easy to see the winning perfect
+  information strategy for \(\pl F\) in both games.
+  In addition, it was shown in
+  \cite{clontzMengerGamePreprint} that when \(S(\kappa)\) holds,
+  \(\pl F\) has a winning \(2\)-Markov strategy in
+  \(\menGame{\oneptlind\kappa}\).
+
+  One source of motivation is to make progress on the following open question:
+
+  \begin{question}
+    Does there exist a topological space \(X\) for which
+    \(\pl F\win\menGame{X}\) but \(\pl F\notkmarkwin{2}\menGame{X}\)?
+    (That is, the second player can win the Menger game on \(X\)
+    with perfect information but not with \(2\)-Markov information.)
+  \end{question}
+
+  One might hope that \(\oneptlind{(\mf c^+)}\) might answer this question
+  in the affirmative as \(S(\mf c^+)\) fails, but we will show that assuming
+  \(V=L\), \(\pl F\kmarkwin{2}\menGame{\oneptlind\kappa}\) for all
+  cardinals \(\kappa\).
+
+  \section{One-to-one and finite-to-one almost compatible functions}
+
+  We may weaken Scheeper's \(S(\kappa)\) as follows:
 
   \begin{definition}
     \(S'(\theta)\) states that there exists a cofinal family
