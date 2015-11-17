@@ -127,7 +127,7 @@ Charlotte, NC 28262}
 
   \begin{definition}
     The statement \(S(\kappa)\) (given as \(S(\kappa,\aleph_0,\omega)\)
-    in \cite{MR1129143}) claims that there exist injections
+    in \cite{MR1129143}) claims that there exist one-to-one functions
     \(f_A:A\to\omega\) for each \(A\in[\kappa]^{\leq\aleph_0}\) such that
     the collection \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) is pairwise
     almost compatible.
@@ -199,19 +199,103 @@ Charlotte, NC 28262}
   We may weaken Scheeper's \(S(\kappa)\) as follows:
 
   \begin{definition}
-    \(S'(\theta)\) states that there exists a cofinal family
-    \(\mc S\subseteq[\theta]^{\omega}\) and a collection of pairwise
-    almost compatible
-    finite-to-one functions \(\{f_S\in\omega^S:S\in\mc S\}\)
+    The statement \(S'(\kappa)\) weakens \(S(\kappa)\) be only requiring
+    the witness functions \(f_A:A\to\omega\) to be finite-to-one.
   \end{definition}
+
+  The following observation will be convenient.
+
+  \begin{proposition}
+    \(S(\kappa)\) and \(S'(\kappa)\) need only be witnessed by
+    functions \(\{f_A:A\in\mc S\}\) for some family \(\mc S\)
+    cofinal in \([\kappa]^{\leq\aleph_0}\).
+  \end{proposition}
+
+  \begin{proof}
+    For each \(A\in[\kappa]^{\leq\aleph_0}\) choose \(A'\supseteq A\)
+    from \(\mc S\) and let \(g_A=f_{A'}\rest A\).
+  \end{proof}
+
+  In the next section we will show that \(S'(\kappa)\) is sufficient
+  for the applications to the Scheepers and Menger games.
+  In the meantime, we will demonstrate that \(S'(\kappa)\) is strictly
+  weaker than \(S(\kappa)\).
+
+  Recall the following.
 
   \begin{definition}
-    \(S(\theta)\) strengthens \(S'(\theta)\) by requiring the collection
-    to contain one-to-one functions.
+    A Kurepa family \(\mc K\subseteq[\kappa]^{\aleph_0}\) on \(\kappa\)
+    satisfies that
+    \(\mc K\rest A=\{K\cap A:K\in\mc K\}\) is countable
+    for each \(A\in[\kappa]^{\aleph_0}\).
   \end{definition}
 
-  We wish to show that Scheeper's original \(S(\theta)\) is strictly stronger
-  than \(S'(\theta)\).
+  \begin{theorem}
+    \(S'(\kappa)\) holds whenever there exists a cofinal Kurepa family on \(\kappa\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(\mc K=\{K_\alpha:\alpha<\theta\}\)
+    be a cofinal Kurepa family on \(\kappa\).
+    We first define \(f_\alpha:K_\alpha\to\omega\) for each \(\alpha<\theta\).
+
+    Suppose we've already defined pairwise almost compatible finite-to-one functions
+    \(\{f_\beta:\beta<\alpha\}\). To define
+    \(f_\alpha\), we first recall that \(\mc K\rest K_\alpha\) is countable,
+    so we may choose \(\beta_n<\alpha\) for \(n<\omega\) such that
+    \(
+      \{K_\beta:\beta<\alpha\}\rest K_\alpha \setminus \{\emptyset\}
+        =
+      \{K_\alpha\cap K_{\beta_n}:n<\omega\}
+    \).
+    Let \(K_\alpha=\{\delta_{i,j}:i\leq\omega,j<w_i\}\) where
+    \(w_i\leq\omega\) for each \(i\leq\omega\),
+    \(
+      K_\alpha\cap \left(K_{\beta_n}\setminus\bigcup_{m<n}K_{\beta_m}\right)
+        =
+      \{\delta_{n,j}:j<w_n\}
+    \),
+    and
+    \(
+      K_\alpha\setminus\bigcup_{n<\omega}K_{\beta_n}
+        =
+      \{
+        \delta_{\omega,j}:j<w_\omega
+      \}
+    \).
+    Then let \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) for
+    \(n<\omega\) and \(f_\alpha(\delta_{\omega,j})=j\) otherwise.
+
+    We should show that \(f_\alpha\) is finite-to-one. Let \(n<\omega\).
+    Since \(f_\alpha(\delta_{m,j})\geq m\), we only consider the finite cases
+    where \(m\leq n\). Since each
+    \(f_{\beta_m}\) is finite-to-one, \(f_{\beta_m}(\delta_{m,j})\leq n\)
+    for only finitely many \(j\). Thus
+    \(f_\alpha(\delta_{m,j})=\max(m,f_{\beta_m}(\delta_{m,j}))\) maps to
+    \(n\) for only finitely many \(j\).
+
+    %TODO proof
+    We now want to demonstrate that \(f_\alpha\sim f_{\beta_n}\) for all
+    \(n<\omega\). We again need only concern ourselves with \(\delta_{m,j}\) for
+    \(m\leq n\) since otherwise \(\delta_{m,j}\not\in K_{\beta_n}\).
+    For \(m=n\), we have
+    \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) which differs
+    from \(f_{\beta_n}(\delta_{n,j})\) for only the finitely many \(j\) which
+    are mapped below \(n\) by \(f_{\beta_n}\).
+    For \(m<n\) and \(\delta_{m,j}\in K_{\beta_n}\),we have
+    \(f_\alpha(\delta_{m,j})=\max(m,f_{\beta_m}(\delta_{m,j}))\) which can
+    only differ
+    from \(f_{\beta_n}(\delta_{m,j})\) for only the finitely many \(j\) which
+    are mapped below \(m\) by \(f_{\beta_m}\) or the finitely many \(j\)
+    for which the
+    almost compatible \(f_{\beta_n}\sim f_{\beta_m}\) differ.
+  \end{proof}
+
+
+
+  \newpage
+
+  \section{TODO ALL THIS STUFF NEEDS EDITING STILL}
 
   \begin{definition}
     A topological space is said to be \(\omega\)-bounded if each countable
@@ -315,12 +399,7 @@ Charlotte, NC 28262}
 
             \end{proof}
 
-  \begin{definition}
-    A Kurepa family \(\mc K\subseteq[\theta]^{\omega}\) on \(\theta\)
-    satisfies that
-    \(\mc K\rest A=\{K\cap A:K\in\mc K\}\) is countable
-    for each \(A\in[\theta]^\omega\).
-  \end{definition}
+
 
   \begin{corollary}
     There exists a Kurepa family cofinal in \([\omega_k]^\omega\)
@@ -346,64 +425,7 @@ Charlotte, NC 28262}
     It is Kurepa since for every countable set \(A\), let (TODO)
   \end{proof}
 
-  \begin{theorem}
-    \(S'(\theta)\) holds whenever there exists a cofinal Kurepa family on \(\theta\).
-  \end{theorem}
 
-  \begin{proof}
-    Let \(k<\omega\), and \(\mc K=\{K_\alpha:\alpha<\kappa\}\)
-    be a cofinal Kurepa family on \(\theta\).
-    We should define \(f_\alpha:K_\alpha\to\omega\) for each \(\alpha<\kappa\).
-
-    Suppose we've defined pairwise almost compatible
-    \(\{f_\beta:\beta<\alpha\}\). To define
-    \(f_\alpha\), we first recall that \(\mc K\rest K_\alpha\) is countable,
-    so we may choose \(\beta_n<\alpha\) for \(n<\omega\) such that
-    \(
-      \{K_\beta:\beta<\alpha\}\rest K_\alpha \setminus \{\emptyset\}
-        =
-      \{K_\alpha\cap K_{\beta_n}:n<\omega\}
-    \).
-    Let \(K_\alpha=\{\delta_{i,j}:i\leq\omega,j<w_i\}\) where
-    \(w_i\leq\omega\) for each \(i\leq\omega\),
-    \(
-      K_\alpha\cap \left(K_{\beta_n}\setminus\bigcup_{m<n}K_{\beta_m}\right)
-        =
-      \{\delta_{n,j}:j<w_n\}
-    \),
-    and
-    \(
-      K_\alpha\setminus\bigcup_{n<\omega}K_{\beta_n}
-        =
-      \{
-        \delta_{\omega,j}:j<w_\omega
-      \}
-    \).
-    Then let \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) for
-    \(n<\omega\) and \(f_\alpha(\delta_{\omega,j})=j\) otherwise.
-
-    We should show that \(f_\alpha\) is finite-to-one. Let \(n<\omega\).
-    We need only worry about \(\delta_{m,j}\) for \(m\leq n\) since
-    \(f_\alpha(\delta_{m,j})\geq m\). Since each
-    \(f_{\beta_m}\) is finite-to-one, \(f_{\beta_m}(\delta_{m,j})\leq n\)
-    for only finitely many \(j\). Thus \(f_\alpha\) maps to
-    \(n\) only finitely often.
-
-    We now want to demonstrate that \(f_\alpha\sim f_{\beta_n}\) for all
-    \(n<\omega\). We again need only concern ourselves with \(\delta_{m,j}\) for
-    \(m\leq n\) since otherwise \(\delta_{m,j}\not\in K_{\beta_n}\).
-    For \(m=n\), we have
-    \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) which differs
-    from \(f_{\beta_n}(\delta_{n,j})\) for only the finitely many \(j\) which
-    are mapped below \(n\) by \(f_{\beta_n}\).
-    For \(m<n\) and \(\delta_{m,j}\in K_{\beta_n}\),we have
-    \(f_\alpha(\delta_{m,j})=\max(m,f_{\beta_m}(\delta_{m,j}))\) which can
-    only differ
-    from \(f_{\beta_n}(\delta_{m,j})\) for only the finitely many \(j\) which
-    are mapped below \(m\) by \(f_{\beta_m}\) or the finitely many \(j\)
-    for which the
-    almost compatible \(f_{\beta_n}\sim f_{\beta_m}\) differ.
-  \end{proof}
 
   \begin{corollary}
     \(S'(\omega_k)\) holds for all \(k<\omega\).
