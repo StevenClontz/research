@@ -3,24 +3,54 @@
 \usepackage{amsthm}
 \usepackage{amssymb}
 
-\usepackage{../../clontzDefinitions}
-
 \usepackage{tikz}
 \usetikzlibrary{matrix}
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\usepackage{../../clontzDefinitions}
 
 
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{game}[theorem]{Game}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{question}[theorem]{Question}
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
 
 \parskip=0.5em
+
+% dow stuff
+          \def\Succ{\mathop{Succ}}
+          \def\dom{\mathop{dom}}
+          \def\val{\operatorname{val}}
+          \def\N{\mathbb N}
+          \def\Nstar{\mathbb N^*}
 
 
 
@@ -61,7 +91,866 @@ Charlotte, NC 28262}
 
 \maketitle
 
-\section{asdf}
+\section{Almost compatible functions}
+
+
+
+  \begin{definition}
+    \(S'(\theta)\) states that there exists a cofinal family
+    \(\mc S\subseteq[\theta]^{\omega}\) and a collection of pairwise
+    almost compatible
+    finite-to-one functions \(\{f_S\in\omega^S:S\in\mc S\}\)
+  \end{definition}
+
+  \begin{definition}
+    \(S(\theta)\) strengthens \(S'(\theta)\) by requiring the collection
+    to contain one-to-one functions.
+  \end{definition}
+
+  We wish to show that Scheeper's original \(S(\theta)\) is strictly stronger
+  than \(S'(\theta)\).
+
+  \begin{definition}
+    A topological space is said to be \(\omega\)-bounded if each countable
+    subset of the space has compact closure.
+  \end{definition}
+
+
+  % TODO: read through Alan's proof and fit to rest of document
+          \begin{theorem}
+           For each $n\in \omega$, there is a locally countable,
+            $\omega$-bounded topology on $\omega_n$. Note
+            that this means that the closure of any set has
+            the same cardinality and weight as the set.
+          \end{theorem}
+
+
+          To prove the theorem, we must actually prove a stronger lemma.
+
+          \begin{lemma}
+          Assume that $X$ has cardinality at most $\omega_n$ (for
+          any $n\in \omega$),
+          and is locally countable, locally compact, and the closure
+          of each set has the same cardinality as the set.
+          Then $X$ has an $\omega$-bounded extension with the
+          same properties.
+          \end{lemma}
+
+            \begin{proof}
+            We prove this by induction on $n$.
+            In fact, we make our inductive statement that  if $\tilde X$
+            is the extension of $X$, then  $\tilde X \setminus X$ also
+            has cardinality $\omega_n$.
+             If $n=0$,
+              then we can just take the free union of two copies of $X$
+              and then the one-point compactification.
+             So suppose $n>0$ and
+            that $X$ is such a topology on the ordinal $\omega_n$.
+            For each $\alpha<\omega_n$, the closure of the initial
+            segment $\alpha$ is bounded by some $\gamma_\alpha$.
+            Also, because $X$ is locally countable, $\gamma_\alpha$
+            can be chosen so that $\alpha$ is contained  in the interior
+            of $\gamma_\alpha$. There is a cub  $C\subset \omega_n$
+            with the property that for each $\delta\in C$ and $\alpha<\delta$,
+             $\gamma_\alpha$ is also less than $\delta$. This implies
+             that for each $\delta\in C$, the initial segment $\delta$ is
+             open, and if $\delta$ has uncountable cofinality, then
+              $\delta$ is clopen.
+
+              The proof will be easier to visualize if we now
+              identify the points of $X$ with the point set
+               $\omega_n\times \{0\}$ and we will add the points
+                $\omega_n\times \{1\}$ to create the extension.
+             By induction on $\lambda \in C$ we define a topology
+             on $\omega_n\times\{0\}\cup \lambda\times \{1\}$ so that
+             $\omega_n \times \{0\}$ is an open subset. We also ensure,
+             by induction, for each $\alpha<\lambda$,
+             the closure of $\alpha\times 2$ is an
+              $\omega$-bounded  subset of $\lambda\times 2$.
+
+          In the case that $n=1$, then  choose any sequence
+           $\lambda_n : n\in \omega$ increasing cofinal in $\lambda$.
+           If $\lambda $ is a limit in $C$, then we simply take the
+           topology we have constructed so far on $\lambda\times 2$
+           and there's nothing more needs to be done. Otherwise
+          we may assume that $\lambda_0$ is the predecessor
+          of $\lambda\in C$ and
+           we set $Y_\lambda $ to equal the countable set
+            $\overline{\lambda}\setminus \lambda$. For convenience,
+             and with no loss, we assume that $\lambda$ itself is a limit
+             of limits.
+           And we have a topology on
+           $$\lambda_0\times 2 \cup (\lambda \cup Y_\lambda)\times\{0\}~.$$
+            Recursively
+            choose clopen sets $U_n$ in this topology
+             so that $\lambda_0\times 2\subset U_0$,
+             $U_{n}\cup \lambda_{n+1}\times \{0\}$ is contained
+              $ U_{n+1}$ while $U_{n+1}$ is disjoint from $Y_\lambda$.
+              It is easy to see that we can have all the points
+              in $(\lambda\setminus \{\lambda_n : n\in\omega\})\times \{1\}$
+              be isolated, and arrange that $(\lambda_n,1) $ is the
+              point at infinity in the one-point compactification
+              $U_n\cup (\lambda_n\times \{1\})$.
+
+                Now we handle the case $n>1$ and we can shrink $C$
+                and now assume
+                that $C$ is the closure of $\{\lambda\in C : \mbox{cf}(\lambda)>\omega\}$.
+                We again proceed by induction on $\lambda\in C$.  If
+                $\lambda$ is a limit in $C$, then there is nothing to do: we
+                simply have defined an appropriate topology on
+                $\omega_n\times  \{0\}\cup \lambda\times \{1\}$ so that
+                for each $\mu\in C\cap \lambda$ with $\mbox{cf}(\mu)>\omega$,
+                 $\mu\times 2$ is a clopen $\omega$-bounded subspace.
+                In case $\lambda$ is not a limit of $C$, then $\lambda$
+                has uncountable cofinality and a predecessor $\mu\in C$.
+                We therefore have that $\lambda\times\{0\}$ is clopen
+                in $\omega_n\times \{0\}$.
+                 We apply the induction hypothesis
+                to the space $\lambda\times \{0\} \cup \mu\times 2$ to choose
+                the topology on $\lambda\times 2$.
+
+
+            \end{proof}
+
+  \begin{definition}
+    A Kurepa family \(\mc K\subseteq[\theta]^{\omega}\) on \(\theta\)
+    satisfies that
+    \(\mc K\rest A=\{K\cap A:K\in\mc K\}\) is countable
+    for each \(A\in[\theta]^\omega\).
+  \end{definition}
+
+  \begin{corollary}
+    There exists a Kurepa family cofinal in \([\omega_k]^\omega\)
+    for each \(k<\omega\).
+  \end{corollary}
+
+  \begin{proof}
+    This is actually a corollary of an observation of Todorcevic communicated
+    by Dow in [TODO cite Gen Prog in Top I]:
+    if every Kurepa family of size at most \(\theta\)
+    extends to a cofinal Kurepa family, then the same is true of \(\theta^+\).
+    So the result follows as
+    every Kurepa family \(\mc K\) of size \(\omega\) extends to
+    the cofinal Kurepa family \([\bigcup\mc K]^\omega\).
+
+    We may alternatively
+    obtain the result from the previous topological argument by using the family
+    \(\mc K\) of compact sets in the constructed topology on
+    \(\omega_k\) as our witness. Of course, every Lindel\"of set in
+    a locally countable space is countable. Thus \(\mc K\)
+    is cofinal in \([\omega_k]^\omega\)
+    since for every countable set \(A\), \(\cl A\) is compact and countable.
+    It is Kurepa since for every countable set \(A\), let (TODO)
+  \end{proof}
+
+  \begin{theorem}
+    \(S'(\theta)\) holds whenever there exists a cofinal Kurepa family on \(\theta\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(k<\omega\), and \(\mc K=\{K_\alpha:\alpha<\kappa\}\)
+    be a cofinal Kurepa family on \(\theta\).
+    We should define \(f_\alpha:K_\alpha\to\omega\) for each \(\alpha<\kappa\).
+
+    Suppose we've defined pairwise almost compatible
+    \(\{f_\beta:\beta<\alpha\}\). To define
+    \(f_\alpha\), we first recall that \(\mc K\rest K_\alpha\) is countable,
+    so we may choose \(\beta_n<\alpha\) for \(n<\omega\) such that
+    \(
+      \{K_\beta:\beta<\alpha\}\rest K_\alpha \setminus \{\emptyset\}
+        =
+      \{K_\alpha\cap K_{\beta_n}:n<\omega\}
+    \).
+    Let \(K_\alpha=\{\delta_{i,j}:i\leq\omega,j<w_i\}\) where
+    \(w_i\leq\omega\) for each \(i\leq\omega\),
+    \(
+      K_\alpha\cap \left(K_{\beta_n}\setminus\bigcup_{m<n}K_{\beta_m}\right)
+        =
+      \{\delta_{n,j}:j<w_n\}
+    \),
+    and
+    \(
+      K_\alpha\setminus\bigcup_{n<\omega}K_{\beta_n}
+        =
+      \{
+        \delta_{\omega,j}:j<w_\omega
+      \}
+    \).
+    Then let \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) for
+    \(n<\omega\) and \(f_\alpha(\delta_{\omega,j})=j\) otherwise.
+
+    We should show that \(f_\alpha\) is finite-to-one. Let \(n<\omega\).
+    We need only worry about \(\delta_{m,j}\) for \(m\leq n\) since
+    \(f_\alpha(\delta_{m,j})\geq m\). Since each
+    \(f_{\beta_m}\) is finite-to-one, \(f_{\beta_m}(\delta_{m,j})\leq n\)
+    for only finitely many \(j\). Thus \(f_\alpha\) maps to
+    \(n\) only finitely often.
+
+    We now want to demonstrate that \(f_\alpha\sim f_{\beta_n}\) for all
+    \(n<\omega\). We again need only concern ourselves with \(\delta_{m,j}\) for
+    \(m\leq n\) since otherwise \(\delta_{m,j}\not\in K_{\beta_n}\).
+    For \(m=n\), we have
+    \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) which differs
+    from \(f_{\beta_n}(\delta_{n,j})\) for only the finitely many \(j\) which
+    are mapped below \(n\) by \(f_{\beta_n}\).
+    For \(m<n\) and \(\delta_{m,j}\in K_{\beta_n}\),we have
+    \(f_\alpha(\delta_{m,j})=\max(m,f_{\beta_m}(\delta_{m,j}))\) which can
+    only differ
+    from \(f_{\beta_n}(\delta_{m,j})\) for only the finitely many \(j\) which
+    are mapped below \(m\) by \(f_{\beta_m}\) or the finitely many \(j\)
+    for which the
+    almost compatible \(f_{\beta_n}\sim f_{\beta_m}\) differ.
+  \end{proof}
+
+  \begin{corollary}
+    \(S'(\omega_k)\) holds for all \(k<\omega\).
+  \end{corollary}
+
+  As noted in [TODO cite Dow],
+  Jensen's one-gap two-cardinal theorem under \(V=L\) [TODO cite] can be used
+  to show that there exist cofinal Kurepa families on every cardinal.
+
+  \begin{corollary}[\(V=L\)]
+    \(S'(\theta)\) holds for all cardinals.
+  \end{corollary}
+
+  In particular, \(S(\omega_2)\) fails under \(CH\), showing the two are
+  distinct. Actually, \(CH\) is not required to have \(S(\omega_2)\) fail.
+
+
+  % TODO: read through Alan's proof and fit to rest of document
+        We are going to need a technical lemma (available in Kunen).
+        \bigskip
+
+        \begin{lemma}
+        Assume that $G\subset \operatorname{Fn}(\omega_2,2)$ is a generic filter,
+         and let $\mu\in \omega_2$. Then the final model $V[G]$ can be
+         regarded as forcing  with $\operatorname{Fn}(\omega_2\setminus \mu,
+         2)$ over the model $V[G_\mu]$.
+        In addition, for each $\operatorname{Fn}(\omega_2,2)$-name $\dot A$
+        of a subset of $\omega$ (treat as a subset of $\omega\times
+        \operatorname{Fn}(\omega_2,2) $),
+        there is a canonical name $\dot A(G_\mu)$ where,
+        $$\dot A(G_\mu) = \{ (n,p\restriction [\mu,\omega_2))  :
+         (n,p)\in \dot A\ \ \mbox{and} \ \ p\restriction \mu\in G_\mu\}$$
+        and we get that the valuation of $\dot A(G_\mu)$ by the tail
+        of the generic, $G_{\omega_2\setminus \mu}$, is the same as
+        the valuation of $\dot A$ by the full generic.
+        \end{lemma}
+
+
+        \begin{theorem}
+          If we add $\omega_2$ Cohen reals to a model of CH we get
+        that Scheepers' $S(\omega_2)$ (still) fails.
+        \end{theorem}
+
+        \begin{proof}
+        The forcing poset is $\operatorname{Fn}(\omega_2, 2)$.
+        Let $\{ \dot f_{A} : A\in [\omega_2]^\omega\}$ be a family of
+        names such that $\dot f_{A}$ is a one-to-one function from $A$ into
+        $\omega$. It suffices to only consider sets $A$ from the ground
+        model.
+        \bigskip
+
+        Put all the lemma  stuff in an elementary submodel $M$ of the universe
+        (technically of $H(\kappa)$,  or of $V_\kappa$,
+         for some large $\kappa$). Standard methods says that we can assume that
+         $|M|=\omega_1 =\mathfrak c$ and that $M^\omega\subset M$ (which means
+         that every countable subset of $M$ is a member of $M$).
+        \bigskip
+
+        Let $\lambda = M\cap \omega_2$ (same as the supremum of $M\cap
+        \omega_2$). Consider the name  $\dot f_{[\lambda,\lambda+\omega)}$.
+        What is such a name?  We can assume that it is a set of pairs
+         of the form $( (\lambda+k,m), p)$ where $p\in \mathop{Fn}(\omega_2,
+         2)$ and, of course, $k,m\in \omega$. This is (almost) equivalent to
+         saying
+         that $p$ forces that $\dot f_{[\lambda,\lambda+\omega)}(\lambda+k) =
+         m$. We don't take all such $p$, in fact for each $k,m$ it is enough
+        to take a
+         countable set of such $p$ to get an equivalent name
+         (Kunen calls it a nice name if we take, for each $k,m$ an
+        antichain that is maximal among such conditions).
+        Given any such name $\dot f$, let $\operatorname{supp}(\dot f)$
+        denote the union of the domains of conditions $p$ appearing in the
+        name.
+
+
+
+         Also let $Y$ equal $\operatorname{supp}(\dot
+         f_{[\lambda,\lambda+\omega)})\setminus \lambda$.
+         Let $\delta$ denote the order type of
+         $Y$ and let the 2-parameter notation
+         $\varphi_{\mu,\lambda}$ be the order-preserving function from
+        $\mu\cup Y$ onto  the ordinal $\mu+\delta$.  This lifts canonically to
+        an order-preserving bijection $\varphi_{\mu,\lambda}:
+        \operatorname{Fn}(\mu\cup Y,2) \mapsto
+        \operatorname{Fn}(\mu+\delta,2)$.
+        Similarly, we make sense of the name
+         $\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$, call it $F_M$.
+        Here simply, for each tuple $(~(k,m)~, p)\in \dot
+        f_{[\lambda,\lambda+\omega)}$,
+         we have that $(~(k,m)~,\varphi_{\mu,\lambda}(p))$ is in $F_M$.
+        Again, let $\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$
+        be interpreted in the above sense as giving $F_M$ (which is an element
+        of $M$).  Note that we do not regard $\delta$ as fixed here, but
+        rather simply depending on the $\operatorname{supp}(\dot
+        f_{[\lambda,\lambda+\omega)})$ described above. Other values
+        replacing $\lambda>\mu$ will result in their own set $Y$
+        and canonical map $\varphi_{\mu,\lambda}$; but one thing we do have to
+        assume (or arrange) for other values $\alpha$ replacing $\lambda$
+        is that $\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})$
+        intersected with
+        $\alpha$ is contained in $\mu$.
+
+        Now the object $F_M$ is an
+        element of $M$, and $M$ believes this statement is true:
+        $$
+        (\forall \beta\in\omega_2)~ (\exists \beta<\lambda\in \omega_2)~~~
+        \operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
+        \cap \lambda\subset \mu \ \ \mbox{and}\ \
+        F_M = \varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$$
+
+
+        But now, this  means that,
+        not only is there  an $\alpha\in M$,
+        $ F_M = \varphi_{\mu,\alpha}(\dot f_{[\alpha,\alpha+\omega)})$
+        but also that there is an increasing sequence
+         $\{\alpha_\xi : \xi  \in \omega_1\}\subset \lambda$ of
+         such $\alpha$'s satisfying that, for each $\xi$
+        we have that $\operatorname{supp}(\dot
+        f_{[\alpha_\xi,\alpha_\xi+\omega)})$ is contained in $\alpha_{\xi+1}$.
+
+        Choose such a sequence.
+         This means that if we let $A = \bigcup_{n>0} [\alpha_n,\alpha_n+\omega)$ we
+         have the name $\dot f_A$ in $M$. This then means that all
+         the $( (\beta,m) , p)$ appearing in $\dot f_A$ have the property
+         that $\mathop{dom}(p)$ is contained in $M$.
+        There is, within $M$, a name $\dot g$ satisfying that
+         $\dot f_A(\alpha_n+k) = \dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k)$
+        for all $k >\dot g(n)$.
+
+        \bigskip
+
+        We now apply the above Lemma using $\mu = \mu_0$ and we are now
+        working in the extension $V[G_\mu]$. We will abuse the notation
+        and use $\dot f_{[\alpha_n,\alpha_n+\omega)}$ instead of
+          $\dot f_{[\alpha_n,\alpha_n+\omega)}(G_{\mu})$ as defined in
+          the Lemma.
+        We work for a contradiction. Something special has now happened,
+         namely,  the supports of the names $\{
+        \dot f_{[\alpha_n, \alpha_n+\omega)} :  0< n<\omega\}$ are pairwise disjoint
+        and also disjoint from the support of the name
+         $\dot f_{[\lambda,\lambda+\omega)}$ (under the same convention about
+         $G_\mu$.  And not only that, these names are pairwise isomorphic (in
+         the way that they all map to $F_M$).
+
+
+        \bigskip
+
+        Since $A$ is disjoint from $[\lambda,\lambda+\omega)$,
+        there must be an integer $\ell$
+        together with a condition
+         $q\in \mathop{Fn}(\omega_2\setminus \mu,2)$ satisfying that for all
+         $n>\ell$ , $q$ forces that
+
+        \centerline{
+         ``if $k>\dot g(n)$ (since  $\alpha_n+k\in A$) then
+         $\dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k) \neq
+        \dot f_{[\lambda,\lambda+\omega)}(\lambda +k)$''.}
+
+        Choose $n$ large enough so that $\mathop{dom}(q) \cap [\alpha_n,
+        \mu_{n+1})$ is
+        empty.
+         Choose $q_1<q\restriction \lambda$ (in $M$) so that
+        $$ \varphi_{\mu,\alpha_n}(q_1\restriction \operatorname{supp}(
+         \dot f_{[\alpha_n,\alpha_n+\omega)}) =
+        \varphi_{\mu,\lambda}(q\restriction \operatorname{supp}(
+         \dot f_{[\lambda,\lambda+\omega)}) $$
+        and then (again in $M$) choose $q_2 < q_1$
+        so that it both forces a value
+         $L$ on $\ell+\dot g(n)$
+        and subsequently forces a value $m$ on
+         $\dot f_{[\alpha_n, \alpha_n+\omega)}(\alpha_n+L+1)$.
+        But now, again calculate
+        $$ q_3 = \varphi_{\mu,\lambda}^{-1} \circ \varphi_{\mu,\alpha_n}
+        (q_2\restriction \operatorname{supp}(\dot
+        f_{[\alpha_n,\alpha_n+\omega)}))$$
+        and, by the isomorphisms, we have that $q_3$ forces that
+         $\dot f_{[\lambda,\lambda+\omega)}(\lambda+L+1) = m$.
+
+        Technically (or with more care)  all of this is taking place in the
+        poset $\operatorname{Fn}(\omega_2\setminus \mu,2)$ and this means
+        that $q_3$ and $q$ are all compatible with each other.
+
+
+        Follow
+        the bouncing ball: it suffices to consider
+         $q(\beta)=e$ and to assume that $q_3(\beta)$ is defined.
+        Since $q_3(\beta)$ is defined, we have that
+        there is a  $\beta'\in\mathop{dom}(q_2)$ such that $
+         \varphi_{\mu,\lambda}(\beta) = \varphi_{\mu,\alpha_n}(\beta')$,
+        and that $q_3(\beta) = q_2(\beta')$.
+        But, by definition of $q_1$, $\beta'\in\mathop{dom}(q_1)$
+        and even  that $q_1(\beta') = q(\beta)$.
+         Then, since $q_2<q_1$, we have that $q_2(\beta')=q_1(\beta') =
+         q(\beta)$. This completes the circle that $q_3(\beta) = q(\beta)$.
+        \bigskip
+
+        Finally, our contradiction is that $q_3\cup q_2\cup q$
+        forces that
+         $k=L+1$ violates the quoted statement above.
+        \end{proof}
+
+  On the other hand, it's also consistent that \(S'(\theta)\) can fail.
+
+  \begin{theorem}
+    There's a model where \(S'(\omega_\omega)\)
+    fails.
+  \end{theorem}
+
+
+  \begin{proof}
+          We will need the model constructed in \cite{MR1045371} in
+           which an instance of Chang's conjecture
+           $(\aleph_{\omega+1},\aleph_\omega) \rlap{$\rightarrow$}\,{\rightarrow}
+           (\aleph_1,\aleph_0)$ is shown to fail.
+
+          We can take as a given (as shown in \cite[Theorem 5]{MR1045371}) that we may
+          assume that we have a model $V$
+          of GCH in which there are regular limit cardinals $\kappa<\lambda$
+          satisfying that
+          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+          (\kappa^{+\omega+1},\kappa^{+\omega})$.
+
+
+          What this says is that if $L$ is a countable language
+          with at least one unary relation symbol $R$ and
+           $M$ is a model of $L$  with base set $\lambda^{+\omega+1}$
+          in which the interpretation of $R$ has cardinality
+           $\lambda^{+\omega}$, then $M$ has an elementary submodel
+           $N$ of cardinality $\kappa^{+\omega+1}$ in which
+          $R\cap N$ has cardinality $\kappa^{+\omega}$ (of course
+           $R\cap N$ is the interpretation of $R$ in $N$ because
+          $N\prec M$).
+
+          The interested reader will want to know that it is shown in
+          \cite{MR1045371} that if $\kappa$ is a 2-huge cardinal and $j$ is the 2-huge
+          embedding with critical point $\kappa$, then with
+           $\lambda = j(\kappa)$ one has that
+          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+          (\kappa^{+\omega+1},\kappa^{+\omega})$ holds.
+          \bigskip
+
+          Let $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$
+          be a scale in $\Pi\{ \lambda^{+n+1} : n\in \omega\}$
+           ordered by the usual mod finite coordinatewise
+          ordering. For convenience we may assume that $h_\xi(n) \geq
+          \lambda^{+n}$ for all $\xi$ and all $n$.  If $P$ is any poset of
+          cardinality less than $\lambda^{+\omega}$, then in the forcing
+          extension by $P$,  the sequence
+          $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$  remains cofinal in
+           $\Pi\{ \lambda^{+n+1} : n\in \omega\}$.
+
+          \bigskip
+
+          The forcing notion $\mathbb P_0$ is simply the finite condition
+          collapse of $\kappa^{+\omega}$, i.e. $\mathbb P_0 = \left(
+           \kappa^{+\omega}\right)^{<\omega}$. In the forcing extension by
+           $\mathbb P_0$, one now has that the ordinal $\kappa^{+\omega+1}$
+           from $V$ is the first uncountable cardinal $\aleph_1$. Then in this
+           forcing extension we let $\mathbb P_1$ be the countable condition
+           Levy collapse, $Lv(\lambda,\omega_2)$, which collapses all cardinals
+           less than $\lambda$ to have cardinality at most $\aleph_1$. The poset
+           $\mathbb P_1$ has cardinality $\lambda$. We treat
+          $\mathbb P_1$ as containing $\mathbb P_0$
+          as a subposet by identifying each $(p_0,1)$ with $p_0$.
+          After forcing with $\mathbb P_0*\mathbb P_1$ we will have
+          that $\omega_1$ is the ordinal $\left(\kappa^{+\omega+1}\right)^V$,
+           $\omega_2$ is the ordinal $\lambda$, and $\omega_\omega$ is the
+           ordinal $\left(\lambda^{+\omega}\right)^V$.
+
+          \bigskip
+
+          Now we assume that we have an assignment $\dot f_{\dot A}$ of a
+           $\mathbb P_0*\mathbb P_1$-name of a finite-to-one function from
+           $\dot A$ into $\omega$ for each
+           $\mathbb P_0*\mathbb P_1$-name of a countable subset of
+           $\lambda^{+\omega+1}$. We will obtain a contradiction.
+
+          Let $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$ be an enumeration
+          of all the  nice $\mathbb P_0$-names of countable
+          subsets of $\lambda^{+\omega}$. For each $\xi\in \lambda^{+\omega+1}$,
+           let $\dot f_\xi$ be another notation for $\dot f_{\dot A_\xi}$.
+          Since $\mathbb P_0$ forces that $\mathbb P_1$ is countably closed,
+          the collection of all nice  $\mathbb P_0$-names will produce all
+          the countable sets in the extension by $\mathbb P_0* \mathbb
+          P_1$, but $\mathbb P_0*\mathbb P_1$ can introduce new enumerations of
+          these names.
+          For each $\xi\in \lambda^{+\omega+1}$,
+          there is a minimal $\zeta_\xi$ so that $\dot A_{\zeta_\xi}$ is the
+          canonical name for the range of $h_\xi$. This means that
+           $\dot f_{\zeta_\xi} \circ h_\xi$ is simply the
+           $\mathbb P_0 *\mathbb P_1$-name of a finite-to-one function from
+           $\omega$ to $\omega$.
+            For each $\xi\in \lambda^{+\omega+1}$,
+           choose any $p_\xi \in \mathbb P_0*\mathbb P_1$ so that
+           there is a nice $\mathbb P_0$-name, $\dot H_\xi$,
+           that is forced by
+           $p_\xi$  to equal $\dot f_{\zeta_\xi}\circ h_\xi$.
+            Choose $\Lambda\subset \lambda^{+\omega+1}$
+            of cardinality $\lambda^{+\omega+1}$
+            and so that there is a pair $p,\dot H$
+            satisfying that $p_\xi = p$ and $\dot H_\xi = \dot H$
+            for all $\xi\in \Lambda$. We may assume that $p$
+            is in a generic filter $  G$.
+
+
+          Let $\{ x_\xi : \xi\in \lambda^{+\omega+1}\}$ be any enumeration of
+           $H(\lambda^{+\omega+1})$  such that
+           $\{ x_\xi : \xi\in \lambda^{+\omega}\}$ is also equal to
+           $H(\lambda^{+\omega})$. We choose this enumeration in such a way that
+           $x_\xi\in x_\eta$ implies $\xi<\eta$.
+          We use relation symbol $R_0$ to code
+          (and well order)
+           $(H(\lambda^{+\omega+1}), \in)$ as follows: $(\xi,\eta)\in R_0$
+          if and only if $x_\xi\in x_\eta$.
+          Let $R_1$ be a binary relation on $\kappa^{+\omega}$ so that
+          $(\kappa^{+\omega},R_1)$ is isomorphic to $\mathbb P_0$. Let
+           $R_2$ be a binary relation on $\lambda$ so that
+           $R_2\cap (\kappa^{+\omega}\times \kappa^{+\omega})=R_1$ and
+           $(\lambda,R_2)$ is isomorphic to $\mathbb P_0*\mathbb P_1$.
+          Let $\psi$ be the poset isomorphism from $\lambda$ to
+           $\mathbb P_0*\mathbb P_1$.
+
+          We continue coding. We can code the sequence
+           $\{ h_\xi : \xi\in \lambda^{+\omega+1}\}$ as another binary  relation
+           $R_3$ on $\lambda^{+\omega+1}$ where $R_3\cap \left(\{\xi\}\times
+           \lambda^{+\omega+1}\right) = \{ (\xi,h_\xi(n) ) : n\in \omega\}$
+          for each $\xi\in \lambda^{+\omega+1}$. The relation symbol $R_4$ can
+          code the sequence $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$
+          where $(\xi, \alpha, \zeta) \in R_4$ if and only if
+          $(\check \alpha, \psi(\zeta))$ is in the name $\dot A_\xi$.
+           Let $R_5$ code this collection, i.e.
+           $(\gamma,n,m,\eta)\in R_5$ if and only if
+           $(\check{(n,m)}, \psi(\eta))\in \dot H_\gamma$. Also let $R_6$ code
+           (equal)  the set $\Lambda$.
+          Finally we use the relation symbol $R_7$ to similarly code the
+          sequence $\{ \dot f_\xi  : \xi \in \lambda^{+\omega+1}\}$:
+           $(\xi, \alpha, n, \zeta) \in R_7$ if and only if
+          $(\check {(\alpha,n)}, \psi(\zeta))$ is in the name $\dot f_\xi$.
+
+          Needless to say, the unary relation symbol $R$
+          is interpreted as the set $\lambda^{+\omega}$ for the application of
+          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+          (\kappa^{+\omega+1},\kappa^{+\omega})$.
+           Now  we have defined our model
+          $M$  of the language $L= \{\in, R, R_0,\ldots, R_7\}$,
+           and we choose an elementary submodel
+          $N$ witnessing
+          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+          (\kappa^{+\omega+1},\kappa^{+\omega})$. Of course $N$ is really just
+          a $\kappa^{+\omega+1}$ sized subset of $\lambda^{+\omega+1}$
+          with the additional property that $N\cap \lambda^{+\omega}$ has
+          cardinality $\kappa^{+\omega}$.  In the
+          forcing extension $N$ has cardinality $\omega_1$ and
+           $A= N\cap \lambda^{+\omega}$ is countable.
+
+          We will need the following claim from \cite{MR1045371}
+
+          \begin{claim*} We may assume that $N$ satisfies that
+           $N\cap \kappa^{+\omega+1}$ is transitive (i.e. an initial segment).
+          \end{claim*}
+
+          \begin{proof}[Proof of Claim]
+          Suppose  our originally supplied $N$ fails the conclusion of the
+          claim.
+          We   know that $\kappa^{+\omega}\in N$,
+          (  via $R_1$)
+          in which case so is $\kappa^{+\omega+1}$.
+
+
+          Then set $\beta_0 = \sup(N\cap \kappa^{+\omega+1})$ and consider the
+          Skolem closure $\mathop{Hull}(N\cup \beta_0, M)$.  A little informally
+          (in that we have to formalize the enumeration of formulas)
+          let $\{\varphi_n : n\in \omega\}$ is the enumeration of all formulas
+          in the language $L$, and let  $\ell_n$ be the minimal integer such
+          that the free variables of $\varphi_n$ are among
+           $\{ v_0, \ldots, v_{\ell_n}\}$.
+          Then,   for each tuple
+          $\langle \xi_1,\ldots, \xi_{\ell_n} \rangle$
+          of elements of $\lambda^{+\omega+1}$,
+           we define $f_n(\xi_1,\ldots, \xi_{\ell_n})$ to be
+           the minimal $\xi_0\in \lambda^{+\omega+1}$ such that
+           $M\models \varphi_n(\xi_0,\ldots, \xi_{\ell_n})$.
+          If there is no such $\xi_0$,
+             in other words if $M\models \lnot\exists x~~  \varphi_n(x,\xi_1,
+          \ldots,\xi_{\ell_n})$, then set
+           $f_n(\xi_1,\ldots, \xi_{\ell_n})$ to be $0$.
+          Now $\mathop{Hull}(N\cup \beta_0,M)$ is just the minimal superset
+           $X$
+          of $N\cup \beta_0$ that satisfies that
+           $f_n[X^{\{1,\ldots,\ell_n\}}] \subset X$ for all $n$. Since this is
+           simply a large algebra, we can generate all the terms $t$ of
+          the algebraic operations $\{ f_n : n\in \omega\}$.
+          It is easily seen that for each $\zeta \in X$, there is a term
+          $t(v_1,\ldots, v_m)$ such that $\zeta  = t(\delta_1,\ldots, \delta_m)$
+           for some sequence $\langle \delta_1,\ldots, \delta_m\rangle$ with
+           each $\delta_i\in  N\cup \beta_0$.
+           Assume that
+            $\zeta\in \kappa^{+\omega+1}$. By
+            re-indexing the variables in the term we can assume
+            that there is an $n\leq m$ so that
+             $\delta_i  <\beta_0$ for $1\leq i\leq n$
+              and $\kappa^{+\omega+1}\leq \delta_i$ for $n<i\leq m$.
+              Let $\vec a $ denote
+              the tuple $\langle \delta_{n+1},\ldots, \delta_m\rangle$.
+            Choose $\eta\in N\cap \kappa^{+\omega+1}$ large enough so that
+           $ \{  \delta_1, \ldots, \delta_n\}$ is contained in  $\eta$. Since set-membership
+           in $M$ is coded by $R_0$ rather than $\in$ we have to argue a little
+           less naturally.
+           Consider the set
+             $s_0(\eta,\vec a) = \{ t(\gamma_1,\ldots, \gamma_n,\vec a) :
+          \{\gamma_1,\cdots,\gamma_n\} \in [\eta]^{\leq n}\}$. Clearly
+           $s_0(\eta,\vec a)$ is a member of $H(\lambda^{+\omega+1})$.
+           Now define $s_1(\eta,\vec a) $ to be
+           $\{ x_\alpha : \alpha\in s_0(\eta, \vec a)\}$,
+           and choose the
+           unique $\zeta_1\in \lambda^{+\omega+1}$ such
+           that $x_{\zeta_1} = s_1(\eta,\vec a)$. We claim that $\zeta_1\in N$.
+           Note that $\alpha R_0\zeta_1$ holds if and only if
+            $ \alpha \in s_0(\eta,\vec a)$, and therefore
+           $$M\models (\forall \alpha)\left[\alpha R_0 \zeta_1 ~~\mbox{iff}~~
+           (\exists   \gamma_1\in \eta)\cdots(\exists \gamma_n\in\eta)(\alpha=
+           t(\gamma_1,\ldots, \gamma_n,\vec a))\right]~.$$
+           By elementarity then we have that $\zeta_1\in N$,
+           and by similar reasoning the supremum, $\zeta_0$,
+          of $\zeta_1\cap \kappa^{+\omega+1}$ is also in $N$.
+             This of course means that $\zeta < \xi_0$.
+          \end{proof}
+
+          We use the elementarity of
+           $N$  to deduce properties of the families
+           $\{ \dot A_\xi : \xi\in N\}$ and $\{ \dot f_\xi : \xi \in
+           N\}$.  Actually the collection we are most interested in
+           is the family $\{ h_\xi : \xi\in \Lambda\cap N\}$.
+
+           Since  $\mathfrak c < \kappa^{+\omega+1}$ there
+            is a function $\langle \varrho_n : n\in \omega\rangle$
+            in $\Pi_n \lambda^{+\omega}   $ such that the sequence
+             $\{ h_\xi : \xi \in N\}$ is unbounded mod finite
+             in $\Pi_n \varrho_n$ (by Shelah's pcf theory).
+             This is in Jech somewhere.
+             For each $n$, $\rho_n \leq \sup(N\cap \lambda^{+n+2})$.
+
+             Since $\mathbb P_0$ has cardinality less than $|N|=\kappa^{+\omega+1}$,
+              the sequence $\{ h_\xi : \xi \in \Lambda\cap N\}$ remains unbounded
+              mod finite in $\Pi_n \varrho_n$ (and in
+               $\Pi_n (\varrho_n\cap N)$).  Now pass to the extension by
+                $G\cap \mathbb P_0$ and let $H$ be the function
+                 $\operatorname{val}_{G}(\dot H)$, and we recall
+                 that $f_{\zeta_\xi}(h_\xi(n)) = H(n)$ for all $n\in \omega$.
+           Now pass to the full extension $V[G]$ and again, since
+            $\mathbb P_1$ was forced to be countably closed,
+             the family $\{ h_\xi : \xi \in \Lambda\cap N\}$ is still
+             unbounded in $\Pi_n (\varrho_n \cap N)$. We let
+             $A$ be the countable set $N\cap \lambda^{+\omega}$,
+             and for  each
+             $\xi\in \Lambda\cap N$, there is an $n_\xi$ such that
+              $f_{\xi}(h_\xi(m)) = f_A(h_\xi(m))$ for all $m>n_\xi$.
+              There is a single $n$ so that $\Lambda_n
+               = \{\xi\in \Lambda\cap N       : n_\xi = n\}$ has cardinality
+                $\omega_1 $, and thus
+                $\{ h_\xi : \xi\in \Lambda_n\cap N\}$ is also unbounded
+                in $\Pi_n (\rho_n\cap N)$.
+          This certainly implies that there is an $m>n$
+          such that $\{ h_\xi (m) : \xi\in \Lambda_n\cap N\}$ is infinite.
+          This completes the proof since  $f_{A}(h_\xi(m)) = H(m)$
+          for all $\xi\in \Lambda_n\cap N$.
+
+  \end{proof}
+
+  \begin{question}
+    Is \(S'(\theta)\) equivalent to having a Kurepa family on \(\theta\)?
+  \end{question}
+
+  \section*{Applications!}
+
+  \begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+  {
+    &
+    \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
+    \pl F \kmarkwin2\schFillIntGame\kappa \\
+
+    S'(\kappa) &
+    \pl F \kmarkwin2\schFillInitialGame\kappa &
+    \pl F \kmarkwin2\schFillGame\kappa \\
+
+    &
+    &
+    \pl F \ktactwin2\schFillStrictGame\kappa \\
+  };
+  \path[>=latex,->]
+    (m-2-1) edge (m-1-2)
+    (m-2-1) edge (m-2-2)
+    (m-2-1) edge (m-3-3)
+    (m-1-2) edge (m-2-2)
+    (m-1-3) edge (m-2-3)
+    (m-3-3) edge (m-2-3);
+  \path[>=latex,<->]
+    (m-1-2) edge (m-1-3)
+    (m-2-2) edge (m-2-3);
+\end{tikzpicture}
+\end{center}
+\caption{Diagram of Scheeper/Menger game implications with \(S'(\kappa)\)}
+\label{GamesDiagram2}
+\end{figure}
+
+  \begin{theorem}
+    Figure \ref{GamesDiagram2} holds. (Proven in [TODO cite])
+    (Actually, TODO double-check that it works with just S', particularly
+    the strict game)
+  \end{theorem}
+
+  It was left open if these implications can be reversed. The answer is
+  consistently no.
+
+  \begin{theorem}
+    Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
+    If \(\pl F \kmarkwin2\schFillIntGame{\omega_{\beta_n}}\) for all
+    \(n<\omega\), then \(\pl F\kmarkwin2\schFillIntGame{\omega_\alpha}\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
+    \(\schFillIntGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
+    for \(\pl F\) in \(\schFillIntGame{\omega_\alpha}\) as follows:
+    \[
+      \sigma(\<C\>,0)
+        =
+      \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
+    \]
+    \[
+      \sigma(\<C,D\>,n+1)
+        =
+      \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
+        \cup
+      \bigcup_{m\leq n}
+      \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
+    \]
+
+    Let \(\<C_0,C_1,\dots\>\) be an attack by
+    \(\pl C\) in \(\schFillIntGame{\omega_\alpha}\), and
+    \(\alpha\in\bigcap_{n<\omega}C_n\).
+    Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
+    attack
+    \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
+    by \(\pl C\) in \(\schFillIntGame{\omega_{\beta_{N+1}}}\). Since
+    \(\sigma_{N+1}\) is a winning strategy and
+    \(\alpha\in\bigcap_{n<\omega}C_{N+n+1}\cap\omega_{\beta_{N+1}}\), either
+    \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
+    \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
+    \(
+      \alpha
+        \in
+      \sigma_{N+1}(
+        \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
+        ,M+1
+      )
+    \)
+    for some \(M<\omega\) and thus
+    \(
+      \alpha
+        \in
+      \sigma(
+        \<C_{N+M+1},C_{N+M+2}\>,
+        N+M+2
+      )
+    \). Thus \(\sigma\) is a winning strategy.
+  \end{proof}
+
+  \begin{theorem}
+    Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
+    If \(\pl F \kmarkwin2\schFillInitialGame{\omega_{\beta_n}}\) for all
+    \(n<\omega\), then \(\pl F\kmarkwin2\schFillInitialGame{\omega_\alpha}\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
+    \(\schFillInitialGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
+    for \(\pl F\) in \(\schFillInitialGame{\omega_\alpha}\) as follows:
+    \[
+      \sigma(\<C\>,0)
+        =
+      \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
+    \]
+    \[
+      \sigma(\<C,D\>,n+1)
+        =
+      \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
+        \cup
+      \bigcup_{m\leq n}
+      \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
+    \]
+
+    Let \(\<C_0,C_1,\dots\>\) be an attack by
+    \(\pl C\) in \(\schFillInitialGame{\omega_\alpha}\), and
+    \(\alpha\in C_0\).
+    Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
+    attack
+    \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
+    by \(\pl C\) in \(\schFillInitialGame{\omega_{\beta_{N+1}}}\). Since
+    \(\sigma_{N+1}\) is a winning strategy and
+    \(\alpha\in C_{N+1}\cap\omega_{\beta_{N+1}}\), either
+    \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
+    \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
+    \(
+      \alpha
+        \in
+      \sigma_{N+1}(
+        \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
+        ,M+1
+      )
+    \)
+    for some \(M<\omega\) and thus
+    \(
+      \alpha
+        \in
+      \sigma(
+        \<C_{N+M+1},C_{N+M+2}\>,
+        N+M+2
+      )
+    \). Thus \(\sigma\) is a winning strategy.
+  \end{proof}
+
+  \begin{corollary}
+    It is consistent that \(S'(\omega_\omega)\) fails,
+    but as \(S'(\omega_k)\) holds for all \(k<\omega\), we have
+    \(\pl F\kmarkwin2\schFillIntGame{\omega_\omega}\) and
+    \(\pl F\kmarkwin2\schFillInitialGame{\omega_\omega}\).
+  \end{corollary}
+
+  A tricky topological question: does \(\pl F\win\menGame{X}\) imply
+  \(\pl F\kmarkwin2\menGame{X}\)?
+  (C showed that )
+  Under \(V=L\), we cannot hope to find
+  a counterexample using \(X=\oneptlind\kappa\) since
+  \(S'(\kappa)\) and thus \(\pl F\kmarkwin2\schFillIntGame{\kappa}\)
+  always holds.
+
+  \begin{definition}
+    Let \(R_\omega\) be the real numbers with the topology of the usual
+    open intervals with countably many elements removed.
+  \end{definition}
+
+  \begin{theorem}
+    \(\pl F\win\menGame{R_\omega}\).
+    If there exists a Kurepa family on the reals, then
+    \(\pl F\kmarkwin2\menGame{R_\omega}\).
+  \end{theorem}
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
