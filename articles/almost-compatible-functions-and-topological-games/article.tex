@@ -274,10 +274,9 @@ Charlotte, NC 28262}
     \(f_\alpha(\delta_{m,j})=\max(m,f_{\beta_m}(\delta_{m,j}))\) maps to
     \(n\) for only finitely many \(j\).
 
-    %TODO proof
     We now want to demonstrate that \(f_\alpha\sim f_{\beta_n}\) for all
-    \(n<\omega\). We again need only concern ourselves with \(\delta_{m,j}\) for
-    \(m\leq n\) since otherwise \(\delta_{m,j}\not\in K_{\beta_n}\).
+    \(n<\omega\). Note \(\delta_{m,j}\in K_{\beta_n}\) implies
+    \(m\leq n\).
     For \(m=n\), we have
     \(f_\alpha(\delta_{n,j})=\max(n,f_{\beta_n}(\delta_{n,j}))\) which differs
     from \(f_{\beta_n}(\delta_{n,j})\) for only the finitely many \(j\) which
@@ -289,7 +288,15 @@ Charlotte, NC 28262}
     are mapped below \(m\) by \(f_{\beta_m}\) or the finitely many \(j\)
     for which the
     almost compatible \(f_{\beta_n}\sim f_{\beta_m}\) differ.
+
+    Finally for any \(\beta<\alpha\), we may conclude \(f_\alpha\sim f_\beta\)
+    since there is some \(\beta_n\) with
+    \(K_\alpha\cap K_\beta=K_\alpha\cap K_{\beta_n}\),
+    \(f_\alpha\sim f_{\beta_n}\), and \(f_{\beta_n}\sim f_\beta\).
   \end{proof}
+
+  We now construct a topology on \(\omega_n\) for each \(n<\omega\) which
+  will witness a Kurepa family on \(\aleph_n\).
 
 
 
