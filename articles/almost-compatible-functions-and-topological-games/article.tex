@@ -298,113 +298,148 @@ Charlotte, NC 28262}
   We now construct a topology on \(\omega_n\) for each \(n<\omega\) which
   will witness a Kurepa family on \(\aleph_n\).
 
+  \begin{definition}
+    A topological space is said to be \(\omega\)-bounded if each countable
+    subset of the space has compact closure.
+  \end{definition}
+
+\begin{lemma}
+    Let \(X\) be a Hausdorff space of cardinality less than
+    \(\aleph_\omega\) which is locally countable, locally compact, and the
+    closure of each set has the same cardinality as the set.
+    Then \(X\) has an \(\omega\)-bounded extension \(\tilde X\)
+    with the same properties,
+    such that \(\tilde X\setminus X\) has the same cardinality
+    as \(X\).
+  \end{lemma}
+
+  \begin{proof}
+    We prove this by induction on \(n\).
+    If \(n=0\), then we can just use the one-point compactification of two
+    copies of \(X\).
+    So suppose \(n>0\) and
+    that \(X=\{\alpha:\alpha<\omega_n\}\) has such a topology.
+    For each \(\alpha<\omega_n\), \(\gamma_\alpha\) may be chosen such that
+    both the closure of \(\alpha\) in \(X\) and a countable neighborhood of
+    \(\alpha\) are subsets of \(\gamma_\alpha\). Note that
+    the set
+    \(C'=\{\lambda<\omega_n:\alpha<\lambda\Rightarrow\gamma_\alpha<\lambda\}\)
+    is a cub subset of \(\omega_n\).
+    It will be convenient later to use the cub \(C=C'\cap L\), where
+    \(L\) contains the limits of limit ordinals in \(\omega_n\).
+    Now for each \(\lambda\in C\), the initial segment \(\lambda\) is
+    open as \(\alpha<\lambda\) belongs to the neighborhood
+    \(\gamma_\alpha\subsetneq\lambda\). Also, if \(\lambda\) has uncountable
+    cofinality, then for \(\beta\geq\lambda\) and any countable neighborhood
+    \(U\) of \(\beta\), \(U\cap\lambda=U\cap\alpha\)
+    for some \(\alpha<\lambda\); thus \(U\setminus\cl\alpha\)
+    is a neighborhood of \(\beta\) missing \(\lambda\), showing that \(\lambda\)
+    is clopen.
+
+    Let \(\tilde X=\omega_n\times 2\).
+    By induction on \(\lambda \in C\) we will define a topology
+    for \(\omega_n\times\{0\}\cup \lambda\times \{1\}\) such that
+    \begin{itemize}
+      \item \(\omega_n \times \{0\}\) is an open copy of \(X\),
+      \item the space is locally compact, and
+      \item for each \(\alpha<\lambda\), the closure of \(\alpha\times 2\) is
+        an \(\omega\)-bounded  subset of \(\lambda\times 2\).
+    \end{itemize}
+
+    In the case that \(n=1\), if \(\lambda\) is a limit in \(C\),
+    then we simply give
+    \(
+      \omega_n\times\{0\}\cup\lambda\times\{1\}
+    \) the topology induced by the union of the previously defined
+    \(
+      \omega_n\times\{0\}\cup\lambda'\times\{1\}
+    \).
+    Otherwise we choose an increasing sequence of limit
+    ordinals \(\{\alpha_k : k\in \omega\}\) with limit \(\lambda\)
+    such that \(\alpha_0\) is the predecessor of
+    \(\lambda\) in \(C\) (or \(0\) if \(\lambda\) is the least element of
+    \(C\)).
+
+    %TODO finish edits
+    The subspace \(\cl\lambda\times\{0\}\cup\alpha_0\times\{1\}\) of \(X\)
+    is countable and locally compact; therefore it is
+    metrizable and zero-dimensional.
+    So we may choose sets \(U_k\) for \(k<\omega\) which are
+    clopen in this topology and satisfy
+    \(
+      \cl{\alpha_k}\times\{0\}\cup\alpha_0\times\{1\}
+        \subseteq
+      U_n
+        \subseteq
+      \lambda\times\{0\}\cup\alpha_0\times\{1\}
+    \).
+
+    We need only describe a base for the points in
+    \((\lambda\setminus\alpha_0)\times\{1\}\); we do so by letting
+    \(\<\alpha,1\>\) be isolated when \(\alpha\not\in\{\alpha_k:k<\omega\}\),
+    and letting \(\<\alpha_k,1\>\) be a compactifying point for
+    \(U_n\cup(\alpha_k\times\{1\})\).
+
+    This results in a locally compact space: for \(\alpha\geq\lambda\),
+    \(\<\alpha,0\>\) has its usual compact neighborhoods within the copy
+    \(\omega_n\times\{0\}\) of \(X\).
+
+    Now we handle the case \(n>1\) and we can shrink \(C\)
+    and now assume
+    that \(C\) is the closure of \(\{\lambda\in C : \mbox{cf}(\lambda)>\omega\}\).
+    We again proceed by induction on \(\lambda\in C\).  If
+    \(\lambda\) is a limit in \(C\), then there is nothing to do: we
+    simply have defined an appropriate topology on
+    \(\omega_n\times  \{0\}\cup \lambda\times \{1\}\) so that
+    for each \(\mu\in C\cap \lambda\) with \(\mbox{cf}(\mu)>\omega\),
+     \(\mu\times 2\) is a clopen \(\omega\)-bounded subspace.
+    In case \(\lambda\) is not a limit of \(C\), then \(\lambda\)
+    has uncountable cofinality and a predecessor \(\mu\in C\).
+    We therefore have that \(\lambda\times\{0\}\) is clopen
+    in \(\omega_n\times \{0\}\).
+     We apply the induction hypothesis
+    to the space \(\lambda\times \{0\} \cup \mu\times 2\) to choose
+    the topology on \(\lambda\times 2\).
+  \end{proof}
+
+  \begin{theorem}
+    For each $n\in \omega$, there is a locally countable,
+    $\omega$-bounded topology on $\omega_n$. Note
+    that this means that the closure of any set has
+    the same cardinality and weight as the set.
+  \end{theorem}
+
+  \begin{proof}
+    Take a topological sum of \(\aleph_{n+1}\) copies of \(\omega_n\)
+    with an appropriate topology (a convergent sequence for \(\omega\), the
+    result of this theorem for larger cardinals),
+    and apply the previous lemma.
+
+    TODO: write an argument for the note.
+  \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   \newpage
 
   \section{TODO ALL THIS STUFF NEEDS EDITING STILL}
 
-  \begin{definition}
-    A topological space is said to be \(\omega\)-bounded if each countable
-    subset of the space has compact closure.
-  \end{definition}
 
 
-  % TODO: read through Alan's proof and fit to rest of document
-          \begin{theorem}
-           For each $n\in \omega$, there is a locally countable,
-            $\omega$-bounded topology on $\omega_n$. Note
-            that this means that the closure of any set has
-            the same cardinality and weight as the set.
-          \end{theorem}
 
 
-          To prove the theorem, we must actually prove a stronger lemma.
-
-          \begin{lemma}
-          Assume that $X$ has cardinality at most $\omega_n$ (for
-          any $n\in \omega$),
-          and is locally countable, locally compact, and the closure
-          of each set has the same cardinality as the set.
-          Then $X$ has an $\omega$-bounded extension with the
-          same properties.
-          \end{lemma}
-
-            \begin{proof}
-            We prove this by induction on $n$.
-            In fact, we make our inductive statement that  if $\tilde X$
-            is the extension of $X$, then  $\tilde X \setminus X$ also
-            has cardinality $\omega_n$.
-             If $n=0$,
-              then we can just take the free union of two copies of $X$
-              and then the one-point compactification.
-             So suppose $n>0$ and
-            that $X$ is such a topology on the ordinal $\omega_n$.
-            For each $\alpha<\omega_n$, the closure of the initial
-            segment $\alpha$ is bounded by some $\gamma_\alpha$.
-            Also, because $X$ is locally countable, $\gamma_\alpha$
-            can be chosen so that $\alpha$ is contained  in the interior
-            of $\gamma_\alpha$. There is a cub  $C\subset \omega_n$
-            with the property that for each $\delta\in C$ and $\alpha<\delta$,
-             $\gamma_\alpha$ is also less than $\delta$. This implies
-             that for each $\delta\in C$, the initial segment $\delta$ is
-             open, and if $\delta$ has uncountable cofinality, then
-              $\delta$ is clopen.
-
-              The proof will be easier to visualize if we now
-              identify the points of $X$ with the point set
-               $\omega_n\times \{0\}$ and we will add the points
-                $\omega_n\times \{1\}$ to create the extension.
-             By induction on $\lambda \in C$ we define a topology
-             on $\omega_n\times\{0\}\cup \lambda\times \{1\}$ so that
-             $\omega_n \times \{0\}$ is an open subset. We also ensure,
-             by induction, for each $\alpha<\lambda$,
-             the closure of $\alpha\times 2$ is an
-              $\omega$-bounded  subset of $\lambda\times 2$.
-
-          In the case that $n=1$, then  choose any sequence
-           $\lambda_n : n\in \omega$ increasing cofinal in $\lambda$.
-           If $\lambda $ is a limit in $C$, then we simply take the
-           topology we have constructed so far on $\lambda\times 2$
-           and there's nothing more needs to be done. Otherwise
-          we may assume that $\lambda_0$ is the predecessor
-          of $\lambda\in C$ and
-           we set $Y_\lambda $ to equal the countable set
-            $\overline{\lambda}\setminus \lambda$. For convenience,
-             and with no loss, we assume that $\lambda$ itself is a limit
-             of limits.
-           And we have a topology on
-           $$\lambda_0\times 2 \cup (\lambda \cup Y_\lambda)\times\{0\}~.$$
-            Recursively
-            choose clopen sets $U_n$ in this topology
-             so that $\lambda_0\times 2\subset U_0$,
-             $U_{n}\cup \lambda_{n+1}\times \{0\}$ is contained
-              $ U_{n+1}$ while $U_{n+1}$ is disjoint from $Y_\lambda$.
-              It is easy to see that we can have all the points
-              in $(\lambda\setminus \{\lambda_n : n\in\omega\})\times \{1\}$
-              be isolated, and arrange that $(\lambda_n,1) $ is the
-              point at infinity in the one-point compactification
-              $U_n\cup (\lambda_n\times \{1\})$.
-
-                Now we handle the case $n>1$ and we can shrink $C$
-                and now assume
-                that $C$ is the closure of $\{\lambda\in C : \mbox{cf}(\lambda)>\omega\}$.
-                We again proceed by induction on $\lambda\in C$.  If
-                $\lambda$ is a limit in $C$, then there is nothing to do: we
-                simply have defined an appropriate topology on
-                $\omega_n\times  \{0\}\cup \lambda\times \{1\}$ so that
-                for each $\mu\in C\cap \lambda$ with $\mbox{cf}(\mu)>\omega$,
-                 $\mu\times 2$ is a clopen $\omega$-bounded subspace.
-                In case $\lambda$ is not a limit of $C$, then $\lambda$
-                has uncountable cofinality and a predecessor $\mu\in C$.
-                We therefore have that $\lambda\times\{0\}$ is clopen
-                in $\omega_n\times \{0\}$.
-                 We apply the induction hypothesis
-                to the space $\lambda\times \{0\} \cup \mu\times 2$ to choose
-                the topology on $\lambda\times 2$.
-
-
-            \end{proof}
 
 
 
