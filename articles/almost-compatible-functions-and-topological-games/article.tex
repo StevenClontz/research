@@ -303,10 +303,18 @@ Charlotte, NC 28262}
     subset of the space has compact closure.
   \end{definition}
 
-\begin{lemma}
-    Let \(X\) be a Hausdorff space of cardinality less than
-    \(\aleph_\omega\) which is locally countable, locally compact, and the
-    closure of each set has the same cardinality as the set.
+  \begin{proposition}
+    Let \(X\) be a \(T_2\) locally countable \(\omega\)-bounded space.
+    Then for each \(A\subseteq X\), \(\cl A\) has the same cardinality and
+    weight as \(A\).
+  \end{proposition}
+
+  %TODO?
+
+  \begin{lemma}
+    Let \(X\) be a \(T_2\) space of cardinality less than
+    \(\aleph_\omega\) which is locally countable, locally compact,
+    and the closure of each set has the same cardinality as the set.
     Then \(X\) has an \(\omega\)-bounded extension \(\tilde X\)
     with the same properties,
     such that \(\tilde X\setminus X\) has the same cardinality
@@ -316,106 +324,134 @@ Charlotte, NC 28262}
   \begin{proof}
     We prove this by induction on \(n\).
     If \(n=0\), then we can just use the one-point compactification of two
-    copies of \(X\).
-    So suppose \(n>0\) and
-    that \(X=\{\alpha:\alpha<\omega_n\}\) has such a topology.
+    copies of \(X\). So suppose \(n>0\) and
+    that \(X=\omega_n\) has such a topology. Note that
+    \(X\) has a base of compact open neighborhoods
+    with countable cardinality. To see this,
+    for each point \(x\) let \(K\) be a countable and compact neighborhood
+    of \(x\), and it follows that it is contained in a countable, open,
+    and locally compact neighborhood \(W\) of \(x\), which in turn
+    is zero-dimensional and metrizable. So choose \(V\) clopen
+    in \(W\) such that \(x\in V\subseteq K\); \(V\) is a compact open
+    neighborhood of \(x\) in \(X\).
+
     For each \(\alpha<\omega_n\), \(\gamma_\alpha\) may be chosen such that
-    both the closure of \(\alpha\) in \(X\) and a countable neighborhood of
-    \(\alpha\) are subsets of \(\gamma_\alpha\). Note that
-    the set
-    \(C'=\{\lambda<\omega_n:\alpha<\lambda\Rightarrow\gamma_\alpha<\lambda\}\)
-    is a cub subset of \(\omega_n\).
-    It will be convenient later to use the cub \(C=C'\cap L\), where
-    \(L\) contains the limits of limit ordinals in \(\omega_n\).
+    both the closure of the set \(\alpha\) in \(X\) and a countable
+    neighborhood of the point \(\alpha\) are subsets of \(\gamma_\alpha\).
+    Note that the set
+    \(\{\lambda<\omega_n:\alpha<\lambda\Rightarrow\gamma_\alpha<\lambda\}\)
+    is a cub subset of \(\omega_n\) with a cub subset
+    \(C\) containing only limits of limit ordinals.
     Now for each \(\lambda\in C\), the initial segment \(\lambda\) is
     open as \(\alpha<\lambda\) belongs to the neighborhood
     \(\gamma_\alpha\subsetneq\lambda\). Also, if \(\lambda\) has uncountable
     cofinality, then for \(\beta\geq\lambda\) and any countable neighborhood
     \(U\) of \(\beta\), \(U\cap\lambda=U\cap\alpha\)
-    for some \(\alpha<\lambda\); thus \(U\setminus\cl\alpha\)
-    is a neighborhood of \(\beta\) missing \(\lambda\), showing that \(\lambda\)
+    for some \(\alpha<\lambda\); thus \(U\setminus\cl\alpha=U\setminus\lambda\)
+    is a neighborhood of \(\beta\), showing that \(\lambda\)
     is clopen.
 
     Let \(\tilde X=\omega_n\times 2\).
     By induction on \(\lambda \in C\) we will define a topology
-    for \(\omega_n\times\{0\}\cup \lambda\times \{1\}\) such that
+    for \(\tilde X_\lambda=\omega_n\times\{0\}\cup\lambda\times\{1\}\)
+    such that
     \begin{itemize}
       \item \(\omega_n \times \{0\}\) is an open copy of \(X\),
-      \item the space is locally compact, and
+      \item \(\lambda\times 2\) is open, and also closed when \(\cf\lambda>\omega\),
+      \item the space has a base of compact open neighborhoods with
+        countable cardinality, and
       \item for each \(\alpha<\lambda\), the closure of \(\alpha\times 2\) is
         an \(\omega\)-bounded  subset of \(\lambda\times 2\).
     \end{itemize}
+    and note that \(\omega_n\times\{0\}\cup 0\times\{1\}\) satisfies these
+    requirements.
 
-    In the case that \(n=1\), if \(\lambda\) is a limit in \(C\),
-    then we simply give
+    We first consider the case \(n=1\).
+    If \(\lambda\) is a limit in \(C\), then
     \(
       \omega_n\times\{0\}\cup\lambda\times\{1\}
-    \) the topology induced by the union of the previously defined
-    \(
-      \omega_n\times\{0\}\cup\lambda'\times\{1\}
-    \).
+        =
+      \bigcup_{\mu\in C\cap\lambda}\omega_n\times\{0\}\cup\mu\times\{1\}
+    \)
+    will have the topology induced by that union which
+    satisfies the induction requirements.
     Otherwise we choose an increasing sequence of limit
     ordinals \(\{\alpha_k : k\in \omega\}\) with limit \(\lambda\)
-    such that \(\alpha_0\) is the predecessor of
-    \(\lambda\) in \(C\) (or \(0\) if \(\lambda\) is the least element of
-    \(C\)).
+    such that \(\alpha_0\) is the predecessor of \(\lambda\) in \(C\),
+    or \(\alpha_0=0\) if \(\lambda\) is the least element of \(C\).
 
-    %TODO finish edits
     The subspace \(\cl\lambda\times\{0\}\cup\alpha_0\times\{1\}\) of \(X\)
     is countable and locally compact; therefore it is
     metrizable and zero-dimensional.
-    So we may choose sets \(U_k\) for \(k<\omega\) which are
+    So we may choose increasing sets \(U_k\) for \(k<\omega\) which are
     clopen in this topology and satisfy
-    \(
+    \[
+      \cl{\alpha_k\times\{0\}\cup\alpha_0\times\{1\}}
+        =
       \cl{\alpha_k}\times\{0\}\cup\alpha_0\times\{1\}
         \subseteq
-      U_n
+      U_k
         \subseteq
-      \lambda\times\{0\}\cup\alpha_0\times\{1\}
-    \).
+      \lambda\times\{0\}\cup\alpha_0\times 2
+    \]
 
-    We need only describe a base for the points in
-    \((\lambda\setminus\alpha_0)\times\{1\}\); we do so by letting
+    We need only describe a base for the points
+    \(\<\alpha,1\>\in(\lambda\setminus\alpha_0)\times\{1\}\);
+    we do so by letting
     \(\<\alpha,1\>\) be isolated when \(\alpha\not\in\{\alpha_k:k<\omega\}\),
     and letting \(\<\alpha_k,1\>\) be a compactifying point for
-    \(U_n\cup(\alpha_k\times\{1\})\).
+    \(U_k\cup(\alpha_k\times\{1\})\).
 
-    This results in a locally compact space: for \(\alpha\geq\lambda\),
-    \(\<\alpha,0\>\) has its usual compact neighborhoods within the copy
-    \(\omega_n\times\{0\}\) of \(X\).
+    The first two requirements of our inductive hypothesis are obviously
+    satsified. Note \(U_k\cup((\alpha_k+1)\times\{1\})\) is
+    a compact open neighborhood of countable cardinality
+    for points in \(\lambda\times 2\), and for points in
+    \((\omega_n\setminus\cl\lambda)\times\{0\}\) we may use a compact
+    open neighborhood of countable cardinality from \(X\setminus\lambda\).
+    Finally let \(\<\alpha,0\>\in(\cl\lambda\setminus\lambda)\times\{0\}\)
+    and let \(K\subseteq\cl\lambda\times\{0\}\cup\alpha_0\times\{1\}\) be a
+    compact open neighborhood in that subspace missing \(\alpha_0\times 2\).
+    Then for each \(k<\omega\), \(\<\alpha_k,1\>\) has a neighborhood missing
+    the compact set \(K\cap U_k\), so \(K\) gains no new limit points in
+    \(\cl\lambda\times\{0\}\cup\lambda\times\{1\}\) and thus remains compact.
+    So the third requirement is also satisfied.
+    For the final requirement, note that for \(\alpha<\lambda\), we may
+    choose \(\alpha<\alpha_k<\lambda\) and note that
+    \(\alpha\times 2\) is contained in the compact
+    set \(U_k\cup((\alpha_k+1)\times\{1\})\).
 
-    Now we handle the case \(n>1\) and we can shrink \(C\)
-    and now assume
-    that \(C\) is the closure of \(\{\lambda\in C : \mbox{cf}(\lambda)>\omega\}\).
-    We again proceed by induction on \(\lambda\in C\).  If
-    \(\lambda\) is a limit in \(C\), then there is nothing to do: we
-    simply have defined an appropriate topology on
-    \(\omega_n\times  \{0\}\cup \lambda\times \{1\}\) so that
-    for each \(\mu\in C\cap \lambda\) with \(\mbox{cf}(\mu)>\omega\),
-     \(\mu\times 2\) is a clopen \(\omega\)-bounded subspace.
+    For the case \(n>1\), we may assume that the successors in \(C\)
+    have uncountable cofinality.
+    We again proceed by induction on \(\lambda\in C\).  Again when
+    \(\lambda\) is a limit in \(C\), the union of the previously defined
+    \(\omega_n\times\{0\}\cup\mu\times\{1\}\) satisfies the given
+    requirements; in particular if \(\alpha<\lambda\), then
+    \(\alpha<\mu<\lambda\) for some successor \(\mu\in C\) with uncountable
+    cofinality. As such, the closure of \(\alpha\times2\) is
+    an \(\omega\)-bounded subset of the clopen \(\mu\times 2\) and
+    therefore also of \(\lambda\times 2\).
     In case \(\lambda\) is not a limit of \(C\), then \(\lambda\)
     has uncountable cofinality and a predecessor \(\mu\in C\).
     We therefore have that \(\lambda\times\{0\}\) is clopen
-    in \(\omega_n\times \{0\}\).
-     We apply the induction hypothesis
-    to the space \(\lambda\times \{0\} \cup \mu\times 2\) to choose
-    the topology on \(\lambda\times 2\).
+    in \(\omega_n\times \{0\}\). Since the cardinality of
+    \(\lambda\times \{0\} \cup \mu\times 2\) is less than \(\aleph_n\),
+    we may simply apply the induction hypothesis
+    to choose an appropriate topology for \(\lambda\times 2\).
+
+    As a result, \(\tilde X=\bigcup_{\lambda\in C}\tilde X_\lambda\)
+    is easily seen to be locally compact and locally countable. It is also
+    \(\omega\)-bounded as any countable set is contained in some
+    \(\alpha\times 2\) for \(\alpha<\lambda\in C\). Finally by the previous
+    proposition, the closure operation cannot increase cardinalities.
   \end{proof}
 
   \begin{theorem}
-    For each $n\in \omega$, there is a locally countable,
-    $\omega$-bounded topology on $\omega_n$. Note
-    that this means that the closure of any set has
-    the same cardinality and weight as the set.
+    For each $n\in \omega$, there is a \(T_2\) locally countable,
+    $\omega$-bounded topology on $\omega_n$.
   \end{theorem}
 
   \begin{proof}
-    Take a topological sum of \(\aleph_{n+1}\) copies of \(\omega_n\)
-    with an appropriate topology (a convergent sequence for \(\omega\), the
-    result of this theorem for larger cardinals),
-    and apply the previous lemma.
-
-    TODO: write an argument for the note.
+    Apply the previous lemma to \(\omega_n\) with the discrete topology.
   \end{proof}
 
 
