@@ -298,23 +298,40 @@ Charlotte, NC 28262}
   We now construct a topology on \(\omega_n\) for each \(n<\omega\) which
   will witness a Kurepa family on \(\aleph_n\).
 
+  \begin{proposition}
+    Let \(X\) be a \(T_2\) space with a base of countable and compact
+    neighborhoods.
+    Then \(X\) is locally metrizable, \(X\)
+    has a base of compact open countable sets,
+    and its closure operation preserves cardinality and weight.
+  \end{proposition}
+
+  \begin{proof}
+    For each point \(x\) let \(K\) be a countable and compact neighborhood
+    of \(x\), and it follows that it is contained in a countable, open,
+    and locally compact neighborhood \(W\) of \(x\), which in turn
+    is zero-dimensional and metrizable. So choose \(V\) clopen
+    in \(W\) such that \(x\in V\subseteq K\); \(V\) is a compact open
+    neighborhood of \(x\) in \(X\).
+
+    Since the space is locally metrizable and thus first-countable,
+    the weight and cardinality of any
+    subspace coincide. Then for infinite \(A\subseteq X\), cover \(\cl A\) with
+    open sets of countable cardinality, and say
+    \(x\sim y\) if there's a finite linked chain joining them; since
+    \(x\sim a\) for some \(a\in A\), \(\cl A\) is covered by
+    \(|A|\)-many sets each of size \(\aleph_0\). Thus
+    \(|A|\leq|\cl A|\leq|A|\otimes\aleph_0=|A|\).
+  \end{proof}
+
   \begin{definition}
     A topological space is said to be \(\omega\)-bounded if each countable
     subset of the space has compact closure.
   \end{definition}
 
-  \begin{proposition}
-    Let \(X\) be a \(T_2\) locally countable \(\omega\)-bounded space.
-    Then for each \(A\subseteq X\), \(\cl A\) has the same cardinality and
-    weight as \(A\).
-  \end{proposition}
-
-  %TODO?
-
   \begin{lemma}
     Let \(X\) be a \(T_2\) space of cardinality less than
-    \(\aleph_\omega\) which is locally countable, locally compact,
-    and the closure of each set has the same cardinality as the set.
+    \(\aleph_\omega\) with a base of countable and compact neighborhoods.
     Then \(X\) has an \(\omega\)-bounded extension \(\tilde X\)
     with the same properties,
     such that \(\tilde X\setminus X\) has the same cardinality
@@ -325,23 +342,15 @@ Charlotte, NC 28262}
     We prove this by induction on \(n\).
     If \(n=0\), then we can just use the one-point compactification of two
     copies of \(X\). So suppose \(n>0\) and
-    that \(X=\omega_n\) has such a topology. Note that
-    \(X\) has a base of compact open neighborhoods
-    with countable cardinality. To see this,
-    for each point \(x\) let \(K\) be a countable and compact neighborhood
-    of \(x\), and it follows that it is contained in a countable, open,
-    and locally compact neighborhood \(W\) of \(x\), which in turn
-    is zero-dimensional and metrizable. So choose \(V\) clopen
-    in \(W\) such that \(x\in V\subseteq K\); \(V\) is a compact open
-    neighborhood of \(x\) in \(X\).
+    that \(X=\omega_n\) has an appropriate topology.
 
     For each \(\alpha<\omega_n\), \(\gamma_\alpha\) may be chosen such that
     both the closure of the set \(\alpha\) in \(X\) and a countable
     neighborhood of the point \(\alpha\) are subsets of \(\gamma_\alpha\).
     Note that the set
     \(\{\lambda<\omega_n:\alpha<\lambda\Rightarrow\gamma_\alpha<\lambda\}\)
-    is a cub subset of \(\omega_n\) with a cub subset
-    \(C\) containing only limits of limit ordinals.
+    is a cub subset of \(\omega_n\) containing a cub subset \(C\)
+    of limit ordinals.
     Now for each \(\lambda\in C\), the initial segment \(\lambda\) is
     open as \(\alpha<\lambda\) belongs to the neighborhood
     \(\gamma_\alpha\subsetneq\lambda\). Also, if \(\lambda\) has uncountable
@@ -357,9 +366,8 @@ Charlotte, NC 28262}
     such that
     \begin{itemize}
       \item \(\omega_n \times \{0\}\) is an open copy of \(X\),
-      \item \(\lambda\times 2\) is open, and also closed when \(\cf\lambda>\omega\),
-      \item the space has a base of compact open neighborhoods with
-        countable cardinality, and
+      \item \(\lambda\times 2\) is open, and when \(\cf\lambda>\omega\) also closed,
+      \item the space has a base of countable and compact neighborhoods, and
       \item for each \(\alpha<\lambda\), the closure of \(\alpha\times 2\) is
         an \(\omega\)-bounded  subset of \(\lambda\times 2\).
     \end{itemize}
@@ -375,7 +383,7 @@ Charlotte, NC 28262}
     \)
     will have the topology induced by that union which
     satisfies the induction requirements.
-    Otherwise we choose an increasing sequence of limit
+    Otherwise we choose an increasing sequence of
     ordinals \(\{\alpha_k : k\in \omega\}\) with limit \(\lambda\)
     such that \(\alpha_0\) is the predecessor of \(\lambda\) in \(C\),
     or \(\alpha_0=0\) if \(\lambda\) is the least element of \(C\).
@@ -396,23 +404,27 @@ Charlotte, NC 28262}
     \]
 
     We need only describe a base for the points
-    \(\<\alpha,1\>\in(\lambda\setminus\alpha_0)\times\{1\}\);
-    we do so by letting
+    \(\<\alpha,1\>\in(\lambda\setminus\alpha_0)\times\{1\}\).
+    We do so by letting
     \(\<\alpha,1\>\) be isolated when \(\alpha\not\in\{\alpha_k:k<\omega\}\),
-    and letting \(\<\alpha_k,1\>\) be a compactifying point for
+    and giving \(\<\alpha_k,1\>\) the neighborhoods
+    \(U_k\cup((\alpha_k+1)\times\{1\})\setminus K\)
+    for each compact \(K\) in \(U_k\cup(\alpha_k\times\{1\})\); that is,
+    let \(\<\alpha_k,1\>\) be the one point compactifying
     \(U_k\cup(\alpha_k\times\{1\})\).
 
     The first two requirements of our inductive hypothesis are obviously
     satsified. Note \(U_k\cup((\alpha_k+1)\times\{1\})\) is
-    a compact open neighborhood of countable cardinality
+    a compact neighborhood of countable cardinality
     for points in \(\lambda\times 2\), and for points in
     \((\omega_n\setminus\cl\lambda)\times\{0\}\) we may use a compact
-    open neighborhood of countable cardinality from \(X\setminus\lambda\).
+    neighborhood of countable cardinality from \(X\setminus\lambda\).
     Finally let \(\<\alpha,0\>\in(\cl\lambda\setminus\lambda)\times\{0\}\)
     and let \(K\subseteq\cl\lambda\times\{0\}\cup\alpha_0\times\{1\}\) be a
-    compact open neighborhood in that subspace missing \(\alpha_0\times 2\).
-    Then for each \(k<\omega\), \(\<\alpha_k,1\>\) has a neighborhood missing
-    the compact set \(K\cap U_k\), so \(K\) gains no new limit points in
+    compact neighborhood in that subspace missing \(\alpha_0\times 2\).
+    Then for each \(k<\omega\), \(\<\alpha_k,1\>\) has the neighborhood
+    \(U_k\cup((\alpha_k+1)\times\{1\})\setminus K\),
+    so \(K\) gains no new limit points in
     \(\cl\lambda\times\{0\}\cup\lambda\times\{1\}\) and thus remains compact.
     So the third requirement is also satisfied.
     For the final requirement, note that for \(\alpha<\lambda\), we may
@@ -439,14 +451,13 @@ Charlotte, NC 28262}
     to choose an appropriate topology for \(\lambda\times 2\).
 
     As a result, \(\tilde X=\bigcup_{\lambda\in C}\tilde X_\lambda\)
-    is easily seen to be locally compact and locally countable. It is also
+    is
     \(\omega\)-bounded as any countable set is contained in some
-    \(\alpha\times 2\) for \(\alpha<\lambda\in C\). Finally by the previous
-    proposition, the closure operation cannot increase cardinalities.
+    \(\alpha\times 2\) for \(\alpha<\lambda\in C\).
   \end{proof}
 
   \begin{theorem}
-    For each $n\in \omega$, there is a \(T_2\) locally countable,
+    For each $n\in \omega$, there is a \(T_2\), locally countable,
     $\omega$-bounded topology on $\omega_n$.
   \end{theorem}
 
