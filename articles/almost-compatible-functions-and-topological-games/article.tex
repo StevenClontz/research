@@ -465,11 +465,37 @@ Charlotte, NC 28262}
     Apply the previous lemma to \(\omega_n\) with the discrete topology.
   \end{proof}
 
+  \begin{corollary}
+    There exists a Kurepa family cofinal in \([\omega_k]^\omega\)
+    for each \(k<\omega\).
+  \end{corollary}
 
+  \begin{proof}
+    We use the family \(\mc K\) which is a base of \(\aleph_0\)-many compact
+    open sets for each point in the constructed topology on
+    \(\omega_n\) as our witness. Of course, every Lindel\"of set in
+    a locally countable space is countable, and the closure of every
+    countable set is a compact countable set. Thus \(\mc K\)
+    is cofinal in \([\omega_n]^\omega\).
+    It is Kurepa since for every countable set \(A\), there are only countably
+    many compact open sets in \(\mc K\)
+    joined to \(A\) by a finite linked chain.
+  \end{proof}
 
+  This is alternatively a corollary of an observation of Todorcevic
+  communicated by Dow in \cite{MR1229125}:
+  if every Kurepa family of size at most \(\theta\)
+  extends to a cofinal Kurepa family, then the same is true of \(\theta^+\).
+  So the result follows as
+  every Kurepa family \(\mc K\) of size \(\omega\) extends to
+  the cofinal Kurepa family \([\bigcup\mc K]^\omega\).
 
+  So we have our desired result.
 
-
+  \begin{corollary}
+    \(S'(\omega_n)\) holds for all \(n<\omega\). Under \(CH\), we have
+    both \(S'(\omega_2)\) and \(\neg S(\omega_2)\).
+  \end{corollary}
 
 
 
@@ -490,35 +516,11 @@ Charlotte, NC 28262}
 
 
 
-  \begin{corollary}
-    There exists a Kurepa family cofinal in \([\omega_k]^\omega\)
-    for each \(k<\omega\).
-  \end{corollary}
-
-  \begin{proof}
-    This is actually a corollary of an observation of Todorcevic communicated
-    by Dow in [TODO cite Gen Prog in Top I]:
-    if every Kurepa family of size at most \(\theta\)
-    extends to a cofinal Kurepa family, then the same is true of \(\theta^+\).
-    So the result follows as
-    every Kurepa family \(\mc K\) of size \(\omega\) extends to
-    the cofinal Kurepa family \([\bigcup\mc K]^\omega\).
-
-    We may alternatively
-    obtain the result from the previous topological argument by using the family
-    \(\mc K\) of compact sets in the constructed topology on
-    \(\omega_k\) as our witness. Of course, every Lindel\"of set in
-    a locally countable space is countable. Thus \(\mc K\)
-    is cofinal in \([\omega_k]^\omega\)
-    since for every countable set \(A\), \(\cl A\) is compact and countable.
-    It is Kurepa since for every countable set \(A\), let (TODO)
-  \end{proof}
 
 
 
-  \begin{corollary}
-    \(S'(\omega_k)\) holds for all \(k<\omega\).
-  \end{corollary}
+
+
 
   As noted in [TODO cite Dow],
   Jensen's one-gap two-cardinal theorem under \(V=L\) [TODO cite] can be used
