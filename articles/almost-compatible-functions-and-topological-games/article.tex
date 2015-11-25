@@ -300,10 +300,8 @@ Charlotte, NC 28262}
 
   \begin{proposition}
     Let \(X\) be a \(T_2\) space with a base of countable and compact
-    neighborhoods.
-    Then \(X\) is locally metrizable, \(X\)
-    has a base of compact open countable sets,
-    and its closure operation preserves cardinality and weight.
+    neighborhoods. Then \(X\) is locally metrizable with
+    a base of compact open countable sets.
   \end{proposition}
 
   \begin{proof}
@@ -313,15 +311,6 @@ Charlotte, NC 28262}
     is zero-dimensional and metrizable. So choose \(V\) clopen
     in \(W\) such that \(x\in V\subseteq K\); \(V\) is a compact open
     neighborhood of \(x\) in \(X\).
-
-    Since the space is locally metrizable and thus first-countable,
-    the weight and cardinality of any
-    subspace coincide. Then for infinite \(A\subseteq X\), cover \(\cl A\) with
-    open sets of countable cardinality, and say
-    \(x\sim y\) if there's a finite linked chain joining them; since
-    \(x\sim a\) for some \(a\in A\), \(\cl A\) is covered by
-    \(|A|\)-many sets each of size \(\aleph_0\). Thus
-    \(|A|\leq|\cl A|\leq|A|\otimes\aleph_0=|A|\).
   \end{proof}
 
   \begin{definition}
@@ -329,20 +318,42 @@ Charlotte, NC 28262}
     subset of the space has compact closure.
   \end{definition}
 
+  \begin{proposition}
+    Let \(X\) be a \(T_2\) space with cardinality less than \(\aleph_\omega\)
+    which is locally countable and
+    \(\omega\)-bounded. Then the closure operation preserves cardinality and
+    weight.
+  \end{proposition}
+
+  \begin{proof}
+    Note that the closure of any countable neighborhood is compact, and
+    any Lindel\"of set is countable. This space is locally metrizable
+    and thus first-countable, so cardinality and weight coincide for any
+    subspace. The result is obvious if \(A\) is countable; otherwise
+    let \(A=\{a_\alpha:\alpha<\omega_{n+1}\}\) and since basic neighborhoods
+    are countable note any limit point is
+    a limit point of \(A_\beta=\{a_\alpha:\alpha<\beta\}\)
+    for some \(\beta<\omega_{n+1}\).
+    Thus \(\cl A=\bigcup_{\beta<\omega_{n+1}}\cl{A_\beta}\) and
+    by induction \(|\cl A|=|A|\).
+  \end{proof}
+
   \begin{lemma}
-    Let \(X\) be a \(T_2\) space of cardinality less than
-    \(\aleph_\omega\) with a base of countable and compact neighborhoods.
+    Let \(X\) be a \(T_2\) space with cardinality less than \(\aleph_\omega\)
+    which is locally countable and locally compact, and such that
+    its closure operation preserves cardinalities.
     Then \(X\) has an \(\omega\)-bounded extension \(\tilde X\)
-    with the same properties,
-    such that \(\tilde X\setminus X\) has the same cardinality
-    as \(X\).
+    with the same properties where \(\tilde X\setminus X\) has the same
+    cardinality as \(X\).
   \end{lemma}
 
   \begin{proof}
     We prove this by induction on \(n\).
     If \(n=0\), then we can just use the one-point compactification of two
     copies of \(X\). So suppose \(n>0\) and
-    that \(X=\omega_n\) has an appropriate topology.
+    that \(X=\omega_n\) has an appropriate topology. Note that \(X\) has
+    a base of countable and compact neighborhoods since the closure operation
+    preserves cardinalities.
 
     For each \(\alpha<\omega_n\), \(\gamma_\alpha\) may be chosen such that
     both the closure of the set \(\alpha\) in \(X\) and a countable
@@ -351,7 +362,7 @@ Charlotte, NC 28262}
     \(\{\lambda<\omega_n:\alpha<\lambda\Rightarrow\gamma_\alpha<\lambda\}\)
     is a cub subset of \(\omega_n\) containing a cub subset \(C\)
     of limit ordinals.
-    Now for each \(\lambda\in C\), the initial segment \(\lambda\) is
+    Now for each \(\lambda\in C\), the set \(\lambda\) is
     open as \(\alpha<\lambda\) belongs to the neighborhood
     \(\gamma_\alpha\subsetneq\lambda\). Also, if \(\lambda\) has uncountable
     cofinality, then for \(\beta\geq\lambda\) and any countable neighborhood
@@ -361,82 +372,80 @@ Charlotte, NC 28262}
     is clopen.
 
     Let \(\tilde X=\omega_n\times 2\).
-    By induction on \(\lambda \in C\) we will define a topology
+    By induction on \(\lambda \in C\) we will define compatible topologies
     for \(\tilde X_\lambda=\omega_n\times\{0\}\cup\lambda\times\{1\}\)
     such that
     \begin{itemize}
       \item \(\omega_n \times \{0\}\) is an open copy of \(X\),
       \item \(\lambda\times 2\) is open, and when \(\cf\lambda>\omega\) also closed,
       \item the space has a base of countable and compact neighborhoods, and
-      \item for each \(\alpha<\lambda\), the closure of \(\alpha\times 2\) is
+      \item when \(\lambda\) is a successor,
+        for each \(\alpha<\lambda\) the closure of \(\alpha\times 2\) is
         an \(\omega\)-bounded  subset of \(\lambda\times 2\).
     \end{itemize}
-    and note that \(\omega_n\times\{0\}\cup 0\times\{1\}\) satisfies these
-    requirements.
 
     We first consider the case \(n=1\).
     If \(\lambda\) is a limit in \(C\), then
     \(
-      \omega_n\times\{0\}\cup\lambda\times\{1\}
+      \tilde X_\lambda
         =
-      \bigcup_{\mu\in C\cap\lambda}\omega_n\times\{0\}\cup\mu\times\{1\}
+      \bigcup_{\mu\in C\cap\lambda}\tilde X_\mu
     \)
-    will have the topology induced by that union which
     satisfies the induction requirements.
     Otherwise we choose an increasing sequence of
     ordinals \(\{\alpha_k : k\in \omega\}\) with limit \(\lambda\)
     such that \(\alpha_0\) is the predecessor of \(\lambda\) in \(C\),
     or \(\alpha_0=0\) if \(\lambda\) is the least element of \(C\).
 
-    The subspace \(\cl\lambda\times\{0\}\cup\alpha_0\times\{1\}\) of \(X\)
+    The subspace \(\cl\lambda\times\{0\}\cup\alpha_0\times2\) of \(X\)
     is countable and locally compact; therefore it is
     metrizable and zero-dimensional.
     So we may choose increasing sets \(U_k\) for \(k<\omega\) which are
     clopen in this topology and satisfy
     \[
-      \cl{\alpha_k\times\{0\}\cup\alpha_0\times\{1\}}
+      \cl{\alpha_k\times\{0\}\cup\alpha_0\times2}
         =
-      \cl{\alpha_k}\times\{0\}\cup\alpha_0\times\{1\}
+      \cl{\alpha_k}\times\{0\}\cup\alpha_0\times2
         \subseteq
       U_k
         \subseteq
       \lambda\times\{0\}\cup\alpha_0\times 2
     \]
+    Note that \(U_k\) is also clopen in \(\tilde X_{\alpha_0}\) since it is
+    closed in \(\cl\lambda\times\{0\}\cup\alpha_0\times2\) and open in
+    \(\lambda\times\{0\}\cup\alpha_0\times 2\).
 
     We need only describe a base for the points
     \(\<\alpha,1\>\in(\lambda\setminus\alpha_0)\times\{1\}\).
     We do so by letting
     \(\<\alpha,1\>\) be isolated when \(\alpha\not\in\{\alpha_k:k<\omega\}\),
-    and giving \(\<\alpha_k,1\>\) the neighborhoods
-    \(U_k\cup((\alpha_k+1)\times\{1\})\setminus K\)
-    for each compact \(K\) in \(U_k\cup(\alpha_k\times\{1\})\); that is,
-    let \(\<\alpha_k,1\>\) be the one point compactifying
+    and giving \(\<\alpha_k,1\>\) the open neighborhoods
+    \((U_k\cup((\alpha_k+1)\times\{1\}))\setminus K\) for each compact
+    subset \(K\) of \(U_k\cup(\alpha_k\times\{1\})\); that is,
+    \(\<\alpha_k,1\>\) is the one point compactifying
     \(U_k\cup(\alpha_k\times\{1\})\).
 
     The first two requirements of our inductive hypothesis are obviously
-    satsified. Note \(U_k\cup((\alpha_k+1)\times\{1\})\) is
-    a compact neighborhood of countable cardinality
-    for points in \(\lambda\times 2\), and for points in
-    \((\omega_n\setminus\cl\lambda)\times\{0\}\) we may use a compact
-    neighborhood of countable cardinality from \(X\setminus\lambda\).
-    Finally let \(\<\alpha,0\>\in(\cl\lambda\setminus\lambda)\times\{0\}\)
-    and let \(K\subseteq\cl\lambda\times\{0\}\cup\alpha_0\times\{1\}\) be a
-    compact neighborhood in that subspace missing \(\alpha_0\times 2\).
-    Then for each \(k<\omega\), \(\<\alpha_k,1\>\) has the neighborhood
-    \(U_k\cup((\alpha_k+1)\times\{1\})\setminus K\),
-    so \(K\) gains no new limit points in
-    \(\cl\lambda\times\{0\}\cup\lambda\times\{1\}\) and thus remains compact.
-    So the third requirement is also satisfied.
+    satsified. Note points in \(\lambda\times 2\) are covered by
+    the compact countable neighborhood \(U_k\cup((\alpha_k+1)\times\{1\})\)
+    for some \(k<\omega\), and for points in
+    \((\omega_n\setminus\lambda)\times\{0\}\) we may use a compact
+    countable neighborhood from \(X\).
     For the final requirement, note that for \(\alpha<\lambda\), we may
     choose \(\alpha<\alpha_k<\lambda\) and note that
     \(\alpha\times 2\) is contained in the compact
-    set \(U_k\cup((\alpha_k+1)\times\{1\})\).
+    subset \(U_k\cup((\alpha_k+1)\times\{1\})\) of \(\lambda\times2\).
 
     For the case \(n>1\), we may assume that the successors in \(C\)
     have uncountable cofinality.
     We again proceed by induction on \(\lambda\in C\).  Again when
-    \(\lambda\) is a limit in \(C\), the union of the previously defined
-    \(\omega_n\times\{0\}\cup\mu\times\{1\}\) satisfies the given
+    \(\lambda\) is a limit in \(C\),
+    \(
+      \tilde X_\lambda
+        =
+      \bigcup_{\mu\in C\cap\lambda}\tilde X_\mu
+    \)
+    satisfies the given
     requirements; in particular if \(\alpha<\lambda\), then
     \(\alpha<\mu<\lambda\) for some successor \(\mu\in C\) with uncountable
     cofinality. As such, the closure of \(\alpha\times2\) is
