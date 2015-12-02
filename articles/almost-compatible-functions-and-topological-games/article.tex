@@ -126,16 +126,17 @@ Charlotte, NC 28262}
   or a \term{\(k\)-mark}.
 
   \begin{definition}
-    The statement \(S(\kappa)\) (given as \(S(\kappa,\aleph_0,\omega)\)
-    in \cite{MR1129143}) claims that there exist one-to-one functions
+    The statement \(\alcompS\kappa\) (given as \(S(\kappa,\aleph_0,\omega)\)
+    in \cite{MR1129143} and \(S(\kappa)\) in \cite{clontzMengerGamePreprint})
+    claims that there exist one-to-one functions
     \(f_A:A\to\omega\) for each \(A\in[\kappa]^{\leq\aleph_0}\) such that
     the collection \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) is pairwise
     almost compatible.
   \end{definition}
 
-  In the same paper, Scheepers noted that \(S(\omega_1)\) holds in \(ZFC\),
+  In the same paper, Scheepers noted that \(\alcompS{\omega_1}\) holds in \(ZFC\),
   and that it's possible to force \(\mf c\) to be arbitrarily large
-  while preserving \(S(\mf c)\). However, \(S(\mf c^+)\) always fails.
+  while preserving \(\alcompS{\mf c}\). However, \(\alcompS{\mf c^+}\) always fails.
   This axiom may be applied to obtain a winning \(2\)-tactic for \(\pl F\)
   in the countable-finite game.
 
@@ -176,7 +177,7 @@ Charlotte, NC 28262}
   a finite subset of that choice, and it's easy to see the winning perfect
   information strategy for \(\pl F\) in both games.
   In addition, it was shown in
-  \cite{clontzMengerGamePreprint} that when \(S(\kappa)\) holds,
+  \cite{clontzMengerGamePreprint} that when \(\alcompS{\kappa}\) holds,
   \(\pl F\) has a winning \(2\)-Markov strategy in
   \(\menGame{\oneptlind\kappa}\).
 
@@ -190,23 +191,21 @@ Charlotte, NC 28262}
   \end{question}
 
   One might hope that \(\oneptlind{(\mf c^+)}\) might answer this question
-  in the affirmative as \(S(\mf c^+)\) fails, but we will show that assuming
+  in the affirmative as \(\alcompS{\mf c^+}\) fails, but we will show that assuming
   \(V=L\), \(\pl F\kmarkwin{2}\menGame{\oneptlind\kappa}\) for all
   cardinals \(\kappa\).
 
   \section{One-to-one and finite-to-one almost compatible functions}
 
-  We may weaken Scheeper's \(S(\kappa)\) as follows:
+  We may weaken Scheeper's \(\alcompS{\kappa}\) as follows:
 
   \begin{definition}
-    The statement \(S'(\kappa)\) weakens \(S(\kappa)\) be only requiring
+    The statement \(\alcompSP{\kappa}\) weakens \(\alcompS{\kappa}\) be only requiring
     the witness functions \(f_A:A\to\omega\) to be finite-to-one.
   \end{definition}
 
-  The following observation will be convenient.
-
   \begin{proposition}
-    \(S(\kappa)\) and \(S'(\kappa)\) need only be witnessed by
+    \(\alcompS{\kappa}\) and \(\alcompSP{\kappa}\) need only be witnessed by
     functions \(\{f_A:A\in\mc S\}\) for some family \(\mc S\)
     cofinal in \([\kappa]^{\leq\aleph_0}\).
   \end{proposition}
@@ -216,10 +215,10 @@ Charlotte, NC 28262}
     from \(\mc S\) and let \(g_A=f_{A'}\rest A\).
   \end{proof}
 
-  In the next section we will show that \(S'(\kappa)\) is sufficient
+  In the next section we will show that \(\alcompSP{\kappa}\) is sufficient
   for the applications to the Scheepers and Menger games.
-  In the meantime, we will demonstrate that \(S'(\kappa)\) is strictly
-  weaker than \(S(\kappa)\).
+  In the meantime, we will demonstrate that \(\alcompSP{\kappa}\) is strictly
+  weaker than \(\alcompS{\kappa}\).
 
   Recall the following.
 
@@ -231,7 +230,7 @@ Charlotte, NC 28262}
   \end{definition}
 
   \begin{theorem}
-    \(S'(\kappa)\) holds whenever there exists a cofinal Kurepa family on \(\kappa\).
+    \(\alcompSP{\kappa}\) holds whenever there exists a cofinal Kurepa family on \(\kappa\).
   \end{theorem}
 
   \begin{proof}
@@ -296,8 +295,8 @@ Charlotte, NC 28262}
   \end{proof}
 
   We now construct a topology on \(\omega_n\) for each \(n<\omega\) which
-  will witness a Kurepa family on \(\aleph_n\). This was previously shown in
-  \cite{MR539228} by a similar construction.
+  will witness a Kurepa family of size \(\aleph_n\). A similar construction
+  was previously shown in \cite{MR539228}.
 
   \begin{proposition}
     Let \(X\) be a \(T_2\) space with a base of countable and compact
@@ -319,6 +318,11 @@ Charlotte, NC 28262}
     subset of the space has compact closure.
   \end{definition}
 
+  We note that in
+  \cite{MR539228} a \(T_2\) locally countable \(\omega\)-bounded space
+  was called \term{splendid}, and the claim that there exists a splendid
+  space of cardinality \(\kappa\) was called \(S(\kappa)\).
+
   \begin{proposition}
     Let \(X\) be a \(T_2\) space with cardinality less than \(\aleph_\omega\)
     which is locally countable and
@@ -332,7 +336,7 @@ Charlotte, NC 28262}
     and thus first-countable, so cardinality and weight coincide for any
     subspace. The result is obvious if \(A\) is countable; otherwise
     let \(A=\{a_\alpha:\alpha<\omega_{n+1}\}\) and since basic neighborhoods
-    are countable note any limit point is
+    are countable note any limit point of \(A\) is
     a limit point of \(A_\beta=\{a_\alpha:\alpha<\beta\}\)
     for some \(\beta<\omega_{n+1}\).
     Thus \(\cl A=\bigcup_{\beta<\omega_{n+1}}\cl{A_\beta}\) and
@@ -467,33 +471,41 @@ Charlotte, NC 28262}
   \end{proof}
 
   \begin{theorem}
-    For each $n\in \omega$, there is a \(T_2\), locally countable,
-    $\omega$-bounded topology on $\omega_n$.
+    For each \(k< \omega\), there is a \(T_2\), locally countable,
+    \(\omega\)-bounded topology on \(\omega_k\). (That is, \(S(\omega_k)\)
+    for all \(k<\omega\)).
   \end{theorem}
 
   \begin{proof}
     Apply the previous lemma to \(\omega_n\) with the discrete topology.
   \end{proof}
 
+  \begin{lemma}
+    The family of compact open sets in a locally countable, \(\omega\)-bounded
+    topological space is a Kurepa family cofinal in \([X]^\omega\).
+  \end{lemma}
+
+  \begin{proof}
+    Let \(\mc K\) collect all compact
+    open subsets of \(X\). Of course, every Lindel\"of set in
+    a locally countable space is countable, and the closure of every
+    countable set is a compact countable set; thus \(\mc K\)
+    is cofinal in \([X]^\omega\).
+    It is Kurepa since every countable set is contained in a countable
+    compact open subspace of \(X\); this subspace has a countable
+    base of compact open sets, which closed under finite unions enumerates
+    all compact open subsets of the subspace.
+  \end{proof}
+
+  The above lemma may alternatively be stated as ``\(S(\kappa)\) implies
+      the existence of a cofinal Kurepa family on \(\kappa\)''.
+
   \begin{corollary}
     There exists a Kurepa family cofinal in \([\omega_k]^\omega\)
     for each \(k<\omega\).
   \end{corollary}
 
-  \begin{proof}
-    We use the family \(\mc K\) of all compact
-    open sets in the constructed topology on
-    \(\omega_n\) as our witness. Of course, every Lindel\"of set in
-    a locally countable space is countable, and the closure of every
-    countable set is a compact countable set; thus \(\mc K\)
-    is cofinal in \([\omega_n]^\omega\).
-    It is Kurepa since every countable set is contained in a countable
-    compact open subspace of \(\omega_n\); this subspace has a countable
-    base of compact open sets, which closed under finite unions enumerates
-    all compact open subsets of the subspace.
-  \end{proof}
-
-  This is alternatively a corollary of an observation of Todorcevic
+  This corollary is also an observation of Todorcevic
   communicated by Dow in \cite{MR1229125}:
   if every Kurepa family of size at most \(\theta\)
   extends to a cofinal Kurepa family, then the same is true of \(\theta^+\).
@@ -501,11 +513,11 @@ Charlotte, NC 28262}
   every Kurepa family \(\mc K\) of size \(\omega\) extends to
   the cofinal Kurepa family \([\bigcup\mc K]^\omega\).
 
-  So we have our desired result.
+  With this we have our desired result.
 
   \begin{corollary}
-    \(S'(\omega_n)\) holds for all \(n<\omega\). Under \(CH\), we have
-    both \(S'(\omega_2)\) and \(\neg S(\omega_2)\).
+    \(\alcompSP{\aleph_k}\) holds for all \(k<\omega\). Under \(CH\), we have
+    both \(\alcompSP{\aleph_2}\) and \(\neg\alcompS{\aleph_2}\).
   \end{corollary}
 
 
@@ -538,11 +550,11 @@ Charlotte, NC 28262}
   to show that there exist cofinal Kurepa families on every cardinal.
 
   \begin{corollary}[\(V=L\)]
-    \(S'(\theta)\) holds for all cardinals.
+    \(\alcompSP{\theta}\) holds for all cardinals.
   \end{corollary}
 
-  In particular, \(S(\omega_2)\) fails under \(CH\), showing the two are
-  distinct. Actually, \(CH\) is not required to have \(S(\omega_2)\) fail.
+  In particular, \(\alcompS{\omega_2}\) fails under \(CH\), showing the two are
+  distinct. Actually, \(CH\) is not required to have \(\alcompS{\omega_2}\) fail.
 
 
   % TODO: read through Alan's proof and fit to rest of document
@@ -729,10 +741,10 @@ Charlotte, NC 28262}
          $k=L+1$ violates the quoted statement above.
         \end{proof}
 
-  On the other hand, it's also consistent that \(S'(\theta)\) can fail.
+  On the other hand, it's also consistent that \(\alcompSP{\theta}\) can fail.
 
   \begin{theorem}
-    There's a model where \(S'(\omega_\omega)\)
+    There's a model where \(\alcompSP{\omega_\omega}\)
     fails.
   \end{theorem}
 
@@ -998,7 +1010,7 @@ Charlotte, NC 28262}
   \end{proof}
 
   \begin{question}
-    Is \(S'(\theta)\) equivalent to having a Kurepa family on \(\theta\)?
+    Is \(\alcompSP{\theta}\) equivalent to having a Kurepa family on \(\theta\)?
   \end{question}
 
   \section*{Applications!}
@@ -1032,7 +1044,7 @@ Charlotte, NC 28262}
     (m-2-2) edge (m-2-3);
 \end{tikzpicture}
 \end{center}
-\caption{Diagram of Scheeper/Menger game implications with \(S'(\kappa)\)}
+\caption{Diagram of Scheeper/Menger game implications with \(\alcompSP{\kappa}\)}
 \label{GamesDiagram2}
 \end{figure}
 
@@ -1154,8 +1166,8 @@ Charlotte, NC 28262}
   \end{proof}
 
   \begin{corollary}
-    It is consistent that \(S'(\omega_\omega)\) fails,
-    but as \(S'(\omega_k)\) holds for all \(k<\omega\), we have
+    It is consistent that \(\alcompSP{\omega_\omega}\) fails,
+    but as \(\alcompSP{\omega_k}\) holds for all \(k<\omega\), we have
     \(\pl F\kmarkwin2\schFillIntGame{\omega_\omega}\) and
     \(\pl F\kmarkwin2\schFillInitialGame{\omega_\omega}\).
   \end{corollary}
@@ -1165,7 +1177,7 @@ Charlotte, NC 28262}
   (C showed that )
   Under \(V=L\), we cannot hope to find
   a counterexample using \(X=\oneptlind\kappa\) since
-  \(S'(\kappa)\) and thus \(\pl F\kmarkwin2\schFillIntGame{\kappa}\)
+  \(\alcompSP{\kappa}\) and thus \(\pl F\kmarkwin2\schFillIntGame{\kappa}\)
   always holds.
 
   \begin{definition}
