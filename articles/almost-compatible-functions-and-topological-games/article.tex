@@ -1052,7 +1052,8 @@ Charlotte, NC 28262}
 
   In \cite{clontzMengerGamePreprint} Clontz extended Scheepers' application of
   almost-compatible injections to these game variants as well as
-  \(\menGame{\oneptlind\kappa}\).
+  \(\menGame{\oneptlind\kappa}\). However, when considering Markov strategies,
+  finite-to-one functions suffice.
 
   \begin{figure}[h]
 \begin{center}
@@ -1131,94 +1132,99 @@ Charlotte, NC 28262}
     are finite, which is also possible assuming \(\alcompSP\kappa\).
   \end{proof}
 
-    %TODO maybe this can be made to work...
-    % In \cite{MR1129143} Scheepers used a proof of Todorcevic to demonstrate
-    % \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\).
-    % For the convenience of the reader we explicitly demonstrate
-    % the generalization as follows.
+  We include the following proof from \cite{MR1129143} for the convenience
+  of the reader.
 
-    % Let \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) witness
-    % \(\alcompSP\kappa\), and define \(g_A:A\to\omega\) by
-    % \(g_A(\alpha)=f_A(\alpha)-|\{\beta\in A:f_A(\beta)<f_A(\alpha)\}|\).
+  \begin{theorem}
+    \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\)
+  \end{theorem}
 
-    % We claim that \(\{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}\)
-    % must be finite as it is bounded above by
-    % \(\max\{M,f_A(\alpha),f_B(\alpha):f_A(\alpha)\not=f_B(\alpha)\}\)
-    % where \(M=f_B(\alpha)\) for some \(\alpha\in B\setminus A\).
-    % To see this, let \(f_A(\alpha)=f_B(\alpha)=N>M\) and assume
-    % \(f_A(\beta)\not=f_B(\beta)\) implies \(f_A(\beta),f_B(\beta)<N\).
-    % Then
-    % \[
-    %   g_A(\alpha)
-    %     =
-    %   N-|\{\beta\in A:f_A(\beta)<N\}|
-    %     >
-    %   N-|\{\beta\in B:f_B(\beta)<N\}|
-    %     =
-    %   g_B(\alpha)
-    % \]
-    % with the strictness of the inequality witnessed by \(f_B(\alpha)=M<N\)
-    % for some \(\alpha\in B\setminus A\).
+  \begin{proof}
+    Let \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) witness
+    \(\alcompS\kappa\), and define \(g_A:A\to\omega\) by
+    \(g_A(\alpha)=f_A(\alpha)-|\{\beta\in A:f_A(\beta)<f_A(\alpha)\}|\).
 
-    % As a result,
-    % \[
-    %   \sigma(\<A,B\>)
-    %     =
-    %   \{\alpha\in A:f_A(\alpha)\not=f_B(\alpha)\}
-    %     \cup
-    %   \{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}
-    % \]
-    % is a legal \(2\)-tactic for \(\pl F\). Let \(C=\<C_0,C_1,\dots\>\) be
-    % a strictly increasing sequence of countable sets and
-    % \(\alpha\in C_n\). Of course if
-    % \(f_{C_{n+m}}(\alpha)\not=f_{C_{n+m+1}}(\alpha)\) for some
-    % \(m<\omega\) we have \(\alpha\in\sigma(\<C_{n+m},C_{n+m+1}\>)\) immediately.
-    % Otherwise let \(f_{C_{n+m}}(\alpha)=f_{C_{n+m+1}}(\alpha)=N\)
-    % for all \(m<\omega\).
+    We claim that \(\{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}\)
+    must be finite as it is bounded above by
+    \(\max\{M,f_A(\alpha),f_B(\alpha):f_A(\alpha)\not=f_B(\alpha)\}\)
+    where \(M=f_B(\alpha)\) for some \(\alpha\in B\setminus A\).
+    To see this, let \(f_A(\alpha)=f_B(\alpha)=N>M\) and assume
+    \(f_A(\beta)\not=f_B(\beta)\) implies \(f_A(\beta),f_B(\beta)<N\).
+    Then
+    \[
+      g_A(\alpha)
+        =
+      N-|\{\beta\in A:f_A(\beta)<N\}|
+        >
+      N-|\{\beta\in B:f_B(\beta)<N\}|
+        =
+      g_B(\alpha)
+    \]
+    with the strictness of the inequality witnessed by \(f_B(\alpha)=M<N\)
+    for some \(\alpha\in B\setminus A\).
 
-  It was left open if \(\alcompSP\kappa\) was equivalent to these
-  game-theoretic conditions. The answer is consistently negative.
+    As a result,
+    \[
+      \sigma(\<A,B\>)
+        =
+      \{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}
+    \]
+    is a legal \(2\)-tactic for \(\pl F\). Let \(C=\<C_0,C_1,\dots\>\) be
+    a strictly increasing sequence of countable sets and
+    \(\alpha\in C_n\). Noting that \(f_A\) is an injection and not
+    just finite-to-one, \(0\leq g_{C_{n+m}}(\alpha)\) for all
+    \(m<\omega\), and it follows that
+    \(g_{C_{n+m}}(\alpha)\leq g_{C_{n+m+1}}(\alpha)\) for some \(m<\omega\).
+    Therefore \(\alpha\in\sigma(\<C_{n+m},C_{n+m+1}\>)\).
+  \end{proof}
+
+  So it would seem that \(\alcompSP\kappa\) is sufficient only when
+  considering Markov strategies. (Of course,
+  \(\alcompSP\kappa\Rightarrow\pl F\kmarkwin2\schFillGame\kappa
+  \Rightarrow\pl F\kmarkwin2\schFillStrictGame{\kappa}\).)
+  We would like to demonstrate that \(\alcompSP\kappa\) is not
+  necessary.
 
   \begin{theorem}
     Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
-    If \(\pl F \kmarkwin2\schFillIntGame{\omega_{\beta_n}}\) for all
-    \(n<\omega\), then \(\pl F\kmarkwin2\schFillIntGame{\omega_\alpha}\).
+    If \(\pl F \kmarkwin2\schFillIntGame{\aleph_{\beta_n}}\) for all
+    \(n<\omega\), then \(\pl F\kmarkwin2\schFillIntGame{\aleph_\alpha}\).
   \end{theorem}
 
   \begin{proof}
     Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
-    \(\schFillIntGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
-    for \(\pl F\) in \(\schFillIntGame{\omega_\alpha}\) as follows:
+    \(\schFillIntGame{\aleph_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
+    for \(\pl F\) in \(\schFillIntGame{\aleph_\alpha}\) as follows:
     \[
       \sigma(\<C\>,0)
         =
-      \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
+      \sigma_0(\<C\cap\aleph_{\beta_0}\>,0)
     \]
     \[
       \sigma(\<C,D\>,n+1)
         =
-      \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
+      \sigma_{n+1}(\<D\cap\aleph_{\beta_{n+1}}\>,0)
         \cup
       \bigcup_{m\leq n}
-      \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
+      \sigma_m(\<C\cap\aleph_{\beta_m},D\cap\aleph_{\beta_m}\>,n-m+1)
     \]
 
     Let \(\<C_0,C_1,\dots\>\) be an attack by
-    \(\pl C\) in \(\schFillIntGame{\omega_\alpha}\), and
+    \(\pl C\) in \(\schFillIntGame{\aleph_\alpha}\), and
     \(\alpha\in\bigcap_{n<\omega}C_n\).
-    Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
+    Choose \(N<\omega\) with \(\alpha<\aleph_{\beta_{N+1}}\). Consider the
     attack
-    \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
-    by \(\pl C\) in \(\schFillIntGame{\omega_{\beta_{N+1}}}\). Since
+    \(\<C_{N+1}\cap\aleph_{\beta_{N+1}},C_{N+2}\cap\aleph_{\beta_{N+1}},\dots\>\)
+    by \(\pl C\) in \(\schFillIntGame{\aleph_{\beta_{N+1}}}\). Since
     \(\sigma_{N+1}\) is a winning strategy and
-    \(\alpha\in\bigcap_{n<\omega}C_{N+n+1}\cap\omega_{\beta_{N+1}}\), either
-    \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
+    \(\alpha\in\bigcap_{n<\omega}C_{N+n+1}\cap\aleph_{\beta_{N+1}}\), either
+    \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\aleph_{\beta_{N+1}}\>,0)\) and thus
     \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
     \(
       \alpha
         \in
       \sigma_{N+1}(
-        \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
+        \<C_{N+M+1}\cap\aleph_{\beta_{N+1}},C_{N+M+2}\cap\aleph_{\beta_{N+1}}\>
         ,M+1
       )
     \)
@@ -1235,8 +1241,8 @@ Charlotte, NC 28262}
 
   \begin{theorem}
     Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
-    If \(\pl F \kmarkwin2\schFillInitialGame{\omega_{\beta_n}}\) for all
-    \(n<\omega\), then \(\pl F\kmarkwin2\schFillInitialGame{\omega_\alpha}\).
+    If \(\pl F \kmarkwin2\schFillInitialGame{\aleph_{\beta_n}}\) for all
+    \(n<\omega\), then \(\pl F\kmarkwin2\schFillInitialGame{\aleph_\alpha}\).
   \end{theorem}
 
   \begin{proof}
@@ -1290,17 +1296,24 @@ Charlotte, NC 28262}
 
   \begin{corollary}
     It is consistent that \(\alcompSP{\aleph_\omega}\) fails,
-    but as \(\alcompSP{\aleph_k}\) holds for all \(k<\omega\), we have
-    \(\pl F\kmarkwin2\schFillIntGame{\omega_\omega}\) and
-    \(\pl F\kmarkwin2\schFillInitialGame{\omega_\omega}\).
+    but as \(\alcompSP{\aleph_k}\) holds in \(ZFC\) for all \(k<\omega\),
+    both
+    \(\pl F\kmarkwin2\schFillIntGame{\aleph_\omega}\) and
+    \(\pl F\kmarkwin2\schFillInitialGame{\aleph_\omega}\) hold in \(ZFC\).
   \end{corollary}
 
-  Our topological question \ref{mainQuestion} remains unsolved; however,
+  Note that Question \ref{mainQuestion} remains unsolved; however,
   our results have revealed that we cannot hope to find a \(ZFC\)
   counterexample where \(X=\oneptlind\kappa\). This is
   because if we also assume \(V=L\), it follows that
   \(\alcompSP{\kappa}\) and therefore \(\pl F\kmarkwin2\menGame{X}\)
-  for every cardinal.
+  for every cardinal. Although, one may consider the following weaker question.
+
+  \begin{question}
+    Is there a model of \(ZFC\) where both
+    \(\pl F\kmarkwin2\menGame{\oneptlind{\aleph_{\omega+1}}}\) and
+    \(\alcompSP{\aleph_\omega}\) fail?
+  \end{question}
 
 
 
