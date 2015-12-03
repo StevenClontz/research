@@ -84,12 +84,21 @@ Charlotte, NC 28262}
 \subjclass[2010]{}
 
 
+
+
+
+
 \begin{abstract}
   TODO
 \end{abstract}
 
 
 \maketitle
+
+
+
+
+
 
 \section{Introduction}
 
@@ -183,17 +192,17 @@ Charlotte, NC 28262}
 
   One source of motivation is to make progress on the following open question:
 
-  \begin{question}
+  \begin{question}\label{mainQuestion}
     Does there exist a topological space \(X\) for which
     \(\pl F\win\menGame{X}\) but \(\pl F\notkmarkwin{2}\menGame{X}\)?
     (That is, the second player can win the Menger game on \(X\)
     with perfect information but not with \(2\)-Markov information.)
   \end{question}
 
-  One might hope that \(\oneptlind{(\mf c^+)}\) might answer this question
-  in the affirmative as \(\alcompS{\mf c^+}\) fails, but we will show that assuming
-  \(V=L\), \(\pl F\kmarkwin{2}\menGame{\oneptlind\kappa}\) for all
-  cardinals \(\kappa\).
+
+
+
+
 
   \section{One-to-one and finite-to-one almost compatible functions}
 
@@ -541,7 +550,7 @@ Charlotte, NC 28262}
 
 
 
-  \section{More consistency results}
+  \section{Consistency results}
 
   As noted in \cite{MR1229125}, Jensen's one-gap two-cardinal theorem under
   \(V=L\) introduced in \cite{MR0309729} implies that \(\kurepaS\kappa\)
@@ -742,7 +751,8 @@ Charlotte, NC 28262}
             \end{proof}
 
 
-  We are also able to force \(\alcompSP{\kappa}\) to fail for some cardinal.
+  We are also able to force \(\alcompSP{\kappa}\) to fail for every cardinal
+  other than the first \(\omega\)-many we've already guaranteed.
 
   \begin{theorem}
     There exists a model of \(ZFC\) for which \(\neg\alcompSP{\aleph_\omega}\).
@@ -1008,22 +1018,41 @@ Charlotte, NC 28262}
           for all $\xi\in \Lambda_n\cap N$.
   \end{proof}
 
-  \newpage
-
-  \section{TODO ALL THIS STUFF NEEDS EDITING STILL}
 
 
 
 
+  \section{Applications to infinite length games}
 
+  We introduce three variations of Scheeper's game which we defined in
+  the introduction.
 
+  \begin{game}
+    Let \(\schFillGame\kappa\) denote the
+    \term{Scheepers countable-finite union game} which proceeds analogously
+    to \(\schFillStrictGame\kappa\), except that \(\pl C\)'s restriction in round \(n+1\)
+    is weakened to \(C_{n+1}\supseteq C_n\).
+  \end{game}
 
+  \begin{game}
+    Let \(\schFillInitialGame\kappa\) denote the
+    \term{Scheepers countable-finite initial game} which proceeds analogously
+    to \(\schFillGame\kappa\), except that \(\pl F\)'s winning condition is
+    weakened to \(\bigcup_{n<\omega}F_n\supseteq C_0\).
+  \end{game}
 
+  \begin{game}
+    Let \(\schFillIntGame\kappa\) denote the
+    \term{Scheepers countable-finite intersection game} which proceeds analogously
+    to \(\schFillInitialGame\kappa\), except that \(\pl C\) may choose any
+    \(C_n\in[\kappa]^{\leq\omega}\) each round, and \(\pl F\)'s winning condition
+    is weakened to
+    \(\bigcup_{n<\omega}F_n\supseteq\bigcap_{n<\omega}C_n\).
+  \end{game}
 
-
-
-
-  \section*{Applications!}
+  In \cite{clontzMengerGamePreprint} Clontz extended Scheepers' application of
+  almost-compatible injections to these game variants as well as
+  \(\menGame{\oneptlind\kappa}\).
 
   \begin{figure}[h]
 \begin{center}
@@ -1034,38 +1063,121 @@ Charlotte, NC 28262}
     \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
     \pl F \kmarkwin2\schFillIntGame\kappa \\
 
-    S'(\kappa) &
-    \pl F \kmarkwin2\schFillInitialGame\kappa &
-    \pl F \kmarkwin2\schFillGame\kappa \\
+    \alcompSP\kappa \\
 
     &
-    &
-    \pl F \ktactwin2\schFillStrictGame\kappa \\
+    \pl F \kmarkwin2\schFillInitialGame\kappa &
+    \pl F \kmarkwin2\schFillGame\kappa \\
   };
   \path[>=latex,->]
     (m-2-1) edge (m-1-2)
-    (m-2-1) edge (m-2-2)
-    (m-2-1) edge (m-3-3)
-    (m-1-2) edge (m-2-2)
-    (m-1-3) edge (m-2-3)
-    (m-3-3) edge (m-2-3);
+    (m-2-1) edge (m-3-2)
+    (m-1-2) edge (m-3-2)
+    (m-1-3) edge (m-3-3);
   \path[>=latex,<->]
     (m-1-2) edge (m-1-3)
-    (m-2-2) edge (m-2-3);
+    (m-3-2) edge (m-3-3);
 \end{tikzpicture}
 \end{center}
 \caption{Diagram of Scheeper/Menger game implications with \(\alcompSP{\kappa}\)}
 \label{GamesDiagram2}
 \end{figure}
 
-  \begin{theorem}[\cite{clontzMengerGamePreprint}]
-    Figure \ref{GamesDiagram2} holds.
-    (Actually, TODO double-check that it works with just S', particularly
-    the strict game)
+%   \begin{figure}[h]
+% \begin{center}
+% \begin{tikzpicture}
+%   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+%   {
+%     &
+%     \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
+%     \pl F \kmarkwin2\schFillIntGame\kappa \\
+
+%     \alcompSP\kappa &
+%     \pl F \kmarkwin2\schFillInitialGame\kappa &
+%     \pl F \kmarkwin2\schFillGame\kappa \\
+
+%     &
+%     &
+%     \pl F \ktactwin2\schFillStrictGame\kappa \\
+%   };
+%   \path[>=latex,->]
+%     (m-2-1) edge (m-1-2)
+%     (m-2-1) edge (m-2-2)
+%     (m-2-1) edge (m-3-3)
+%     (m-1-2) edge (m-2-2)
+%     (m-1-3) edge (m-2-3)
+%     (m-3-3) edge (m-2-3);
+%   \path[>=latex,<->]
+%     (m-1-2) edge (m-1-3)
+%     (m-2-2) edge (m-2-3);
+% \end{tikzpicture}
+% \end{center}
+% \caption{Diagram of Scheeper/Menger game implications with \(\alcompSP{\kappa}\)}
+% \label{GamesDiagram2}
+% \end{figure}
+
+  \begin{theorem}
+    \(\alcompSP\kappa\) implies the game-theoretic conditions
+    shown in Figure \ref{GamesDiagram2}.
   \end{theorem}
 
-  It was left open if these implications can be reversed. The answer is
-  consistently no.
+  \begin{proof}
+    The weaker claim
+    \(\alcompS\kappa\Rightarrow\pl F \kmarkwin2\schFillIntGame\kappa\)
+    was proven in \cite{clontzMengerGamePreprint};
+    however, the strategy
+    only required that the \(f_A\) be pairwise almost-compatible and
+    that preimages of finite sets in each \(f_A\)
+    are finite, which is also possible assuming \(\alcompSP\kappa\).
+  \end{proof}
+
+    %TODO maybe this can be made to work...
+    % In \cite{MR1129143} Scheepers used a proof of Todorcevic to demonstrate
+    % \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\).
+    % For the convenience of the reader we explicitly demonstrate
+    % the generalization as follows.
+
+    % Let \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) witness
+    % \(\alcompSP\kappa\), and define \(g_A:A\to\omega\) by
+    % \(g_A(\alpha)=f_A(\alpha)-|\{\beta\in A:f_A(\beta)<f_A(\alpha)\}|\).
+
+    % We claim that \(\{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}\)
+    % must be finite as it is bounded above by
+    % \(\max\{M,f_A(\alpha),f_B(\alpha):f_A(\alpha)\not=f_B(\alpha)\}\)
+    % where \(M=f_B(\alpha)\) for some \(\alpha\in B\setminus A\).
+    % To see this, let \(f_A(\alpha)=f_B(\alpha)=N>M\) and assume
+    % \(f_A(\beta)\not=f_B(\beta)\) implies \(f_A(\beta),f_B(\beta)<N\).
+    % Then
+    % \[
+    %   g_A(\alpha)
+    %     =
+    %   N-|\{\beta\in A:f_A(\beta)<N\}|
+    %     >
+    %   N-|\{\beta\in B:f_B(\beta)<N\}|
+    %     =
+    %   g_B(\alpha)
+    % \]
+    % with the strictness of the inequality witnessed by \(f_B(\alpha)=M<N\)
+    % for some \(\alpha\in B\setminus A\).
+
+    % As a result,
+    % \[
+    %   \sigma(\<A,B\>)
+    %     =
+    %   \{\alpha\in A:f_A(\alpha)\not=f_B(\alpha)\}
+    %     \cup
+    %   \{\alpha\in A:g_A(\alpha)\leq g_B(\alpha)\}
+    % \]
+    % is a legal \(2\)-tactic for \(\pl F\). Let \(C=\<C_0,C_1,\dots\>\) be
+    % a strictly increasing sequence of countable sets and
+    % \(\alpha\in C_n\). Of course if
+    % \(f_{C_{n+m}}(\alpha)\not=f_{C_{n+m+1}}(\alpha)\) for some
+    % \(m<\omega\) we have \(\alpha\in\sigma(\<C_{n+m},C_{n+m+1}\>)\) immediately.
+    % Otherwise let \(f_{C_{n+m}}(\alpha)=f_{C_{n+m+1}}(\alpha)=N\)
+    % for all \(m<\omega\).
+
+  It was left open if \(\alcompSP\kappa\) was equivalent to these
+  game-theoretic conditions. The answer is consistently negative.
 
   \begin{theorem}
     Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
@@ -1128,78 +1240,74 @@ Charlotte, NC 28262}
   \end{theorem}
 
   \begin{proof}
-    Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
-    \(\schFillInitialGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
-    for \(\pl F\) in \(\schFillInitialGame{\omega_\alpha}\) as follows:
-    \[
-      \sigma(\<C\>,0)
-        =
-      \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
-    \]
-    \[
-      \sigma(\<C,D\>,n+1)
-        =
-      \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
-        \cup
-      \bigcup_{m\leq n}
-      \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
-    \]
-
-    Let \(\<C_0,C_1,\dots\>\) be an attack by
-    \(\pl C\) in \(\schFillInitialGame{\omega_\alpha}\), and
-    \(\alpha\in C_0\).
-    Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
-    attack
-    \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
-    by \(\pl C\) in \(\schFillInitialGame{\omega_{\beta_{N+1}}}\). Since
-    \(\sigma_{N+1}\) is a winning strategy and
-    \(\alpha\in C_{N+1}\cap\omega_{\beta_{N+1}}\), either
-    \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
-    \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
-    \(
-      \alpha
-        \in
-      \sigma_{N+1}(
-        \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
-        ,M+1
-      )
-    \)
-    for some \(M<\omega\) and thus
-    \(
-      \alpha
-        \in
-      \sigma(
-        \<C_{N+M+1},C_{N+M+2}\>,
-        N+M+2
-      )
-    \). Thus \(\sigma\) is a winning strategy.
+    The proof proceeds nearly identically to the previous proof.
   \end{proof}
+    % Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
+    % \(\schFillInitialGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
+    % for \(\pl F\) in \(\schFillInitialGame{\omega_\alpha}\) as follows:
+    % \[
+    %   \sigma(\<C\>,0)
+    %     =
+    %   \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
+    % \]
+    % \[
+    %   \sigma(\<C,D\>,n+1)
+    %     =
+    %   \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
+    %     \cup
+    %   \bigcup_{m\leq n}
+    %   \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
+    % \]
+
+    % Let \(\<C_0,C_1,\dots\>\) be an attack by
+    % \(\pl C\) in \(\schFillInitialGame{\omega_\alpha}\), and
+    % \(\alpha\in C_0\).
+    % Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
+    % attack
+    % \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
+    % by \(\pl C\) in \(\schFillInitialGame{\omega_{\beta_{N+1}}}\). Since
+    % \(\sigma_{N+1}\) is a winning strategy and
+    % \(\alpha\in C_{N+1}\cap\omega_{\beta_{N+1}}\), either
+    % \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
+    % \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
+    % \(
+    %   \alpha
+    %     \in
+    %   \sigma_{N+1}(
+    %     \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
+    %     ,M+1
+    %   )
+    % \)
+    % for some \(M<\omega\) and thus
+    % \(
+    %   \alpha
+    %     \in
+    %   \sigma(
+    %     \<C_{N+M+1},C_{N+M+2}\>,
+    %     N+M+2
+    %   )
+    % \). Thus \(\sigma\) is a winning strategy.
 
   \begin{corollary}
-    It is consistent that \(\alcompSP{\omega_\omega}\) fails,
-    but as \(\alcompSP{\omega_k}\) holds for all \(k<\omega\), we have
+    It is consistent that \(\alcompSP{\aleph_\omega}\) fails,
+    but as \(\alcompSP{\aleph_k}\) holds for all \(k<\omega\), we have
     \(\pl F\kmarkwin2\schFillIntGame{\omega_\omega}\) and
     \(\pl F\kmarkwin2\schFillInitialGame{\omega_\omega}\).
   \end{corollary}
 
-  A tricky topological question: does \(\pl F\win\menGame{X}\) imply
-  \(\pl F\kmarkwin2\menGame{X}\)?
-  (C showed that )
-  Under \(V=L\), we cannot hope to find
-  a counterexample using \(X=\oneptlind\kappa\) since
-  \(\alcompSP{\kappa}\) and thus \(\pl F\kmarkwin2\schFillIntGame{\kappa}\)
-  always holds.
+  Our topological question \ref{mainQuestion} remains unsolved; however,
+  our results have revealed that we cannot hope to find a \(ZFC\)
+  counterexample where \(X=\oneptlind\kappa\). This is
+  because if we also assume \(V=L\), it follows that
+  \(\alcompSP{\kappa}\) and therefore \(\pl F\kmarkwin2\menGame{X}\)
+  for every cardinal.
 
-  \begin{definition}
-    Let \(R_\omega\) be the real numbers with the topology of the usual
-    open intervals with countably many elements removed.
-  \end{definition}
 
-  \begin{theorem}
-    \(\pl F\win\menGame{R_\omega}\).
-    If there exists a Kurepa family on the reals, then
-    \(\pl F\kmarkwin2\menGame{R_\omega}\).
-  \end{theorem}
+
+
+  \section{Generalized Kurepa families and almost-compactible functions}
+
+  TODO
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
