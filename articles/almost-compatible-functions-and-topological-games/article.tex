@@ -763,269 +763,297 @@ Charlotte, NC 28262}
   We are also able to force \(\alcompSP{\kappa}\) to fail for every cardinal
   other than the first \(\omega\)-many we've already guaranteed.
 
-  \begin{theorem}
-    There exists a model of \(ZFC\) for which \(\neg\alcompSP{\aleph_\omega}\).
-  \end{theorem}
+\begin{theorem} It follows from the existence of a $2$-huge cardinal
+that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
+\end{theorem}
+
+            \begin{proof}
+            We will need the model constructed in \cite{MR1045371} in
+             which an instance of Chang's conjecture
+             $(\aleph_{\omega+1},\aleph_\omega) \rlap{$\rightarrow$}\,{\rightarrow}
+             (\aleph_1,\aleph_0)$ is shown to fail.
+
+            We can take as a given (as shown in \cite[Theorem 5]{MR1045371}) that we may
+            assume that we have a model $V$
+            of GCH in which there are regular limit cardinals $\kappa<\lambda$
+            satisfying that
+            $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+            (\kappa^{+\omega+1},\kappa^{+\omega})$.
 
 
-  \begin{proof}
-          We will need the model constructed in \cite{MR1045371} in
-           which an instance of Chang's conjecture
-           $(\aleph_{\omega+1},\aleph_\omega) \rlap{$\rightarrow$}\,{\rightarrow}
-           (\aleph_1,\aleph_0)$ is shown to fail.
+            What this says is that if $L$ is a countable language
+            with at least one unary relation symbol $R$ and
+             $M$ is a model of $L$  with base set $\lambda^{+\omega+1}$
+            in which the interpretation of $R$ has cardinality
+             $\lambda^{+\omega}$, then $M$ has an elementary submodel
+             $N$ of cardinality $\kappa^{+\omega+1}$ in which
+            $R\cap N$ has cardinality $\kappa^{+\omega}$ (of course
+             $R\cap N$ is the interpretation of $R$ in $N$ because
+            $N\prec M$).
 
-          We can take as a given (as shown in \cite[Theorem 5]{MR1045371}) that we may
-          assume that we have a model $V$
-          of GCH in which there are regular limit cardinals $\kappa<\lambda$
-          satisfying that
-          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
-          (\kappa^{+\omega+1},\kappa^{+\omega})$.
+            The interested reader will want to know that it is shown in
+            \cite{MR1045371} that if $\kappa$ is a 2-huge cardinal
+            and $j$ is the 2-huge
+            embedding with critical point $\kappa$, then with
+             $\lambda = j(\kappa)$ one has that
+            $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+            (\kappa^{+\omega+1},\kappa^{+\omega})$ holds. There is no loss of
+            generality to  also assume that GCH holds in this model.
 
+            \bigskip
 
-          What this says is that if $L$ is a countable language
-          with at least one unary relation symbol $R$ and
-           $M$ is a model of $L$  with base set $\lambda^{+\omega+1}$
-          in which the interpretation of $R$ has cardinality
-           $\lambda^{+\omega}$, then $M$ has an elementary submodel
-           $N$ of cardinality $\kappa^{+\omega+1}$ in which
-          $R\cap N$ has cardinality $\kappa^{+\omega}$ (of course
-           $R\cap N$ is the interpretation of $R$ in $N$ because
-          $N\prec M$).
+            Let $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$
+            be a scale in $\Pi\{ \lambda^{+n+1} : n\in \omega\}$
+             ordered by the usual mod finite coordinatewise
+            ordering. For convenience we may assume that $h_\xi(n) \geq
+            \lambda^{+n}$ for all $\xi$ and all $n$. For each integer
+             $m$ the cofinality of the mod finite ordering on
+             $\Pi\{ \lambda^{+n+1} : m< n\in \omega\}$
+            is the same as it is for the entire product
+             $\Pi\{ \lambda^{+n+1} : n\in \omega\}$. If $P$
+            is any poset of cardinality less than
+             $\lambda^{+m}$ then, in the forcing extension by $P$,
+            every function in
+             $\Pi\{ \lambda^{+n+1} : m< n\in \omega\}$ is bounded
+            above by a ground model function.
+            It therefore
+            follows easily that  in the forcing
+            extension by $P$,  the sequence
+            $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$  remains cofinal in
+             $\Pi\{ \lambda^{+n+1} : n\in \omega\}$.
 
-          The interested reader will want to know that it is shown in
-          \cite{MR1045371} that if $\kappa$ is a 2-huge cardinal and $j$ is the 2-huge
-          embedding with critical point $\kappa$, then with
-           $\lambda = j(\kappa)$ one has that
-          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
-          (\kappa^{+\omega+1},\kappa^{+\omega})$ holds.
-          \bigskip
+            \bigskip
 
-          Let $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$
-          be a scale in $\Pi\{ \lambda^{+n+1} : n\in \omega\}$
-           ordered by the usual mod finite coordinatewise
-          ordering. For convenience we may assume that $h_\xi(n) \geq
-          \lambda^{+n}$ for all $\xi$ and all $n$.  If $P$ is any poset of
-          cardinality less than $\lambda^{+\omega}$, then in the forcing
-          extension by $P$,  the sequence
-          $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$  remains cofinal in
-           $\Pi\{ \lambda^{+n+1} : n\in \omega\}$.
+            The forcing notion $\mathbb P_0$ is simply the finite condition
+            collapse of $\kappa^{+\omega}$, i.e. $\mathbb P_0 = \left(
+             \kappa^{+\omega}\right)^{<\omega}$. In the forcing extension by
+             $\mathbb P_0$, one now has that the ordinal $\kappa^{+\omega+1}$
+             from $V$ is the first uncountable cardinal $\aleph_1$. Then in this
+             forcing extension we let $\mathbb P_1$ be the countable condition
+             Levy collapse, $Lv(\lambda,\omega_2)$, which collapses all cardinals
+             less than $\lambda$ to have cardinality at most $\aleph_1$. The poset
+             $\mathbb P_1$ has cardinality $\lambda$. We treat
+            $\mathbb P*\mathbb P_1$ as containing $\mathbb P_0$
+            as a subposet by identifying each $(p_0,1)$ with $p_0$.
+            After forcing with $\mathbb P_0*\mathbb P_1$ we will have
+            that $\omega_1$ is the ordinal $\left(\kappa^{+\omega+1}\right)^V$,
+             $\omega_2$ is the ordinal $\lambda$, and $\omega_\omega$ is the
+             ordinal $\left(\lambda^{+\omega}\right)^V$.
 
-          \bigskip
+            \bigskip
 
-          The forcing notion $\mathbb P_0$ is simply the finite condition
-          collapse of $\kappa^{+\omega}$, i.e. $\mathbb P_0 = \left(
-           \kappa^{+\omega}\right)^{<\omega}$. In the forcing extension by
-           $\mathbb P_0$, one now has that the ordinal $\kappa^{+\omega+1}$
-           from $V$ is the first uncountable cardinal $\aleph_1$. Then in this
-           forcing extension we let $\mathbb P_1$ be the countable condition
-           Levy collapse, $Lv(\lambda,\omega_2)$, which collapses all cardinals
-           less than $\lambda$ to have cardinality at most $\aleph_1$. The poset
-           $\mathbb P_1$ has cardinality $\lambda$. We treat
-          $\mathbb P_1$ as containing $\mathbb P_0$
-          as a subposet by identifying each $(p_0,1)$ with $p_0$.
-          After forcing with $\mathbb P_0*\mathbb P_1$ we will have
-          that $\omega_1$ is the ordinal $\left(\kappa^{+\omega+1}\right)^V$,
-           $\omega_2$ is the ordinal $\lambda$, and $\omega_\omega$ is the
-           ordinal $\left(\lambda^{+\omega}\right)^V$.
+            \newpage
 
-          \bigskip
+            Now we assume that we have an assignment $\dot f_{\dot A}$ of a
+             $\mathbb P_0*\mathbb P_1$-name of a finite-to-one function from
+             $\dot A$ into $\omega$ for each
+             $\mathbb P_0*\mathbb P_1$-name of a countable subset of
+             $\lambda^{+\omega+1}$. We will obtain a contradiction.
 
-          Now we assume that we have an assignment $\dot f_{\dot A}$ of a
-           $\mathbb P_0*\mathbb P_1$-name of a finite-to-one function from
-           $\dot A$ into $\omega$ for each
-           $\mathbb P_0*\mathbb P_1$-name of a countable subset of
-           $\lambda^{+\omega+1}$. We will obtain a contradiction.
-
-          Let $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$ be an enumeration
-          of all the  nice $\mathbb P_0$-names of countable
-          subsets of $\lambda^{+\omega}$. For each $\xi\in \lambda^{+\omega+1}$,
-           let $\dot f_\xi$ be another notation for $\dot f_{\dot A_\xi}$.
-          Since $\mathbb P_0$ forces that $\mathbb P_1$ is countably closed,
-          the collection of all nice  $\mathbb P_0$-names will produce all
-          the countable sets in the extension by $\mathbb P_0* \mathbb
-          P_1$, but $\mathbb P_0*\mathbb P_1$ can introduce new enumerations of
-          these names.
-          For each $\xi\in \lambda^{+\omega+1}$,
-          there is a minimal $\zeta_\xi$ so that $\dot A_{\zeta_\xi}$ is the
-          canonical name for the range of $h_\xi$. This means that
-           $\dot f_{\zeta_\xi} \circ h_\xi$ is simply the
-           $\mathbb P_0 *\mathbb P_1$-name of a finite-to-one function from
-           $\omega$ to $\omega$.
+            Let $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$ be an enumeration
+            of all the  nice $\mathbb P_0$-names of countable
+            subsets of $\lambda^{+\omega}$. For each $\xi\in \lambda^{+\omega+1}$,
+             let $\dot f_\xi$ be another notation for $\dot f_{\dot A_\xi}$.
+            Since $\mathbb P_0$ forces that $\mathbb P_1$ is countably closed,
+            the collection of all nice  $\mathbb P_0$-names will produce all
+            the countable sets in the extension by $\mathbb P_0* \mathbb
+            P_1$, but $\mathbb P_0*\mathbb P_1$ can introduce new enumerations of
+            these names.
             For each $\xi\in \lambda^{+\omega+1}$,
-           choose any $p_\xi \in \mathbb P_0*\mathbb P_1$ so that
-           there is a nice $\mathbb P_0$-name, $\dot H_\xi$,
-           that is forced by
-           $p_\xi$  to equal $\dot f_{\zeta_\xi}\circ h_\xi$.
-            Choose $\Lambda\subset \lambda^{+\omega+1}$
-            of cardinality $\lambda^{+\omega+1}$
-            and so that there is a pair $p,\dot H$
-            satisfying that $p_\xi = p$ and $\dot H_\xi = \dot H$
-            for all $\xi\in \Lambda$. We may assume that $p$
-            is in a generic filter $  G$.
+            there is a minimal $\zeta_\xi$ so that $\dot A_{\zeta_\xi}$ is the
+            canonical name for the range of $h_\xi$. This means that
+             $\dot f_{\zeta_\xi} \circ h_\xi$ is simply the
+             $\mathbb P_0 *\mathbb P_1$-name of a finite-to-one function from
+             $\omega$ to $\omega$.
+              For each $\xi\in \lambda^{+\omega+1}$,
+             choose any $p_\xi \in \mathbb P_0*\mathbb P_1$ so that
+             there is a nice $\mathbb P_0$-name, $\dot H_\xi$,
+             that is forced by
+             $p_\xi$  to equal $\dot f_{\zeta_\xi}\circ h_\xi$.
+              Choose $\Lambda\subset \lambda^{+\omega+1}$
+              of cardinality $\lambda^{+\omega+1}$
+              and so that there is a pair $p,\dot H$
+              satisfying that $p_\xi = p$ and $\dot H_\xi = \dot H$
+              for all $\xi\in \Lambda$. We may assume that $p$
+              is in a generic filter $  G$.
 
 
-          Let $\{ x_\xi : \xi\in \lambda^{+\omega+1}\}$ be any enumeration of
-           $H(\lambda^{+\omega+1})$  such that
-           $\{ x_\xi : \xi\in \lambda^{+\omega}\}$ is also equal to
-           $H(\lambda^{+\omega})$. We choose this enumeration in such a way that
-           $x_\xi\in x_\eta$ implies $\xi<\eta$.
-          We use relation symbol $R_0$ to code
-          (and well order)
-           $(H(\lambda^{+\omega+1}), \in)$ as follows: $(\xi,\eta)\in R_0$
-          if and only if $x_\xi\in x_\eta$.
-          Let $R_1$ be a binary relation on $\kappa^{+\omega}$ so that
-          $(\kappa^{+\omega},R_1)$ is isomorphic to $\mathbb P_0$. Let
-           $R_2$ be a binary relation on $\lambda$ so that
-           $R_2\cap (\kappa^{+\omega}\times \kappa^{+\omega})=R_1$ and
-           $(\lambda,R_2)$ is isomorphic to $\mathbb P_0*\mathbb P_1$.
-          Let $\psi$ be the poset isomorphism from $\lambda$ to
-           $\mathbb P_0*\mathbb P_1$.
+            Let $\{ x_\xi : \xi\in \lambda^{+\omega+1}\}$ be any enumeration of
+             $H(\lambda^{+\omega+1})$  such that
+             $\{ x_\xi : \xi\in \lambda^{+\omega}\}$ is also equal to
+             $H(\lambda^{+\omega})$. We choose this enumeration in such a way that
+             $x_\xi\in x_\eta$ implies $\xi<\eta$.
+            We use relation symbol $R_0$ to code
+            (and well order)
+             $(H(\lambda^{+\omega+1}), \in)$ as follows: $(\xi,\eta)\in R_0$
+            if and only if $x_\xi\in x_\eta$.
+            Let $R_1$ be a binary relation on $\kappa^{+\omega}$ so that
+            $(\kappa^{+\omega},R_1)$ is isomorphic to $\mathbb P_0$. Let
+             $R_2$ be a binary relation on $\lambda$ so that
+             $R_2\cap (\kappa^{+\omega}\times \kappa^{+\omega})=R_1$ and
+             $(\lambda,R_2)$ is isomorphic to $\mathbb P_0*\mathbb P_1$.
+            Let $\psi$ be the poset isomorphism from $(\lambda,R_2)$ to
+             $\mathbb P_0*\mathbb P_1$.
 
-          We continue coding. We can code the sequence
-           $\{ h_\xi : \xi\in \lambda^{+\omega+1}\}$ as another binary  relation
-           $R_3$ on $\lambda^{+\omega+1}$ where $R_3\cap \left(\{\xi\}\times
-           \lambda^{+\omega+1}\right) = \{ (\xi,h_\xi(n) ) : n\in \omega\}$
-          for each $\xi\in \lambda^{+\omega+1}$. The relation symbol $R_4$ can
-          code the sequence $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$
-          where $(\xi, \alpha, \zeta) \in R_4$ if and only if
-          $(\check \alpha, \psi(\zeta))$ is in the name $\dot A_\xi$.
-           Let $R_5$ code this collection, i.e.
-           $(\gamma,n,m,\eta)\in R_5$ if and only if
-           $(\check{(n,m)}, \psi(\eta))\in \dot H_\gamma$. Also let $R_6$ code
-           (equal)  the set $\Lambda$.
-          Finally we use the relation symbol $R_7$ to similarly code the
-          sequence $\{ \dot f_\xi  : \xi \in \lambda^{+\omega+1}\}$:
-           $(\xi, \alpha, n, \zeta) \in R_7$ if and only if
-          $(\check {(\alpha,n)}, \psi(\zeta))$ is in the name $\dot f_\xi$.
+            We continue coding. We can code the sequence
+             $\{ h_\xi : \xi\in \lambda^{+\omega+1}\}$ as another binary  relation
+             $R_3$ on $\lambda^{+\omega+1}$ where $R_3\cap \left(\{\xi\}\times
+             \lambda^{+\omega+1}\right) = \{ (\xi,h_\xi(n) ) : n\in \omega\}$
+            for each $\xi\in \lambda^{+\omega+1}$. The relation symbol $R_4$ can
+            code the sequence $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$
+            where $(\xi, \alpha, \zeta) \in R_4$ if and only if
+            $(\check \alpha, \psi(\zeta))$ is in the name $\dot A_\xi$.
+             Let $R_5$ code this collection, i.e.
+             $(\gamma,n,m,\eta)\in R_5$ if and only if
+             $(\check{(n,m)}, \psi(\eta))\in \dot H_\gamma$. Also let $R_6$ code
+             (equal)  the set $\Lambda$.
+            Finally we use the relation symbol $R_7$ to similarly code the
+            sequence $\{ \dot f_\xi  : \xi \in \lambda^{+\omega+1}\}$:
+             $(\xi, \alpha, n, \zeta) \in R_7$ if and only if
+            $(\check {(\alpha,n)}, \psi(\zeta))$ is in the name $\dot f_\xi$.
 
-          Needless to say, the unary relation symbol $R$
-          is interpreted as the set $\lambda^{+\omega}$ for the application of
-          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
-          (\kappa^{+\omega+1},\kappa^{+\omega})$.
-           Now  we have defined our model
-          $M$  of the language $L= \{\in, R, R_0,\ldots, R_7\}$,
-           and we choose an elementary submodel
-          $N$ witnessing
-          $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
-          (\kappa^{+\omega+1},\kappa^{+\omega})$. Of course $N$ is really just
-          a $\kappa^{+\omega+1}$ sized subset of $\lambda^{+\omega+1}$
-          with the additional property that $N\cap \lambda^{+\omega}$ has
-          cardinality $\kappa^{+\omega}$.  In the
-          forcing extension $N$ has cardinality $\omega_1$ and
-           $A= N\cap \lambda^{+\omega}$ is countable.
+            Needless to say, the unary relation symbol $R$
+            is interpreted as the set $\lambda^{+\omega}$ for the application of
+            $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+            (\kappa^{+\omega+1},\kappa^{+\omega})$.
+             Now  we have defined our model
+            $M$  of the language $L= \{\in, R, R_0,\ldots, R_7\}$,
+             and we choose an elementary submodel
+            $N$ witnessing
+            $(\lambda^{+\omega+1},\lambda^{+\omega})\rlap{$\rightarrow$}\,{\rightarrow}
+            (\kappa^{+\omega+1},\kappa^{+\omega})$. Of course $N$ is really just
+            a $\kappa^{+\omega+1}$ sized subset of $\lambda^{+\omega+1}$
+            with the additional property that $N\cap \lambda^{+\omega}$ has
+            cardinality $\kappa^{+\omega}$.  In the
+            forcing extension $N$ has cardinality $\omega_1$ and
+             $A= N\cap \lambda^{+\omega}$ is countable.
 
-          We will need the following claim from \cite{MR1045371}:
+            We will need the following claim from \cite{MR1045371}:
 
-          \begin{claim*} We may assume that $N$ satisfies that
-           $N\cap \kappa^{+\omega+1}$ is transitive (i.e. an initial segment).
-          \end{claim*}
+            \begin{claim*} We may assume that $N$ satisfies that
+             $N\cap \kappa^{+\omega+1}$ is transitive (i.e. an initial segment).
+            \end{claim*}
 
-          \begin{proof}[Proof of Claim]
-          Suppose  our originally supplied $N$ fails the conclusion of the
-          claim.
-          We   know that $\kappa^{+\omega}\in N$,
-          (  via $R_1$)
-          in which case so is $\kappa^{+\omega+1}$.
+            \bgroup
+            \def\proofname{Proof of Claim:\/}
+
+            \begin{proof}
+            Suppose  our originally supplied $N$ fails the conclusion of the
+            claim.
+            We   know that $\kappa^{+\omega}\in N$,
+            (  via $R_1$)
+            in which case so is $\kappa^{+\omega+1}$.
 
 
-          Then set $\beta_0 = \sup(N\cap \kappa^{+\omega+1})$ and consider the
-          Skolem closure $\mathop{Hull}(N\cup \beta_0, M)$.  A little informally
-          (in that we have to formalize the enumeration of formulas)
-          let $\{\varphi_n : n\in \omega\}$ is the enumeration of all formulas
-          in the language $L$, and let  $\ell_n$ be the minimal integer such
-          that the free variables of $\varphi_n$ are among
-           $\{ v_0, \ldots, v_{\ell_n}\}$.
-          Then,   for each tuple
-          $\langle \xi_1,\ldots, \xi_{\ell_n} \rangle$
-          of elements of $\lambda^{+\omega+1}$,
-           we define $f_n(\xi_1,\ldots, \xi_{\ell_n})$ to be
-           the minimal $\xi_0\in \lambda^{+\omega+1}$ such that
-           $M\models \varphi_n(\xi_0,\ldots, \xi_{\ell_n})$.
-          If there is no such $\xi_0$,
-             in other words if $M\models \lnot\exists x~~  \varphi_n(x,\xi_1,
-          \ldots,\xi_{\ell_n})$, then set
-           $f_n(\xi_1,\ldots, \xi_{\ell_n})$ to be $0$.
-          Now $\mathop{Hull}(N\cup \beta_0,M)$ is just the minimal superset
-           $X$
-          of $N\cup \beta_0$ that satisfies that
-           $f_n[X^{\{1,\ldots,\ell_n\}}] \subset X$ for all $n$. Since this is
-           simply a large algebra, we can generate all the terms $t$ of
-          the algebraic operations $\{ f_n : n\in \omega\}$.
-          It is easily seen that for each $\zeta \in X$, there is a term
-          $t(v_1,\ldots, v_m)$ such that $\zeta  = t(\delta_1,\ldots, \delta_m)$
-           for some sequence $\langle \delta_1,\ldots, \delta_m\rangle$ with
-           each $\delta_i\in  N\cup \beta_0$.
-           Assume that
-            $\zeta\in \kappa^{+\omega+1}$. By
-            re-indexing the variables in the term we can assume
-            that there is an $n\leq m$ so that
-             $\delta_i  <\beta_0$ for $1\leq i\leq n$
-              and $\kappa^{+\omega+1}\leq \delta_i$ for $n<i\leq m$.
-              Let $\vec a $ denote
-              the tuple $\langle \delta_{n+1},\ldots, \delta_m\rangle$.
-            Choose $\eta\in N\cap \kappa^{+\omega+1}$ large enough so that
-           $ \{  \delta_1, \ldots, \delta_n\}$ is contained in  $\eta$. Since set-membership
-           in $M$ is coded by $R_0$ rather than $\in$ we have to argue a little
-           less naturally.
-           Consider the set
-             $s_0(\eta,\vec a) = \{ t(\gamma_1,\ldots, \gamma_n,\vec a) :
-          \{\gamma_1,\cdots,\gamma_n\} \in [\eta]^{\leq n}\}$. Clearly
-           $s_0(\eta,\vec a)$ is a member of $H(\lambda^{+\omega+1})$.
-           Now define $s_1(\eta,\vec a) $ to be
-           $\{ x_\alpha : \alpha\in s_0(\eta, \vec a)\}$,
-           and choose the
-           unique $\zeta_1\in \lambda^{+\omega+1}$ such
-           that $x_{\zeta_1} = s_1(\eta,\vec a)$. We claim that $\zeta_1\in N$.
-           Note that $\alpha R_0\zeta_1$ holds if and only if
-            $ \alpha \in s_0(\eta,\vec a)$, and therefore
-           $$M\models (\forall \alpha)\left[\alpha R_0 \zeta_1 ~~\mbox{iff}~~
-           (\exists   \gamma_1\in \eta)\cdots(\exists \gamma_n\in\eta)(\alpha=
-           t(\gamma_1,\ldots, \gamma_n,\vec a))\right]~.$$
-           By elementarity then we have that $\zeta_1\in N$,
-           and by similar reasoning the supremum, $\zeta_0$,
-          of $\zeta_1\cap \kappa^{+\omega+1}$ is also in $N$.
-             This of course means that $\zeta < \xi_0$.
-          \end{proof}
+            Then set $\beta_0 = \sup(N\cap \kappa^{+\omega+1})$ and consider the
+            Skolem closure $\mathop{Hull}(N\cup \beta_0, M)$.  A little informally
+            (in that we have to formalize the enumeration of formulas as per
+            G\"odel coding)
+            let $\{\varphi_n : n\in \omega\}$ be an enumeration of all formulas
+            in the language $L$, and let  $\ell_n$ be the minimal integer such
+            that the free variables of $\varphi_n$ are among
+             $\{ v_0, \ldots, v_{\ell_n}\}$.
+            Then,   for each tuple
+            $\langle \xi_1,\ldots, \xi_{\ell_n} \rangle$
+            of elements of $\lambda^{+\omega+1}$,
+             we define $f_n(\xi_1,\ldots, \xi_{\ell_n})$ to be
+             the minimal $\xi_0\in \lambda^{+\omega+1}$ such that
+             $M\models \varphi_n(\xi_0,\ldots, \xi_{\ell_n})$.
+            If there is no such $\xi_0$,
+               in other words if $M\models \lnot\exists x~~  \varphi_n(x,\xi_1,
+            \ldots,\xi_{\ell_n})$, then set
+             $f_n(\xi_1,\ldots, \xi_{\ell_n})$ to be $0$.
+            Now $\mathop{Hull}(N\cup \beta_0,M)$ is just the minimal superset
+             $X$
+            of $N\cup \beta_0$ that satisfies that
+             $f_n[X^{\{1,\ldots,\ell_n\}}] \subset X$ for all $n$. Since this is
+             simply a large algebra, we can generate all the terms $t$ of
+            the algebraic operations $\{ f_n : n\in \omega\}$.
+            It is easily seen that for each $\zeta \in X$, there is a term
+            $t(v_1,\ldots, v_m)$ such that $\zeta  = t(\delta_1,\ldots, \delta_m)$
+             for some sequence $\langle \delta_1,\ldots, \delta_m\rangle$ with
+             each $\delta_i\in  N\cup \beta_0$.
+             Assume that
+              $\zeta\in \kappa^{+\omega+1}$. By
+              re-indexing the variables in the term we can assume
+              that there is an $n\leq m$ so that
+               $\delta_i  <\beta_0$ for $1\leq i\leq n$
+                and $\kappa^{+\omega+1}\leq \delta_i$ for $n<i\leq m$.
+                Let $\vec a $ denote
+                the tuple $\langle \delta_{n+1},\ldots, \delta_m\rangle$.
+              Choose $\eta\in N\cap \kappa^{+\omega+1}$ large enough so that
+             $ \{  \delta_1, \ldots, \delta_n\}$ is contained in  $\eta$. Since set-membership
+             in $M$ is coded by $R_0$ rather than $\in$ we have to argue a little
+             less naturally.
+             Consider the set
+               $s_0(\eta,\vec a) = \{ t(\gamma_1,\ldots, \gamma_n,\vec a) :
+            \{\gamma_1,\cdots,\gamma_n\} \in [\eta]^{\leq n}\}$. Clearly
+             $s_0(\eta,\vec a)$ is a member of $H(\lambda^{+\omega+1})$.
+             Now define $s_1(\eta,\vec a) $ to be
+             $\{ x_\alpha : \alpha\in s_0(\eta, \vec a)\}$,
+             and choose the
+             unique $\zeta_1\in \lambda^{+\omega+1}$ such
+             that $x_{\zeta_1} = s_1(\eta,\vec a)$. We claim that $\zeta_1\in N$.
+             Note that $\alpha R_0\zeta_1$ holds if and only if
+              $ \alpha \in s_0(\eta,\vec a)$, and therefore
+             $$M\models (\forall \alpha)\left[\alpha R_0 \zeta_1 ~~\mbox{iff}~~
+             (\exists   \gamma_1\in \eta)\cdots(\exists \gamma_n\in\eta)(\alpha=
+             t(\gamma_1,\ldots, \gamma_n,\vec a))\right]~.$$
+             By elementarity then we have that $\zeta_1\in N$,
+             and by similar reasoning the supremum, $\zeta_0$,
+            of $\zeta_1\cap \kappa^{+\omega+1}$ is also in $N$.
+               This of course means that $\zeta < \xi_0$.
+            \end{proof}
 
-          We use the elementarity of
-           $N$  to deduce properties of the families
-           $\{ \dot A_\xi : \xi\in N\}$ and $\{ \dot f_\xi : \xi \in
-           N\}$.  Actually the collection we are most interested in
-           is the family $\{ h_\xi : \xi\in \Lambda\cap N\}$.
+            \egroup
 
-           Since  $\mathfrak c < \kappa^{+\omega+1}$ there
-            is a function $\langle \varrho_n : n\in \omega\rangle$
-            in $\Pi_n \lambda^{+\omega}   $ such that the sequence
-             $\{ h_\xi : \xi \in N\}$ is unbounded mod finite
-             in $\Pi_n \varrho_n$ (by Shelah's pcf theory).
-             This is in Jech somewhere.
-             For each $n$, $\rho_n \leq \sup(N\cap \lambda^{+n+2})$.
+            We use the elementarity of
+             $N$  to deduce properties of the families
+             $\{ \dot A_\xi : \xi\in N\}$ and $\{ \dot f_\xi : \xi \in
+             N\}$.  Actually the collection we are most interested in
+             is the family $\{ h_\xi : \xi\in \Lambda\cap N\}$.
 
-             Since $\mathbb P_0$ has cardinality less than $|N|=\kappa^{+\omega+1}$,
-              the sequence $\{ h_\xi : \xi \in \Lambda\cap N\}$ remains unbounded
-              mod finite in $\Pi_n \varrho_n$ (and in
-               $\Pi_n (\varrho_n\cap N)$).  Now pass to the extension by
-                $G\cap \mathbb P_0$ and let $H$ be the function
-                 $\operatorname{val}_{G}(\dot H)$, and we recall
-                 that $f_{\zeta_\xi}(h_\xi(n)) = H(n)$ for all $n\in \omega$.
-           Now pass to the full extension $V[G]$ and again, since
-            $\mathbb P_1$ was forced to be countably closed,
-             the family $\{ h_\xi : \xi \in \Lambda\cap N\}$ is still
-             unbounded in $\Pi_n (\varrho_n \cap N)$. We let
-             $A$ be the countable set $N\cap \lambda^{+\omega}$,
-             and for  each
-             $\xi\in \Lambda\cap N$, there is an $n_\xi$ such that
-              $f_{\xi}(h_\xi(m)) = f_A(h_\xi(m))$ for all $m>n_\xi$.
-              There is a single $n$ so that $\Lambda_n
-               = \{\xi\in \Lambda\cap N       : n_\xi = n\}$ has cardinality
-                $\omega_1 $, and thus
-                $\{ h_\xi : \xi\in \Lambda_n\cap N\}$ is also unbounded
-                in $\Pi_n (\rho_n\cap N)$.
-          This certainly implies that there is an $m>n$
-          such that $\{ h_\xi (m) : \xi\in \Lambda_n\cap N\}$ is infinite.
-          This completes the proof since  $f_{A}(h_\xi(m)) = H(m)$
-          for all $\xi\in \Lambda_n\cap N$.
-  \end{proof}
+            Now we need a result from Shelah's pcf theory which
+            is proven in  Jech \cite[24.9]{MR1940513}.
+             Since  $\aleph_1=\mathfrak c < \kappa^{+\omega+1}$ there
+              is a function $\langle \varrho_n : n\in \omega\rangle$
+              in $\Pi_n \lambda^{+\omega}   $ such that the sequence
+               $\{ h_\xi : \xi \in N\}$ is unbounded mod finite
+               in $\Pi_n \varrho_n$
+               For each $n$, $\varrho_n \leq \sup(N\cap \lambda^{+n+2})$.
+                  Since $\mathbb P_0$ has cardinality $\kappa^{+\omega}$,
+            and so less than $|N|=\kappa^{+\omega+1}$, a standard argument
+            (analogous to the fact that adding a Cohen real does
+             not add a dominating real)
+             shows that    the sequence $\{ h_\xi : \xi \in \Lambda\cap N\}$ remains
+             unbounded
+                mod finite in $\Pi_n \varrho_n$ (and in
+                 $\Pi_n (\varrho_n\cap N)$).
+
+            Now pass to the extension by
+                  $G\cap \mathbb P_0$ and let $H$ be the function
+                   $\operatorname{val}_{G}(\dot H)$, and we recall
+                   that $f_{\zeta_\xi}(h_\xi(n)) = H(n)$ for all $n\in \omega$
+            and $\xi\in \Lambda$.
+             Now pass to the full extension $V[G]$ and again, since
+              $\mathbb P_1$ was forced to be countably closed,
+               the family $\{ h_\xi : \xi \in \Lambda\cap N\}$ is still
+               unbounded in $\Pi_n (\varrho_n \cap N)$ (no new elements
+            were added). We let
+               $A$ be the countable set $N\cap \lambda^{+\omega}$,
+               and for  each
+               $\xi\in \Lambda\cap N$, there is an $n_\xi$ such that
+                $f_{\xi}(h_\xi(m)) = f_A(h_\xi(m))$ for all $m>n_\xi$.
+                There is a single $n$ so that $\Lambda_n
+                 = \{\xi\in \Lambda\cap N       : n_\xi = n\}$ has cardinality
+                  $\omega_1 $, and thus
+                  $\{ h_\xi : \xi\in \Lambda_n\cap N\}$ is also unbounded
+                  in $\Pi_n (\rho_n\cap N)$.
+            This certainly implies that there is an $m>n$
+            such that $\{ h_\xi (m) : \xi\in \Lambda_n\cap N\}$ is infinite.
+            This completes the proof since  $f_{A}(h_\xi(m)) = H(m)$
+            for all $\xi\in \Lambda_n\cap N$.
+            \end{proof}
 
 
 
