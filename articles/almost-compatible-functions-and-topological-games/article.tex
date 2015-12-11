@@ -578,39 +578,34 @@ Charlotte, NC 28262}
   But \(CH\) is not required to have \(\alcompS{\aleph_2}\) fail.
   We take the following lemma from Kunen.
 
-  \begin{lemma}[\cite{MR597342}]
-    Assume that $G\subset \operatorname{Fn}(\omega_2,2)$ is a generic filter,
-    and let $\mu\in \omega_2$. Then the final model $V[G]$ can be
-    regarded as forcing  with $\operatorname{Fn}(\omega_2\setminus \mu,
-    2)$ over the model $V[G_\mu]$.
-    In addition, for each $\operatorname{Fn}(\omega_2,2)$-name $\dot A$
-    for $A\subseteq\omega$ (abusing notation and letting \(n\) represent
-    its own $\operatorname{Fn}(\omega_2,2)$-name and
-    $\operatorname{Fn}(\omega_2\setminus \mu, 2)$-name),
-    there is a canonical name $\dot A(G_\mu)$ where,
-    $$\dot A(G_\mu) = \{ (n,p\restriction [\mu,\omega_2))  :
-    (n,p)\in \dot A\ \ \mbox{and} \ \ p\restriction \mu\in G_\mu\}$$
-    and the valuation of $\dot A(G_\mu)$ by the tail
-    of the generic, $G_{\omega_2\setminus \mu}$, is the same as
-    the valuation of $\dot A$ by the full generic.
-  \end{lemma}
-
-
  \begin{lemma}[\cite{MR597342}]
     Assume that \(G\subset \operatorname{Fn}(\omega_2,2)\) is a generic filter,
     and let \(\mu\in \omega_2\). Then the final model \(V[G]\) can be
-    regarded as forcing  with \(\operatorname{Fn}(\omega_2\setminus \mu,
-    2)\) over the model \(V[G_\mu]\).
-    In addition, for each \(\operatorname{Fn}(\omega_2,2)\)-name \(\dot A\)
-    for \(A\subseteq\omega\) (abusing notation and letting \(n\) represent
-    its own \(\operatorname{Fn}(\omega_2,2)\)-name and
-    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\)-name),
-    there is a canonical name \(\dot A(G_\mu)\) where,
-    \[\dot A(G_\mu) = \{ (n,p\restriction [\mu,\omega_2))  :
-    (n,p)\in \dot A\ \ \mbox{and} \ \ p\restriction \mu\in G_\mu\}\]
-    and the valuation of \(\dot A(G_\mu)\) by the tail
-    of the generic, \(G_{\omega_2\setminus \mu}\), is the same as
-    the valuation of \(\dot A\) by the full generic.
+    regarded as forcing with
+    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\) over the model \(V[G_\mu]\).
+    Let \(\dot n,\ddot n\) be a
+    \(\operatorname{Fn}(\omega_2,2)\)-,
+    \(\operatorname{Fn}(\omega_2\setminus\mu,2)\)-name respectively for each
+    \(n<\omega\). Then for each \(\operatorname{Fn}(\omega_2,2)\)-name \(\dot A\)
+    for \(A\subseteq\omega\), there is a canonical
+    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\)-name
+    \[
+      \ddot A
+        =
+      \{
+        (\ddot n,p\rest [\mu,\omega_2))
+      :
+        (\dot n,p)\in \dot A
+      \}
+    \]
+    which satisfies
+    \(
+      A
+        =
+      \operatorname{val}(\dot A,G)
+        =
+      \operatorname{val}(\ddot A,G_\mu)
+    \).
   \end{lemma}
 
 
@@ -621,63 +616,70 @@ Charlotte, NC 28262}
   \end{theorem}
 
   \begin{proof}
-    The forcing poset is \(\operatorname{Fn}(\omega_2, 2)\).
+    The forcing poset is \(\mb P=\operatorname{Fn}(\omega_2, 2)\).
     Let \(\{ \dot f_{A} : A\in [\omega_2]^\omega\}\) be a family of
-    names such that \(f_{A}\) is a one-to-one function from \(A\) into
+    \(\mb P\)-names such that \(f_{A}\) is a one-to-one function from \(A\) into
     \(\omega\) in the ground model. Let \(M\) be an elementary submodel
-    of the universe such that
+    of the universe containing \(\mb P\) such that
     \(|M|=\omega_1 =\mathfrak c\) and \(M^\omega\subset M\).
 
-    Let \(\lambda = M\cap \omega_2=\sup(M\cap\omega_2)\).
-    Consider the name
-    \[
+    Let \(\lambda\) be the ordinal \(M\cap \omega_2\).
+    We may assume
+    \(
       \dot f_{[\lambda,\lambda+\omega)}
         =
       \{
-        ( (\lambda+k,m), p)
+        ((\lambda+k_p,m_p)^\cdot, p)
       :
-        p\in \mathop{Fn}(\omega_2,2);k,m\in \omega
+        p\in C
       \}
-    \]
-    This is (almost) equivalent to
-             saying
-             that \(p\) forces that \(\dot f_{[\lambda,\lambda+\omega)}(\lambda+k) =
-             m\). We don't take all such \(p\), in fact for each \(k,m\) it is enough
-            to take a
-             countable set of such \(p\) to get an equivalent name
-             (Kunen calls it a nice name if we take, for each \(k,m\) an
-            antichain that is maximal among such conditions).
-            Given any such name \(\dot f\), let \(\operatorname{supp}(\dot f)\)
-            denote the union of the domains of conditions \(p\) appearing in the
-            name.
+    \)
+    for some countable \(C\subseteq\operatorname{Fn}(\omega_2,\omega)\).
+    Let
+    \(
+      \operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
+        =
+      \bigcup_{p\in C}\operatorname{dom} p
+    \).
 
+    Let \(\delta_\lambda\) denote the order type of
+    \(\operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})\setminus \lambda\),
+    and for \(\mu\leq\lambda\) let \(\varphi_{\mu,\lambda}'\) be the
+    order-preserving bijection from
+    \(
+      \mu\cup
+      \left(\operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
+        \setminus
+      \lambda\right)
+    \)
+    onto the ordinal \(\mu+\delta_\lambda\).
+    This lifts canonically to an order-preserving bijection
+    \(
+      \varphi_{\mu,\lambda}
+        :
+      \operatorname{Fn}(\mu\cup Y,2)
+        \to
+      \operatorname{Fn}(\mu+\delta,2)
+    \).
 
+    Consider the \(\mb P\)-name
+    \(
+      F_M
+        =
+      \{
+        ((\lambda+k_p,m_p)^\cdot,\varphi_{\mu,\lambda}(p))
+      :
+        ((\lambda+k_p,m_p)^\cdot,p)\in\dot f_A
+      \}
+    \).
 
-             Also let \(Y\) equal \(\operatorname{supp}(\dot
-             f_{[\lambda,\lambda+\omega)})\setminus \lambda\).
-             Let \(\delta\) denote the order type of
-             \(Y\) and let the 2-parameter notation
-             \(\varphi_{\mu,\lambda}\) be the order-preserving function from
-            \(\mu\cup Y\) onto  the ordinal \(\mu+\delta\).  This lifts canonically to
-            an order-preserving bijection \(\varphi_{\mu,\lambda}:
-            \operatorname{Fn}(\mu\cup Y,2) \mapsto
-            \operatorname{Fn}(\mu+\delta,2)\).
-            Similarly, we make sense of the name
-             \(\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})\), call it \(F_M\).
-            Here simply, for each tuple \((~(k,m)~, p)\in \dot
-            f_{[\lambda,\lambda+\omega)}\),
-             we have that \((~(k,m)~,\varphi_{\mu,\lambda}(p))\) is in \(F_M\).
-            Again, let \(\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})\)
-            be interpreted in the above sense as giving \(F_M\) (which is an element
-            of \(M\)).  Note that we do not regard \(\delta\) as fixed here, but
-            rather simply depending on the \(\operatorname{supp}(\dot
-            f_{[\lambda,\lambda+\omega)})\) described above. Other values
-            replacing \(\lambda>\mu\) will result in their own set \(Y\)
-            and canonical map \(\varphi_{\mu,\lambda}\); but one thing we do have to
-            assume (or arrange) for other values \(\alpha\) replacing \(\lambda\)
-            is that \(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})\)
-            intersected with
-            \(\alpha\) is contained in \(\mu\).
+    % Other values
+    %         replacing \(\lambda>\mu\) will result in their own set \(Y\)
+    %         and canonical map \(\varphi_{\mu,\lambda}\); but one thing we do have to
+    %         assume (or arrange) for other values \(\alpha\) replacing \(\lambda\)
+    %         is that \(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})\)
+    %         intersected with
+    %         \(\alpha\) is contained in \(\mu\).
 
             Now the object \(F_M\) is an
             element of \(M\), and \(M\) believes this statement is true:
