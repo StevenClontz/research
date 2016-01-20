@@ -579,10 +579,11 @@ Charlotte, NC 28262}
   We take the following lemma from Kunen.
 
  \begin{lemma}[\cite{MR597342}]
-    Assume that \(G\subset \operatorname{Fn}(\omega_2,2)\) is a generic filter,
-    and let \(\mu\in \omega_2\). Then the final model \(V[G]\) can be
+    Assume that \(G\subset \operatorname{Fn}(\omega_2,2)\) is a generic filter
+    over a model \(M\),
+    and let \(\mu\in \omega_2\). Then the generic extension \(M[G]\) can be
     regarded as forcing with
-    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\) over the model \(V[G_\mu]\).
+    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\) over the model \(M[G_\mu]\).
     Let \(\dot n,\ddot n\) be a
     \(\operatorname{Fn}(\omega_2,2)\)-,
     \(\operatorname{Fn}(\omega_2\setminus\mu,2)\)-name respectively for each
@@ -610,118 +611,137 @@ Charlotte, NC 28262}
 
 
   \begin{theorem}
-    It follows from the consistency of \(ZFC\) that
-    there exists a model of \(ZFC\) for which \(\mf c=\aleph_2\)
+    There exists a model of \(ZFC\) for which \(\mf c=\aleph_2\)
     and \(\neg\alcompS{\aleph_2}\).
   \end{theorem}
 
   \begin{proof}
     The forcing poset is \(\mb P=\operatorname{Fn}(\omega_2, 2)\).
     Let \(\{ \dot f_{A} : A\in [\omega_2]^\omega\}\) be a family of
-    \(\mb P\)-names such that \(f_{A}\) is a one-to-one function from \(A\) into
-    \(\omega\) in the ground model. Let \(M\) be an elementary submodel
-    of the universe containing \(\mb P\) such that
-    \(|M|=\omega_1 =\mathfrak c\) and \(M^\omega\subset M\).
+    \(\mb P\)-names such that \(f_{A}\) is a one-to-one function from \(A\)
+    into \(\omega\) in the ground model. Let \(M\) be an elementary submodel
+    of \(ZFC+CH\) containing all its countable subsets, containing \(\mb P\),
+    and satisfying \(|M|=\omega_1 =\mathfrak c\).
 
-    Let \(\lambda\) be the ordinal \(M\cap \omega_2\).
-    We may assume
+    Let \(\lambda\) be the ordinal \(M\cap \omega_2\). For
+    \(\alpha\leq\lambda\) we may assume
     \(
-      \dot f_{[\lambda,\lambda+\omega)}
+      \dot f_{[\alpha,\alpha+\omega)}
         =
       \{
-        ((\lambda+k_p,m_p)^\cdot, p)
+        ((\alpha+k_p,m_p)^\cdot, p)
       :
-        p\in C
+        p\in C_\alpha
       \}
     \)
-    for some countable \(C\subseteq\operatorname{Fn}(\omega_2,\omega)\).
+    for some countable \(C_\alpha\subseteq\operatorname{Fn}(\omega_2,\omega)\).
     Let
     \(
-      \operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
+      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
         =
-      \bigcup_{p\in C}\operatorname{dom} p
+      \bigcup_{p\in C_\alpha}\operatorname{dom} p
     \).
 
-    Let \(\delta_\lambda\) denote the order type of
-    \(\operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})\setminus \lambda\),
-    and for \(\mu\leq\lambda\) let \(\varphi_{\mu,\lambda}'\) be the
-    order-preserving bijection from
+    For each \(\alpha\leq\lambda\),
+    let \(\delta_{\alpha}\) denote the order type of
+    \(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})\setminus \alpha\),
+    and when \(\mu\leq\alpha\) and
+    \(
+      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
+        \cap
+      \alpha
+        \subseteq
+      \mu
+    \)
+    let \(\varphi'_{\mu,\alpha}\) be the order-preserving bijection from
     \(
       \mu\cup
-      \left(\operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
+      \left(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
         \setminus
-      \lambda\right)
+      \alpha\right)
     \)
-    onto the ordinal \(\mu+\delta_\lambda\).
+    onto the ordinal \(\mu+\delta_\alpha\).
     This lifts canonically to an order-preserving bijection
     \(
-      \varphi_{\mu,\lambda}
+      \varphi_{\mu,\alpha}
         :
-      \operatorname{Fn}(\mu\cup Y,2)
+      \operatorname{Fn}(\mu\cup
+        \left(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
+          \setminus
+        \alpha\right)
+      ,2)
         \to
-      \operatorname{Fn}(\mu+\delta,2)
+      \operatorname{Fn}(\mu+\delta_\alpha,2)
     \).
 
-    Consider the \(\mb P\)-name
-    \(
-      F_M
+    We now fix \(\mu<\lambda\) such that
+    \[
+      \bigcup_{\alpha\leq\lambda}
+      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
+        \cap
+      \alpha
+        \subseteq
+      \mu
+    \]
+    (TODO how?) and define the \(\mb P\)-name
+    \[
+      F
+      %   =
+      % \varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})
         =
       \{
         ((\lambda+k_p,m_p)^\cdot,\varphi_{\mu,\lambda}(p))
       :
-        ((\lambda+k_p,m_p)^\cdot,p)\in\dot f_A
+        ((\lambda+k_p,m_p)^\cdot,p)\in\dot f_{[\lambda,\lambda+\omega)}
       \}
-    \).
+    .\]
 
-    % Other values
-    %         replacing \(\lambda>\mu\) will result in their own set \(Y\)
-    %         and canonical map \(\varphi_{\mu,\lambda}\); but one thing we do have to
-    %         assume (or arrange) for other values \(\alpha\) replacing \(\lambda\)
-    %         is that \(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})\)
-    %         intersected with
-    %         \(\alpha\) is contained in \(\mu\).
+    So in \(M\), we may reason (TODO why)
+    that for each \(\beta<\omega_2\) there exists
+    some \(\alpha\in\omega_2\setminus\beta\) where
+    \[
+      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
+      \cap \alpha\subseteq \mu
+    \]
+    and
+    \[
+      F
+        =
+      \{
+        ((\alpha+k_p,m_p)^\cdot,\varphi_{\mu,\alpha}(p))
+      :
+        ((\alpha+k_p,m_p)^\cdot,p)\in\dot f_{[\alpha,\alpha+\omega)}
+      \}
+    .\]
 
-            Now the object \(F_M\) is an
-            element of \(M\), and \(M\) believes this statement is true:
-            \[
-            (\forall \beta\in\omega_2)~ (\exists \beta<\lambda\in \omega_2)~~~
-            \operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
-            \cap \lambda\subset \mu \ \ \mbox{and}\ \
-            F_M = \varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})\]
+    But now, this means not only is there an \(\alpha<\lambda\) such that
+    \( F = \varphi(\dot f_{[\alpha,\alpha+\omega)})\),
+    but also that there is an increasing sequence
+    \(\{\alpha_\xi : \xi  \in \omega_1\}\subseteq \lambda\)
+    satisfying that \(F=\varphi(\dot f_{[\alpha_\xi,\alpha_\xi+\omega)})\) and
+    \(\operatorname{supp}(\dot f_{[\alpha_\xi,\alpha_\xi+\omega)})\) is
+    contained in \(\alpha_{\xi+1}\) (TODO why not \(\mu\)?).
 
+    Choose such a sequence, and let
+    \(A = \bigcup_{0<n<\omega} [\alpha_n,\alpha_n+\omega)\). Consider
+    the name \(\dot f_A\) in \(M\). Note all the \(((\beta,m)^\cdot, p)\)
+    appearing in \(\dot f_A\) have the property that
+    \(\operatorname{dom}(p)\) is contained in \(M\) (QUESTION: isn't the
+    domain of any member of \(\mb P\) in the domain?)
+    There is, within \(M\), a name \(\dot g\) satisfying that
+     \(\dot f_A(\alpha_n+k) = \dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k)\)
+    for all \(k >\dot g(n)\) (TODO: why?).
 
-            But now, this  means that,
-            not only is there  an \(\alpha\in M\),
-            \( F_M = \varphi_{\mu,\alpha}(\dot f_{[\alpha,\alpha+\omega)})\)
-            but also that there is an increasing sequence
-             \(\{\alpha_\xi : \xi  \in \omega_1\}\subset \lambda\) of
-             such \(\alpha\)'s satisfying that, for each \(\xi\)
-            we have that \(\operatorname{supp}(\dot
-            f_{[\alpha_\xi,\alpha_\xi+\omega)})\) is contained in \(\alpha_{\xi+1}\).
+    (TODO catch up to here)
 
-            Choose such a sequence.
-             This means that if we let \(A = \bigcup_{n>0} [\alpha_n,\alpha_n+\omega)\) we
-             have the name \(\dot f_A\) in \(M\). This then means that all
-             the \(( (\beta,m) , p)\) appearing in \(\dot f_A\) have the property
-             that \(\mathop{dom}(p)\) is contained in \(M\).
-            There is, within \(M\), a name \(\dot g\) satisfying that
-             \(\dot f_A(\alpha_n+k) = \dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k)\)
-            for all \(k >\dot g(n)\).
-
-            \bigskip
-
-            We now apply the above Lemma using \(\mu = \mu_0\) and we are now
-            working in the extension \(V[G_\mu]\). We will abuse the notation
-            and use \(\dot f_{[\alpha_n,\alpha_n+\omega)}\) instead of
-              \(\dot f_{[\alpha_n,\alpha_n+\omega)}(G_{\mu})\) as defined in
-              the Lemma.
+            We now apply the above Lemma and work in \(M[G_\mu]\).
             We work for a contradiction. Something special has now happened,
-             namely,  the supports of the names \(\{
+            namely,  the supports of the names \(\{
             \dot f_{[\alpha_n, \alpha_n+\omega)} :  0< n<\omega\}\) are pairwise disjoint
             and also disjoint from the support of the name
-             \(\dot f_{[\lambda,\lambda+\omega)}\) (under the same convention about
-             \(G_\mu\).  And not only that, these names are pairwise isomorphic (in
-             the way that they all map to \(F_M\)).
+            \(\dot f_{[\lambda,\lambda+\omega)}\) (under the same convention about
+            \(G_\mu\).  And not only that, these names are pairwise isomorphic (in
+            the way that they all map to \(F_M\)).
 
 
             \bigskip
@@ -743,7 +763,7 @@ Charlotte, NC 28262}
              Choose \(q_1<q\restriction \lambda\) (in \(M\)) so that
             \[ \varphi_{\mu,\alpha_n}(q_1\restriction \operatorname{supp}(
              \dot f_{[\alpha_n,\alpha_n+\omega)}) =
-            \varphi_{\mu,\lambda}(q\restriction \operatorname{supp}(
+            \varphi(q\restriction \operatorname{supp}(
              \dot f_{[\lambda,\lambda+\omega)}) \]
             and then (again in \(M\)) choose \(q_2 < q_1\)
             so that it both forces a value
@@ -751,7 +771,7 @@ Charlotte, NC 28262}
             and subsequently forces a value \(m\) on
              \(\dot f_{[\alpha_n, \alpha_n+\omega)}(\alpha_n+L+1)\).
             But now, again calculate
-            \[ q_3 = \varphi_{\mu,\lambda}^{-1} \circ \varphi_{\mu,\alpha_n}
+            \[ q_3 = \varphi^{-1} \circ \varphi_{\mu,\alpha_n}
             (q_2\restriction \operatorname{supp}(\dot
             f_{[\alpha_n,\alpha_n+\omega)}))\]
             and, by the isomorphisms, we have that \(q_3\) forces that
@@ -767,7 +787,7 @@ Charlotte, NC 28262}
              \(q(\beta)=e\) and to assume that \(q_3(\beta)\) is defined.
             Since \(q_3(\beta)\) is defined, we have that
             there is a  \(\beta'\in\mathop{dom}(q_2)\) such that \(
-             \varphi_{\mu,\lambda}(\beta) = \varphi_{\mu,\alpha_n}(\beta')\),
+             \varphi(\beta) = \varphi_{\mu,\alpha_n}(\beta')\),
             and that \(q_3(\beta) = q_2(\beta')\).
             But, by definition of \(q_1\), \(\beta'\in\mathop{dom}(q_1)\)
             and even  that \(q_1(\beta') = q(\beta)\).

@@ -15,8 +15,39 @@
 
 \begin{document}
 
+  All spaces are assumed to be Hausdorff. Continuum means ``Hausdorff, compact,
+  and connected''.
+
   \begin{definition}
-    Let a V-map be a u.s.c. idempotent surjection.
+    A generalized inverse limit \(\varprojlim \{X_p, f_{p,q}, D\}\) is a
+    subspace of \(\prod_{p\in D}X_p\) defined for
+    a directed set \(\<D,\leq\>\),
+    topological spaces \(X_p\) for each \(p\in D\),
+    and relations \(f_{p,q}\subseteq X_q\times X_p\) for each
+    \(p,q\in D\) where \(p\leq q\). Elements in  \(\varprojlim \{X, f, D\}\)
+    are the sequences \(\vect x\) such that \(p\leq q\) implies
+    \(\vect x(p)\in f_{p,q}(\vect x(q))\).
+  \end{definition}
+
+  \begin{definition}
+    An uppersemicontinuous (u.s.c.) relation is a closed subset of the
+    square.
+  \end{definition}
+
+  \begin{theorem}[summarized in \cite{VARAGONApreprint}]
+    If \(L\) is totally ordered, \(X_p\) is a continuum for all \(p\in L\),
+    and \(f_{p,q}\) is u.s.c. and continuum-valued for each \(p\leq q\in L\),
+    then \(\varprojlim\{X,f,L\}\) is a continuum.
+  \end{theorem}
+
+  \begin{definition}
+    An idempotent relation on \(X^2\) satisfies \(f[f(x)]=f(x)\) for all
+    \(x\in X\).
+  \end{definition}
+
+  \begin{definition}
+    A V-map \(f\subseteq X^2\) is a continuum-valued u.s.c. idempotent
+    surjection.
   \end{definition}
 
   \begin{definition}
@@ -25,13 +56,9 @@
     \(\<x,x\>,\<y,y\>,\<x,y\>\in f\).
   \end{definition}
 
-  \begin{theorem}
+  \begin{theorem}[\cite{CLONTZVARAGONA}]
     Every V-map on a compact connected LOTS satisfies condition \(\Gamma\).
   \end{theorem}
-
-  This was proven in \cite{CLONTZVARAGONA} for the case \(M\) is a closed
-  interval of real numbers; however, the same proof applies to this more
-  general case.
 
 
 
@@ -39,8 +66,10 @@
 
 \newpage
 
+  Assume \(L\) is a total order.
+
   \begin{definition}
-    For any LOS \(\<L,\leq\>\), let \(\check L\) be the collection of
+    For any total order \(\<L,\leq\>\), let \(\check L\) be the collection of
     leftward subsets of \(L\)
     (subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
     linearly ordered by \(\subseteq\), and let \(\hat L\) be the collection
@@ -49,7 +78,7 @@
   \end{definition}
 
   \begin{proposition}
-    \(\check L\), \(\hat L\) are compact.
+    \(\check L\), \(\hat L\) are compact LOTS.
   \end{proposition}
 
   \begin{proof}
@@ -71,7 +100,7 @@
     If \(L\) is countable, then note that the union of
     \(\mc S=\{((\leftarrow,l),L]:l\in L\}\) and
     \(\mc T=\{[\emptyset,(\leftarrow,l]):l\in L\}\)
-    generates a countable base for \(\check L\).
+    is a countable subbase for \(\check L\).
   \end{proof}
 
   \begin{corollary}
@@ -96,9 +125,8 @@
   \end{example}
 
   \begin{example}
-    For limit ordinals \(\alpha\), \(\hat \alpha\cong \alpha+1\),
-    and for all other infinite ordinals, \(\hat\alpha\cong\alpha\).
-    (The addition of a new least isolated point is of course irrelevant).
+    For finite and limit ordinals \(\alpha\), \(\hat \alpha\cong \alpha+1\),
+    and for all other ordinals, \(\hat\alpha\cong\alpha\).
   \end{example}
 
   \begin{definition}
@@ -190,24 +218,23 @@
 
   \begin{proof}
     Since \(\check\alpha=\alpha+1\) (actually equals, not just homeomorphic!),
-    we get \(\varprojlim^\star \{2, \gamma, \alpha\}
+    we get \(\varprojlim \{2, \gamma, \alpha\}
       \cong \check\alpha =
     \alpha+1\) for free.
-    Note that C and Varagona used this in (TODO create citataion) to break
-    metrizability in uncountable-ordinal-indexed inverse limits (for any V-map
-    there exists a two-point set \(2\) such that \(f\rest 2\supseteq\gamma\),
-    that is, ``\(f\) has condition \(\Gamma\)'').
+    This is essentially what the author and Varagona used
+    in \cite{CLONTZVARAGONA} to break
+    metrizability in uncountable-ordinal-indexed inverse limits.
   \end{proof}
 
   \bigskip
 
-  We may generalize theorem whatevs as follows:
+  We may generalize theorem 15 as follows:
 
-  \begin{theorem} %TODO fix first \sim to use A,B instead of l_0,l_1
+  \begin{theorem}
     If \(M\) is a LOTS with minimum \(0\) and maximum \(1\),
     then \(\varprojlim\{M,\gamma,L\}\cong \hat L\lexTimes M/\sim\),
-    where \(\<(\leftarrow,l_0],1\>\sim\<(\leftarrow,l_1],0\>\) if
-    \(l_0<l_1\) and \((l_0,l_1)=\emptyset\),
+    where \(\<A,1\>\sim\<B,0\>\) if
+    \(A\subsetneq B\) and \((A,B)=\emptyset\),
     and where \(\<A,m\>\sim\<A,m'\>\) if \(A\in\hat L\setminus L\).
   \end{theorem}
 
@@ -229,7 +256,7 @@
     defined induces the topology of the inverse limit, and that \(\theta\)
     is a surjection.
 
-    A basic open set in \(\varprojlim\{M,\gamma,L\}\subseteq L^m\)
+    A basic open set in \(\varprojlim\{M,\gamma,L\}\subseteq L^M\)
     is of the form
     \(\lb U,F \rb\) where \(U(l)\) is an open interval in \(M\) for each
     \(l\in F\in [L]^{<\omega}\), and
@@ -353,19 +380,19 @@
 
 
 
-  We now discard the linear order on \(M\). Denote points in the topological
-  sum \(\bigoplus_{l\in \hat L} M\) of \(\hat L\) copies of \(M\)
-  by the ordered pairs \(\<A,m\>\)
-  for \(A\in \hat L\), \(m\in M\). The previous proof may be generalized to
-  show the following:
+  % We now discard the linear order on \(M\). Denote points in the topological
+  % sum \(\bigoplus_{l\in \hat L} M\) of \(\hat L\) copies of \(M\)
+  % by the ordered pairs \(\<A,m\>\)
+  % for \(A\in \hat L\), \(m\in M\). The previous proof may be generalized to
+  % show the following:
 
-  \begin{theorem}
-    If \(M\) is a Hausdorff space with points \(0\) and \(1\),
-    then \(\varprojlim\{M,\gamma,L\}\cong \bigoplus_{l\in \hat L} M/\sim\),
-    where \(\<(\leftarrow,l_0],1\>\sim\<(\leftarrow,l_1],0\>\) if
-    \(l_0<l_1\) and \((l_0,l_1)=\emptyset\),
-    and where \(\<A,m\>\sim\<A,m'\>\) if \(A\in\hat L\setminus L\).
-  \end{theorem}
+  % \begin{theorem}
+  %   If \(M\) is a Hausdorff space with points \(0\) and \(1\),
+  %   then \(\varprojlim\{M,\gamma,L\}\cong \bigoplus_{l\in \hat L} M/\sim\),
+  %   where \(\<(\leftarrow,l_0],1\>\sim\<(\leftarrow,l_1],0\>\) if
+  %   \(l_0<l_1\) and \((l_0,l_1)=\emptyset\),
+  %   and where \(\<A,m\>\sim\<A,m'\>\) if \(A\in\hat L\setminus L\).
+  % \end{theorem}
 
   % \begin{proof}
   %   Partially order \(M\) by \(0\leq m\leq 1\) for all \(m\in M\).
@@ -506,10 +533,6 @@
   %   %   \<(\leftarrow,l_1],0\>
   %   % \).
   % \end{proof}
-
-
-
-
 
 
 
