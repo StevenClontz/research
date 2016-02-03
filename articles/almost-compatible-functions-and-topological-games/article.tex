@@ -166,8 +166,8 @@ Charlotte, NC 28262}
     Let \(\menGame{X}\) denote the \term{Menger game} with players \(\pl C\),
     \(\pl F\).
     In round \(n\), \(\pl C\) chooses an open cover \(\mc U_n\), followed by
-    \(\pl F\)
-    choosing subset \(F_n\) of \(X\) which may be finitely covered by \(\mc U_n\).
+    \(\pl F\) choosing a
+    subset \(F_n\) of \(X\) which may be finitely covered by \(\mc U_n\).
 
     \(\pl F\) wins the game if \(X = \bigcup_{n<\omega}F_n\),
     and \(\pl C\) wins otherwise.
@@ -180,7 +180,7 @@ Charlotte, NC 28262}
   in \cite{MR1378387}.
   However, it's easily seen that these games are equivalent
   for perfect information strategies (so both characterize
-  the Menger property), and this characterization is
+  the Menger property in the same way), and this characterization is
   more convenient for our concerns.
 
   \begin{definition}
@@ -576,237 +576,280 @@ Charlotte, NC 28262}
   \end{corollary}
 
   But \(CH\) is not required to have \(\alcompS{\aleph_2}\) fail.
-  We take the following lemma from Kunen.
-
- \begin{lemma}[\cite{MR597342}]
-    Assume that \(G\subset \operatorname{Fn}(\omega_2,2)\) is a generic filter
-    over a model \(M\),
-    and let \(\mu\in \omega_2\). Then the generic extension \(M[G]\) can be
-    regarded as forcing with
-    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\) over the model \(M[G_\mu]\).
-    Let \(\dot n,\ddot n\) be a
-    \(\operatorname{Fn}(\omega_2,2)\)-,
-    \(\operatorname{Fn}(\omega_2\setminus\mu,2)\)-name respectively for each
-    \(n<\omega\). Then for each \(\operatorname{Fn}(\omega_2,2)\)-name \(\dot A\)
-    for \(A\subseteq\omega\), there is a canonical
-    \(\operatorname{Fn}(\omega_2\setminus \mu, 2)\)-name
-    \[
-      \ddot A
-        =
-      \{
-        (\ddot n,p\rest [\mu,\omega_2))
-      :
-        (\dot n,p)\in \dot A
-      \}
-    \]
-    which satisfies
-    \(
-      A
-        =
-      \operatorname{val}(\dot A,G)
-        =
-      \operatorname{val}(\ddot A,G_\mu)
-    \).
-  \end{lemma}
 
 
-  \begin{theorem}
-    There exists a model of \(ZFC\) for which \(\mf c=\aleph_2\)
-    and \(\neg\alcompS{\aleph_2}\).
-  \end{theorem}
 
-  \begin{proof}
-    The forcing poset is \(\mb P=\operatorname{Fn}(\omega_2, 2)\).
-    Let \(\{ \dot f_{A} : A\in [\omega_2]^\omega\}\) be a family of
-    \(\mb P\)-names such that \(f_{A}\) is a one-to-one function from \(A\)
-    into \(\omega\) in the ground model. Let \(M\) be an elementary submodel
-    of \(ZFC+CH\) containing all its countable subsets, containing \(\mb P\),
-    and satisfying \(|M|=\omega_1 =\mathfrak c\).
+            The forcing extension of a model $M$ by a poset $\mathbb P\in M$ is
+            obtained simply by evaluating all $\mathbb P$-names from $M$ by a
+            generic filter $G$.
+             A set $\tau$ is a $\mathbb P$-name if $\tau$ is a
+             (possibly empty)
+            set of ordered pairs $(\sigma,p)$ where $p\in \mathbb P$ and
+             $\sigma$ is also itself a $\mathbb P$-name.
+            If $G$ is a $\mathbb P$-generic filter, then
+             $\val_G(\tau) $ is defined to equal
+              $\{ \val_G(\sigma) : ~~(\exists p\in G)~~(\sigma,p)\in \tau\}$.
 
-    Let \(\lambda\) be the ordinal \(M\cap \omega_2\). For
-    \(\alpha\leq\lambda\) we may assume
-    \(
-      \dot f_{[\alpha,\alpha+\omega)}
-        =
-      \{
-        ((\alpha+k_p,m_p)^\cdot, p)
-      :
-        p\in C_\alpha
-      \}
-    \)
-    for some countable \(C_\alpha\subseteq\operatorname{Fn}(\omega_2,\omega)\).
-    Let
-    \(
-      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
-        =
-      \bigcup_{p\in C_\alpha}\operatorname{dom} p
-    \).
+            If $x\in M$, then the canonical
+            $\mathbb P$-name, $\check x$, is generally, and recursively,
+             taken to be
+             $\{ (\check y, 1) : y\in x\}$ where $1$ is the maximum element of
+             $\mathbb P$.  However, it will be convenient to consider, when the
+            context is clear, $(x,p)$ (for any $p\in \mathbb P$)
+            to be a kind of $\mathbb P$-name.
+            In particular
+            if $\tau \subset X\times \mathbb P$ (for some fixed $X\in M$),
+            then we may let $\tau[G] = \{ x : ~~(\exists p\in
+            G)~~(x,p)\in\tau\}$.
 
-    For each \(\alpha\leq\lambda\),
-    let \(\delta_{\alpha}\) denote the order type of
-    \(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})\setminus \alpha\),
-    and when \(\mu\leq\alpha\) and
-    \(
-      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
-        \cap
-      \alpha
-        \subseteq
-      \mu
-    \)
-    let \(\varphi'_{\mu,\alpha}\) be the order-preserving bijection from
-    \(
-      \mu\cup
-      \left(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
-        \setminus
-      \alpha\right)
-    \)
-    onto the ordinal \(\mu+\delta_\alpha\).
-    This lifts canonically to an order-preserving bijection
-    \(
-      \varphi_{\mu,\alpha}
-        :
-      \operatorname{Fn}(\mu\cup
-        \left(\operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
-          \setminus
-        \alpha\right)
-      ,2)
-        \to
-      \operatorname{Fn}(\mu+\delta_\alpha,2)
-    \).
 
-    We now fix \(\mu<\lambda\) such that
-    \[
-      \bigcup_{\alpha\leq\lambda}
-      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
-        \cap
-      \alpha
-        \subseteq
-      \mu
-    \]
-    (TODO how?) and define the \(\mb P\)-name
-    \[
-      F
-      %   =
-      % \varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})
-        =
-      \{
-        ((\lambda+k_p,m_p)^\cdot,\varphi_{\mu,\lambda}(p))
-      :
-        ((\lambda+k_p,m_p)^\cdot,p)\in\dot f_{[\lambda,\lambda+\omega)}
-      \}
-    .\]
+            Thus,  $\val_G(\tau)$ will denote the recursive evaluation by $G$ and
+             $\tau[G]$ will be defined as above.
+            In fact, if $\tau\in M$ is any set then each of
+             $\val_G(\tau)$ and $\tau[G]$ are well defined.
+            It is a standard convention to use a dotted letter, such
+            as $\dot x$, to indicate that we are discussing a $\mathbb P$-name.
 
-    So in \(M\), we may reason (TODO why)
-    that for each \(\beta<\omega_2\) there exists
-    some \(\alpha\in\omega_2\setminus\beta\) where
-    \[
-      \operatorname{supp}(\dot f_{[\alpha,\alpha+\omega)})
-      \cap \alpha\subseteq \mu
-    \]
-    and
-    \[
-      F
-        =
-      \{
-        ((\alpha+k_p,m_p)^\cdot,\varphi_{\mu,\alpha}(p))
-      :
-        ((\alpha+k_p,m_p)^\cdot,p)\in\dot f_{[\alpha,\alpha+\omega)}
-      \}
-    .\]
+            One says that a condition $p\in \mathbb P$ forces a statement
+            $\varphi$
+              to hold, denoted $p\Vdash \varphi$,
+            if that statement holds in $M[G]$ for all $\mathbb P$-generic filters
+            with $p\in G$. The forcing theorem states that if $M[G]\models
+            \varphi$,
+             then there is some $p\in G$ forcing that $\varphi$ holds.
+            The following is an immediate consequence of the forcing theorem.
 
-    But now, this means not only is there an \(\alpha<\lambda\) such that
-    \( F = \varphi(\dot f_{[\alpha,\alpha+\omega)})\),
-    but also that there is an increasing sequence
-    \(\{\alpha_\xi : \xi  \in \omega_1\}\subseteq \lambda\)
-    satisfying that \(F=\varphi(\dot f_{[\alpha_\xi,\alpha_\xi+\omega)})\) and
-    \(\operatorname{supp}(\dot f_{[\alpha_\xi,\alpha_\xi+\omega)})\) is
-    contained in \(\alpha_{\xi+1}\) (TODO why not \(\mu\)?).
+            \begin{lemma*} If $X\in M$ and $\dot x$ is a $\mathbb P$-name,
+            then\label{easyname}
+             there is a $\tau\subset X\times \mathbb P$, such that
+            for any generic $G$, $\tau[G] = X\cap \val_G(\dot x)$.
+            \end{lemma*}
 
-    Choose such a sequence, and let
-    \(A = \bigcup_{0<n<\omega} [\alpha_n,\alpha_n+\omega)\). Consider
-    the name \(\dot f_A\) in \(M\). Note all the \(((\beta,m)^\cdot, p)\)
-    appearing in \(\dot f_A\) have the property that
-    \(\operatorname{dom}(p)\) is contained in \(M\) (QUESTION: isn't the
-    domain of any member of \(\mb P\) in the domain?)
-    There is, within \(M\), a name \(\dot g\) satisfying that
-     \(\dot f_A(\alpha_n+k) = \dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k)\)
-    for all \(k >\dot g(n)\) (TODO: why?).
+            In other words, the family of subsets of any $X\in M$ in
+            the extension $M[G]$ is equal to
+             $\{ \tau[G] : \tau \subset X\times \mathbb P, \ \
+            \tau\in M\ \}$.  We will be using
+            the forcing poset is $\operatorname{Fn}(\omega_2, 2)$.
+            The elements of this poset are all the finite partial functions
+            from $\omega_2$ into $2$ ordered by reverse inclusion.
+            It follows that, for any $\lambda\in \omega_2$,
+             each of
+             $\operatorname{Fn}(\lambda,2)$ and $\operatorname{Fn}(\omega_2\setminus
+             \lambda,2)$ are subposets. For any
+             $\operatorname{Fn}(\omega_2,2)$-generic
+            filter  $G$, it easily follows that $G_\lambda = G\cap
+            \operatorname{Fn}(\lambda,2)$ and
+             $G^\lambda = G\cap
+            \operatorname{Fn}(\omega_2\setminus
+             \lambda,2)$ are also generic filters. But a much stronger statement is
+             true.
 
-    (TODO catch up to here)
+            \begin{lemma*}\cite{MR597342}
+            Assume that $G\subset \operatorname{Fn}(\omega_2,2)$ is a
+             generic\label{factor} filter,
+             and let $\lambda\in \omega_2$. Then the final model $M[G]$
+            is equal to $(M[G_\lambda])[G^\lambda]$ in the sense that
+            $G^\lambda$ is a $\operatorname{Fn}(\omega_2\setminus \lambda,
+             2)$-generic filter   over the model $M[G_\lambda]$.
 
-            We now apply the above Lemma and work in \(M[G_\mu]\).
+            In addition, for each $X\in M$ and name $\dot A\subset
+            X\times \operatorname{Fn}(\omega_2,2)$, we get that
+             \[ (\dot A(G_\lambda))[G^\lambda] = \dot A [G]\ \ \mbox{where}\
+            \dot A(G_\lambda) =
+             \{ (x,p\restriction [\lambda,\omega_2))  :
+             (x,p)\in \dot A\ \ \mbox{and} \ \ p\restriction \lambda\in G_\lambda\}
+            \]
+            \end{lemma*}
+
+
+            With these lemmas in hand we are ready to prove the theorem. The idea
+            of the proof comes from  Kunen's result about no $\omega_2$ length mod
+            finite chains of subset of $\omega$. We consider any  family of
+            names  of suitable one-to-one functions from countable subsets of
+            $\omega_2$ into $\omega$. We identify a large enough $\lambda\in \omega_2$
+            so that a pattern has emerged and we pass to the model $M[G_\lambda]$. We
+            then show that this pattern can not continue out to $\omega_2$.
+
+            \begin{theorem} There exists a model of ZFC for which
+             $\mathfrak c=\aleph_2$ and $\lnot \mathcal A(\aleph_2)$.
+            \end{theorem}
+
+            \begin{proof}
+            We start with a model $M$ of GCH and suppose that $G$ is a
+            $\operatorname{Fn}(\omega_2,2)$-generic filter. The argument takes
+            place in $M$.
+            Let $\{ \dot f_{A} : A\in [\omega_2]^\omega\}$ be a family of
+            names (in $M$)
+             such that, for any generic $G$ and each $A\in [\omega_2]^\omega\cap
+             M$,
+             $\dot f_{A}[G]$ is a one-to-one function from $A$ into
+            $\omega$.  We also assume that whenever $B\subset A$ are members of
+            $[\omega_2]^\omega$, we have that $\dot f_{B}[G]\subset^* \dot
+            f_{A}[G]$. If we now obtain a contradiction
+            then we will have shown that $\mathcal A(\aleph_2)$ fails.
+
+            By \cite[1.5]{MR1031969}, there is a set $H\subset H(\aleph_3)$
+            such that the family $\{ \dot f_{A} : A\in [\omega_2]^{\omega}\}$ is an
+            element of $H$,  $H$ is an elementary submodel of
+            $ H(\aleph_3)$, $H$ has cardinality
+            $\aleph_1$, and $H^\omega\subset H$ (every
+             countable subset of $H$ is an element of $H$).
+
+
+
+            Let $\lambda = H\cap \omega_2$ (same as the supremum of $H\cap
+            \omega_2$). Consider the name  $\dot f_{[\lambda,\lambda+\omega)}$.
+            What is such a name?  By Lemma \ref{easyname},
+            we can assume that it is a set of pairs
+             of the form $( (\lambda+k,m), p)$ where $p\in \mathop{Fn}(\omega_2,
+             2)$ and, of course, $k,m\in \omega$.
+            Furthermore,  for each $k,m$ it is enough
+            (see \cite[5.11,5.12]{MR597342})
+            to take a  countable set of such $p$ to get an equivalent
+            (\textit{nice}\/) name.
+            Given any such nice name $\dot f$, let $\operatorname{supp}(\dot f)$
+            denote the union of the domains of conditions $p$ appearing in the
+            name.
+
+             Now let $Y$ equal $\operatorname{supp}(\dot
+             f_{[\lambda,\lambda+\omega)})\setminus \lambda$. Furthermore,
+             fix any $\mu\in \lambda\subset H$ such that
+               $\operatorname{supp}(\dot
+             f_{[\lambda,\lambda+\omega)})\cap \lambda$ is contained in $\mu$.
+             Let $\delta\in \omega_1$ denote the order type of
+             $Y$ and let  $\varphi_{\mu,\lambda}$ be the order-preserving function
+             from  $\mu\cup Y$ onto  the ordinal $\mu+\delta$.  This lifts
+             canonically to
+            an order-preserving bijection $\varphi_{\mu,\lambda}:
+            \operatorname{Fn}(\mu\cup Y,2) \mapsto
+            \operatorname{Fn}(\mu+\delta,2)$.
+            Now fix any  $\mu<\lambda$ so that
+             $\operatorname{supp}(\dot
+             f_{[\lambda,\lambda+\omega)})\cap \lambda\subset \mu$.
+            We can similarly make sense of the name
+             $\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$, call it $F_H$.
+            Here simply, for each tuple $(\,(k,m), p)\in \dot
+            f_{[\lambda,\lambda+\omega)}$,
+             we have that $(\,(k,m),\varphi_{\mu,\lambda}(p))$ is in $F_H$.
+            Again, let $\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$
+            be interpreted in the above sense as giving $F_H$ (which is an element
+            of $H$).
+
+
+             Other values
+            replacing $\lambda>\mu$ will result in their own set $Y$
+            and canonical map $\varphi_{\mu,\lambda}$.
+            Now the object $F_H$ is an
+            element of $H$, and $H$ believes this statement is true:
+            $$
+            (\forall \beta\in\omega_2)~ (\exists \lambda\in \omega_2\setminus \beta)~~~
+            \operatorname{supp}(\dot f_{[\lambda,\lambda+\omega)})
+            \cap \lambda\subset \mu \ \ \mbox{and}\ \
+            F_H = \varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$$
+
+
+            But now, this  means that,
+            not only is there  an $\alpha\in H$,
+            $ F_H = \varphi_{\mu,\alpha}(\dot f_{[\alpha,\alpha+\omega)})$
+            but also that there is an increasing sequence
+             $\{\alpha_\xi : \xi  \in \omega_1\}\subset \lambda$ of
+             such $\alpha$'s satisfying that, for each $\xi$
+            we have that $\operatorname{supp}(\dot
+            f_{[\alpha_\xi,\alpha_\xi+\omega)})$ is contained in $\alpha_{\xi+1}$.
+
+            Choose such a sequence.
+             This means that if we let $A = \bigcup_{n>0} [\alpha_n,\alpha_n+\omega)$ we
+             have the name $\dot f_A$ in $H$. This then means that all
+             the $( (\beta,m) , p)$ appearing in (the nice name)
+            $\dot f_A$ have the property
+             that $\mathop{dom}(p)$ is contained in $H$.
+            There is, also within $H$, a name $\dot g$ satisfying that
+             $\dot f_A(\alpha_n+k) = \dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k)$
+            for all $k >\dot g(n)$,
+            or more precisely,
+             $\dot g\subset (\omega\times\omega) \times
+             \operatorname{Fn}(\omega_2,2)$ satisfies that
+             $\dot g[G]\in \omega^\omega$ and
+              $\dot f_{A}[G](\alpha_n+k) = \dot
+              f_{[\alpha_n,\alpha_n+\omega)}[G](\alpha+k)$
+            for all $k>\dot g[G](n)$.
+
+
+
+
+            We now apply  Lemma \ref{factor} and we are now
+            working in the extension $M[G_\mu]$.
             We work for a contradiction. Something special has now happened,
-            namely,  the supports of the names \(\{
-            \dot f_{[\alpha_n, \alpha_n+\omega)} :  0< n<\omega\}\) are pairwise disjoint
+             namely,  the supports of the names $\{
+            \dot f_{[\alpha_n, \alpha_n+\omega)} (G_\mu):  0< n<\omega\}$ are pairwise disjoint
             and also disjoint from the support of the name
-            \(\dot f_{[\lambda,\lambda+\omega)}\) (under the same convention about
-            \(G_\mu\).  And not only that, these names are pairwise isomorphic (in
-            the way that they all map to \(F_M\)).
+             $\dot f_{[\lambda,\lambda+\omega)}(G_\mu)$.
+             And not only that, these names are pairwise isomorphic (in
+             the way that they all map to $F_H$).
 
 
-            \bigskip
 
-            Since \(A\) is disjoint from \([\lambda,\lambda+\omega)\),
-            there must be an integer \(\ell\)
+
+
+
+             Since $A$ is disjoint from $[\lambda,\lambda+\omega)$,
+            there must be an integer $\ell$
             together with a condition
-             \(q\in \mathop{Fn}(\omega_2\setminus \mu,2)\) satisfying that for all
-             \(n>\ell\) , \(q\) forces that
+             $q\in \mathop{Fn}(\omega_2\setminus \mu,2)$ satisfying that for all
+             $n>\ell$ , $q$ forces that
 
             \centerline{
-             ``if \(k>\dot g(n)\) (since  \(\alpha_n+k\in A\)) then
-             \(\dot f_{[\alpha_n,\alpha_n+\omega)}(\alpha_n+k) \neq
-            \dot f_{[\lambda,\lambda+\omega)}(\lambda +k)\)''.}
+             ``if $k>\dot g(n)$ then
+             $(\dot f_{[\alpha_n,\alpha_n+\omega)}(G_\mu))(\alpha_n+k) \neq
+            (\dot f_{[\lambda,\lambda+\omega)}(G_\mu))(\lambda +k)$''.}
 
-            Choose \(n\) large enough so that \(\mathop{dom}(q) \cap [\alpha_n,
-            \mu_{n+1})\) is
+            Choose $n>\ell$ large enough so that $\mathop{dom}(q) \cap [\alpha_n,
+            \alpha_{n+1})$ is
             empty.
-             Choose \(q_1<q\restriction \lambda\) (in \(M\)) so that
-            \[ \varphi_{\mu,\alpha_n}(q_1\restriction \operatorname{supp}(
+             Choose $q_1<q\restriction \lambda$ (in $H$) so that
+            $$ \varphi_{\mu,\alpha_n}(q_1\restriction \operatorname{supp}(
              \dot f_{[\alpha_n,\alpha_n+\omega)}) =
-            \varphi(q\restriction \operatorname{supp}(
-             \dot f_{[\lambda,\lambda+\omega)}) \]
-            and then (again in \(M\)) choose \(q_2 < q_1\)
+            \varphi_{\mu,\lambda}(q\restriction \operatorname{supp}(
+             \dot f_{[\lambda,\lambda+\omega)}) $$
+            and then (again in $H$) choose $q_2 < q_1$
             so that it both forces a value
-             \(L\) on \(\ell+\dot g(n)\)
-            and subsequently forces a value \(m\) on
-             \(\dot f_{[\alpha_n, \alpha_n+\omega)}(\alpha_n+L+1)\).
+             $L$ on $\ell+\dot g(n)$
+            and subsequently forces a value $m$ on
+             $\dot f_{[\alpha_n, \alpha_n+\omega)}(\alpha_n+L+1)$.
             But now, again calculate
-            \[ q_3 = \varphi^{-1} \circ \varphi_{\mu,\alpha_n}
+            $$ q_3 = \varphi_{\mu,\lambda}^{-1} \circ \varphi_{\mu,\alpha_n}
             (q_2\restriction \operatorname{supp}(\dot
-            f_{[\alpha_n,\alpha_n+\omega)}))\]
-            and, by the isomorphisms, we have that \(q_3\) forces that
-             \(\dot f_{[\lambda,\lambda+\omega)}(\lambda+L+1) = m\).
+            f_{[\alpha_n,\alpha_n+\omega)}))$$
+            and, by the isomorphisms, we have that $q_3$ forces that
+             $\dot f_{[\lambda,\lambda+\omega)}(\lambda+L+1) = m$.
 
             Technically (or with more care)  all of this is taking place in the
-            poset \(\operatorname{Fn}(\omega_2\setminus \mu,2)\) and this means
-            that \(q_3\) and \(q\) are all compatible with each other.
+            poset $\operatorname{Fn}(\omega_2\setminus \mu,2)$ and this means
+            that $q_3$ and $q$ are  with each other.
+            To verify this it suffices to consider
+             $q(\beta)=e$ and to assume that $q_3(\beta)$ is defined.
+            Since $q_3(\beta)$ is defined, we have that
+            there is a  $\beta'\in\mathop{dom}(q_2)$ such that $
+             \varphi_{\mu,\lambda}(\beta) = \varphi_{\mu,\alpha_n}(\beta')$,
+            and that $q_3(\beta) = q_2(\beta')$.
+            But, by definition of $q_1$, $\beta'\in\mathop{dom}(q_1)$
+            and even  that $q_1(\beta') = q(\beta)$.
+             Then, since $q_2<q_1$, we have that $q_2(\beta')=q_1(\beta') =
+             q(\beta)$. This completes the circle that $q_3(\beta) = q(\beta)$.
 
 
-            Follow
-            the bouncing ball: it suffices to consider
-             \(q(\beta)=e\) and to assume that \(q_3(\beta)\) is defined.
-            Since \(q_3(\beta)\) is defined, we have that
-            there is a  \(\beta'\in\mathop{dom}(q_2)\) such that \(
-             \varphi(\beta) = \varphi_{\mu,\alpha_n}(\beta')\),
-            and that \(q_3(\beta) = q_2(\beta')\).
-            But, by definition of \(q_1\), \(\beta'\in\mathop{dom}(q_1)\)
-            and even  that \(q_1(\beta') = q(\beta)\).
-             Then, since \(q_2<q_1\), we have that \(q_2(\beta')=q_1(\beta') =
-             q(\beta)\). This completes the circle that \(q_3(\beta) = q(\beta)\).
-            \bigskip
-
-            Finally, our contradiction is that \(q_3\cup q_2\cup q\)
+            Finally, our contradiction is that $q_3\cup q_2\cup q$
             forces that
-             \(k=L+1\) violates the quoted statement above.
+             $k=L+1$ violates the quoted statement above.
             \end{proof}
 
 
   We are also able to force \(\alcompSP{\kappa}\) to fail for every cardinal
   other than the first \(\omega\)-many we've already guaranteed.
 
-\begin{theorem} It follows from the existence of a $2$-huge cardinal
-that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
-\end{theorem}
+            \begin{theorem} It follows from the existence of a $2$-huge cardinal
+            that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
+            \end{theorem}
 
             \begin{proof}
             We will need the model constructed in \cite{MR1045371} in
@@ -841,7 +884,7 @@ that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
             (\kappa^{+\omega+1},\kappa^{+\omega})$ holds. There is no loss of
             generality to  also assume that GCH holds in this model.
 
-            \bigskip
+
 
             Let $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$
             be a scale in $\Pi\{ \lambda^{+n+1} : n\in \omega\}$
@@ -863,7 +906,7 @@ that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
             $\{ h_\xi : \xi \in \lambda^{+\omega+1}\}$  remains cofinal in
              $\Pi\{ \lambda^{+n+1} : n\in \omega\}$.
 
-            \bigskip
+
 
             The forcing notion $\mathbb P_0$ is simply the finite condition
             collapse of $\kappa^{+\omega}$, i.e. $\mathbb P_0 = \left(
@@ -881,9 +924,9 @@ that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
              $\omega_2$ is the ordinal $\lambda$, and $\omega_\omega$ is the
              ordinal $\left(\lambda^{+\omega}\right)^V$.
 
-            \bigskip
 
-            \newpage
+
+
 
             Now we assume that we have an assignment $\dot f_{\dot A}$ of a
              $\mathbb P_0*\mathbb P_1$-name of a finite-to-one function from
@@ -1386,8 +1429,10 @@ that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
   our results have revealed that we cannot hope to find a \(ZFC\)
   counterexample where \(X=\oneptlind\kappa\). This is
   because if we also assume \(V=L\), it follows that
-  \(\alcompSP{\kappa}\) and therefore \(\pl F\kmarkwin2\menGame{X}\)
-  for every cardinal. Although, one may consider the following weaker question.
+  \(\alcompSP{\kappa}\) and therefore
+  \(\pl F\kmarkwin2\menGame{\oneptlind\kappa}\)
+  for every cardinal \(\kappa\).
+  Although, one may consider the following question.
 
   \begin{question}
     Is there a model of \(ZFC\) where both
@@ -1396,11 +1441,6 @@ that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
   \end{question}
 
 
-
-
-  % \section{Generalized Kurepa families and almost-compactible functions}
-
-  % TODO
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
