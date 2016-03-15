@@ -23,22 +23,35 @@
     subspace of \(\prod_{p\in D}X_p\) defined for
     a directed set \(\<D,\leq\>\),
     topological spaces \(X_p\) for each \(p\in D\),
-    and relations \(f_{p,q}\subseteq X_q\times X_p\) for each
-    \(p,q\in D\) where \(p\leq q\). Elements in  \(\varprojlim \{X, f, D\}\)
+    and bonding relations \(f_{p,q}\subseteq X_q\times X_p\) for each
+    \(p,q\in D\) where \(p\leq q\). Elements in
+    \(\varprojlim \{X_p, f_{p,q}, D\}\)
     are the sequences \(\vect x\) such that \(p\leq q\) implies
     \(\vect x(p)\in f_{p,q}(\vect x(q))\).
   \end{definition}
 
   \begin{definition}
-    An uppersemicontinuous (u.s.c.) relation is a closed subset of the
-    square.
+    An left-total relation on \(X\times Y\) satisfies
+    \(\forall x\in X\exists y\in Y(\<x,y\>\in f)\).
+  \end{definition}
+
+  \begin{definition}
+    A left-total relation which is a closed subset of the rectangle
+    \(X\times Y\) is called upper-semicontinuous or u.s.c.
+    (Equivalently, its corresponding set-valued map \(X\to C(Y)\)
+    is continuous.)
   \end{definition}
 
   \begin{theorem}[summarized in \cite{VARAGONApreprint}]
     If \(L\) is totally ordered, \(X_p\) is a continuum for all \(p\in L\),
     and \(f_{p,q}\) is u.s.c. and continuum-valued for each \(p\leq q\in L\),
-    then \(\varprojlim\{X,f,L\}\) is a continuum.
+    then \(\varprojlim\{X_p,f_{p,q},L\}\) is a continuum.
   \end{theorem}
+
+  \begin{definition}
+    An surjective relation on \(X\times Y\) satisfies
+    \(\forall y\in Y\exists x\in X(\<x,y\>\in f)\).
+  \end{definition}
 
   \begin{definition}
     An idempotent relation on \(X^2\) satisfies \(f[f(x)]=f(x)\) for all
@@ -46,18 +59,22 @@
   \end{definition}
 
   \begin{definition}
-    A V-map \(f\subseteq X^2\) is a continuum-valued u.s.c. idempotent
-    surjection.
+    A u.s.c. idempotent surjective relation
+    \(f\subseteq X^2\) is called a V-relation.
   \end{definition}
 
   \begin{definition}
-    A u.s.c. map \(f\subseteq X^2\)
+    A continuum-valued V-relation is called a CV-relation.
+  \end{definition}
+
+  \begin{definition}
+    A relation \(f\subseteq X^2\)
     satisfies condition \(\Gamma\) if there exists \(x,y\in X\) such that
     \(\<x,x\>,\<y,y\>,\<x,y\>\in f\).
   \end{definition}
 
   \begin{theorem}[\cite{CLONTZVARAGONA}]
-    Every V-map on a compact connected LOTS satisfies condition \(\Gamma\).
+    Every CV-relation on a compact connected LOTS satisfies condition \(\Gamma\).
   \end{theorem}
 
 
@@ -72,9 +89,9 @@
     For any total order \(\<L,\leq\>\), let \(\check L\) be the collection of
     leftward subsets of \(L\)
     (subsets for which \(b\in L,a\leq b\Rightarrow a\in L\))
-    linearly ordered by \(\subseteq\), and let \(\hat L\) be the collection
+    totally ordered by \(\subseteq\), and let \(\hat L\) be the collection
     of left-closed subsets of \(L\) (leftward subsets which are closed)
-    linearly ordered by \(\subseteq\).
+    totally ordered by \(\subseteq\).
   \end{definition}
 
   \begin{proposition}
@@ -83,7 +100,7 @@
 
   \begin{proof}
     Each subset \(S\) has an infimum \(\cap S\) and a supremum \(\cup S\)
-    (or \(\cl(\cap S)\)).
+    (or \(\cl(\cup S)\)).
   \end{proof}
 
   \begin{theorem}
@@ -131,12 +148,12 @@
 
   \begin{definition}
     For any space \(M\) containing the points \(0\) and \(1\),
-    let \(\gamma\) be the surjective u.s.c. map on \(K\) where
+    let \(\gamma\) be the V-relation on \(K\) where
     \(\gamma(0)=M\) and \(\gamma(t)=\{1\}\)
     for \(t\not=0\).
   \end{definition}
 
-  Note when \(M\) is a Hausdorff continuum, then \(\gamma\) is a V-map.
+  Note when \(M\) is a Hausdorff continuum, then \(\gamma\) is a CV-relation.
   It's usually assumed \(0\) is the minimum and \(1\) is the maximum
   when \(M\) is a LOTS.
 
