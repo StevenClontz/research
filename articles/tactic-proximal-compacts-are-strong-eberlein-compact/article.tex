@@ -306,14 +306,15 @@ Charlotte, NC 28262}
     \(\pl D \win \bellAbsConGame{X}\).
   \end{theorem}
 
-  So all proximal compacts are absoluately proximal compacts.
+  So all proximal compacts are absolutely proximal compacts.
 
 
 \section{Limited information analogues}
 
   \begin{definition}
     A \term{\(k\)-tactical strategy} or \term{\(k\)-tactic}
-    is a strategy which considers only the most recent move of the opponent.
+    is a strategy which considers only the \(k\) most recent
+    moves of the opponent.
 
     If \(\pl P\) has a winning \(k\)-tactic for a game \(G\), we write
     \(\pl P\ktactwin{k} G\). If omitted, assume \(k=1\).
@@ -321,8 +322,8 @@ Charlotte, NC 28262}
 
   \begin{definition}
     A \term{\(k\)-Markov strategy} or \term{\(k\)-mark} is a strategy
-    which considers only the round number and most recent move of the
-    opponent.
+    which considers only the round number and the \(k\)
+    most recent moves of the opponent.
 
     If \(\pl P\) has a winning \(k\)-mark for a game \(G\), we write
     \(\pl P\kmarkwin{k} G\). If omitted, assume \(k=1\).
@@ -532,7 +533,8 @@ Charlotte, NC 28262}
     is a winning \(k\)-mark for \(\pl O\) in \(\gruConGame{X}{x}\).
   \end{proof}
 
-\subsection{Products and strengthenings of compactness}
+  The motivation for this paper follows from the following results
+  characterizing compact proximal spaces as Corson compact spaces.
 
   \begin{definition}
     Let \(X_\alpha\) be a topological space for \(\alpha<\kappa\)
@@ -548,7 +550,8 @@ Charlotte, NC 28262}
         |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|\leq\omega
       \right\}
     \]
-    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    When \(X_\alpha=X\) contains a point \(0\)
+    and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
     then we write \(\SigmaPower{X}{\kappa}=\SigmaProd_{\alpha<\kappa}^z X\).
   \end{definition}
 
@@ -571,7 +574,7 @@ Charlotte, NC 28262}
   \end{corollary}
 
   Nyikos asked if the result could be reversed, which the author answered
-  with Gary Gruenhage in \cite{MR3227201} in the affirmative.
+  with Gary Gruenhage in \cite{MR3227201} affirmatively.
 
   \begin{theorem}
     A compact space \(X\) is Corson compact if and only if it is
@@ -619,13 +622,14 @@ Charlotte, NC 28262}
         <\omega
       \right\}
     \]
-    When \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write
+    When \(X\) contains a point \(0\) and
+    \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    we write
     \(\SigmaStarPower{X}{\kappa}=\SigmaStarProd_{\alpha<\kappa}^z X\).
   \end{definition}
 
-  Just as \(\Sigma\) products preserve winning perfect-information strategies,
-  we will show that \(\Sigma^\star\) products preserve winning
+  Just as \(\Sigma\)-products preserve winning perfect-information strategies,
+  we will show that \(\Sigma^\star\)-products preserve winning
   Markov strategies.
 
   \begin{definition}
@@ -1000,7 +1004,7 @@ Charlotte, NC 28262}
     such that
     \(\supp(x)=\{\beta(x,n):n<\omega\}\).
 
-    Choose an arbitrary \(x_\emptyset\in X\) and \(\epsilon_0>0\), and
+    Choose an arbitrary \(x_\emptyset\in X\) and \(\epsilon_0>0\),
     and let \(A_0=\emptyset\).
 
     Suppose then that for some \(n<\omega\),
@@ -1101,7 +1105,8 @@ Charlotte, NC 28262}
           we have
           \(\pl D\nottactwin \bellConGame{X}\).
       \end{enumerate}
-    Thus \(X\) is not tactic-proximal.
+    Thus \(X\) is not tactic-proximal. Corollary 2.29 gives the other
+    direction.
   \end{proof}
 
 \section{Comparing \(\bellConGame{X}\) and \(\gruConGame{X^2}{\Delta}\)}
@@ -1159,7 +1164,8 @@ Charlotte, NC 28262}
           V_{1/2^n}
         \]
     \end{enumerate}
-    Finally, recall that \(\pl D\nottactwin\bellConGame{X}\)
+    Finally, it follows from Lemmas 2.30 and 2.31
+    that \(\pl D\nottactwin\bellConGame{X}\)
     when \(X\) is non-scattered Corson compact.
   \end{proof}
 
