@@ -550,9 +550,10 @@ Charlotte, NC 28262}
         |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|\leq\omega
       \right\}
     \]
-    When \(X_\alpha=X\) contains a point \(0\)
+    When \(0\in X=X_\alpha\)
     and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write \(\SigmaPower{X}{\kappa}=\SigmaProd_{\alpha<\kappa}^z X\).
+    then we write
+    \(\SigmaPower{X}{\kappa}=\SigmaProd_{\alpha<\kappa}^z X_\alpha\).
   \end{definition}
 
   \begin{theorem}[\cite{MR3239205}]
@@ -606,13 +607,13 @@ Charlotte, NC 28262}
     Let \(X\) be a metrizable space with
     compatible metric \(d\), and let \(z\in X^\kappa\).
     The \term{\(\Sigma^\star\)-product}
-    \(\SigmaStarProd_{\alpha<\kappa}^{z}X\)
+    \(\SigmaStarProd_{\kappa}^{z}X\)
     with base point \(z\) is given by
     \[
-      \SigmaStarProd_{\alpha<\kappa}^{z}X
+      \SigmaStarProd_{\kappa}^{z}X
         =
       \left\{
-        x\in \prod_{\alpha<\kappa}X
+        x\in X^\kappa
       :
         n<\omega
       \Rightarrow
@@ -622,10 +623,10 @@ Charlotte, NC 28262}
         <\omega
       \right\}
     \]
-    When \(X\) contains a point \(0\) and
+    When \(0\in X\) and
     \(z(\alpha)=0\) for all \(\alpha<\kappa\),
     we write
-    \(\SigmaStarPower{X}{\kappa}=\SigmaStarProd_{\alpha<\kappa}^z X\).
+    \(\SigmaStarPower{X}{\kappa}=\SigmaStarProd_{\kappa}^z X\).
   \end{definition}
 
   Just as \(\Sigma\)-products preserve winning perfect-information strategies,
@@ -688,11 +689,11 @@ Charlotte, NC 28262}
 
   \begin{theorem}
     For any metrizable space \(X\) and \(z\in X^\kappa\),
-    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\kappa}^z X}\).
   \end{theorem}
 
   \begin{proof}
-    For \(x\in\SigmaStarProd_{\alpha<\kappa}^z X\), let
+    For \(x\in\SigmaStarProd_{\kappa}^z X\), let
       \[
         \supp_n(x)
           =
@@ -710,12 +711,12 @@ Charlotte, NC 28262}
       \[
         \tau(\emptyset,0)
           =
-        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+        \left(\SigmaStarProd_{\kappa}^z X\right)^2
       \]
       \[
         \tau(\<p\>,n+1)
           =
-        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+        \left(\SigmaStarProd_{\kappa}^z X\right)^2
           \cap
         P(\{
           \<\alpha,V_{1/2^{n+1}}\>
@@ -724,7 +725,7 @@ Charlotte, NC 28262}
         \})
       \]
 
-    Let \(a:\omega\to \SigmaStarProd_{\alpha<\kappa}^z X\) be a legal
+    Let \(a:\omega\to \SigmaStarProd_{\kappa}^z X\) be a legal
     attack by \(\pl P\) against \(\tau\), so
       \[
         \<a(n+1),a(n+2)\>
@@ -734,7 +735,7 @@ Charlotte, NC 28262}
       \]
       \[
           =
-        \left(\SigmaStarProd_{\alpha<\kappa}^z X\right)^2
+        \left(\SigmaStarProd_{\kappa}^z X\right)^2
           \cap
         \bigcap_{m\leq n}
         P(\{
@@ -759,7 +760,7 @@ Charlotte, NC 28262}
     Since the diameter of these sets approaches \(0\), the intersection is
     a singleton \(\{x\}\); furthermore, the \(\alpha\) coordinate of \(a\)
     must then converge to \(x\). We conclude that
-    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\alpha<\kappa}^z X}\).
+    \(\pl D\markwin\bellConGame{\SigmaStarProd_{\kappa}^z X}\).
   \end{proof}
 
   Note that we may obtain an analogous observation to Corollary
@@ -804,8 +805,10 @@ Charlotte, NC 28262}
         |\{\alpha<\kappa:x(\alpha)\not=z(\alpha)\}|<\omega
       \right\}
     \]
-    When \(X_\alpha=X\) and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
-    then we write \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X\).
+    When \(0\in X=X_\alpha\)
+    and \(z(\alpha)=0\) for all \(\alpha<\kappa\),
+    then we write
+    \(\sigmaPower{X}{\kappa}=\sigmaProd_{\alpha<\kappa}^z X_\alpha\).
   \end{definition}
 
   The reader may anticipate our next goal: \(\Sigma\)-products
