@@ -1,0 +1,420 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\prewin}{\underset{\text{pre}}{\uparrow}}
+\newcommand{\markwin}{\underset{\text{mark}}{\uparrow}}
+\newcommand{\tactwin}{\underset{\text{tact}}{\uparrow}}
+\newcommand{\kmarkwin}[1]{\underset{#1\text{-mark}}{\uparrow}}
+\newcommand{\ktactwin}[1]{\underset{#1\text{-tact}}{\uparrow}}
+\newcommand{\codewin}{\underset{\text{code}}{\uparrow}}
+\newcommand{\flexmarkwin}{\underset{\text{flexmark}}{\uparrow}}
+\newcommand{\semiflexmarkwin}{\underset{\text{semiflexmark}}{\uparrow}}
+\newcommand{\limitwin}{\underset{\text{limit}}{\uparrow}}
+\newcommand{\notwin}{\not\uparrow}
+\newcommand{\notprewin}{\underset{\text{pre}}{\not\uparrow}}
+\newcommand{\notmarkwin}{\underset{\text{mark}}{\not\uparrow}}
+\newcommand{\nottactwin}{\underset{\text{tact}}{\not\uparrow}}
+\newcommand{\notkmarkwin}[1]{\underset{#1\text{-mark}}{\not\uparrow}}
+\newcommand{\notktactwin}[1]{\underset{#1\text{-tact}}{\not\uparrow}}
+\newcommand{\notcodewin}{\underset{\text{code}}{\not\uparrow}}
+\newcommand{\notflexmarkwin}{\underset{\text{flexmark}}{\not\uparrow}}
+\newcommand{\notsemiflexmarkwin}{\underset{\text{semiflexmark}}{\uparrow}}
+\newcommand{\notlimitwin}{\underset{\text{limit}}{\not\uparrow}}
+
+\newcommand{\onePtComp}[1]{#1^\star}
+\newcommand{\onePtLind}[1]{#1^\dagger}
+
+
+% Games
+\newcommand{\gruConGame}[2]{Gru_{O,P}^{\to}\left({#1},{#2}\right)}
+\newcommand{\gruConGameHard}[2]{Gru_{O,P}^{\to,\star}\left({#1},{#2}\right)}
+\newcommand{\gruClusGame}[2]{Gru_{O,P}^{\leadsto}\left({#1},{#2}\right)}
+\newcommand{\gruClusGameHard}[2]{Gru_{O,P}^{\leadsto,\star}\left({#1},{#2}\right)}
+
+\newcommand{\gruKPGame}[1]{Gru_{K,P}\left({#1}\right)}
+\newcommand{\gruKLGame}[1]{Gru_{K,L}\left({#1}\right)}
+
+\newcommand{\cloPFGame}[1]{PtFin_{F,C}\left({#1}\right)}
+
+\newcommand{\menGame}[1]{Men_{C,F}\left({#1}\right)}
+\newcommand{\rothGame}[1]{Roth_{C,S}\left({#1}\right)}
+\newcommand{\rothAltGame}[1]{Roth_{P,O}\left({#1}\right)}
+
+\newcommand{\barmanDowFanGame}[2]{BD_{B,F}\left({#1},{#2}\right)}
+
+
+\newcommand{\schFillStrictGame}[1]{Sch^{\cup,\subset}_{C,F}\left({#1}\right)}
+\newcommand{\schFillGame}[1]{Sch^{\cup,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\schFillWeakGame}[1]{Sch^{\cup}_{C,F}\left({#1}\right)}
+\newcommand{\schFillInitialGame}[1]{Sch^{1,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\schFillIntGame}[1]{Sch^{\cap}_{C,F}\left({#1}\right)}
+
+\newcommand{\bellUniGame}[1]{Bell_{D,P}^{\textrm{uni}}\left({#1}\right)}
+\newcommand{\bellConGame}[1]{Bell_{D,P}^{\to,\emptyset}\left({#1}\right)}
+\newcommand{\bellConHardGame}[1]{Bell_{D,P}^{\to,\emptyset,\star}\left({#1}\right)}
+\newcommand{\bellAbsConGame}[1]{Bell_{D,P}^{\to}\left({#1}\right)}
+\newcommand{\bellAbsConHardGame}[1]{Bell_{D,P}^{\to,\star}\left({#1}\right)}
+
+\newcommand{\sPrinciple}[2]{S(#1,#2)}
+\newcommand{\sGame}[2]{G(#1,#2)}
+
+
+
+\newcommand{\concat}{{^\frown}}
+\newcommand{\rest}{\restriction}
+\newcommand{\last}{\downharpoonright}
+
+\newcommand{\cl}[1]{\overline{#1}}
+
+\newcommand{\pow}[1]{\mc{P}(#1)}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\newcommand{\al}[1]{{#1}^*}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+
+\newcommand{\po}{\mathbb{P}}
+\newcommand{\pok}{\po_\kappa}
+
+\newcommand{\Lim}{\mathrm{Lim}}
+\newcommand{\Suc}{\mathrm{Suc}}
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\st}[2]{st\left(#1,#2\right)}
+
+\newcommand{\alcomp}{\al\parallel}
+
+\newcommand{\rank}{\textrm{rank}}
+\newcommand{\dom}{\textrm{dom}}
+
+\renewcommand{\mod}{\,\textrm{mod}}
+
+\newcommand{\zip}{\bowtie}
+\newcommand{\ran}[1]{\text{range}(#1)}
+
+\newcommand{\cf}[1]{\textrm{cf}(#1)}
+
+\newcommand{\alcompS}[1]{\mc A(#1)}
+\newcommand{\alcompSP}[1]{\mc A'(#1)}
+\newcommand{\splendidS}[1]{\mc S(#1)}
+\newcommand{\kurepaS}[1]{\mc K(#1)}
+
+
+\newcommand{\scish}{almost-$\sigma$-(relatively compact)}
+
+\usepackage{mathrsfs}
+\newcommand{\pl}[1]{\mathscr{#1}}
+
+
+
+\newcommand{\term}{\textit}
+
+
+\newcommand{\bakerGame}[1]{{Bak}_{A,B}(#1)}
+\newcommand{\bmGame}[1]{{BM}_{E,N}(#1)}
+
+
+% http://tex.stackexchange.com/a/251107/79754
+\usepackage{amsmath}
+\usepackage{graphicx}
+\makeatletter
+\newcommand{\sumlower}{\mathop{\mathpalette\@sumlower{\,}}\slimits@}
+\newcommand{\@sumlower}[2]{%
+  \vphantom{\sum}%
+  \sbox\z@{$\m@th#1\sum$}%
+  \dimen@=\ht\z@ \advance\dimen@\dp\z@
+  \dimen\tw@=\wd\z@
+  \displaystyle\dimen@=.6\dimen@
+  \ifx#1\displaystyle\dimen@=.9\dimen@\fi
+  \ooalign{%
+    \hidewidth
+    $\vcenter{%
+     \vspace{.1\dimen@}%
+     \hbox{$\m@th\@demotestyle#1#2$\kern.3\dimen\tw@}%
+     \ifx#1\scriptstyle\kern-.25ex\fi}$\hidewidth\cr
+    $\vcenter{\hbox{%
+      \resizebox{!}{\dimen@}{$\m@th\sigma$}%
+    }\ifx#1\scriptstyle\kern-.25ex\fi}$\cr
+  }%
+}
+\newcommand\@demotestyle[1]{%
+  \ifx#1\displaystyle
+  \else
+    \ifx#1\textstyle
+      \scriptstyle
+    \else
+      \scriptscriptstyle
+    \fi
+  \fi
+}
+\newcommand{\sumstar}{\mathop{\sum\kern-1ex\star}\slimits@}
+\makeatother
+
+\newcommand{\SigmaProd}{\sum}
+\newcommand{\SigmaPower}[2]{{\Sigma#1^#2}}
+\newcommand{\SigmaPowerR}[1]{{\SigmaPower{\mathbb{R}}{#1}}}
+\newcommand{\SigmaPowerTwo}[1]{{\SigmaPower{2}{#1}}}
+
+\newcommand{\SigmaStarProd}{\sumstar}
+\newcommand{\SigmaStarPower}[2]{{\Sigma^\star#1^#2}}
+\newcommand{\SigmaStarPowerR}[1]{{\SigmaStarPower{\mathbb{R}}{#1}}}
+\newcommand{\SigmaStarPowerTwo}[1]{{\SigmaStarPower{2}{#1}}}
+
+\newcommand{\sigmaProd}{\sumlower}
+\newcommand{\sigmaPower}[2]{{\sigma#1^#2}}
+\newcommand{\sigmaPowerR}[1]{{\sigmaPower{\mathbb{R}}{#1}}}
+\newcommand{\sigmaPowerTwo}[1]{{\sigmaPower{2}{#1}}}
+
+\newcommand{\supp}{\textrm{supp}}
+
+
+
+
+\begin{document}
+
+\title{\(2\)-Markov Strategies in Selection Games}
+\author{Steven Clontz}
+
+\maketitle
+\abstract{asdf}
+
+\section{Introduction}
+
+Let \(\sPrinciple{\mc A}{\mc B}\) be the statement that whenever
+\(A_n\in\mc A\) for \(n<\omega\), there exist \(B_n\in[A_n]^{<\omega}\)
+such that \(\bigcup\{B_n:n<\omega\}\in\mc B\). This
+\term{selection principle} characterizes a property of a topological space
+\(X\) when \(\mc A,\mc B\) are defined in terms of \(X\). For example,
+if \(\mc O_X\) is the collection of open covers of \(X\), then
+\(\sPrinciple{\mc O_X}{\mc O_X}\) is the well-known Menger covering property.
+
+This property may be made stronger by considering the following two-player
+game of length \(\omega\): \(\sGame{\mc A}{\mc B}\). During each round
+\(n<\omega\), the first player \(\pl A\) chooses \(A_n\in\mc A\), followed
+by \(\pl B\) choosing \(B_n\in[A_n]^{<\omega}\). \(\pl B\) wins the game
+if \(\bigcup\{B_n:n<\omega\}\in\mc B\); otherwise \(\pl A\) wins.
+If \(\pl B\) has a \term{winning strategy} for the game (a function
+which defines a move for each finite sequence of previous moves by
+\(\pl A\), and beats every possible response by \(\pl A\)), then we write
+\(\pl B\win\sGame{\mc A}{\mc B}\).
+
+These concepts were first introduced by Scheepers in [MR1378387].
+Of course,
+\(\pl B\win\sGame{\mc A}{\mc B}\Rightarrow \sPrinciple{\mc A}{\mc B}\),
+but the converse need not hold, since each \(B_n\) may be defined in
+\(\sPrinciple{\mc A}{\mc B}\) using knowledge of all \(A_n\), not just
+those ``previously played''. Thus for each topological property \(P\)
+characterized by \(\sPrinciple{\mc A}{\mc B}\), we denote the (possibly)
+stronger property \(\pl B\win\sGame{\mc A}{\mc B}\) as \term{strategic \(P\)}.
+
+Such notions may be made even stronger using
+\term{limited information strategies}. A \term{\(k\)-Markov strategy} for
+\(\pl B\) uses only the last \(k\) moves of \(\pl A\) and the round number.
+When \(\pl B\) has a winning \(k\)-Markov strategy for \(\sGame{\mc A}{\mc B}\),
+we write \(\pl B\kmarkwin{k}\sGame{\mc A}{\mc B}\).
+Similarly, for each topological property \(P\)
+characterized by \(\sPrinciple{\mc A}{\mc B}\), we denote
+property \(\pl B\kmarkwin{k}\sGame{\mc A}{\mc B}\) as \term{\(k\)-Markov \(P\)}.
+When \(k=1\), we may omit the \(k\).
+
+\section{\(k\)-Markov implies \(2\)-Markov}
+
+In the case of the selection game \(\sGame{\mc A}{\mc B}\), we may see that
+a \((k+2)\)-Markov strategy may always be improved to a \(2\)-Markov strategy,
+as shown by the author in [clontzMengerPreprint] with regards to
+\(\sGame{\mc O_X}{\mc O_X}\).
+
+\begin{theorem}
+  For each \(k<\omega\), \(\pl B \kmarkwin{(k+2)} \sGame{\mc A}{\mc B}\)
+  if and only if \(\pl B \kmarkwin{2} \sGame{\mc A}{\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) be a winning \((k+2)\)-mark. We define the \(2\)-mark
+  \(\tau\) as follows:
+    \[
+      \tau(\<A\>,0)
+        =
+      \bigcup_{m<k+1}
+        \sigma(\<\underbrace{A,\dots,A}_{m+1}\>,m)
+    \]
+    \[
+      \tau(\<A,A'\>,n+1)
+        =
+      \bigcup_{m<k+1}
+        \sigma(\<
+          \underbrace{A,\dots,A}_{k+1-m},
+          \underbrace{A',\dots,A'}_{m+1}
+        \>,(n+1)(k+1)+m)
+    \]
+
+  Let \(\<A_0,A_1,\dots\>\) be an attack by \(\pl A\) against \(\tau\).
+  Then consider the attack
+    \[
+      \<
+        \underbrace{A_0,\dots,A_0}_{k+1},
+        \underbrace{A_1,\dots,A_1}_{k+1},
+        \dots
+      \>
+    \]
+  by \(\pl A\) against \(\sigma\). Since \(\sigma\) is a winning \((k+2)\)-mark,
+    \[
+      \bigcup_{m<k+1}
+        \sigma(\<\underbrace{A_0,\dots,A_0}_{m+1}\>,m)
+      \cup
+      \bigcup_{n<\omega,m<k+1}
+        \sigma(\<
+          \underbrace{A_n,\dots,A_n}_{k+1-m},
+          \underbrace{A_{n+1},\dots,A_{n+1}}_{m+1}
+        \>,(n+1)(k+1)+m)
+    \]
+    \[
+      =
+      \tau(\<A_0\>,0)
+      \cup
+      \bigcup_{n<\omega}
+      \tau(\<A_n,A_{n+1}\>,n+1)
+        \in
+      \mc B
+    \]
+  Thus \(\tau\) is a winning \(2\)-mark.
+\end{proof}
+
+The following natrual question is open:
+
+\begin{question}
+  Do there exist (interesting/topological) \(\mc A,\mc B\) such that
+  \(\pl B\win\sGame{\mc A}{\mc B}\) but
+  \(\pl B\notkmarkwin{2}\sGame{\mc A}{\mc B}\)?
+\end{question}
+
+\section{Menger game results}
+
+Consider the case that \(\mc A=\mc B=\mc O_X\),
+i.e. the Menger game. The following summarize results from
+[MR1129143]
+[clontzMengerPreprint] and [clontzDowAlcompPreprint].
+
+\begin{definition}
+  For any cardinal \(\kappa\), let \(\onePtLind\kappa=\kappa\cup\{\infty\}\)
+  denote the \term{one-point Lindel\"of-ication} of discrete \(\kappa\),
+  where points in \(\kappa\) are isolated, and the neighborhoods of
+  \(\infty\) are co-countable.
+\end{definition}
+
+\begin{theorem}
+  \(\pl B\win\sGame{\mc O_{\onePtLind\kappa}}{\mc O_{\onePtLind\kappa}}\).
+\end{theorem}
+
+\begin{definition}
+  For two functions \(f,g\) we say \(f\) is \term{almost compatible} with
+  \(g\) if \(|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega\).
+\end{definition}
+
+\begin{definition}
+  \(\alcompSP\kappa\) states that there exists a collection of pairwise
+  almost compactible finite-to-one functions
+  \(\{f_A\in\omega^A:A\in[\kappa]^{\leq\omega}\}\).
+\end{definition}
+
+\begin{theorem}
+  \(\alcompSP{\omega_n}\) holds for all \(n<\omega\).
+\end{theorem}
+
+\begin{theorem}
+  \(\alcompSP\kappa\) implies
+  \(\pl B\kmarkwin{2}\sGame{\mc O_{\onePtLind\kappa}}{\mc O_{\onePtLind\kappa}}\).
+\end{theorem}
+
+\begin{theorem}
+  For any cardinal \(\kappa\),
+  \(\kappa\) Cohen reals may be added to a model of \(ZFC+CH\)
+  while preserving \(\alcompSP{\mf c}\).
+\end{theorem}
+
+\begin{theorem}
+  There exists a model of \(ZFC\) where \(\alcompSP{\omega_\omega}\) fails.
+\end{theorem}
+
+\begin{theorem}
+  \(
+    \pl B
+      \kmarkwin{2}
+    \sGame{
+      \mc O_{\onePtLind{\omega_\omega}}
+    }{
+      \mc O_{\onePtLind{\omega_\omega}}
+    }
+  \).
+\end{theorem}
+
+It remains open whether
+  \(
+    \pl B
+      \kmarkwin{2}
+    \sGame{
+      \mc O_{\onePtLind{\omega_{\omega+1}}}
+    }{
+      \mc O_{\onePtLind{\omega_{\omega+1}}}
+    }
+  \)
+might fail when \(\alcompSP{\omega_\omega}\) fails. Due to the above,
+any attempt to show
+  \(
+    \pl B
+      \notkmarkwin{2}
+    \sGame{
+      \mc O_{\onePtLind{\kappa}}
+    }{
+      \mc O_{\onePtLind{\kappa}}
+    }
+  \)
+cannot happen solely within \(ZFC\).
+
+\end{document}
