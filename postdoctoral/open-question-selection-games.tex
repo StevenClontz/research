@@ -1,44 +1,107 @@
-\documentclass[11pt]{article}
+\documentclass{amsart}
+\usepackage{amsmath,amssymb,url}
+\usepackage{bibtopic}
+%\bibliographstyle{plain}
 
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{mathtools}
-\usepackage{amsthm}
 
-      \theoremstyle{plain}
-      \newtheorem{theorem}{Theorem}
-      \newtheorem{lemma}[theorem]{Lemma}
-      \newtheorem{corollary}[theorem]{Corollary}
-      \newtheorem{proposition}[theorem]{Proposition}
-      \newtheorem{conjecture}[theorem]{Conjecture}
-      \newtheorem{question}[theorem]{Question}
-      \newtheorem{claim}[theorem]{Claim}
 
-      \theoremstyle{definition}
-      \newtheorem{definition}[theorem]{Definition}
-      \newtheorem{example}[theorem]{Example}
-      \newtheorem{game}[theorem]{Game}
+\usepackage{mathrsfs}
 
-      \theoremstyle{remark}
-      \newtheorem{remark}[theorem]{Remark}
 
-      \theoremstyle{plain}
-      \newtheorem*{theorem*}{Theorem}
-      \newtheorem*{lemma*}{Lemma}
-      \newtheorem*{corollary*}{Corollary}
-      \newtheorem*{proposition*}{Proposition}
-      \newtheorem*{conjecture*}{Conjecture}
-      \newtheorem*{question*}{Question}
-      \newtheorem*{claim*}{Claim}
 
-      \theoremstyle{definition}
-      \newtheorem*{definition*}{Definition}
-      \newtheorem*{example*}{Example}
-      \newtheorem*{game*}{Game}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{de}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{pr}[theorem]{Proposition}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{qu}[theorem]{Question}
+\newtheorem{qus}[theorem]{Questions}
+\newtheorem{cn}[theorem]{Construction}
+\newtheorem{co}[theorem]{Corollary}
+\newtheorem{no}[theorem]{Notation}
+\newtheorem{nd}[theorem]{Notation and definitions}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{ax}[theorem]{Axiom}
+\newtheorem{nt}[theorem]{Note}
+\newtheorem{re}[theorem]{Remark}
+\newtheorem{con}[theorem]{Conjecture}
 
-      \theoremstyle{remark}
-      \newtheorem*{remark*}{Remark}
+%\vsize=7in \hsize=5in
+
+
+
+
+\begin{document}
+
+\title{50th Spring Topology and Dynamical Systems Conference \\ Contributed Problems in Set-Theoretic Topology}
+
+
+
+\maketitle
+
+\section{Problems on Monotone Covering Properties}
+
+\noindent {\bf John E. Porter}
+\\
+Murray State University, Murray, Kentucky U.S.A.
+\\
+jporter@murraystate.edu
+\\
+\\
+
+Given a covering property $\mathcal{P}$, one can define a monotone version of the covering
+property by requiring an operator $r$ that assigns the right kind of refinement to each
+acceptable open covering $\mathcal{U}$ in such a way that $r(\mathcal{U})$ refines $r(\mathcal{V})$ whenever $\mathcal{U}$ refines
+$\mathcal{V}$. For example, Popvassilev \cite{P} called a space is {\em monotonically (countably) mecompact} if one can assign to every (coutnable) open
+cover $\mathcal{U}$ a point-finite open cover $r(\mathcal{U})$ that refines $\mathcal{U}$ so that $r(\mathcal{U})$ refines $r(\mathcal{V})$ whenever
+$\mathcal{U}$ refines $\mathcal{V}$.
+
+Chase and Gruenhage \cite{CG} showed that compact monotonically countably metacompact spaces are metrizable, and Gruenhage announced at the conference that he and Chase \cite{CG2} have proven that separable monotonically countable metacompact spaces are also metrizable. Chase and Gruenhage's results simultaneously generalize similar results for proto-metrizable spaces and Moore spaces. Can Chase's and Gruenhage's results be furthered generalized? Recall that a space is orthocompact if every open cover has an interior preserving open refinement. That is, every open cover has an open refinement, with the further property that at any point, the intersection of all open sets in the refinement containing that point, is also open.
+
+\begin{problem}\label{ortho} Are compact monotonically orthocompact spaces metrizable?
+\end{problem}
+
+\begin{re}
+The separable version of Problem \ref{ortho} has a negative answer. Popvassilev \cite{P1} has shown the Sorgenfrey line is monotonically orthocompact.
+\end{re}
+
+Recall that a space $X$ is proto-metrizable if $X$ is paracompact and has an ortho-base. Gartside and Moody \cite{GM} showed that a space is proto-metrizable if
+and only if $X$ has a monotone operator $r$ such that $r(\mathcal{U})$ star-refines $\mathcal{U}$. Popvassilev and Porter \cite{PP} showed that proto-metrizable  spaces
+possess a monotone locally finite operator.
+
+\begin{problem}
+Are metacompact spaces with an ortho-base monotonically (countably) metacompact?
+\end{problem}
+
+In general, it seems that little is known about the class of metacompact spaces with an ortho-base.
+
+\begin{thebibliography}{AL}
+
+\bibitem{GM} P. M. Gartside, P. J. Moody,
+{\em A note on protometrizable spaces},
+Topology Appl., {\bf 52} (1993), no.1, 1-9.
+
+\bibitem{CG} Chase, T., Gruenhage, G., {\em Compact monotonically metacompact spaces are metrizable},
+{\em Compact monotonically metacompact spaces are metrizable},
+Topology Appl.
+{\bf 160} (2013), no.1, 45--49.
+
+\bibitem{CG2} Chase, T., Gruenhage, G., {\em Monotone covering properties and properties they imply}, {\em to appear}.
+
+\bibitem{P} Popvassilev, S. G., {\em $\omega_1 + 1$ is not monotonically countably metacompact}, Questions and Answers
+in General Topology, {\bf 27} (2009), 133--135.
+
+\bibitem{P1} Popvassilev, S. G.,.  {\em Versions of monotone covering properties}, 29th Summer Conference on Topology and its Applications
+July 2014, College of Staten Island, CUNY. Abstract retrieved from http://at.yorku.ca/c/b/j/p/06.htm.
+
+\bibitem{PP} Popvassilev, S. G., Porter, J. E., {\em On monotone paracompactness}, Topology Appl.
+{\bf 167} (2014), no. 1–9.
+
+\end{thebibliography}
+
+
+
 
 % Strategy uparrow shortcuts
 \newcommand{\win}{\uparrow}
@@ -66,79 +129,22 @@
 \newcommand{\onePtLind}[1]{#1^\dagger}
 
 
-% Games
-\newcommand{\gruConGame}[2]{Gru_{O,P}^{\to}\left({#1},{#2}\right)}
-\newcommand{\gruConGameHard}[2]{Gru_{O,P}^{\to,\star}\left({#1},{#2}\right)}
-\newcommand{\gruClusGame}[2]{Gru_{O,P}^{\leadsto}\left({#1},{#2}\right)}
-\newcommand{\gruClusGameHard}[2]{Gru_{O,P}^{\leadsto,\star}\left({#1},{#2}\right)}
-
-\newcommand{\gruKPGame}[1]{Gru_{K,P}\left({#1}\right)}
-\newcommand{\gruKLGame}[1]{Gru_{K,L}\left({#1}\right)}
-
-\newcommand{\cloPFGame}[1]{PtFin_{F,C}\left({#1}\right)}
-
-\newcommand{\menGame}[1]{Men_{C,F}\left({#1}\right)}
-\newcommand{\rothGame}[1]{Roth_{C,S}\left({#1}\right)}
-\newcommand{\rothAltGame}[1]{Roth_{P,O}\left({#1}\right)}
-
-\newcommand{\barmanDowFanGame}[2]{BD_{B,F}\left({#1},{#2}\right)}
-
-
-\newcommand{\schFillStrictGame}[1]{Sch^{\cup,\subset}_{C,F}\left({#1}\right)}
-\newcommand{\schFillGame}[1]{Sch^{\cup,\subseteq}_{C,F}\left({#1}\right)}
-\newcommand{\schFillWeakGame}[1]{Sch^{\cup}_{C,F}\left({#1}\right)}
-\newcommand{\schFillInitialGame}[1]{Sch^{1,\subseteq}_{C,F}\left({#1}\right)}
-\newcommand{\schFillIntGame}[1]{Sch^{\cap}_{C,F}\left({#1}\right)}
-
-\newcommand{\bellUniGame}[1]{Bell_{D,P}^{\textrm{uni}}\left({#1}\right)}
-\newcommand{\bellConGame}[1]{Bell_{D,P}^{\to,\emptyset}\left({#1}\right)}
-\newcommand{\bellConHardGame}[1]{Bell_{D,P}^{\to,\emptyset,\star}\left({#1}\right)}
-\newcommand{\bellAbsConGame}[1]{Bell_{D,P}^{\to}\left({#1}\right)}
-\newcommand{\bellAbsConHardGame}[1]{Bell_{D,P}^{\to,\star}\left({#1}\right)}
-
-\newcommand{\sPrinciple}[2]{S(#1,#2)}
-\newcommand{\sGame}[2]{G(#1,#2)}
+\newcommand{\sPrinciple}[2]{S^\omega_{fin}(#1,#2)}
+\newcommand{\sGame}[2]{G^\omega_{fin}(#1,#2)}
 
 
 
-\newcommand{\concat}{{^\frown}}
-\newcommand{\rest}{\restriction}
-\newcommand{\last}{\downharpoonright}
 
-\newcommand{\cl}[1]{\overline{#1}}
 
-\newcommand{\pow}[1]{\mc{P}(#1)}
-
-\newcommand{\<}{\langle}
-\renewcommand{\>}{\rangle}
-
-\newcommand{\al}[1]{{#1}^*}
 
 \newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\mb}[1]{\mathbb{#1}}
 \newcommand{\mf}[1]{\mathfrak{#1}}
 
-\newcommand{\po}{\mathbb{P}}
-\newcommand{\pok}{\po_\kappa}
 
-\newcommand{\Lim}{\mathrm{Lim}}
-\newcommand{\Suc}{\mathrm{Suc}}
 
-\newcommand{\ds}{\displaystyle}
+\newcommand{\dom}{\operatorname{dom}}
 
-\newcommand{\st}[2]{st\left(#1,#2\right)}
-
-\newcommand{\alcomp}{\al\parallel}
-
-\newcommand{\rank}{\textrm{rank}}
-\newcommand{\dom}{\textrm{dom}}
-
-\renewcommand{\mod}{\,\textrm{mod}}
-
-\newcommand{\zip}{\bowtie}
-\newcommand{\ran}[1]{\text{range}(#1)}
-
-\newcommand{\cf}[1]{\textrm{cf}(#1)}
 
 \newcommand{\alcompS}[1]{\mc A(#1)}
 \newcommand{\alcompSP}[1]{\mc A'(#1)}
@@ -146,9 +152,7 @@
 \newcommand{\kurepaS}[1]{\mc K(#1)}
 
 
-\newcommand{\scish}{almost-$\sigma$-(relatively compact)}
 
-\usepackage{mathrsfs}
 \newcommand{\pl}[1]{\mathscr{#1}}
 
 
@@ -156,75 +160,16 @@
 \newcommand{\term}{\textit}
 
 
-\newcommand{\bakerGame}[1]{{Bak}_{A,B}(#1)}
-\newcommand{\bmGame}[1]{{BM}_{E,N}(#1)}
 
+\section{\(2\)-Markov Strategies in Selection Games}
+\noindent {\bf Steven Clontz}
+\\
+The University of North Carolina at Charlotte, Charlotte, NC U.S.A.
+\\
+steven.clontz@gmail.com
+\\
+\\
 
-% http://tex.stackexchange.com/a/251107/79754
-\usepackage{amsmath}
-\usepackage{graphicx}
-\makeatletter
-\newcommand{\sumlower}{\mathop{\mathpalette\@sumlower{\,}}\slimits@}
-\newcommand{\@sumlower}[2]{%
-  \vphantom{\sum}%
-  \sbox\z@{$\m@th#1\sum$}%
-  \dimen@=\ht\z@ \advance\dimen@\dp\z@
-  \dimen\tw@=\wd\z@
-  \displaystyle\dimen@=.6\dimen@
-  \ifx#1\displaystyle\dimen@=.9\dimen@\fi
-  \ooalign{%
-    \hidewidth
-    $\vcenter{%
-     \vspace{.1\dimen@}%
-     \hbox{$\m@th\@demotestyle#1#2$\kern.3\dimen\tw@}%
-     \ifx#1\scriptstyle\kern-.25ex\fi}$\hidewidth\cr
-    $\vcenter{\hbox{%
-      \resizebox{!}{\dimen@}{$\m@th\sigma$}%
-    }\ifx#1\scriptstyle\kern-.25ex\fi}$\cr
-  }%
-}
-\newcommand\@demotestyle[1]{%
-  \ifx#1\displaystyle
-  \else
-    \ifx#1\textstyle
-      \scriptstyle
-    \else
-      \scriptscriptstyle
-    \fi
-  \fi
-}
-\newcommand{\sumstar}{\mathop{\sum\kern-1ex\star}\slimits@}
-\makeatother
-
-\newcommand{\SigmaProd}{\sum}
-\newcommand{\SigmaPower}[2]{{\Sigma#1^#2}}
-\newcommand{\SigmaPowerR}[1]{{\SigmaPower{\mathbb{R}}{#1}}}
-\newcommand{\SigmaPowerTwo}[1]{{\SigmaPower{2}{#1}}}
-
-\newcommand{\SigmaStarProd}{\sumstar}
-\newcommand{\SigmaStarPower}[2]{{\Sigma^\star#1^#2}}
-\newcommand{\SigmaStarPowerR}[1]{{\SigmaStarPower{\mathbb{R}}{#1}}}
-\newcommand{\SigmaStarPowerTwo}[1]{{\SigmaStarPower{2}{#1}}}
-
-\newcommand{\sigmaProd}{\sumlower}
-\newcommand{\sigmaPower}[2]{{\sigma#1^#2}}
-\newcommand{\sigmaPowerR}[1]{{\sigmaPower{\mathbb{R}}{#1}}}
-\newcommand{\sigmaPowerTwo}[1]{{\sigmaPower{2}{#1}}}
-
-\newcommand{\supp}{\textrm{supp}}
-
-
-
-
-\begin{document}
-
-\title{\(2\)-Markov Strategies in Selection Games}
-\author{Steven Clontz}
-
-\maketitle
-\abstract{asdf}
-
-\section{Introduction}
 
 Let \(\sPrinciple{\mc A}{\mc B}\) be the statement that whenever
 \(A_n\in\mc A\) for \(n<\omega\), there exist \(B_n\in[A_n]^{<\omega}\)
@@ -244,7 +189,7 @@ which defines a move for each finite sequence of previous moves by
 \(\pl A\), and beats every possible response by \(\pl A\)), then we write
 \(\pl B\win\sGame{\mc A}{\mc B}\).
 
-These concepts were first introduced by Scheepers in [MR1378387].
+These concepts were first introduced by Scheepers in \cite{SchOpen}.
 Of course,
 \(\pl B\win\sGame{\mc A}{\mc B}\Rightarrow \sPrinciple{\mc A}{\mc B}\),
 but the converse need not hold, since each \(B_n\) may be defined in
@@ -261,107 +206,47 @@ we write \(\pl B\kmarkwin{k}\sGame{\mc A}{\mc B}\).
 Similarly, for each topological property \(P\)
 characterized by \(\sPrinciple{\mc A}{\mc B}\), we denote
 property \(\pl B\kmarkwin{k}\sGame{\mc A}{\mc B}\) as \term{\(k\)-Markov \(P\)}.
-When \(k=1\), we may omit the \(k\).
 
-\section{\(k\)-Markov implies \(2\)-Markov}
-
-In the case of the selection game \(\sGame{\mc A}{\mc B}\), we may see that
+In the case of the selection game \(\sGame{\mc A}{\mc B}\),
+it may be shown that
 a \((k+2)\)-Markov strategy may always be improved to a \(2\)-Markov strategy,
-as shown by the author in [clontzMengerPreprint] with regards to
+as shown in \cite{ClontzMenger} with regards to
 \(\sGame{\mc O_X}{\mc O_X}\).
 
-\begin{theorem}
-  For each \(k<\omega\), \(\pl B \kmarkwin{(k+2)} \sGame{\mc A}{\mc B}\)
-  if and only if \(\pl B \kmarkwin{2} \sGame{\mc A}{\mc B}\).
-\end{theorem}
+The following natural question is open:
 
-\begin{proof}
-  Let \(\sigma\) be a winning \((k+2)\)-mark. We define the \(2\)-mark
-  \(\tau\) as follows:
-    \[
-      \tau(\<A\>,0)
-        =
-      \bigcup_{m<k+1}
-        \sigma(\<\underbrace{A,\dots,A}_{m+1}\>,m)
-    \]
-    \[
-      \tau(\<A,A'\>,n+1)
-        =
-      \bigcup_{m<k+1}
-        \sigma(\<
-          \underbrace{A,\dots,A}_{k+1-m},
-          \underbrace{A',\dots,A'}_{m+1}
-        \>,(n+1)(k+1)+m)
-    \]
-
-  Let \(\<A_0,A_1,\dots\>\) be an attack by \(\pl A\) against \(\tau\).
-  Then consider the attack
-    \[
-      \<
-        \underbrace{A_0,\dots,A_0}_{k+1},
-        \underbrace{A_1,\dots,A_1}_{k+1},
-        \dots
-      \>
-    \]
-  by \(\pl A\) against \(\sigma\). Since \(\sigma\) is a winning \((k+2)\)-mark,
-    \[
-      \bigcup_{m<k+1}
-        \sigma(\<\underbrace{A_0,\dots,A_0}_{m+1}\>,m)
-      \cup
-      \bigcup_{n<\omega,m<k+1}
-        \sigma(\<
-          \underbrace{A_n,\dots,A_n}_{k+1-m},
-          \underbrace{A_{n+1},\dots,A_{n+1}}_{m+1}
-        \>,(n+1)(k+1)+m)
-    \]
-    \[
-      =
-      \tau(\<A_0\>,0)
-      \cup
-      \bigcup_{n<\omega}
-      \tau(\<A_n,A_{n+1}\>,n+1)
-        \in
-      \mc B
-    \]
-  Thus \(\tau\) is a winning \(2\)-mark.
-\end{proof}
-
-The following natrual question is open:
-
-\begin{question}
+\begin{qu}
   Do there exist (interesting/topological) \(\mc A,\mc B\) such that
   \(\pl B\win\sGame{\mc A}{\mc B}\) but
   \(\pl B\notkmarkwin{2}\sGame{\mc A}{\mc B}\)?
-\end{question}
-
-\section{Menger game results}
+\end{qu}
 
 Consider the case that \(\mc A=\mc B=\mc O_X\),
 i.e. the Menger game. The following summarize results from
-[MR1129143]
-[clontzMengerPreprint] and [clontzDowAlcompPreprint].
+\cite{SchCountFin}
+\cite{ClontzMenger} and \cite{ClontzDow}.
 
-\begin{definition}
+\begin{de}
   For any cardinal \(\kappa\), let \(\onePtLind\kappa=\kappa\cup\{\infty\}\)
   denote the \term{one-point Lindel\"of-ication} of discrete \(\kappa\),
   where points in \(\kappa\) are isolated, and the neighborhoods of
   \(\infty\) are co-countable.
-\end{definition}
+\end{de}
 
-\begin{theorem}
+\begin{pr}
   \(\pl B\win\sGame{\mc O_{\onePtLind\kappa}}{\mc O_{\onePtLind\kappa}}\).
-\end{theorem}
+\end{pr}
 
-\begin{definition}
+\begin{de}
   For two functions \(f,g\) we say \(f\) is \term{almost compatible} with
   \(g\) if \(|\{x\in\dom(f)\cap\dom(g):f(x)\not=g(x)\}|<\omega\).
-\end{definition}
+\end{de}
 
-\begin{definition}
+\begin{de}
   \(\alcompSP\kappa\) states that there exists a collection of pairwise
   almost compactible finite-to-one functions
   \(\{f_A\in\omega^A:A\in[\kappa]^{\leq\omega}\}\).
-\end{definition}
+\end{de}
 
 \begin{theorem}
   \(\alcompSP{\omega_n}\) holds for all \(n<\omega\).
@@ -417,4 +302,29 @@ any attempt to show
   \)
 cannot happen solely within \(ZFC\).
 
+\begin{thebibliography}{AL}
+
+\bibitem{SchOpen} Scheepers, M.,
+{\em Combinatorics of open covers. I. Ramsey theory.}
+Topology Appl. 69 (1996), no. 1, 31–62. MR1378387
+
+\bibitem{SchCountFin} Scheepers, M.,
+{\em Concerning n-tactics in the countable-finite game.}
+J. Symbolic Logic 56 (1991), no. 3, 786–794. MR1129143
+
+\bibitem{ClontzMenger} Clontz, S.,
+\textit{Game-theoretic strengthenings of Menger's property.}
+Preprint.
+
+\bibitem{ClontzDow} Clontz, S., Dow, A.,
+\textit{Almost compatible functions and topological games.}
+Preprint.
+
+\end{thebibliography}
+
+
+
 \end{document}
+
+
+
