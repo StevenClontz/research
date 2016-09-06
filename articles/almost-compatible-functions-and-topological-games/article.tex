@@ -567,7 +567,7 @@ NSF-DMS 1501506}
   \(V=L\) introduced in \cite{MR0309729} implies that \(\kurepaS\kappa\)
   holds for all cardinals \(\kappa\).
 
-  \begin{corollary}[\(V=L\)]
+  \begin{corollary}[\(V=L\)]\label{alcompSPunderV=L}
     \(\alcompSP{\kappa}\) for all cardinals \(\kappa\).
   \end{corollary}
 
@@ -1426,21 +1426,38 @@ NSF-DMS 1501506}
     \(\pl F\kmarkwin2\schFillInitialGame{\aleph_\omega}\) hold in \(ZFC\).
   \end{corollary}
 
-  Note that Question \ref{mainQuestion} remains unsolved; however,
-  our results have revealed that we cannot hope to find a \(ZFC\)
-  counterexample where \(X=\oneptlind\kappa\). This is
-  because if we also assume \(V=L\), it follows that
-  \(\alcompSP{\kappa}\) and therefore
-  \(\pl F\kmarkwin2\menGame{\oneptlind\kappa}\)
-  for every cardinal \(\kappa\).
+  We conclude by returning our attention to Question \ref{mainQuestion},
+  which asks whether there exists a space for which the second player
+  \(\pl F\) in the Menger game \(\menGame{X}\) has a winning strategy
+  without a winning \(2\)-mark.
 
   \begin{question}
-    Is \(\pl F\notkmarkwin2\schFillIntGame{\aleph_{\omega+1}}\)
-    consistent with \(ZFC\)?
+    Does
+    \(\pl F\kmarkwin2\schFillIntGame{\kappa}\) hold for all cardinals
+    \(\kappa\) in ZFC?
   \end{question}
 
-  If so, \(X=\oneptlind{\aleph_{\omega+1}}\) is consistently a positive
-  answer to Question \ref{mainQuestion}.
+  If not, the model producing \(\kappa>\aleph_\omega\) where
+  \(\pl F\notkmarkwin2\schFillIntGame{\kappa}\) yields a positive
+  answer to Question \ref{mainQuestion}:
+  \(X=\oneptlind{\kappa}\). On the other hand, under \(V=L\)
+  Corollary \ref{alcompSPunderV=L} shows that
+  \(\alcompSP{\kappa}\) and therefore
+  \(\pl F\kmarkwin2\menGame{\oneptlind\kappa}\)
+  for every cardinal \(\kappa\), so a more exotic example than
+  \(X=\oneptlind{\kappa}\) would be required to
+  answer Question \ref{mainQuestion} in \(ZFC\).
+
+  Solving the following weaker question would not answer Question
+  \ref{mainQuestion} by itself, but an solution would be interesting nonetheless.
+
+  \begin{question}
+    Does
+    \(\pl F\kmarkwin2\schFillGame{\kappa}\) hold for all cardinals
+    \(\kappa\) in ZFC?
+  \end{question}
+
+
 
 
 
