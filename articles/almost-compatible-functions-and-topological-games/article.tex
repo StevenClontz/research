@@ -631,7 +631,7 @@ NSF-DMS 1501506}
             the extension $M[G]$ is equal to
              $\{ \tau[G] : \tau \subset X\times \mathbb P, \ \
             \tau\in M\ \}$.  We will be using
-            the forcing poset is $\operatorname{Fn}(\omega_2, 2)$.
+            the forcing poset $\operatorname{Fn}(\omega_2, 2)$.
             The elements of this poset are all the finite partial functions
             from $\omega_2$ into $2$ ordered by reverse inclusion.
             It follows that, for any $\lambda\in \omega_2$,
@@ -727,9 +727,9 @@ NSF-DMS 1501506}
             \operatorname{Fn}(\mu+\delta,2)$.
             We can similarly make sense of the name
              $\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$, call it $F_H$.
-            Here simply, for each tuple $(\,(k,m), p)\in \dot
+            Here simply, for each tuple $(\,(\lambda+k,m), p)\in \dot
             f_{[\lambda,\lambda+\omega)}$,
-             we have that $(\,(k,m),\varphi_{\mu,\lambda}(p))$ is in $F_H$.
+             we have that $(\,(\mu+k,m),\varphi_{\mu,\lambda}(p))$ is in $F_H$.
             Again, let $\varphi_{\mu,\lambda}(\dot f_{[\lambda,\lambda+\omega)})$
             be interpreted in the above sense as giving $F_H$ (which is an element
             of $H$).
@@ -854,7 +854,7 @@ NSF-DMS 1501506}
             We will need the model constructed in \cite{MR1045371} in
              which an instance of Chang's conjecture
              $(\aleph_{\omega+1},\aleph_\omega) \rlap{$\rightarrow$}\,{\rightarrow}
-             (\aleph_1,\aleph_0)$ is shown to fail.
+             (\aleph_1,\aleph_0)$ is shown to hold.
 
             We can take as a given (as shown in \cite[Theorem 5]{MR1045371}) that we may
             assume that we have a model $V$
@@ -916,7 +916,7 @@ NSF-DMS 1501506}
              Levy collapse, $Lv(\lambda,\omega_2)$, which collapses all cardinals
              less than $\lambda$ to have cardinality at most $\aleph_1$. The poset
              $\mathbb P_1$ has cardinality $\lambda$. We treat
-            $\mathbb P*\mathbb P_1$ as containing $\mathbb P_0$
+            $\mathbb P_0*\mathbb P_1$ as containing $\mathbb P_0$
             as a subposet by identifying each $(p_0,1)$ with $p_0$.
             After forcing with $\mathbb P_0*\mathbb P_1$ we will have
             that $\omega_1$ is the ordinal $\left(\kappa^{+\omega+1}\right)^V$,
@@ -931,7 +931,8 @@ NSF-DMS 1501506}
              $\mathbb P_0*\mathbb P_1$-name of a finite-to-one function from
              $\dot A$ into $\omega$ for each
              $\mathbb P_0*\mathbb P_1$-name of a countable subset of
-             $\lambda^{+\omega+1}$. We will obtain a contradiction.
+             $\lambda^{+\omega+1}$. We will obtain a contradiction
+             to the claim of coherence.
 
             Let $\{ \dot A_\xi : \xi \in \lambda^{+\omega+1}\}$ be an enumeration
             of all the  nice $\mathbb P_0$-names of countable
@@ -1085,7 +1086,7 @@ NSF-DMS 1501506}
              By elementarity then we have that $\zeta_1\in N$,
              and by similar reasoning the supremum, $\zeta_0$,
             of $\zeta_1\cap \kappa^{+\omega+1}$ is also in $N$.
-               This of course means that $\zeta < \xi_0$.
+               This of course means that $\zeta < \beta_0$.
             \end{proof}
 
             \egroup
@@ -1175,7 +1176,7 @@ NSF-DMS 1501506}
   \(\menGame{\oneptlind\kappa}\). However, when considering Markov strategies,
   finite-to-one functions suffice.
 
-  \begin{figure}[h]
+  \begin{figure}[ht]
 \begin{center}
 \begin{tikzpicture}
   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
@@ -1338,7 +1339,7 @@ NSF-DMS 1501506}
     attack
     \(\<C_{N+1}\cap\aleph_{\beta_{N+1}},C_{N+2}\cap\aleph_{\beta_{N+1}},\dots\>\)
     by \(\pl C\) in \(\schFillIntGame{\aleph_{\beta_{N+1}}}\). Since
-    \(\sigma_{N+1}\) is a winning strategy and
+    \(\sigma_{N+1}\) is a winning \(2\)-mark and
     \(\alpha\in\bigcap_{n<\omega}C_{N+n+1}\cap\aleph_{\beta_{N+1}}\), either
     \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\aleph_{\beta_{N+1}}\>,0)\) and thus
     \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
@@ -1358,7 +1359,7 @@ NSF-DMS 1501506}
         \<C_{N+M+1},C_{N+M+2}\>,
         N+M+2
       )
-    \). Thus \(\sigma\) is a winning strategy.
+    \). Thus \(\sigma\) is a winning \(2\)-mark.
   \end{proof}
 
   \begin{theorem}
@@ -1368,7 +1369,8 @@ NSF-DMS 1501506}
   \end{theorem}
 
   \begin{proof}
-    The proof proceeds nearly identically to the previous proof.
+    The proof proceeds nearly identically to the previous proof: substitute
+    \(\alpha\in C_0\) in place of \(\alpha\in\bigcap_{n<\omega}C_n\) and proceed.
   \end{proof}
     % Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
     % \(\schFillInitialGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
