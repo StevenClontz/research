@@ -4,7 +4,8 @@
 \usepackage{amssymb}
 
 \usepackage{tikz}
-\usetikzlibrary{matrix}
+% \usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
 
 \usepackage{../../clontzDefinitions}
 
@@ -70,8 +71,9 @@
 
 
 \author{Steven Clontz}
-\address{Department of Mathematics and Statistics, UNC Charlotte,
-Charlotte, NC 28262}
+\address{Department of Mathematics and Statistics,
+The University of South Alabama,
+Mobile, AL 36606}
 \email{steven.clontz@gmail.com}
 \author{Alan Dow}
 \address{Department of Mathematics and Statistics, UNC Charlotte,
@@ -147,14 +149,14 @@ NSF-DMS 1501506}
 
   \begin{definition}
     The statement \(\alcompS\kappa\) (given as \(S(\kappa,\aleph_0,\omega)\)
-    in \cite{MR1129143} and \(S(\kappa)\) in \cite{clontzMengerGamePreprint})
+    in \cite{MR1129143})
     claims that there exist one-to-one functions
     \(f_A:A\to\omega\) for each \(A\in[\kappa]^{\leq\aleph_0}\) such that
     the collection \(\{f_A:A\in[\kappa]^{\leq\aleph_0}\}\) is pairwise
     almost compatible.
   \end{definition}
 
-  In the same paper, Scheepers noted that \(\alcompS{\omega_1}\) holds in \(ZFC\),
+  In \cite{MR1129143}, Scheepers noted that \(\alcompS{\omega_1}\) holds in \(ZFC\),
   and that it's possible to force \(\mf c\) to be arbitrarily large
   while preserving \(\alcompS{\mf c}\). However, \(\alcompS{\mf c^+}\) always fails.
   This axiom may be applied to obtain a winning \(2\)-tactic for \(\pl F\)
@@ -236,8 +238,8 @@ NSF-DMS 1501506}
     from \(\mc S\) and let \(g_A=f_{A'}\rest A\).
   \end{proof}
 
-  In the next section we will show that \(\alcompSP{\kappa}\) is sufficient
-  for the applications to the Scheepers and Menger games.
+  In the final section we will show that \(\alcompSP{\kappa}\) is sufficient
+  for many applications to the Scheepers and Menger games.
   In the meantime, we will demonstrate that \(\alcompSP{\kappa}\) is strictly
   weaker than \(\alcompS{\kappa}\).
 
@@ -319,26 +321,8 @@ NSF-DMS 1501506}
   \end{proof}
 
   We now construct a topology on \(\omega_n\) for each \(n<\omega\) which
-  will witness a Kurepa family of size \(\aleph_n\). A similar construction
-  was previously shown by Juh\'asz et. al. in \cite{MR539228},
-  and the relationship of
-  Kurepa families and such spaces has also been investigated in a preprint
-  of Nyikos \cite{NYIKOSKUREPA}.
-
-  \begin{proposition}
-    Let \(X\) be a \(T_2\) space with a base of countable and compact
-    neighborhoods. Then \(X\) is locally metrizable with
-    a base of compact open countable sets.
-  \end{proposition}
-
-  \begin{proof}
-    For each point \(x\) let \(K\) be a countable and compact neighborhood
-    of \(x\), and it follows that it is contained in a countable, open,
-    and locally compact neighborhood \(W\) of \(x\), which in turn
-    is zero-dimensional and metrizable. So choose \(V\) clopen
-    in \(W\) such that \(x\in V\subseteq K\); \(V\) is a compact open
-    neighborhood of \(x\) in \(X\).
-  \end{proof}
+  will witness a Kurepa family of size \(\aleph_n\), exploiting a theorem of
+  Juh\'asz et. al. in \cite{MR539228}.
 
   \begin{definition}
     A topological space is said to be \term{\(\omega\)-bounded}
@@ -349,162 +333,9 @@ NSF-DMS 1501506}
     the claim that there exists a splendid space of cardinality \(\kappa\).
   \end{definition}
 
-  \begin{proposition}
-    Let \(X\) be a \(T_2\) space with cardinality less than \(\aleph_\omega\)
-    which is locally countable and
-    \(\omega\)-bounded. Then the closure operation preserves cardinality and
-    weight.
-  \end{proposition}
-
-  \begin{proof}
-    Note that the closure of any countable neighborhood is compact, and
-    any Lindel\"of set is countable. This space is locally metrizable
-    and thus first-countable, so cardinality and weight coincide for any
-    subspace. The result is obvious if \(A\) is countable; otherwise
-    let \(A=\{a_\alpha:\alpha<\omega_{n+1}\}\) and since basic neighborhoods
-    are countable note any limit point of \(A\) is
-    a limit point of \(A_\beta=\{a_\alpha:\alpha<\beta\}\)
-    for some \(\beta<\omega_{n+1}\).
-    Thus \(\cl A=\bigcup_{\beta<\omega_{n+1}}\cl{A_\beta}\) and
-    by induction \(|\cl A|=|A|\).
-  \end{proof}
-
-  \begin{lemma}
-    Let \(X\) be a \(T_2\) space with cardinality less than \(\aleph_\omega\)
-    which is locally countable and locally compact, and such that
-    its closure operation preserves cardinalities.
-    Then \(X\) has an \(\omega\)-bounded extension \(\tilde X\)
-    with the same properties where \(\tilde X\setminus X\) has the same
-    cardinality as \(X\).
-  \end{lemma}
-
-  \begin{proof}
-    We prove this by induction on \(n\).
-    If \(n=0\), then we can just use the one-point compactification of two
-    copies of \(X\). So suppose \(n>0\) and
-    that \(X=\omega_n\) has an appropriate topology. Note that \(X\) has
-    a base of countable and compact neighborhoods since the closure operation
-    preserves cardinalities.
-
-    For each \(\alpha<\omega_n\), \(\gamma_\alpha\) may be chosen such that
-    both the closure of the set \(\alpha\) in \(X\) and a countable
-    neighborhood of the point \(\alpha\) are subsets of \(\gamma_\alpha\).
-    Note that the set
-    \(\{\lambda<\omega_n:\alpha<\lambda\Rightarrow\gamma_\alpha<\lambda\}\)
-    is a cub subset of \(\omega_n\) containing a cub subset \(C\)
-    of limit ordinals.
-    Now for each \(\lambda\in C\), the set \(\lambda\) is
-    open as \(\alpha<\lambda\) belongs to the neighborhood
-    \(\gamma_\alpha\subsetneq\lambda\). Also, if \(\lambda\) has uncountable
-    cofinality, then for \(\beta\geq\lambda\) and any countable neighborhood
-    \(U\) of \(\beta\), \(U\cap\lambda=U\cap\alpha\)
-    for some \(\alpha<\lambda\); thus \(U\setminus\cl\alpha=U\setminus\lambda\)
-    is a neighborhood of \(\beta\), showing that \(\lambda\)
-    is clopen.
-
-    Let \(\tilde X=\omega_n\times 2\).
-    By induction on \(\lambda \in C\) we will define compatible topologies
-    for \(\tilde X_\lambda=\omega_n\times\{0\}\cup\lambda\times\{1\}\)
-    such that
-    \begin{itemize}
-      \item \(\omega_n \times \{0\}\) is an open copy of \(X\),
-      \item \(\lambda\times 2\) is open, and when \(\cf\lambda>\omega\) also closed,
-      \item the space has a base of countable and compact neighborhoods, and
-      \item when \(\lambda\) is a successor,
-        for each \(\alpha<\lambda\) the closure of \(\alpha\times 2\) is
-        an \(\omega\)-bounded  subset of \(\lambda\times 2\).
-    \end{itemize}
-
-    We first consider the case \(n=1\).
-    If \(\lambda\) is a limit in \(C\), then
-    \(
-      \tilde X_\lambda
-        =
-      \bigcup_{\mu\in C\cap\lambda}\tilde X_\mu
-    \)
-    satisfies the induction requirements.
-    Otherwise we choose an increasing sequence of
-    ordinals \(\{\alpha_k : k\in \omega\}\) with limit \(\lambda\)
-    such that \(\alpha_0\) is the predecessor of \(\lambda\) in \(C\),
-    or \(\alpha_0=0\) if \(\lambda\) is the least element of \(C\).
-
-    The subspace \(\cl\lambda\times\{0\}\cup\alpha_0\times2\) of \(X\)
-    is countable and locally compact; therefore it is
-    metrizable and zero-dimensional.
-    So we may choose increasing sets \(U_k\) for \(k<\omega\) which are
-    clopen in this topology and satisfy
-    \[
-      \cl{\alpha_k\times\{0\}\cup\alpha_0\times2}
-        =
-      \cl{\alpha_k}\times\{0\}\cup\alpha_0\times2
-        \subseteq
-      U_k
-        \subseteq
-      \lambda\times\{0\}\cup\alpha_0\times 2
-    \]
-    Note that \(U_k\) is also clopen in \(\tilde X_{\alpha_0}\) since it is
-    closed in \(\cl\lambda\times\{0\}\cup\alpha_0\times2\) and open in
-    \(\lambda\times\{0\}\cup\alpha_0\times 2\).
-
-    We need only describe a base for the points
-    \(\<\alpha,1\>\in(\lambda\setminus\alpha_0)\times\{1\}\).
-    We do so by letting
-    \(\<\alpha,1\>\) be isolated when \(\alpha\not\in\{\alpha_k:k<\omega\}\),
-    and giving \(\<\alpha_k,1\>\) the open neighborhoods
-    \((U_k\cup((\alpha_k+1)\times\{1\}))\setminus K\) for each compact
-    subset \(K\) of \(U_k\cup(\alpha_k\times\{1\})\); that is,
-    \(\<\alpha_k,1\>\) is the one point compactifying
-    \(U_k\cup(\alpha_k\times\{1\})\).
-
-    The first two requirements of our inductive hypothesis are obviously
-    satsified. Note points in \(\lambda\times 2\) are covered by
-    the compact countable neighborhood \(U_k\cup((\alpha_k+1)\times\{1\})\)
-    for some \(k<\omega\), and for points in
-    \((\omega_n\setminus\lambda)\times\{0\}\) we may use a compact
-    countable neighborhood from \(X\).
-    For the final requirement, note that for \(\alpha<\lambda\), we may
-    choose \(\alpha<\alpha_k<\lambda\) and note that
-    \(\alpha\times 2\) is contained in the compact
-    subset \(U_k\cup((\alpha_k+1)\times\{1\})\) of \(\lambda\times2\).
-
-    For the case \(n>1\), we may assume that the successors in \(C\)
-    have uncountable cofinality.
-    We again proceed by induction on \(\lambda\in C\).  Again when
-    \(\lambda\) is a limit in \(C\),
-    \(
-      \tilde X_\lambda
-        =
-      \bigcup_{\mu\in C\cap\lambda}\tilde X_\mu
-    \)
-    satisfies the given
-    requirements; in particular if \(\alpha<\lambda\), then
-    \(\alpha<\mu<\lambda\) for some successor \(\mu\in C\) with uncountable
-    cofinality. As such, the closure of \(\alpha\times2\) is
-    an \(\omega\)-bounded subset of the clopen \(\mu\times 2\) and
-    therefore also of \(\lambda\times 2\).
-    In case \(\lambda\) is not a limit of \(C\), then \(\lambda\)
-    has uncountable cofinality and a predecessor \(\mu\in C\).
-    We therefore have that \(\lambda\times\{0\}\) is clopen
-    in \(\omega_n\times \{0\}\). Since the cardinality of
-    \(\lambda\times \{0\} \cup \mu\times 2\) is less than \(\aleph_n\),
-    we may simply apply the induction hypothesis
-    to choose an appropriate topology for \(\lambda\times 2\).
-
-    As a result, \(\tilde X=\bigcup_{\lambda\in C}\tilde X_\lambda\)
-    is
-    \(\omega\)-bounded as any countable set is contained in some
-    \(\alpha\times 2\) for \(\alpha<\lambda\in C\).
-  \end{proof}
-
-  \begin{theorem}
-    For each \(k< \omega\), there is a \(T_2\), locally countable,
-    \(\omega\)-bounded topology on \(\omega_k\). That is, \(\splendidS{\aleph_k}\)
-    for all \(k<\omega\).
+  \begin{theorem}[\cite{MR539228}]
+    \(\splendidS{\aleph_k}\) for \(k<\omega\).
   \end{theorem}
-
-  \begin{proof}
-    Apply the previous lemma to \(\omega_n\) with the discrete topology.
-  \end{proof}
 
   \begin{lemma}
     The family of compact open sets in a locally countable, \(\omega\)-bounded
@@ -571,13 +402,12 @@ NSF-DMS 1501506}
     \(\alcompSP{\kappa}\) for all cardinals \(\kappa\).
   \end{corollary}
 
-  Weakening to the continuum hypothesis, we see an obvious consequence.
+  As noted earlier, Scheepers proved in \cite{MR1129143}
+  that \(\neg\alcompS{\mf c^+}\) is a theorem of ZFC, showing
+  \(\alcompSP{\kappa}\) is not equivalent to \(\alcompS{\kappa}\).
 
-  \begin{corollary}[\(CH\)]
-    \(\alcompSP{\mf c^+}\), but \(\neg\alcompS{\mf c^+}\).
-  \end{corollary}
-
-  But \(CH\) is not required to have \(\alcompS{\aleph_2}\) fail.
+  We now demonstrate that \(CH\) is not required to have \(\alcompS{\aleph_2}\)
+  fail.
 
 
 
@@ -1178,87 +1008,73 @@ NSF-DMS 1501506}
 
   \begin{figure}[ht]
 \begin{center}
-\begin{tikzpicture}
-  \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-  {
-    &
-    \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
-    \pl F \kmarkwin2\schFillIntGame\kappa \\
-
-    \alcompSP\kappa \\
-
-    &
-    \pl F \kmarkwin2\schFillInitialGame\kappa &
-    \pl F \kmarkwin2\schFillGame\kappa \\
-  };
-  \path[>=latex,->]
-    (m-2-1) edge (m-1-2)
-    (m-2-1) edge (m-3-2)
-    (m-1-2) edge (m-3-2)
-    (m-1-3) edge (m-3-3);
-  \path[>=latex,<->]
-    (m-1-2) edge (m-1-3)
-    (m-3-2) edge (m-3-3);
+\begin{tikzpicture}[x=0.8in,y=0.5in]
+  \node at (-3.5,2) {\(\alcompS\kappa\)};
+  \node at (-3.5,0) {\(\pl F \ktactwin2\schFillStrictGame\kappa\)};
+  \node at (0,2) {\(\alcompSP\kappa\)};
+  \node at (-1,1) {\(\pl F \kmarkwin2\menGame{\oneptlind\kappa}\)};
+  \node at (0,1) {\(\Leftrightarrow\)};
+  \node at (1,1) {\(\pl F \kmarkwin2\schFillIntGame\kappa\)};
+  \node at (-1,0) {\(\pl F \kmarkwin2\schFillInitialGame\kappa\)};
+  \node at (0,0) {\(\Leftrightarrow\)};
+  \node at (1,0) {\(\pl F \kmarkwin2\schFillGame\kappa\)};
+  \node at (0,-1) {\(\pl F \kmarkwin2\schFillStrictGame\kappa\)};
+  \draw[-implies,double equal sign distance] (-3.2,2) -- (-0.3,2);
+  \draw[-implies,double equal sign distance] (-2.6,0) -- (-1.9,0);
+  \draw[-implies,double equal sign distance] (-3.5,1.65) -- (-3.5,0.35);
+  \draw[-implies,double equal sign distance] (0,1.65) -- (0,1.35);
+  \draw[-implies,double equal sign distance] (0,0.65) -- (0,0.35);
+  \draw[-implies,double equal sign distance] (0,-0.35) -- (0,-0.65);
 \end{tikzpicture}
 \end{center}
-\caption{Diagram of Scheeper/Menger game implications with \(\alcompSP{\kappa}\)}
-\label{GamesDiagram2}
+\caption{Diagram of Scheeper/Menger game implications with \(\alcompS{\kappa},\alcompS{\kappa}\)}
+\label{GamesDiagram}
 \end{figure}
 
-%   \begin{figure}[h]
-% \begin{center}
-% \begin{tikzpicture}
-%   \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-%   {
-%     &
-%     \pl F \kmarkwin2\menGame{\oneptlind\kappa} &
-%     \pl F \kmarkwin2\schFillIntGame\kappa \\
-
-%     \alcompSP\kappa &
-%     \pl F \kmarkwin2\schFillInitialGame\kappa &
-%     \pl F \kmarkwin2\schFillGame\kappa \\
-
-%     &
-%     &
-%     \pl F \ktactwin2\schFillStrictGame\kappa \\
-%   };
-%   \path[>=latex,->]
-%     (m-2-1) edge (m-1-2)
-%     (m-2-1) edge (m-2-2)
-%     (m-2-1) edge (m-3-3)
-%     (m-1-2) edge (m-2-2)
-%     (m-1-3) edge (m-2-3)
-%     (m-3-3) edge (m-2-3);
-%   \path[>=latex,<->]
-%     (m-1-2) edge (m-1-3)
-%     (m-2-2) edge (m-2-3);
-% \end{tikzpicture}
-% \end{center}
-% \caption{Diagram of Scheeper/Menger game implications with \(\alcompSP{\kappa}\)}
-% \label{GamesDiagram2}
-% \end{figure}
-
   \begin{theorem}
-    \(\alcompSP\kappa\) implies the game-theoretic conditions
-    shown in Figure \ref{GamesDiagram2}.
+    Figure \ref{GamesDiagram}.
   \end{theorem}
 
   \begin{proof}
-    The weaker claim
-    \(\alcompS\kappa\Rightarrow\pl F \kmarkwin2\schFillIntGame\kappa\)
-    was proven in \cite{clontzMengerGamePreprint};
-    however, the strategy
-    only required that the \(f_A\) be pairwise almost-compatible and
-    that preimages of finite sets in each \(f_A\)
-    are finite, which is also possible assuming \(\alcompSP\kappa\).
-    Note that the relationships amongst the games were all shown in
-    \cite{clontzMengerGamePreprint}.
+    \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\) was
+    shown by Scheepers in \cite{MR1129143} (also, see the following theorem).
+    Most of the other results in the figure were proven
+    in \cite{clontzMengerGamePreprint}, with the exception that
+    \(\alcompSP\kappa\) was not considered at the time.
+    The following proof that
+    \(\alcompSP\kappa\Rightarrow\pl F \kmarkwin2\schFillIntGame\kappa\)
+    is a trivial modification of the proof presented in
+    \cite{clontzMengerGamePreprint} assuming \(\alcompS\kappa\), but as
+    that paper is under review at the time
+    of this writing, we provide it here.
+
+    Let \(f_A\) for \(A\in[\kappa]^{\leq\omega}\) witness \(\alcompSP\kappa\).
+    We define a \(2\)-mark \(\sigma\) for \(\schFillIntGame\kappa\) as follows:
+      \[
+        \sigma(\<A\>,0) = \{\alpha\in A: f_A(\alpha) = 0 \}
+      \]
+      \[
+        \sigma(\<A,B\>,n+1)
+          =
+        \{
+          \alpha \in A\cap B
+        :
+          f_B(\alpha) \leq n+1 \text{ or }
+          f_A(\alpha)\not=f_B(\alpha)
+        \}
+      \]
+    For any attack \(\<A_0,A_1,\dots\>\) by \(\pl C\) and
+    \(\alpha\in\bigcap_{n<\omega}A_n\), either \(f_{A_n}(\alpha)\) is constant for
+    all \(n\), or \(f_{A_n}(\alpha)\not=f_{A_{n+1}}(\alpha)\) for some \(n\);
+    either way, \(\alpha\) is covered.
   \end{proof}
 
-  We include the following proof from \cite{MR1129143} for the convenience
-  of the reader.
+  We include the following proof from \cite{MR1129143} to point
+  out why \(\alcompSP\kappa\) seems insufficient for providing \(\pl F\) a
+  winning \(2\)-tactic in \(\schFillStrictGame\kappa\), despite that it
+  witnesses a winning \(2\)-mark.
 
-  \begin{theorem}
+  \begin{theorem}[\cite{MR1129143}]
     \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\)
   \end{theorem}
 
@@ -1294,19 +1110,31 @@ NSF-DMS 1501506}
     \]
     is a legal \(2\)-tactic for \(\pl F\). Let \(C=\<C_0,C_1,\dots\>\) be
     a strictly increasing sequence of countable sets and
-    \(\alpha\in C_n\). Noting that \(f_A\) is an injection and not
-    just finite-to-one, \(0\leq g_{C_{n+m}}(\alpha)\) for all
+    \(\alpha\in C_n\).
+
+    Noting that \(f_A\) is an injection
+    (not just finite-to-one), \(0\leq g_{C_{n+m}}(\alpha)\) for all
     \(m<\omega\), and it follows that
     \(g_{C_{n+m}}(\alpha)\leq g_{C_{n+m+1}}(\alpha)\) for some \(m<\omega\).
     Therefore \(\alpha\in\sigma(\<C_{n+m},C_{n+m+1}\>)\).
   \end{proof}
 
-  So it would seem that \(\alcompSP\kappa\) is sufficient only when
-  considering Markov strategies. (Of course,
-  \(\alcompSP\kappa\Rightarrow\pl F\kmarkwin2\schFillGame\kappa
-  \Rightarrow\pl F\kmarkwin2\schFillStrictGame{\kappa}\).)
+  While the above proof cannot be trivially modified to utilize
+  the finite-to-one functions witnessed by
+  \(\alcompSP\kappa\) in constructing a winning \(2\)-tactical strategy
+  for \(\schFillStrictGame{\kappa}\), whether
+  \(\alcompSP\kappa\) is sufficient for
+  \(\pl F\ktactwin2\schFillStrictGame{\kappa}\) after all
+  does remain open:
+
+  \begin{question}
+    May the previous theorem be improved by replacing \(\alcompS\kappa\)
+    with \(\alcompSP\kappa\)?
+  \end{question}
+
   We would like to demonstrate that \(\alcompSP\kappa\) is not
-  necessary.
+  necessary for constructing winning \(2\)-Markov strategies in
+  \(\schFillIntGame\kappa\).
 
   \begin{theorem}
     Let \(\alpha\) be the limit of increasing ordinals \(\beta_n\) for \(n<\omega\).
@@ -1372,51 +1200,6 @@ NSF-DMS 1501506}
     The proof proceeds nearly identically to the previous proof: substitute
     \(\alpha\in C_0\) in place of \(\alpha\in\bigcap_{n<\omega}C_n\) and proceed.
   \end{proof}
-    % Let \(\sigma_n\) be a winning \(2\)-mark for \(\pl F\) in
-    % \(\schFillInitialGame{\omega_{\beta_n}}\). Define the \(2\)-mark \(\sigma\)
-    % for \(\pl F\) in \(\schFillInitialGame{\omega_\alpha}\) as follows:
-    % \[
-    %   \sigma(\<C\>,0)
-    %     =
-    %   \sigma_0(\<C\cap\omega_{\beta_0}\>,0)
-    % \]
-    % \[
-    %   \sigma(\<C,D\>,n+1)
-    %     =
-    %   \sigma_{n+1}(\<D\cap\omega_{\beta_{n+1}}\>,0)
-    %     \cup
-    %   \bigcup_{m\leq n}
-    %   \sigma_m(\<C\cap\omega_{\beta_m},D\cap\omega_{\beta_m}\>,n-m+1)
-    % \]
-
-    % Let \(\<C_0,C_1,\dots\>\) be an attack by
-    % \(\pl C\) in \(\schFillInitialGame{\omega_\alpha}\), and
-    % \(\alpha\in C_0\).
-    % Choose \(N<\omega\) with \(\alpha<\omega_{\beta_{N+1}}\). Consider the
-    % attack
-    % \(\<C_{N+1}\cap\omega_{\beta_{N+1}},C_{N+2}\cap\omega_{\beta_{N+1}},\dots\>\)
-    % by \(\pl C\) in \(\schFillInitialGame{\omega_{\beta_{N+1}}}\). Since
-    % \(\sigma_{N+1}\) is a winning strategy and
-    % \(\alpha\in C_{N+1}\cap\omega_{\beta_{N+1}}\), either
-    % \(\alpha\in\sigma_{N+1}(\<C_{N+1}\cap\omega_{\beta_{N+1}}\>,0)\) and thus
-    % \(\alpha\in\sigma(\<C_N,C_{N+1}\>,N+1)\), or
-    % \(
-    %   \alpha
-    %     \in
-    %   \sigma_{N+1}(
-    %     \<C_{N+M+1}\cap\omega_{\beta_{N+1}},C_{N+M+2}\cap\omega_{\beta_{N+1}}\>
-    %     ,M+1
-    %   )
-    % \)
-    % for some \(M<\omega\) and thus
-    % \(
-    %   \alpha
-    %     \in
-    %   \sigma(
-    %     \<C_{N+M+1},C_{N+M+2}\>,
-    %     N+M+2
-    %   )
-    % \). Thus \(\sigma\) is a winning strategy.
 
   \begin{corollary}
     It is consistent that \(\alcompSP{\aleph_\omega}\) fails,
@@ -1428,7 +1211,7 @@ NSF-DMS 1501506}
 
   We conclude by returning our attention to Question \ref{mainQuestion},
   which asks whether there exists a space for which the second player
-  \(\pl F\) in the Menger game \(\menGame{X}\) has a winning strategy
+  \(\pl F\) in the game \(\menGame{X}\) has a winning strategy
   without a winning \(2\)-mark.
 
   \begin{question}
@@ -1449,7 +1232,7 @@ NSF-DMS 1501506}
   answer Question \ref{mainQuestion} in \(ZFC\).
 
   Solving the following weaker question would not answer Question
-  \ref{mainQuestion} by itself, but an solution would be interesting nonetheless.
+  \ref{mainQuestion} by itself, but a solution would be interesting nonetheless.
 
   \begin{question}
     Does
@@ -1457,6 +1240,14 @@ NSF-DMS 1501506}
     \(\kappa\) in ZFC?
   \end{question}
 
+  Although, it's still open whether the previous two questions are even
+  distinct.
+
+  \begin{question}
+    Can a winning \(2\)-Markov strategy in \(\schFillGame{\kappa}\)
+    be used to construct a winning \(2\)-Markov strategy in
+    \(\schFillIntGame{\kappa}\)?
+  \end{question}
 
 
 
