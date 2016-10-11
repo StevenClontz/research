@@ -432,8 +432,11 @@ more general context below.
   \(\<D(\mc U_0),D(\mc U_1),\dots\>\in\mc D_{C_p(X)}^\omega\).
 
   Assuming \(C_p(X)\) is \(CDFT_{\vec 0}\), choose a witness
-  \(\<F_0,F_1,\dots\>\) such that \(F_n\in[D(\mc U_n)]^{<\omega}\)
-  and \(\vec 0 \in \cl{\bigcup_{n<\omega} F_n}\). Now let
+  \(\<F_0,F_1,\dots\>\) such that
+  \[
+    \vec 0 \in \cl{\bigcup_{n<\omega} F_n}
+  .\]
+  Now let
   \[
     \mc F_n
       =
@@ -452,6 +455,64 @@ more general context below.
   \(\vec y[X\setminus U_{\vec y,\mc U_n}]=\{1\}\). It follows that
   \(G\cap(X\setminus U_{\vec y,\mc U_n})=\emptyset\), and therefore
   \(G\subseteq U_{\vec y,\mc U_n}\in\mc F_n\).
+
+  Assuming \(C_p(X)\) is \(CDFT_{\vec 0}^+\), choose a witness
+  \(\sigma\) such that
+  \[
+    \vec 0
+      \in
+    \cl{\bigcup_{n<\omega} \sigma(\<D(\mc U_0),\dots,D(\mc U_n)\>)}
+  .\]
+  Now let
+  \[
+    \tau(\<\mc U_0,\dots,\mc U_n\>)
+      =
+    \{
+      U_{\vec y,\mc U_n}
+    :
+      \vec y \in \sigma(\<D(\mc U_0),\dots,D(\mc U_n)\>)
+    \}
+      \in
+    [\mc U_n]^{<\omega}
+  .\]
+  We claim that \(\bigcup_{n<\omega}\tau(\<\mc U_0,\dots,\mc U_n\>)\)
+  is an \(\omega\)-cover.
+  Let \(G\in[X]^{<\omega}\). The neighborhood \([\vec 0,G,\frac{1}{2}]\)
+  contains some point \(\vec y\in \sigma(\<D(\mc U_0),\dots,D(\mc U_n)\>)\)
+  for some \(n<\omega\). It follows
+  that \(U_{\vec y,\mc U_n}\in\mc U_n\) and
+  \(\vec y[X\setminus U_{\vec y,\mc U_n}]=\{1\}\). As a result
+  \(G\cap(X\setminus U_{\vec y,\mc U_n})=\emptyset\), and therefore
+  \(G\subseteq U_{\vec y,\mc U_n}\in\mc \tau(\<\mc U_0,\dots,\mc U_n\>)\).
+
+  Assuming \(C_p(X)\) is \(CDFT_{\vec 0}^{+mark}\), choose a witness
+  \(\sigma\) such that
+  \[
+    \vec 0
+      \in
+    \cl{\bigcup_{n<\omega} \sigma(D(\mc U_n),n)}
+  .\]
+  Now let
+  \[
+    \tau(\mc U_n,n)
+      =
+    \{
+      U_{\vec y,\mc U_n}
+    :
+      \vec y \in \sigma(D(\mc U_n),n)
+    \}
+      \in
+    [\mc U_n]^{<\omega}
+  .\]
+  We claim that \(\bigcup_{n<\omega}\tau(\mc U_n,n)\)
+  is an \(\omega\)-cover.
+  Let \(G\in[X]^{<\omega}\). The neighborhood \([\vec 0,G,\frac{1}{2}]\)
+  contains some point \(\vec y\in \sigma(D(\mc U_n),n)\)
+  for some \(n<\omega\). It follows
+  that \(U_{\vec y,\mc U_n}\in\mc U_n\) and
+  \(\vec y[X\setminus U_{\vec y,\mc U_n}]=\{1\}\). As a result
+  \(G\cap(X\setminus U_{\vec y,\mc U_n})=\emptyset\), and therefore
+  \(G\subseteq U_{\vec y,\mc U_n}\in\mc \tau(\mc U_n,n)\).
 \end{proof}
 
 \begin{theorem}
