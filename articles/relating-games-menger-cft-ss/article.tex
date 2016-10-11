@@ -1,0 +1,335 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{tikz}
+% \usetikzlibrary{matrix}
+\usetikzlibrary{arrows}
+
+\usepackage{../../clontzDefinitions}
+
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{notation}[theorem]{Notation}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+
+
+
+\begin{document}
+
+% \title{Proximal compact spaces are Corson compact\tnoteref{t1}}
+% \tnotetext[t1]{2010 Mathematics Subject Classification. 54E15, 54D30, 54A20.}
+\title{Relating games of Menger, countable fan tightness, and selective separability}
+
+% \author[aub]{S.~Clontz\fnref{fn1}}
+% \ead{steven.clontz@auburn.edu}
+% \author[aub]{G.~Gruenhage\fnref{fn2}}
+% \ead{gruengf@auburn.edu}
+
+% \address[aub]{Department of Mathematics, Auburn University,
+%  Auburn, AL 36830}
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics and Statistics,
+The University of South Alabama,
+Mobile, AL 36606}
+\email{steven.clontz@gmail.com}
+
+% \keywords{TODO}
+% \subjclass[2010]{}
+
+
+
+
+
+
+\begin{abstract}
+  By adapting techniques of Arhangelskii, Barman, and Dow, we may
+  equate the existence of perfect-information, Markov, and tactical
+  strategies between two interesting selection games.
+  These results shed some light on Gruenhage's question asking whether all
+  strategically selectively separable spaces are Markov selectively
+  separable.
+\end{abstract}
+
+
+\maketitle
+
+
+
+
+
+
+
+\section{Introduction}
+
+\begin{definition}
+  The \term{selection principle} \(\schSelProp{\mc A}{\mc B}\) states that
+  given \(A_n\in\mc A\) for \(n<\omega\), there exist \(B_n\in[A_n]^{<\omega}\)
+  such that \(\bigcup_{n<\omega}B_n\in\mc B\).
+\end{definition}
+
+\begin{definition}
+  The \term{selection game} \(\schSelGame{\mc A}{\mc B}\) is the
+  analogous game to \(\schSelProp{\mc A}{\mc B}\), where during each
+  round \(n<\omega\), Player \(\plI\) first
+  chooses \(A_n\in\mc A\), and then Player \(\plII\) chooses
+  \(B_n\in[A_n]^{<\omega}\).
+  Player \(\plII\) wins in the case that \(\bigcup_{n<\omega}B_n\in\mc B\),
+  and Player \(\plI\) wins otherwise.
+\end{definition}
+
+This game and property were first formally investigated
+by Scheepers in ``Combinatorics of open covers'' \cite{MR1378387}, which
+inspired a series of ten sequels with several co-authors. We may quickly
+observe that if \(\plII\) has a winning strategy for the game
+\(\schSelGame{\mc A}{\mc B}\), then \(\schSelProp{\mc A}{\mc B}\) will hold,
+but the converse need not follow.
+
+The power of this selection principle and game comes from their ability
+to characterize several properties and games from the literature.
+Of interest to us are the following.
+
+\begin{definition}
+  Let \(\mc O_X\) be the collection of open covers for a topological space
+  \(X\). Then \(\schSelProp{\mc O_X}{\mc O_X}\) is the well-known
+  \term{Menger property} for \(X\) (\(M\) for short), and
+  \(\schSelGame{\mc O_X}{\mc O_X}\) is the
+  well-known \term{Menger game}.
+\end{definition}
+
+\begin{definition}
+  An \term{\(\omega\)-cover} \(\mc U\)
+  for a topological space \(X\) is an open cover
+  such that for every \(F\in[X]^{<\omega}\), there exists some \(U\in\mc U\)
+  such that \(F\subseteq U\).
+\end{definition}
+
+\begin{definition}
+  Let \(\Omega_X\) be the collection of \(\omega\)-covers for a topological
+  space \(X\). Then \(\schSelProp{\Omega_X}{\Omega_X}\) is the
+  \term{\(\Omega\)-Menger property} for \(X\) (\(\Omega M\) for short), and
+  \(\schSelGame{\Omega_X}{\Omega_X}\) is the \term{\(\Omega\)-Menger game}.
+\end{definition}
+
+In \cite[Theorem 3.9]{MR1419798} it was shown that \(X\) is \(\Omega\)-Menger
+if and only if \(X^n\) is Menger for all \(n<\omega\).
+
+\begin{definition}
+  Let \(\mc B_{X,x}\) be the collection of subsets \(A\subset X\) where
+  \(x\in\closure{A}\). (Call \(A\) a \term{blade} of \(x\).)
+  Then \(\schSelProp{\mc B_{X,x}}{\mc B_{X,x}}\) is the
+  \term{countable fan tightness property} for \(X\) at \(x\)
+  (\(CFT_x\) for short), and
+  \(\schSelGame{\mc B_{X,x}}{\mc B_{X,x}}\) is the
+  \term{countable fan tightness game} for \(X\) at \(x\).
+\end{definition}
+
+\begin{definition}
+  A space \(X\) has \term{countable fan tightness} (\(CFT\) for short)
+  if it has
+  countable fan tightness at each point \(x\in X\).
+\end{definition}
+
+\begin{definition}
+  Let \(\mc D_{X}\) be the collection of dense subsets of a topological
+  space \(X\). (So, \(\mc D_X\subseteq \mc B_{X,x}\) for all \(x\in X\).)
+  Then \(\schSelProp{\mc D_X}{\mc B_{X,x}}\) is the
+  \term{countable dense fan tightness property} for \(X\) at \(x\)
+  (\(CDFT_x\) for short), and
+  \(\schSelGame{\mc D_X}{\mc B_{X,x}}\) is the
+  \term{countable dense fan tightness game} for \(X\) at \(x\).
+\end{definition}
+
+\begin{definition}
+  A space \(X\) has \term{countable dense fan tightness}
+  (\(CDFT\) for short) if it has
+  countable dense fan tightness at each point \(x\in X\).
+\end{definition}
+
+The notion of countable fan tightness was first studied by
+by Arhangel'skii in \cite{MR837289}. A result of that paper showed
+that for \(T_{3\frac{1}{2}}\) spaces \(X\), the countable fan tightness
+of the function space of pointwise convergence \(C_p(X)\) is characterized by
+the \(\Omega\)-Menger property of \(X\).
+
+
+\begin{definition}
+  \(\schSelProp{\mc D_X}{\mc D_X}\) is the
+  \term{selective separability property} for \(X\)
+  (\(SS\) for short), and
+  \(\schSelGame{\mc D_X}{\mc D_X}\) is the
+  \term{selective separability game} for \(X\).
+\end{definition}
+
+Of course, one may easily observe that a selective separable space is
+separable. In \cite{MR2678950} Barman and Dow demonstrated that all
+separable Frechet spaces are selectively separable. They were also able
+to produce a space which is selectively separable, but does not allow
+\(\plII\) a winning strategy in the selective separability game.
+
+The object of this paper is to investigate the game-theoretic properties
+characterized by the presence of winning \term{limited information}
+strategies in these selection games.
+
+\begin{definition}
+  A \term{strategy} for \(\plII\) in the game \(\schSelGame{\mc A}{\mc B}\)
+  is a function \(\sigma\) satisfying
+  \(\sigma(\<A_0,\dots,A_n\>)\in[A_n]^{<\omega}\) for
+  \(\<A_0\,\dots,A_n\>\in\mc A^{n+1}\). We say this strategy is
+  \term{winning} if whenever \(\plI\) plays \(A_n\in\mc A\) during each
+  round \(n<\omega\), \(\plII\) wins the game by playing
+  \(\sigma(\<A_0,\dots,A_n\>)\) during each round \(n<\omega\).
+  If a winning strategy exists, then we write
+  \(\plII\win\schSelGame{\mc A}{\mc B}\).
+\end{definition}
+
+\begin{definition}
+  A \term{Markov strategy} for \(\plII\) in the game
+  \(\schSelGame{\mc A}{\mc B}\)
+  is a function \(\sigma\) satisfying
+  \(\sigma(A,n)\in[A_n]^{<\omega}\) for
+  \(A\in\mc A\) and \(n<\omega\). We say this Markov strategy is
+  \term{winning} if whenever \(\plI\) plays \(A_n\in\mc A\) during each
+  round \(n<\omega\), \(\plII\) wins the game by playing
+  \(\sigma(A_n,n)\) during each round \(n<\omega\).
+  If a winning Markov strategy exists, then we write
+  \(\plII\markwin\schSelGame{\mc A}{\mc B}\).
+\end{definition}
+
+\begin{notation}
+  If \(\schSelProp{\mc A}{\mc B}\) characterizes the property \(P\),
+  then we say \(\plII\win\schSelGame{\mc A}{\mc B}\) characterizes
+  \(P^+\) (``strategically \(P\)''), and
+  \(\plII\markwin\schSelGame{\mc A}{\mc B}\) characterizes
+  \(P^{+mark}\) (``Markov \(P\)'').
+  Of course, \(P^{+mark}\Rightarrow P^+ \Rightarrow P\).
+\end{notation}
+
+In this notation,
+Barman and Dow showed that \(SS\) does not imply
+\(SS^+\). We aim to make progress on the following question attributed to
+Gary Gruenhage:
+
+\begin{question}\label{mainQuestion}
+  Does \(SS^+\) imply \(SS^{+mark}\)?
+\end{question}
+
+The solution is known to be ``yes'' in the context of countable spaces
+\cite{MR2678950}. However in general, winning strategies in selection games
+cannot be improved to be winning Markov strategies. In
+\cite{clontzMengerGamePreprint} the author showed that while \(M^+\) implies
+\(M^{+mark}\) for second-countable spaces, there exists a simple
+example of a regular non-second-countable space which is
+\(M^+\) but not \(M^{+mark}\).
+
+
+
+\section{\(CFT\) and \(SS\)}
+
+We begin by generalizing the following result:
+
+\begin{lemma}[Lem 2.7 of \cite{MR2678950}]
+  The following are equivalent for any topological space \(X\).
+  \begin{itemize}
+    \item \(X\) is \(SS\).
+    \item \(X\) is separable and \(CDFT\).
+    \item \(X\) has a countable dense subset \(D\) where
+          \(CDFT_x\) holds for all \(x\in D\).
+  \end{itemize}
+\end{lemma}
+
+\begin{lemma}
+  The following are equivalent for any topological space \(X\).
+  \begin{itemize}
+    \item \(X\) is \(SS\) (resp. \(SS^+\), \(SS^{+mark}\)).
+    \item \(X\) is separable and \(CDFT\)
+          (resp. \(CDFT^+\), \(CDFT^{+mark}\)).
+    \item \(X\) has a countable dense subset \(D\) where
+          \(CDFT_x\) (resp. \(CDFT_x^+\), \(CDFT_x^{+mark}\))
+          holds for all \(x\in D\).
+  \end{itemize}
+\end{lemma}
+
+\begin{proof}
+  We need only show that the final condition implies the first,
+  and we may assume that \(X\) lacks isolated points.
+  Let \(D=\{d_i:i<\omega\}\).
+
+  Let \(\sigma_i\) be a winning strategy witnessing \(CDFT_{d_i}^+\)
+  for each \(i<\omega\). We define the strategy \(\tau\) for the
+  \(SS\) game by
+  \[
+    \tau(\<D_0,\dots,D_n\>)
+      =
+    \bigcup_{i\leq n}
+    \sigma_i(\<D_i,\dots,D_n\>)
+  .\]
+
+  By \(CDFT_{d_i}^+\), we have
+  \[
+    d_i
+      \in
+    \cl{\bigcup_{i\leq n<\omega}\sigma_i(\<D_i,\dots,D_n\>)}
+      \subseteq
+    \cl{\bigcup_{i\leq n<\omega}\tau(\<D_0,\dots,D_n\>)}
+      \subseteq
+    \cl{\bigcup_{n<\omega}\tau(\<D_0,\dots,D_n\>)}
+  \]
+  and so it follows that
+  \[
+    X
+      \subseteq
+    \cl D
+      \subseteq
+    \cl{\cl{\bigcup_{n<\omega}\tau(\<D_0,\dots,D_n\>)}}
+      =
+    \cl{\bigcup_{n<\omega}\tau(\<D_0,\dots,D_n\>)}
+  .\]
+  Therefore \(\tau\) witnesses \(SS^+\).
+
+  The above proof may be easily modified for the Markov case by
+  replacing \(\sigma_i(\<D_i,\dots,D_n\>)\) with \(\sigma_i(D_n,n)\)
+  and \(\tau(\<D_0,\dots,D_n\>)\) with \(\tau(D_n,n)\).
+\end{proof}
+
+
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography}
+
+\end{document}
