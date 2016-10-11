@@ -78,7 +78,7 @@ Mobile, AL 36606}
 
 
 \begin{abstract}
-  By adapting techniques of Arhangelskii, Barman, and Dow, we may
+  By adapting techniques of Arhangel'skii, Barman, and Dow, we may
   equate the existence of perfect-information, Markov, and tactical
   strategies between two interesting selection games.
   These results shed some light on Gruenhage's question asking whether all
@@ -181,10 +181,14 @@ if and only if \(X^n\) is Menger for all \(n<\omega\).
   countable dense fan tightness at each point \(x\in X\).
 \end{definition}
 
+Note that \(CFT\Rightarrow CDFT\) for any space \(X\) as
+\(\mc D_X\subseteq \mc B_{X,x}\).
+
 The notion of countable fan tightness was first studied by
 by Arhangel'skii in \cite{MR837289}. A result of that paper showed
 that for \(T_{3\frac{1}{2}}\) spaces \(X\), the countable fan tightness
-of the function space of pointwise convergence \(C_p(X)\) is characterized by
+of the space of real-vaued continuous functions with
+pointwise convergence \(C_p(X)\) is characterized by
 the \(\Omega\)-Menger property of \(X\).
 
 
@@ -259,11 +263,11 @@ example of a regular non-second-countable space which is
 
 
 
-\section{\(CFT\) and \(SS\)}
+\section{\(CFT\), \(CDFT\) and \(SS\)}
 
 We begin by generalizing the following result:
 
-\begin{lemma}[Lem 2.7 of \cite{MR2678950}]
+\begin{theorem}[Lem 2.7 of \cite{MR2678950}]
   The following are equivalent for any topological space \(X\).
   \begin{itemize}
     \item \(X\) is \(SS\).
@@ -271,9 +275,9 @@ We begin by generalizing the following result:
     \item \(X\) has a countable dense subset \(D\) where
           \(CDFT_x\) holds for all \(x\in D\).
   \end{itemize}
-\end{lemma}
+\end{theorem}
 
-\begin{lemma}
+\begin{theorem}
   The following are equivalent for any topological space \(X\).
   \begin{itemize}
     \item \(X\) is \(SS\) (resp. \(SS^+\), \(SS^{+mark}\)).
@@ -283,11 +287,10 @@ We begin by generalizing the following result:
           \(CDFT_x\) (resp. \(CDFT_x^+\), \(CDFT_x^{+mark}\))
           holds for all \(x\in D\).
   \end{itemize}
-\end{lemma}
+\end{theorem}
 
 \begin{proof}
-  We need only show that the final condition implies the first,
-  and we may assume that \(X\) lacks isolated points.
+  We need only show that the final condition implies the first.
   Let \(D=\{d_i:i<\omega\}\).
 
   Let \(\sigma_i\) be a winning strategy witnessing \(CDFT_{d_i}^+\)
@@ -310,7 +313,8 @@ We begin by generalizing the following result:
       \subseteq
     \cl{\bigcup_{n<\omega}\tau(\<D_0,\dots,D_n\>)}
   \]
-  and so it follows that
+  and as \(D\subseteq\cl{\bigcup_{n<\omega}\tau(\<D_0,\dots,D_n\>)}\)
+  it follows that
   \[
     X
       \subseteq
@@ -322,11 +326,153 @@ We begin by generalizing the following result:
   .\]
   Therefore \(\tau\) witnesses \(SS^+\).
 
+  \sloppy
   The above proof may be easily modified for the Markov case by
   replacing \(\sigma_i(\<D_i,\dots,D_n\>)\) with \(\sigma_i(D_n,n)\)
   and \(\tau(\<D_0,\dots,D_n\>)\) with \(\tau(D_n,n)\).
 \end{proof}
 
+\fussy
+
+So amongst separable spaces, we see that \(SS\)
+(resp. \(SS^+\), \(SS^{+mark}\)) and
+\(CDFT\) (resp. \(CDFT^+\), \(CDFT^{+mark}\))
+are equivalent. We now further bridge the gap between \(CDFT\)
+and \(CFT\) in the context of function spaces.
+Consider the following result of Arhangel'skii.
+
+\begin{theorem}[\cite{MR837289}]
+  The following are equivalent for any \(T_{3\frac{1}{2}}\)
+  topological space \(X\).
+    \begin{itemize}
+      \item \(X\) is \(\Omega M\).
+      \item \(C_p(X)\) is \(CFT\).
+    \end{itemize}
+\end{theorem}
+
+This result may similarly be generalized in a game theoretic sense.
+In addition, this proof will demonstrate the equivalence of
+\(CFT\) and \(CDFT\) in \(C_p(X)\).
+It is unknown to the author whether Arhangel'skii
+used a strategy similar to the following proof in \cite{MR837289},
+but Sakai employed a similar technique
+in \cite{MR964873} to relate the \(\Omega\)-Rothberger and
+countable strong fan tightness properties
+(and essentially, the countable strong dense fan tightness property).
+Due to the difficulty in obtaining an English translation of
+\cite{MR837289}, we reprove Arhangel'skii's theorem above in our
+more general context below.
+
+\begin{definition}
+  Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
+  For \(\vec x\in C_p(X)\), \(F\in[X]^{<\omega}\), and
+  \(\epsilon>0\), let
+  \[
+    [\vec x,F,\epsilon]
+      =
+    \{
+      \vec y\in C_p(x)
+    :
+      |\vec y(t)-\vec x(t)|<\epsilon
+    \text{ for all }
+      t\in F
+    \}
+  \]
+  give a basic open neighborhood of \(\vec x\).
+\end{definition}
+
+\begin{lemma}
+  Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
+  If \(X\) is \(\Omega M\)
+  (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
+  then \(C_p(X)\) is \(CFT_{\vec 0}\)
+  (resp. \(CFT_{\vec 0}^+\), \(CFT_{\vec 0}^{+mark}\)).
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{lemma}
+  Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
+  If \(C_p(X)\) is \(CDFT_{\vec 0}\)
+  (resp. \(CDFT_{\vec 0}^+\), \(CDFT_{\vec 0}^{+mark}\)),
+  then \(X\) is \(\Omega M\)
+  (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
+\end{lemma}
+
+\begin{proof}
+  For each \(\mc U\in\Omega_{X}\) define
+  \[
+    D(\mc U)
+      =
+    \{
+      \vec y\in C_p(X)
+    :
+      \vec y[X\setminus U_{\vec y,\mc U}]=\{1\}
+      \text{ for some }
+      U_{\vec y,\mc U}\in\mc U
+    \}
+  .\]
+  Consider the point \(\vec x\in C_p(X)\) and its basic open neighborhood
+  \([\vec x,G,\epsilon]\). If \(\mc U\) is an \(\omega\)-cover
+  of \(X\), \(G\subseteq U\) for some \(U_{\vec y,\mc U}\in\mc U\).
+  Since \(X\) is
+  \(T_{3\frac{1}{2}}\), \(X\setminus U_{\vec y,\mc U}\) is closed, and \(G\)
+  is finite and disjoint from \(X\setminus U_{\vec y,\mc U}\),
+  we may choose some function \(\vec y\in C_p(X)\) where
+  \(\vec y[X\setminus U_{\vec y,\mc U}]=\{1\}\) and \(\vec x(t)=\vec y(t)\)
+  for each \(t\in G\).
+  It follows \(\vec y\in [\vec x,G,\epsilon]\cap D\), so \(D(\mc U)\)
+  is dense in \(C_p(X)\).
+
+  Consider the sequence of \(\omega\)-covers
+  \(\<\mc U_0,\mc U_1,\dots\>\in\Omega_X^\omega\), and the
+  corresponding sequence of dense subsets
+  \(\<D(\mc U_0),D(\mc U_1),\dots\>\in\mc D_{C_p(X)}^\omega\).
+
+  Assuming \(C_p(X)\) is \(CDFT_{\vec 0}\), choose a witness
+  \(\<F_0,F_1,\dots\>\) such that \(F_n\in[D(\mc U_n)]^{<\omega}\)
+  and \(\vec 0 \in \cl{\bigcup_{n<\omega} F_n}\). Now let
+  \[
+    \mc F_n
+      =
+    \{
+      U_{\vec y,\mc U_n}
+    :
+      \vec y \in F_n
+    \}
+      \in
+    [\mc U_n]^{<\omega}
+  .\]
+  We claim that \(\bigcup_{n<\omega}\mc F_n\) is an \(\omega\)-cover.
+  Let \(G\in[X]^{<\omega}\). The neighborhood \([\vec 0,G,\frac{1}{2}]\)
+  contains some point \(\vec y\in F_n\) for some \(n<\omega\). It follows
+  that \(U_{\vec y,\mc U_n}\in\mc U_n\) and
+  \(\vec y[X\setminus U_{\vec y,\mc U_n}]=\{1\}\). It follows that
+  \(G\cap(X\setminus U_{\vec y,\mc U_n})=\emptyset\), and therefore
+  \(G\subseteq U_{\vec y,\mc U_n}\in\mc F_n\).
+\end{proof}
+
+\begin{theorem}
+  The following are equivalent for any \(T_{3\frac{1}{2}}\)
+  topological space \(X\).
+    \begin{itemize}
+      \item \(X\) is \(\Omega M\)
+            (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
+      \item \(C_p(X)\) is \(CFT\)
+            (resp. \(CFT^+\), \(CFT^{+mark}\)).
+      \item \(C_p(X)\) is \(CDFT\)
+            (resp. \(CDFT^+\), \(CDFT^{+mark}\)).
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  Since \(\mc D_X\subseteq \mc B_{X,x}\), the second condition trivially
+  implies the first. As \(C_p(X)\) is homogeneous, the \(C(D)FT\) properties
+  are characterized by \(C(D)FT_{\vec 0}\). So the result follows from the
+  previous lemmas.
+\end{proof}
 
 
 \bibliographystyle{plain}
