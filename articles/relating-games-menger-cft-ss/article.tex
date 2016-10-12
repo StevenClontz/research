@@ -363,6 +363,33 @@ Due to the difficulty in obtaining an English translation of
 \cite{MR837289}, we reprove Arhangel'skii's theorem above in our
 more general context below.
 
+\begin{proposition}
+  Any witness for \(\Omega M\) (resp. \(\Omega M^+,\Omega M^{+mark}\))
+  may be improved such that any final sequence of the chosen
+  finite subcollections is an \(\omega\)-cover.
+\end{proposition}
+
+\begin{proof}
+  Consider any sequence \(\<\mc U_0,\mc U_1,\dots\>\) of open covers.
+  For \(\Omega M\), choose the witness
+  \(\<\mc F_n^n,\mc F_{n+1}^n,\dots\>\) for the final
+  sequence \(\<\mc U_n,\mc U_{n+1},\dots\>\) for each \(n<\omega\),
+  and let \(\mc F_n=\bigcup_{i\leq n}\mc F_n^i\).
+  For \(\Omega M^+\), the winning strategy \(\sigma\) may be improved to
+  \(\tau\) where
+  \(
+    \tau(\<\mc U_0,\dots,\mc U_n\>)
+      =
+    \bigcup_{i\leq n}\sigma(\<\mc U_i,\dots,\mc U_n\>)
+  \). For \(\Omega M^{+mark}\), the winning Markov strategy \(\sigma\) may
+  be improved to \(\tau\) where
+  \(
+    \tau(\mc U,n)
+      =
+    \bigcup_{i\leq n}\sigma(\mc U,i)
+  \).
+\end{proof}
+
 \begin{definition}
   Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
   For \(\vec x\in C_p(X)\), \(F\in[X]^{<\omega}\), and
@@ -390,7 +417,110 @@ more general context below.
 \end{lemma}
 
 \begin{proof}
+  For each \(B\in\mc B_{C_p(X),\vec 0}\) define
+  \[
+    \mc U_n(B)
+      =
+    \left\{
+      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+    :
+      \vec x\in B
+    \right\}
+  .\]
+  Consider the finite set \(F\in[X]^{<\omega}\). Since
+  \(\vec 0\in\cl B\), choose \(\vec x\in B\cap[\vec 0,F,1]\).
+  It follows that \(F\subseteq x^{-1}[(-1,1)]\in\mc U_n(B)\),
+  so \(\mc U_n(B)\) is an \(\omega\)-cover of \(X\).
 
+  Consider the sequence of blades
+  \(\<B_0,B_1,\dots\>\in\mc B_{C_p(X),\vec 0}^\omega\), and the
+  corresponding sequence of \(\omega\)-covers
+  \(\<\mc U_0(B_0),\mc U_1(B_1),\dots\>\in \Omega_X^\omega\).
+
+  Assuming \(X\) is \(\Omega M\), choose a witness
+  \(\<\mc F_0,\mc F_1,\dots\>\) such that
+  \(\mc F_n\in[\mc U_n(B_n)]^{<\omega}\) and
+  \[
+    \bigcup_{i\leq n<\omega} \mc F_n
+  \]
+  is an \(\omega\)-cover of \(X\) for all \(i<\omega\).
+  Now let
+  \[
+    F_n
+      =
+    \left\{
+      \vec x\in B_n
+    :
+      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+        \in
+      \mc F_n
+    \right\}
+  .\]
+  We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}F_n}\).
+  Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
+  \(\frac{1}{2^i}<\epsilon\) and then choose
+  \(i\leq n<\omega,\vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\mc F_n\)
+  such that \(G\subseteq \vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
+  and therefore \(G\subseteq \vec x^{-1}[(-\epsilon,\epsilon)]\).
+  It follows that \(\vec x\in F_n\cap[\vec 0,G,\epsilon]\), and therefore
+  every basic open neighborhood of \(\vec 0\) intersects
+  \(\bigcup_{n<\omega}F_n\).
+
+  Assuming \(X\) is \(\Omega M^+\), choose a witness
+  \(\sigma\) such that
+  \[
+    \bigcup_{i\leq n<\omega} \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)
+  \]
+  is an \(\omega\)-cover of \(X\) for all \(i<\omega\).
+  Now let
+  \[
+    \tau(\<B_0,\dots,B_n\>)
+      =
+    \left\{
+      \vec x\in B_n
+    :
+      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+        \in
+      \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)
+    \right\}
+  .\]
+  We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)}\).
+  Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
+  \(\frac{1}{2^i}<\epsilon\) and then choose
+  \(i\leq n<\omega,\vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
+  such that \(G\subseteq \vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
+  and therefore \(G\subseteq \vec x^{-1}[(-\epsilon,\epsilon)]\).
+  It follows that \(\vec x\in \tau(\<B_0,\dots,B_n\>)\cap[\vec 0,G,\epsilon]\), and therefore
+  every basic open neighborhood of \(\vec 0\) intersects
+  \(\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)\).
+
+  Assuming \(X\) is \(\Omega M^{+mark}\), choose a witness
+  \(\sigma\) such that
+  \[
+    \bigcup_{i\leq n<\omega} \sigma(\mc U_n(B_n),n)
+  \]
+  is an \(\omega\)-cover of \(X\) for all \(i<\omega\).
+  Now let
+  \[
+    \tau(B_n,n)
+      =
+    \left\{
+      \vec x\in B_n
+    :
+      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+        \in
+      \sigma(\mc U_n(B_n),n)
+    \right\}
+  .\]
+  We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}\tau(B_n,n)}\).
+  Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
+  \(\frac{1}{2^i}<\epsilon\) and then choose
+  \(i\leq n<\omega,\vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\mc U_n(B_n),n)\)
+  such that \(G\subseteq \vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
+  and therefore \(G\subseteq \vec x^{-1}[(-\epsilon,\epsilon)]\).
+  It follows that \(\vec x\in \tau(B_n,n)\cap[\vec 0,G,\epsilon]\), and therefore
+  every basic open neighborhood of \(\vec 0\) intersects
+  \(\bigcup_{n<\omega}\tau(B_n,n)\).
 \end{proof}
 
 \begin{lemma}
@@ -531,8 +661,92 @@ more general context below.
 \begin{proof}
   Since \(\mc D_X\subseteq \mc B_{X,x}\), the second condition trivially
   implies the first. As \(C_p(X)\) is homogeneous, the \(C(D)FT\) properties
-  are characterized by \(C(D)FT_{\vec 0}\). So the result follows from the
+  follow from \(C(D)FT_{\vec 0}\). So the result follows from the
   previous lemmas.
+\end{proof}
+
+\section{A space which is \(CFT^+\) but not \(CDFT^{+mark}\)}
+
+Our goal is to now demonstrate a space which is \(CFT^+\),
+but not even \(CDFT^{+mark}\). To do so, we will find a space \(X\)
+which is \(\Omega M^+\) but not \(\Omega M^{+mark}\), yielding \(C_p(X)\)
+as our example.
+
+\begin{proposition}\label{altCompactCharacterization}
+  A space \(X\) is compact if and only if for each \(\omega\)-cover
+  \(\mc U\) of \(X\) and \(n<\omega\), there exists a finite subcollection
+  \(\mc F\in[\mc U]^{<\omega}\) such that for each \(F\in[X]^{\leq n}\)
+  there exists some \(U\in\mc F\) where \(F\subseteq U\).
+\end{proposition}
+
+\begin{proof}
+  Let \(X\) and therefore \(X^n\) be compact.
+  Let \(\mc F_n\) be the finite subcover of the
+  open cover \(\mc U_n=\{U^n:U\in\mc U\}\). Then
+  \(\mc F=\{U:U^n\in\mc F_n\}\) witnesses our desired result.
+\end{proof}
+
+\begin{lemma}
+  The following are equivalent for a regular topological space \(X\):
+  \begin{itemize}
+    \item \(X\) is \(\sigma\)-compact
+    \item \(X\) is \(\Omega M^{+mark}\)
+    \item \(X\) is \(M^{+mark}\)
+  \end{itemize}
+\end{lemma}
+
+\begin{proof}
+  The equivalence of \(\sigma\)-compact and \(M^{+mark}\) in regular spaces
+  was shown in \cite{clontzMengerGamePreprint}. As \(\Omega M^{+mark}\)
+  trivially implies \(M^{+mark}\), we need only demonstrate that
+  if \(X=\bigcup_{n<\omega} K_n\) for \(K_n\) compact and increasing,
+  then \(X\) is \(\Omega M^{+mark}\).
+
+  We define \(\sigma(\mc U,n)\) for each \(\omega\)-cover \(\mc U\) and
+  \(n<\omega\) to witness Proposition \ref{altCompactCharacterization}
+  for \(\mc U\), \(K_n\), and \(n\). It follows that for every sequence of
+  \(\omega\)-covers \(\<\mc U_0,\mc U_1,\dots\>\) and \(F\in[X]^{<\omega}\),
+  \(F\in[K_n]^{\leq n}\) for some \(n\geq|F|\), and thus there exists some
+  \(U\in\sigma(\mc U_n,n)\) where \(F\subseteq U\). Therefore
+  \(\bigcup_{n<\omega}\sigma(\mc U,n)\) is an \(\omega\)-cover of \(X\).
+\end{proof}
+
+\begin{definition}
+  Let \(X\) be a topological space such that all countable sets are
+  closed. Then \(\onePtLind{X}=X\cup\{\infty\}\)
+  is the \term{one-point Lindel\"of-ication} of \(X\), with a basis given
+  by the usual open sets of \(X\) and the co-countable sets containing
+  \(\infty\).
+\end{definition}
+
+\begin{theorem}
+  Let \(\omega_1\) have the discrete topology. Then
+  \(\onePtLind{\omega_1}\) is \(\Omega M^+\) but not \(\Omega M^{+mark}\).
+\end{theorem}
+
+\begin{proof}
+  The proof that \(X=\onePtLind{\omega_1}\) is not
+  \(\sigma\)-compact is simply the fact that its countably infinite subsets
+  are closed and discrete.
+  We define the strategy \(\sigma\) for \(\plII\) in
+  \(\schSelGame{\Omega_X}{\Omega_X}\) as follows.
+
+  % Let \(\sigma_0(\<\mc U_0\>)=\{I_0\}\) where \(I_0\) is a co-countable set
+  % containing \(\infty\). Denote
+  % \(\onePtLind{\omega_1}\setminus I_0=\{\alpha_{0,n}:n<\omega\}\),
+  % and then let \(\sigma_0(\<\mc U_0,\dots,\mc U_{n+1}\>)\) contain exactly
+  % one superset of \(\{\infty\}\cup\{\alpha_{0,n}\}\).
+
+  For \(n<\omega\)
+  let \(\sigma_n(\<\mc U_n\>)=\{I_n\}\)
+  where \(I_n\) is a co-countable set containing \(\infty\).
+  Denote
+  \(\onePtLind{\omega_1}\setminus I_n=\{\alpha_{n,m}:m<\omega\}\),
+  and then for \(m<\omega\)
+  let \(\sigma_n(\<\mc U_n,\dots,\mc U_{n+m}\>)\) contain exactly
+  one set, a superset of \(\{\infty\}\cup\{\alpha_{i,j}:i\leq n,j\leq n+m\}\).
+
+  TODO: finish
 \end{proof}
 
 
