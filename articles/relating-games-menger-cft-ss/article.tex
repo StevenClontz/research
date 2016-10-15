@@ -294,7 +294,7 @@ We begin by generalizing the following result:
   We need only show that the final condition implies the first.
   Let \(D=\{d_i:i<\omega\}\).
 
-  Let \(\sigma_i\) be a winning strategy witnessing \(CDFT_{d_i}^+\)
+  Let \(\sigma_i\) be a witness for \(CDFT_{d_i}^+\)
   for each \(i<\omega\). We define the strategy \(\tau\) for the
   \(SS\) game by
   \[
@@ -304,6 +304,7 @@ We begin by generalizing the following result:
     \sigma_i(\<D_i,\dots,D_n\>)
   .\]
 
+  Let \(\<D_0,D_1,\dots\>\in\mc D_X^\omega\).
   By \(CDFT_{d_i}^+\), we have
   \[
     d_i
@@ -327,13 +328,40 @@ We begin by generalizing the following result:
   .\]
   Therefore \(\tau\) witnesses \(SS^+\).
 
-  \sloppy
-  The above proof may be easily modified for the Markov case by
-  replacing \(\sigma_i(\<D_i,\dots,D_n\>)\) with \(\sigma_i(D_n,n)\)
-  and \(\tau(\<D_0,\dots,D_n\>)\) with \(\tau(D_n,n)\).
-\end{proof}
+  Now let \(\sigma_i\) be a witness for \(CDFT_{d_i}^{+mark}\)
+  for each \(i<\omega\). We define the Markov strategy \(\tau\) for the
+  \(SS\) game by
+  \[
+    \tau(D,n)
+      =
+    \bigcup_{i\leq n}
+    \sigma_i(D,n-i)
+  .\]
 
-\fussy
+  Let \(\<D_0,D_1,\dots\>\in\mc D_X^\omega\).
+  By \(CDFT_{d_i}^{+mark}\), we have
+  \[
+    d_i
+      \in
+    \cl{\bigcup_{i\leq n<\omega}\sigma_i(D_n,n-i)}
+      \subseteq
+    \cl{\bigcup_{i\leq n<\omega}\tau(D_n,n)}
+      \subseteq
+    \cl{\bigcup_{n<\omega}\tau(D_n,n)}
+  \]
+  and as \(D\subseteq\cl{\bigcup_{n<\omega}\tau(D_n,n)}\)
+  it follows that
+  \[
+    X
+      \subseteq
+    \cl D
+      \subseteq
+    \cl{\cl{\bigcup_{n<\omega}\tau(D,n)}}
+      =
+    \cl{\bigcup_{n<\omega}\tau(D,n)}
+  .\]
+  Therefore \(\tau\) witnesses \(SS^{+mark}\).
+\end{proof}
 
 So amongst separable spaces, we see that \(SS\)
 (resp. \(SS^+\), \(SS^{+mark}\)) and
@@ -409,7 +437,7 @@ more general context below.
   give a basic open neighborhood of \(\vec x\).
 \end{definition}
 
-\begin{lemma}
+\begin{lemma}\label{mengerFanLemma1}
   Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
   If \(X\) is \(\Omega M\)
   (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
@@ -524,7 +552,7 @@ more general context below.
   \(\bigcup_{n<\omega}\tau(B_n,n)\).
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{mengerFanLemma2}
   Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
   If \(C_p(X)\) is \(CDFT_{\vec 0}\)
   (resp. \(CDFT_{\vec 0}^+\), \(CDFT_{\vec 0}^{+mark}\)),
@@ -646,7 +674,7 @@ more general context below.
   \(G\subseteq U_{\vec y,\mc U_n}\in\mc \tau(\mc U_n,n)\).
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{mengerFanTheorem}
   The following are equivalent for any \(T_{3\frac{1}{2}}\)
   topological space \(X\).
     \begin{itemize}
@@ -712,6 +740,10 @@ as our example.
   \(\bigcup_{n<\omega}\sigma(\mc U,n)\) is an \(\omega\)-cover of \(X\).
 \end{proof}
 
+The reader may note that with this lemma, we may view Theorem
+\ref{mengerFanTheorem} as a generalization of
+\cite[Proposition 2.6]{MR2868880}.
+
 \begin{definition}
   Let \(X\) be a topological space such that all countable sets are
   closed. Then \(\onePtLind{X}=X\cup\{\infty\}\)
@@ -720,7 +752,7 @@ as our example.
   \(\infty\).
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{omega1OmegaMenger}
   Let \(\omega_1\) have the discrete topology. Then
   \(\onePtLind{\omega_1}\) is \(\Omega M^+\) but not \(\Omega M^{+mark}\).
 \end{theorem}
@@ -732,12 +764,6 @@ as our example.
   are closed and discrete.
   We define the strategy \(\sigma\) for \(\plII\) in
   \(\schSelGame{\Omega_X}{\Omega_X}\) as follows.
-
-  % Let \(\sigma_0(\<\mc U_0\>)=\{I_0\}\) where \(I_0\) is a co-countable set
-  % containing \(\infty\). Denote
-  % \(\onePtLind{\omega_1}\setminus I_0=\{\alpha_{0,n}:n<\omega\}\),
-  % and then let \(\sigma_0(\<\mc U_0,\dots,\mc U_{n+1}\>)\) contain exactly
-  % one superset of \(\{\infty\}\cup\{\alpha_{0,n}\}\).
 
   For \(n<\omega\)
   let \(\sigma(\<\mc U_0,\dots,\mc U_n\>)=\{U(\<\mc U_0,\dots,\mc U_n\>)\}\),
@@ -807,7 +833,20 @@ solution to Question \ref{mainQuestion}. However, it is not.
   open sets.
 \end{proof}
 
-% It's easily seen that \(CFT^+\) is a hereditary property for all subspaces.
+An affirmative answer to either of these questions would answer
+Question \ref{mainQuestion} negatively.
+
+\begin{question}
+  Does there exist a separable subspace of \(C_p(\onePtLind{\omega_1})\)
+  which is not \(CDFT^{+mark}\)?
+\end{question}
+
+\begin{question}
+  Does there exist a non-\(\sigma\)-compact \(\Omega M^+\) space
+  with a coarser separable metrizable topology?
+\end{question}
+
+
 
 \section{Equivalence of certain strategic and Markov seleciton properties}
 
@@ -890,7 +929,7 @@ spaces. The following result generalizes both.
 \end{proof}
 
 \begin{corollary}[\cite{MR2868880}]
-  A countable space \(X\) is \(SS^+\) if and only if it is
+  A countable space is \(SS^+\) if and only if it is
   \(SS^{+mark}\).
 \end{corollary}
 
@@ -900,7 +939,7 @@ spaces. The following result generalizes both.
 \end{proof}
 
 \begin{corollary}
-  A second-countable space \(X\) is \(\Omega M^+\) if and only if
+  A second-countable space is \(\Omega M^+\) if and only if
   it is \(\Omega M^{+mark}\).
 \end{corollary}
 
@@ -944,7 +983,7 @@ spaces. The following result generalizes both.
 \end{proof}
 
 \begin{corollary}[\cite{clontzMengerGamePreprint}]
-  A second-countable space \(X\) is \(M^+\) if and only if
+  A second-countable space is \(M^+\) if and only if
   it is \(M^{+mark}\).
 \end{corollary}
 
@@ -953,10 +992,210 @@ spaces. The following result generalizes both.
   with open covers, and replacing \(F\in[X]^{<\omega}\) with \(x\in X\).
 \end{proof}
 
+\section{Strong variants of selection princples and games}
+
+Let \(\schStrongSelProp{\mc A}{\mc B},\schStrongSelGame{\mc A}{\mc B}\)
+be the natural variants of
+\(\schSelProp{\mc A}{\mc B},\schSelGame{\mc A}{\mc B}\) where each choice
+by \(\plII\) must either be a single element or singleton
+(whichever is more convenient for the proof at hand), rather than a finite
+set. Convention calls for denoting these as
+\term{strong} versions of the corresponding selection princples and games,
+although the ``strong Menger'' property is commonly known as ``Rothberger''
+who first investigated the principle in \cite{Rothberger1938}. We will thus
+call ``strong \(\Omega\)-Menger'' ``\(\Omega\)-Rothberger'' and shorten it
+with \(\Omega R\), and otherwise attach the prefix ``s''
+when abbreviating to all other strong variants.
+
+\begin{theorem}
+  The following are equivalent for any topological space \(X\).
+  \begin{itemize}
+    \item \(X\) is \(sSS\) (resp. \(sSS^+\), \(sSS^{+mark}\)).
+    \item \(X\) is separable and \(sCDFT\)
+          (resp. \(sCDFT^+\), \(sCDFT^{+mark}\)).
+    \item \(X\) has a countable dense subset \(D\) where
+          \(sCDFT_x\) (resp. \(sCDFT_x^+\), \(sCDFT_x^{+mark}\))
+          holds for all \(x\in D\).
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  We need only show that the final condition implies the first.
+  Let \(D=\{d_i:i<\omega\}\).
+
+  Let \(\{D_{m,n}\in\mc D_X:m,n<\omega\}\), and let \(x_{i,n}\in D_{i,n}\)
+  witness \(sCDFT_{d_i}\), so
+  \[
+    d_i
+      \in
+    \cl{\{x_{i,n}:n<\omega\}}
+      \subseteq
+    \cl{\{x_{m,n}:m,n<\omega\}}
+  \]
+  and as \(D\subseteq\cl{\{x_{m,n}:m,n<\omega\}}\)
+  it follows that
+  \[
+    X
+      \subseteq
+    \cl D
+      \subseteq
+    \cl{\cl{\{x_{m,n}:m,n<\omega\}}}
+      =
+    \cl{\{x_{m,n}:m,n<\omega\}}
+  .\]
+  Therefore \(x_{m,n}\in D_{m,n}\) witnesses \(sSS\).
+
+  Let \(\sigma_i\) be a witness for \(sCDFT_{d_i}^+\)
+  for each \(i<\omega\). Define \(p:\omega\to\omega\) partition \(\omega\)
+  into infinite sets \(\{p(i):i<\omega\}\).
+  For a nonempty finite sequence \(t\), let \(t'\) be its subsequence removing
+  all terms of index \(n\) such that \(p(n)\not=p(|t|-1)\).
+  (Note that this process preserves the final term.)
+  We then define the strategy \(\tau\) by
+  \[
+    \tau(t)
+      =
+    \sigma_{p(|t|-1)}(t')
+  .\]
+
+  Let \(\alpha\in\mc D_X^\omega\), and let \(\alpha_i\) be its subsequence
+  removing all terms of index \(n\) such that \(p(n)\not=i\).
+  By \(sCDFT_{d_i}^+\), we have
+  \[
+    d_i
+      \in
+    \cl{\{\sigma_i(\alpha_i\rest (n+1)):n<\omega\}}
+      =
+    \cl{\{\tau(\alpha\rest(n+1)):n\in p^{\leftarrow}(i)\}}
+      \subseteq
+    \cl{\{\tau(\alpha\rest(n+1)):n<\omega\}}
+  \]
+  and as \(D\subseteq\cl{\{\tau(\alpha\rest(n+1)):n<\omega\}}\)
+  it follows that
+  \[
+    X
+      \subseteq
+    \cl D
+      \subseteq
+    \cl{\cl{\{\tau(\alpha\rest(n+1)):n<\omega\}}}
+      =
+    \cl{\{\tau(\alpha\rest(n+1)):n<\omega\}}
+  .\]
+  Therefore \(\tau\) witnesses \(SS^+\).
+
+  Let \(\sigma_i\) be a witness for \(sCDFT_{d_i}^{+mark}\)
+  for each \(i<\omega\). Define \(p:\omega\to\omega\) partition \(\omega\)
+  into infinite sets \(\{p(i):i<\omega\}\).
+  We then define the Markov strategy \(\tau\) by
+  \[
+    \tau(D,n)
+      =
+    \sigma_{p(n)}(D,|\{m\in p(n):m\leq n\}|)
+  .\]
+
+  Let \(\alpha\in\mc D_X^\omega\), and let \(\alpha_i\) be its subsequence
+  removing all terms of index \(n\) such that \(p(n)\not=i\).
+  By \(sCDFT_{d_i}^{+mark}\), we have
+  \[
+    d_i
+      \in
+    \cl{\{\sigma_i(\alpha_i(n),n):n<\omega\}}
+      =
+    \cl{\{\tau(\alpha(n),n):n\in p^{\leftarrow}(i)\}}
+      \subseteq
+    \cl{\{\tau(\alpha(n),n):n<\omega\}}
+  \]
+  and as \(D\subseteq\cl{\{\tau(\alpha(n),n):n<\omega\}}\)
+  it follows that
+  \[
+    X
+      \subseteq
+    \cl D
+      \subseteq
+    \cl{\cl{\{\tau(\alpha(n),n):n<\omega\}}}
+      =
+    \cl{\{\tau(\alpha(n),n):n<\omega\}}
+  .\]
+  Therefore \(\tau\) witnesses \(SS^{+mark}\).
+\end{proof}
+
+As mentioned earlier, the following is a result of Sakai:
+
+\begin{theorem}[\cite{MR964873}]
+  The following are equivalent for any \(T_{3\frac{1}{2}}\)
+  topological space \(X\).
+    \begin{itemize}
+      \item \(X\) is \(\Omega R\).
+      \item \(C_p(X)\) is \(sCFT\).
+      \item \(C_p(X)\) is \(sCDFT\).
+    \end{itemize}
+\end{theorem}
+
+The corresponding game-theoretic results also hold.
+
+\begin{theorem}
+  The following are equivalent for any \(T_{3\frac{1}{2}}\)
+  topological space \(X\).
+    \begin{itemize}
+      \item \(X\) is \(\Omega R\)
+            (resp. \(\Omega R^+\), \(\Omega R^{+mark}\)).
+      \item \(C_p(X)\) is \(sCFT\)
+            (resp. \(sCFT^+\), \(sCFT^{+mark}\)).
+      \item \(C_p(X)\) is \(sCDFT\)
+            (resp. \(sCDFT^+\), \(sCDFT^{+mark}\)).
+    \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  In Lemmas \ref{mengerFanLemma1} and \ref{mengerFanLemma2},
+  \(|\tau(t)|=|\sigma(t)|\). Therefore they may be extended to
+  the strong cases requiring \(|\tau(t)|=|\sigma(t)|=1\),
+  which yields our result.
+\end{proof}
+
+\begin{theorem}
+  Let \(\omega_1\) have the discrete topology. Then
+  \(\onePtLind{\omega_1}\) is \(\Omega R^+\) but not \(\Omega M^{+mark}\).
+\end{theorem}
+
+\begin{proof}
+  The strategy constructed in Theorem \ref{omega1OmegaMenger} is a witness.
+\end{proof}
+
+\begin{corollary}
+  \(C_p(\onePtLind{\omega_1})\) is \(sCFT^+\) but not \(CDFT^{+mark}\).
+\end{corollary}
+
+\begin{lemma}
+  Let \(\mc A\) be a family of sets where
+  \(|\bigcup\mc A|\leq\omega\)
+  and let \(\mc B\) be a family of sets closed under supersets. Then
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
+\end{lemma}
+
+\begin{proof}
+  In the proof of Lemma \ref{mainLemma}, \(|\tau(t)|=|\sigma(t)|\).
+\end{proof}
+
+\begin{corollary}
+  A countable space is \(sSS^+\) if and only if it is
+  \(sSS^{+mark}\).
+\end{corollary}
+
+\begin{corollary}
+  A second-countable space is \(\Omega R^+\) if and only if
+  it is \(\Omega R^{+mark}\).
+\end{corollary}
+
+\begin{corollary}
+  A second-countable space is \(R^+\) if and only if
+  it is \(R^{+mark}\).
+\end{corollary}
+
 \section{Acknowledgements}
-The author would like to thank Ziqin Feng for his helpful comments on
-this topic during
-the 31st Summer Conference on Topology and its Applications.
+The author would like to thank Ziqin Feng and Gary Gruenhage
+for their helpful comments on the topic of \(C_p(\onePtLind{\omega_1})\).
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
