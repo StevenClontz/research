@@ -9,6 +9,7 @@
 
 \usepackage{../../clontzDefinitions}
 
+\renewcommand{\vec}{\mathbf}
 
       \theoremstyle{plain}
       \newtheorem{theorem}{Theorem}
@@ -246,14 +247,14 @@ strategies in these selection games.
 
 In this notation,
 Barman and Dow showed that \(SS\) does not imply
-\(SS^+\). We aim to make progress on the following question attributed to
-Gary Gruenhage:
+\(SS^+\). Our goal is to make progress on the following question
+attributed to Gary Gruenhage:
 
 \begin{question}\label{mainQuestion}
   Does \(SS^+\) imply \(SS^{+mark}\)?
 \end{question}
 
-The solution is known to be ``yes'' in the context of countable spaces
+The solution is already known to be ``yes'' in the context of countable spaces
 \cite{MR2678950}. However in general, winning strategies in selection games
 cannot be improved to be winning Markov strategies. In
 \cite{clontzMengerGamePreprint} the author showed that while \(M^+\) implies
@@ -422,14 +423,14 @@ more general context below.
     \mc U_n(B)
       =
     \left\{
-      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
     :
       \vec x\in B
     \right\}
   .\]
   Consider the finite set \(F\in[X]^{<\omega}\). Since
   \(\vec 0\in\cl B\), choose \(\vec x\in B\cap[\vec 0,F,1]\).
-  It follows that \(F\subseteq x^{-1}[(-1,1)]\in\mc U_n(B)\),
+  It follows that \(F\subseteq x^{\leftarrow}[(-1,1)]\in\mc U_n(B)\),
   so \(\mc U_n(B)\) is an \(\omega\)-cover of \(X\).
 
   Consider the sequence of blades
@@ -451,7 +452,7 @@ more general context below.
     \left\{
       \vec x\in B_n
     :
-      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
         \in
       \mc F_n
     \right\}
@@ -459,9 +460,9 @@ more general context below.
   We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}F_n}\).
   Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
   \(\frac{1}{2^i}<\epsilon\) and then choose
-  \(i\leq n<\omega,\vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\mc F_n\)
-  such that \(G\subseteq \vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
-  and therefore \(G\subseteq \vec x^{-1}[(-\epsilon,\epsilon)]\).
+  \(i\leq n<\omega,\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\mc F_n\)
+  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
+  and therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
   It follows that \(\vec x\in F_n\cap[\vec 0,G,\epsilon]\), and therefore
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}F_n\).
@@ -479,7 +480,7 @@ more general context below.
     \left\{
       \vec x\in B_n
     :
-      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
         \in
       \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)
     \right\}
@@ -487,9 +488,9 @@ more general context below.
   We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)}\).
   Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
   \(\frac{1}{2^i}<\epsilon\) and then choose
-  \(i\leq n<\omega,\vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
-  such that \(G\subseteq \vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
-  and therefore \(G\subseteq \vec x^{-1}[(-\epsilon,\epsilon)]\).
+  \(i\leq n<\omega,\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
+  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
+  and therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
   It follows that \(\vec x\in \tau(\<B_0,\dots,B_n\>)\cap[\vec 0,G,\epsilon]\), and therefore
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)\).
@@ -507,7 +508,7 @@ more general context below.
     \left\{
       \vec x\in B_n
     :
-      \vec x^{-1}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
         \in
       \sigma(\mc U_n(B_n),n)
     \right\}
@@ -515,9 +516,9 @@ more general context below.
   We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}\tau(B_n,n)}\).
   Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
   \(\frac{1}{2^i}<\epsilon\) and then choose
-  \(i\leq n<\omega,\vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\mc U_n(B_n),n)\)
-  such that \(G\subseteq \vec x^{-1}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
-  and therefore \(G\subseteq \vec x^{-1}[(-\epsilon,\epsilon)]\).
+  \(i\leq n<\omega,\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\mc U_n(B_n),n)\)
+  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
+  and therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
   It follows that \(\vec x\in \tau(B_n,n)\cap[\vec 0,G,\epsilon]\), and therefore
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(B_n,n)\).
@@ -632,7 +633,7 @@ more general context below.
       \vec y \in \sigma(D(\mc U_n),n)
     \}
       \in
-    [\mc U_n]^{<\omega}
+    [\mc U_n]^{<\omega}S
   .\]
   We claim that \(\bigcup_{n<\omega}\tau(\mc U_n,n)\)
   is an \(\omega\)-cover.
@@ -726,7 +727,8 @@ as our example.
 
 \begin{proof}
   The proof that \(X=\onePtLind{\omega_1}\) is not
-  \(\sigma\)-compact is simply the fact that its countably infinite subsets
+  \(\sigma\)-compact (and therefore not \(\Omega M^{+mark}\))
+  is simply the fact that its countably infinite subsets
   are closed and discrete.
   We define the strategy \(\sigma\) for \(\plII\) in
   \(\schSelGame{\Omega_X}{\Omega_X}\) as follows.
@@ -738,17 +740,223 @@ as our example.
   % one superset of \(\{\infty\}\cup\{\alpha_{0,n}\}\).
 
   For \(n<\omega\)
-  let \(\sigma_n(\<\mc U_n\>)=\{I_n\}\)
-  where \(I_n\) is a co-countable set containing \(\infty\).
-  Denote
-  \(\onePtLind{\omega_1}\setminus I_n=\{\alpha_{n,m}:m<\omega\}\),
-  and then for \(m<\omega\)
-  let \(\sigma_n(\<\mc U_n,\dots,\mc U_{n+m}\>)\) contain exactly
-  one set, a superset of \(\{\infty\}\cup\{\alpha_{i,j}:i\leq n,j\leq n+m\}\).
+  let \(\sigma(\<\mc U_0,\dots,\mc U_n\>)=\{U(\<\mc U_0,\dots,\mc U_n\>)\}\),
+  where
+  \[
+    U(\<\mc U_0,\dots,\mc U_n\>)
+      =
+    \onePtLind{\omega_1}
+      \setminus
+    \{\alpha_{n,m}:m<\omega\}
+  \]
+  is a co-countable set
+  containing \(\{\infty\}\cup\{\alpha_{i,j}:i,j<n\}\).
 
-  TODO: finish
+  Consider the arbitrary sequence of moves \(\<\mc U_0,\mc U_1,\dots\>\)
+  by \(\plI\). For \(F\in[\onePtLind{\omega_1}]^{<\omega}\), choose
+  \(n<\omega\) such that
+  \[
+    F\cap\{\alpha_{i,j}:i,j<\omega\}
+      =
+    F\cap\{\alpha_{i,j}:i,j<n\}
+      \subseteq
+    U(\<\mc U_0,\dots,\mc U_n\>)
+  \]
+  It follows that as
+  \[
+    F
+      \setminus
+    \{\alpha_{i,j}:i,j<\omega\}
+      \subseteq
+    F
+      \setminus
+    \{\alpha_{n,m}:m<\omega\}
+      \subseteq
+    U(\<\mc U_0,\dots,\mc U_n\>)
+  \]
+  \(F\) is a subset of
+  \(U(\<\mc U_0,\dots,\mc U_n\>)\), making
+  \(
+    \bigcup_{n<\omega}
+    \sigma(\<\mc U_0,\dots,\mc U_n\>)
+  \)
+  an \(\omega\)-cover.
 \end{proof}
 
+\begin{corollary}
+  \(C_p(\onePtLind{\omega_1})\) is \(CFT^+\) but not \(CDFT^{+mark}\).
+\end{corollary}
+
+If \(C_p(\onePtLind{\omega_1})\) were separable, it would be a negative
+solution to Question \ref{mainQuestion}. However, it is not.
+
+\begin{lemma}[\cite{MR953314}]
+  For a \(T_{3\frac{1}{2}}\) topological space \(X\),
+  \(C_p(X)\) is separable if and only if \(X\) has a coarser separable
+  metrizable topology.
+\end{lemma}
+
+\begin{corollary}
+  \(C_p(\onePtLind{\omega_1})\) is not separable.
+\end{corollary}
+
+\begin{proof}
+  Every metrizable topological space has points \(G_\delta\).
+  However, if every neighborhood of \(\infty\) is
+  co-countable, \(\{\infty\}\) cannot be the intersection of countably many
+  open sets.
+\end{proof}
+
+% It's easily seen that \(CFT^+\) is a hereditary property for all subspaces.
+
+\section{Equivalence of certain strategic and Markov seleciton properties}
+
+Barman and Dow
+previously demonstrated that \(SS^+\) is equivalent to
+\(SS^{+mark}\) amongst countable spaces.
+A similar result by the author
+showed that \(M^+\) is equivalent to \(M^{+mark}\) in second-countable
+spaces. The following result generalizes both.
+
+\begin{lemma}\label{mainLemma}
+  Let \(\mc A\) be a family of sets where
+  \(|\bigcup\mc A|\leq\omega\)
+  and let \(\mc B\) be a family of sets closed under supersets. Then
+  \(\plII\win\schSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\markwin\schSelGame{\mc A}{\mc B}\).
+\end{lemma}
+
+\begin{proof}
+  Let \(\sigma\) witness \(\plII\win\schSelGame{\mc A}{\mc B}\).
+
+  For \(t\in\omega^{<\omega}\), suppose
+  \(Z_s\in\mc A\) has been defined for all \(s\leq t\). Note then that
+  \(
+    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>:A\in\mc A\}
+      \subseteq
+    [\bigcup\mc A]^{<\omega}
+  \)
+  and therefore is countable.
+  So choose \(Z_{t\concat\<n\>}\in\mc A\) for \(n<\omega\) such that
+  \(
+    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>:A\in\mc A\}
+      =
+    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,Z_{t\concat\<n\>}\>):n<\omega\}
+  \).
+
+  Let \(b:\omega\to\omega^{<\omega}\) be a bijection,
+  and define
+  \(\tau(A,n)=\sigma(\<Z_{b(n)\rest 1},Z_{b(n)\rest 2},\dots,Z_{b(n)},A\>)\).
+  Consider \(\<A_0,A_1,\dots\>\in\mc A^\omega\).
+
+  Define \(f\in\omega^\omega\) as follows.
+  Let \(n<\omega\) and suppose that \(f\rest n\) has been already
+  been defined. Then choose \(f(n)<\omega\) such that
+  \(
+    \sigma(\<Z_{f\rest1},Z_{f\rest2},\dots,Z_{f\rest n},A_{b^{\leftarrow}(f\rest n)}\>)
+      =
+    \sigma(\<Z_{f\rest1},Z_{f\rest2},\dots,Z_{f\rest n},Z_{f\rest (n+1)}\>)
+  \).
+
+  Since \(\<Z_{f\rest1},Z_{f\rest2},\dots\>\in\mc A^\omega\), it follows
+  that
+  \(
+    \bigcup_{n<\omega}\sigma(\<Z_{f\rest1},Z_{f\rest2},\dots,Z_{f\rest n}\>)
+      \in
+    \mc B
+  \).
+  The result then follows from
+  \begin{align*}
+    \bigcup_{n<\omega}\tau(A_n,n)
+      & =
+    \bigcup_{n<\omega}
+    \sigma(\<Z_{b(n)\rest 1},Z_{b(n)\rest 2},\dots,Z_{b(n)},A_n\>)
+      \\ & \supseteq
+    \bigcup_{n<\omega,b(n)<f}
+    \sigma(\<Z_{b(n)\rest 1},Z_{b(n)\rest 2},\dots,Z_{b(n)},A_n\>)
+      \\ & =
+    \bigcup_{n<\omega,b(n)<f}
+    \sigma(\<Z_{f\rest 1},Z_{f\rest 2},\dots,Z_{f\rest|b(n)|},A_{b^{\leftarrow}(f\rest|b(n)|)}\>)
+      \\ & =
+    \bigcup_{n<\omega,b(n)<f}
+    \sigma(\<Z_{f\rest 1},Z_{f\rest 2},\dots,Z_{f\rest|b(n)|},Z_{f\rest(|b(n)|+1)}\>)
+      \\ & =
+    \bigcup_{n<\omega}
+    \sigma(\<Z_{f\rest 1},Z_{f\rest 2},\dots,Z_{f\rest n}\>)
+      \\ & \in
+    \mc B
+  \end{align*}
+  as \(\mc B\) is closed under supersets.
+\end{proof}
+
+\begin{corollary}[\cite{MR2868880}]
+  A countable space \(X\) is \(SS^+\) if and only if it is
+  \(SS^{+mark}\).
+\end{corollary}
+
+\begin{proof}
+  \(\bigcup\mc D_X=X\) is countable, and any set containing a dense
+  set is dense.
+\end{proof}
+
+\begin{corollary}
+  A second-countable space \(X\) is \(\Omega M^+\) if and only if
+  it is \(\Omega M^{+mark}\).
+\end{corollary}
+
+\begin{proof}
+  First note that any witness for
+  \(\Omega M^+\) is a witness for
+  \(\plII\win\schSelGame{\Omega_X^*}{\Omega_X^*}\).
+  Fix a countable base \(\mc B\) for \(X\) closed under finite unions, and let
+  \(\Omega_X^*\) be the collection of \(\omega\)-covers of \(X\) which only
+  use basic open sets. Then
+  \(\bigcup\Omega_X^*=\mc B\) is countable, and any set containing an
+  \(\omega\)-cover is an \(\omega\)-cover; therefore
+  \(\plII\win\schSelGame{\Omega_X^*}{\Omega_X^*}\) if and only if
+  \(\plII\markwin\schSelGame{\Omega_X^*}{\Omega_X^*}\).
+
+  So let \(\sigma\) witness
+  \(\plII\markwin\schSelGame{\Omega_X^*}{\Omega_X^*}\).
+  For each \(\omega\)-cover \(\mc U\) and finite set \(F\in[X]^{<\omega}\),
+  choose \(U_{\mc U,F}\in\mc U\) such that \(F\subseteq U\). Then choose a
+  basic open set \(U_{\mc U,F}^*\) such that
+  \(F\subseteq U_{\mc U,F}^*\subseteq U_{\mc U,F}\). Finally, for each
+  \(\omega\)-cover \(\mc U\), let
+  \[
+    \mc U^*
+      =
+    \{
+      U_{\mc U,F}^*
+        :
+      F\in[X]^{<\omega}
+    \}
+      \in
+    \Omega_X^*
+  .\]
+
+  Define the strategy \(\tau\) such that
+  \(\tau(\mc U,n)=\{U_{\mc U,F}:U_{\mc U,F}^*\in\sigma(\mc U^*,n)\}\).
+  For any sequence of \(\omega\)-covers \(\<\mc U_0,\mc U_1,\dots\>\),
+  it follows that \(\bigcup_{n<\omega}\sigma(\mc U_n^*,n)\) is an
+  \(\omega\)-cover, and therefore
+  \(\bigcup_{n<\omega}\tau(\mc U_n,n)\) is an \(\omega\)-cover also.
+\end{proof}
+
+\begin{corollary}[\cite{clontzMengerGamePreprint}]
+  A second-countable space \(X\) is \(M^+\) if and only if
+  it is \(M^{+mark}\).
+\end{corollary}
+
+\begin{proof}
+  An easy adapatation of the preceding proof, replacing \(\omega\)-covers
+  with open covers, and replacing \(F\in[X]^{<\omega}\) with \(x\in X\).
+\end{proof}
+
+\section{Acknowledgements}
+The author would like to thank Ziqin Feng for his helpful comments on
+this topic during
+the 31st Summer Conference on Topology and its Applications.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
