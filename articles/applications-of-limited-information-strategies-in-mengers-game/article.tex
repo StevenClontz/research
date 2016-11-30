@@ -9,6 +9,26 @@
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows}
 
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.markings}
+\tikzset{not/.style={
+  decoration={markings,
+    mark= at position 0.5 with {
+      \node[transform shape] (tempnode) {$\backslash$};
+    }
+  },
+  postaction={decorate}
+}}
+\tikzset{maybe/.style={
+  color=gray,
+  decoration={markings,
+    mark=at position 0.5 with {
+      \node[color=black] (tempnode) {$?$};
+    }
+  },
+  postaction={decorate}
+}}
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
@@ -41,10 +61,10 @@
 
 
 \author{Steven Clontz}
-\address{Department of Mathematics and Statistics, UNC Charlotte,
-Charlotte, NC 28262}
-\email{steven.clontz@gmail.edu}
-\urladdr{stevenclontz.com}
+\address{Department of Mathematics and Statistics, University of South Alabama,
+Mobile, AL 36688}
+\email{sclontz@southalabama.edu}
+\urladdr{clontz.org}
 
 \keywords{Menger property, Menger game, \(\sigma\)-compact spaces,
 limited information strategies}
@@ -53,7 +73,7 @@ limited information strategies}
 
 
 \begin{abstract}
-  As shown by Telgarsky and Scheepers,
+  As shown by Telg\'arsky and Scheepers,
   winning strategies in the Menger game characterize
   \(\sigma\)-compactness amongst metrizable spaces. This is improved
   by showing that winning Markov strategies in the Menger game
@@ -371,26 +391,23 @@ We introduce a few games to make the relationship between Scheeper's
 
 \begin{figure}[ht]
 \begin{center}
-\begin{tikzpicture}[x=0.8in,y=0.5in]
-% \node at (-3.5,2) {\(\alcompS\kappa\)};
-\node at (-3.5,0) {\(\pl F \ktactwin{(k+1)}\schFillStrictGame\kappa\)};
-% \node at (0,2) {\(\alcompSP\kappa\)};
-\node at (-1.1,1) {\(\pl F \kmarkwin{(k+1)}\menGame{\onePtLind\kappa}\)};
-\node at (0,1) {\(\Leftrightarrow\)};
-\node at (1,1) {\(\pl F \kmarkwin{(k+1)}\schFillIntGame\kappa\)};
-\node at (-1,0) {\(\pl F \kmarkwin{(k+1)}\schFillInitialGame\kappa\)};
-\node at (0,0) {\(\Leftrightarrow\)};
-\node at (1,0) {\(\pl F \kmarkwin{(k+1)}\schFillGame\kappa\)};
-\node at (0,-1) {\(\pl F \kmarkwin{(k+1)}\schFillStrictGame\kappa\)};
-% \draw[-implies,double equal sign distance] (-3.2,2) -- (-0.3,2);
-\draw[-implies,double equal sign distance] (-2.5,0) -- (-2,0);
-% \draw[-implies,double equal sign distance] (-3.5,1.65) -- (-3.5,0.35);
-% \draw[-implies,double equal sign distance] (0,1.65) -- (0,1.35);
-\draw[-implies,double equal sign distance] (0,0.65) -- (0,0.35);
-\draw[-implies,double equal sign distance] (0,-0.35) -- (0,-0.65);
-\end{tikzpicture}
+\begin{tikzcd}[arrows=Rightarrow]
+  &
+  \pl F \kmarkwin{k+1} \menGame{\onePtLind\kappa}
+  \Leftrightarrow
+  \pl F \kmarkwin{k+1} \schFillIntGame{\kappa}
+    \arrow[d] \\
+  \pl F \ktactwin{k+1} \schFillStrictGame{\kappa}
+    \arrow[r] &
+  \pl F \kmarkwin{k+1}\schFillGame{\kappa}
+  \Leftrightarrow
+  \pl F \kmarkwin{k+1} \schFillInitialGame{\kappa}
+      \arrow[d] \\
+  &
+  \pl F \kmarkwin{k+1} \schFillStrictGame{\kappa}
+\end{tikzcd}
 \end{center}
-\caption{Diagram of Scheeper/Menger game implications}% with \(\alcompS{\kappa},\alcompS{\kappa}\)}
+\caption{Diagram of Scheeper/Menger game implications}
 \label{GamesDiagram}
 \end{figure}
 
@@ -528,8 +545,8 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 \end{theorem}
 
 \begin{proof}
-  For \(\alcompS{\omega_1}\), consider the construction of an Aronzajn tree
-  as in \cite{MR597342}; this of course
+  The construction of an Aronzajn tree in \cite[Theorem 5.9]{MR597342}
+  produced a witness for \(\alcompS{\omega_1}\); this of course
   implies \(\alcompS{\mf c}\) under \(CH\).
   \(\neg\alcompS{\mf c^+}\) is shown by a cardinality argument
   in \cite{MR1129143}.
@@ -538,27 +555,24 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 \end{proof}
 
 \begin{figure}[ht]
-\begin{center}
-\begin{tikzpicture}[x=0.8in,y=0.5in]
-\node at (-3.5,1) {\(\alcompS\kappa\)};
-\node at (-3.5,0) {\(\pl F \ktactwin2\schFillStrictGame\kappa\)};
-% \node at (0,2) {\(\alcompSP\kappa\)};
-\node at (-1,1) {\(\pl F \kmarkwin2\menGame{\onePtLind\kappa}\)};
-\node at (0,1) {\(\Leftrightarrow\)};
-\node at (1,1) {\(\pl F \kmarkwin2\schFillIntGame\kappa\)};
-\node at (-1,0) {\(\pl F \kmarkwin2\schFillInitialGame\kappa\)};
-\node at (0,0) {\(\Leftrightarrow\)};
-\node at (1,0) {\(\pl F \kmarkwin2\schFillGame\kappa\)};
-\node at (0,-1) {\(\pl F \kmarkwin2\schFillStrictGame\kappa\)};
-\draw[-implies,double equal sign distance] (-3.2,1) -- (-1.9,1);
-\draw[-implies,double equal sign distance] (-2.6,0) -- (-1.9,0);
-\draw[-implies,double equal sign distance] (-3.5,0.65) -- (-3.5,0.35);
-% \draw[-implies,double equal sign distance] (0,1.65) -- (0,1.35);
-\draw[-implies,double equal sign distance] (0,0.65) -- (0,0.35);
-\draw[-implies,double equal sign distance] (0,-0.35) -- (0,-0.65);
-\end{tikzpicture}
-\end{center}
-\caption{Diagram of Scheeper/Menger game implications}% with \(\alcompS{\kappa},\alcompS{\kappa}\)}
+\begin{tikzcd}[arrows=Rightarrow]
+  \alcompS\kappa
+    \arrow[r]
+    \arrow[d] &
+  \pl F \kmarkwin2 \menGame{\onePtLind\kappa}
+  \Leftrightarrow
+  \pl F \kmarkwin2 \schFillIntGame{\kappa}
+    \arrow[d] \\
+  \pl F \ktactwin2 \schFillStrictGame{\kappa}
+    \arrow[r] &
+  \pl F \kmarkwin2\schFillGame{\kappa}
+  \Leftrightarrow
+  \pl F \kmarkwin2 \schFillInitialGame{\kappa}
+      \arrow[d] \\
+  &
+  \pl F \kmarkwin2 \schFillStrictGame{\kappa}
+\end{tikzcd}
+\caption{Diagram of Scheeper/Menger game implications with \(\alcompS\kappa\)}
 \label{GamesDiagram2}
 \end{figure}
 
@@ -569,32 +583,32 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 
 \begin{proof}
   Since \(\alcompS\kappa\Rightarrow\pl F \ktactwin2\schFillStrictGame\kappa\) was
-  a main result of \cite{MR1129143}, it is sufficient to show that
+  a main result of \cite{MR1129143}, we need only show that
   \(\alcompS\kappa\Rightarrow \pl F \kmarkwin2\schFillIntGame\kappa\).
 
   Let \(f_A\) for \(A\in[\kappa]^{\leq\omega}\) witness \(\alcompS\kappa\). We define
   the \(2\)-mark \(\sigma\) as follows:
     \[
-      \sigma(\<A\>,0) = \{\alpha\in A: f_A(\alpha) \leq 0 \}
+      \sigma(\<C\>,0) = \{\alpha\in C: f_C(\alpha) \leq 0 \}
     \]
     \[
-      \sigma(\<A,B\>,n+1)
+      \sigma(\<C,D\>,n+1)
         =
       \{
-        \alpha \in A\cap B
+        \alpha \in C\cap D
       :
-        f_B(\alpha) \leq n+1 \text{ or }
-        f_A(\alpha)\not=f_B(\alpha)
+        f_D(\alpha) \leq n+1 \text{ or }
+        f_C(\alpha)\not=f_D(\alpha)
       \}
     .\]
-  For any attack \(\<A_0,A_1,\dots\>\) by \(\pl C\) and
-  \(\alpha\in\bigcap_{n<\omega}A_n\), either \(f_{A_n}(\alpha)\) is constant for
-  all \(n\), or \(f_{A_n}(\alpha)\not=f_{A_{n+1}}(\alpha)\) for some \(n\);
+  For any attack \(\<C_0,C_1,\dots\>\) by \(\pl C\) and
+  \(\alpha\in\bigcap_{n<\omega}C_n\), either \(f_{C_n}(\alpha)\) is constant for
+  all \(n\), or \(f_{C_n}(\alpha)\not=f_{C_{n+1}}(\alpha)\) for some \(n\);
   either way, \(\alpha\) is covered.
 \end{proof}
 
 \begin{corollary}
-  \(\pl F \kmarkwin2\menGame{\onePtLind\omega_1}\).
+  \(\pl F \kmarkwin2\menGame{\onePtLind{\omega_1}}\).
 \end{corollary}
 
 
@@ -602,60 +616,32 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
 \section{Menger game derived covering properties}
 
 \begin{figure}[h]
-\begin{center}
-\begin{tikzpicture}
-  \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-  {
-     \pl F \markwin \menGame{X} &
-     \pl F \kmarkwin2 \menGame{X} &
-     \pl F \win \menGame{X} &
-     \pl C \notwin \menGame{X} \\
-
-     \text{Markov Menger} &
-     2\text{-Markov Menger} &
-     \text{Strategic Menger} &
-     \text{Menger} \\
-  };
-
-  \draw[implies-implies,double equal sign distance]
-    (m-1-1) -- (m-2-1);
-  \draw[implies-implies,double equal sign distance]
-    (m-1-2) -- (m-2-2);
-  \draw[implies-implies,double equal sign distance]
-    (m-1-3) -- (m-2-3);
-  \draw[implies-implies,double equal sign distance]
-    (m-1-4) -- (m-2-4);
-
-  \draw[-implies,double equal sign distance]
-    (m-1-1) -- (m-1-2);
-  \draw[-implies,double equal sign distance]
-    (m-2-1) -- (m-2-2);
-  \draw[-implies,double equal sign distance]
-    (m-1-2) -- (m-1-3);
-  \draw[-implies,double equal sign distance]
-    (m-2-2) -- (m-2-3);
-  \draw[-implies,double equal sign distance]
-    (m-1-3) -- (m-1-4);
-  \draw[-implies,double equal sign distance]
-    (m-2-3) -- (m-2-4);
-
-  \draw[-implies,double equal sign distance,bend right=30]
-    (m-1-2) -- node {\( \not \)} (m-1-1);
-  \path[>=latex,->,bend right=30, dotted]
-    (m-2-2) edge node {\( \not \)} (m-2-1)
-    (m-1-4) edge node {\( \not \)} (m-1-3)
-    (m-2-4) edge node {\( \not \)} (m-2-3);
-  \path[>=latex,->,bend right=30, dotted]
-    (m-1-3) edge node {\( ? \)} (m-1-2)
-    (m-2-3) edge node {\( ? \)} (m-2-2);
-\end{tikzpicture}
-\end{center}
-\caption{Diagram of covering properties related to the Menger game TODO FIX}
+\begin{tikzcd}[arrows=Rightarrow]
+  \pl F \markwin \menGame{X}
+    \arrow[r]
+    \arrow[d,Leftrightarrow] &
+  \pl F \kmarkwin2 \menGame{X}
+    \arrow[r]
+    \arrow[out=150,in=30,not,l]
+    \arrow[d,Leftrightarrow] &
+  \pl F \win \menGame{X}
+    \arrow[r]
+    \arrow[out=150,in=30,maybe,l]
+    \arrow[d,Leftrightarrow] &
+  \pl C \notwin \menGame{X}
+    \arrow[out=150,in=30,not,l]
+    \arrow[d,Leftrightarrow] \\
+  \text{Markov Menger} &
+  2\text{-Markov Menger} &
+  \text{strategic Menger} &
+  \text{Menger}
+\end{tikzcd}
+\caption{Diagram of covering properties related to the Menger game}
 \label{menSpec}
 \end{figure}
 
-Limited information strategies for the Menger game naturally define a spectrum
-of covering properties, see Figure \ref{menSpec}. However,
+Limited information strategies for the Menger game naturally define the
+spectrum of covering properties shown in Figure \ref{menSpec}. However,
 we do not know if the middle two properties are actually distinct.
 
 \begin{question}\label{perfectTo2Mark}
@@ -666,7 +652,7 @@ we do not know if the middle two properties are actually distinct.
 We are also interested in non-game-theoretic characterizations of these
 covering properties. It has been known for some time that metrizable strategic
 Menger spaces are exactly the metrizable \(\sigma\)-compact spaces, shown first
-by Telgarksy in \cite{MR753073} and later directly by Scheepers in
+by Telg\'arsky in \cite{MR753073} and later directly by Scheepers in
 \cite{MR1273523}. It's Scheepers' technique which gives inspiration to
 the following.
 
@@ -697,16 +683,17 @@ no confusion in the context of regular spaces.
   Shown by Arhangel'skii in \cite{MR1885790}; a proof is provided for the
   convenience of the reader.
 
-  Let \(\mc U=\{U_\alpha:\alpha<\kappa\}\) be an
-  open cover of \(\text{cl}_X(Y)\); for \(y\in Y\), apply regularity to get
-  \(V_\alpha\subseteq\text{cl}_X(V_\alpha)\subseteq U_\alpha\)
-  with \(V_\alpha\) open.
-  Use relative compactness to obtain a finite subcollection of
-  \(\{X\setminus\text{cl}_X(Y)\}\cup\{V_\alpha:\alpha<\kappa\}\)
-  covering \(Y\): \(\{V_{\alpha_i}:i<n\}\). Then since
-  \(\bigcup\{\text{cl}_X(V_{\alpha_i}):i<n\}\) is a closed set in \(X\)
+  Let \(\mc U=\{U_y:y\in\text{cl}_X(Y)\}\) where each \(U_y\) is an open
+  set in \(X\) containing \(y\); apply regularity to get
+  \(y\in V_{y}\subseteq\text{cl}_X(V_{y})\subseteq U_{y}\)
+  with \(V_{y}\) open in \(X\).
+  Then \(\{X\setminus\text{cl}_X(Y)\}\cup\{V_{y}:y\in \text{cl}_X(Y)\}\)
+  is an open cover of \(X\), so
+  use relative compactness to choose a finite subset \(F\) of \(\text{cl}_X(Y)\)
+  such that \(\{V_{y}:y\in F\}\) is a finite cover of \(Y\). Then since
+  \(\bigcup\{\text{cl}_X(V_{y}):y\in F\}\) is a closed set in \(X\)
   containing \(Y\), it contains \(\text{cl}_X(Y)\), and thus
-  \(\{U_{\alpha_i}:i<n\}\) is a finite subcollection of \(\mc U\) covering
+  \(\{U_{y}:y\in F\}\) is a finite subcollection of \(\mc U\) covering
   \(\text{cl}_X(Y)\).
 
   For the reverse direction, simply take a finite subcover of
@@ -779,6 +766,11 @@ and second-countability.
   Let \(\sigma\) be a strategy for \(\pl F\), and note that
   it's sufficient to consider playthroughs with only basic open covers.
 
+  We proceed by constructing basic open covers indexed by \(\omega^{<\omega}\)
+  which will turn out to emulate the behavior of \(\pl C\) well enough
+  that \(\pl F\) will be able to define a Markov strategy from a perfect
+  information strategy by substituting
+  these covers in the place of perfect information.
   So if \(\mc U_t\) is a basic open cover for \(t<s\in\omega^{<\omega}\), and
   \(\mc V\) is any basic open cover, we may choose a finite subcollection
   \(\mc F(s,\mc V)\) of \(\mc V\) such that
@@ -883,9 +875,10 @@ Note of course that \(\menGame{X,X}=\menGame{X}\).
 \end{proposition}
 
 \begin{proof}
-  If \(X=\bigcup_{n<\omega}R_n\), then for all \(\mc U\), let \(r_{\mc U}(x)\) be the
+  If \(X=\bigcup_{n<\omega}R_n\) for \(R_n\) relatively compact to \(X\),
+  then for all \(\mc U\), let \(r_{\mc U}(x)\) be the
   least \(n\) such that \(x\in R_n\). Then \(c(\mc V,n)=\bigcup_{m\leq n}R_m\) and
-  \(p(\mc U,\mc V) = \emptyset\).
+  \(p(\mc U,\mc V,n+1) = \emptyset\).
 \end{proof}
 
 \begin{theorem}
@@ -969,7 +962,8 @@ Note of course that \(\menGame{X,X}=\menGame{X}\).
   is finite.
 \end{proof}
 
-We may also consider common counterexamples which are finer
+We may also consider common counterexamples (specifically, examples
+67 and 63 of \cite{MR1382863}) which are finer
 than the usual Euclidean line.
 
 \begin{definition}
@@ -987,7 +981,18 @@ than the usual Euclidean line.
   and thus are nowhere dense in nonmeager \(\mathbb R\),
   so \(R_{\mathbb Q}\) is not \(\sigma\)-compact. The usual base of
   intervals with rational endpoints (with or without rationals removed)
-  witnesses second-countability, and \([-n,n]\) is relatively compact.
+  witnesses second-countability.
+
+  We now will show that \([-n,n]\setminus\mathbb Q\) is relatively compact.
+  Let \(\mc U\) be a cover of
+  \(R_{\mathbb Q}\) by open intervals with the rationals removed,
+  and let \(\mc V\) be the corresponding cover of open intervals.
+  There exists a finite subcollection of \(\mc V\) which covers
+  \([-n,n]\), so there exists a corresponding subcollection of
+  \(\mc U\) which covers \([-n,n]\setminus\mathbb Q\).
+  Thus
+  \(R_{\mathbb Q}=\mathbb Q\cup\bigcup_{n<\omega}([-n,n]\setminus\mathbb Q)\)
+  is a countable union of relatively compact subsets.
 \end{proof}
 
 \begin{definition}
@@ -995,21 +1000,46 @@ than the usual Euclidean line.
   intervals with countably many points removed.
 \end{definition}
 
+\begin{lemma}\label{rOmegaLemma}
+  For each compact subset \(K\) of \(\mathbb R\)
+  and open cover \(\mc U\) of \(R_\omega\),
+  there exists a countable set \(C\) such that \([a,b]\setminus C\)
+  is \(\mc U\)-finite.
+\end{lemma}
+
+\begin{proof}
+  Let \(\mc V\) be the corresponding open cover of \(\mathbb R\) where
+  \(\mc U\) may be obtained by removing countable sets from members of
+  \(\mc V\). Choose a finite subcollection \(\mc G\) of \(\mc V\) which
+  covers \(K\), and then note that the corresponding finite subcollection
+  \(\mc F\) of \(\mc U\) covers \([-n,n]\setminus C\) where \(C\) is the
+  finite union of the countable sets removed from sets in \(\mc G\)
+  to obtain the sets in \(\mc F\).
+\end{proof}
+
 \begin{example}
   \(R_\omega\) is non-regular, non-second-countable, and
   non-\(\sigma\)-relatively-compact, but \(\pl F\win\menGame{R_\omega}\).
 \end{example}
 
 \begin{proof}
-  If \(S\supseteq\{s_n:n<\omega\}\) for \(s_n\)
-  discrete, then \(U_m=R_\omega\setminus\{s_n:m<n<\omega\}\) yields an
-  infinite cover \(\{U_m:m<\omega\}\) with no finite subcollection covering \(S\),
-  showing that all relatively compact sets are finite, and \(R_\omega\) is not
-  \(\sigma\)-relatively-compact.
+  If \(S\supseteq\{s_n:n<\omega\}\) for distinct \(s_n\),
+  then \(U_m=R_\omega\setminus\{s_n:m<n<\omega\}\) yields an
+  infinite cover \(\{U_m:m<\omega\}\) with no finite subcollection covering
+  \(S\), showing that all relatively compact sets are finite, and \(R_\omega\)
+  is not \(\sigma\)-relatively-compact. The set \(R_\omega\setminus\mathbb Q\)
+  is open, but the closure of any open subset must contain a rational, so
+  this space is not regular. Finally, the space is not second-countable,
+  since for any countable collection of open sets \(\{U_n:n<\omega\}\),
+  we may choose \(p_n\in U_n\)
+  and note \(R_\omega\setminus\{p_n:n<\omega\}\) is an open set not containing
+  any \(U_n\).
 
-  Define the winning strategy \(\sigma\) for \(\pl F\) in \(\menGame{R_\omega}\) as
-  follows: let \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n}\>)=[-n,n]\setminus C_n\)
-  for some countable \(C_n=\{c_{n,m}: m<\omega\}\),
+  Define the winning strategy \(\sigma\) for \(\pl F\) in
+  \(\menGame{R_\omega}\) as follows: let
+  \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n}\>)=[-n,n]\setminus C_n\)
+  where \(C_n\) witnesses Lemma \ref{rOmegaLemma} for \([-n,n]\)
+  and \(\mc U_{2n}\),
   and let \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n+1}\>)=\{c_{i,j} : i,j < n\}\).
 \end{proof}
 
@@ -1067,9 +1097,9 @@ We will soon see that, assuming \(\alcompS{\mf c}\), \(\pl F\) has a winning
 \begin{proof}
   It's sufficient to show that \([0,1]\subseteq R_\omega\) is relatively
   robustly Menger. Let \(f_A\) witness \(\alcompS{\mf c}\)
-  for \(A\in[[a,b]]^{\leq\omega}\).
-  For each open cover \(\mc U\), let \(A_{\mc U}\) be
-  such that \([0,1]\setminus A_{\mc U}\) is \(\mc U\)-finite.
+  for \(A\in[[0,1]]^{\leq\omega}\).
+  For each open cover \(\mc U\), let \(A_{\mc U}\) witness Lemma
+  \ref{rOmegaLemma} for \([0,1]\) and \(\mc U\).
   Let \(r_{\mc U}(x)=0\) if \(x\in[0,1]\setminus A_{\mc U}\) and
   \(r_{\mc U}(x)=f_{\mc A_{\mc U}}(x)\) otherwise.
 
