@@ -158,7 +158,8 @@ NSF-DMS 1501506}
 
   In \cite{MR1129143}, Scheepers noted that \(\alcompS{\omega_1}\) holds in \(ZFC\),
   and that it is possible to force \(\mf c\) to be arbitrarily large
-  while preserving \(\alcompS{\mf c}\). However, \(\alcompS{\mf c^+}\) always fails.
+  while preserving \(\alcompS{\mf c}\); however,
+  it was also shown that \(\alcompS{\mf c^+}\) always fails.
   This axiom may be applied to obtain a winning \(2\)-tactic for \(\pl F\)
   in the countable-finite game.
 
@@ -320,8 +321,9 @@ NSF-DMS 1501506}
     \(f_\alpha\sim f_{\beta_n}\), and \(f_{\beta_n}\sim f_\beta\).
   \end{proof}
 
-  We now construct a topology on \(\omega_n\) for each \(n<\omega\) which
-  will witness a Kurepa family of size \(\aleph_n\), exploiting a theorem of
+  We now make use of
+  a topology on \(\omega_n\) for each \(n<\omega\) that
+  witnesses a Kurepa family of size \(\aleph_n\), due to a theorem of
   Juh\'asz et. al. in \cite{MR539228}.
 
   \begin{definition}
@@ -395,12 +397,22 @@ NSF-DMS 1501506}
   \section{Consistency results}
 
   As noted in \cite{MR1229125}, Jensen's one-gap two-cardinal theorem under
-  \(V=L\) introduced in \cite{MR0309729} implies that \(\kurepaS\kappa\)
-  holds for all cardinals \(\kappa\).
+  \(V=L\) introduced in \cite{MR0309729} implies that \(\kurepaS\kappa\),
+  and therefore \(\alcompSP\kappa\), holds for all cardinals \(\kappa\).
+  However, the authors wish to thank their anonymous referree for
+  observing the following improvement:
 
-  \begin{corollary}[\(V=L\)]\label{alcompSPunderV=L}
-    \(\alcompSP{\kappa}\) for all cardinals \(\kappa\).
+  \begin{corollary}\label{alcompSPunderV=L}
+    Assume the covering lemma over the Core Model holds. Then
+    \(\alcompSP{\kappa}\) holds for all cardinals \(\kappa\).
   \end{corollary}
+
+  \begin{proof}
+    Juh\'asz and Weiss note in \cite[pg. 186]{juhaszgood} that the covering
+    lemma over the Core Model guarantees \(\splendidS\kappa\), and therefore
+    \(\kurepaS\kappa\) and \(\alcompSP\kappa\), when
+    \(\cf\kappa>\omega\).
+  \end{proof}
 
   As noted earlier, Scheepers proved in \cite{MR1129143}
   that \(\neg\alcompS{\mf c^+}\) is a theorem of ZFC, showing
@@ -674,7 +686,12 @@ NSF-DMS 1501506}
 
 
   We are also able to force \(\alcompSP{\kappa}\) to fail for every cardinal
-  other than the first \(\omega\)-many we've already guaranteed.
+  other than the first \(\omega\)-many we've already guaranteed. The authors
+  again thank the referee for observing that the following result
+  contrasts very nicely with Corollary \ref{alcompSPunderV=L}: large cardinals
+  are necessary to find \(\kappa>\aleph_\omega\) with \(\cf\kappa>\omega\)
+  where \(\splendidS\kappa\) fails.
+
 
             \begin{theorem} It follows from the existence of a $2$-huge cardinal
             that there is a model of $ZFC$ for which $\lnot \mathcal A'(\aleph_{\omega})$.
@@ -1027,7 +1044,7 @@ NSF-DMS 1501506}
   \draw[-implies,double equal sign distance] (0,-0.35) -- (0,-0.65);
 \end{tikzpicture}
 \end{center}
-\caption{Diagram of Scheeper/Menger game implications with \(\alcompS{\kappa},\alcompS{\kappa}\)}
+\caption{Diagram of Scheeper/Menger game implications with \(\alcompS{\kappa},\alcompSP{\kappa}\)}
 \label{GamesDiagram}
 \end{figure}
 
