@@ -282,7 +282,7 @@ as well; this is not the case.
 
 \begin{definition}
   For any cardinal \(\kappa\), let \(\onePtLind\kappa=\kappa\cup\{\infty\}\) denote
-  the \term{one-point Lindel\"of-ication} of discrete \(\kappa\), where points in
+  the \term{one-point Lindel\"ofication} of discrete \(\kappa\), where points in
   \(\kappa\) are isolated, and the neighborhoods of \(\infty\) are the co-countable
   sets containing it.
 \end{definition}
@@ -313,8 +313,8 @@ Scheepers in \cite{MR1129143}.
   with two players \(\pl C\), \(\pl F\). In round \(0\), \(\pl C\) chooses
   \(C_0\in[\kappa]^{\leq\omega}\), followed by \(\pl F\) choosing
   \(F_0\in[\kappa]^{<\omega}\). In round \(n+1\), \(\pl C\) chooses
-  \(C_{n+1}\in[\kappa]^{\leq\omega}\) such that \(C_{n+1}\supset C_n\), followed
-  by \(\pl F\) choosing \(F_{n+1}\in[\kappa]^{<\omega}\).
+  \(C_{n+1}\in[\kappa]^{\leq\omega}\) such that \(C_{n+1}\supsetneq C_n\),
+  followed by \(\pl F\) choosing \(F_{n+1}\in[\kappa]^{<\omega}\).
 
   \(\pl F\) wins the game if
   \(\bigcup_{n<\omega} F_n\supseteq\bigcup_{n<\omega} C_n\); otherwise,
@@ -393,18 +393,22 @@ We introduce a few games to make the relationship between Scheeper's
 \begin{center}
 \begin{tikzcd}[arrows=Rightarrow]
   &
-  \pl F \kmarkwin{k+1} \menGame{\onePtLind\kappa}
-  \Leftrightarrow
-  \pl F \kmarkwin{k+1} \schFillIntGame{\kappa}
-    \arrow[d] \\
-  \pl F \ktactwin{k+1} \schFillStrictGame{\kappa}
-    \arrow[r] &
-  \pl F \kmarkwin{k+1}\schFillGame{\kappa}
-  \Leftrightarrow
-  \pl F \kmarkwin{k+1} \schFillInitialGame{\kappa}
-      \arrow[d] \\
+  \pl F \kmarkwin{(k+1)} \menGame{\onePtLind\kappa}
+    \arrow[d]
+    \arrow[r,Leftrightarrow]
   &
-  \pl F \kmarkwin{k+1} \schFillStrictGame{\kappa}
+  \pl F \kmarkwin{(k+1)} \schFillIntGame{\kappa}
+      \arrow[d]  \\
+  \pl F \ktactwin{(k+1)} \schFillStrictGame{\kappa}
+    \arrow[r] &
+  \pl F \kmarkwin{(k+1)}\schFillGame{\kappa}
+      \arrow[d]
+      \arrow[r,Leftrightarrow]
+  &
+  \pl F \kmarkwin{(k+1)} \schFillInitialGame{\kappa}
+    \arrow[ld]\\
+  &
+  \pl F \kmarkwin{(k+1)} \schFillStrictGame{\kappa}
 \end{tikzcd}
 \end{center}
 \caption{Diagram of Scheeper/Menger game implications}
@@ -430,6 +434,7 @@ Figure \ref{GamesDiagram} holds.
         =
       C\cap\sigma(\mc U(s\concat\<C\>),n)
     \]
+  where \(|s|\leq k\)
   is a winning \((k+1)\)-mark for \(\pl F\) in \(\schFillIntGame\kappa\).
 
   \(\pl F \kmarkwin{(k+1)}\schFillIntGame\kappa
@@ -448,6 +453,7 @@ Figure \ref{GamesDiagram} holds.
         \cup
       \sigma(C(s\concat\<\mc U\>),n)
     \]
+  where \(|s|\leq k\)
   is a winning \((k+1)\)-mark for \(\pl F\) in \(\menGame{\onePtLind\kappa}\).
 
   \(\pl F \kmarkwin{(k+1)}\schFillIntGame\kappa
@@ -470,6 +476,7 @@ Figure \ref{GamesDiagram} holds.
       \bigcup_{t\preceq s, m\leq n}
       \sigma(t\concat\<C\>,m)
     \]
+  where \(|s|\leq k\)
   is a winning \((k+1)\)-mark for \(\pl F\) in \(\schFillGame\kappa\),
   considering that \(\sigma\) ensures that \(C_n\) is covered when
   attacked by \(\<C_n,C_{n+1},\dots\>\) for all \(n<\omega\).
@@ -500,6 +507,7 @@ Figure \ref{GamesDiagram} holds.
         =
       \sigma(\<C_n+n,\dots,C_{n+i}+(n+i)\>)
     \]
+  where \(i\leq k\)
   is a winning \((k+1)\)-mark for \(\pl F\) in \(\schFillGame\kappa\),
   considering that \(\sigma\) ensures that
   \(\bigcup_{n<\omega}(C_n+n)\supseteq\bigcup_{n<\omega}C_n\)
@@ -559,18 +567,22 @@ finding a winning \(2\)-Markov strategy in the Menger game played on
   \alcompS\kappa
     \arrow[r]
     \arrow[d] &
-  \pl F \kmarkwin2 \menGame{\onePtLind\kappa}
-  \Leftrightarrow
-  \pl F \kmarkwin2 \schFillIntGame{\kappa}
-    \arrow[d] \\
-  \pl F \ktactwin2 \schFillStrictGame{\kappa}
-    \arrow[r] &
-  \pl F \kmarkwin2\schFillGame{\kappa}
-  \Leftrightarrow
-  \pl F \kmarkwin2 \schFillInitialGame{\kappa}
-      \arrow[d] \\
-  &
-  \pl F \kmarkwin2 \schFillStrictGame{\kappa}
+      \pl F \kmarkwin{(k+1)} \menGame{\onePtLind\kappa}
+        \arrow[d]
+        \arrow[r,Leftrightarrow]
+      &
+      \pl F \kmarkwin{(k+1)} \schFillIntGame{\kappa}
+          \arrow[d]  \\
+      \pl F \ktactwin{(k+1)} \schFillStrictGame{\kappa}
+        \arrow[r] &
+      \pl F \kmarkwin{(k+1)}\schFillGame{\kappa}
+          \arrow[d]
+          \arrow[r,Leftrightarrow]
+      &
+      \pl F \kmarkwin{(k+1)} \schFillInitialGame{\kappa}
+        \arrow[ld]\\
+      &
+      \pl F \kmarkwin{(k+1)} \schFillStrictGame{\kappa}
 \end{tikzcd}
 \caption{Diagram of Scheeper/Menger game implications with \(\alcompS\kappa\)}
 \label{GamesDiagram2}
@@ -701,7 +713,7 @@ no confusion in the context of regular spaces.
 \end{proof}
 
 \begin{lemma}
-  Let \(\sigma(\mc{U}, n)\) be a Markov strategy for \(F\) in
+  Let \(\sigma\) be a Markov strategy for \(\pl F\) in
   \(\menGame{X}\), and \(\mc{O}\) collect all open covers of \(X\). Then the
   set
     \[
@@ -736,7 +748,8 @@ no confusion in the context of regular spaces.
 
 \begin{proof}
   If \(X=\bigcup_{n<\omega} R_n\) for \(R_n\) relatively compact, then
-  \(\sigma(n)=R_n\) is a winning \(0\)-mark, which of course gives a
+  \(\sigma(n)=R_n\) defines a winning \(0\)-mark \(\sigma\),
+  which of course gives a
   winning \(1\)-mark. The previous lemma finishes the proof.
 \end{proof}
 
@@ -977,6 +990,8 @@ than the usual Euclidean line.
 \end{example}
 
 \begin{proof}
+  Note that \(\pi\) is a point that cannot be separated from the closed
+  set \(\mathbb Q\) by open sets, demonstrating non-regularity.
   Compact sets in \(R_{\mathbb Q}\) cannot contain open intervals,
   and thus are nowhere dense in nonmeager \(\mathbb R\),
   so \(R_{\mathbb Q}\) is not \(\sigma\)-compact. The usual base of
@@ -1030,15 +1045,16 @@ than the usual Euclidean line.
   is not \(\sigma\)-relatively-compact. The set \(R_\omega\setminus\mathbb Q\)
   is open, but the closure of any open subset must contain a rational, so
   this space is not regular. Finally, the space is not second-countable,
-  since for any countable collection of open sets \(\{U_n:n<\omega\}\),
-  we may choose \(p_n\in U_n\)
+  since for any countable collection of nonempty
+  open sets \(\{U_n:n<\omega\}\), we may choose \(p_n\in U_n\)
   and note \(R_\omega\setminus\{p_n:n<\omega\}\) is an open set not containing
   any \(U_n\).
 
   Define the winning strategy \(\sigma\) for \(\pl F\) in
   \(\menGame{R_\omega}\) as follows: let
   \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n}\>)=[-n,n]\setminus C_n\)
-  where \(C_n\) witnesses Lemma \ref{rOmegaLemma} for \([-n,n]\)
+  where \(C_n=\{c_{i,n}:i<\omega\}\)
+  witnesses Lemma \ref{rOmegaLemma} for \([-n,n]\)
   and \(\mc U_{2n}\),
   and let \(\sigma(\<\mc{U}_0,\dots,\mc{U}_{2n+1}\>)=\{c_{i,j} : i,j < n\}\).
 \end{proof}
