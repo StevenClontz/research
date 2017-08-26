@@ -151,14 +151,24 @@ In \cite[Theorem 3.9]{MR1419798} it was shown that \(X\) is \(\Omega\)-Menger
 if and only if \(X^n\) is Menger for all \(n<\omega\).
 
 \begin{definition}
-  Let \(\mc B_{X,x}\) be the collection of subsets \(A\subset X\) where
+  Let \(\Omega_{X,x}\) be the collection of subsets \(A\subset X\) where
   \(x\in\closure{A}\). (Call \(A\) a \term{blade} of \(x\).)
-  Then \(\schSelProp{\mc B_{X,x}}{\mc B_{X,x}}\) is the
+  Then \(\schSelProp{\Omega_{X,x}}{\Omega_{X,x}}\) is the
   \term{countable fan tightness property} for \(X\) at \(x\)
   (\(CFT_x\) for short), and
-  \(\schSelGame{\mc B_{X,x}}{\mc B_{X,x}}\) is the
+  \(\schSelGame{\Omega_{X,x}}{\Omega_{X,x}}\) is the
   \term{countable fan tightness game} for \(X\) at \(x\).
 \end{definition}
+
+The similar notations for \(\omega\)-covers \(\Omega_X\) and
+blades \(\Omega_{X,x}\) is well-established, see e.g.
+\cite[Topological games and Ramsey theory]{19362020070101} (wherein
+the notation is more succently given as \(\Omega,\Omega_x\)).  The
+relationship between such sets becomes apparent in the study of
+\(C_p\)-theory; for this reason we choose to always denote the space
+explicitly to help distinguish the ambient spaces when discussing
+the relationship between \(\Omega_X\) and
+\(\Omega_{C_p(X),\vec 0}\).
 
 \begin{definition}
   A space \(X\) has \term{countable fan tightness} (\(CFT\) for short)
@@ -168,11 +178,11 @@ if and only if \(X^n\) is Menger for all \(n<\omega\).
 
 \begin{definition}
   Let \(\mc D_{X}\) be the collection of dense subsets of a topological
-  space \(X\). (So, \(\mc D_X\subseteq \mc B_{X,x}\) for all \(x\in X\).)
-  Then \(\schSelProp{\mc D_X}{\mc B_{X,x}}\) is the
+  space \(X\).
+  Then \(\schSelProp{\mc D_X}{\Omega_{X,x}}\) is the
   \term{countable dense fan tightness property} for \(X\) at \(x\)
   (\(CDFT_x\) for short), and
-  \(\schSelGame{\mc D_X}{\mc B_{X,x}}\) is the
+  \(\schSelGame{\mc D_X}{\Omega_{X,x}}\) is the
   \term{countable dense fan tightness game} for \(X\) at \(x\).
 \end{definition}
 
@@ -183,7 +193,7 @@ if and only if \(X^n\) is Menger for all \(n<\omega\).
 \end{definition}
 
 Note that \(CFT\Rightarrow CDFT\) for any space \(X\) as
-\(\mc D_X\subseteq \mc B_{X,x}\).
+\(\mc D_X\subseteq \Omega_{X,x}\) for all \(x\in X\).
 
 The notion of countable fan tightness was first studied by
 by Arhangel'skii in \cite{MR837289}. A result of that paper showed
@@ -202,7 +212,8 @@ the \(\Omega\)-Menger property of \(X\).
 \end{definition}
 
 Of course, one may easily observe that a selective separable space is
-separable. In \cite{MR2678950} Barman and Dow demonstrated that all
+separable, and \(SS\Rightarrow CDFT\).
+In \cite{MR2678950} Barman and Dow demonstrated that all
 separable Frechet spaces are selectively separable. They were also able
 to produce a space which is selectively separable, but does not allow
 \(\plII\) a winning strategy in the selective separability game.
@@ -257,10 +268,15 @@ attributed to Gary Gruenhage:
 The solution is already known to be ``yes'' in the context of countable spaces
 \cite{MR2678950}. However in general, winning strategies in selection games
 cannot be improved to be winning Markov strategies. In
-\cite{clontzMengerGamePreprint} the author showed that while \(M^+\) implies
-\(M^{+mark}\) for second-countable spaces, there exists a simple
+\cite{clontzMengerCMUC} the author showed that \(M^+\) implies
+\(M^{+mark}\) for second-countable spaces; however, the one-point
+Lindel\"of-ication \(\onePtLind{\omega_1}\) of a discrete space of size
+\(\omega_1\) is a simple
 example of a regular non-second-countable space which is
-\(M^+\) but not \(M^{+mark}\).
+\(M^+\) but not \(M^{+mark}\) (equivalently, not \(\sigma\)-compact).
+It will later be shown that it is no coincidence
+that countable \(SS^+\) implies \(SS^{+mark}\) and
+second-countable \(M^+\) implies \(M^{+mark}\).
 
 
 
@@ -393,17 +409,20 @@ Due to the difficulty in obtaining an English translation of
 more general context below.
 
 \begin{proposition}
-  Any witness for \(\Omega M\) (resp. \(\Omega M^+,\Omega M^{+mark}\))
+  Any witness for \(\Omega M\) (resp.
+  \(\Omega M^+,\Omega M^{+mark}\))
   may be improved such that any final sequence of the chosen
   finite subcollections is an \(\omega\)-cover.
 \end{proposition}
 
 \begin{proof}
-  Consider any sequence \(\<\mc U_0,\mc U_1,\dots\>\) of open covers.
-  For \(\Omega M\), choose the witness
-  \(\<\mc F_n^n,\mc F_{n+1}^n,\dots\>\) for the final
-  sequence \(\<\mc U_n,\mc U_{n+1},\dots\>\) for each \(n<\omega\),
-  and let \(\mc F_n=\bigcup_{i\leq n}\mc F_n^i\).
+  Consider any sequence \(\<\mc U_0,\mc U_1,\dots\>\) of \(\omega\)-covers.
+  For each \(n<\omega\), let
+  \(\<\mc F_n^n,\mc F_{n+1}^n,\dots\>\) witness \(\Omega M\) for the final
+  sequence \(\<\mc U_n,\mc U_{n+1},\dots\>\),
+  and let \(\mc F_n=\bigcup_{i\leq n}\mc F_n^i\); it follows that
+  \(\<\mc F_0,\mc F_1,\dots\>\) satisfies the proposition.
+
   For \(\Omega M^+\), the winning strategy \(\sigma\) may be improved to
   \(\tau\) where
   \(
@@ -416,7 +435,7 @@ more general context below.
     \tau(\mc U,n)
       =
     \bigcup_{i\leq n}\sigma(\mc U,i)
-  \).
+  \). Both improved strategies are easily seen to satisfy the proposition.
 \end{proof}
 
 \begin{definition}
@@ -446,7 +465,7 @@ more general context below.
 \end{lemma}
 
 \begin{proof}
-  For each \(B\in\mc B_{C_p(X),\vec 0}\) define
+  For each \(B\in\Omega_{C_p(X),\vec 0}\) define
   \[
     \mc U_n(B)
       =
@@ -457,12 +476,13 @@ more general context below.
     \right\}
   .\]
   Consider the finite set \(F\in[X]^{<\omega}\). Since
-  \(\vec 0\in\cl B\), choose \(\vec x\in B\cap[\vec 0,F,1]\).
-  It follows that \(F\subseteq x^{\leftarrow}[(-1,1)]\in\mc U_n(B)\),
+  \(\vec 0\in\cl B\), choose \(\vec x\in B\cap[\vec 0,F,1/2^n]\).
+  It follows that
+  \(F\subseteq \vec x^{\leftarrow}[(-1/2^n,1/2^n)]\in\mc U_n(B)\),
   so \(\mc U_n(B)\) is an \(\omega\)-cover of \(X\).
 
   Consider the sequence of blades
-  \(\<B_0,B_1,\dots\>\in\mc B_{C_p(X),\vec 0}^\omega\), and the
+  \(\<B_0,B_1,\dots\>\in\Omega_{C_p(X),\vec 0}^\omega\), and the
   corresponding sequence of \(\omega\)-covers
   \(\<\mc U_0(B_0),\mc U_1(B_1),\dots\>\in \Omega_X^\omega\).
 
@@ -487,11 +507,13 @@ more general context below.
   .\]
   We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}F_n}\).
   Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
-  \(\frac{1}{2^i}<\epsilon\) and then choose
-  \(i\leq n<\omega,\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\mc F_n\)
-  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
-  and therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
-  It follows that \(\vec x\in F_n\cap[\vec 0,G,\epsilon]\), and therefore
+  \(\frac{1}{2^i}<\epsilon\). Since \(\bigcup_{i\leq n<\omega} \mc F_n\)
+  is an \(\omega\)-cover, we may choose
+  \(i\leq n<\omega\) and
+  \(\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\mc F_n\)
+  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\).
+  Therefore, \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
+  It follows that \(\vec x\in F_n\cap[\vec 0,G,\epsilon]\), and thus
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}F_n\).
 
@@ -515,12 +537,15 @@ more general context below.
   .\]
   We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)}\).
   Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
-  \(\frac{1}{2^i}<\epsilon\) and then choose
-  \(i\leq n<\omega,\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
-  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
-  and therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
-  It follows that \(\vec x\in \tau(\<B_0,\dots,B_n\>)\cap[\vec 0,G,\epsilon]\), and therefore
-  every basic open neighborhood of \(\vec 0\) intersects
+  \(\frac{1}{2^i}<\epsilon\). Since
+  \(\bigcup_{i\leq n<\omega} \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
+  is an \(\omega\)-cover, we may choose
+  \(i\leq n<\omega\) and \(\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]
+  \in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
+  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\).
+  Therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
+  It follows that \(\vec x\in \tau(\<B_0,\dots,B_n\>)\cap[\vec 0,G,\epsilon]\),
+  and thus every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)\).
 
   Assuming \(X\) is \(\Omega M^{+mark}\), choose a witness
@@ -543,11 +568,13 @@ more general context below.
   .\]
   We claim that \(\vec 0\in\cl{\bigcup_{n<\omega}\tau(B_n,n)}\).
   Let \(G\in[X]^{<\omega},\epsilon>0\). Choose \(i<\omega\) such that
-  \(\frac{1}{2^i}<\epsilon\) and then choose
-  \(i\leq n<\omega,\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\mc U_n(B_n),n)\)
-  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\)
-  and therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
-  It follows that \(\vec x\in \tau(B_n,n)\cap[\vec 0,G,\epsilon]\), and therefore
+  \(\frac{1}{2^i}<\epsilon\). Since
+  \(\bigcup_{i\leq n<\omega} \sigma(\mc U_n(B_n),n)\) is an \(\omega\)-cover,
+  we may choose \(i\leq n<\omega\) and
+  \(\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\mc U_n(B_n),n)\)
+  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\).
+  Therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
+  It follows that \(\vec x\in \tau(B_n,n)\cap[\vec 0,G,\epsilon]\), and thus
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(B_n,n)\).
 \end{proof}
@@ -575,14 +602,15 @@ more general context below.
   .\]
   Consider the point \(\vec x\in C_p(X)\) and its basic open neighborhood
   \([\vec x,G,\epsilon]\). If \(\mc U\) is an \(\omega\)-cover
-  of \(X\), \(G\subseteq U\) for some \(U_{\vec y,\mc U}\in\mc U\).
+  of \(X\), \(G\subseteq U\)
+  for some \(U\in\mc U\).
   Since \(X\) is
-  \(T_{3\frac{1}{2}}\), \(X\setminus U_{\vec y,\mc U}\) is closed, and \(G\)
-  is finite and disjoint from \(X\setminus U_{\vec y,\mc U}\),
+  \(T_{3\frac{1}{2}}\), \(X\setminus U\) is closed, and \(G\)
+  is finite and disjoint from \(X\setminus U\),
   we may choose some function \(\vec y\in C_p(X)\) where
-  \(\vec y[X\setminus U_{\vec y,\mc U}]=\{1\}\) and \(\vec x(t)=\vec y(t)\)
+  \(\vec y[X\setminus U]=\{1\}\) and \(\vec x(t)=\vec y(t)\)
   for each \(t\in G\).
-  It follows \(\vec y\in [\vec x,G,\epsilon]\cap D\), so \(D(\mc U)\)
+  It follows \(\vec y\in [\vec x,G,\epsilon]\cap D(\mc U)\), so \(D(\mc U)\)
   is dense in \(C_p(X)\).
 
   Consider the sequence of \(\omega\)-covers
@@ -688,11 +716,13 @@ more general context below.
 \end{theorem}
 
 \begin{proof}
-  Since \(\mc D_X\subseteq \mc B_{X,x}\), the second condition trivially
+  Since \(\mc D_X\subseteq \Omega_{X,x}\), the second condition trivially
   implies the first. As \(C_p(X)\) is homogeneous, the \(C(D)FT\) properties
   follow from \(C(D)FT_{\vec 0}\). So the result follows from the
   previous lemmas.
 \end{proof}
+
+
 
 \section{A space which is \(CFT^+\) but not \(CDFT^{+mark}\)}
 
@@ -712,7 +742,18 @@ as our example.
   Let \(X\) and therefore \(X^n\) be compact.
   Let \(\mc F_n\) be the finite subcover of the
   open cover \(\mc U_n=\{U^n:U\in\mc U\}\). Then
-  \(\mc F=\{U:U^n\in\mc F_n\}\) witnesses our desired result.
+  \(\mc F=\{U:U^n\in\mc F_n\}\) satisfies that for each \(F\in[X]^{\leq n}\)
+  there exists some \(U\in\mc F\) where \(F\subseteq U\).
+
+  Conversely, assume that for each \(\omega\)-cover
+  \(\mc U\) of \(X\) and \(n<\omega\), there exists a finite subcollection
+  \(\mc F\in[\mc U]^{<\omega}\) such that for each \(F\in[X]^{\leq n}\)
+  there exists some \(U\in\mc F\) where \(F\subseteq U\). Given an
+  arbitrary open cover \(\mc V\), close it under finite unions to obtain
+  an \(\omega\)-cover \(\mc U\). Then the finite subcollection \(\mc F\)
+  of \(\mc U\) is of course a finite subcover,
+  and since each member of \(\mc F\) is a finite union of open sets in
+  \(\mc V\), there exists a finite subcover \(\mc G\) of \(\mc V\).
 \end{proof}
 
 \begin{lemma}
@@ -726,7 +767,7 @@ as our example.
 
 \begin{proof}
   The equivalence of \(\sigma\)-compact and \(M^{+mark}\) in regular spaces
-  was shown in \cite{clontzMengerGamePreprint}. As \(\Omega M^{+mark}\)
+  was shown in \cite{clontzMengerCMUC}. As \(\Omega M^{+mark}\)
   trivially implies \(M^{+mark}\), we need only demonstrate that
   if \(X=\bigcup_{n<\omega} K_n\) for \(K_n\) compact and increasing,
   then \(X\) is \(\Omega M^{+mark}\).
@@ -760,23 +801,27 @@ The reader may note that with this lemma, we may view Theorem
 \begin{proof}
   The proof that \(X=\onePtLind{\omega_1}\) is not
   \(\sigma\)-compact (and therefore not \(\Omega M^{+mark}\))
-  is simply the fact that its countably infinite subsets
-  are closed and discrete.
-  We define the strategy \(\sigma\) for \(\plII\) in
-  \(\schSelGame{\Omega_X}{\Omega_X}\) as follows.
+  follows from the fact that its countably infinite subsets
+  are closed and discrete, so all of its compact subsets are finite.
 
-  For \(n<\omega\)
-  let \(\sigma(\<\mc U_0,\dots,\mc U_n\>)=\{U(\<\mc U_0,\dots,\mc U_n\>)\}\),
-  where
-  \[
+  To show \(\Omega M^+\),
+  we define the strategy \(\sigma\) for \(\plII\) in
+  \(\schSelGame{\Omega_X}{\Omega_X}\) as follows.
+  For a given partial play \(\<\mc U_0,\dots,\mc U_n\>\), suppose
+  \(\{\alpha_{i,m}:i<n,m<\omega\}\subseteq\omega_1\) has already been defined.
+  Then as \(\mc U_n\) is an \(\omega\)-cover, we may
+  choose \(U(\<\mc U_0,\dots,\mc U_n\>)\in\mc U_n\) that contains
+  \(\{\infty\}\cup\{\alpha_{i,j}:i,j<n\}\). Since
+  \(U(\<\mc U_0,\dots,\mc U_n\>)\) is co-countable, define
+  \(\{\alpha_{n,m}:m<\omega\}\) such that
+  \(
     U(\<\mc U_0,\dots,\mc U_n\>)
       =
     \onePtLind{\omega_1}
       \setminus
     \{\alpha_{n,m}:m<\omega\}
-  \]
-  is a co-countable set
-  containing \(\{\infty\}\cup\{\alpha_{i,j}:i,j<n\}\).
+  \). Then let
+  \(\sigma(\<\mc U_0,\dots,\mc U_n\>)=\{U(\<\mc U_0,\dots,\mc U_n\>)\}\).
 
   Consider the arbitrary sequence of moves \(\<\mc U_0,\mc U_1,\dots\>\)
   by \(\plI\). For \(F\in[\onePtLind{\omega_1}]^{<\omega}\), choose
@@ -809,6 +854,12 @@ The reader may note that with this lemma, we may view Theorem
   an \(\omega\)-cover.
 \end{proof}
 
+Note that the preceding result could be worded more strongly:
+\(\onePtLind{\omega_1}\)
+is strategically \(\Omega\)-Rothberger, since the winning strategy only
+uses a single set of the \(\omega\)-cover during each round.
+This topic will be discussed further in a later section.
+
 \begin{corollary}
   \(C_p(\onePtLind{\omega_1})\) is \(CFT^+\) but not \(CDFT^{+mark}\).
 \end{corollary}
@@ -827,10 +878,11 @@ solution to Question \ref{mainQuestion}. However, it is not.
 \end{corollary}
 
 \begin{proof}
-  Every metrizable topological space has points \(G_\delta\).
-  However, if every neighborhood of \(\infty\) is
-  co-countable, \(\{\infty\}\) cannot be the intersection of countably many
-  open sets.
+  Consider a topology coarser than the topology of \(\onePtLind{\omega_1}\).
+  Since open neighborhoods of \(\infty\) in this topology are co-countable,
+  a countable intersection of \(\infty\) neighborhoods is not
+  \(\{\infty\}\). Since every metrizable topological space has points
+  \(G_\delta\), this topology cannot be metrizable.
 \end{proof}
 
 An affirmative answer to either of these questions would answer
@@ -848,7 +900,7 @@ Question \ref{mainQuestion} negatively.
 
 
 
-\section{Equivalence of certain strategic and Markov seleciton properties}
+\section{Equivalence of certain strategic and Markov selection properties}
 
 Barman and Dow
 previously demonstrated that \(SS^+\) is equivalent to
@@ -904,6 +956,8 @@ spaces. The following result generalizes both.
       \in
     \mc B
   \).
+  Let \(b(n)\prec f\) denote that \(b(n)\in\omega^{<\omega}\) is a finite
+  restriction of \(f\in\omega^\omega\).
   The result then follows from
   \begin{align*}
     \bigcup_{n<\omega}\tau(A_n,n)
@@ -911,13 +965,13 @@ spaces. The following result generalizes both.
     \bigcup_{n<\omega}
     \sigma(\<Z_{b(n)\rest 1},Z_{b(n)\rest 2},\dots,Z_{b(n)},A_n\>)
       \\ & \supseteq
-    \bigcup_{n<\omega,b(n)<f}
+    \bigcup_{n<\omega,b(n)\prec f}
     \sigma(\<Z_{b(n)\rest 1},Z_{b(n)\rest 2},\dots,Z_{b(n)},A_n\>)
       \\ & =
-    \bigcup_{n<\omega,b(n)<f}
+    \bigcup_{n<\omega,b(n)\prec f}
     \sigma(\<Z_{f\rest 1},Z_{f\rest 2},\dots,Z_{f\rest|b(n)|},A_{b^{\leftarrow}(f\rest|b(n)|)}\>)
       \\ & =
-    \bigcup_{n<\omega,b(n)<f}
+    \bigcup_{n<\omega,b(n)\prec f}
     \sigma(\<Z_{f\rest 1},Z_{f\rest 2},\dots,Z_{f\rest|b(n)|},Z_{f\rest(|b(n)|+1)}\>)
       \\ & =
     \bigcup_{n<\omega}
@@ -944,12 +998,14 @@ spaces. The following result generalizes both.
 \end{corollary}
 
 \begin{proof}
-  First note that any witness for
-  \(\Omega M^+\) is a witness for
-  \(\plII\win\schSelGame{\Omega_X^*}{\Omega_X^*}\).
   Fix a countable base \(\mc B\) for \(X\) closed under finite unions, and let
   \(\Omega_X^*\) be the collection of \(\omega\)-covers of \(X\) which only
-  use basic open sets. Then
+  use basic open sets.
+  One may quickly verify that
+  \(\Omega M^+\) implies
+  \(\plII\win\schSelGame{\Omega_X^*}{\Omega_X^*}\).
+
+  Note now that
   \(\bigcup\Omega_X^*=\mc B\) is countable, and any set containing an
   \(\omega\)-cover is an \(\omega\)-cover; therefore
   \(\plII\win\schSelGame{\Omega_X^*}{\Omega_X^*}\) if and only if
@@ -982,7 +1038,7 @@ spaces. The following result generalizes both.
   \(\bigcup_{n<\omega}\tau(\mc U_n,n)\) is an \(\omega\)-cover also.
 \end{proof}
 
-\begin{corollary}[\cite{clontzMengerGamePreprint}]
+\begin{corollary}[\cite{clontzMengerCMUC}]
   A second-countable space is \(M^+\) if and only if
   it is \(M^{+mark}\).
 \end{corollary}
@@ -1046,20 +1102,26 @@ when abbreviating to all other strong variants.
   Therefore \(x_{m,n}\in D_{m,n}\) witnesses \(sSS\).
 
   Let \(\sigma_i\) be a witness for \(sCDFT_{d_i}^+\)
-  for each \(i<\omega\). Define \(p:\omega\to\omega\) partition \(\omega\)
-  into infinite sets \(\{p(i):i<\omega\}\).
-  For a nonempty finite sequence \(t\), let \(t'\) be its subsequence removing
-  all terms of index \(n\) such that \(p(n)\not=p(|t|-1)\).
-  (Note that this process preserves the final term.)
-  We then define the strategy \(\tau\) by
+  for each \(i<\omega\). Define \(p:\omega\to\omega\) partitioning \(\omega\)
+  such that \(|p^\leftarrow(i)|=\omega\) for all \(i<\omega\).
+  Essentially, we will partition each
+  attack by \(\plI\) according to \(p\) into \(\omega\)-many subattacks, and
+  defeat each subattack to produce a blade of \(d_n\).
+
+  For a nonempty finite sequence \(t\), let \(t'\) be its subsequence deleting
+  all terms of index \(n\) where \(p(n)\not=p(|t|-1)\).
+  Note that the final term of \(t\) is the final term of \(t'\).
+  Thus the function \(\tau\) defined by
   \[
     \tau(t)
       =
     \sigma_{p(|t|-1)}(t')
-  .\]
+  \]
+  is a legal strategy.
 
-  Let \(\alpha\in\mc D_X^\omega\), and let \(\alpha_i\) be its subsequence
-  removing all terms of index \(n\) such that \(p(n)\not=i\).
+  Let \(\alpha\in\mc D_X^\omega\) be an attack by \(\plI\),
+  and let \(\alpha_i\) be its subsequence
+  deleting all terms of index \(n\) where \(p(n)\not=i\).
   By \(sCDFT_{d_i}^+\), we have
   \[
     d_i
@@ -1084,13 +1146,16 @@ when abbreviating to all other strong variants.
   Therefore \(\tau\) witnesses \(SS^+\).
 
   Let \(\sigma_i\) be a witness for \(sCDFT_{d_i}^{+mark}\)
-  for each \(i<\omega\). Define \(p:\omega\to\omega\) partition \(\omega\)
-  into infinite sets \(\{p(i):i<\omega\}\).
-  We then define the Markov strategy \(\tau\) by
+  for each \(i<\omega\).
+  Again, we will partition each
+  attack by \(\plI\) according to \(p\) into \(\omega\)-many subattacks, and
+  defeat each subattack to produce a blade of \(d_n\).
+
+  We define the Markov strategy \(\tau\) by
   \[
     \tau(D,n)
       =
-    \sigma_{p(n)}(D,|\{m\in p(n):m\leq n\}|)
+    \sigma_{p(n)}(D,|\{m< n:p(m)=p(n)\}|)
   .\]
 
   Let \(\alpha\in\mc D_X^\omega\), and let \(\alpha_i\) be its subsequence
