@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+\usepackage[letterpaper,margin=1in]{geometry}
+
+\usepackage{enumerate}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+\title{\(k\)-Limited Strategies in Banach Mazur Games}
+\author{Steven Clontz}
+
+\usepackage{../clontzDefinitions}
+
+\newcommand{\bmPoGame}[2]{BM_{po}(#1,#2)}
+
+\begin{document}
+
+\maketitle
+
+  \begin{definition}
+    Let \(\mb P\) be partially ordered by \(\leq\).
+    Let \(\mb P^{\downarrow}=\{f\in\mb P^\omega : f(n)\geq f(n+1)\}\).
+    Then for \(f,g\in\mb P^\downarrow\), we say that \(f,g\) zip into each
+    other if for all \(m<\omega\) there exists \(n<\omega\) such that
+    \(f(m)\geq g(n)\) and \(g(m)\geq f(n)\).
+  \end{definition}
+
+  \begin{definition}
+    \(\bmPoGame{\mb P}{W}\) is a game defined for all non-empty partial orders
+    \(\mb P\) and all subsets \(W\subseteq\mb P^\downarrow\) closed under
+    zipping. During round \(0\), \(\plI\) chooses \(a_0\in\mb P\),
+    and then \(\plII\) chooses \(b_0\leq a_0\); during around \(n+1\),
+    \(\plI\) chooses \(a_{n+1}\leq b_n\), and then \(\plII\) chooses
+    \(b_{n+1}\leq a_{n+1}\). \(\plII\) wins this game if
+    \(\<a_0,a_1,\dots\>\in W\).
+  \end{definition}
+
+  \begin{theorem}
+    \(\plII\kmarkwin{(k+1)}\bmPoGame{\mb P}{W}\) if and only if
+    \(\plII\ktactwin{(k+1)}\bmPoGame{\mb P}{W}\).
+  \end{theorem}
+
+  \begin{proof}
+    Let \(\tau(\vec p,n)\) be a winning \((k+1)\)-mark for \(\plII\).
+    Let \(\preceq\) well-order \(\mb P^{k+1}\).
+    For \(f\in\mb P^\omega\), let
+    \(f_n=\<f(n),\dots,f(n+k)\>\in\mb P^{k+1}\).
+    For \(\vec p,\vec r\in\mb P^{k+1}\) say that \(\vec p\) improves \(\vec r\)
+    if for each \(m\leq k\), there exists \(n\leq k\) such that
+    \(\vec r(m)\geq\vec p(n)\).
+
+    For \(\vec p\in \mb P^{k+1}\) and \(q\in\mb P\), say \(\vec p\) is
+    \(n\)-above \(q\) if there exists \(s_n(\vec p)\in\mb P^{k+1}\)
+    improving \(\vec p\)
+    such that
+    \[
+      \vec p(k)
+    \geq
+      s_n(\vec p)(k)
+    \geq
+      \tau(s_n(\vec p),n+k)
+    \geq
+      q
+    \]
+    (noting \(\vec p(k)\geq s_n(\vec p)(k)\) is just a consequence of
+    \(s_n(\vec p)\) improving \(\vec p\)).
+
+
+    Say \(\vec p\) is \(\omega\)-above \(q\) if \(\vec p\) is \(n\)-above
+    \(q\) for all \(n<\omega\). If \(\vec p\) is \(\omega\)-above some
+    \(l(\vec p)\), then say \(\vec p\) is long; otherwise call \(\vec p\)
+    short. Note any \(\vec p\) improved by a long vector is itself long,
+    so any \(\vec p\) improving a short vector is itself short.
+
+    For \(\vec p\) short, let
+    \[
+      \mu(\vec p)
+        =
+      \min_{\preceq}\{
+        \vec r\text{ short}
+          :
+        \vec{p}\text{ improves }\vec{r}
+      \}
+    \]
+    and since \(\mu(\vec p)\) is not \(n\)-above \(\vec p\) for some \(n\), let
+    \[
+      N(\vec p)
+        =
+      \min\{
+        n<\omega
+      :
+        \mu(\vec p)\text{ is not }n\text{-above }\vec p
+      \}
+    .\]
+
+    We define
+    \[
+      \sigma(\vec p)
+        =
+      \begin{cases}
+        \tau(\vec p,|\vec p|-1) & 0<|\vec p|\leq k \\
+        l(\vec p) & \vec p \text{ is long} \\
+        \tau^{N(\vec p)+1}(\vec p) & \vec p \text{ is short}
+     \end{cases}
+    .\]
+
+    Suppose \(\sigma\) is legally attacked by \(a\in\mb P^\omega\).
+    % Suppose \(b\) is a subsequence of \(a\) where
+    % \(b_n\) is long for all \(n<\omega\).
+    % Since \(b_n\) improves \(a_n\)
+    % for all \(n<\omega\), it follows that
+    % \(a_n\) is long for all \(n<\omega\).
+    Thus for \(n<k\),
+    \[
+      a(n)
+        \geq
+      \tau(a\rest(n+1),n)
+        =
+      \sigma(a\rest(n+1))
+        \geq
+      a(n+1)
+    .\]
+    For \(n\leq\omega\), if \(a_n\) is long, then \(a_n\) is \(n\)-above
+    \(l(a_n)\). Therefore,
+    \[
+      a(n+k)
+        =
+      a_n(k)
+        \geq
+      s_n(a_n)(k)
+        \geq
+      \tau(s_n(a_n),n+k)
+        \geq
+      l(a_n)
+        =
+      \sigma(a_n)
+        \geq
+      a(n+k+1)
+    .\]
+    Thus if \(a_n\) is long for \(n<\omega\), it follows that  \(\<a(0),\dots,a(k-1),s_0(a_0)(k),s_1(a_1)(k),\dots\>\)
+    is a legal attack against \(\tau\). Since \(\tau\) is winning,
+    this attack belongs to \(W\). Since this attack zips into \(a\),
+    \(a\) also belongs to \(W\).
+
+    Otherwise, we may choose \(k<N<\omega\) such that
+      \begin{itemize}
+        \item \(a_{n+N}\) is short for all \(n<\omega\),
+              since \(a_m\) short implies \(a_n\) short for all \(m\leq n\).
+        \item \(\mu(a_{n+N})=\vec m\) is fixed for all \(n<\omega\), since
+              there cannot be an infinite \(\preceq\)-decreasing sequence.
+      \end{itemize}
+    As a result, \(a_{n+N}\) is...
+    Thus for \(n<k\),
+    \[
+      b(n)
+        \geq
+      \tau(b\rest(n+1),n)
+        =
+      \sigma(a\rest(n+1))
+        \geq
+      a(n+1)
+    .\]
+
+  \end{proof}
+
+
+\end{document}
