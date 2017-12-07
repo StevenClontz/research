@@ -22,6 +22,7 @@
       \theoremstyle{definition}
       \newtheorem{definition}[theorem]{Definition}
       \newtheorem{example}[theorem]{Example}
+      \newtheorem{observation}[theorem]{Observation}
       \newtheorem{game}[theorem]{Game}
 
       \theoremstyle{remark}
@@ -39,12 +40,13 @@
       \theoremstyle{definition}
       \newtheorem*{definition*}{Definition}
       \newtheorem*{example*}{Example}
+      \newtheorem*{observation*}{Observation}
       \newtheorem*{game*}{Game}
 
       \theoremstyle{remark}
       \newtheorem*{remark*}{Remark}
 
-\title{\(k\)-Limited Strategies in Banach Mazur Games}
+\title{Tactics and Marks in Banach Mazur Games}
 \author{Steven Clontz}
 
 \usepackage{../clontzDefinitions}
@@ -54,6 +56,8 @@
 \begin{document}
 
 \maketitle
+
+  My notes on Galvin/Telgarsky's Theorem 5 from \cite{MR831181}.
 
   \begin{definition}
     Let \(\mb P\) be partially ordered by \(\leq\).
@@ -65,8 +69,8 @@
 
   \begin{definition}
     \(\bmPoGame{\mb P}{W}\) is a game defined for all non-empty partial orders
-    \(\mb P\) and all subsets \(W\subseteq\mb P^\downarrow\) closed under
-    zipping. During round \(0\), \(\plI\) chooses \(a_0\in\mb P\),
+    \(\mb P\) and all subsets \(W\subseteq\mb P^\downarrow\).
+    During round \(0\), \(\plI\) chooses \(a_0\in\mb P\),
     and then \(\plII\) chooses \(b_0\leq a_0\); during around \(n+1\),
     \(\plI\) chooses \(a_{n+1}\leq b_n\), and then \(\plII\) chooses
     \(b_{n+1}\leq a_{n+1}\). \(\plII\) wins this game if
@@ -74,131 +78,155 @@
   \end{definition}
 
   \begin{theorem}
-    \(\plII\kmarkwin{(k+1)}\bmPoGame{\mb P}{W}\) if and only if
-    \(\plII\ktactwin{(k+1)}\bmPoGame{\mb P}{W}\).
+    Let \(W\subseteq\mb P^\downarrow\) be closed under zipping.
+    \(\plII\markwin\bmPoGame{\mb P}{W}\) if and only if
+    \(\plII\tactwin\bmPoGame{\mb P}{W}\).
   \end{theorem}
 
   \begin{proof}
-    Let \(\tau(\vec p,n+1)\) be a winning \((k+1)\)-mark for \(\plII\),
-    where \(n+1\) is the number of moves previously made by \(\plI\).
-    Let \(\preceq\) well-order \(\mb P^{k+1}\).
-    For \(f\in\mb P^\omega\), let
-    \(f_n=\<f(n),\dots,f(n+k)\>\in\mb P^{k+1}\).
+    Let \(\tau(p,n+1)\) be a winning mark for \(\plII\), where \(p\)
+    is the most recent move by \(\plI\) and \(n+1\)
+    is the number of moves made by \(\plI\).
+    Define \(\tau^0(p)=p\) and \(\tau^{n+1}(p)=\tau(\tau^n(p),n+1)\).
+    Let \(\preceq\) well-order \(\mb P\).
 
-    For \(\vec p\in \mb P^{k+1}\) and \(q\in\mb P\), say \(\vec p\) is
-    \(n\)-above \(q\) if there exists \(s_n(\vec p)\in\mb P\)
+    For \(p,q\in \mb P\), say \(p\geq_n q\) if there exist
+    \(s_m(p)\in\mb P\) for \(m\leq n\)
     such that
     \[
-      \vec p(k)
+      p
     \geq
-      s_n(\vec p)
+      s_m(p)
     \geq
-      \tau(\vec r\concat\<s_n(\vec p)\>,n+k+1)
+      \tau(s_m(p),n+1)
     \geq
       q
-    \]
-    for all \(\vec r\in\mb P^k\) ``between \(\vec p(0)\) and \(\vec p(k)\)''.
+    .\]
+    Note that \(p'\geq p\geq_n q\geq q'\) implies \(p'\geq_n q'\),
+    and \(p\geq_n \tau^n(p)\).
 
-    For \(\vec p\in\mb P^{k+1}\), let \(t^0(\vec p)=\vec p\),
-    \(\tau^{n+1}(\vec p)=\tau(t^n(\vec p),n+1)\), and
-    \(t^{n+1}(\vec p)=(t^n(\vec p)\last k)\concat\<\tau^{n+1}(\vec p)\>\).
+    Say \(p\geq_\omega q\) whenever \(p\geq_n q\) for all \(n<\omega\).
+    If \(p\geq_\omega l(p)\) for some \(l(p)\), then say \(p\) is long;
+    otherwise call \(p\) short.
 
-    Say \(\vec p\) is \(\omega\)-above \(q\) if \(\vec p\) is \(n\)-above
-    \(q\) for all \(n<\omega\). If \(\vec p\) is \(\omega\)-above some
-    \(l(\vec p)\), then say \(\vec p\) is long; otherwise call \(\vec p\)
-    short.
-
-    For \(\vec p\) short, let
+    For \(p\) short, let
     \[
-      \mu(\vec p)
+      \mu(p)
         =
       \min_{\preceq}\{
-        \vec r\text{ short}
+        r\text{ short}
           :
-        \vec{r}(k)\geq\vec{p}(k)
+        r\geq p
       \}
     \]
-    and since \(\mu(\vec p)\) is not \(n\)-above \(\vec p(k)\) for some \(n\),
-    let
+    and since \(\mu(p)\not\geq_n p\) for some \(n\), let
     \[
-      N(\vec p)
+      N(p)
         =
       \min\{
         n<\omega
       :
-        \mu(\vec p)\text{ is not }n\text{-above }\vec p(k)
+        \mu(p)\not\geq_n p
       \}
     .\]
+    Note that whenever \(\mu(p)=\mu(q)\) for \(p\geq_n q\),
+    it follows that \(\mu(p)\geq_n q\) and therefore \(N(p)<N(q)\).
 
     We define
     \[
-      \sigma(\vec p)
+      \sigma( p)
         =
       \begin{cases}
-        \tau(\vec p,|\vec p|) & |\vec p|\leq k \\
-        l(\vec p) & \vec p \text{ is long} \\
-        \tau^{N(\vec p)+1}(\vec p) & \vec p \text{ is short}
+        l(p) & p \text{ is long} \\
+        \tau^{N(p)+1}( p) &  p \text{ is short}
      \end{cases}
     .\]
 
     Suppose \(\sigma\) is legally attacked by \(a\in\mb P^\omega\).
-    % Suppose \(b\) is a subsequence of \(a\) where
-    % \(b_n\) is long for all \(n<\omega\).
-    % Since \(b_n\) improves \(a_n\)
-    % for all \(n<\omega\), it follows that
-    % \(a_n\) is long for all \(n<\omega\).
-    Thus for \(n<k\),
+    For \(n\leq\omega\), if \(a(n)\) is long, then \(a(n)\geq_n l(a(n))\).
+    Therefore,
     \[
       a(n)
         \geq
-      \tau(a\rest(n+1),n)
+      s_n(a(n))
+        \geq
+      \tau(s_n(a(n)),n+1)
+        \geq
+      l(a(n))
         =
-      \sigma(a\rest(n+1))
+      \sigma(a(n))
         \geq
       a(n+1)
     .\]
-    For \(n\leq\omega\), if \(a_n\) is long, then \(a_n\) is \(n\)-above
-    \(l(a_n)\). Therefore,
-    \[
-      a(n+k)
-        =
-      a_n(k)
-        \geq
-      s_n(a_n)
-        \geq
-      \tau((a_n\last k)\concat\<s_n(a_n)\>,n+k)
-        \geq
-      l(a_n)
-        =
-      \sigma(a_n)
-        \geq
-      a(n+k+1)
-    .\]
-    Thus if \(a_n\) is long for \(n<\omega\), it follows that  \(\<a(0),\dots,a(k-1),s_0(a_0)(k),s_1(a_1)(k),\dots\>\)
+    Thus if \(a(n)\) is long for \(n<\omega\), it follows that
+    \(c\in\mb P^\downarrow\) defined by \(c(n)=s_n(a(n))\)
     is a legal attack against \(\tau\). Since \(\tau\) is winning,
-    this attack belongs to \(W\). Since this attack zips into \(a\),
-    \(a\) also belongs to \(W\).
+    \(c\in W\), and since \(c\) zips into \(a\),
+    \(a\in W\) as well.
 
-    Otherwise, we may choose \(k<N<\omega\) such that
+    Otherwise, we may choose a final subsequence \(b\) of \(a\) such that
       \begin{itemize}
-        \item \(a_{n+N}\) is short for all \(n<\omega\),
-              since \(a_m\) short implies \(a_n\) short for all \(m\leq n\).
-        \item \(\mu(a_{n+N})=\vec m\) is fixed for all \(n<\omega\), since
+        \item \(b(n)\) is short for all \(n<\omega\),
+              since \(a(m)\) short implies \(a(n+m)\) short for all
+              \(n<\omega\).
+        \item \(\mu(b(n))=\mu'\) is fixed for all \(n<\omega\), since
               there cannot be an infinite \(\preceq\)-decreasing sequence.
       \end{itemize}
-    As a result, \(a_{n+N}\) is...
-    Thus for \(n<k\),
+    As a result,
+    \[
+      b(n)
+        \geq_{N(b(n))}
+      \tau^{N(b(n))+1}(b(n))
+        =
+      \sigma(b(n))
+        \geq
+      b(n+1)
+    \]
+    and therefore \(N(b(n))<N(b(n+1))\). In particular, \(N(b(n))\geq n\).
+
+    Thus for \(n<\omega\),
     \[
       b(n)
         \geq
-      \tau(b\rest(n+1),n)
-        =
-      \sigma(a\rest(n+1))
+      \tau^{n}(b(n))
         \geq
-      a(n+1)
+      \tau(\tau^{n}(b(n)),n+1)
+        \geq
+      \tau^{N(b(n))+1}(b(n))
+        =
+      \sigma(b(n))
+        \geq
+      b(n+1)
     .\]
-
+    As a result, \(c\in\mb P^\downarrow\) defined by \(c(n)=\tau^n(b(n))\)
+    is a legal attack against the winning strategy \(\tau\). Therefore
+    \(c\in W\), and since \(c\) zips into \(b\) and \(a\), we conclude
+    \(a\in W\).
   \end{proof}
+
+  \begin{observation}
+    When \(\mb P=T(X)\setminus\{\emptyset\}\) is ordered by set-inclusion
+    and \(W=\{U\in\mb P^\downarrow:\bigcap_{n<\omega}U(n)\not=\emptyset\}\),
+    then \(\bmPoGame{\mb P}{W}\) is exactly the topological Banach Mazur game
+    \(\bmGame{X}\). Note \(W\) is closed under zipping.
+  \end{observation}
+
+  \begin{corollary}
+  \(\plII\markwin\bmGame{X}\) if and only if
+  \(\plII\tactwin\bmGame{X}\).
+  \end{corollary}
+
+  \begin{observation}
+    When \(\mb P=\{(U,x):U\in T(X)\setminus\{\emptyset\},x\in U\}\)
+    is ordered by \((U,x)\geq(V,y)\) whenever \(x\in V\subseteq U\)
+    and \(W=\{\<U(n),x(n)\>_{n<\omega}\in\mb
+    P^\downarrow:\bigcap_{n<\omega}U(n)\not=\emptyset\}\),
+    then \(\bmPoGame{\mb P}{W}\) is almost the Choquet game, except the first
+    player also gets to choose a point. Note \(W\) is closed under zipping.
+  \end{observation}
+
+  \bibliographystyle{plain}
+  \bibliography{../bibliography}
 
 
 \end{document}
