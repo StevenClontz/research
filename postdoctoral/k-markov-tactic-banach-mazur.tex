@@ -79,36 +79,34 @@
   \end{theorem}
 
   \begin{proof}
-    Let \(\tau(\vec p,n)\) be a winning \((k+1)\)-mark for \(\plII\).
+    Let \(\tau(\vec p,n+1)\) be a winning \((k+1)\)-mark for \(\plII\),
+    where \(n+1\) is the number of moves previously made by \(\plI\).
     Let \(\preceq\) well-order \(\mb P^{k+1}\).
     For \(f\in\mb P^\omega\), let
     \(f_n=\<f(n),\dots,f(n+k)\>\in\mb P^{k+1}\).
-    For \(\vec p,\vec r\in\mb P^{k+1}\) say that \(\vec p\) improves \(\vec r\)
-    if for each \(m\leq k\), there exists \(n\leq k\) such that
-    \(\vec r(m)\geq\vec p(n)\).
 
     For \(\vec p\in \mb P^{k+1}\) and \(q\in\mb P\), say \(\vec p\) is
-    \(n\)-above \(q\) if there exists \(s_n(\vec p)\in\mb P^{k+1}\)
-    improving \(\vec p\)
+    \(n\)-above \(q\) if there exists \(s_n(\vec p)\in\mb P\)
     such that
     \[
       \vec p(k)
     \geq
-      s_n(\vec p)(k)
+      s_n(\vec p)
     \geq
-      \tau(s_n(\vec p),n+k)
+      \tau(\vec r\concat\<s_n(\vec p)\>,n+k+1)
     \geq
       q
     \]
-    (noting \(\vec p(k)\geq s_n(\vec p)(k)\) is just a consequence of
-    \(s_n(\vec p)\) improving \(\vec p\)).
+    for all \(\vec r\in\mb P^k\) ``between \(\vec p(0)\) and \(\vec p(k)\)''.
 
+    For \(\vec p\in\mb P^{k+1}\), let \(t^0(\vec p)=\vec p\),
+    \(\tau^{n+1}(\vec p)=\tau(t^n(\vec p),n+1)\), and
+    \(t^{n+1}(\vec p)=(t^n(\vec p)\last k)\concat\<\tau^{n+1}(\vec p)\>\).
 
     Say \(\vec p\) is \(\omega\)-above \(q\) if \(\vec p\) is \(n\)-above
     \(q\) for all \(n<\omega\). If \(\vec p\) is \(\omega\)-above some
     \(l(\vec p)\), then say \(\vec p\) is long; otherwise call \(\vec p\)
-    short. Note any \(\vec p\) improved by a long vector is itself long,
-    so any \(\vec p\) improving a short vector is itself short.
+    short.
 
     For \(\vec p\) short, let
     \[
@@ -117,17 +115,18 @@
       \min_{\preceq}\{
         \vec r\text{ short}
           :
-        \vec{p}\text{ improves }\vec{r}
+        \vec{r}(k)\geq\vec{p}(k)
       \}
     \]
-    and since \(\mu(\vec p)\) is not \(n\)-above \(\vec p\) for some \(n\), let
+    and since \(\mu(\vec p)\) is not \(n\)-above \(\vec p(k)\) for some \(n\),
+    let
     \[
       N(\vec p)
         =
       \min\{
         n<\omega
       :
-        \mu(\vec p)\text{ is not }n\text{-above }\vec p
+        \mu(\vec p)\text{ is not }n\text{-above }\vec p(k)
       \}
     .\]
 
@@ -136,7 +135,7 @@
       \sigma(\vec p)
         =
       \begin{cases}
-        \tau(\vec p,|\vec p|-1) & 0<|\vec p|\leq k \\
+        \tau(\vec p,|\vec p|) & |\vec p|\leq k \\
         l(\vec p) & \vec p \text{ is long} \\
         \tau^{N(\vec p)+1}(\vec p) & \vec p \text{ is short}
      \end{cases}
@@ -165,9 +164,9 @@
         =
       a_n(k)
         \geq
-      s_n(a_n)(k)
+      s_n(a_n)
         \geq
-      \tau(s_n(a_n),n+k)
+      \tau((a_n\last k)\concat\<s_n(a_n)\>,n+k)
         \geq
       l(a_n)
         =
