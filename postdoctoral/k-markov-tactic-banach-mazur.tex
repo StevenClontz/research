@@ -57,6 +57,8 @@
 
 \maketitle
 
+  \section*{marks and tactics}
+
   My notes on Galvin/Telgarsky's Theorem 5 from \cite{MR831181}.
 
   \begin{definition}
@@ -216,14 +218,176 @@
   \(\plII\tactwin\bmGame{X}\).
   \end{corollary}
 
-  \begin{observation}
-    When \(\mb P=\{(U,x):U\in T(X)\setminus\{\emptyset\},x\in U\}\)
-    is ordered by \((U,x)\geq(V,y)\) whenever \(x\in V\subseteq U\)
-    and \(W=\{\<U(n),x(n)\>_{n<\omega}\in\mb
-    P^\downarrow:\bigcap_{n<\omega}U(n)\not=\emptyset\}\),
-    then \(\bmPoGame{\mb P}{W}\) is almost the Choquet game, except the second
-    player also gets to choose a point. Note \(W\) is closed under zipping.
-  \end{observation}
+
+  \section*{2+ marks and tactics}
+
+  And this stuff is based on section 4.5.1 of \cite{bartoszynski1993covering}.
+
+    % \begin{proposition}
+    %   Suppose that for every finite collection \(\{\mb P_i:i<n\}\)
+    %   such that \(\mb P=\bigcup_{i<n}\mb P_i\),
+    %   some \(\mb P_i\) contains two incompatible points.
+    %   Then \(\mb P\) contains an infinite antichain.
+    % \end{proposition}
+    %
+    % \begin{proof}
+    %   Suppose \(a_i\in\mb P_i\) have been defined for \(i<n\) such that
+    %   \(a_i\not\in\bigcup_{j<i}\mb P_j\) and
+    %   each \(\mb P_i\) is pairwise-compatible. It follows that
+    %   \(\mb P\not=\bigcup_{i<n}\mb P_i\), so choose
+    %   \(a_n\not\in\bigcup_{i<n}\mb P_i\) and let \(\mb P_n\) be a maximal family
+    %   containing \(a_n\) such that \(\mb P_n\) is pairwise-compatible.
+    %
+    %   It follows that \(A=\{a_n:n<\omega\}\) is an antichain, since for
+    %   every pair \(a_i,a_j\in A\) with \(i<j\), \(a_j\not\in\mb P_i\), so
+    %   \(a_j\) is not compatible with something in \(\mb P_i\)...
+    % \end{proof}
+
+  \begin{definition}
+    Let \(f\in S^{\leq\omega}\). Then \(f\rest n\in S^n\) is defined by
+    \((f\rest n)(i)=f(i)\). (\(f\rest n\) gives the first \(n\) terms of \(f\).)
+
+    Let \(t\in S^{<\omega}\). Then \(t\last k\in S^k\) is defined by
+    \((t\last k)(i)=t(i+|t|-k)\). (\(t\last k\) gives the last \(n\) terms
+    of \(t\).)
+  \end{definition}
+
+\begin{definition}
+  For every partial order \(\mb P\) and compatible \(p,q\in\mb P\),
+  let \(p\wedge q\) satisfy \(p\wedge q\leq p,q\).
+\end{definition}
+
+  \begin{claim}
+    \(\mb P\) contains no infinite antichains if and only if every
+    antichain in \(\mb P\) is of size \(n\) or less for some \(n<\omega\).
+  \end{claim}
+
+  \begin{proof}
+    MAYBE? Apparently true for \(\mb P=\tau\setminus\{\emptyset\}\) due to
+    Lemma 2.10 of \cite{comfort_negrepontis_1982}.
+  \end{proof}
+
+  \begin{proposition}
+    Let \(W\subseteq\mb P^\downarrow\) be closed under zipping.
+    Suppose every antichain in \(\mb P\) is of size \(n<\omega\) or less,
+    and \(\plII\win\bmPoGame{\mb P}{W}\). Then
+    \(\plII\autowin\bmPoGame{\mb P}{W}\) (i.e. \(\plII\) wins every
+    play of \(\bmPoGame{\mb P}{W}\), i.e. \(W=\mb P^\downarrow\)).
+  \end{proposition}
+
+  \begin{proof}
+    First, let \(\{p_i:i<n\}\) be an antichain of size \(n<\omega\),
+    then let \(\mb P_i\) be a maximal pairwise-compatible subset of \(\mb P\)
+    containing \(p_i\). Note that if there existed
+    \(q\in\mb P\setminus\bigcup_{i<n}\mb P_i\),
+    \(q\) must be incompatible with some \(q_i\in\mb P_i\) for \(i<n\).
+    Since \(p_i,q_i\in\mb P_i\), they are compatible, so let
+    \(r_i=p_i\wedge q_i\). Since \(q\) is incompatible with \(q_i\) for \(i<n\),
+    \(q\) is incompatible with \(r_i\) for \(i<n\). Since \(p_i\) is
+    incompatible with \(p_j\) for \(i<j<n\), \(r_i\) is incompatible with
+    \(r_j\) for \(i<j<n\). But that makes \(\{q\}\cup\{r_i:i<n\}\) an
+    antichain of size \(n+1\), contradicting the assumption of the proposition.
+    Thus \(\mb P=\bigcup_{i<n}\mb P_i\).
+
+    We now show that if \(s\in\mb P_i^\downarrow\) for some \(i\),
+    then \(s\in W\). Let \(\sigma\) be a
+    winning strategy for \(\plII\) in \(\bmPoGame{\mb P}{W}\),
+    and attack \(\sigma\) with \(q(0)=s(0)\wedge p_i\) and
+    \(q(n+1)=s(n+1)\wedge\sigma(\<q(0),\dots,q(n)\>)\). Note that the choice
+    of \(q(0)\) is valid as \(s(0),p_i\in\mb P_i\). Similarly,
+    \(\sigma(\<q(0),\dots,q(n)\>)\leq q(0)\leq p_i\), so
+    \(\sigma(\<q(0),\dots,q(n)\>)\) cannot be compatible with any \(p_j\)
+    where \(j\not=i\). Thus \(s(n+1),\sigma(\<q(0),\dots,q(n)\>)\in\mb P_i\),
+    making the choice of \(q(n+1)\) valid. Since \(\sigma\) is winning for
+    \(\plII\), we see that \(q\in W\), and therefore \(s\in W\).
+
+    Finally, consider any play of \(\bmPoGame{\mb P}{W}\). It must contain
+    have a subsequence \(s\in\mb P_i^\downarrow\) for some \(i<n\),
+    so \(s\in W\) and therefore
+    the play is also in \(W\), securing a victory for \(\plII\).
+  \end{proof}
+
+  \begin{lemma}
+    Let \(W\subseteq\mb P^\downarrow\) be closed under zipping.
+    Suppose that for every \(p\in\mb P\), there exists an infinite
+    antichain \(A_p=\{a_p(n):n<\omega\}\subseteq\{q\in\mb P:q\leq p\}\).
+    Then \(\plII\kmarkwin{(k+2)}\bmPoGame{\mb P}{W}\) if and only if
+    \(\plII\ktactwin{(k+2)}\bmPoGame{\mb P}{W}\).
+  \end{lemma}
+
+  \begin{proof}
+    Let \(\sigma\) witness \(\plII\kmarkwin{(k+2)}\bmPoGame{\mb P}{W}\).
+    Define \(\tau(t)=\sigma(\<a_{t(0)}(0)\>,1)\) for \(t\in\mb P^1\).
+    Since \(\tau(t)=\sigma(\<a_{t(0)}(0)\>,1)\leq a_{t(0)}(0)\leq t(0)\),
+    this is a legal move.
+
+    Consider \(t\in\mb P^{j+2}\) for \(j\leq k\).
+    If there exists \(l_t<\omega\) such that
+    \(t(j+1)\leq a_{t(j)}(l_t+j)\),
+    define \(t'\in\mb P^{j+2}\) by \(t'(i)=a_{t(i)}(l_t+i)\) and let
+    \(\tau(t)=\sigma(t',l_t+|t|)\). Note that since
+    \[
+      \tau(t)
+        =
+      \sigma(t',l_t+|t|)
+        \leq
+      t'(j+1)
+        =
+      a_{t(j+1)}(l_t+j+1)
+        \leq
+      t(j+1)
+    \]
+    this is a legal move. (If \(l_t\) failed to exist,
+    we could arbitrarily let, say,
+    \(\tau(t)=t(|t|-1)\); as we will see, this case will never occur
+    for any legal attack against \(\tau\).)
+
+    Let \(f\) be a legal attack against \(\tau\). The intuition of the
+    following proof is simple: by construction, \(l_t\) will produce
+    the number of \(\plI\)'s moves forgotten by \(\plII\)'s \((k+2)\)-tactic,
+    allowing the \((k+2)\)-tactic to deduce the round number and thus exploit
+    the winning \((k+2)\)-mark.
+
+    We may quickly verify
+    that \(l_{f\rest 2}=0\) since
+    \[
+      (f\rest 2)(1)
+        =
+      f(1)
+        \leq
+      \tau(f\rest 1)
+        =
+      \sigma(\<a_{f(0)}(0)\>,1)
+        \leq
+      a_{f(0)}(0)
+        =
+      a_{(f\rest 2)(0)}(0+0)
+    .\]
+    We claim in general that \(l_{f\rest(j+2)}=0\) for \(j\leq k\).
+    Assuming \(l_{f\rest(j+2)}=0\) for \(j<k\),
+    \[
+      (f\rest(j+3))(j+2)
+        =
+      f(j+2)
+        \leq
+      \tau(f\rest(j+2))
+        =
+      \sigma(f\rest(j+2)',0+j+2)
+        \leq
+      f\rest(j+2)'(j+1)
+    \]
+    \[
+        =
+      a_{(f\rest(j+2))(j+1)}(j+1)
+        =
+      a_{(f\rest(j+3))(j+1)}(0+(j+1))
+    \]
+    proving \(l_{f\rest(j+3)}=0\).
+
+    Now we show that \(l_{f\rest(j+2)\last(k+2)}=j-k\) for \(j\geq k\).
+    We've just shown that this is true for our base case \(j=k\).
+    Now assuming \(l_{f\rest(j+2)\last(k+2)}=j-k\), we show...
+  \end{proof}
 
   \bibliographystyle{plain}
   \bibliography{../bibliography}
