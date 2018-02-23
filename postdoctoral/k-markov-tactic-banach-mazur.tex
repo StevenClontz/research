@@ -63,15 +63,15 @@
 
   \begin{definition}
     Let \(\mb P\) be partially ordered by \(\leq\).
-    Let \(\mb P^{\downarrow}=\{f\in\mb P^\omega : f(n)\geq f(n+1)\}\).
-    Then for \(f,g\in\mb P^\downarrow\), we say that \(f,g\) zip into each
+    Let \(\mb P^{\omega,\downarrow}=\{f\in\mb P^\omega : f(n)\geq f(n+1)\}\).
+    Then for \(f,g\in\mb P^{\omega,\downarrow}\), we say that \(f,g\) zip into each
     other if for all \(m<\omega\) there exists \(n<\omega\) such that
     \(f(m)\geq g(n)\) and \(g(m)\geq f(n)\).
   \end{definition}
 
   \begin{definition}
     \(\bmPoGame{\mb P}{W}\) is a game defined for all non-empty partial orders
-    \(\mb P\) and all subsets \(W\subseteq\mb P^\downarrow\).
+    \(\mb P\) and all subsets \(W\subseteq\mb P^{\omega,\downarrow}\).
     During round \(0\), \(\plI\) chooses \(a_0\in\mb P\),
     and then \(\plII\) chooses \(b_0\leq a_0\); during around \(n+1\),
     \(\plI\) chooses \(a_{n+1}\leq b_n\), and then \(\plII\) chooses
@@ -80,7 +80,7 @@
   \end{definition}
 
   \begin{theorem}
-    Let \(W\subseteq\mb P^\downarrow\) be closed under zipping.
+    Let \(W\subseteq\mb P^{\omega,\downarrow}\) be closed under zipping.
     \(\plII\markwin\bmPoGame{\mb P}{W}\) if and only if
     \(\plII\tactwin\bmPoGame{\mb P}{W}\).
   \end{theorem}
@@ -161,7 +161,7 @@
       a(n+1)
     .\]
     Thus if \(a(n)\) is long for \(n<\omega\), it follows that
-    \(c\in\mb P^\downarrow\) defined by \(c(n)=s_n(a(n))\)
+    \(c\in\mb P^{\omega,\downarrow}\) defined by \(c(n)=s_n(a(n))\)
     is a legal attack against \(\tau\). Since \(\tau\) is winning,
     \(c\in W\), and since \(c\) zips into \(a\),
     \(a\in W\) as well.
@@ -200,7 +200,7 @@
         \geq
       b(n+1)
     .\]
-    As a result, \(c\in\mb P^\downarrow\) defined by \(c(n)=\tau^n(b(n))\)
+    As a result, \(c\in\mb P^{\omega,\downarrow}\) defined by \(c(n)=\tau^n(b(n))\)
     is a legal attack against the winning strategy \(\tau\). Therefore
     \(c\in W\), and since \(c\) zips into \(b\) and \(a\), we conclude
     \(a\in W\).
@@ -208,7 +208,7 @@
 
   \begin{observation}
     When \(\mb P=T(X)\setminus\{\emptyset\}\) is ordered by set-inclusion
-    and \(W=\{U\in\mb P^\downarrow:\bigcap_{n<\omega}U(n)\not=\emptyset\}\),
+    and \(W=\{U\in\mb P^{\omega,\downarrow}:\bigcap_{n<\omega}U(n)\not=\emptyset\}\),
     then \(\bmPoGame{\mb P}{W}\) is exactly the topological Banach Mazur game
     \(\bmGame{X}\). Note \(W\) is closed under zipping.
   \end{observation}
@@ -223,26 +223,6 @@
 
   And this stuff is based on section 4.5.1 of \cite{bartoszynski1993covering}.
 
-    % \begin{proposition}
-    %   Suppose that for every finite collection \(\{\mb P_i:i<n\}\)
-    %   such that \(\mb P=\bigcup_{i<n}\mb P_i\),
-    %   some \(\mb P_i\) contains two incompatible points.
-    %   Then \(\mb P\) contains an infinite antichain.
-    % \end{proposition}
-    %
-    % \begin{proof}
-    %   Suppose \(a_i\in\mb P_i\) have been defined for \(i<n\) such that
-    %   \(a_i\not\in\bigcup_{j<i}\mb P_j\) and
-    %   each \(\mb P_i\) is pairwise-compatible. It follows that
-    %   \(\mb P\not=\bigcup_{i<n}\mb P_i\), so choose
-    %   \(a_n\not\in\bigcup_{i<n}\mb P_i\) and let \(\mb P_n\) be a maximal family
-    %   containing \(a_n\) such that \(\mb P_n\) is pairwise-compatible.
-    %
-    %   It follows that \(A=\{a_n:n<\omega\}\) is an antichain, since for
-    %   every pair \(a_i,a_j\in A\) with \(i<j\), \(a_j\not\in\mb P_i\), so
-    %   \(a_j\) is not compatible with something in \(\mb P_i\)...
-    % \end{proof}
-
   \begin{definition}
     Let \(f\in S^{\leq\omega}\). Then \(f\rest n\in S^n\) is defined by
     \((f\rest n)(i)=f(i)\). (\(f\rest n\) gives the first \(n\) terms of \(f\).)
@@ -252,27 +232,65 @@
     of \(t\).)
   \end{definition}
 
-\begin{definition}
-  For every partial order \(\mb P\) and compatible \(p,q\in\mb P\),
-  let \(p\wedge q\) satisfy \(p\wedge q\leq p,q\).
+  \begin{definition}
+    For every partial order \(\mb P\) and compatible \(p,q\in\mb P\),
+    write \(p\not\perp q\) and let \(p\wedge q\) satisfy \(p\wedge q\leq p,q\).
+    If \(p,q\) are incompatible, write \(p\perp q\).
+  \end{definition}
+
+  \begin{definition}
+    For every partial order \(\mb P\) and compatible \(p\in\mb P\),
+    let \(p^\downarrow=\{q\in\mb P:q\leq p\}\).
 \end{definition}
 
-  \begin{claim}
+  \begin{lemma}
     \(\mb P\) contains no infinite antichains if and only if every
     antichain in \(\mb P\) is of size \(n\) or less for some \(n<\omega\).
-  \end{claim}
+  \end{lemma}
 
   \begin{proof}
-    MAYBE? Apparently true for \(\mb P=\tau\setminus\{\emptyset\}\) due to
-    Lemma 2.10 of \cite{comfort_negrepontis_1982}.
+    This was shown to be true for \(\mb P=\tau\setminus\{\emptyset\}\) in
+    Lemma 2.10 of \cite{comfort_negrepontis_1982}. It's likely known
+    for general \(\mb P\), but I can't find a citation, so let's roll
+    our own proof here. Assume \(\mb P\) has antichains of size \(n\)
+    for all \(n<\omega\).
+
+    Say \(p\in\mb P\) is bad if there exists \(r_p\leq p\) such that
+    \(r_p^\downarrow\) is pairwise compatible. Let
+    \(\mb P_{bad}\) collect all bad points in \(\mb P\), and say
+    \(p\sim q\) for \(p,q\in\mb P_{bad}\) if \(r_p\not\perp r_q\).
+    This is obviously symmetric and reflexive, and if we assume
+    \(p\sim q,q\sim t\), then let \(s_p=r_p\wedge r_q\) and
+    \(s_r=r_q\wedge r_t\). Since \(r_q^\downarrow\in\mb P_{bad}\),
+    \(s_p\not\perp s_r\), so \(r_p\not\perp r_t\) and thus
+    \(p\sim t\). Thus \(\sim\) is an equivalence relation.
+
+    If \(\mb P_{bad}/\sim\) is infinite, we may choose \(p_i\in\mb P_{bad}\)
+    such that \(p_i\not\sim p_j\) for \(i<j<\omega\). Thus
+    \(r_{p_i}\perp r_{p_j}\) for \(i<j<\omega\), giving us
+    an infinite antichain \(\{r_{p_i}:i<\omega\}\).
+
+    Otherwise \(|\mb P_{bad}/\sim|=n<\omega\), and choose an antichain
+    \(\{p_i:i\leq n\}\) in \(\mb P\). If \(\{p_i:i<n\}\subseteq\mb P_{bad}\),
+    \(p_i\perp p_j\) implies \(r_{p_i}\perp r_{p_j}\)
+    and \(p_i\not\sim p_j\) for all
+    \(i\leq n\). Thus \(\mb P_{bad}=\bigcup_{i<n}\overset{\sim}{p_i}\),
+    and \(p_n\not\in\mb P_{bad}\).
+
+    So we've found \(b_0\in\mb P\setminus\mb P_{bad}\).
+    Given \(b_n\in\mb P\setminus\mb P_{bad}\), we may choose
+    \(a_n,b_{n+1}\leq b_n\) such that \(a_n\perp b_{n+1}\).
+    Thus by construction, \(a_n\perp a_{m+1}\) for all
+    \(n\leq m<\omega\). Therefore
+    \(\{a_n:n<\omega\}\) is an antichain.
   \end{proof}
 
   \begin{proposition}
-    Let \(W\subseteq\mb P^\downarrow\) be closed under zipping.
+    Let \(W\subseteq\mb P^{\omega,\downarrow}\) be closed under zipping.
     Suppose every antichain in \(\mb P\) is of size \(n<\omega\) or less,
     and \(\plII\win\bmPoGame{\mb P}{W}\). Then
     \(\plII\autowin\bmPoGame{\mb P}{W}\) (i.e. \(\plII\) wins every
-    play of \(\bmPoGame{\mb P}{W}\), i.e. \(W=\mb P^\downarrow\)).
+    play of \(\bmPoGame{\mb P}{W}\), i.e. \(W=\mb P^{\omega,\downarrow}\)).
   \end{proposition}
 
   \begin{proof}
@@ -308,7 +326,7 @@
   \end{proof}
 
   \begin{lemma}
-    Let \(W\subseteq\mb P^\downarrow\) be closed under zipping.
+    Let \(W\subseteq\mb P^{\omega,\downarrow}\) be closed under zipping.
     Suppose that for every \(p\in\mb P\), there exists an infinite
     antichain \(A_p=\{a_p(n):n<\omega\}\subseteq\{q\in\mb P:q\leq p\}\).
     Then \(\plII\kmarkwin{(k+2)}\bmPoGame{\mb P}{W}\) if and only if
@@ -412,7 +430,7 @@
     \end{align*}
     and conclude \(l_{f\rest(n+3)\last(k+2)}=n+1-k\).
 
-    Define \(g\in\mb P^\downarrow\) by \(g(0)=f(0)\) and
+    Define \(g\in\mb P^{\omega,\downarrow}\) by \(g(0)=f(0)\) and
     \(g(j+1)=a_{f(j+1)}(j+1)\).
     Reviewing the above, the reader may confirm that we have shown for
     \(n<k+2\)
