@@ -75,7 +75,7 @@ Mobile, AL 36606}
 \keywords{Selection property, selection game,
 limited information strategies, covering properties, Cp theory}
 
-\subjclass[2010]{03E35, 54D20, 54D45, 91A44}
+\subjclass[2010]{54C30, 54D20, 54D45, 91A44}
 
 
 
@@ -167,7 +167,7 @@ if and only if \(X^n\) is Menger for all \(n<\omega\).
 The similar notations for \(\omega\)-covers \(\Omega_X\) and
 blades \(\Omega_{X,x}\) is well-established, see e.g.
 \cite[Topological games and Ramsey theory]{19362020070101} (wherein
-the notation is more succently given as \(\Omega,\Omega_x\)).  The
+the notation is more succinctly given as \(\Omega,\Omega_x\)).  The
 relationship between such sets becomes apparent in the study of
 \(C_p\)-theory; for this reason we choose to always denote the space
 explicitly to help distinguish the ambient spaces when discussing
@@ -215,7 +215,7 @@ the \(\Omega\)-Menger property of \(X\).
   \term{selective separability game} for \(X\).
 \end{definition}
 
-Of course, one may easily observe that a selective separable space is
+Of course, one may easily observe that a selectively separable space is
 separable, and \(SS\Rightarrow CDFT\).
 In \cite{MR2678950} Barman and Dow demonstrated that all
 separable Frechet spaces are selectively separable. They were also able
@@ -256,8 +256,8 @@ strategies in these selection games.
   then we say \(\plII\win\schSelGame{\mc A}{\mc B}\) characterizes
   \(P^+\) (``strategically \(P\)''), and
   \(\plII\markwin\schSelGame{\mc A}{\mc B}\) characterizes
-  \(P^{+mark}\) (``Markov \(P\)'').
-  Of course, \(P^{+mark}\Rightarrow P^+ \Rightarrow P\).
+  \(P^{\plusMark}\) (``Markov \(P\)'').
+  Of course, \(P^{\plusMark}\Rightarrow P^+ \Rightarrow P\).
 \end{notation}
 
 In this notation,
@@ -266,21 +266,21 @@ Barman and Dow showed that \(SS\) does not imply
 attributed to Gary Gruenhage:
 
 \begin{question}\label{mainQuestion}
-  Does \(SS^+\) imply \(SS^{+mark}\)?
+  Does \(SS^+\) imply \(SS^{\plusMark}\)?
 \end{question}
 
 The solution is already known to be ``yes'' in the context of countable spaces
 \cite{MR2678950}. However in general, winning strategies in selection games
 cannot be improved to be winning Markov strategies. In
 \cite{clontzMengerCMUC} the author showed that \(M^+\) implies
-\(M^{+mark}\) for second-countable spaces; however, the one-point
+\(M^{\plusMark}\) for second-countable spaces; however, the one-point
 Lindel\"of-ication \(\onePtLind{\omega_1}\) of a discrete space of size
 \(\omega_1\) is a simple
 example of a regular non-second-countable space which is
-\(M^+\) but not \(M^{+mark}\) (equivalently, not \(\sigma\)-compact).
+\(M^+\) but not \(M^{\plusMark}\) (equivalently, not \(\sigma\)-compact).
 It will later be shown that it is no coincidence
-that countable \(SS^+\) implies \(SS^{+mark}\) and
-second-countable \(M^+\) implies \(M^{+mark}\).
+that countable \(SS^+\) implies \(SS^{\plusMark}\) and
+second-countable \(M^+\) implies \(M^{\plusMark}\).
 
 
 
@@ -288,7 +288,7 @@ second-countable \(M^+\) implies \(M^{+mark}\).
 
 We begin by generalizing the following result:
 
-\begin{theorem}[Lem 2.7 of \cite{MR2678950}]
+\begin{theorem}[Lemma 2.7 of \cite{MR2678950}]
   The following are equivalent for any topological space \(X\).
   \begin{itemize}
     \item \(X\) is \(SS\).
@@ -301,11 +301,11 @@ We begin by generalizing the following result:
 \begin{theorem}
   The following are equivalent for any topological space \(X\).
   \begin{itemize}
-    \item \(X\) is \(SS\) (resp. \(SS^+\), \(SS^{+mark}\)).
+    \item \(X\) is \(SS\) (resp. \(SS^+\), \(SS^{\plusMark}\)).
     \item \(X\) is separable and \(CDFT\)
-          (resp. \(CDFT^+\), \(CDFT^{+mark}\)).
+          (resp. \(CDFT^+\), \(CDFT^{\plusMark}\)).
     \item \(X\) has a countable dense subset \(D\) where
-          \(CDFT_x\) (resp. \(CDFT_x^+\), \(CDFT_x^{+mark}\))
+          \(CDFT_x\) (resp. \(CDFT_x^+\), \(CDFT_x^{\plusMark}\))
           holds for all \(x\in D\).
   \end{itemize}
 \end{theorem}
@@ -348,7 +348,7 @@ We begin by generalizing the following result:
   .\]
   Therefore \(\tau\) witnesses \(SS^+\).
 
-  Now let \(\sigma_i\) be a witness for \(CDFT_{d_i}^{+mark}\)
+  Now let \(\sigma_i\) be a witness for \(CDFT_{d_i}^{\plusMark}\)
   for each \(i<\omega\). We define the Markov strategy \(\tau\) for the
   \(SS\) game by
   \[
@@ -359,7 +359,7 @@ We begin by generalizing the following result:
   .\]
 
   Let \(\<D_0,D_1,\dots\>\in\mc D_X^\omega\).
-  By \(CDFT_{d_i}^{+mark}\), we have
+  By \(CDFT_{d_i}^{\plusMark}\), we have
   \[
     d_i
       \in
@@ -380,12 +380,12 @@ We begin by generalizing the following result:
       =
     \cl{\bigcup_{n<\omega}\tau(D,n)}
   .\]
-  Therefore \(\tau\) witnesses \(SS^{+mark}\).
+  Therefore \(\tau\) witnesses \(SS^{\plusMark}\).
 \end{proof}
 
 So amongst separable spaces, we see that \(SS\)
-(resp. \(SS^+\), \(SS^{+mark}\)) and
-\(CDFT\) (resp. \(CDFT^+\), \(CDFT^{+mark}\))
+(resp. \(SS^+\), \(SS^{\plusMark}\)) and
+\(CDFT\) (resp. \(CDFT^+\), \(CDFT^{\plusMark}\))
 are equivalent. We now further bridge the gap between \(CDFT\)
 and \(CFT\) in the context of function spaces.
 Consider the following result of Arhangel'skii.
@@ -399,7 +399,7 @@ Consider the following result of Arhangel'skii.
     \end{itemize}
 \end{theorem}
 
-This result may similarly be generalized in a game theoretic sense.
+This result may similarly be generalized in a game-theoretic sense.
 In addition, this proof will demonstrate the equivalence of
 \(CFT\) and \(CDFT\) in \(C_p(X)\).
 It is unknown to the author whether Arhangel'skii
@@ -414,8 +414,8 @@ more general context below.
 
 \begin{proposition}
   Any witness for \(\Omega M\) (resp.
-  \(\Omega M^+,\Omega M^{+mark}\))
-  may be improved such that any final sequence of the chosen
+  \(\Omega M^+,\Omega M^{\plusMark}\))
+  may be improved so that any final sequence of the chosen
   finite subcollections is an \(\omega\)-cover.
 \end{proposition}
 
@@ -433,7 +433,7 @@ more general context below.
     \tau(\<\mc U_0,\dots,\mc U_n\>)
       =
     \bigcup_{i\leq n}\sigma(\<\mc U_i,\dots,\mc U_n\>)
-  \). For \(\Omega M^{+mark}\), the winning Markov strategy \(\sigma\) may
+  \). For \(\Omega M^{\plusMark}\), the winning Markov strategy \(\sigma\) may
   be improved to \(\tau\) where
   \(
     \tau(\mc U,n)
@@ -463,9 +463,9 @@ more general context below.
 \begin{lemma}\label{mengerFanLemma1}
   Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
   If \(X\) is \(\Omega M\)
-  (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
+  (resp. \(\Omega M^+\), \(\Omega M^{\plusMark}\)).
   then \(C_p(X)\) is \(CFT_{\vec 0}\)
-  (resp. \(CFT_{\vec 0}^+\), \(CFT_{\vec 0}^{+mark}\)).
+  (resp. \(CFT_{\vec 0}^+\), \(CFT_{\vec 0}^{\plusMark}\)).
 \end{lemma}
 
 \begin{proof}
@@ -552,7 +552,7 @@ more general context below.
   and thus every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)\).
 
-  Assuming \(X\) is \(\Omega M^{+mark}\), choose a witness
+  Assuming \(X\) is \(\Omega M^{\plusMark}\), choose a witness
   \(\sigma\) such that
   \[
     \bigcup_{i\leq n<\omega} \sigma(\mc U_n(B_n),n)
@@ -586,9 +586,9 @@ more general context below.
 \begin{lemma}\label{mengerFanLemma2}
   Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
   If \(C_p(X)\) is \(CDFT_{\vec 0}\)
-  (resp. \(CDFT_{\vec 0}^+\), \(CDFT_{\vec 0}^{+mark}\)),
+  (resp. \(CDFT_{\vec 0}^+\), \(CDFT_{\vec 0}^{\plusMark}\)),
   then \(X\) is \(\Omega M\)
-  (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
+  (resp. \(\Omega M^+\), \(\Omega M^{\plusMark}\)).
 \end{lemma}
 
 \begin{proof}
@@ -676,7 +676,7 @@ more general context below.
   \(G\cap(X\setminus U_{\vec y,\mc U_n})=\emptyset\), and therefore
   \(G\subseteq U_{\vec y,\mc U_n}\in\mc \tau(\<\mc U_0,\dots,\mc U_n\>)\).
 
-  Assuming \(C_p(X)\) is \(CDFT_{\vec 0}^{+mark}\), choose a witness
+  Assuming \(C_p(X)\) is \(CDFT_{\vec 0}^{\plusMark}\), choose a witness
   \(\sigma\) such that
   \[
     \vec 0
@@ -693,7 +693,7 @@ more general context below.
       \vec y \in \sigma(D(\mc U_n),n)
     \}
       \in
-    [\mc U_n]^{<\omega}S
+    [\mc U_n]^{<\omega}
   .\]
   We claim that \(\bigcup_{n<\omega}\tau(\mc U_n,n)\)
   is an \(\omega\)-cover.
@@ -711,28 +711,28 @@ more general context below.
   topological space \(X\).
     \begin{itemize}
       \item \(X\) is \(\Omega M\)
-            (resp. \(\Omega M^+\), \(\Omega M^{+mark}\)).
+            (resp. \(\Omega M^+\), \(\Omega M^{\plusMark}\)).
       \item \(C_p(X)\) is \(CFT\)
-            (resp. \(CFT^+\), \(CFT^{+mark}\)).
+            (resp. \(CFT^+\), \(CFT^{\plusMark}\)).
       \item \(C_p(X)\) is \(CDFT\)
-            (resp. \(CDFT^+\), \(CDFT^{+mark}\)).
+            (resp. \(CDFT^+\), \(CDFT^{\plusMark}\)).
     \end{itemize}
 \end{theorem}
 
 \begin{proof}
   Since \(\mc D_X\subseteq \Omega_{X,x}\), the second condition trivially
-  implies the first. As \(C_p(X)\) is homogeneous, the \(C(D)FT\) properties
+  implies the third. As \(C_p(X)\) is homogeneous, the \(C(D)FT\) properties
   follow from \(C(D)FT_{\vec 0}\). So the result follows from the
   previous lemmas.
 \end{proof}
 
 
 
-\section{A space which is \(CFT^+\) but not \(CDFT^{+mark}\)}
+\section{A space which is \(CFT^+\) but not \(CDFT^{\plusMark}\)}
 
 Our goal is to now demonstrate a space which is \(CFT^+\),
-but not even \(CDFT^{+mark}\). To do so, we will find a space \(X\)
-which is \(\Omega M^+\) but not \(\Omega M^{+mark}\), yielding \(C_p(X)\)
+but not even \(CDFT^{\plusMark}\). To do so, we will find a space \(X\)
+which is \(\Omega M^+\) but not \(\Omega M^{\plusMark}\), yielding \(C_p(X)\)
 as our example.
 
 \begin{proposition}\label{altCompactCharacterization}
@@ -764,17 +764,17 @@ as our example.
   The following are equivalent for a regular topological space \(X\):
   \begin{itemize}
     \item \(X\) is \(\sigma\)-compact
-    \item \(X\) is \(\Omega M^{+mark}\)
-    \item \(X\) is \(M^{+mark}\)
+    \item \(X\) is \(\Omega M^{\plusMark}\)
+    \item \(X\) is \(M^{\plusMark}\)
   \end{itemize}
 \end{lemma}
 
 \begin{proof}
-  The equivalence of \(\sigma\)-compact and \(M^{+mark}\) in regular spaces
-  was shown in \cite{clontzMengerCMUC}. As \(\Omega M^{+mark}\)
-  trivially implies \(M^{+mark}\), we need only demonstrate that
+  The equivalence of \(\sigma\)-compact and \(M^{\plusMark}\) in regular spaces
+  was shown in \cite{clontzMengerCMUC}. As \(\Omega M^{\plusMark}\)
+  trivially implies \(M^{\plusMark}\), we need only demonstrate that
   if \(X=\bigcup_{n<\omega} K_n\) for \(K_n\) compact and increasing,
-  then \(X\) is \(\Omega M^{+mark}\).
+  then \(X\) is \(\Omega M^{\plusMark}\).
 
   We define \(\sigma(\mc U,n)\) for each \(\omega\)-cover \(\mc U\) and
   \(n<\omega\) to witness Proposition \ref{altCompactCharacterization}
@@ -799,12 +799,12 @@ The reader may note that with this lemma, we may view Theorem
 
 \begin{theorem}\label{omega1OmegaMenger}
   Let \(\omega_1\) have the discrete topology. Then
-  \(\onePtLind{\omega_1}\) is \(\Omega M^+\) but not \(\Omega M^{+mark}\).
+  \(\onePtLind{\omega_1}\) is \(\Omega M^+\) but not \(\Omega M^{\plusMark}\).
 \end{theorem}
 
 \begin{proof}
   The proof that \(X=\onePtLind{\omega_1}\) is not
-  \(\sigma\)-compact (and therefore not \(\Omega M^{+mark}\))
+  \(\sigma\)-compact (and therefore not \(\Omega M^{\plusMark}\))
   follows from the fact that its countably infinite subsets
   are closed and discrete, so all of its compact subsets are finite.
 
@@ -865,7 +865,7 @@ uses a single set of the \(\omega\)-cover during each round.
 This topic will be discussed further in a later section.
 
 \begin{corollary}
-  \(C_p(\onePtLind{\omega_1})\) is \(CFT^+\) but not \(CDFT^{+mark}\).
+  \(C_p(\onePtLind{\omega_1})\) is \(CFT^+\) but not \(CDFT^{\plusMark}\).
 \end{corollary}
 
 If \(C_p(\onePtLind{\omega_1})\) were separable, it would be a negative
@@ -894,7 +894,7 @@ Question \ref{mainQuestion} negatively.
 
 \begin{question}
   Does there exist a separable subspace of \(C_p(\onePtLind{\omega_1})\)
-  which is not \(CDFT^{+mark}\)?
+  which is not \(CDFT^{\plusMark}\)?
 \end{question}
 
 \begin{question}
@@ -908,9 +908,9 @@ Question \ref{mainQuestion} negatively.
 
 Barman and Dow
 previously demonstrated that \(SS^+\) is equivalent to
-\(SS^{+mark}\) amongst countable spaces.
+\(SS^{\plusMark}\) amongst countable spaces.
 A similar result by the author
-showed that \(M^+\) is equivalent to \(M^{+mark}\) in second-countable
+showed that \(M^+\) is equivalent to \(M^{\plusMark}\) in second-countable
 spaces. The following result generalizes both.
 
 \begin{lemma}\label{mainLemma}
@@ -927,14 +927,14 @@ spaces. The following result generalizes both.
   For \(t\in\omega^{<\omega}\), suppose
   \(Z_s\in\mc A\) has been defined for all \(s\leq t\). Note then that
   \(
-    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>:A\in\mc A\}
+    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>):A\in\mc A\}
       \subseteq
     [\bigcup\mc A]^{<\omega}
   \)
   and therefore is countable.
   So choose \(Z_{t\concat\<n\>}\in\mc A\) for \(n<\omega\) such that
   \(
-    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>:A\in\mc A\}
+    \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>):A\in\mc A\}
       =
     \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,Z_{t\concat\<n\>}\>):n<\omega\}
   \).
@@ -945,7 +945,7 @@ spaces. The following result generalizes both.
   Consider \(\<A_0,A_1,\dots\>\in\mc A^\omega\).
 
   Define \(f\in\omega^\omega\) as follows.
-  Let \(n<\omega\) and suppose that \(f\rest n\) has been already
+  Let \(n<\omega\) and suppose that \(f\rest n\) has already
   been defined. Then choose \(f(n)<\omega\) such that
   \(
     \sigma(\<Z_{f\rest1},Z_{f\rest2},\dots,Z_{f\rest n},A_{b^{\leftarrow}(f\rest n)}\>)
@@ -988,7 +988,7 @@ spaces. The following result generalizes both.
 
 \begin{corollary}[\cite{MR2868880}]
   A countable space is \(SS^+\) if and only if it is
-  \(SS^{+mark}\).
+  \(SS^{\plusMark}\).
 \end{corollary}
 
 \begin{proof}
@@ -998,7 +998,7 @@ spaces. The following result generalizes both.
 
 \begin{corollary}
   A second-countable space is \(\Omega M^+\) if and only if
-  it is \(\Omega M^{+mark}\).
+  it is \(\Omega M^{\plusMark}\).
 \end{corollary}
 
 \begin{proof}
@@ -1044,15 +1044,15 @@ spaces. The following result generalizes both.
 
 \begin{corollary}[\cite{clontzMengerCMUC}]
   A second-countable space is \(M^+\) if and only if
-  it is \(M^{+mark}\).
+  it is \(M^{\plusMark}\).
 \end{corollary}
 
 \begin{proof}
-  An easy adapatation of the preceding proof, replacing \(\omega\)-covers
+  An easy adaptation of the preceding proof, replacing \(\omega\)-covers
   with open covers, and replacing \(F\in[X]^{<\omega}\) with \(x\in X\).
 \end{proof}
 
-\section{Strong variants of selection princples and games}
+\section{Strong variants of selection principles and games}
 
 Let \(\schStrongSelProp{\mc A}{\mc B},\schStrongSelGame{\mc A}{\mc B}\)
 be the natural variants of
@@ -1060,7 +1060,7 @@ be the natural variants of
 by \(\plII\) must either be a single element or singleton
 (whichever is more convenient for the proof at hand), rather than a finite
 set. Convention calls for denoting these as
-\term{strong} versions of the corresponding selection princples and games,
+\term{strong} versions of the corresponding selection principles and games,
 although the ``strong Menger'' property is commonly known as ``Rothberger''
 who first investigated the principle in \cite{Rothberger1938}. We will thus
 call ``strong \(\Omega\)-Menger'' ``\(\Omega\)-Rothberger'' and shorten it
@@ -1070,11 +1070,11 @@ when abbreviating to all other strong variants.
 \begin{theorem}
   The following are equivalent for any topological space \(X\).
   \begin{itemize}
-    \item \(X\) is \(sSS\) (resp. \(sSS^+\), \(sSS^{+mark}\)).
+    \item \(X\) is \(sSS\) (resp. \(sSS^+\), \(sSS^{\plusMark}\)).
     \item \(X\) is separable and \(sCDFT\)
-          (resp. \(sCDFT^+\), \(sCDFT^{+mark}\)).
+          (resp. \(sCDFT^+\), \(sCDFT^{\plusMark}\)).
     \item \(X\) has a countable dense subset \(D\) where
-          \(sCDFT_x\) (resp. \(sCDFT_x^+\), \(sCDFT_x^{+mark}\))
+          \(sCDFT_x\) (resp. \(sCDFT_x^+\), \(sCDFT_x^{\plusMark}\))
           holds for all \(x\in D\).
   \end{itemize}
 \end{theorem}
@@ -1149,7 +1149,7 @@ when abbreviating to all other strong variants.
   .\]
   Therefore \(\tau\) witnesses \(SS^+\).
 
-  Let \(\sigma_i\) be a witness for \(sCDFT_{d_i}^{+mark}\)
+  Let \(\sigma_i\) be a witness for \(sCDFT_{d_i}^{\plusMark}\)
   for each \(i<\omega\).
   Again, we will partition each
   attack by \(\plI\) according to \(p\) into \(\omega\)-many subattacks, and
@@ -1164,7 +1164,7 @@ when abbreviating to all other strong variants.
 
   Let \(\alpha\in\mc D_X^\omega\), and let \(\alpha_i\) be its subsequence
   removing all terms of index \(n\) such that \(p(n)\not=i\).
-  By \(sCDFT_{d_i}^{+mark}\), we have
+  By \(sCDFT_{d_i}^{\plusMark}\), we have
   \[
     d_i
       \in
@@ -1185,7 +1185,7 @@ when abbreviating to all other strong variants.
       =
     \cl{\{\tau(\alpha(n),n):n<\omega\}}
   .\]
-  Therefore \(\tau\) witnesses \(SS^{+mark}\).
+  Therefore \(\tau\) witnesses \(SS^{\plusMark}\).
 \end{proof}
 
 As mentioned earlier, the following is a result of Sakai:
@@ -1207,11 +1207,11 @@ The corresponding game-theoretic results also hold.
   topological space \(X\).
     \begin{itemize}
       \item \(X\) is \(\Omega R\)
-            (resp. \(\Omega R^+\), \(\Omega R^{+mark}\)).
+            (resp. \(\Omega R^+\), \(\Omega R^{\plusMark}\)).
       \item \(C_p(X)\) is \(sCFT\)
-            (resp. \(sCFT^+\), \(sCFT^{+mark}\)).
+            (resp. \(sCFT^+\), \(sCFT^{\plusMark}\)).
       \item \(C_p(X)\) is \(sCDFT\)
-            (resp. \(sCDFT^+\), \(sCDFT^{+mark}\)).
+            (resp. \(sCDFT^+\), \(sCDFT^{\plusMark}\)).
     \end{itemize}
 \end{theorem}
 
@@ -1224,7 +1224,7 @@ The corresponding game-theoretic results also hold.
 
 \begin{theorem}
   Let \(\omega_1\) have the discrete topology. Then
-  \(\onePtLind{\omega_1}\) is \(\Omega R^+\) but not \(\Omega M^{+mark}\).
+  \(\onePtLind{\omega_1}\) is \(\Omega R^+\) but not \(\Omega M^{\plusMark}\).
 \end{theorem}
 
 \begin{proof}
@@ -1232,7 +1232,7 @@ The corresponding game-theoretic results also hold.
 \end{proof}
 
 \begin{corollary}
-  \(C_p(\onePtLind{\omega_1})\) is \(sCFT^+\) but not \(CDFT^{+mark}\).
+  \(C_p(\onePtLind{\omega_1})\) is \(sCFT^+\) but not \(CDFT^{\plusMark}\).
 \end{corollary}
 
 \begin{lemma}
@@ -1249,17 +1249,17 @@ The corresponding game-theoretic results also hold.
 
 \begin{corollary}
   A countable space is \(sSS^+\) if and only if it is
-  \(sSS^{+mark}\).
+  \(sSS^{\plusMark}\).
 \end{corollary}
 
 \begin{corollary}
   A second-countable space is \(\Omega R^+\) if and only if
-  it is \(\Omega R^{+mark}\).
+  it is \(\Omega R^{\plusMark}\).
 \end{corollary}
 
 \begin{corollary}
   A second-countable space is \(R^+\) if and only if
-  it is \(R^{+mark}\).
+  it is \(R^{\plusMark}\).
 \end{corollary}
 
 \section{Acknowledgements}
