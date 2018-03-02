@@ -461,9 +461,8 @@ more general context below.
 \end{definition}
 
 \begin{lemma}\label{mengerFanLemma1}
-  Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
   If \(X\) is \(\Omega M\)
-  (resp. \(\Omega M^+\), \(\Omega M^{\plusMark}\)).
+  (resp. \(\Omega M^+\), \(\Omega M^{\plusMark}\)),
   then \(C_p(X)\) is \(CFT_{\vec 0}\)
   (resp. \(CFT_{\vec 0}^+\), \(CFT_{\vec 0}^{\plusMark}\)).
 \end{lemma}
@@ -489,6 +488,12 @@ more general context below.
   \(\<B_0,B_1,\dots\>\in\Omega_{C_p(X),\vec 0}^\omega\), and the
   corresponding sequence of \(\omega\)-covers
   \(\<\mc U_0(B_0),\mc U_1(B_1),\dots\>\in \Omega_X^\omega\).
+  For \(U\in\mc U_n(B_n)\), choose \(\vec x_U\in B_n\) such that
+  \(
+    U
+      =
+    \vec x_U^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+  \).
 
   Assuming \(X\) is \(\Omega M\), choose a witness
   \(\<\mc F_0,\mc F_1,\dots\>\) such that
@@ -497,14 +502,14 @@ more general context below.
     \bigcup_{i\leq n<\omega} \mc F_n
   \]
   is an \(\omega\)-cover of \(X\) for all \(i<\omega\).
-  Now let
+  Let
   \[
     F_n
       =
     \left\{
-      \vec x\in B_n
+      \vec x_U
     :
-      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      U
         \in
       \mc F_n
     \right\}
@@ -514,10 +519,18 @@ more general context below.
   \(\frac{1}{2^i}<\epsilon\). Since \(\bigcup_{i\leq n<\omega} \mc F_n\)
   is an \(\omega\)-cover, we may choose
   \(i\leq n<\omega\) and
-  \(\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\mc F_n\)
-  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\).
-  Therefore, \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
-  It follows that \(\vec x\in F_n\cap[\vec 0,G,\epsilon]\), and thus
+  \(U\in\mc F_n\)
+  such that
+  \[
+    G
+      \subseteq
+    U
+      =
+    \vec x_U^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \subseteq
+    \vec x_U^{\leftarrow}[(-\epsilon,\epsilon)]
+  .\]
+  It follows that \(\vec x_U\in F_n\cap[\vec 0,G,\epsilon]\), and thus
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}F_n\).
 
@@ -527,14 +540,14 @@ more general context below.
     \bigcup_{i\leq n<\omega} \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)
   \]
   is an \(\omega\)-cover of \(X\) for all \(i<\omega\).
-  Now let
+  Let
   \[
     \tau(\<B_0,\dots,B_n\>)
       =
     \left\{
-      \vec x\in B_n
+      \vec x_U
     :
-      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      U
         \in
       \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)
     \right\}
@@ -544,11 +557,20 @@ more general context below.
   \(\frac{1}{2^i}<\epsilon\). Since
   \(\bigcup_{i\leq n<\omega} \sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
   is an \(\omega\)-cover, we may choose
-  \(i\leq n<\omega\) and \(\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]
-  \in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
-  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\).
-  Therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
-  It follows that \(\vec x\in \tau(\<B_0,\dots,B_n\>)\cap[\vec 0,G,\epsilon]\),
+  \(i\leq n<\omega\) and
+  \(U\in\sigma(\<\mc U_0(B_0),\dots,\mc U_n(B_n)\>)\)
+  such that
+  \[
+    G
+      \subseteq
+    U
+      =
+    \vec x_U^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \subseteq
+    \vec x_U^{\leftarrow}[(-\epsilon,\epsilon)]
+  .\]
+  It follows that
+  \(\vec x_U\in \tau(\<B_0,\dots,B_n\>)\cap[\vec 0,G,\epsilon]\),
   and thus every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(\<B_0,\dots,B_n\>)\).
 
@@ -558,14 +580,14 @@ more general context below.
     \bigcup_{i\leq n<\omega} \sigma(\mc U_n(B_n),n)
   \]
   is an \(\omega\)-cover of \(X\) for all \(i<\omega\).
-  Now let
+  Let
   \[
     \tau(B_n,n)
       =
     \left\{
-      \vec x\in B_n
+      \vec x_U
     :
-      \vec x^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      U
         \in
       \sigma(\mc U_n(B_n),n)
     \right\}
@@ -575,10 +597,18 @@ more general context below.
   \(\frac{1}{2^i}<\epsilon\). Since
   \(\bigcup_{i\leq n<\omega} \sigma(\mc U_n(B_n),n)\) is an \(\omega\)-cover,
   we may choose \(i\leq n<\omega\) and
-  \(\vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\in\sigma(\mc U_n(B_n),n)\)
-  such that \(G\subseteq \vec x^{\leftarrow}[(-\frac{1}{2^n},\frac{1}{2^n})]\).
-  Therefore \(G\subseteq \vec x^{\leftarrow}[(-\epsilon,\epsilon)]\).
-  It follows that \(\vec x\in \tau(B_n,n)\cap[\vec 0,G,\epsilon]\), and thus
+  \(U\in\sigma(\mc U_n(B_n),n)\)
+  such that
+  \[
+    G
+      \subseteq
+    U
+      =
+    \vec x_U^{\leftarrow}\left[\left(-\frac{1}{2^n},\frac{1}{2^n}\right)\right]
+      \subseteq
+    \vec x_U^{\leftarrow}[(-\epsilon,\epsilon)]
+  .\]
+  It follows that \(\vec x_U\in \tau(B_n,n)\cap[\vec 0,G,\epsilon]\), and thus
   every basic open neighborhood of \(\vec 0\) intersects
   \(\bigcup_{n<\omega}\tau(B_n,n)\).
 \end{proof}
