@@ -412,35 +412,51 @@ Due to the difficulty in obtaining an English translation of
 \cite{MR837289}, we reprove Arhangel'skii's theorem above in our
 more general context below.
 
-\begin{proposition}
-  Any witness for \(\Omega M\) (resp.
-  \(\Omega M^+,\Omega M^{\plusMark}\))
-  may be improved so that any final sequence of the chosen
-  finite subcollections is an \(\omega\)-cover.
+\begin{proposition}\label{cofinalSequence}
+  Let \(\mc A\), \(\mc B\) be families of sets such that
+  \(B\in\mc B\) and \(B\subseteq B'\subseteq\bigcup\mc A\)
+  implies \(B'\in\mc B\).
+  Then any witness for \(\schSelProp{\mc A}{\mc B}\)
+  may be improved so that any final sequence of the sets chosen by \(\plII\)
+  belongs to \(\mc B\).
+
+  Furthermore, any witness for
+  \(\plII\win\schSelGame{\mc A}{\mc B}\) or
+  \(\plII\markwin\schSelGame{\mc A}{\mc B}\)
+  may be improved so that any subsequence of the sets chosen by \(\plII\)
+  belongs to \(\mc B\).
 \end{proposition}
 
 \begin{proof}
-  Consider any sequence \(\<\mc U_0,\mc U_1,\dots\>\) of \(\omega\)-covers.
-  For each \(n<\omega\), let
-  \(\<\mc F_n^n,\mc F_{n+1}^n,\dots\>\) witness \(\Omega M\) for the final
-  sequence \(\<\mc U_n,\mc U_{n+1},\dots\>\),
-  and let \(\mc F_n=\bigcup_{i\leq n}\mc F_n^i\); it follows that
-  \(\<\mc F_0,\mc F_1,\dots\>\) satisfies the proposition.
+  Let \(A_n\in\mc A\) for \(n<\omega\), and suppose
+  \(\<B_{n,n},B_{n+1,n},\dots\>\) witnesses \(\schSelProp{\mc A}{\mc B}\)
+  for \(\<A_n,A_{n+1},\dots\>\).
+  Let \(B_n=\bigcup_{i\leq n}B_{n,i}\); it follows that
+  \(\<B_0,B_1,\dots\>\) satisfies the proposition.
 
-  For \(\Omega M^+\), the winning strategy \(\sigma\) may be improved to
+  Let \(s\preceq t\) indicate that \(s\) is a subsequence
+  of \(t\). Then for \(\plII\win\schSelGame{\mc A}{\mc B}\),
+  the winning strategy \(\sigma\) may be improved to
   \(\tau\) where
   \(
-    \tau(\<\mc U_0,\dots,\mc U_n\>)
+    \tau(t\concat\<A\>)
       =
-    \bigcup_{i\leq n}\sigma(\<\mc U_i,\dots,\mc U_n\>)
-  \). For \(\Omega M^{\plusMark}\), the winning Markov strategy \(\sigma\) may
+    \bigcup_{s\preceq t}\sigma(s\concat\<A\>)
+  \).
+  For \(\plII\markwin\schSelGame{\mc A}{\mc B}\),
+  the winning Markov strategy \(\sigma\) may
   be improved to \(\tau\) where
   \(
-    \tau(\mc U,n)
+    \tau(A,n)
       =
-    \bigcup_{i\leq n}\sigma(\mc U,i)
+    \bigcup_{i\leq n}\sigma(A,i)
   \). Both improved strategies are easily seen to satisfy the proposition.
 \end{proof}
+
+It's worth noting that Gruenhage applied a similar technique used above
+for strategies in \(\schSelGame{\mc A}{\mc B}\) to obtain strengthened
+strategies in his game played with open neighborhoods and points in
+\cite{MR0413049}.
 
 \begin{definition}
   Let \(X\) be a \(T_{3\frac{1}{2}}\) topological space.
@@ -937,6 +953,50 @@ Question \ref{mainQuestion} negatively.
 \end{question}
 
 
+We conclude this section by covering a related result observed by the
+anonymous referee in their initial review of this manuscript.
+
+\begin{theorem}
+  A topological space is \(M^+\) if and only if it is \(\Omega M^+\).
+\end{theorem}
+
+\begin{proof}
+  Assume \(X\) is \(M^+\). In \cite[Proposition 5.1]{MR3383283} it is shown
+  that that \(X^m\) must be \(M^+\) for all powers \(m<\omega\), so we shall
+  proceed in the spirit of Proposition \ref{altCompactCharacterization}
+  and its following lemma. Given an \(\omega\)-cover \(\mc U\),
+  it follows that \((\mc U)^m=\{U^m:U\in\mc U\}\) is an open cover of
+  \(X^m\). Given a finite subset \(\mc F\in[(\mc U)^m]^{<\omega}\),
+  let \(\pi_m\mc F=\{U:U^m\in\mc F\}\in[\mc U]^{<\omega}\).
+
+  Let \(\sigma_m\) witness \(M^+\) for \(X^m\), and define
+  the following strategy for \(\plII\) in \(\schSelGame{\Omega}{\Omega}\):
+  \[
+    \tau(\<\mc U_0,\dots,\mc U_n\>)
+      =
+    \bigcup_{m\leq n}
+    \pi_m\sigma_m(\<(\mc U_m)^m,\dots,(\mc U_n)^m\>)
+  .\]
+  Since
+  \[
+    \bigcup_{m\leq n<\omega}
+    \sigma_m(\<(\mc U_m)^m,\dots,(\mc U_n)^m\>)
+  \]
+  is an open cover of \(X^m\) for \(m<\omega\), it follows that
+  \[
+    \bigcup_{n<\omega}
+    \tau(\<\mc U_0,\dots,\mc U_n\>)
+      \supseteq
+    \bigcup_{m\leq n<\omega}
+    \pi_m\sigma_m(\<(\mc U_m)^m,\dots,(\mc U_n)^m\>)
+  \]
+  covers all finite sets of size \(m<\omega\), that is,
+  \(
+    \bigcup_{n<\omega}
+    \tau(\<\mc U_0,\dots,\mc U_n\>)
+  \)
+  is an \(\omega\)-cover, making \(\tau\) a winning strategy.
+\end{proof}
 
 \section{Equivalence of certain strategic and Markov selection properties}
 
@@ -1262,10 +1322,9 @@ The corresponding game-theoretic results also hold.
 \end{theorem}
 
 \begin{proof}
-  In Lemmas \ref{mengerFanLemma1} and \ref{mengerFanLemma2},
-  \(|\tau(t)|=|\sigma(t)|\). Therefore they may be extended to
-  the strong cases requiring \(|\tau(t)|=|\sigma(t)|=1\),
-  which yields our result.
+  In the proof of Lemmas \ref{mengerFanLemma1} and \ref{mengerFanLemma2},
+  if the strategy \(\sigma\) produces singletons, so does the strategy
+  \(\tau\).
 \end{proof}
 
 \begin{theorem}
@@ -1284,13 +1343,17 @@ The corresponding game-theoretic results also hold.
 \begin{lemma}
   Let \(\mc A\) be a family of sets where
   \(|\bigcup\mc A|\leq\omega\)
-  and let \(\mc B\) be a family of sets closed under supersets. Then
+  and let \(\mc B\) be a family of sets such that
+  \(B\in\mc B\) and \(B\subseteq B'\subseteq\bigcup\mc A\)
+  implies \(B'\in\mc B\). Then
   \(\plII\win\schStrongSelGame{\mc A}{\mc B}\) if and only if
   \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
 \end{lemma}
 
 \begin{proof}
-  In the proof of Lemma \ref{mainLemma}, \(|\tau(t)|=|\sigma(t)|\).
+  In the proof of Lemma \ref{mainLemma},
+  if the perfect information strategy \(\sigma\) always
+  produces singletons, so does the Markov strategy \(\tau\).
 \end{proof}
 
 \begin{corollary}
@@ -1311,6 +1374,10 @@ The corresponding game-theoretic results also hold.
 \section{Acknowledgements}
 The author would like to thank Ziqin Feng and Gary Gruenhage
 for their helpful comments on the topic of \(C_p(\onePtLind{\omega_1})\).
+The author also thanks the anonymous referree who pointed out
+the game strategies in Proposition \ref{cofinalSequence} could handle all
+subsequences rather than only final sequences, in addition to the
+observation given as the final result of the third section.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
