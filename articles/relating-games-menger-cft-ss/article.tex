@@ -761,7 +761,8 @@ more general context below.
 \section{A space which is \(CFT^+\) but not \(CDFT^{\plusMark}\)}
 
 Our goal is to now demonstrate a space which is \(CFT^+\),
-but not even \(CDFT^{\plusMark}\). To do so, we will find a space \(X\)
+but not \(CFT^{\plusMark}\) or even \(CDFT^{\plusMark}\).
+To do so, we will find a space \(X\)
 which is \(\Omega M^+\) but not \(\Omega M^{\plusMark}\), yielding \(C_p(X)\)
 as our example.
 
@@ -784,9 +785,11 @@ as our example.
   \(\mc F\in[\mc U]^{<\omega}\) such that for each \(F\in[X]^{\leq n}\)
   there exists some \(U\in\mc F\) where \(F\subseteq U\). Given an
   arbitrary open cover \(\mc V\), close it under finite unions to obtain
-  an \(\omega\)-cover \(\mc U\). Then the finite subcollection \(\mc F\)
-  of \(\mc U\) is of course a finite subcover,
-  and since each member of \(\mc F\) is a finite union of open sets in
+  an \(\omega\)-cover \(\mc U\). Then for \(n=1\),
+  the finite subcollection \(\mc F\) of \(\mc U\) satisfying
+  \(\{x\}\subseteq U\) for all \(x\in X\) and some \(U\in\mc U\)
+  is of course a finite subcover.
+  Since each member of \(\mc F\) is a finite union of open sets in
   \(\mc V\), there exists a finite subcover \(\mc G\) of \(\mc V\).
 \end{proof}
 
@@ -928,7 +931,8 @@ Question \ref{mainQuestion} negatively.
 \end{question}
 
 \begin{question}
-  Does there exist a non-\(\sigma\)-compact \(\Omega M^+\) space
+  Does there exist a \(T_{3\frac{1}{2}}\),
+  non-\(\sigma\)-compact, and \(\Omega M^+\) space
   with a coarser separable metrizable topology?
 \end{question}
 
@@ -946,7 +950,9 @@ spaces. The following result generalizes both.
 \begin{lemma}\label{mainLemma}
   Let \(\mc A\) be a family of sets where
   \(|\bigcup\mc A|\leq\omega\)
-  and let \(\mc B\) be a family of sets closed under supersets. Then
+  and let \(\mc B\) be a family of sets such that
+  \(B\in\mc B\) and \(B\subseteq B'\subseteq\bigcup\mc A\)
+  implies \(B'\in\mc B\). Then
   \(\plII\win\schSelGame{\mc A}{\mc B}\) if and only if
   \(\plII\markwin\schSelGame{\mc A}{\mc B}\).
 \end{lemma}
@@ -955,19 +961,26 @@ spaces. The following result generalizes both.
   Let \(\sigma\) witness \(\plII\win\schSelGame{\mc A}{\mc B}\).
 
   For \(t\in\omega^{<\omega}\), suppose
-  \(Z_s\in\mc A\) has been defined for all \(s\leq t\). Note then that
+  \(Z_s\in\mc A\) has been defined for all nonempty \(s\leq t\).
+  We use the convention
   \(
+    \<Z_{\emptyset\rest1},Z_{\emptyset\rest2},\dots,Z_\emptyset,A\>
+      =
+    \<A\>
+  \).
+  Note then that
+  \[
     \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>):A\in\mc A\}
       \subseteq
-    [\bigcup\mc A]^{<\omega}
-  \)
+    \left[\bigcup\mc A\right]^{<\omega}
+  \]
   and therefore is countable.
   So choose \(Z_{t\concat\<n\>}\in\mc A\) for \(n<\omega\) such that
-  \(
+  \[
     \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,A\>):A\in\mc A\}
       =
     \{\sigma(\<Z_{t\rest1},Z_{t\rest2},\dots,Z_t,Z_{t\concat\<n\>}\>):n<\omega\}
-  \).
+  .\]
 
   Let \(b:\omega\to\omega^{<\omega}\) be a bijection,
   and define
@@ -1048,28 +1061,31 @@ spaces. The following result generalizes both.
   So let \(\sigma\) witness
   \(\plII\markwin\schSelGame{\Omega_X^*}{\Omega_X^*}\).
   For each \(\omega\)-cover \(\mc U\) and finite set \(F\in[X]^{<\omega}\),
-  choose \(U_{\mc U,F}\in\mc U\) such that \(F\subseteq U\). Then choose a
-  basic open set \(U_{\mc U,F}^*\) such that
-  \(F\subseteq U_{\mc U,F}^*\subseteq U_{\mc U,F}\). Finally, for each
-  \(\omega\)-cover \(\mc U\), let
+  choose \(U_{\mc U,F}\in\mc U\) and a basic open set \(B_{\mc U,F}\)
+  such that \(F\subseteq B_{\mc U,F}\subseteq U_{\mc U,F}\).
+  Finally, for each \(\omega\)-cover \(\mc U\), let
   \[
     \mc U^*
       =
     \{
-      U_{\mc U,F}^*
+      B_{\mc U,F}
         :
       F\in[X]^{<\omega}
     \}
       \in
     \Omega_X^*
-  .\]
+  \]
+  be an \(\omega\)-cover of basic open sets refining \(\mc U\).
 
+  Given \(\mc U\) and \(V\in\mc U^*\), choose
+  \(F(V)\in[X]^{<\omega}\) such that \(V=B_{\mc U,F(V)}\).
   Define the strategy \(\tau\) such that
-  \(\tau(\mc U,n)=\{U_{\mc U,F}:U_{\mc U,F}^*\in\sigma(\mc U^*,n)\}\).
+  \(\tau(\mc U,n)=\{U_{\mc U,F(V)}:V\in\sigma(\mc U^*,n)\}\).
   For any sequence of \(\omega\)-covers \(\<\mc U_0,\mc U_1,\dots\>\),
   it follows that \(\bigcup_{n<\omega}\sigma(\mc U_n^*,n)\) is an
-  \(\omega\)-cover, and therefore
-  \(\bigcup_{n<\omega}\tau(\mc U_n,n)\) is an \(\omega\)-cover also.
+  \(\omega\)-cover refining \(\bigcup_{n<\omega}\tau(\mc U_n,n)\), and therefore
+  \(\bigcup_{n<\omega}\tau(\mc U_n,n)\) is an \(\omega\)-cover also,
+  demonstrating that \(X\) is \(\Omega M^{\plusMark}\).
 \end{proof}
 
 \begin{corollary}[\cite{clontzMengerCMUC}]
