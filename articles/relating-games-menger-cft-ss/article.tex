@@ -67,8 +67,8 @@
 \author{Steven Clontz}
 \address{Department of Mathematics and Statistics,
 The University of South Alabama,
-Mobile, AL 36606}
-\email{steven.clontz@gmail.com}
+Mobile, AL 36688}
+\email{sclontz@southalabama.edu}
 
 
 
@@ -772,7 +772,43 @@ strategies in his game played with open neighborhoods and points in
   previous lemmas.
 \end{proof}
 
+At this point, it's worth noting the following open question asked by Angelo Bella
+in personal correspondance with the author. The following
+term is defined in \cite{MR0370506}.
 
+\begin{definition}
+  A space is \term{dense-separable} if every dense subspace is separable.
+\end{definition}
+
+In dense-separable spaces, it is safe to assume the first player
+only chooses countable dense subsets in the \(SS\) and \(CDFT\)
+principles/games. 
+
+\begin{question}
+  Suppose \(X\) is a dense-separable space such that every countable dense
+  subspace \(D\subseteq X\) is \(SS^+\). Is \(X\) itself \(SS^+\)?
+\end{question}
+
+Bella noted that this is certainly true for non-strategic \(SS\),
+as verified below. Note the use of knowledge of all \(D_n\) 
+to define \(E_n\) in this proof,
+demonstrating why it cannot be trivially modified to the \(SS^+\) case.
+
+\begin{proposition}
+  Let \(X\) be a dense-separable space such that every countable dense
+  subspace \(D\subseteq X\) is \(SS\). Then \(X\) is \(SS\).
+\end{proposition}
+
+\begin{proof}
+  Take \(\{D_n:n<\omega\}\) with \(D_n\subseteq X\) countable dense,
+  so \(E_n=\bigcup\{D_m:n\leq m<\omega\}\) is countable dense in
+  the \(SS\) subspace \(D=\bigcup\{D_n:n<\omega\}\). So choose \(F_n\in[E_n]^{<\omega}\)
+  with \(cl_D(\bigcup\{F_n:n<\omega\})=D\) and therefore 
+  \(cl(\bigcup\{F_n:n<\omega\})=X\).
+
+  Define \(G_n\in[D_n]^{<\omega}\) by \(G_n=D_n\cap\bigcup\{F_m:m\leq n\}\).
+  The result follows as \(\bigcup\{G_n:n<\omega\}=\bigcup\{F_n:n<\omega\}\).
+\end{proof} 
 
 \section{A space which is \(CFT^+\) but not \(CDFT^{\plusMark}\)}
 
@@ -997,6 +1033,17 @@ anonymous referee in their initial review of this manuscript.
   \)
   is an \(\omega\)-cover, making \(\tau\) a winning strategy.
 \end{proof}
+
+\begin{corollary}
+  The following are equivalent for any \(T_{3\frac{1}{2}}\)
+  topological space \(X\).
+    \begin{itemize}
+      \item \(X\) is \(M^+\)
+      \item \(X\) is \(\Omega M^+\)
+      \item \(C_p(X)\) is \(CFT^+\)
+      \item \(C_p(X)\) is \(CDFT^+\)
+    \end{itemize}
+\end{corollary}
 
 \section{Equivalence of certain strategic and Markov selection properties}
 
