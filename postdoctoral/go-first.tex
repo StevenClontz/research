@@ -1,18 +1,84 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{amsthm}
+\usepackage{amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\rest}{\upharpoonright}
+\newcommand{\term}{\textbf}
 \begin{document}
 
+By convention, \(n=\{0,1,\dots,n-1\}\) for each natural number \(n\).
+
+\begin{definition}
+    A function \(F:n\to S\) is called a \term{formula} for a 
+    set \(S\) of dice, where \(F(k)\) returns which die in the set \(S\)
+    has a face with the number \(k<n\).
+\end{definition}
+
+For example, the formula \(F:4\to\{A,B\}\) defined by \(ABBA\)
+represents an assignment of values to the faces of dice in the set \(\{A,B\}\).
+In particular \(A\) has two sides \(\{0,3\}\) while die \(B\) has sides \(\{1,2\}\).
+
+\begin{definition}
+    Given a formula \(F:n\to S\) and \(T\subseteq S\), let \(F_T:m\to T\) be the 
+    \term{subformula} obtained by removing the dice in \(S\setminus T\) from the sequence.
+\end{definition}
+
+So for \(F:7\to\{A,B,C\}\) defined by \(ABCACBA\), \(F_{\{A,C\}}\) is defined by
+\(ACACA\).
+
+\begin{definition}
+    Given a formula \(F:n\to S\) and \(m\leq n\), let \(F\rest m:m\to S\) be the 
+    \term{restriction formula} where \((F\rest m)(k)=F(k)\) for \(k<m\).
+\end{definition}
+
+So for \(F:7\to\{A,B,C\}\) defined by \(ABCACBA\), \(F\rest 4\) is defined by
+\(ABCA\).
+
+\begin{definition}
+    A \term{sample} for a formula \(F:n\to S\) is a function \(f:S\to n\) such
+    that \(F(f(A))=A\) for all \(A\in S\).
+\end{definition}
+
+\begin{definition}
+    The \term{winner} of a given sample is \(A\in S\) such that
+    \(f(A)=\max\{f(B):B\in S\}\).
+\end{definition}
+
+\begin{definition}
+    A formula \(F:n\to S\) is called \term{go-first-fair} if each \(A\in S\)
+    is the winner of an equal number of samples of \(F\).
+\end{definition}
+
+\begin{definition}etc.\end{definition}
+
+\begin{proposition}
+    Suppose \(F:n\to S\) is a permutation-fair (resp. place-fair, go-first-fair)
+    formula. Then \(F_T\) is permutation-fair (resp. place-fair, go-first-fair)
+    for all \(T\subseteq S\).
+\end{proposition}
+
 \begin{theorem}
-	Suppose \(T\) be a formula representing a gofirst-fair set of \(n+1\) dice
-	extending a formula \(S\) for \(n\) dice such that for each symbol in
-	\(T\) representing a face of the extra die, \(S\) restricted below that
-	symbol is permutation-fair. Then \(T\) is permutation-fair.
+    Suppose \(F:n\to S\cup\{X\}\) is a go-first-fair formula such that 
+    for each \(m\leq n\) where \(f(m)=X\), 
+    \((F\rest m)_S\) is permutation-fair.
+    Then \(F\) is permutation-fair.
 \end{theorem}
 
 \begin{proof}
-	Since gofirst-fair implies permutation-fair in the base case of one
-	(or two, or zero, whatever) dice, assume the theorem holds for formulas
-	\(T\) of length \(n+1\), and let \(T'\) be length \(n+2\) extending \(S'\).
+    Since go-first-fair implies permutation-fair in the base case \(|S|=0\),
+    assume the theorem holds when \(|S|\leq k\), and let \(|S|=k+1\).
+    
+    For each \(T\subsetneq S\), we note that \(F_{T\cup\{X\}}\) is a go-first-fair 
+    formula such that for each \(m\leq|F_{T\cup\{X\}}|\) where \(F_{T\cup\{X\}}(m)=X\), 
+    \(F_{T\cup\{X\}}\rest m=F\rest m'\) for some \(m\leq m'< n\) and
+    \(F(m')=X\). Thus \((F_{T\cup\{X\}}\rest m)_T=(F\rest m')_T=((F\rest m')_S)_T\)
+    is permutation-fair, and since \(|T|\leq k\), \(F_{T\cup\{X\}}\) is permutation-fair.
+
+
 \end{proof}
 \end{document}
