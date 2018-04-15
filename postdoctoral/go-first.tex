@@ -9,7 +9,11 @@
 \newtheorem{definition}[theorem]{Definition}
 \newcommand{\rest}{\upharpoonright}
 \newcommand{\term}{\textbf}
+
+\title{On constructing permutation-fair dice}
+\author{Steven Clontz}
 \begin{document}
+\maketitle
 
 By convention, \(n=\{0,1,\dots,n-1\}\) for each natural number \(n\).
 
@@ -32,39 +36,49 @@ So for \(F:7\to\{A,B,C\}\) defined by \(ABCACBA\), \(F_{\{A,C\}}\) is defined by
 \(ACACA\).
 
 \begin{definition}
-    Given a formula \(F:n\to S\) and \(m\leq n\), let \(F\rest m:m\to S\) be the 
-    \term{restriction formula} where \((F\rest m)(k)=F(k)\) for \(k<m\).
+    Given a sequence \(F:n\to S\) and \(m\leq n\), let \(F\rest m:m\to S\) be the 
+    \term{restriction sequence} where \((F\rest m)(k)=F(k)\) for \(k<m\).
 \end{definition}
 
 So for \(F:7\to\{A,B,C\}\) defined by \(ABCACBA\), \(F\rest 4\) is defined by
 \(ABCA\).
 
 \begin{definition}
-    A \term{sample} for a formula \(F:n\to S\) is a function \(f:S\to n\) such
-    that \(F(f(A))=A\) for all \(A\in S\).
+    A \term{sample} for a formula \(F:n\to S\) is a function \(s:S\to n\) such
+    that \(F(s(A))=A\) for all \(A\in S\). Let \(\sigma (F)\) collect
+    all samples for the formula \(F\).
 \end{definition}
 
 \begin{definition}
-    The \term{winner} of a given sample is \(A\in S\) such that
-    \(f(A)=\max\{f(B):B\in S\}\).
+    The \term{result} of a sample \(s:S\to n\) is a permutation \(r_s:|S|\to S\)
+    of \(S\) such that \(i\leq j\) if and only if \(f(r_s(i))\leq f(r_s(j))\).
+\end{definition}
+
+So for the formula \(ABCACBA\), a sample might be defined
+by \(f(A)=3,f(B)=2,f(C)=4\), yielding the result \(BAC\).
+Note that the highest-valued die in the sample \(s\) is given by \(r_s(|S|-1)\).
+
+\begin{definition}
+    A formula \(F:n\to S\) is called \term{permutation-fair} if
+    for all permutations \(p,q\) of \(S\),
+    \(|\{s\in\sigma (F):r_s=p\}|=|\{s\in\sigma (F):r_s=q\}|\). 
 \end{definition}
 
 \begin{definition}
-    A formula \(F:n\to S\) is called \term{go-first-fair} if each \(A\in S\)
-    is the winner of an equal number of samples of \(F\).
+    A formula \(F:n\to S\) is called \term{go-first-fair} if
+    for all \(A,B\in S\),
+    \(|\{s\in\sigma (F):r_s(|S|-1)=A\}|=|\{s\in\sigma (F):r_s(|S|-1)=B\}|\). 
 \end{definition}
-
-\begin{definition}etc.\end{definition}
 
 \begin{proposition}
-    Suppose \(F:n\to S\) is a permutation-fair (resp. place-fair, go-first-fair)
-    formula. Then \(F_T\) is permutation-fair (resp. place-fair, go-first-fair)
+    Suppose \(F:n\to S\) is a permutation-fair (resp. go-first-fair)
+    formula. Then \(F_T\) is permutation-fair (resp. go-first-fair)
     for all \(T\subseteq S\).
 \end{proposition}
 
 \begin{theorem}
     Suppose \(F:n\to S\cup\{X\}\) is a go-first-fair formula such that 
-    for each \(m\leq n\) where \(f(m)=X\), 
+    \(F_S\) is permutation fair, and for each \(m\leq n\) where \(f(m)=X\), 
     \((F\rest m)_S\) is permutation-fair.
     Then \(F\) is permutation-fair.
 \end{theorem}
@@ -78,6 +92,23 @@ So for \(F:7\to\{A,B,C\}\) defined by \(ABCACBA\), \(F\rest 4\) is defined by
     \(F_{T\cup\{X\}}\rest m=F\rest m'\) for some \(m\leq m'< n\) and
     \(F(m')=X\). Thus \((F_{T\cup\{X\}}\rest m)_T=(F\rest m')_T=((F\rest m')_S)_T\)
     is permutation-fair, and since \(|T|\leq k\), \(F_{T\cup\{X\}}\) is permutation-fair.
+
+    So let \(p,q\) be permutations of \(S\cup\{X\}\); we aim to show that
+    \(|\{s\in\sigma (F):r_s=p\}|=|\{s\in\sigma (F):r_s=q\}|\). 
+    
+    First, suppose \(p(|S|)=q(|S|)=X\). Thus 
+    \[
+        |\{s\in\sigma (F):r_s=p\}|
+    =
+        \sum\Big\{\Big|\{s\in\sigma ((F\rest m)_S):r_s=p\rest|S|\}\Big|:f(m)=X\Big\}
+    \] 
+    and likewise for \(q\). Since \((F\rest m)_S\) is permutation-fair,
+    \[
+        |\{s\in\sigma ((F\rest m)_S):r_s=p\rest|S|\}|
+    =
+        |\{s\in\sigma ((F\rest m)_S):r_s=q\rest|S|\}|
+    \]
+    so the result follows in this case.
 
 
 \end{proof}
