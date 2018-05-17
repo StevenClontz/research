@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+\usepackage[letterpaper,margin=1in]{geometry}
+
+\usepackage{enumerate}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{observation}[theorem]{Observation}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{observation*}{Observation}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+\title{Two mark in DS game}
+\author{Steven Clontz}
+
+\usepackage{../clontzDefinitions}
+
+\newcommand{\bmPoGame}[2]{BM_{po}(#1,#2)}
+
+\begin{document}
+
+\maketitle
+
+Let 
+\(
+  [f,F,\epsilon]
+    =
+  \{g\in C_p(X):|g(x)-f(x)|<\epsilon\text{ for all }x\in F\}
+\).
+
+\begin{game}
+  Let \(G\) be the following game. During round \(n\), player \(\plI\)
+  chooses \(\beta_n<\omega_1\), and player \(\plII\) chooses
+  \(F_n\in[\omega_1]^{<\aleph_0}\). \(\plII\) wins if
+  whenever \(\gamma<\beta_n\) for co-finitely many \(n<\omega\),
+  \(\gamma\in F_n\) for infinitely many \(n<\omega\).
+\end{game}
+
+\begin{proposition}
+  \(\plII \kmarkwin{2} G\).
+\end{proposition}
+
+\begin{theorem}
+  \(\plI\kmarkwin{2}DS(C_p(\omega_1+1))\)
+\end{theorem}
+\begin{proof}
+  Let \(\sigma\) be a winning 2-mark for \(\plII\) in \(G\).
+
+  Given a point \(f\in C_p(\omega_1+1)\),
+  let \(\alpha_f<\omega_1\) satisfy \(f(\beta)=f(\gamma)\) for all
+  \(\alpha_f\leq\beta\leq\gamma\leq\omega_1\).
+
+  Let \(\tau(\emptyset,0)=[\mathbf{0},\{\omega_1\},4]\),
+  \(\tau(\<f\>,1)=[\mathbf{0};\sigma(\<\alpha_f\>,0)\cup\{\omega_1\};2]\), and
+  \[\tau(\<f,g\>,n+2)=[\mathbf{0};\sigma(\<\alpha_f,\alpha_g\>,n+1)\cup\{\omega_1\};2^{-n}].\]
+
+  Let \(\nu\) be a legal attack by \(\plII\) against \(\sigma\).
+  For \(\beta\leq\omega_1\), if \(\beta<\alpha_{\nu(n)}\)
+  for co-finitely many \(n<\omega\), then
+  \(\beta\in\sigma(\<\alpha_{\nu(n)},\alpha_{\nu(n+1)}\>)\) for
+  infinitely-many \(n<\omega\), and thus \(0\in\operatorname{cl}\{\nu(n)(\beta):n<\omega\}\).
+  Otherwise \(\beta\geq\alpha_{\nu(n)}\) for infinitely many \(n<\omega\),
+  and thus \(0\in\operatorname{cl}\{\nu(n)(\beta):n<\omega\}\) as well.
+  Thus \(\mathbf{0}\in\operatorname{cl}\{\nu(n):n<\omega\}\).
+\end{proof}
+
+  \bibliographystyle{plain}
+  \bibliography{../bibliography}
+
+
+\end{document}
