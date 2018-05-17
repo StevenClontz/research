@@ -72,9 +72,34 @@ Let
   \(\gamma\in F_n\) for infinitely many \(n<\omega\).
 \end{game}
 
+For \(f\in\omega^\alpha\), let 
+\(f^{\leftarrow}[n]=\{\beta<\alpha:f(\beta)<n\}\).
+
 \begin{proposition}
   \(\plII \kmarkwin{2} G\).
 \end{proposition}
+\begin{proof}
+  Let \(\{f_\alpha\in\omega^\alpha:\alpha<\omega_1\}\) be a collection
+  of pairwise almost-compatible finite-to-one functions.
+  Define a \(2\)-mark \(\sigma\) for \(\plII\) by
+  \[\sigma(\<\alpha\>,0)=\emptyset\] and
+  \[
+    \sigma(\<\alpha,\beta\>,n+1)\
+      =
+    f_\beta^\leftarrow[n]
+      \cup
+    \{\gamma<\alpha\cap\beta:f_\alpha(\gamma)\not=f_\beta(\gamma)\}
+  .\]
+  
+  Let \(\nu\) be an attack by \(\plI\) against \(\sigma\), and let
+  \(\gamma<\nu(n)\) for \(N\leq n<\omega\).
+  If \(f_{\nu(n)}(\gamma)\not=f_{\nu(n+1)}(\gamma)\) for infinitely-many
+  \(N\leq n<\omega\), then \(\gamma\in\sigma(\<\nu(n),\nu(n+1)\>,n+1)\)
+  for infinitely-many \(N\leq n<\omega\).
+  Otherwise \(f_{\nu(n)}(\gamma)=f_{\nu(n+1)}(\gamma)=M\) for cofinitely-many
+  \(N\leq n<\omega\), so \(\gamma\in\sigma(\<\nu(n),\nu(n+1)\>,n+1)\)
+  for cofinitely-many \(N\leq n<\omega\). Therefore \(\sigma\) is a winning \(2\)-mark.
+\end{proof}
 
 \begin{theorem}
   \(\plI\kmarkwin{2}DS(C_p(\omega_1+1))\)
