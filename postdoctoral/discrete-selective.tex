@@ -46,7 +46,7 @@
       \theoremstyle{remark}
       \newtheorem*{remark*}{Remark}
 
-\title{Two mark in DS game}
+\title{Discretely Selective and related games}
 \author{Steven Clontz}
 
 \usepackage{../clontzDefinitions}
@@ -56,6 +56,8 @@
 \begin{document}
 
 \maketitle
+
+\section{2-marks in CD(X)}
 
 Let 
 \(
@@ -102,7 +104,7 @@ For \(f\in\omega^\alpha\), let
 \end{proof}
 
 \begin{theorem}
-  \(\plI\kmarkwin{2}DS(C_p(\omega_1+1))\)
+  \(\plI\kmarkwin{2}CD(C_p(\omega_1+1))\)
 \end{theorem}
 \begin{proof}
   Let \(\sigma\) be a winning 2-mark for \(\plII\) in \(G\).
@@ -125,7 +127,7 @@ For \(f\in\omega^\alpha\), let
   Thus \(\mathbf{0}\in\operatorname{cl}\{\nu(n):n<\omega\}\).
 \end{proof}
 
-\section{combining game results}
+\section{Combining game results}
 
 \begin{theorem}
 The following are equivalent for \(T_{3.5}\) spaces \(X\).
@@ -158,28 +160,22 @@ The following are equivalent for \(T_{3.5}\) spaces \(X\).
 \end{proof}
 
 Let \(\Omega PO(X)\) be the point-open game where \(\plI\) wins
-if they force \(\plII\) to create an \(\omega\) cover. Likewise for
+if they force \(\plII\) to create an \(\omega\)-cover. Likewise for
 \(\Omega FO(X)\). In 3.9 of [Tkachuk 2017] it's shown that
-\(\plII\win\Omega FO(X)\) implies \(\plI\win CD(C_p(X))\); it's
-taken for granted (but unproven) that \(\plII\win \Omega FO(X)\) if and only if
-\(\plII\win \Omega PO(X)\) 
-(this holds for \(FO(X),PO(X)\) due to Telgarsky). 
+\(\plII\win\Omega FO(X)\) implies \(\plI\win CD(C_p(X))\).
 
 \begin{theorem}
-  The following are equivalent for a \(T_{3.5}\) space \(X\).
-  \begin{enumerate}[a)]
-  \item \(\plI\win\Omega PO(X)\).
-  \item \(\plI\win\Omega FO(X)\).
-  \item \(X\) is \(R^+\).
-  \end{enumerate}
+  Let \(X\) be \(T_{3.5}\).
+  Then \(\plI\win\Omega FO(X)\)
+  if and only if \(X\) is \(R^+\).
 \end{theorem}
 
 \begin{proof}
-  (a) implies (b) follows trivially, and (b) implies (c) because (c) is
+  The forward implication holds because \(R^+\) is
   equivalent to \(\plI\win FO(X)\).
 
-  So assume (c), which is equivalent to \(\Omega R^+\). Let \(\sigma\)
-  be a winning strategy for \(\plII\) in 
+  So assume \(X\) is \(R^+\), which is equivalent to \(\Omega R^+\). 
+  Let \(\sigma\) be a winning strategy for \(\plII\) in 
   \(\schStrongSelGame{\Omega_X}{\Omega_X}\). Let \(T(X)\) be the non-empty
   open sets of \(X\), and let \(s\in T(X)^{<\omega}\).
   Assume \(\tau(t)\in[X]^{<\omega}\) is defined for all \(t<s\),
@@ -208,10 +204,24 @@ taken for granted (but unproven) that \(\plII\win \Omega FO(X)\) if and only if
   Since \(\<\mc U_{\nu\rest 1},\mc U_{n\rest 2},\dots\>\) is a legal attack
   against \(\sigma\), it follows that
   \(\{\sigma(\<\mc U_{\nu\rest 1},\dots,\mc U_{\nu\rest n+1}\>):n<\omega\}=\{\nu(n):n<\omega\}\)
-  is an \(\omega\) cover. Therefore \(\tau\) is a winning strategy, verifying (b).
-
-  TODO: (b) implies (a).
+  is an \(\omega\)-cover. Therefore \(\tau\) is a winning strategy, 
+  verifying \(\plI\win\Omega FO(X)\).
 \end{proof}
+
+In that paper, Tkachuk characterizes \(\plII\win\Omega FO(X)\)
+as the second player having an ``almost winning strategy''
+(\(\plII\) can prevent \(\plI\) from constructing an \(\omega\)-cover
+but perhaps not an arbitrary open cover)
+in \(PO(X)\), which he conflates with \(FO(X)\) as they are
+equivalent for ``completely'' winning perfect information strategies. 
+
+But they cannot be interchanged in general.
+Note that \(\plII\tactwin\Omega PO(2)\), where \(2\) is the two-point discrete space:
+let \(\sigma(\<x\>)=\{x\}\). Since every \(\omega\)-cover of \(2\) includes \(2\),
+and \(\sigma\) never produces \(2\), this is a winning tactic. But for the same
+reason, \(2\) is \(R^+\): it is legal to play \(2\) every round,
+which produces the \(\omega\)-cover \(\{2\}\).
+So \(\Omega PO(X)\) is a very different game than those described previously.
 
   \bibliographystyle{plain}
   \bibliography{../bibliography}
