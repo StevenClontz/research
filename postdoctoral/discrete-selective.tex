@@ -125,6 +125,94 @@ For \(f\in\omega^\alpha\), let
   Thus \(\mathbf{0}\in\operatorname{cl}\{\nu(n):n<\omega\}\).
 \end{proof}
 
+\section{combining game results}
+
+\begin{theorem}
+The following are equivalent for \(T_{3.5}\) spaces \(X\).
+\begin{enumerate}[a)]
+\item \(X\) is \(R^+\), that is, \(\plII\win \schStrongSelGame{\mc O_X}{\mc O_X}\).
+\item \(\plI\win PO(X)\). 
+\item \(\plI\win FO(X)\).
+\item \(\plI\win \gruConGame{C_p(X)}{\mathbf 0}\).
+\item \(\plI\win CL(C_p(X),\mathbf 0)\).
+\item \(\plI\win CD(C_p(X))\).
+\item \(X\) is \(\Omega R^+\), that is, 
+  \(\plII\win \schStrongSelGame{\Omega_X}{\Omega_X}\).
+\item \(C_p(X)\) is \(sCFT^+\), that is, 
+  \(\plII\win \schStrongSelGame{\Omega_{C_p(X),\mathbf 0}}{\Omega_{C_p(X),\mathbf 0}}\).
+\item \(C_p(X)\) is \(sCDFT^+\), that is,
+  \(\plII\win \schStrongSelGame{\mc D_{C_p(X)}}{\Omega_{C_p(X),\mathbf 0}}\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (a) \(\Leftrightarrow\) (b) is a well-known result of Galvin.
+
+  (b) \(\Leftrightarrow\) (c) is 4.3 of [Telgarksy 1975].
+
+  The equivalence of (b), (d), (e), and (f) are given as 3.8 of [Tkachuk 2017].
+
+  The equivalence of (g), (h), and (i) are due to Clontz.
+
+  (i) \(\Leftrightarrow\) (e) follows from 3.18a of [Tkachuk 2017].
+\end{proof}
+
+Let \(\Omega PO(X)\) be the point-open game where \(\plI\) wins
+if they force \(\plII\) to create an \(\omega\) cover. Likewise for
+\(\Omega FO(X)\). In 3.9 of [Tkachuk 2017] it's shown that
+\(\plII\win\Omega FO(X)\) implies \(\plI\win CD(C_p(X))\); it's
+taken for granted (but unproven) that \(\plII\win \Omega FO(X)\) if and only if
+\(\plII\win \Omega PO(X)\) 
+(this holds for \(FO(X),PO(X)\) due to Telgarsky). 
+
+\begin{theorem}
+  The following are equivalent for a \(T_{3.5}\) space \(X\).
+  \begin{enumerate}[a)]
+  \item \(\plI\win\Omega PO(X)\).
+  \item \(\plI\win\Omega FO(X)\).
+  \item \(X\) is \(R^+\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (a) implies (b) follows trivially, and (b) implies (c) because (c) is
+  equivalent to \(\plI\win FO(X)\).
+
+  So assume (c), which is equivalent to \(\Omega R^+\). Let \(\sigma\)
+  be a winning strategy for \(\plII\) in 
+  \(\schStrongSelGame{\Omega_X}{\Omega_X}\). Let \(T(X)\) be the non-empty
+  open sets of \(X\), and let \(s\in T(X)^{<\omega}\).
+  Assume \(\tau(t)\in[X]^{<\omega}\) is defined for all \(t<s\),
+  and \(\mc U_t\in\Omega_X\) is defined for all 
+  \(\emptyset<t\leq s\). 
+
+  Suppose that for all \(F\in[X]^{<\omega}\), there existed \(U_F\in T(X)\)
+  containing \(F\) such that for all \(\mc U\in\Omega_X\),
+  \(U_F\not=\sigma(\<\mc U_{s\rest 1},\dots,U_s,\mc U\>)\).
+  Let \(\mc U=\{U_F:F\in[X]^{<\omega}\}\in\Omega_X\).
+  Then \(\sigma(\<\mc U_{s\rest 1},\dots,U_s,\mc U\>)\)
+  must equal some \(U_F\), demonstrating a contradiction.
+
+  So there exists \(\tau(s)\in[X]^{<\omega}\) such that for all \(U\in T(X)\)
+  containing \(\tau(s)\),
+  there exists \(\mc U_{s\concat\<U\>}\in\Omega_X\) such that
+  \(U=\sigma(\<\mc U_{s\rest 1},\dots,\mc U_s,\mc U_{s\concat\<U\>}\>)\).
+  (To complete the induction, \(\mc U_{s\concat\<U\>}\) may be chosen
+  arbitrarily for all other \(U\in T(X)\).)
+
+  So \(\tau\) is a strategy for \(\plI\) in \(\Omega FO(X)\).
+  Let \(\nu\) legally attack \(\tau\), so
+  \(\tau(\nu\rest n)\subseteq \nu(n)\) for all \(n<\omega\).
+  It follows that 
+  \(\nu(n)=\sigma(\<\mc U_{\nu\rest 1},\dots,\mc U_{\nu\rest n},\mc U_{\nu\rest n+1}\>)\).
+  Since \(\<\mc U_{\nu\rest 1},\mc U_{n\rest 2},\dots\>\) is a legal attack
+  against \(\sigma\), it follows that
+  \(\{\sigma(\<\mc U_{\nu\rest 1},\dots,\mc U_{\nu\rest n+1}\>):n<\omega\}=\{\nu(n):n<\omega\}\)
+  is an \(\omega\) cover. Therefore \(\tau\) is a winning strategy, verifying (b).
+
+  TODO: (b) implies (a).
+\end{proof}
+
   \bibliographystyle{plain}
   \bibliography{../bibliography}
 
