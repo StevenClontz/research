@@ -162,7 +162,7 @@ The following are equivalent for \(T_{3.5}\) spaces \(X\).
 Let \(\Omega PO(X)\) be the point-open game where \(\plI\) wins
 if they force \(\plII\) to create an \(\omega\)-cover. Likewise for
 \(\Omega FO(X)\). In 3.9 of [Tkachuk 2017] it's shown that
-\(\plII\win\Omega FO(X)\) implies \(\plI\win CD(C_p(X))\).
+\(\plII\win\Omega FO(X)\) implies \(\plII\win CD(C_p(X))\).
 
 \begin{theorem}
   Let \(X\) be \(T_{3.5}\).
@@ -222,6 +222,60 @@ and \(\sigma\) never produces \(2\), this is a winning tactic. But for the same
 reason, \(2\) is \(R^+\): it is legal to play \(2\) every round,
 which produces the \(\omega\)-cover \(\{2\}\).
 So \(\Omega PO(X)\) is a very different game than those described previously.
+
+\begin{theorem}
+Let \(X\) be \(T_{3.5}\). The following are equivalent.
+\begin{enumerate}[a)]
+\item \(\plII \win PO(X)\)
+\item \(\plII \win FO(X)\)
+\item \(\plII \win \Omega FO(X)\)
+\item \(\plII \win CD(C_p(X))\)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(a) \(\Leftrightarrow\) (b) is due to Telgarksy [1975].
+(b) \(\Rightarrow\) (c) is immediate, and
+(c) \(\Rightarrow\) (d) was shown in [Tkachuk 2017].
+
+Assume (d), so
+let \(\sigma\) be a winning strategy for \(\plII\) in \(CD(C_p(X))\).
+Let \(s\in([X]^{<\omega})^{<\omega}\setminus\{\emptyset\}\).
+Let \(s'\in(T(C_p(X)))^{<\omega}\setminus\{\emptyset\}\)
+be defined by \[s'(n)=[\mathbf 0,\bigcup\{s(m):m\leq n\},1/2^{n+1}].\]
+Let \(\tau\) be the strategy for \(\plII\) in \(FO(X)\)
+be defined by \(\tau(s)=\sigma(s')^{\leftarrow}(-1/2^{|s|},1/2^{|s|})\).
+This is legal as 
+\(\sigma(s')\in s'(|s|-1)\subseteq[\mathbf 0,s(|s|-1),1/2^{|s|}]\)
+implies \(s(|s|-1)\subseteq\sigma(s')^{\leftarrow}(-1/2^{|s|},1/2^{|s|})\).
+
+Let \(\nu\in([X]^{<\omega})^\omega\) attack \(\tau\), and let
+\[\nu'(n)=[\mathbf 0,\bigcup\{\nu(m):m\leq n\},1/2^{n+1}].\]
+Let \(F\in[X]^{<\omega}\) and \(\epsilon>0\).
+If \(\{\tau(\nu\rest n+1):n<\omega\}\) is an open cover for \(X\),
+choose \(\frac{1}{\epsilon}<N<\omega\) such that 
+\[
+  F
+    \subseteq
+  \bigcup\{\tau(\nu\rest n+1):n\leq N\}
+    =
+  \bigcup\{\sigma(\nu'\rest n+1)^{\leftarrow}(-1/2^{n+1},1/2^{n+1}):n\leq N\}
+.\]
+
+TODO: not quite there...
+
+
+%Since \(\sigma\) is a winning strategy,
+%it follows that \(\{\sigma(\nu'\rest n+1):n<\omega\}\) is closed and
+%discrete in \(C_p(X)\). In particular, \(\mathbf 0\) is not a
+%limit point, so choose \(F\in[X]^{<\omega}\) and \(m<\omega\) such that 
+%\([\mathbf 0,F,1/2^m]\cap\{\sigma(\nu'\rest n+1):n<\omega\}=\emptyset\).
+%
+%For \(n<m\), it follows that
+%\(\sigma(\nu'\rest n+1)\in\nu'(n)\subseteq[\mathbf 0,\nu(n),1/2^{n+1}]\).
+%We also have \(\sigma(\nu'\rest n+1)\not\in[0,F,1/2^m]\subseteq[0,F,1/2^{n+1}]\),
+%so therefore \(F\not\subseteq \nu(n)\).
+\end{proof}
 
   \bibliographystyle{plain}
   \bibliography{../bibliography}
