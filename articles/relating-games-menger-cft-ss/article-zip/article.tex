@@ -780,7 +780,11 @@ term is defined in \cite{MR0370506}.
   A space is \term{dense-separable} if every dense subspace is separable.
 \end{definition}
 
-In dense-separable spaces, it is safe to assume the first player
+As noted earlier, all \(SS\) spaces are separable as witnessed
+by choosing \(D_n=X\); in fact, they
+are dense-separable as witnessed by choosing \(D_n=D\) for
+any dense subset \(D\) of \(X\).
+As such, it is safe to assume that the first player
 only chooses countable dense subsets in the \(SS\) and \(CDFT\)
 principles/games. 
 
@@ -790,24 +794,24 @@ principles/games.
 \end{question}
 
 Bella noted that this is certainly true for non-strategic \(SS\),
-as verified below. Note the use of knowledge of all \(D_n\) 
-to define \(E_n\) in this proof,
-demonstrating why it cannot be trivially modified to the \(SS^+\) case.
+as shown below.
+Note that the knowledge of all \(D_n\) is used to define \(D\)
+in this proof, preventing a trivial modification to answer the
+above question.
 
-\begin{proposition}
+\begin{proposition}\label{ds-ss}
   Let \(X\) be a dense-separable space such that every countable dense
   subspace \(D\subseteq X\) is \(SS\). Then \(X\) is \(SS\).
 \end{proposition}
 
 \begin{proof}
-  Take \(\{D_n:n<\omega\}\) with \(D_n\subseteq X\) countable dense,
-  so \(E_n=\bigcup\{D_m:n\leq m<\omega\}\) is countable dense in
-  the \(SS\) subspace \(D=\bigcup\{D_n:n<\omega\}\). So choose \(F_n\in[E_n]^{<\omega}\)
-  with \(cl_D(\bigcup\{F_n:n<\omega\})=D\) and therefore 
-  \(cl(\bigcup\{F_n:n<\omega\})=X\).
-
-  Define \(G_n\in[D_n]^{<\omega}\) by \(G_n=D_n\cap\bigcup\{F_m:m\leq n\}\).
-  The result follows as \(\bigcup\{G_n:n<\omega\}=\bigcup\{F_n:n<\omega\}\).
+  Take \(\{D_n:n<\omega\}\) with \(D_n\subseteq X\) countable dense in
+  \(X\), and therefore countable dense in the \(SS\) subspace 
+  \(D=\bigcup\{D_n:n<\omega\}\),
+  So choose \(E_n\in[D_n]^{<\omega}\)
+  with \(cl_D(\bigcup\{E_n:n<\omega\})=D\) and therefore 
+  \(cl(\bigcup\{E_n:n<\omega\})\supseteq cl(D)=X\). Thus the \(E_n\)
+  witness that \(X\) is \(SS\). 
 \end{proof} 
 
 \section{A space which is \(CFT^+\) but not \(CDFT^{\plusMark}\)}
@@ -992,7 +996,7 @@ Question \ref{mainQuestion} negatively.
 We conclude this section by covering a related result observed by the
 anonymous referee in their initial review of this manuscript.
 
-\begin{theorem}
+\begin{theorem}\label{m-om}
   A topological space is \(M^+\) if and only if it is \(\Omega M^+\).
 \end{theorem}
 
@@ -1421,12 +1425,11 @@ The corresponding game-theoretic results also hold.
 \section{Acknowledgements}
 The author would like to thank Ziqin Feng and Gary Gruenhage
 for their helpful comments on the topic of \(C_p(\onePtLind{\omega_1})\).
-The author also thanks the anonymous referree who pointed out
-the game strategies in Proposition \ref{cofinalSequence} could handle all
-subsequences rather than only final sequences, in addition to the
-observation given as the final result of the third section.
+The author also thanks the anonymous referee for their helpful suggestions
+to improve Propositions \ref{cofinalSequence} and \ref{ds-ss}, and the observation
+of Theorem \ref{m-om}.
 
 \bibliographystyle{plain}
-\bibliography{biliography}
+\bibliography{bibliography}
 
 \end{document}
