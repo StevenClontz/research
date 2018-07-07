@@ -1,0 +1,160 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage{../../clontzDefinitions}
+
+\renewcommand{\vec}{\mathbf}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{notation}[theorem]{Notation}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+
+
+
+\begin{document}
+
+\title{Dual selection games}
+
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics and Statistics,
+The University of South Alabama,
+Mobile, AL 36688}
+\email{sclontz@southalabama.edu}
+
+
+
+\keywords{Selection principle, selection game,
+limited information strategies}
+
+\subjclass[2010]{54C30, 54D20, 54D45, 91A44}
+
+
+
+
+
+
+\begin{abstract}
+  (an investigation of dual selection games)
+\end{abstract}
+
+
+\maketitle
+
+
+
+
+
+
+
+\section{Introduction}
+
+\begin{definition}
+  The \term{selection game} \(\schStrongSelGame{\mc A}{\mc B}\) 
+  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
+  During round \(n\), \(\plI\) chooses
+  \(A_n\in\mc A\), followed by \(\plII\) choosing \(B_n\in A_n\).
+  Player \(\plII\) wins in the case that \(\{B_n:n<\omega\}\in\mc B\),
+  and Player \(\plI\) wins otherwise.
+\end{definition}
+
+  For brevity, let 
+  \[
+    \schStrongSelGame{\mc A}{\neg \mc B}
+      =
+    \schStrongSelGame{\mc A}{\mc P\left(\bigcup \mc A\right)\setminus \mc B}
+  .\]
+  That is, \(\plII\) wins in the case that \(\{B_n:n<\omega\}\not\in\mc B\),
+  and \(\plI\) wins otherwise.
+
+\begin{definition}
+  For a set \(X\), let \(\mathbf C(X)\) be the collection of all
+  choice functions on \(X\), functions \(f:X\to\bigcup X\) 
+  such that \(f(x)\in x\) for all \(x\in X\).
+\end{definition}
+
+\begin{definition}
+  The set \(\mc A'\) is said to be a \term{reflection} of the set \(\mc A\)
+  if \[\{\ran f:f\in\mathbf C(\mc A')\}=\mc A.\]
+\end{definition}
+
+  For example, a reflection of the collection \(\mc O_X\) of basic open covers
+  of \(X\) would be \(\mc P_X=\{\mc T_{X,x}:x\in X\}\), where \(\mc T_{X,x}\) 
+  is the corresponding point-base at \(x\in X\). 
+  Likewise for the collection \(\Omega_{X,x}\)
+  of sets with \(x\in X\) as a limit point, \(\mc T_{X,x}\) is itself
+  a reflection.
+
+\begin{theorem}
+  Let \(\mc A'\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\markwin\schStrongSelGame{\mc A'}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
+  Since \(\sigma(n)\in\mc A\), \(\sigma(n)=\ran{f_n}\)
+  for some \(f_n\in\mathbf C(\mc A')\). So let
+  \(\tau(A,n)=f_n(A)\) for all \(A\in \mc A'\) and \(n<\omega\).
+  Suppose \(A_n\in \mc A'\) for all \(n<\omega\).
+  Note that since \(\sigma\) is winning and 
+  \(\tau(A_n,n)=f_n(A_n)\in\ran{f_n}=\sigma(n)\),
+  \(\{\tau(A_n,n):n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+  \(\plII\markwin\schStrongSelGame{\mc A'}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness
+  \(\plII\markwin\schStrongSelGame{\mc A'}{\neg\mc B}\).
+  Let \(f_n\in\mathbf C(\mc A')\) be defined by \(f_n(A)=\sigma(A,n)\).
+  Since \(\mc A=\{\ran f:f\in\mathbf C(\mc A')\}\), let
+  \(\tau(n)=\ran{f_n}\). Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
+  all \(n<\omega\). Choose \(A_n\in\mc A'\) such that 
+  \(B_n=f_n(A_n)=\sigma(A_n,n)\). Since \(\sigma\) is winning,
+  \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography}
+
+\end{document}
