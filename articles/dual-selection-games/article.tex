@@ -112,8 +112,8 @@ limited information strategies}
 \end{definition}
 
 \begin{definition}
-  The set \(\mc A'\) is said to be a \term{reflection} of the set \(\mc A\)
-  if \[\{\ran f:f\in\mathbf C(\mc A')\}=\mc A.\]
+  The set \(\mc R\) is said to be a \term{reflection} of the set \(\mc A\)
+  if \[\mc A= \{\ran f:f\in\mathbf C(\mc R)\}.\]
 \end{definition}
 
   For example, a reflection of the collection \(\mc O_X\) of basic open covers
@@ -123,35 +123,132 @@ limited information strategies}
   of sets with \(x\in X\) as a limit point, \(\mc T_{X,x}\) is itself
   a reflection.
 
+\begin{lemma}
+  Let \(\mc R\) be a reflection of \(\mc A\). Then \(\bigcup \mc R=\bigcup \mc A\).
+\end{lemma}
+\begin{proof}
+  If \(x\in \bigcup\mc A\), then \(x\in\ran{f}\) for some \(f\in\mathbf C(\mc R)\).
+  Thus \(x=f(R)\in R\) for some \(R\in\mc R\), showing \(x\in\bigcup\mc R\).
+
+  Likewise if \(x\in\bigcup\mc R\), so \(x\in R\) for some \(R\in \mc R\).
+  Let \(f\in\mathbf C(\mc R)\) satisfy \(f(R)=x\), so \(x\in\ran{f}\),
+  showing \(x\in\bigcup\mc A\).
+\end{proof}
+
 \begin{theorem}
-  Let \(\mc A'\) be a reflection of \(\mc A\). 
+  Let \(\mc R\) be a reflection of \(\mc A\). 
 
   Then
   \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\) if and only if
-  \(\plII\markwin\schStrongSelGame{\mc A'}{\neg\mc B}\).
+  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
 \end{theorem}
 
 \begin{proof}
   Let \(\sigma\) witness 
   \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
-  Since \(\sigma(n)\in\mc A\), \(\sigma(n)=\ran{f_n}\)
-  for some \(f_n\in\mathbf C(\mc A')\). So let
-  \(\tau(A,n)=f_n(A)\) for all \(A\in \mc A'\) and \(n<\omega\).
-  Suppose \(A_n\in \mc A'\) for all \(n<\omega\).
+  Since \(\sigma(n)\in\mc A=\{\ran{f}:f\in\mathbf C(\mc R)\}\), 
+  \(\sigma(n)=\ran{f_n}\)
+  for some \(f_n\in\mathbf C(\mc R)\). So let
+  \(\tau(R,n)=f_n(R)\) for all \(R\in \mc R\) and \(n<\omega\).
+  Suppose \(R_n\in \mc R\) for all \(n<\omega\).
   Note that since \(\sigma\) is winning and 
-  \(\tau(A_n,n)=f_n(A_n)\in\ran{f_n}=\sigma(n)\),
-  \(\{\tau(A_n,n):n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
-  \(\plII\markwin\schStrongSelGame{\mc A'}{\neg\mc B}\).
+  \(\tau(R_n,n)=f_n(R_n)\in\ran{f_n}=\sigma(n)\),
+  \(\{\tau(R_n,n):n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
 
   Now let \(\sigma\) witness
-  \(\plII\markwin\schStrongSelGame{\mc A'}{\neg\mc B}\).
-  Let \(f_n\in\mathbf C(\mc A')\) be defined by \(f_n(A)=\sigma(A,n)\).
-  Since \(\mc A=\{\ran f:f\in\mathbf C(\mc A')\}\), let
+  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Let \(f_n\in\mathbf C(\mc R)\) be defined by \(f_n(R)=\sigma(R,n)\).
+  Since \(\tau(n)\in\mc A=\{\ran f:f\in\mathbf C(\mc R)\}\), let
   \(\tau(n)=\ran{f_n}\). Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
-  all \(n<\omega\). Choose \(A_n\in\mc A'\) such that 
-  \(B_n=f_n(A_n)=\sigma(A_n,n)\). Since \(\sigma\) is winning,
+  all \(n<\omega\). Choose \(R_n\in\mc R\) such that 
+  \(B_n=f_n(R_n)=\sigma(R_n,n)\). Since \(\sigma\) is winning,
   \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
   \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
+  Let \(n<\omega\). Suppose that for each \(R\in\mc R\),
+  there was \(g(R)\in R\) such that for all \(A\in \mc A\),
+  \(\sigma(A,n)\not=g(R)\). Then \(g\in\mathbf C(\mc R)\),
+  and \(\sigma(\ran g,n)\not=g(R)\) for all \(R\in\mc R\),
+  a contradiction.
+
+  So choose \(\tau(n)\in\mc R\) such that for all \(r\in \tau(n)\)
+  there exists \(A_{r,n}\in\mc A\) such that \(\sigma(A_{r,n},n)=r\).
+  It follows that when \(r_n\in\tau(n)\) for \(n<\omega\),
+  \(\{r_n:n<\omega\}=\{\sigma(A_{r_n,n}:n<\omega\}\in B\),
+  so \(\tau\) witnesses
+  \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness 
+  \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Then \(\sigma(n)\in\mc R\), so for \(A\in\mc A\), let
+  \(f_A\in\mathbf C(\mc R)\) satisfy \(A=\ran{f_A}\),
+  and let \(\tau(A,n)=f_A(\sigma(n))\).
+  Then if \(A_n\in\mc A\) for \(n<\omega\), \(\tau(A_n,n)\in\sigma(n)\),
+  so \(\{\tau(A_n,n):n<\omega\}\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plI\win\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plI\win\schStrongSelGame{\mc A}{\mc B}\).
+  Let \(c(\emptyset)=\emptyset\). Suppose 
+  \(c(s)\in(\bigcup A)^{<\omega}=(\bigcup R)^{<\omega}\)
+  is defined for \(s\in\mc R^{<\omega}\). Since \(\sigma(c(s))\in\mc A\),
+  let \(f_s\in\mathbf C(\mc R)\) satisfy \(\sigma(c(s))=\ran{f_s}\),
+  and let \(c(s\concat\<R\>)=c(s)\concat\<f_s(R)\>\).
+  Then let \(c(\alpha)=\bigcup\{c(\alpha\rest n):n<\omega\}\)
+  for \(\alpha\in\mc R^\omega\), so
+  \[
+    c(\alpha)(n)
+      =
+    f_{\alpha\rest n}(\alpha(n))
+      \in
+    \ran{f_{\alpha\rest n}}
+      =
+    \sigma(c(\alpha\rest n))
+  \]
+  demonstrating that \(c(\alpha)\) is a legal attack against \(\sigma\).
+
+  Let \(\tau(s\concat\<R\>)=f_s(R)\). Consider the attack \(\alpha\in\mc R^\omega\)
+  against \(\tau\). Then since \(\sigma\) is winning and
+  \(
+    \tau(\alpha\rest n+1)=f_{\alpha\rest n}(\alpha(n))\in
+    \ran{f_{\alpha\rest n}}=\sigma(c(\alpha\rest n))
+  \), it follows that \(\{\tau(\alpha\rest n+1):n<\omega\}\not\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+%  Now let \(\sigma\) witness
+%  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+%  Let \(f_n\in\mathbf C(\mc R)\) be defined by \(f_n(R)=\sigma(R,n)\).
+%  Since \(\tau(n)\in\mc A=\{\ran f:f\in\mathbf C(\mc R)\}\), let
+%  \(\tau(n)=\ran{f_n}\). Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
+%  all \(n<\omega\). Choose \(R_n\in\mc R\) such that 
+%  \(B_n=f_n(R_n)=\sigma(R_n,n)\). Since \(\sigma\) is winning,
+%  \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+%  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
 \end{proof}
 
 \bibliographystyle{plain}
