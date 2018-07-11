@@ -240,15 +240,27 @@ limited information strategies}
   Thus \(\tau\) witnesses
   \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
 
-%  Now let \(\sigma\) witness
-%  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
-%  Let \(f_n\in\mathbf C(\mc R)\) be defined by \(f_n(R)=\sigma(R,n)\).
-%  Since \(\tau(n)\in\mc A=\{\ran f:f\in\mathbf C(\mc R)\}\), let
-%  \(\tau(n)=\ran{f_n}\). Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
-%  all \(n<\omega\). Choose \(R_n\in\mc R\) such that 
-%  \(B_n=f_n(R_n)=\sigma(R_n,n)\). Since \(\sigma\) is winning,
-%  \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
-%  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
+  Now let \(\sigma\) witness
+  \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+  For \(s\in \mc R^{<\omega}\), define \(f_s\in\mathbf C(\mc R)\)
+  by \(f_s(R)=\sigma(s\concat\<R\>)\). Let \(\tau(\emptyset)=\ran{f_\emptyset}\),
+  and for \(x\in\tau(\emptyset)\), choose \(R_{\<x\>}\in\mc R\) such that
+  \(x=f_{\emptyset}(R_{\<x\>})\) (for other \(x\in\bigcup A\), choose \(R_{\<x\>}\)
+  arbitrarily as it won't be used). Now let \(s\in(\bigcup A)^{<\omega}\setminus\emptyset\),
+  and suppose \(\tau(s\rest n)\in\mc A\) and \(R_{s\rest n+1}\in\mc R\) have been
+  defined for \(n<|s|\). Then let \(\tau(s)=\ran{f_{\<R_{s\rest 0},\dots,R_s\>}}\)
+  and for \(x\in\tau(s)\) choose \(R_{s\concat\<x\>}\) such that
+  \(x=f_{\<R_{s\rest 0},\dots,R_s\>}(R_{s\concat\<x\>})\) (and again,
+  choose \(R_{s\concat\<x\>}\) arbitrarily for other \(x\in\bigcup\mc A\) as it won't be used).
+
+  Then let \(\alpha\) attack \(\tau\), so
+  \(\alpha(n)\in\tau(\alpha\rest n)\) and thus 
+  \(\alpha(n)=f_{\<R_{\alpha\rest 0},\dots,R_{\alpha\rest n}\>}(R_{\alpha\rest n+1})
+  =\sigma(\<R_{\alpha\rest 0},\dots,R_{\alpha\rest n+1}\>)\).  Since \(\sigma\) is winning,
+  \(\{\sigma(\<R_{\alpha\rest 0},\dots,R_{\alpha\rest n+1}\>):n<\omega\}
+  =\{\alpha(n):n<\omega\}\not\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plI\win\schStrongSelGame{\mc A}{\mc B}\).
 \end{proof}
 
 \bibliographystyle{plain}
