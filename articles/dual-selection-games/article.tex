@@ -263,6 +263,48 @@ limited information strategies}
   \(\plI\win\schStrongSelGame{\mc A}{\mc B}\).
 \end{proof}
 
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
+  Let \(s\in(\bigcup R)^{<\omega}\) and assume \(a(s)\in\mc A^{|s|}\) is defined
+  (of course, \(a(\emptyset)=\emptyset\)).
+  Suppose for all \(R\in\mc R\) there existed \(f(R)\in R\) such that for all
+  \(A\in\mc A\), \(\sigma(a(s)\concat\<A\>)\not=f(R)\). Then 
+  \(\sigma(a(s)\concat\<\ran{f}\>)\not=f(R)\) for all \(R\in\mc R\), a contradiction.
+  So let \(\tau(s)\in\mc R\) satisfy for all \(x\in\tau(s)\) there exists
+  \(a(s\concat\<x\>)\in\mc A^{|s|+1}\) extending \(a(s)\) such that 
+  \(x=\sigma(a(s\concat\<x\>))\).
+
+  If \(\tau\) is attacked by \(\alpha\in(\bigcup R)^\omega\), then 
+  \(\alpha(n)\in\tau(\alpha\rest n)\). So \(\alpha(n)=\sigma(a(\alpha\rest n+1))\),
+  and since \(\sigma\) is winning, 
+  \(\{\sigma(a(\alpha\rest n+1)):n<\omega\}=\{\alpha(n):n<\omega\}\in\mc B\).
+  Therefore \(\tau\) witnesses
+  \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness
+  \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Let \(s\in\mc A^{<\omega}\), and suppose \(c(s)\in(\bigcup \mc R)^{|s|}\) is defined
+  (again, \(c(\emptyset)=\emptyset\)). Let \(\tau(s\concat\<\ran{f}\>)=f(\sigma(c(s)))\),
+  and let \(c(s\concat\<\ran f\>)\) extend \(c(s)\) by letting
+  \(c(s\concat\<\ran f\>)(|s|)=\tau(s\concat\<\ran f\>)\).
+
+  If \(\tau\) is attacked by \(\alpha\in\mc A^\omega\), where \(\alpha(n)=\ran{f_n}\)
+  for \(n<\omega\), then since \(\tau(\alpha\rest n+1)\in\sigma(c(\alpha\rest n))\)
+  and \(\sigma\) is winning, we conclude that 
+  \(\{\tau(\alpha\rest n+1):n<\omega\}\in\mc B\).
+  Therefore \(\tau\) witnesses
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
 
