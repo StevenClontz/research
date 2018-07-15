@@ -73,7 +73,16 @@ limited information strategies}
 
 
 \begin{abstract}
-  (an investigation of dual selection games)
+  Often, selection games have dual games for which a winning
+  strategy for a player in one game may be used to create
+  a winning strategy 
+  For example, the Rothberger selection game involving open covers
+  is dual to the point-open game. This extends to a general
+  theorem: if \(\mc A=\{\ran{f}:f\in\mathbf C(\mc R)\}\)
+  where \(\mathbf C(\mc R)=\{f\in(\bigcup\mc R)^{\mc R}:R\in\mc R\Rightarrow f(R)\in R\}\) 
+  collects the choice functions on the set \(\mc R\),
+  then \(G_1(\mc A,\mc B)\) and \(G_1(\mc R,\neg\mc B)\)
+  are dual selection games. 
 \end{abstract}
 
 
@@ -106,9 +115,8 @@ limited information strategies}
   and \(\plI\) wins otherwise.
 
 \begin{definition}
-  For a set \(X\), let \(\mathbf C(X)\) be the collection of all
-  choice functions on \(X\), functions \(f:X\to\bigcup X\) 
-  such that \(f(x)\in x\) for all \(x\in X\).
+  For a set \(X\), let \(\mathbf C(X)=\{f\in(\bigcup X)^X:x\in X\Rightarrow f(x)\in x\}\)
+  be the collection of all choice functions on \(X\).
 \end{definition}
 
 \begin{definition}
@@ -116,16 +124,21 @@ limited information strategies}
   if \[\mc A= \{\ran f:f\in\mathbf C(\mc R)\}.\]
 \end{definition}
 
-  For example, a reflection of the collection \(\mc O_X\) of basic open covers
-  of \(X\) would be \(\mc P_X=\{\mc T_{X,x}:x\in X\}\), where \(\mc T_{X,x}\) 
-  is the corresponding point-base at \(x\in X\). 
-  Likewise for the collection \(\Omega_{X,x}\)
-  of sets with \(x\in X\) as a limit point, \(\mc T_{X,x}\) is itself
-  a reflection.
+As we will see, reflections of selection sets are used frequently (but implicitly) 
+throughout the literature to define dual selection games.
 
-\begin{lemma}
+%  For example, a reflection of the collection \(\mc O_X\) of basic open covers
+%  of \(X\) would be \(\mc P_X=\{\mc T_{X,x}:x\in X\}\), where \(\mc T_{X,x}\) 
+%  is the corresponding point-base at \(x\in X\). 
+%  Likewise for the collection \(\Omega_{X,x}\)
+%  of sets with \(x\in X\) as a limit point, \(\mc T_{X,x}\) is itself
+%  a reflection.
+
+\section{Main Results}
+
+\begin{proposition}
   Let \(\mc R\) be a reflection of \(\mc A\). Then \(\bigcup \mc R=\bigcup \mc A\).
-\end{lemma}
+\end{proposition}
 \begin{proof}
   If \(x\in \bigcup\mc A\), then \(x\in\ran{f}\) for some \(f\in\mathbf C(\mc R)\).
   Thus \(x=f(R)\in R\) for some \(R\in\mc R\), showing \(x\in\bigcup\mc R\).
@@ -134,6 +147,19 @@ limited information strategies}
   Let \(f\in\mathbf C(\mc R)\) satisfy \(f(R)=x\), so \(x\in\ran{f}\),
   showing \(x\in\bigcup\mc A\).
 \end{proof}
+
+The following four theorems demonstrate that reflections characterize
+dual selection games for both perfect information strategies and
+certain limited information strategies.
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) are \term{Markov information dual} if both
+  of the following hold.
+  \begin{itemize}
+    \item \(I\prewin G(X)\) if and only if \(II\markwin H(X)\).
+    \item \(II\markwin G(X)\) if and only if \(I\prewin H(X)\).
+  \end{itemize}
+\end{definition}
 
 \begin{theorem}
   Let \(\mc R\) be a reflection of \(\mc A\). 
@@ -187,7 +213,7 @@ limited information strategies}
   So choose \(\tau(n)\in\mc R\) such that for all \(r\in \tau(n)\)
   there exists \(A_{r,n}\in\mc A\) such that \(\sigma(A_{r,n},n)=r\).
   It follows that when \(r_n\in\tau(n)\) for \(n<\omega\),
-  \(\{r_n:n<\omega\}=\{\sigma(A_{r_n,n}:n<\omega\}\in B\),
+  \(\{r_n:n<\omega\}=\{\sigma(A_{r_n,n}):n<\omega\}\in B\),
   so \(\tau\) witnesses
   \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
 
@@ -201,6 +227,15 @@ limited information strategies}
   Thus \(\tau\) witnesses
   \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
 \end{proof}
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) are \term{perfect information dual} if both
+  of the following hold.
+  \begin{itemize}
+    \item \(I\win G(X)\) if and only if \(II\win H(X)\).
+    \item \(II\win G(X)\) if and only if \(I\win H(X)\).
+  \end{itemize}
+\end{definition}
 
 \begin{theorem}
   Let \(\mc R\) be a reflection of \(\mc A\). 
@@ -304,6 +339,12 @@ limited information strategies}
   Therefore \(\tau\) witnesses
   \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
 \end{proof}
+
+\begin{corollary}
+  If \(\mc R\) is a reflection of \(\mc A\),
+  then \(\schStrongSelGame{\mc A}{\mc B}\) and \(\schStrongSelGame{\mc R}{\neg\mc B}\)
+  are both perfect information dual and Markov information dual.
+\end{corollary}
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
