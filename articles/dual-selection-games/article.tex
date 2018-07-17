@@ -71,14 +71,14 @@ limited information strategies}
 
 
 
-
 \begin{abstract}
   Often, selection games have dual games for which a winning
   strategy for a player in one game may be used to create
   a winning strategy 
   For example, the Rothberger selection game involving open covers
   is dual to the point-open game. This extends to a general
-  theorem: if \(\mc A=\{\ran{f}:f\in\mathbf C(\mc R)\}\)
+  theorem: if \(\{\ran{f}:f\in\mathbf C(\mc R)\}\) is coinitial in \(\mc A\)
+  with respect to \(\subseteq\),
   where \(\mathbf C(\mc R)=\{f\in(\bigcup\mc R)^{\mc R}:R\in\mc R\Rightarrow f(R)\in R\}\) 
   collects the choice functions on the set \(\mc R\),
   then \(G_1(\mc A,\mc B)\) and \(G_1(\mc R,\neg\mc B)\)
@@ -120,8 +120,14 @@ limited information strategies}
 \end{definition}
 
 \begin{definition}
+  Write \(X\preceq Y\) if \(X\) is coinitial in \(Y\) with respect to \(\subseteq\);
+  that is, \(X\subseteq Y\), and for all \(y\in Y\), there exists \(x\in X\) such that 
+  \(x\subseteq y\).
+\end{definition}
+
+\begin{definition}
   The set \(\mc R\) is said to be a \term{reflection} of the set \(\mc A\)
-  if \[\mc A= \{\ran f:f\in\mathbf C(\mc R)\}.\]
+  if \[\{\ran f:f\in\mathbf C(\mc R)\}\preceq\mc A.\]
 \end{definition}
 
 As we will see, reflections of selection sets are used frequently (but implicitly) 
@@ -136,17 +142,17 @@ throughout the literature to define dual selection games.
 
 \section{Main Results}
 
-\begin{proposition}
-  Let \(\mc R\) be a reflection of \(\mc A\). Then \(\bigcup \mc R=\bigcup \mc A\).
-\end{proposition}
-\begin{proof}
-  If \(x\in \bigcup\mc A\), then \(x\in\ran{f}\) for some \(f\in\mathbf C(\mc R)\).
-  Thus \(x=f(R)\in R\) for some \(R\in\mc R\), showing \(x\in\bigcup\mc R\).
-
-  Likewise if \(x\in\bigcup\mc R\), so \(x\in R\) for some \(R\in \mc R\).
-  Let \(f\in\mathbf C(\mc R)\) satisfy \(f(R)=x\), so \(x\in\ran{f}\),
-  showing \(x\in\bigcup\mc A\).
-\end{proof}
+%\begin{proposition}
+%  Let \(\mc R\) be a reflection of \(\mc A\). Then \(\bigcup \mc R=\bigcup \mc A\).
+%\end{proposition}
+%\begin{proof}
+%  If \(x\in \bigcup\mc A\), then \(x\in\ran{f}\) for some \(f\in\mathbf C(\mc R)\).
+%  Thus \(x=f(R)\in R\) for some \(R\in\mc R\), showing \(x\in\bigcup\mc R\).
+%
+%  Likewise if \(x\in\bigcup\mc R\), so \(x\in R\) for some \(R\in \mc R\).
+%  Let \(f\in\mathbf C(\mc R)\) satisfy \(f(R)=x\), so \(x\in\ran{f}\),
+%  showing \(x\in\bigcup\mc A\).
+%\end{proof}
 
 The following four theorems demonstrate that reflections characterize
 dual selection games for both perfect information strategies and
@@ -172,21 +178,21 @@ certain limited information strategies.
 \begin{proof}
   Let \(\sigma\) witness 
   \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
-  Since \(\sigma(n)\in\mc A=\{\ran{f}:f\in\mathbf C(\mc R)\}\), 
-  \(\sigma(n)=\ran{f_n}\)
+  Since \(\sigma(n)\in\mc A\),
+  \(\ran{f_n}\subseteq\sigma(n)\)
   for some \(f_n\in\mathbf C(\mc R)\). So let
   \(\tau(R,n)=f_n(R)\) for all \(R\in \mc R\) and \(n<\omega\).
   Suppose \(R_n\in \mc R\) for all \(n<\omega\).
   Note that since \(\sigma\) is winning and 
-  \(\tau(R_n,n)=f_n(R_n)\in\ran{f_n}=\sigma(n)\),
+  \(\tau(R_n,n)=f_n(R_n)\in\ran{f_n}\subseteq\sigma(n)\),
   \(\{\tau(R_n,n):n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
   \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
 
   Now let \(\sigma\) witness
   \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
-  Let \(f_n\in\mathbf C(\mc R)\) be defined by \(f_n(R)=\sigma(R,n)\).
-  Since \(\tau(n)\in\mc A=\{\ran f:f\in\mathbf C(\mc R)\}\), let
-  \(\tau(n)=\ran{f_n}\). Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
+  Let \(f_n\in\mathbf C(\mc R)\) be defined by \(f_n(R)=\sigma(R,n)\),
+  and let \(\tau(n)=\ran{f_n}\in\mc A\). 
+  Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
   all \(n<\omega\). Choose \(R_n\in\mc R\) such that 
   \(B_n=f_n(R_n)=\sigma(R_n,n)\). Since \(\sigma\) is winning,
   \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
@@ -345,6 +351,10 @@ certain limited information strategies.
   then \(\schStrongSelGame{\mc A}{\mc B}\) and \(\schStrongSelGame{\mc R}{\neg\mc B}\)
   are both perfect information dual and Markov information dual.
 \end{corollary}
+
+\section{Acknowledgements}
+
+Thanks to Prof. Jared Holshouser for his input during the writing of these results.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
