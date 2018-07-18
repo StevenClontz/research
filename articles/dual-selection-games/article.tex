@@ -72,9 +72,10 @@ limited information strategies}
 
 
 \begin{abstract}
-  Often, selection games have dual games for which a winning
-  strategy for a player in one game may be used to create
-  a winning strategy 
+  Often, a given selection game studied in the literature has
+  a known dual game. In dual games, a winning
+  strategy for a player in either game may be used to create
+  a winning strategy for the opponent in the dual. 
   For example, the Rothberger selection game involving open covers
   is dual to the point-open game. This extends to a general
   theorem: if \(\{\ran{f}:f\in\mathbf C(\mc R)\}\) is coinitial in \(\mc A\)
@@ -123,11 +124,14 @@ limited information strategies}
   Write \(X\preceq Y\) if \(X\) is coinitial in \(Y\) with respect to \(\subseteq\);
   that is, \(X\subseteq Y\), and for all \(y\in Y\), there exists \(x\in X\) such that 
   \(x\subseteq y\).
+
+  In the context of selection games, we will say \(\mc A'\) is a \term{selection basis}
+  for \(\mc A\) when \(\mc A'\preceq \mc A\).
 \end{definition}
 
 \begin{definition}
   The set \(\mc R\) is said to be a \term{reflection} of the set \(\mc A\)
-  if \[\{\ran f:f\in\mathbf C(\mc R)\}\preceq\mc A.\]
+  if \[\{\ran f:f\in\mathbf C(\mc R)\}\] is a selection basis for \(\mc A\).
 \end{definition}
 
 As we will see, reflections of selection sets are used frequently (but implicitly) 
@@ -212,8 +216,9 @@ certain limited information strategies.
   \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
   Let \(n<\omega\). Suppose that for each \(R\in\mc R\),
   there was \(g(R)\in R\) such that for all \(A\in \mc A\),
-  \(\sigma(A,n)\not=g(R)\). Then \(g\in\mathbf C(\mc R)\),
-  and \(\sigma(\ran g,n)\not=g(R)\) for all \(R\in\mc R\),
+  \(\sigma(A,n)\not=g(R)\). Then \(g\in\mathbf C(\mc R)\)
+  and \(\ran g\in\mc A\),
+  thus \(\sigma(\ran g,n)\not=g(R)\) for all \(R\in\mc R\),
   a contradiction.
 
   So choose \(\tau(n)\in\mc R\) such that for all \(r\in \tau(n)\)
@@ -226,8 +231,8 @@ certain limited information strategies.
   Now let \(\sigma\) witness 
   \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
   Then \(\sigma(n)\in\mc R\), so for \(A\in\mc A\), let
-  \(f_A\in\mathbf C(\mc R)\) satisfy \(A=\ran{f_A}\),
-  and let \(\tau(A,n)=f_A(\sigma(n))\).
+  \(f_A\in\mathbf C(\mc R)\) satisfy \(\ran{f_A}\subseteq A\),
+  and let \(\tau(A,n)=f_A(\sigma(n))\in A\cap\sigma(n)\).
   Then if \(A_n\in\mc A\) for \(n<\omega\), \(\tau(A_n,n)\in\sigma(n)\),
   so \(\{\tau(A_n,n):n<\omega\}\in\mc B\).
   Thus \(\tau\) witnesses
@@ -255,9 +260,9 @@ certain limited information strategies.
   Let \(\sigma\) witness 
   \(\plI\win\schStrongSelGame{\mc A}{\mc B}\).
   Let \(c(\emptyset)=\emptyset\). Suppose 
-  \(c(s)\in(\bigcup A)^{<\omega}=(\bigcup R)^{<\omega}\)
+  \(c(s)\in(\bigcup A)^{<\omega}\)
   is defined for \(s\in\mc R^{<\omega}\). Since \(\sigma(c(s))\in\mc A\),
-  let \(f_s\in\mathbf C(\mc R)\) satisfy \(\sigma(c(s))=\ran{f_s}\),
+  let \(f_s\in\mathbf C(\mc R)\) satisfy \(\ran{f_s}\subseteq\sigma(c(s))\),
   and let \(c(s\concat\<R\>)=c(s)\concat\<f_s(R)\>\).
   Then let \(c(\alpha)=\bigcup\{c(\alpha\rest n):n<\omega\}\)
   for \(\alpha\in\mc R^\omega\), so
@@ -267,7 +272,7 @@ certain limited information strategies.
     f_{\alpha\rest n}(\alpha(n))
       \in
     \ran{f_{\alpha\rest n}}
-      =
+      \subseteq
     \sigma(c(\alpha\rest n))
   \]
   demonstrating that \(c(\alpha)\) is a legal attack against \(\sigma\).
@@ -276,7 +281,7 @@ certain limited information strategies.
   against \(\tau\). Then since \(\sigma\) is winning and
   \(
     \tau(\alpha\rest n+1)=f_{\alpha\rest n}(\alpha(n))\in
-    \ran{f_{\alpha\rest n}}=\sigma(c(\alpha\rest n))
+    \ran{f_{\alpha\rest n}}\subseteq\sigma(c(\alpha\rest n))
   \), it follows that \(\{\tau(\alpha\rest n+1):n<\omega\}\not\in\mc B\).
   Thus \(\tau\) witnesses
   \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
@@ -284,15 +289,16 @@ certain limited information strategies.
   Now let \(\sigma\) witness
   \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
   For \(s\in \mc R^{<\omega}\), define \(f_s\in\mathbf C(\mc R)\)
-  by \(f_s(R)=\sigma(s\concat\<R\>)\). Let \(\tau(\emptyset)=\ran{f_\emptyset}\),
+  by \(f_s(R)=\sigma(s\concat\<R\>)\). Let \(\tau(\emptyset)=\ran{f_\emptyset}\in\mc A\),
   and for \(x\in\tau(\emptyset)\), choose \(R_{\<x\>}\in\mc R\) such that
   \(x=f_{\emptyset}(R_{\<x\>})\) (for other \(x\in\bigcup A\), choose \(R_{\<x\>}\)
-  arbitrarily as it won't be used). Now let \(s\in(\bigcup A)^{<\omega}\setminus\emptyset\),
-  and suppose \(\tau(s\rest n)\in\mc A\) and \(R_{s\rest n+1}\in\mc R\) have been
-  defined for \(n<|s|\). Then let \(\tau(s)=\ran{f_{\<R_{s\rest 0},\dots,R_s\>}}\)
-  and for \(x\in\tau(s)\) choose \(R_{s\concat\<x\>}\) such that
-  \(x=f_{\<R_{s\rest 0},\dots,R_s\>}(R_{s\concat\<x\>})\) (and again,
-  choose \(R_{s\concat\<x\>}\) arbitrarily for other \(x\in\bigcup\mc A\) as it won't be used).
+  arbitrarily as it won't be used). Now let \(s\in(\bigcup A)^{<\omega}\),
+  and suppose \(R_{s\rest n\concat\<x\>}\in\mc R\) has been defined for
+  \(n\leq|s|\) and \(x\in\bigcup A\). 
+  Then let \(\tau(s\concat\<x\>)=\ran{f_{\<R_{s\rest 0},\dots,R_s,R_{s\concat\<x\>}\>}}\)
+  and for \(y\in\tau(s)\) choose \(R_{s\concat\<x,y\>}\) such that
+  \(x=f_{\<R_{s\rest 0},\dots,R_s,R_{s\concat\<x\>}\>}(R_{s\concat\<x,y\>})\) (and again,
+  choose \(R_{s\concat\<x,y\>}\) arbitrarily for other \(y\in\bigcup\mc A\) as it won't be used).
 
   Then let \(\alpha\) attack \(\tau\), so
   \(\alpha(n)\in\tau(\alpha\rest n)\) and thus 
@@ -315,10 +321,11 @@ certain limited information strategies.
 \begin{proof}
   Let \(\sigma\) witness 
   \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
-  Let \(s\in(\bigcup R)^{<\omega}\) and assume \(a(s)\in\mc A^{|s|}\) is defined
+  Let \(s\in(\bigcup A)^{<\omega}\) and assume \(a(s)\in\mc A^{|s|}\) is defined
   (of course, \(a(\emptyset)=\emptyset\)).
   Suppose for all \(R\in\mc R\) there existed \(f(R)\in R\) such that for all
-  \(A\in\mc A\), \(\sigma(a(s)\concat\<A\>)\not=f(R)\). Then 
+  \(A\in\mc A\), \(\sigma(a(s)\concat\<A\>)\not=f(R)\). Then
+  \(f\in\mathbf C(\mc R)\) and \(\ran{f}\in\mc A\), and thus 
   \(\sigma(a(s)\concat\<\ran{f}\>)\not=f(R)\) for all \(R\in\mc R\), a contradiction.
   So let \(\tau(s)\in\mc R\) satisfy for all \(x\in\tau(s)\) there exists
   \(a(s\concat\<x\>)\in\mc A^{|s|+1}\) extending \(a(s)\) such that 
@@ -333,14 +340,15 @@ certain limited information strategies.
 
   Now let \(\sigma\) witness
   \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
-  Let \(s\in\mc A^{<\omega}\), and suppose \(c(s)\in(\bigcup \mc R)^{|s|}\) is defined
-  (again, \(c(\emptyset)=\emptyset\)). Let \(\tau(s\concat\<\ran{f}\>)=f(\sigma(c(s)))\),
-  and let \(c(s\concat\<\ran f\>)\) extend \(c(s)\) by letting
-  \(c(s\concat\<\ran f\>)(|s|)=\tau(s\concat\<\ran f\>)\).
+  Let \(s\in\mc A^{<\omega}\), and suppose \(r(s)\in(\bigcup \mc R)^{|s|}\) is defined
+  (again, \(r(\emptyset)=\emptyset\)). For \(A\in\mc A\) choose \(f_A\in\mathbf C(\mc R)\)
+  where \(\ran{f_A}\subseteq A\), and let \(\tau(s\concat\<A\>)=f_A(\sigma(r(s)))\),
+  and let \(r(s\concat\<A\>)\) extend \(r(s)\) by letting
+  \(r(s\concat\<A\>)(|s|)=\tau(s\concat\<A\>)\).
 
-  If \(\tau\) is attacked by \(\alpha\in\mc A^\omega\), where \(\alpha(n)=\ran{f_n}\)
-  for \(n<\omega\), then since \(\tau(\alpha\rest n+1)\in\sigma(c(\alpha\rest n))\)
-  and \(\sigma\) is winning, we conclude that 
+  If \(\tau\) is attacked by \(\alpha\in\mc A^\omega\), 
+  then since \(\tau(\alpha\rest n+1)=f_{\alpha(n)}(\sigma(r(\alpha\rest n))\in\alpha(n)\cap\sigma(r(\alpha\rest n))\)
+  and \(\sigma\) is winning, we conclude that \(\tau\) is a legal strategy and
   \(\{\tau(\alpha\rest n+1):n<\omega\}\in\mc B\).
   Therefore \(\tau\) witnesses
   \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
