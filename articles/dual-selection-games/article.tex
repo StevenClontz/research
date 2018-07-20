@@ -98,6 +98,24 @@ limited information strategies}
 \section{Introduction}
 
 \begin{definition}
+  An \term{\(\omega\)-length game} is a pair \(G=\<M,W\>\) such that
+  \(W\subseteq M^\omega\). The set \(M\) is the \term{moveset} of the game,
+  and the set \(W\) is the \term{payoff set} for the second player.
+\end{definition}
+
+In such a game \(G\), players \(\plI\) and \(\plII\) alternate making choices
+\(a_n\in M\) and \(b_n\in M\) during each round \(n<\omega\), 
+and \(\plII\) wins the game if and only if \(\<a_0,b_0,a_1,b_1,\dots\>\in W\).
+
+Often when defining games, \(\plI\) and \(\plII\) are restricted to choosing
+from different movesets \(A,B\). Of course, this can be modeled with \(\<M,W\>\)
+by simply letting \(M=A\cup B\) and adding/removing sequences from \(W\)
+whenever player \(\plI\)/\(\plII\) makes the first ``illegal'' move.
+
+A class of such games heavily studied in the literature (see \cite{MR1378387} and its
+many sequels) are selection games.
+
+\begin{definition}
   The \term{selection game} \(\schStrongSelGame{\mc A}{\mc B}\) 
   is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
   During round \(n\), \(\plI\) chooses
@@ -134,42 +152,109 @@ limited information strategies}
   if \[\{\ran f:f\in\mathbf C(\mc R)\}\] is a selection basis for \(\mc A\).
 \end{definition}
 
+Put another way, \(\mc R\) is a reflection of \(\mc A\) if for every \(A\in\mc A\),
+there exists \(f\in\mathbf C(\mc R)\) such that \(\ran f\in\mc A\) and \(\ran f\subseteq A\).
+
 As we will see, reflections of selection sets are used frequently (but implicitly) 
 throughout the literature to define dual selection games.
 
-%  For example, a reflection of the collection \(\mc O_X\) of basic open covers
-%  of \(X\) would be \(\mc P_X=\{\mc T_{X,x}:x\in X\}\), where \(\mc T_{X,x}\) 
-%  is the corresponding point-base at \(x\in X\). 
-%  Likewise for the collection \(\Omega_{X,x}\)
-%  of sets with \(x\in X\) as a limit point, \(\mc T_{X,x}\) is itself
-%  a reflection.
-
-\section{Main Results}
-
-%\begin{proposition}
-%  Let \(\mc R\) be a reflection of \(\mc A\). Then \(\bigcup \mc R=\bigcup \mc A\).
-%\end{proposition}
-%\begin{proof}
-%  If \(x\in \bigcup\mc A\), then \(x\in\ran{f}\) for some \(f\in\mathbf C(\mc R)\).
-%  Thus \(x=f(R)\in R\) for some \(R\in\mc R\), showing \(x\in\bigcup\mc R\).
-%
-%  Likewise if \(x\in\bigcup\mc R\), so \(x\in R\) for some \(R\in \mc R\).
-%  Let \(f\in\mathbf C(\mc R)\) satisfy \(f(R)=x\), so \(x\in\ran{f}\),
-%  showing \(x\in\bigcup\mc A\).
-%\end{proof}
-
-The following four theorems demonstrate that reflections characterize
-dual selection games for both perfect information strategies and
-certain limited information strategies.
+We use the following conventions to describe strategies for playing games.
 
 \begin{definition}
-  A pair of games \(G(X),H(X)\) are \term{Markov information dual} if both
+  For \(f\in B^A\) and \(X\subseteq A\), let \(f\rest X\) be the restrction of \(f\)
+  to \(X\). In particular, for \(f\in B^\omega\) and \(n<\omega\), \(f\rest n\)
+  describes the first \(n\) terms of the sequence \(f\).
+\end{definition}
+
+\begin{definition}
+  A \term{strategy} for the first player \(\plI\) (resp. second player \(\plII\))
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M^{<\omega}\to M\). This strategy is said to be \term{winning} if
+  for all possible \term{attacks} \(\alpha\in M^\omega\) by their opponent,
+  where \(\alpha(n)\) is played by the opponent during round \(n\),
+  the player wins the game by playing \(\sigma(\alpha\rest n)\)
+  (resp. \(\sigma(\alpha\rest n+1)\)) during round \(n\).
+\end{definition}
+
+That is, a strategy is a rule that determines the moves of a player based upon
+all previous moves of the opponent. (It could also rely on all previous
+moves of the player using the strategy, since these can be reconstructed from
+the previous moves of the opponent and the strategy itself.)
+
+\begin{definition}
+  A \term{predetermined strategy} for the first player \(\plI\)
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:\omega\to M\). This strategy is said to be winning if
+  for all possible attacks \(\alpha\in M^\omega\) by their opponent,
+  the first player wins the game by playing \(\sigma(n)\)
+  during round \(n\).
+\end{definition}
+
+So a predetermined strategy ignores all moves of the opponent during the
+game (all moves were decided before the game began).
+
+\begin{definition}
+  A \term{Markov strategy} for the second player \(\plII\)
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M\times\omega\to M\). This strategy is said to be winning if
+  for all possible attacks \(\alpha\in M^\omega\) by their opponent,
+  the first player wins the game by playing \(\sigma(\alpha(n),n)\)
+  during round \(n\).
+\end{definition}
+
+So a Markov strategy may only consider the most recent move of the opponent,
+and the current round number. Note that unlike perfect-information or
+predetermined strategies, a Markov strategy cannot use knowledge of
+moves used previously by the player (since they depend on previous moves of
+the opponent that have been ``forgotten'').
+
+\begin{definition}
+  Write \(\plI\win G\) (resp. \(\plI\prewin G\)) if player \(\plI\) has a winning
+  strategy (resp. winning predetermined strategy) for the game \(G\). Similarly,
+  write \(\plII\win G\) (resp. \(\plII\markwin G\)) if player \(\plII\) has a winning
+  strategy (resp. winning Markov strategy) for the game \(G\).
+\end{definition}
+
+Of course, \(\plII\markwin G\Rightarrow \plII\win G\Rightarrow \plI\notwin G\Rightarrow \plI\notprewin G\).
+In general, none of these implications (not even the second \cite{MR0054922}) can be reversed.
+
+It's worth noting that \(\plI\notprewin \schStrongSelGame{\mc A}{\mc B}\) is equivalent
+to the selection principle often denoted \(\schStrongSelProp{\mc A}{\mc B}\) in the literature.
+
+The goal of this paper is to characerize when two games are ``dual'' in the following
+senses.
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) defined for a topological space \(X\)
+  are \term{Markov information dual} if both
   of the following hold.
   \begin{itemize}
     \item \(I\prewin G(X)\) if and only if \(II\markwin H(X)\).
     \item \(II\markwin G(X)\) if and only if \(I\prewin H(X)\).
   \end{itemize}
 \end{definition}
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) defeind for a topological space \(X\)
+  are \term{perfect information dual} if both
+  of the following hold.
+  \begin{itemize}
+    \item \(I\win G(X)\) if and only if \(II\win H(X)\).
+    \item \(II\win G(X)\) if and only if \(I\win H(X)\).
+  \end{itemize}
+\end{definition}
+
+\section{Main Results}
+
+The following four theorems demonstrate that reflections characterize
+dual selection games for both perfect information strategies and
+certain limited information strategies.
+
+The duality of the Rothberger game \(\schStrongSelGame{\mc O_X}{\mc O_X}\)
+and the point-open game on \(X\) for perfect information strategies
+was first noted by Galvin in \cite{MR0493925}, and
+for Markov-information strategies by Clontz and Holshouser in
+[TODO cite]. These proofs may be generalized as follows.
 
 \begin{theorem}
   Let \(\mc R\) be a reflection of \(\mc A\). 
@@ -238,15 +323,6 @@ certain limited information strategies.
   Thus \(\tau\) witnesses
   \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
 \end{proof}
-
-\begin{definition}
-  A pair of games \(G(X),H(X)\) are \term{perfect information dual} if both
-  of the following hold.
-  \begin{itemize}
-    \item \(I\win G(X)\) if and only if \(II\win H(X)\).
-    \item \(II\win G(X)\) if and only if \(I\win H(X)\).
-  \end{itemize}
-\end{definition}
 
 \begin{theorem}
   Let \(\mc R\) be a reflection of \(\mc A\). 
@@ -359,6 +435,163 @@ certain limited information strategies.
   then \(\schStrongSelGame{\mc A}{\mc B}\) and \(\schStrongSelGame{\mc R}{\neg\mc B}\)
   are both perfect information dual and Markov information dual.
 \end{corollary}
+
+\section{Applications of Reflections}
+
+\begin{definition}\label{selectionSets}
+  Let \(X\) be a topological space and \(\mc T_X\) be a chosen basis of nonempty sets for its topology.
+  \begin{itemize}
+    \item Let \(\mc T_{X,x} = \{U\in\mc T_X : x\in U\}\) be the local point-base at \(x\in X\).
+    \item Let \(\Omega_{X,x} = \{Y\subseteq X: \forall U\in\mc T_{X,x}(U\cap Y\not=\emptyset)\}\) be the fan at \(x\in X\).
+    \item Let \(\mc T_{X,F} = \{U\in\mc T_X : F\subseteq U\}\) be the local finite-base at \(F\in[X]^{<\aleph_0}\).
+    \item Let \(\mc O_X = \{\mc U\subseteq\mc T_X : \bigcup \mc U=X\}\) be the collection
+          of basic open covers of \(X\).
+    \item Let \(\mc P_X = \{\mc T_{X,x} : x\in X\}\) be the collection of local point-bases of \(X\).
+    \item Let \(\Omega_X = \{\mc U\subseteq\mc T_X : \forall F\in[X]^{<\aleph_0}\exists U\in\mc U(F\subseteq U)\}\)
+          be the collection of basic \(\omega\)-covers of \(X\).
+    \item Let \(\mc F_X = \{\mc T_{X,F} : F\in [X]^{<\aleph_0}\}\) be the collection of local finite-bases of \(X\).
+    \item Let \(\mc D_X = \{Y\subseteq X: \forall U\in\mc T_X(U\cap Y\not=\emptyset)\}\) be the collection of dense subsets of \(X\).
+    \item Let \(\Gamma_{X,x} = \{Y\subseteq X: \forall U\in\mc T_{X,x}(Y\setminus U\in[X]^{<\aleph_0})\}\) be the collection
+          of converging fans at \(x\in X\). (When intersected with \([X]^{\aleph_0}\), these are the non-trivial
+          sequences of \(X\) converging to \(x\).)
+  \end{itemize}
+\end{definition}
+
+While these notions were defined in terms of a particular basis, the reader may verify the the following.
+
+\begin{proposition}
+  Let \(\mc A'\) be a selection basis for \(\mc A\).
+  \begin{itemize}
+    \item \(\plI\win\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plI\win\schStrongSelGame{\mc A'}{\mc B}\).
+    \item \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plI\prewin\schStrongSelGame{\mc A'}{\mc B}\).
+    \item \(\plII\win\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plII\win\schStrongSelGame{\mc A'}{\mc B}\).
+    \item \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plII\markwin\schStrongSelGame{\mc A'}{\mc B}\).
+  \end{itemize}
+\end{proposition}
+
+\begin{proposition}
+  Each selection set in Definition \ref{selectionSets} is a selection basis for the set
+  defined by replacing \(\mc T_X\) with the set of all nonempty open sets in \(X\).
+\end{proposition}
+
+As such, the choice of topological basis is irrelevant when playing selection games using these sets.
+
+We may now establish (or re-establish) the following dual games.
+
+\begin{proposition}
+  \(\mc P_X\) is a reflection of \(\mc O_X\).
+\end{proposition}
+\begin{proof}
+  For every open cover \(\mc U\), the corresponding choice function \(f\in\mathbf C(\mc P_X)\) is simply
+  the witness that \(x\in f(\mc T_{X,x})\in\mc U\).
+\end{proof}
+
+\begin{corollary}
+  \(\schStrongSelGame{\mc O_X}{\mc B}\) and \(\schStrongSelGame{\mc P_X}{\neg\mc B}\) are perfect-information
+  and Markov-information dual.
+\end{corollary}
+
+In the case that \(\mc B=\mc O_X\), \(\schStrongSelGame{\mc O_X}{\mc O_X}\) is the well-known Rothberger game,
+and \(\schStrongSelGame{\mc P_X}{\neg\mc O_X}\) is isomorphic
+to the point-open game \(PO(X)\): \(\plI\) chooses points of \(X\), \(\plII\) chooses an open neighborhood
+of each chosen point, and \(\plI\) wins if \(\plII\)'s choices are a cover.
+So this was simply the classic result that the Rothberger game and
+point-open game are perfect-information dual \cite{MR0493925}, and the more recent result that
+these games are Markov-information dual [TODO cite clontzHols].
+
+\begin{proposition}
+  \(\mc F_X\) is a reflection of \(\Omega_X\).
+\end{proposition}
+\begin{proof}
+  For every \(\omega\)-cover \(\mc U\), the corresponding choice function \(f\in\mathbf C(\mc F_X)\) is simply
+  the witness that \(F\subseteq f(\mc T_{X,F})\in\mc U\).
+\end{proof}
+
+\begin{corollary}
+  \(\schStrongSelGame{\Omega_X}{\mc B}\) and \(\schStrongSelGame{\mc F_X}{\neg\mc B}\) are perfect-information
+  and Markov-information dual.
+\end{corollary}
+
+Note that in the case that \(\mc B=\Omega_X\), \(\schStrongSelGame{\Omega_X}{\Omega_X}\) is the Rothberger
+game played with \(\omega\)-covers, and \(\schStrongSelGame{\mc F_X}{\neg\Omega_X}\) is isomorphic
+to the \(\Omega\)-finite-open game \(\Omega FO(X)\): \(\plI\) chooses finite subsets of \(X\), \(\plII\) chooses an open neighborhood
+of each chosen finite set, and \(\plI\) wins if \(\plII\)'s choices are an \(\omega\)-cover.
+These games were shown to be dual in [TODO cite clontzHols].
+
+\begin{proposition}
+  \(\mc T_X\) is a reflection of \(\mc D_X\).
+\end{proposition}
+\begin{proof}
+  For every dense \(D\), the corresponding choice function \(f\in\mathbf C(\mc T_X)\) is simply
+  the witness that \(f(U)\in U\cap D\).
+\end{proof}
+
+\begin{corollary}
+  \(\schStrongSelGame{\mc D_X}{\mc B}\) and \(\schStrongSelGame{\mc T_X}{\neg\mc B}\) are perfect-information
+  and Markov-information dual.
+\end{corollary}
+
+In the case that \(\mc B=\Omega_{X,x}\) for some \(x\in X\), \(\schStrongSelGame{\mc D_X}{\Omega_{X,x}}\) is
+the strong countable dense fan-tightness game at \(x\), see e.g. \cite{MR2678950}. \(\schStrongSelGame{\mc T_X}{\neg\Omega_{X,x}}\)
+is the game \(CL(X,x)\) first studied by Tkachuk in \cite{tkachukTwoPointGame}. Tkachuk showed in that paper
+that these games are perfect-information dual; Clontz and Holshouser previously showed these were Markov-information
+dual in the case that \(X=C_p(Y)\) [TODO cite].
+
+In the case that \(\mc B=D_X\), then \(\schStrongSelGame{\mc D_X}{\mc D_X}\) is the strong selective
+separability game introduced in \cite{MR1711901}, and \(\schStrongSelGame{\mc T_X}{\neg\mc D_X}\) is the
+point-picking game of Berner and Juh\'asz defined in \cite{MR775687}. Scheepers showed that these
+were perfect-information dual in his paper.
+
+\begin{proposition}
+  \(\mc T_{X,x}\) is a reflection of \(\Omega_{X,x}\).
+\end{proposition}
+\begin{proof}
+  For every set \(Y\) with limit point \(x\), the corresponding choice function \(f\in\mathbf C(\mc T_{X,x})\) is simply
+  the witness that \(f(U)\in U\cap Y\).
+\end{proof}
+
+\begin{corollary}
+  \(\schStrongSelGame{\Omega_{X,x}}{\mc B}\) and \(\schStrongSelGame{\mc T_{X,x}}{\neg\mc B}\) are perfect-information
+  and Markov-information dual.
+\end{corollary}
+
+In the case that \(\mc B=\Gamma_{X,x}\) for some \(x\in X\), \(\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\)
+is Gruenhage's \(W\) game \cite{MR0413049}. Its dual \(\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\) characterizes
+the strong Fr\'echet-Urysohn property \(\plI\notprewin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\) at \(x\),
+which now seen to be equivalent to \(\plII\notmarkwin\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\).
+This allows us to obtain the following result.
+
+\begin{corollary}
+  \(\plI\notprewin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\)
+  if and only if
+  \(\plI\notwin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\).
+\end{corollary} 
+\begin{proof}
+  As shown in \cite{MR510910},
+  a space is \(w\) at \(x\), that is, \(\plII\notwin\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\) 
+  if and only if \(\plI\notprewin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\) for all \(x\in X\).
+\end{proof}
+
+For \(\mc B=\Omega_{X,x}\), \(\schStrongSelGame{\mc T_{X,x}}{\neg\Omega_{X,x}}\) is the variant of
+Gruenhage's \(W\) game for clustering. This game is now seen to be dual to the strong countable fan tightness game
+\(\schStrongSelGame{\Omega_{X,x}}{\Omega_{X,x}}\) at \(x\).
+
+%Finally, consider the following result from \cite{2016arXiv161004800C}.
+%
+%\begin{proposition}
+%  
+%\end{proposition}
+
+\section{Open Questions}
+
+\begin{question}
+  Does there exist a natural reflection for \(\Gamma_{X,x}\)
+  or \(\Gamma_X=\{\mc U\subseteq\mc T_X:\forall x\in X(\mc U\setminus\mc T_{X,x}\in[T_X]^{<\aleph_0})\}\)?
+\end{question} 
+
+\begin{question}
+  Can these results be extended for \(\schSelGame{\mc A}{\mc B}\)?
+\end{question}
 
 \section{Acknowledgements}
 
