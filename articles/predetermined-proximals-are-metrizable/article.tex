@@ -1,0 +1,155 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{../../clontzDefinitions}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{game}[theorem]{Game}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+
+\parskip=0.5em
+
+
+
+\begin{document}
+
+% \title{Proximal compact spaces are Corson compact\tnoteref{t1}}
+% \tnotetext[t1]{2010 Mathematics Subject Classification. 54E15, 54D30, 54A20.}
+\title{Predetermined proximal spaces are metrizable}
+
+% \author[aub]{S.~Clontz\fnref{fn1}}
+% \ead{steven.clontz@auburn.edu}
+% \author[aub]{G.~Gruenhage\fnref{fn2}}
+% \ead{gruengf@auburn.edu}
+
+% \address[aub]{Department of Mathematics, Auburn University,
+%  Auburn, AL 36830}
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics and Statistics, University of South Alabama,
+Mobile, AL 36688}
+\email{sclontz@southalabama.edu}
+\urladdr{clontz.org}
+
+\keywords{Proximal; predetermined proximal; topological game; limited information strategies}
+% \begin{keyword}
+%   Proximal\sep absolutely proximal\sep Corson compact\sep uniform space\sep $W$-space
+% \end{keyword}
+
+\subjclass[2010]{54E15, 54D30, 54A20}
+
+
+\begin{abstract}
+TODO
+%  The author and G. Gruenhage previously showed that J. Bell's proximal game
+%  may be used to characterize Corson compactness in compact Hausdorff spaces.
+%  Using tactical strategies considering only the most recent
+%  move of the opponent, the proximal game may also be
+%  used to characterize the strong Eberlein compactness property.
+%  In doing so, a purely topological characterization of the proximal game
+%  is introduced, and several existing results on
+%  the proximal game are given
+%  analogues considering limited information strategies.
+\end{abstract}
+
+
+\maketitle
+
+We take the following from Willard's text.
+
+\begin{definition}
+A \term{normal covering sequence} for a space \(X\) is a sequence
+\(\setB{\mc U_n}{n<\omega}\) of open covers such that
+\(\mc U_{n+1}\) star-refines \(\mc U_n\). Such a sequence is
+\term{compatible} with \(X\) if \(\setB{St(x,\mc U_n)}{n<\omega}\)
+is a local base at each \(x\in X\).
+\end{definition}
+\begin{theorem}
+A space \(X\) is psuedometrizable if and only if it has a compatible
+normal covering sequence.
+\end{theorem}
+
+For convenience, we will recast these results in terms of entourages.
+TODO: ``normal'' can be dropped
+
+\begin{definition}
+A \term{normal entourage sequence} for a space \(X\) is a sequence
+\(\setB{D_n}{n<\omega}\) of entourages such that
+\(2D_{n+1}\subseteq D_n\). Such a sequence is
+\term{compatible} with \(X\) if \(\setB{D_n[x]}{n<\omega}\)
+is a local base at each \(x\in X\).
+\end{definition}
+\begin{theorem}
+A space \(X\) is psuedometrizable if and only if it has a compatible
+normal entourage sequence.
+\end{theorem}
+\begin{proof}
+Let \(d\) be a psuedometric generating \(X\); then \(\setB{D_n}{n<\omega}\)
+given by \(D_n=\setB{\tuple{x,y}}{d(x,y)<2^{-n}}\) is a normal entourage sequence,
+and is compatible since \(D_n[x]=B_{2^{-n}}(x)\). 
+
+On the other hand, given a normal entourage sequence \(\setB{D_n}{n<\omega}\),
+let \(\mc U_n=\setB{\frac{1}{2}D_{n+1}[x]}{x\in X}\).  It follows that
+\(St(x,\mc U_n)=\bigcup\setB{\frac{1}{2}D_{n+1}[y]}{x\in\frac{1}{2}D_{n+1}[y]}\).
+Furthermore \(z\in St(x,\mc U_n)\Rightarrow z\in\frac{1}{2}D_{n+1}[y]\) for
+some \(y\); therefore \(\tuple{x,y},\tuple{y,z}\in \frac{1}{2}D_{n+1}\) shows that 
+\(\tuple{x,z}\in D_{n+1}\) and \(z\in D_{n+1}[x]\). 
+Thus \(St(x,\mc U_n)\subseteq D_{n+1}[x]\).
+
+We now may observe that \(\mc U_{n+1}\) star-refines \(\mc U_n\), since
+\(St(x,\mc U_{n+1})\subseteq D_{n+1}[x]\subseteq D_n[x]\in\mc U_n\)
+witnesses that \(\setB{St(x,\mc U_n)}{n<\omega}\) is compatible with \(X\),
+guaranteeing pseudometrizability.
+\end{proof}
+
+\begin{theorem}
+A space \(X\) is psuedometrizable
+if and only if 
+\(\plI\prewin\bellConGame{X}\). 
+\end{theorem}
+\begin{proof}
+Suppose \(X\) is psuedometrizable by \(d\);
+then let \(\sigma\) be the predetermined strategy for \(\bellConGame{X}\) defined by
+\(\sigma(n)=\setB{\tuple{x,y}}{d(x,y)<2^{-n}}\). 
+For any legal attack \(\alpha\) against \(\sigma\), \(\alpha(n+1)\in\sigma(n)[\alpha(n)]\).
+It follows that if \(x\in\bigcap_{n<\omega}\sigma(n)[\alpha(n)]\) and \(\epsilon>0\),
+we may choose \(N<\omega\) such that \(2^{-N}<\epsilon\). Therefore 
+\(d(x,\alpha(n))<2^{-n}\leq 2^{-N}<\epsilon\) for all \(n\geq N\), showing \(\alpha\) converges
+to \(x\). Thus \(\sigma\) is a winning strategy.
+
+Now let \(\sigma\) be any predetermined winning strategy satisfying \(\sigma(n)\subseteq\sigma(m)\)
+for all \(n\geq m\), and suppose \(\setB{\frac{1}{2^{n+1}}\sigma(n)[x]}{n<\omega}\) is not a
+local base at some \(x\in X\). Then we may pick an entourage \(D\) such that
+\(\frac{1}{2^{n+1}}\sigma(n)[x]\not\subseteq D[x]\) for all \(n<\omega\). So choose
+\(\alpha(n)\in\frac{1}{2^{n+1}}\sigma(n)[x]\setminus D[x]\).
+
+Observe that \(\tuple{\alpha(n),x}\in\frac{1}{2^{n+1}}\sigma(n)\) and
+\(\tuple{\alpha(n+1),x}\in\frac{1}{2^{n+2}}\sigma(n+1)\subseteq\frac{1}{2^{n+1}}\sigma(n)\).
+It follows that \(\tuple{\alpha(n),\alpha(n+1)}\in\frac{1}{2^n}\sigma(n)\subseteq\sigma(n)\),
+witnessing that \(\alpha(n+1)\in\sigma(n)[\alpha(n)]\), that is, \(\alpha\) is a legal counterattack
+to \(\sigma\). Since \(x\in\frac{1}{2^{n+1}}\sigma(n)[\alpha(n)]\subseteq\sigma(n)[\alpha(n)]\)
+for all \(n<\omega\), \(\sigma\) can only win for \(\plI\) if \(\alpha\) converges.
+But \(\alpha(n)\not\in D[x]\) for all \(n<\omega\), so \(\alpha\) fails to converge as well.
+Thus \(\sigma\) is not a winning strategy.
+
+As a result, if \(\sigma\) is a winning predetermined strategy,
+we have that \(\setB{\frac{1}{2^{n+1}}\sigma(n)[x]}{n<\omega}\) is a
+local base at each \(x\in X\). Therefore by the previous lemma,
+\(X\) is psuedometrizable.
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography}
+
+\end{document}
