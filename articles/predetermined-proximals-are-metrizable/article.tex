@@ -81,36 +81,43 @@ normal covering sequence.
 \end{theorem}
 
 For convenience, we will recast these results in terms of entourages.
-TODO: ``normal'' can be dropped
 
 \begin{definition}
-A \term{normal entourage sequence} for a space \(X\) is a sequence
-\(\setB{D_n}{n<\omega}\) of entourages such that
-\(2D_{n+1}\subseteq D_n\). Such a sequence is
-\term{compatible} with \(X\) if \(\setB{D_n[x]}{n<\omega}\)
+An \term{entourage sequence} for a space \(X\) 
+\(\setB{D_n}{n<\omega}\) 
+is \term{compatible} with \(X\) if \(\setB{D_n[x]}{n<\omega}\)
 is a local base at each \(x\in X\).
 \end{definition}
 \begin{theorem}
 A space \(X\) is psuedometrizable if and only if it has a compatible
-normal entourage sequence.
+entourage sequence.
 \end{theorem}
 \begin{proof}
 Let \(d\) be a psuedometric generating \(X\); then \(\setB{D_n}{n<\omega}\)
-given by \(D_n=\setB{\tuple{x,y}}{d(x,y)<2^{-n}}\) is a normal entourage sequence,
-and is compatible since \(D_n[x]=B_{2^{-n}}(x)\). 
+given by \(D_n=\setB{\tuple{x,y}}{d(x,y)<2^{-n}}\) is a entourage sequence,
+which is compatible since \(D_n[x]=B_{2^{-n}}(x)\). 
 
-On the other hand, given a normal entourage sequence \(\setB{D_n}{n<\omega}\),
-let \(\mc U_n=\setB{\frac{1}{2}D_{n+1}[x]}{x\in X}\).  It follows that
-\(St(x,\mc U_n)=\bigcup\setB{\frac{1}{2}D_{n+1}[y]}{x\in\frac{1}{2}D_{n+1}[y]}\).
-Furthermore \(z\in St(x,\mc U_n)\Rightarrow z\in\frac{1}{2}D_{n+1}[y]\) for
-some \(y\); therefore \(\tuple{x,y},\tuple{y,z}\in \frac{1}{2}D_{n+1}\) shows that 
-\(\tuple{x,z}\in D_{n+1}\) and \(z\in D_{n+1}[x]\). 
-Thus \(St(x,\mc U_n)\subseteq D_{n+1}[x]\).
+On the other hand, given a compatible entourage sequence \(\setB{D_n}{n<\omega}\),
+let \(E_0=D_0\), \(E_{n+1}=\frac{1}{4}D_n\cap \frac{1}{4}E_n\), and
+\(\mc U_n=\setB{E_{n+1}[x]}{x\in X}\). Fix \(x\in X\) and consider
+\(St(x,\mc U_n)\subseteq St(E_{n+1}[x],\mc U_n)=
+\bigcup\setB{E_{n+1}[y]\in\mc U_n}{E_{n+1}[x]\cap E_{n+1}[y]\not=\emptyset}\).
 
-We now may observe that \(\mc U_{n+1}\) star-refines \(\mc U_n\), since
-\(St(x,\mc U_{n+1})\subseteq D_{n+1}[x]\subseteq D_n[x]\in\mc U_n\)
-witnesses that \(\setB{St(x,\mc U_n)}{n<\omega}\) is compatible with \(X\),
-guaranteeing pseudometrizability.
+Let \(z\in St(E_{n+1},\mc U_n)\), so \(z\in E_{n+1}[y]\) for some \(y\in X\)
+where \(w\in E_{n+1}[x]\cap E_{n+1}[y]\) for some \(w\in X\).
+It follows that \(\tuple{z,y},\tuple{y,w},\tuple{w,x}\in E_{n+1}
+=\frac{1}{4}D_{n}\cap\frac{1}{4}E_n\); therefore 
+\(\tuple{z,x}\in D_{n}\cap E_n\) and \(z\in D_{n}[x]\cap E_n[x]\).
+Therefore
+\(St(x,\mc U_n)\subseteq St(E_{n+1}[x],\mc U_n)\subseteq D_{n}[x]\cap E_n[x]\).
+
+We can then observe that \(\mc U_{n+1}\) star refines \(\mc U_{n}\)
+since for each \(U\in\mc U_{n+1}\), \(U=E_{n+2}[x]\) for some \(x\in X\)
+and \(St(E_{n+2}[x],\mc U_{n+1})\subseteq E_{n+1}[x]\in\mc U_n\),
+making \(\setB{\mc U_n}{n<\omega}\) a normal covering sequence.
+Finally, the sequence is compatible since for \(x\in X\),
+\(St(x,\mc U_n)\subseteq D_{n}[x]\) and \(\setB{D_{n}[x]}{n<\omega}\)
+is a local base at \(x\). 
 \end{proof}
 
 \begin{theorem}
@@ -145,7 +152,9 @@ Thus \(\sigma\) is not a winning strategy.
 
 As a result, if \(\sigma\) is a winning predetermined strategy,
 we have that \(\setB{\frac{1}{2^{n+1}}\sigma(n)[x]}{n<\omega}\) is a
-local base at each \(x\in X\). Therefore by the previous lemma,
+local base at each \(x\in X\). 
+This shows that \(\setB{\frac{1}{2^{n+1}}\sigma(n)}{n<\omega}\)
+is a compatible entourage sequence; therefore by the previous lemma,
 \(X\) is psuedometrizable.
 \end{proof}
 
