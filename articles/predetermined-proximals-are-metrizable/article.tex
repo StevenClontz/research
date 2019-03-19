@@ -66,6 +66,8 @@ TODO
 
 \maketitle
 
+\section{Predetermined Proximal}
+
 We take the following from Willard's text.
 
 \begin{definition}
@@ -156,6 +158,71 @@ local base at each \(x\in X\).
 This shows that \(\setB{\frac{1}{2^{n+1}}\sigma(n)}{n<\omega}\)
 is a compatible entourage sequence; therefore by the previous lemma,
 \(X\) is psuedometrizable.
+\end{proof}
+
+\section{A Selectively Proximal Game and a Dual Proximal Game}
+
+Because the choices of \(P2\) do not depend solely on the choices of
+\(P1\) each round, the proximal game is not a selection game.
+However, it can be somewhat emulated as a selection game as follows.
+
+\begin{definition}
+Let \(\mc{A}_X\) be the collection of basic neighborhood assignments
+\(N:X\to\mc T_X\) such that \(x\in N(x)\) (equivalently,
+\(x\in U\) for each \(\tuple{x,U}\in N\)), and let \(\mc {PR}_X\) 
+be the collection of countable sets of tuples \(\setB{\tuple{x_n,U_n}}{n<\omega}\)
+satisfying all of the following:
+\begin{itemize}
+\item For each \(n<\omega\), \(x_n\in U_m\) for cofinitely-many \(m<\omega\)
+\item \(\setB{x_n}{n<\omega}\) fails to converge to any point of \(X\)
+\item \(\bigcap\setB{U_n}{n<\omega}\not=\emptyset\)
+\end{itemize}
+Then we call \(\ssg{\mc A_X}{\mc{PR}_X}\) the \term{selectively proximal game}.
+\end{definition}
+
+\begin{theorem}
+The selectively proximal game is equivalent to the proximal game when
+considering only paracompact spaces.
+\end{theorem}
+\begin{proof}
+TODO
+
+Let \(\sigma\) be a winning predetermined strategy for \(P1\) in the proximal game
+such that \(\sigma(n)\subseteq\sigma(m)\) for all \(n\geq m\),
+and define the neighborhood assignment
+\(\tau(n)\) for \(P1\) in the selectively proximal game 
+by \(\tau(n)(x)=\sigma(n)[x]\). Then consider when \(P2\) responds to \(\tau\) 
+by \(\tuple{x_n,\sigma(n)[x_n]}\) during round \(n<\omega\), and
+suppose that for each \(n<\omega\), \(x_n\in \sigma(m)[x_m]\) for cofinitely-many \(m<\omega\).
+Pick some \(S(n)>n\) such that \(x_n\in U_{S(n)}\), and let 
+\(\tuple{y_n,V_n}=\tuple{x_{S^n(0)},U_{S^n(0)}}\).
+\end{proof}
+
+\begin{definition}
+Let \(\mc{N}_X=\setB{N_x}{x\in X}\) where \(N_x=\setB{\tuple{x,U}}{U\in\mc T_{X,x}}\).
+Then we call \(\ssg{\mc N_X}{\neg\mc{PR}_X}\) the \term{dual selectively proximal game}.
+\end{definition}
+
+We should defend this nominclature.
+
+\begin{proposition}
+\(\ssg{\mc A_X}{\mc{PR}_X}\) is dual to 
+\(\ssg{\mc N_X}{\neg\mc{PR}_X}\).
+\end{proposition}
+\begin{proof}
+We proceed by showing that \(\mc N_X\) is a reflection of \(\mc A_X\); that is,
+\[\mc A_X'=\setB{\ran{f}}{f\in\mathbf C(\mc N_X)}\]
+is a selection basis for \(\mc A_X\). To see this, 
+first observe that for each
+\(f\in\mathbf C(\mc N_X)\) and \(x\in X\), \(f(N_x)\in N_x\), so
+\(f(N_x)=\tuple{x,U}\) for some open neighborhood \(U\) of \(x\). It follows
+that \(\ran{f}\in\mc A_X\) and \(\mc A_X'\subseteq\mc A_X\). Furthermore 
+for each neighborhood assignment 
+\(N\in\mc A_X\), we may define \(f_N\in\mathbf C(\mc N_X)\) by 
+\(f_N(N_x)=\tuple{x,N(x)}\). It follows that
+\(\ran{f_N}\subseteq N\) yielding our result, but in fact
+we have shown that \(N=\ran{f_N}\in\mc A_X'\)
+and thus \(\mc A_X'=\mc A_X\).
 \end{proof}
 
 \bibliographystyle{plain}
