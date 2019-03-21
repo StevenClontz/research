@@ -160,70 +160,118 @@ is a compatible entourage sequence; therefore by the previous lemma,
 \(X\) is psuedometrizable.
 \end{proof}
 
-\section{A Selectively Proximal Game and a Dual Proximal Game}
-
-Because the choices of \(P2\) do not depend solely on the choices of
-\(P1\) each round, the proximal game is not a selection game.
-However, it can be somewhat emulated as a selection game as follows.
-
-\begin{definition}
-Let \(\mc{A}_X\) be the collection of basic neighborhood assignments
-\(N:X\to\mc T_X\) such that \(x\in N(x)\) (equivalently,
-\(x\in U\) for each \(\tuple{x,U}\in N\)), and let \(\mc {PR}_X\) 
-be the collection of countable sets of tuples \(\setB{\tuple{x_n,U_n}}{n<\omega}\)
-satisfying all of the following:
-\begin{itemize}
-\item For each \(n<\omega\), \(x_n\in U_m\) for cofinitely-many \(m<\omega\)
-\item \(\setB{x_n}{n<\omega}\) fails to converge to any point of \(X\)
-\item \(\bigcap\setB{U_n}{n<\omega}\not=\emptyset\)
-\end{itemize}
-Then we call \(\ssg{\mc A_X}{\mc{PR}_X}\) the \term{selectively proximal game}.
-\end{definition}
-
-\begin{theorem}
-The selectively proximal game is equivalent to the proximal game when
-considering only paracompact spaces.
-\end{theorem}
-\begin{proof}
-TODO
-
-Let \(\sigma\) be a winning predetermined strategy for \(P1\) in the proximal game
-such that \(\sigma(n)\subseteq\sigma(m)\) for all \(n\geq m\),
-and define the neighborhood assignment
-\(\tau(n)\) for \(P1\) in the selectively proximal game 
-by \(\tau(n)(x)=\sigma(n)[x]\). Then consider when \(P2\) responds to \(\tau\) 
-by \(\tuple{x_n,\sigma(n)[x_n]}\) during round \(n<\omega\), and
-suppose that for each \(n<\omega\), \(x_n\in \sigma(m)[x_m]\) for cofinitely-many \(m<\omega\).
-Pick some \(S(n)>n\) such that \(x_n\in U_{S(n)}\), and let 
-\(\tuple{y_n,V_n}=\tuple{x_{S^n(0)},U_{S^n(0)}}\).
-\end{proof}
-
-\begin{definition}
-Let \(\mc{N}_X=\setB{N_x}{x\in X}\) where \(N_x=\setB{\tuple{x,U}}{U\in\mc T_{X,x}}\).
-Then we call \(\ssg{\mc N_X}{\neg\mc{PR}_X}\) the \term{dual selectively proximal game}.
-\end{definition}
-
-We should defend this nominclature.
-
-\begin{proposition}
-\(\ssg{\mc A_X}{\mc{PR}_X}\) is dual to 
-\(\ssg{\mc N_X}{\neg\mc{PR}_X}\).
-\end{proposition}
-\begin{proof}
-We proceed by showing that \(\mc N_X\) is a reflection of \(\mc A_X\); that is,
-\[\mc A_X'=\setB{\ran{f}}{f\in\mathbf C(\mc N_X)}\]
-is a selection basis for \(\mc A_X\). To see this, 
-first observe that for each
-\(f\in\mathbf C(\mc N_X)\) and \(x\in X\), \(f(N_x)\in N_x\), so
-\(f(N_x)=\tuple{x,U}\) for some open neighborhood \(U\) of \(x\). It follows
-that \(\ran{f}\in\mc A_X\) and \(\mc A_X'\subseteq\mc A_X\). Furthermore 
-for each neighborhood assignment 
-\(N\in\mc A_X\), we may define \(f_N\in\mathbf C(\mc N_X)\) by 
-\(f_N(N_x)=\tuple{x,N(x)}\). It follows that
-\(\ran{f_N}\subseteq N\) yielding our result, but in fact
-we have shown that \(N=\ran{f_N}\in\mc A_X'\)
-and thus \(\mc A_X'=\mc A_X\).
-\end{proof}
+% This stuff wades into D-space theory; it's pretty unclear if 
+% what I called a dual game is actually dual.
+%\section{A Selectively Proximal Game and a Dual Proximal Game}
+%
+%Because the choices of \(P2\) do not depend solely on the choices of
+%\(P1\) each round, the proximal game is not a selection game.
+%However, it can be somewhat emulated by the following selection game.
+%
+%\begin{definition}
+%Let \(\mc{A}_X\) be the collection of basic neighborhood assignments
+%\(N:X\to\mc T_X\) such that \(x\in N(x)\) (equivalently,
+%\(x\in U\) for each \(\tuple{x,U}\in N\)), and let \(\mc {PR}_X\) 
+%be the collection of countable sets of tuples \(\setB{\tuple{x_n,U_n}}{n<\omega}\)
+%satisfying all of the following:
+%\begin{itemize}
+%\item For each \(m<\omega\), \(x_n\in U_m\) for cofinitely-many \(n<\omega\)
+%\item \(\setB{x_n}{n<\omega}\) fails to converge to any point of \(X\)
+%\item \(\bigcap\setB{U_n}{n<\omega}\not=\emptyset\)
+%\end{itemize}
+%Then we call \(\ssg{\mc A_X}{\mc{PR}_X}\) the \term{selectively proximal game}.
+%\end{definition}
+%
+%%\begin{theorem}
+%%The selectively proximal game is equivalent to the proximal game when
+%%considering only paracompact spaces.MAYBE
+%%\end{theorem}
+%%\begin{proof}
+%%Let \(\sigma\) be a winning predetermined strategy for \(P1\) in the proximal game
+%%such that \(\sigma(n+1)\subseteq\frac{1}{2}\sigma(n)\) for all \(n<\omega\).
+%%Then define the neighborhood assignment
+%%\(\tau(n)\) for \(P1\) in the selectively proximal game 
+%%by \(\tau(n)(x)=\sigma(n)[x]\). Then consider when \(P2\) responds to \(\tau\) 
+%%by \(\tuple{x_n,\sigma(n)[x_n]}\) during round \(n<\omega\), and
+%%suppose that for each \(n<\omega\), \(x_n\in \sigma(m)[x_m]\) for cofinitely-many \(m<\omega\)
+%%and \(\bigcap\setB{\sigma(n)[x_n]}{n<\omega}\not=\emptyset\).
+%%Pick some \(S(n)>n\) such that \(x_{m}\in \sigma(n)[x_n]\) for all
+%%\(m\geq S(n)\).
+%%It follows that \(x_{S^{n+1}(0)}\in\sigma(S^n(0))[x_{S(n)}]\subseteq\sigma(n)[x_{S(n)}]\),
+%%so \(\alpha\) defined by \(\alpha(n)=x_{S^n(0)}\) is a legal counterattack to
+%%\(\sigma\). Since \[\bigcap\setB{\sigma(n)[\alpha(n)]}{n<\omega}\supseteq
+%%\bigcap\setB{\sigma(S^n(0))[x_{S^n(0)}]}{n<\omega}\]\[\supseteq
+%%\bigcap\setB{\sigma(n)[x_n]}{n<\omega}\not=\emptyset\]
+%%we have that \(\alpha\) must converge to some \(x\) 
+%%since \(\sigma\) is a winning strategy for \(P1\).
+%%So consider an open neighborhood \(U\) of \(x\); it contains \(\alpha(n)\) for
+%%cofinite \(n<\omega\), say \(n\geq N\). Then consider the open neighborhood 
+%%\(\frac{1}{2}\sigma(S^N(0))[x]\)
+%%of \(x\), which contains \(\alpha(n)\) for cofinite \(n<\omega\); it follows
+%%that for \(z\in .
+%%\end{proof}
+%
+%\begin{definition}
+%Let \(\mc{N}_X=\setB{N_x}{x\in X}\) where \(N_x=\setB{\tuple{x,U}}{x\in U\in\mc T_{X}}\).
+%Then we call \(\ssg{\mc N_X}{\neg\mc{PR}_X}\) the \term{dual selectively proximal game}.
+%\end{definition}
+%
+%We should defend this nominclature.
+%
+%\begin{proposition}
+%\(\ssg{\mc A_X}{\mc B}\) is dual to 
+%\(\ssg{\mc N_X}{\neg\mc B}\) for any set \(\mc B\).
+%\end{proposition}
+%\begin{proof}
+%We proceed by showing that \(\mc N_X\) is a reflection of \(\mc A_X\); that is,
+%\[\mc A_X'=\setB{\ran{f}}{f\in\mathbf C(\mc N_X)}\]
+%is a selection basis for \(\mc A_X\). To see this, 
+%first observe that for each
+%\(f\in\mathbf C(\mc N_X)\) and \(x\in X\), \(f(N_x)\in N_x\), so
+%\(f(N_x)=\tuple{x,U}\) for some open neighborhood \(U\) of \(x\). It follows
+%that \(\ran{f}\in\mc A_X\) and \(\mc A_X'\subseteq\mc A_X\). Furthermore 
+%for each neighborhood assignment 
+%\(N\in\mc A_X\), we may define \(f_N\in\mathbf C(\mc N_X)\) by 
+%\(f_N(N_x)=\tuple{x,N(x)}\). It follows that
+%\(\ran{f_N}\subseteq N\) yielding our result, but in fact
+%we have shown that \(N=\ran{f_N}\in\mc A_X'\)
+%and thus \(\mc A_X'=\mc A_X\).
+%\end{proof}
+%
+%It's unclear when the selectively proximal game is equivalent to the proximal
+%game: there's no way to require \(x_{n+1}\in U_n\) in the selection
+%game context, and while the neighborhood assignments could be forced to be uniform,
+%there's no clear way to enforce this in the dual. 
+%However, this easy selection game result provides the inspiration
+%to define the following game.
+%
+%\begin{definition}
+%The game \(DP(X)\) is played as follows. During round
+%\(0\), \(P1\) chooses \(x_0\in X\), followed by \(P2\) choosing an open neighborhood
+%\(U_0\) of \(x_0\). Then during round \(n+1\), \(P1\) chooses \(x_{n+1}\in U_n\),
+%followed by \(P2\) choosing an open neighborhood \(U_{n+1}\) of \(x_{n+1}\). 
+%Then \(P2\) wins
+%if the \(x_n\) converge or \(\bigcap\setB{U_n}{n<\omega}=\emptyset\).
+%\end{definition} 
+%
+%\begin{theorem}
+%The proximal game and \(DP(X)\) are dual for any paracompact space \(X\).
+%\end{theorem}
+%\begin{proof}
+%Let \(\sigma\) be a winning predetermined strategy for \(P1\) 
+%in the proximal game.
+%Then define the Markov strategy \(\tau\) for \(P2\) in \(DP(X)\)
+%by \(\tau(x,n)=\sigma(n)[x]\). Let \(\alpha\) attack \(\tau\),
+%so \(\alpha(n+1)\in\tau(\alpha(n),n)=\sigma(n)[\alpha(n)]\).
+%Then \(\alpha\) also attacks \(\sigma\), which is winning,
+%so either \(\alpha\) converges or 
+%\(\bigcap\setB{\sigma(n)[\alpha(n)]}{n<\omega}=
+%\bigcap\setB{\tau(\alpha(n),n)}{n<\omega}=\emptyset\). Thus
+%\(\tau\) is winning for \(P2\).
+%
+%Let \(\sigma\) be a winning Markov strategy for \(P2\)
+%in \(DP(X)\).
+%\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
