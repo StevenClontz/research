@@ -1,0 +1,230 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage{../../clontzDefinitions}
+
+\renewcommand{\vec}{\mathbf}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{notation}[theorem]{Notation}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+
+\usepackage{lineno}
+\linenumbers
+
+
+
+\begin{document}
+
+\title{Selection games and Arhangelskii's convergence principles}
+
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics and Statistics,
+The University of South Alabama,
+Mobile, AL 36688}
+\email{sclontz@southalabama.edu}
+
+
+
+\keywords{Selection principle, selection game,
+\(\alpha_i\) property, convergence}
+
+%\subjclass[2010]{54D20, 54D45, 91A44}
+
+
+
+\begin{abstract}
+We prove the things.
+\end{abstract}
+
+
+\maketitle
+
+
+
+
+
+
+%
+%\section{Introduction}
+%
+%\begin{definition}
+%  The \term{selection game} \(\schStrongSelGame{\mc A}{\mc B}\) 
+%  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
+%  During round \(n\), \(\plI\) chooses
+%  \(A_n\in\mc A\), followed by \(\plII\) choosing \(B_n\in A_n\).
+%  Player \(\plII\) wins in the case that \(\{B_n:n<\omega\}\in\mc B\),
+%  and Player \(\plI\) wins otherwise.
+%\end{definition}
+%
+%\begin{definition}
+%  The \term{selection game} \(\schSelGame{\mc A}{\mc B}\) 
+%  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
+%  During round \(n\), \(\plI\) chooses
+%  \(A_n\in\mc A\), followed by \(\plII\) choosing \(B_n\in [A_n]^{<\aleph_0}\).
+%  Player \(\plII\) wins in the case that \(\bigcup\{B_n:n<\omega\}\in\mc B\),
+%  and Player \(\plI\) wins otherwise.
+%\end{definition}
+%
+\section{Clontz results}
+
+\begin{definition}
+Say a collection \(\mc A\) is \term{sequence-like} if it satisfies the following
+for each \(A\in\mc A\).
+\begin{itemize}
+\item \(|A|\geq\aleph_0\).
+\item If \(A'\subseteq A\) and \(|A'|\geq\aleph_0\), then \(A'\in\mc A\).
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Let \(\Gamma_X\) be the collection of open \term{\(\gamma\)-covers} \(\mc U\) of \(X\),
+that is, infinite open covers of \(X\) such that for each \(x\in X\),
+\(\{U\in\mc U:x\in U\}\) is cofinite in \(\mc U\).
+\end{definition}
+
+\begin{definition}
+Let \(\Gamma_{X,x}\) be the collection of non-trivial sequences \(S\subseteq X\) converging to \(x\),
+that is, infinite subsets of \(X\) such that for each neighborhood \(U\) of \(x\),
+\(S\cap U\) is cofinite in \(S\).
+\end{definition}
+
+It follows that \(\Gamma_X,\Gamma_{X,x}\) are both sequence-like.
+
+\begin{theorem}
+Let \(\mc B\) be sequence-like. Then \(\alpha_1(\mc A,\mc B)\) holds if and only
+if \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+We first assume \(\alpha_1(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
+define a predetermined strategy for \(\plI\). By \(\alpha_1(\mc A,\mc B)\), we
+immediately obtain \(B\in\mc B\) such that \(|A_n\setminus B|<\aleph_0\). Thus
+\(B_n=A_n\cap B\) is a cofinite choice from \(A_n\), and 
+\(B'=\bigcup\{B_n:n<\omega\}\) is an infinite subset of \(B\),
+so \(B'\in\mc B\). Thus \(\plII\) may defeat \(\plI\) by choosing
+\(B_n\subseteq A_n\) each round, witnessing \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
+
+On the other hand, let \(\plI\notprewin G_{cf}(\mc A,\mc B)\). Given \(A_n\in\mc A\)
+for \(n<\omega\), we note that \(\plII\) may choose a cofinite subset \(B_n\subseteq A_n\)
+such that \(B=\bigcup\{B_n:n<\omega\}\in\mc B\). Then \(B\) witnesses \(\alpha_1(\mc A,\mc B)\)
+since \(|A_n\setminus B|\leq|A_n\setminus B_n|\leq\aleph_0\).
+\end{proof}
+
+\begin{theorem}
+Let \(\mc A,\mc B\) be sequence-like. Then \(\alpha_2(\mc A,\mc B)\) holds if and only
+if \(\plI\notprewin G_1(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+We first assume \(\alpha_2(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
+define a predetermined strategy for \(\pl I\).
+We may apply \(\alpha_2(\mc A,\mc B)\) to choose \(B\in\mc B\) such that
+\(|A_n\cap B|\geq\aleph_0\). We may then choose \(a_n\in(A_n\cap B)\setminus\{a_i:i<n\}\)
+for each \(n<\omega\). It follows that \(B'=\{a_n:n<\omega\}\in\mc B\) since
+\(B'\) is an infinite subset of \(B\in\mc B\); therefore \(A_n\) does not define
+a winning predetermined strategy for \(\plI\).
+
+Now suppose \(\plI\notprewin G_1(\mc A,\mc B)\). Given \(A_n\in\mc A\) for \(n<\omega\),
+first choose \(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n\) such that \(j<k\) implies
+\(a_{n,j}\not=a_{n,k}\),
+and then let \(A_{n,m}=\{a_{n,j}:m\leq j<\omega\}\), noting \(A_{n,m}\in\mc A\) since
+\(A_{n,m}\) is an infinite subset of \(A_n\in\mc A\). Finally choose
+some \(\theta:\omega\to\omega\) such that \(|\theta^{\leftarrow}(n)|=\aleph_0\) for
+each \(n<\omega\).
+
+Since playing \(A_{\theta(m),m}\) during round \(m\)
+does not define a winning strategy for \(\plI\) in
+\(G_1(\mc A,\mc B)\), \(\plII\) may choose \(x_m\in A_{\theta(m),m}\)
+such that \(B=\{x_m:m<\omega\}\in\mc B\).
+Choose \(i_m<\omega\) for each \(m<\omega\) such that
+\(x_m=a_{\theta(m),i_m}\), noting \(i_m\geq m\).
+It follows that 
+\(A_n\cap B\supseteq\{a_{\theta(m),i_m}:m\in\theta^{\leftarrow}(n)\}\).
+Since for each \(m\in\theta^{\leftarrow}(n)\) there exists
+\(M\in\theta^{\leftarrow}(n)\) such that \(m\leq i_m<M\leq i_{M}\),
+and therefore \(a_{\theta(m),i_m}\not=a_{\theta(m),i_{M}}=a_{\theta(M),i_{M}}\),
+we have shown that \(A_n\cap B\) is infinite. Thus \(B\) witnesses
+\(\alpha_2(\mc A,\mc B)\).
+\end{proof}
+
+\begin{theorem}
+Let \(\mc A,\mc B\) be sequence-like. Then \(\alpha_4(\mc A,\mc B)\) holds if and only
+if \(\plI\notprewin G_{<2}(\mc A,\mc B)\) if and only if
+\(\plI\notprewin G_{fin}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+We first assume \(\alpha_4(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
+define a predetermined strategy for \(\plI\) in 
+\(G_{<2}(\mc A,\mc B)\). We then choose
+\(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n\) such that \(j<k\) implies
+\(a_{n,j}\not=a_{n,k}\), and then let \(A_n''=A_n'\setminus\{a_{i,j}:i,j<n\}\),
+noting \(A_n''\in\mc A\) since it is an infinite subset of \(A_n\).
+
+By applying \(\alpha_4(\mc A,\mc B)\) to \(A_n''\), we obtain \(B\in\mc B\)
+such that \(A_n''\cap B\not=\emptyset\) for infintely-many \(n<\omega\).
+We then let \(F_n=\emptyset\) when \(A_n''\cap B=\emptyset\), and
+\(F_n=\{x_n\}\) for some \(x_n\in A_n''\cap B\) otherwise. Then we will have that
+\(B'=\bigcup\{F_n:n<\omega\}\subseteq B\) belongs to \(\mc B\) once we show that
+\(B'\) is infinite. To see this, for \(m\leq n<\omega\) note that either \(F_m\) is
+empty (and we let \(j_m=0\)) or \(F_m=\{a_{m,j_m}\}\)
+for some \(j_m\geq m\); choose \(N<\omega\) such that \(j_m<N\) for all
+\(m\leq n\) and \(F_N=\{x_N\}\). Thus \(F_m\not=F_N\) for all \(m\leq n\) since
+\(x_{N}\not\in\{a_{i,j}:i,j< N\}\). Thus \(\plII\) may defeat the predetermined
+strategy \(A_n\) by playing \(F_n\) each round.
+
+Since \(\plI\notprewin G_{<2}(\mc A,\mc B)\) immediately implies
+\(\plI\notprewin G_{fin}(\mc A,\mc B)\), we assume the latter. Given \(A_n\in\mc A\)
+for \(n<\omega\), we note this defines a (non-winning) predetermined 
+strategy for \(\plI\), so \(\plII\) may choose \(F_n\in[A_n]^{<\aleph_0}\) such that
+\(B=\bigcup\{F_n:n<\omega\}\in\mc B\). Since \(B\) is infinite, we note
+\(F_n\not=\emptyset\) for infinitely-many \(n<\omega\). Thus \(B\) witnesses
+\(\alpha_4(\mc A,\mc B)\) since \(A_n\cap B\supseteq F_n\not=\emptyset\) for
+infinitely-many \(n<\omega\).
+\end{proof}
+
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography}
+
+\end{document}
