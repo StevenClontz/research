@@ -128,7 +128,19 @@ that is, infinite subsets of \(X\) such that for each neighborhood \(U\) of \(x\
 \(S\cap U\) is cofinite in \(S\).
 \end{definition}
 
-It follows that \(\Gamma_X,\Gamma_{X,x}\) are both sequence-like.
+It follows that \(\Gamma_X,\Gamma_{X,x}\) are both sequence-like. We also require
+the following.
+
+\begin{definition}
+Say a collection \(\mc A\) is \term{almost-sequence-like} if
+for each \(A\in\mc A\), there is \(A'\subseteq A\) such that:
+\begin{itemize}
+\item \(|A'|=\aleph_0\).
+\item If \(A''\) is a cofinite subset of \(A'\), then \(A''\in\mc A\).
+\end{itemize}
+\end{definition}
+
+So all sequence-like sets are almost-sequence-like.
 
 \begin{theorem}
 Let \(\mc B\) be sequence-like. Then \(\alpha_1(\mc A,\mc B)\) holds if and only
@@ -151,7 +163,8 @@ since \(|A_n\setminus B|\leq|A_n\setminus B_n|\leq\aleph_0\).
 \end{proof}
 
 \begin{theorem}
-Let \(\mc A,\mc B\) be sequence-like. Then \(\alpha_2(\mc A,\mc B)\) holds if and only
+Let \(\mc A\) be almost-sequence-like and \(\mc B\) be sequence-like. 
+Then \(\alpha_2(\mc A,\mc B)\) holds if and only
 if \(\plI\notprewin G_1(\mc A,\mc B)\).
 \end{theorem}
 
@@ -165,10 +178,10 @@ for each \(n<\omega\). It follows that \(B'=\{a_n:n<\omega\}\in\mc B\) since
 a winning predetermined strategy for \(\plI\).
 
 Now suppose \(\plI\notprewin G_1(\mc A,\mc B)\). Given \(A_n\in\mc A\) for \(n<\omega\),
-first choose \(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n\) such that \(j<k\) implies
-\(a_{n,j}\not=a_{n,k}\),
-and then let \(A_{n,m}=\{a_{n,j}:m\leq j<\omega\}\), noting \(A_{n,m}\in\mc A\) since
-\(A_{n,m}\) is an infinite subset of \(A_n\in\mc A\). Finally choose
+first choose \(A_n'\in\mc A\) such that \(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n\),
+\(j<k\) implies \(a_{n,j}\not=a_{n,k}\),
+and \(A_{n,m}=\{a_{n,j}:m\leq j<\omega\}\in\mc A\).
+Finally choose
 some \(\theta:\omega\to\omega\) such that \(|\theta^{\leftarrow}(n)|=\aleph_0\) for
 each \(n<\omega\).
 
@@ -188,7 +201,8 @@ we have shown that \(A_n\cap B\) is infinite. Thus \(B\) witnesses
 \end{proof}
 
 \begin{theorem}
-Let \(\mc A,\mc B\) be sequence-like. Then \(\alpha_4(\mc A,\mc B)\) holds if and only
+Let \(\mc A\) be almost-sequence-like and \(\mc B\) be sequence-like. 
+Then \(\alpha_4(\mc A,\mc B)\) holds if and only
 if \(\plI\notprewin G_{<2}(\mc A,\mc B)\) if and only if
 \(\plI\notprewin G_{fin}(\mc A,\mc B)\).
 \end{theorem}
@@ -196,10 +210,9 @@ if \(\plI\notprewin G_{<2}(\mc A,\mc B)\) if and only if
 \begin{proof}
 We first assume \(\alpha_4(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
 define a predetermined strategy for \(\plI\) in 
-\(G_{<2}(\mc A,\mc B)\). We then choose
-\(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n\) such that \(j<k\) implies
-\(a_{n,j}\not=a_{n,k}\), and then let \(A_n''=A_n'\setminus\{a_{i,j}:i,j<n\}\),
-noting \(A_n''\in\mc A\) since it is an infinite subset of \(A_n\).
+\(G_{<2}(\mc A,\mc B)\). We then may choose \(A_n'\in\mc A\) where
+\(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n\), \(j<k\) implies
+\(a_{n,j}\not=a_{n,k}\), and \(A_n''=A_n'\setminus\{a_{i,j}:i,j<n\}\in\mc A\).
 
 By applying \(\alpha_4(\mc A,\mc B)\) to \(A_n''\), we obtain \(B\in\mc B\)
 such that \(A_n''\cap B\not=\emptyset\) for infintely-many \(n<\omega\).
@@ -223,6 +236,169 @@ strategy for \(\plI\), so \(\plII\) may choose \(F_n\in[A_n]^{<\aleph_0}\) such 
 infinitely-many \(n<\omega\).
 \end{proof}
 
+\begin{theorem}
+Let \(\mc B\) be sequence-like. Then \(\plI\prewin G_{<2}(\mc A,\mc B)\)
+if and only if \(\plI\prewin G_{fin}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+Assume \(\bigcup\mc A\) is well-ordered.
+Given a winning predetermined strategy \(A_n\) for \(\plI\) in
+\(G_{<2}(\mc A,\mc B)\), consider \(F_n\in[A_n]^{<\aleph_0}\). We set
+\[
+  F_n^*
+=
+  \begin{cases}
+    \emptyset
+      & \text{ if }
+    F_n\setminus\bigcup\{F_m:m<n\}=\emptyset
+      \\
+    \{\min(
+      F_n\setminus\bigcup\{F_m:m<n\}
+    )\}
+      & \text{ otherwise}
+  \end{cases}
+\]
+Since \(|F_n|<2\), we have that \(\bigcup\{F_n^*:n<\omega\}\not\in\mc B\).
+In the case that \(\bigcup\{F_n^*:n<\omega\}\) is finite, we immediately
+see that \(\bigcup\{F_n:n<\omega\}\) is also finite and therefore not
+in \(\mc B\). Otherwise \(\bigcup\{F_n^*:n<\omega\}\not\in\mc B\)
+is an infinite subset of \(\bigcup\{F_n:n<\omega\}\), and thus
+\(\bigcup\{F_n:n<\omega\}\not\in\mc B\) too. Therefore
+\(A_n\) is a winning predetermined strategy for \(\plI\) in
+\(G_{fin}(\mc A,\mc B)\) as well.
+\end{proof}
+
+\begin{theorem}
+Let \(\mc B\) be sequence-like. Then \(\plI\win G_{<2}(\mc A,\mc B)\)
+if and only if \(\plI\win G_{fin}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+Assume \(\bigcup\mc A\) is well-ordered.
+Suppose \(\plI\win G_{<2}(\mc A,\mc B)\) is witnessed by the strategy
+\(\sigma\). Let \(\tuple{}^\star=\tuple{}\), and for 
+\(s\concat\tuple{F}\in([\bigcup\mc A]^{<\aleph_0})^{<\omega}
+\setminus\{\tuple{}\}\) let 
+\[
+  (s\concat\tuple{F})^\star
+=
+  \begin{cases}
+    s^\star\concat\tuple{\emptyset}
+      & \text{ if }
+    F\setminus\bigcup\ran{s}=\emptyset
+      \\
+    s^\star\concat\tuple{
+      \{\min(F\setminus\bigcup\ran{s})\}
+    }
+      & \text{ otherwise}
+  \end{cases}
+\]
+
+We then define the strategy \(\tau\) for \(\plI\) in \(G_{fin}(\mc A,\mc B)\)
+by \(\tau(s)=\sigma(s^\star)\). Then given any counterattack
+\(\alpha\in([\bigcup\mc A]^{<\aleph_0})^\omega\) by \(\plII\) played against 
+\(\tau\), we note that \(\alpha^*=\bigcup\{(\alpha\rest n)^*:n<\omega\}\)
+is a counterattack to \(\sigma\), and thus loses.
+This means \(B=\bigcup\ran{\alpha^*}\not\in\mc B\).
+
+We consider two cases. The first is the case that \(\bigcup\ran{\alpha^*}\)
+is finite. Noting that \(\alpha^*(m)\cap\alpha^*(n)=\emptyset\) whenever
+\(m\not=n\), there exists \(N<\omega\) such that 
+\(\alpha^*(n)=\emptyset\) for all \(n>N\). As a result,
+\(\bigcup\ran{\alpha}=\bigcup\ran{\alpha\rest n}\), and thus
+\(\bigcup\ran{\alpha}\) is finite, and therefore not in \(\mc B\).
+
+In the other case, \(\bigcup\ran{\alpha^*}\not\in\mc B\) is an 
+infinite subset of \(\bigcup\ran{\alpha}\), and therefore 
+\(\bigcup\ran{\alpha}\not\in\mc B\) as well. Thus we have shown
+that \(\tau\) is a winning strategy for \(\plI\) in
+\(G_{fin}(\mc A,\mc B)\).
+\end{proof}
+
+\begin{theorem}
+Let \(\mc B\) be sequence-like. Then \(\plII\win G_{<2}(\mc A,\mc B)\)
+if and only if \(\plII\win G_{fin}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{theorem}
+Let \(\mc B\) be sequence-like. Then \(\plII\markwin G_{<2}(\mc A,\mc B)\)
+if and only if \(\plII\markwin G_{fin}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{theorem}\label{pawlikowskii}
+Let \(\mc A\) be almost-sequence-like and \(\mc B\) be sequence-like.
+Then \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
+\(\plI\prewin G_{fin}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+We assume \(\plI\win G_{fin}(\mc A,\mc B)\).
+As \(\mc A\) is almost-sequence-like, there is a strategy \(\sigma\)
+witnessing \(\plI\win G_{fin}(\mc A,\mc B)\) where
+\(|\sigma(s)|=\aleph_0\) and \(\sigma(s)\cap\bigcup\ran{s}=\emptyset\)
+(that is, \(\sigma\) never replays the choices of \(\plII\))
+for all partial plays \(s\) by \(\plII\).
+
+For each \(s\in\omega^{<\omega}\), suppose \(F_{s\rest m}\in[\bigcup A]^{<\aleph_0}\)
+is defined for each \(0<m\leq|s|\).
+Then let \(s^\star:|s|\to[\bigcup\mc A]^{<\aleph_0}\) be defined by
+\(s^\star(m)=F_{s\rest m+1}\), and define \(\tau':\omega^{<\omega}\to\mc A\)
+by \(\tau'(s)=\sigma(s^\star)\). Finally, set 
+\([\sigma(s^\star)]^{<\aleph_0}=\{F_{s\concat\tuple{n}}:n<\omega\}\), and
+for some bijection \(b:\omega^{<\omega}\to\omega\) let \(\tau(n)=\tau'(b(n))\)
+be a predetermined strategy for \(\plI\) in \(G_{fin}(\mc A,\mc B)\).
+
+Suppose \(\alpha\) is a counterattack by \(\plII\) against \(\tau\), so 
+\[
+  \alpha(n)
+    \in
+  [\tau(n)]^{<\aleph_0}
+    =
+  [\tau'(b(n))]^{<\aleph_0}
+    =
+  [\sigma(b(n)^\star)]^{<\aleph_0}
+\]
+It follows that \(\alpha(n)=F_{b(n)\concat\tuple{m}}\) for some \(m<\omega\).
+In particular, there is some infinite subset \(W\subseteq\omega\) and \(f\in\omega^\omega\)
+such that \(\{\alpha(n):n\in W\}=\{F_{f\rest n+1}:n<\omega\}\).
+Note here that \((f\rest n+1)^\star=(f\rest n)^\star\concat\tuple{F_{f\rest n+1}}\).
+This shows that \(F_{f\rest n+1}\in[\sigma((f\rest n)^\star)]^{<\aleph_0}\) 
+is an attempt by \(\plII\) to defeat \(\sigma\), which fails. Thus 
+\(\bigcup\{F_{f\rest n+1}:n<\omega\}=\bigcup\{\alpha(n):n\in W\}\not\in\mc B\),
+and since this set is infinite (as \(\sigma\) prevents \(\plII\)
+from repeating choices) we have \(\bigcup\{\alpha(n):n<\omega\}\not\in\mc B\) too.
+Therefore \(\tau\) is winning.
+\end{proof}
+
+
+\begin{proposition}\label{auto-asl}
+Let \(\mc B\) be sequence-like, \(\mc A\subseteq\mc B\),
+and \(\plI\notprewin G_{fin}(\mc A,\mc B)\). Then
+\(\mc A\) is almost-sequence-like.
+\end{proposition}
+\begin{proof}
+Let \(A\in\mc A\), and for all \(n<\omega\) let \(A_n=A\).
+Then \(A_n\) is not a winning predetermined strategy for
+\(\plI\), so \(\plII\) may choose finite subsets
+\(B_n\subseteq A_n\) such that \(A_n'\bigcup\{B_n:n<\omega\}\in\mc B\subseteq\mc A\).
+
+It follows that \(|A_n'|=\aleph_0\), and for any infinite subset
+\(A_n''\subseteq A_n'\) (in particular, any cofinite subset),
+\(A_n''\in\mc B\subseteq\mc A\). Thus \(\mc A\) is almost-sequence-like.
+\end{proof}
+
+
+\begin{corollary}
+Let \(\mc B\) be sequence-like and \(\mc A\subseteq\mc B\).
+Then \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
+\(\plI\prewin G_{fin}(\mc A,\mc B)\).
+\end{corollary}
+\begin{proof}
+Assuming \(\plI\notprewin G_{fin}(\mc A,\mc B)\), we have
+\(\plI\notwin G_{fin}(\mc A,\mc B)\) by Proposition \ref{auto-asl}
+and Theorem \ref{pawlikowskii}.
+\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
