@@ -53,7 +53,7 @@
 
 \begin{document}
 
-\title{Selection games and Arhangelskii's convergence principles}
+\title{Arhangelskii's \(\alpha\)-principles and selection games}
 
 
 
@@ -73,7 +73,9 @@ Mobile, AL 36688}
 
 
 \begin{abstract}
-We prove the things.
+Arhangelskii's convergence properties \(\alpha_2\) and \(\alpha_4\)
+may be characterized in terms of Scheeper's selection games.
+We generalize these folklore results to hold for more general collections.
 \end{abstract}
 
 
@@ -81,31 +83,87 @@ We prove the things.
 
 
 
+The following characterizations were given as Definition 1 by Kocinac in
+[cite Kocinac selection principles related].
 
+\begin{definition}
+\term{Arhangelskii's \(\alpha\)-principles} \(\alpha_i(\mc A,\mc B)\) are defined as follows
+for \(i\in\{1,2,3,4\}\).
+Let \(A_n\in\mc A\) for all \(n<\omega\); then there exists \(B\in\mc B\) such that:
+\begin{itemize}
+\item[\(\alpha_1\):] \(A_n\cap B\) is cofinite in \(A_n\) for all \(n<\omega\).
+\item[\(\alpha_2\):] \(A_n\cap B\) is infinite for all \(n<\omega\).
+\item[\(\alpha_3\):] \(A_n\cap B\) is infinite for infinitely-many \(n<\omega\).
+\item[\(\alpha_4\):] \(A_n\cap B\) is non-empty for infinitely-many \(n<\omega\).
+\end{itemize}
+\end{definition}
 
+When \((\mc A,\mc B)\) is omitted, it is assumed that \(\mc A=\mc B\) is the
+collection \(\Gamma_{X,x}\) of sequences converging to some point \(x\in X\),
+as introduced by Arhangelskii in [cite Arhangelskii frequency spectrum].
+Provided \(\mc A\) only contains infinite sets, it's easy to see that
+\(\alpha_n(\mc A,\mc B)\) implies \(\alpha_{n+1}(\mc A,\mc B)\).
 
-%
-%\section{Introduction}
-%
-%\begin{definition}
-%  The \term{selection game} \(\schStrongSelGame{\mc A}{\mc B}\) 
-%  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
-%  During round \(n\), \(\plI\) chooses
-%  \(A_n\in\mc A\), followed by \(\plII\) choosing \(B_n\in A_n\).
-%  Player \(\plII\) wins in the case that \(\{B_n:n<\omega\}\in\mc B\),
-%  and Player \(\plI\) wins otherwise.
-%\end{definition}
-%
-%\begin{definition}
-%  The \term{selection game} \(\schSelGame{\mc A}{\mc B}\) 
-%  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
-%  During round \(n\), \(\plI\) chooses
-%  \(A_n\in\mc A\), followed by \(\plII\) choosing \(B_n\in [A_n]^{<\aleph_0}\).
-%  Player \(\plII\) wins in the case that \(\bigcup\{B_n:n<\omega\}\in\mc B\),
-%  and Player \(\plI\) wins otherwise.
-%\end{definition}
-%
-\section{Clontz results}
+We aim to relate these to the following games.
+
+\begin{definition}
+  The \term{selection game} \(G_1(\mc A,\mc B)\) (resp. \(G_{fin}(\mc A,\mc B)\))
+  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
+  During round \(n\), \(\plI\) chooses
+  \(A_n\in\mc A\), followed by \(\plII\) choosing \(a_n\in A_n\)
+  (resp. \(F_n\in[A_n]^{<\aleph_0}\)).
+  Player \(\plII\) wins in the case that \(\{a_n:n<\omega\}\in\mc B\)
+  (resp. \(\bigcup\{F_n:n<\omega\}\in\mc B\)),
+  and Player \(\plI\) wins otherwise.
+\end{definition}
+
+Such games are well-represented in the literature; see [cite Scheepers combinatorics ramsey]
+for example.
+We will also consider the similarly-defined games \(G_{<2}(\mc A,\mc B)\)
+(\(\plII\) chooses 0 or 1 points from each choice by \(\plI\)) and \(G_{cf}(\mc A,\mc B)\)
+(\(\plII\) chooses cofinitely-many points).
+
+\begin{definition}
+  Let \(P\) be a player in a game \(G\). \(P\) has a \term{winning strategy}
+  for \(G\), denoted \(P\win G\), if \(P\) has a strategy that defeats every
+  possible counterplay by their opponent. If a strategy only relies on the
+  round number and ignores the moves of the opponent, the strategy is said
+  to be \term{predetermined}; the existence of a predetermined winning strategy
+  is denoted \(P\prewin G\).
+\end{definition}
+
+We briefly note that the statement \(\plI\notprewin G_\star(\mc A,\mc B)\)
+is often denoted as the \term{selection principle} \(S_\star(\mc A,\mc B)\).
+
+The equivalence of \(\alpha_2(\Gamma_{X,x}\Gamma_{X,x})\) and 
+\(\plI\notprewin G_1(\Gamma_{X,x},\Gamma_{X,x})\) was briefly asserted by Sakai
+in the introduction of [cite Sakai sequence selection properties]; the similar
+equivalence of \(\alpha_4(\Gamma_{X,x}\Gamma_{X,x})\) and 
+\(\plI\notprewin G_{fin}(\Gamma_{X,x},\Gamma_{X,x})\) seems to be folklore.
+In fact, these relationships hold in more generality.
+
+\section{Main Results}
+
+\begin{definition}
+Let \(\Gamma_{X,x}\) be the collection of non-trivial sequences \(S\subseteq X\) converging to \(x\),
+that is, infinite subsets of \(X\setminus\{x\}\) such that for each neighborhood \(U\) of \(x\),
+\(S\cap U\) is cofinite in \(S\).
+\end{definition}
+
+\begin{definition}
+Let \(\Gamma_X\) be the collection of open \term{\(\gamma\)-covers} \(\mc U\) of \(X\),
+that is, infinite open covers of \(X\) such that \(X\not\in \mc U\) and for each \(x\in X\),
+\(\{U\in\mc U:x\in U\}\) is cofinite in \(\mc U\).
+\end{definition}
+
+The similarity in nomenclature follows from the observation that every non-trivial sequence in
+\(C_p(X)\) converging to the zero function \(\vec{0}\) naturally defines a corresponding
+\(\gamma\)-cover in \(X\), see e.g. Theorem 4 of
+[Scheepers a sequential property and covering property].
+
+Note that by these definitions, convergent sequences (resp. \(\gamma\)-covers) may be uncountable,
+but any infinite subset of either would remain a convergent sequence (resp. \(\gamma\)-cover),
+in particular, countably infinite subsets. We capture this idea as follows.
 
 \begin{definition}
 Say a collection \(\mc A\) is \term{\(\Gamma\)-like} if it satisfies the following
@@ -116,20 +174,7 @@ for each \(A\in\mc A\).
 \end{itemize}
 \end{definition}
 
-\begin{definition}
-Let \(\Gamma_X\) be the collection of open \term{\(\gamma\)-covers} \(\mc U\) of \(X\),
-that is, infinite open covers of \(X\) such that for each \(x\in X\),
-\(\{U\in\mc U:x\in U\}\) is cofinite in \(\mc U\).
-\end{definition}
-
-\begin{definition}
-Let \(\Gamma_{X,x}\) be the collection of non-trivial sequences \(S\subseteq X\) converging to \(x\),
-that is, infinite subsets of \(X\) such that for each neighborhood \(U\) of \(x\),
-\(S\cap U\) is cofinite in \(S\).
-\end{definition}
-
-It follows that \(\Gamma_X,\Gamma_{X,x}\) are both \(\Gamma\)-like. We also require
-the following.
+We also require the following.
 
 \begin{definition}
 Say a collection \(\mc A\) is \term{almost-\(\Gamma\)-like} if
@@ -142,25 +187,8 @@ for each \(A\in\mc A\), there is \(A'\subseteq A\) such that:
 
 So all \(\Gamma\)-like sets are almost-\(\Gamma\)-like.
 
-\begin{theorem}
-Let \(\mc B\) be \(\Gamma\)-like. Then \(\alpha_1(\mc A,\mc B)\) holds if and only
-if \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
-\end{theorem}
-
-\begin{proof}
-We first assume \(\alpha_1(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
-define a predetermined strategy for \(\plI\). By \(\alpha_1(\mc A,\mc B)\), we
-immediately obtain \(B\in\mc B\) such that \(|A_n\setminus B|<\aleph_0\). Thus
-\(B_n=A_n\cap B\) is a cofinite choice from \(A_n\), and 
-\(B'=\bigcup\{B_n:n<\omega\}\) is an infinite subset of \(B\),
-so \(B'\in\mc B\). Thus \(\plII\) may defeat \(\plI\) by choosing
-\(B_n\subseteq A_n\) each round, witnessing \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
-
-On the other hand, let \(\plI\notprewin G_{cf}(\mc A,\mc B)\). Given \(A_n\in\mc A\)
-for \(n<\omega\), we note that \(\plII\) may choose a cofinite subset \(B_n\subseteq A_n\)
-such that \(B=\bigcup\{B_n:n<\omega\}\in\mc B\). Then \(B\) witnesses \(\alpha_1(\mc A,\mc B)\)
-since \(|A_n\setminus B|\leq|A_n\setminus B_n|\leq\aleph_0\).
-\end{proof}
+We are now able to prove a few general equivalences between \(\alpha\)-princples
+and selection games.
 
 \begin{theorem}
 Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like. 
@@ -170,7 +198,7 @@ if \(\plI\notprewin G_1(\mc A,\mc B)\).
 
 \begin{proof}
 We first assume \(\alpha_2(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
-define a predetermined strategy for \(\pl I\).
+define a predetermined strategy for \(\plI\).
 We may apply \(\alpha_2(\mc A,\mc B)\) to choose \(B\in\mc B\) such that
 \(|A_n\cap B|\geq\aleph_0\). We may then choose \(a_n\in(A_n\cap B)\setminus\{a_i:i<n\}\)
 for each \(n<\omega\). It follows that \(B'=\{a_n:n<\omega\}\in\mc B\) since
@@ -235,6 +263,10 @@ strategy for \(\plI\), so \(\plII\) may choose \(F_n\in[A_n]^{<\aleph_0}\) such 
 \(\alpha_4(\mc A,\mc B)\) since \(A_n\cap B\supseteq F_n\not=\emptyset\) for
 infinitely-many \(n<\omega\).
 \end{proof}
+
+This shows that \(\plII\) gains no advantage from picking more than one
+point per round. This in fact only depends on \(\mc B\) being
+\(\Gamma\)-like, which we formalize in the following results.
 
 \begin{theorem}
 Let \(\mc B\) be \(\Gamma\)-like. Then \(\plI\prewin G_{<2}(\mc A,\mc B)\)
@@ -316,30 +348,23 @@ that \(\tau\) is a winning strategy for \(\plI\) in
 \(G_{fin}(\mc A,\mc B)\).
 \end{proof}
 
-We further note that the above proof technique could be
+We note that the above proof technique could be
 used to establish that perfect-information and
-Markov winning strategies for \(\plII\) in
+limited-information strategies for \(\plII\) in
 \(G_{fin}(\mc A,\mc B)\) may be improved to
 be valid in \(G_{<2}(\mc A,\mc B)\), provided
 \(\mc B\) is \(\Gamma\)-like. As such,
 \(G_{<2}(\mc A,\mc B)\) and \(G_{fin}(\mc A,\mc B)\)
 are effectively equivalent games under this hypothesis.
-%\begin{theorem}
-%Let \(\mc B\) be \(\Gamma\)-like. Then \(\plII\win G_{<2}(\mc A,\mc B)\)
-%if and only if \(\plII\win G_{fin}(\mc A,\mc B)\).
-%\end{theorem}
-
-%\begin{theorem}
-%Let \(\mc B\) be \(\Gamma\)-like. Then \(\plII\markwin G_{<2}(\mc A,\mc B)\)
-%if and only if \(\plII\markwin G_{fin}(\mc A,\mc B)\).
-%\end{theorem}
 
 \begin{theorem}\label{pawlikowskii}
-Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like.
-Then \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
+Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like. Then
+\begin{itemize}
+\item \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
 \(\plI\prewin G_{fin}(\mc A,\mc B)\), and
-\(\plI\win G_1(\mc A,\mc B)\) if and only if
+\item \(\plI\win G_1(\mc A,\mc B)\) if and only if
 \(\plI\prewin G_1(\mc A,\mc B)\).
+\end{itemize}
 \end{theorem}
 
 \begin{proof}
@@ -392,17 +417,22 @@ Therefore \(\tau\) is winning.
 Note that the assumption in Theorem \ref{pawlikowskii} that \(\mc A\)
 be almost-\(\Gamma\)-like cannot be omitted. In
 [todo cite Clontz k-tactics in Gruenhage game]
-an example of a space and point where \(\plI\win G_1(\mc A,\mc B)\) but
+an example of a space \(X^*\) and point \(\infty\in X^*\) 
+where \(\plI\win G_1(\mc A,\mc B)\) but
 \(\plI\notprewin G_1(\mc A,\mc B)\) is given, where \(\mc A\) is
-the set of open neighborhoods of the given point 
+the set of open neighborhoods of \(\infty\) 
 (which are all uncountable), 
-and \(\mc B\) is the set of converging sequences to that point.
-(Note that \(G_1(\mc A,\mc B)\) is called \(Gru_{O,P}(X,x)\) in that
-paper. In fact, more is shown: \(\plI\) has a winning perfect-information
-strategy, but any strategy that only uses 
+and \(\mc B\) is the set \(\Gamma_{X^*,\infty}\) of sequences converging to that point.
+(Note that \(G_1(\mc A,\mc B)\) is called \(Gru_{O,P}(X^*,\infty)\) in that
+paper, and an equivalent game \(Gru_{K,P}(X)\) is what is directly
+studied. In fact, more is shown: \(\plI\) has a winning perfect-information
+strategy, but for any natural number \(k\), any strategy that only uses 
 the most recent \(k\) moves of \(\plII\) and the round number
-can be defeated, where \(k\) is any natural number.)
+can be defeated.)
 
+While \(\mc A\) is often not almost-\(\Gamma\)-like in general,
+it may satisfy that property in combination with the selection principles
+being considered.
 
 \begin{proposition}\label{auto-asl}
 Let \(\mc B\) be \(\Gamma\)-like, \(\mc B\subseteq\mc A\),
@@ -422,13 +452,21 @@ and for any infinite subset
 \(A''\in\mc B\subseteq\mc A\). Thus \(\mc A\) is almost-\(\Gamma\)-like.
 \end{proof}
 
+Note that in the previous result, 
+\(\plI\notprewin G_{fin}(\mc A,\mc B)\) could be weakened
+to the choice principle \({\mc A}\choose{\mc B}\): for every
+member of \(\mc A\), there is some countable subset belonging to \(\mc B\).
+
 
 \begin{corollary}
 Let \(\mc B\) be \(\Gamma\)-like and \(\mc B\subseteq\mc A\).
-Then \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
+Then 
+\begin{itemize}
+\item \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
 \(\plI\prewin G_{fin}(\mc A,\mc B)\), and
-\(\plI\win G_{1}(\mc A,\mc B)\) if and only if
+\item \(\plI\win G_{1}(\mc A,\mc B)\) if and only if
 \(\plI\prewin G_{1}(\mc A,\mc B)\).
+\end{itemize}
 \end{corollary}
 \begin{proof}
 Assuming \(\plI\notprewin G_{fin}(\mc A,\mc B)\), we have
@@ -443,6 +481,61 @@ and Theorem \ref{pawlikowskii}.
 
 This corollary generalizes e.g. Theorems 26 and 30 of [cite Scheepers 1996 Ramsey],
 Theorem 5 of [cite MR2119791], and Corollary 36 of [cite Clontz dual games].
+
+In summary, using the selection principle notation \(S_\star(\mc A,\mc B)\):
+
+\begin{corollary}
+Let \(\mc B\) be \(\Gamma\)-like and \(\mc B\subseteq\mc A\).
+Then 
+\begin{itemize}
+\item \(\plI\notwin G_{fin}(\mc A,\mc B)\) if and only if
+\(S_{fin}(\mc A,\mc B)\) if and only if
+\(\alpha_2(\mc A,\mc B)\), and
+\item \(\plI\notwin G_{1}(\mc A,\mc B)\) if and only if
+\(S_{1}(\mc A,\mc B)\) if and only if
+\(\alpha_4(\mc A,\mc B)\).
+\end{itemize}
+\end{corollary}
+
+\section{Conclusion}
+
+We conclude with the following easy result, and a couple questions.
+
+\begin{proposition}
+Let \(\mc B\) be \(\Gamma\)-like. Then \(\alpha_1(\mc A,\mc B)\) holds if and only
+if \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
+\end{proposition}
+
+\begin{proof}
+We first assume \(\alpha_1(\mc A,\mc B)\) and let \(A_n\in\mc A\) for \(n<\omega\)
+define a predetermined strategy for \(\plI\). By \(\alpha_1(\mc A,\mc B)\), we
+immediately obtain \(B\in\mc B\) such that \(|A_n\setminus B|<\aleph_0\). Thus
+\(B_n=A_n\cap B\) is a cofinite choice from \(A_n\), and 
+\(B'=\bigcup\{B_n:n<\omega\}\) is an infinite subset of \(B\),
+so \(B'\in\mc B\). Thus \(\plII\) may defeat \(\plI\) by choosing
+\(B_n\subseteq A_n\) each round, witnessing \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
+
+On the other hand, let \(\plI\notprewin G_{cf}(\mc A,\mc B)\). Given \(A_n\in\mc A\)
+for \(n<\omega\), we note that \(\plII\) may choose a cofinite subset \(B_n\subseteq A_n\)
+such that \(B=\bigcup\{B_n:n<\omega\}\in\mc B\). Then \(B\) witnesses \(\alpha_1(\mc A,\mc B)\)
+since \(|A_n\setminus B|\leq|A_n\setminus B_n|\leq\aleph_0\).
+\end{proof}
+
+\begin{question}
+Is there a game-theoretic characterization of \(\alpha_3(\mc A,\mc B)\)?
+\end{question}
+
+Noting that \(\plI\win G_1(\Gamma_X,\Gamma_X)\) if and only if
+\(\plI\win G_{fin}(\Gamma_X,\Gamma_X)\) [cite Kocinac], but
+the same is not true of \(G_\star(\Gamma_{X,x},\Gamma_{X,x})\)
+(i.e. there are \(\alpha_4\) spaces that are not \(\alpha_2\)
+[cite Arhangelskii]),
+we also ask the following.
+
+\begin{question}
+Is there an elegant condition on \(\mc A,\mc B\) guaranteeing
+\(\plI\win G_1(\mc A,\mc B)\Rightarrow\plI\win G_{fin}(\mc A,\mc B)\)?
+\end{question}
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
