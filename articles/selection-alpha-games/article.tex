@@ -108,7 +108,7 @@ We prove the things.
 \section{Clontz results}
 
 \begin{definition}
-Say a collection \(\mc A\) is \term{sequence-like} if it satisfies the following
+Say a collection \(\mc A\) is \term{\(\Gamma\)-like} if it satisfies the following
 for each \(A\in\mc A\).
 \begin{itemize}
 \item \(|A|\geq\aleph_0\).
@@ -128,11 +128,11 @@ that is, infinite subsets of \(X\) such that for each neighborhood \(U\) of \(x\
 \(S\cap U\) is cofinite in \(S\).
 \end{definition}
 
-It follows that \(\Gamma_X,\Gamma_{X,x}\) are both sequence-like. We also require
+It follows that \(\Gamma_X,\Gamma_{X,x}\) are both \(\Gamma\)-like. We also require
 the following.
 
 \begin{definition}
-Say a collection \(\mc A\) is \term{almost-sequence-like} if
+Say a collection \(\mc A\) is \term{almost-\(\Gamma\)-like} if
 for each \(A\in\mc A\), there is \(A'\subseteq A\) such that:
 \begin{itemize}
 \item \(|A'|=\aleph_0\).
@@ -140,10 +140,10 @@ for each \(A\in\mc A\), there is \(A'\subseteq A\) such that:
 \end{itemize}
 \end{definition}
 
-So all sequence-like sets are almost-sequence-like.
+So all \(\Gamma\)-like sets are almost-\(\Gamma\)-like.
 
 \begin{theorem}
-Let \(\mc B\) be sequence-like. Then \(\alpha_1(\mc A,\mc B)\) holds if and only
+Let \(\mc B\) be \(\Gamma\)-like. Then \(\alpha_1(\mc A,\mc B)\) holds if and only
 if \(\plI\notprewin G_{cf}(\mc A,\mc B)\).
 \end{theorem}
 
@@ -163,7 +163,7 @@ since \(|A_n\setminus B|\leq|A_n\setminus B_n|\leq\aleph_0\).
 \end{proof}
 
 \begin{theorem}
-Let \(\mc A\) be almost-sequence-like and \(\mc B\) be sequence-like. 
+Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like. 
 Then \(\alpha_2(\mc A,\mc B)\) holds if and only
 if \(\plI\notprewin G_1(\mc A,\mc B)\).
 \end{theorem}
@@ -201,7 +201,7 @@ we have shown that \(A_n\cap B\) is infinite. Thus \(B\) witnesses
 \end{proof}
 
 \begin{theorem}
-Let \(\mc A\) be almost-sequence-like and \(\mc B\) be sequence-like. 
+Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like. 
 Then \(\alpha_4(\mc A,\mc B)\) holds if and only
 if \(\plI\notprewin G_{<2}(\mc A,\mc B)\) if and only if
 \(\plI\notprewin G_{fin}(\mc A,\mc B)\).
@@ -237,7 +237,7 @@ infinitely-many \(n<\omega\).
 \end{proof}
 
 \begin{theorem}
-Let \(\mc B\) be sequence-like. Then \(\plI\prewin G_{<2}(\mc A,\mc B)\)
+Let \(\mc B\) be \(\Gamma\)-like. Then \(\plI\prewin G_{<2}(\mc A,\mc B)\)
 if and only if \(\plI\prewin G_{fin}(\mc A,\mc B)\).
 \end{theorem}
 
@@ -259,7 +259,7 @@ Given a winning predetermined strategy \(A_n\) for \(\plI\) in
       & \text{ otherwise}
   \end{cases}
 \]
-Since \(|F_n|<2\), we have that \(\bigcup\{F_n^*:n<\omega\}\not\in\mc B\).
+Since \(|F_n^*|<2\), we have that \(\bigcup\{F_n^*:n<\omega\}\not\in\mc B\).
 In the case that \(\bigcup\{F_n^*:n<\omega\}\) is finite, we immediately
 see that \(\bigcup\{F_n:n<\omega\}\) is also finite and therefore not
 in \(\mc B\). Otherwise \(\bigcup\{F_n^*:n<\omega\}\not\in\mc B\)
@@ -270,7 +270,7 @@ is an infinite subset of \(\bigcup\{F_n:n<\omega\}\), and thus
 \end{proof}
 
 \begin{theorem}
-Let \(\mc B\) be sequence-like. Then \(\plI\win G_{<2}(\mc A,\mc B)\)
+Let \(\mc B\) be \(\Gamma\)-like. Then \(\plI\win G_{<2}(\mc A,\mc B)\)
 if and only if \(\plI\win G_{fin}(\mc A,\mc B)\).
 \end{theorem}
 
@@ -316,54 +316,72 @@ that \(\tau\) is a winning strategy for \(\plI\) in
 \(G_{fin}(\mc A,\mc B)\).
 \end{proof}
 
-\begin{theorem}
-Let \(\mc B\) be sequence-like. Then \(\plII\win G_{<2}(\mc A,\mc B)\)
-if and only if \(\plII\win G_{fin}(\mc A,\mc B)\).
-\end{theorem}
+We further note that the above proof technique could be
+used to establish that perfect-information and
+Markov winning strategies for \(\plII\) in
+\(G_{fin}(\mc A,\mc B)\) may be improved to
+be valid in \(G_{<2}(\mc A,\mc B)\), provided
+\(\mc B\) is \(\Gamma\)-like. As such,
+\(G_{<2}(\mc A,\mc B)\) and \(G_{fin}(\mc A,\mc B)\)
+are effectively equivalent games under this hypothesis.
+%\begin{theorem}
+%Let \(\mc B\) be \(\Gamma\)-like. Then \(\plII\win G_{<2}(\mc A,\mc B)\)
+%if and only if \(\plII\win G_{fin}(\mc A,\mc B)\).
+%\end{theorem}
 
-\begin{theorem}
-Let \(\mc B\) be sequence-like. Then \(\plII\markwin G_{<2}(\mc A,\mc B)\)
-if and only if \(\plII\markwin G_{fin}(\mc A,\mc B)\).
-\end{theorem}
+%\begin{theorem}
+%Let \(\mc B\) be \(\Gamma\)-like. Then \(\plII\markwin G_{<2}(\mc A,\mc B)\)
+%if and only if \(\plII\markwin G_{fin}(\mc A,\mc B)\).
+%\end{theorem}
 
 \begin{theorem}\label{pawlikowskii}
-Let \(\mc A\) be almost-sequence-like and \(\mc B\) be sequence-like.
+Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like.
 Then \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
-\(\plI\prewin G_{fin}(\mc A,\mc B)\).
+\(\plI\prewin G_{fin}(\mc A,\mc B)\), and
+\(\plI\win G_1(\mc A,\mc B)\) if and only if
+\(\plI\prewin G_1(\mc A,\mc B)\).
 \end{theorem}
 
 \begin{proof}
-We assume \(\plI\win G_{fin}(\mc A,\mc B)\).
-As \(\mc A\) is almost-sequence-like, there is a strategy \(\sigma\)
-witnessing \(\plI\win G_{fin}(\mc A,\mc B)\) where
+We assume \(\plI\win G_{fin}(\mc A,\mc B)\)
+and let the symbol \(\dagger\) mean \(<\aleph_0\)
+(respectively, \(\plI\win G_1(\mc A,\mc B)\)
+and \(\dagger=1\),
+and for convenience we assume \(\plII\) plays
+singleton subsets of \(\mc A\) rather than elements).
+As \(\mc A\) is almost-\(\Gamma\)-like, there is a 
+winning strategy \(\sigma\) where
 \(|\sigma(s)|=\aleph_0\) and \(\sigma(s)\cap\bigcup\ran{s}=\emptyset\)
 (that is, \(\sigma\) never replays the choices of \(\plII\))
 for all partial plays \(s\) by \(\plII\).
 
-For each \(s\in\omega^{<\omega}\), suppose \(F_{s\rest m}\in[\bigcup A]^{<\aleph_0}\)
+For each \(s\in\omega^{<\omega}\), suppose 
+\(F_{s\rest m}\in[\bigcup A]^{\dagger}\) 
 is defined for each \(0<m\leq|s|\).
-Then let \(s^\star:|s|\to[\bigcup\mc A]^{<\aleph_0}\) be defined by
+Then let \(s^\star:|s|\to[\bigcup\mc A]^{\dagger}\)
+be defined by
 \(s^\star(m)=F_{s\rest m+1}\), and define \(\tau':\omega^{<\omega}\to\mc A\)
 by \(\tau'(s)=\sigma(s^\star)\). Finally, set 
-\([\sigma(s^\star)]^{<\aleph_0}=\{F_{s\concat\tuple{n}}:n<\omega\}\), and
+\([\sigma(s^\star)]^{\dagger}=\{F_{s\concat\tuple{n}}:n<\omega\}\), and
 for some bijection \(b:\omega^{<\omega}\to\omega\) let \(\tau(n)=\tau'(b(n))\)
-be a predetermined strategy for \(\plI\) in \(G_{fin}(\mc A,\mc B)\).
+be a predetermined strategy for \(\plI\) in \(G_{fin}(\mc A,\mc B)\)
+(resp. \(G_1(\mc A,\mc B)\)).
 
 Suppose \(\alpha\) is a counterattack by \(\plII\) against \(\tau\), so 
 \[
   \alpha(n)
     \in
-  [\tau(n)]^{<\aleph_0}
+  [\tau(n)]^{\dagger}
     =
-  [\tau'(b(n))]^{<\aleph_0}
+  [\tau'(b(n))]^{\dagger}
     =
-  [\sigma(b(n)^\star)]^{<\aleph_0}
+  [\sigma(b(n)^\star)]^{\dagger}
 \]
 It follows that \(\alpha(n)=F_{b(n)\concat\tuple{m}}\) for some \(m<\omega\).
 In particular, there is some infinite subset \(W\subseteq\omega\) and \(f\in\omega^\omega\)
 such that \(\{\alpha(n):n\in W\}=\{F_{f\rest n+1}:n<\omega\}\).
 Note here that \((f\rest n+1)^\star=(f\rest n)^\star\concat\tuple{F_{f\rest n+1}}\).
-This shows that \(F_{f\rest n+1}\in[\sigma((f\rest n)^\star)]^{<\aleph_0}\) 
+This shows that \(F_{f\rest n+1}\in[\sigma((f\rest n)^\star)]^{\dagger}\) 
 is an attempt by \(\plII\) to defeat \(\sigma\), which fails. Thus 
 \(\bigcup\{F_{f\rest n+1}:n<\omega\}=\bigcup\{\alpha(n):n\in W\}\not\in\mc B\),
 and since this set is infinite (as \(\sigma\) prevents \(\plII\)
@@ -371,34 +389,60 @@ from repeating choices) we have \(\bigcup\{\alpha(n):n<\omega\}\not\in\mc B\) to
 Therefore \(\tau\) is winning.
 \end{proof}
 
+Note that the assumption in Theorem \ref{pawlikowskii} that \(\mc A\)
+be almost-\(\Gamma\)-like cannot be omitted. In
+[todo cite Clontz k-tactics in Gruenhage game]
+an example of a space and point where \(\plI\win G_1(\mc A,\mc B)\) but
+\(\plI\notprewin G_1(\mc A,\mc B)\) is given, where \(\mc A\) is
+the set of open neighborhoods of the given point 
+(which are all uncountable), 
+and \(\mc B\) is the set of converging sequences to that point.
+(Note that \(G_1(\mc A,\mc B)\) is called \(Gru_{O,P}(X,x)\) in that
+paper. In fact, more is shown: \(\plI\) has a winning perfect-information
+strategy, but any strategy that only uses 
+the most recent \(k\) moves of \(\plII\) and the round number
+can be defeated, where \(k\) is any natural number.)
+
 
 \begin{proposition}\label{auto-asl}
-Let \(\mc B\) be sequence-like, \(\mc A\subseteq\mc B\),
+Let \(\mc B\) be \(\Gamma\)-like, \(\mc B\subseteq\mc A\),
 and \(\plI\notprewin G_{fin}(\mc A,\mc B)\). Then
-\(\mc A\) is almost-sequence-like.
+\(\mc A\) is almost-\(\Gamma\)-like.
 \end{proposition}
 \begin{proof}
 Let \(A\in\mc A\), and for all \(n<\omega\) let \(A_n=A\).
 Then \(A_n\) is not a winning predetermined strategy for
-\(\plI\), so \(\plII\) may choose finite subsets
-\(B_n\subseteq A_n\) such that \(A_n'\bigcup\{B_n:n<\omega\}\in\mc B\subseteq\mc A\).
+\(\plI\), so \(\plII\) may choose finite sets
+\(B_n\subseteq A_n=A\) such that 
+\(A'=\bigcup\{B_n:n<\omega\}\in\mc B\subseteq\mc A\).
 
-It follows that \(|A_n'|=\aleph_0\), and for any infinite subset
-\(A_n''\subseteq A_n'\) (in particular, any cofinite subset),
-\(A_n''\in\mc B\subseteq\mc A\). Thus \(\mc A\) is almost-sequence-like.
+It follows that \(A'\subseteq A\) and \(|A'|=\aleph_0\), 
+and for any infinite subset
+\(A''\subseteq A'\) (in particular, any cofinite subset),
+\(A''\in\mc B\subseteq\mc A\). Thus \(\mc A\) is almost-\(\Gamma\)-like.
 \end{proof}
 
 
 \begin{corollary}
-Let \(\mc B\) be sequence-like and \(\mc A\subseteq\mc B\).
+Let \(\mc B\) be \(\Gamma\)-like and \(\mc B\subseteq\mc A\).
 Then \(\plI\win G_{fin}(\mc A,\mc B)\) if and only if
-\(\plI\prewin G_{fin}(\mc A,\mc B)\).
+\(\plI\prewin G_{fin}(\mc A,\mc B)\), and
+\(\plI\win G_{1}(\mc A,\mc B)\) if and only if
+\(\plI\prewin G_{1}(\mc A,\mc B)\).
 \end{corollary}
 \begin{proof}
 Assuming \(\plI\notprewin G_{fin}(\mc A,\mc B)\), we have
 \(\plI\notwin G_{fin}(\mc A,\mc B)\) by Proposition \ref{auto-asl}
 and Theorem \ref{pawlikowskii}.
+
+Similarly, assuming \(\plI\notprewin G_{1}(\mc A,\mc B)
+\Rightarrow\plI\notprewin G_{fin}(\mc A,\mc B)\), we have
+\(\plI\notwin G_{1}(\mc A,\mc B)\) by Proposition \ref{auto-asl}
+and Theorem \ref{pawlikowskii}.
 \end{proof}
+
+This corollary generalizes e.g. Theorems 26 and 30 of [cite Scheepers 1996 Ramsey]
+and Theorem 5 of [cite MR2119791].
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
