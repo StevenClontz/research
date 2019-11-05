@@ -73,9 +73,11 @@ Mobile, AL 36688}
 
 
 \begin{abstract}
-Arhangelskii's convergence properties \(\alpha_2\) and \(\alpha_4\)
-may be characterized in terms of Scheeper's selection games.
-We generalize these folklore results to hold for more general collections.
+Arhangelskii's properties \(\alpha_2\) and \(\alpha_4\)
+defined for convergent sequences
+may be characterized in terms of Scheeper's selection principles.
+We generalize these results to hold for more general collections
+and consider these results in terms of selection games.
 \end{abstract}
 
 
@@ -135,15 +137,6 @@ We will also consider the similarly-defined games \(G_{<2}(\mc A,\mc B)\)
 We briefly note that the statement \(\plI\notprewin G_\star(\mc A,\mc B)\)
 is often denoted as the \term{selection principle} \(S_\star(\mc A,\mc B)\).
 
-The equivalence of \(\alpha_2(\Gamma_{X,x}\Gamma_{X,x})\) and 
-\(\plI\notprewin G_1(\Gamma_{X,x},\Gamma_{X,x})\) was briefly asserted by Sakai
-in the introduction of [cite Sakai sequence selection properties]; the similar
-equivalence of \(\alpha_4(\Gamma_{X,x}\Gamma_{X,x})\) and 
-\(\plI\notprewin G_{fin}(\Gamma_{X,x},\Gamma_{X,x})\) seems to be folklore.
-In fact, these relationships hold in more generality.
-
-\section{Main Results}
-
 \begin{definition}
 Let \(\Gamma_{X,x}\) be the collection of non-trivial sequences \(S\subseteq X\) converging to \(x\),
 that is, infinite subsets of \(X\setminus\{x\}\) such that for each neighborhood \(U\) of \(x\),
@@ -160,6 +153,13 @@ The similarity in nomenclature follows from the observation that every non-trivi
 \(C_p(X)\) converging to the zero function \(\vec{0}\) naturally defines a corresponding
 \(\gamma\)-cover in \(X\), see e.g. Theorem 4 of
 [Scheepers a sequential property and covering property].
+
+The equivalence of \(\alpha_2(\Gamma_{X,x}\Gamma_{X,x})\) and 
+\(\plI\notprewin G_1(\Gamma_{X,x},\Gamma_{X,x})\) was briefly asserted by Sakai
+in the introduction of [cite Sakai sequence selection properties]; the similar
+equivalence of \(\alpha_4(\Gamma_{X,x}\Gamma_{X,x})\) and 
+\(\plI\notprewin G_{fin}(\Gamma_{X,x},\Gamma_{X,x})\) seems to be folklore.
+In fact, these relationships hold in more generality.
 
 Note that by these definitions, convergent sequences (resp. \(\gamma\)-covers) may be uncountable,
 but any infinite subset of either would remain a convergent sequence (resp. \(\gamma\)-cover),
@@ -189,6 +189,8 @@ So all \(\Gamma\)-like sets are almost-\(\Gamma\)-like.
 
 We are now able to prove a few general equivalences between \(\alpha\)-princples
 and selection games.
+
+\section{On \(\alpha_2(\mc A,\mc B)\) and \(G_1(\mc A,\mc B)\)}
 
 \begin{theorem}
 Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like. 
@@ -227,6 +229,41 @@ and therefore \(a_{\theta(m),i_m}\not=a_{\theta(m),i_{M}}=a_{\theta(M),i_{M}}\),
 we have shown that \(A_n\cap B\) is infinite. Thus \(B\) witnesses
 \(\alpha_2(\mc A,\mc B)\).
 \end{proof}
+
+While \(\alpha_2(\mc A,\mc B)\) involves infinite intersection and
+\(G_1(\mc A,\mc B)\) involves single selections, the previous result is made
+more intuitive given the following result, shown for \(\mc A=\mc B=\Gamma_{X,x}\)
+by Nogura in [cite product of alpha spaces].
+
+\begin{definition}
+\(\alpha_2'(\mc A,\mc B)\) is the following claim:
+if \(A_n\in\mc A\) for all \(n<\omega\), then there exists \(B\in\mc B\) such that
+\(A_n\cap B\) is nonempty for all \(n<\omega\).
+\end{definition}
+
+(Note that \(\alpha_5\) is sometimes used in the literature in place of \(\alpha_2'\).)
+
+\begin{proposition}
+If \(\mc A\) is almost-\(\Gamma\)-like, then
+\(\alpha_2(\mc A,\mc B)\) is equivalent to \(\alpha_2'(\mc A,\mc B)\).
+\end{proposition}
+
+\begin{proof}
+The forward implication is immediate, so we assume \(\alpha_2'(\mc A,\mc B)\).
+Given \(A_n\in\mc A\), we apply the almost-\(\Gamma\)-like property to obtain
+\(A_n'=\{a_{n,m}:m<\omega\}\subseteq A_n\) such that
+\(A_{n,m}=A_n\setminus\{a_{i,j}:i,j<m\}\in\mc A\) for all \(m<\omega\).
+
+By applying \(\alpha_2'(\mc A,\mc B)\) to \(A_{n,m}\), we obtain
+\(B\in\mc B\) such that \(A_{n,m}\cap B\) is nonempty for all \(n,m<\omega\).
+Since it follows that \(A_n\cap B\) is infinite for all \(n<\omega\),
+we have established \(\alpha_2(\mc A,\mc B)\).
+\end{proof}
+
+\section{On \(\alpha_4(\mc A,\mc B)\) and \(G_{fin}(\mc A,\mc B)\)}
+
+A similar correspondence exists between \(\alpha_4(\mc A,\mc B)\)
+and \(G_{fin}(\mc A,\mc B)\).
 
 \begin{theorem}
 Let \(\mc A\) be almost-\(\Gamma\)-like and \(\mc B\) be \(\Gamma\)-like. 
@@ -357,6 +394,8 @@ be valid in \(G_{<2}(\mc A,\mc B)\), provided
 \(G_{<2}(\mc A,\mc B)\) and \(G_{fin}(\mc A,\mc B)\)
 are effectively equivalent games under this hypothesis,
 so we will no longer consider \(G_{<2}(\mc A,\mc B)\).
+
+\section{Perfect information and predetermined strategies}
 
 We now demonstrate the following, in the spirit of Pawlikowskii's celebrated
 result that a winning strategy for the first player in the Rothberger game
@@ -502,6 +541,123 @@ Then
 \end{itemize}
 \end{corollary}
 
+\section{Disjoint selections}
+
+In each \(\alpha_i(\mc A,\mc B)\) principle, it is not required for the collection
+\(\{A_n:n<\omega\}\) to be pairwise disjoint. However, in many cases it may as
+well be.
+
+\begin{definition}
+For \(i\in\{1,2,3,4\}\) let \(\alpha_{i.1}(\mc A,\mc B)\) denote the claim that
+\(\alpha_i(\mc A,\mc B)\) holds provided the collection \(\{A_n:n<\omega\}\)
+is pairwise disjoint.
+\end{definition}
+
+Of course, \(\alpha_i(\mc A,\mc B)\) implies \(\alpha_{i.1}(\mc A,\mc B)\).
+It's also immediate that \(\alpha_{i.1}(\mc A,\mc B)\) implies
+\(\alpha_{i.1+1}(\mc A,\mc B)\) for the same reason that \(\alpha_i(\mc A,\mc B)\)
+implies \(\alpha_{i+1}(\mc A,\mc B)\). 
+
+%Nyikos considered these half-variants
+%in [cite Nyikos 1992] for \(\mc A=\mc B=\Gamma_{X,x}\), but his arguments
+%can be generalized provided \(\mc A\) is \(\Gamma\)-like.
+
+We take advantage of the following lemma.
+
+\begin{lemma}[Lemma 1.2 of (cite Nyikos 92)]
+Given a family \(\{A_n:n<\omega\}\) of infinite sets, there exist infinite subsets
+\(A_n'\subseteq A_n\) such that \(\{A_n':n<\omega\}\) is pairwise disjoint.
+\end{lemma}
+
+\begin{proposition}
+Let \(\mc A\) be \(\Gamma\)-like.
+For \(i\in\{2,3,4\}\), \(\alpha_i(\mc A,\mc B)\) is equivalent to
+\(\alpha_{i.1}(\mc A,\mc B)\).
+\end{proposition}
+
+\begin{proof}
+Assume \(\alpha_{i.1}(\mc A,\mc B)\).
+Let \(A_n\in\mc A\). By applying the previous lemma, we have
+\(\{A_n':n<\omega\}\) pairwise disjoint with each \(A_n'\) being
+an infinite subset of \(A_n\). Since \(\mc A\) is \(\Gamma\)-like,
+\(A_n'\in\mc A\), so we have a witness \(B\in\mc B\) such that
+\(A_n'\cap B\) satisfies \(\alpha_{i.1}(\mc A,\mc B)\) for all \(n<\omega\).
+Since \(A_n'\subseteq A_n\), it follows that \(A_n\cap B\) satisfies
+\(\alpha_{i}(\mc A,\mc B)\) for all \(n<\omega\).
+\end{proof}
+
+It's also true that \(\alpha_1(\Gamma_{X,x},\Gamma_{X,x})\)
+is equivalent to \(\alpha_{1.1}(\Gamma_{X,x},\Gamma_{X,x})\),
+which is captured by the following theorem.
+
+\begin{proposition}
+Let \(\mc A\) be a \(\Gamma\)-like collection closed under finite unions.
+Then \(\alpha_1(\mc A,\mc A)\) is equivalent to
+\(\alpha_{1.1}(\mc A,\mc A)\).
+\end{proposition}
+
+\begin{proof}
+Let \(A_n\in\mc A\) and assume \(\alpha_{1.1}(\mc A,\mc A)\).
+To apply the assumption, we will define a pairwise disjoint
+collection \(\{A_n':n<\omega\}\). First let \(0'=0\) and \(A_0'=A_0\).
+Then suppose \(m'\geq m\) and \(A_m'\subseteq A_{m'}\subseteq\bigcup_{i\leq m}A_i'\) 
+are defined for all \(m\leq n\).
+
+If \(A_k\setminus\bigcup_{m\leq n}A_m'\) is finite for \(k>n'\), let
+\(B=\bigcup_{m\leq n'}A_m\in\mc A\). This \(B\) then witnesses 
+\(\alpha_1(\mc A,\mc A)\) since \(A_k\setminus B\) is finite for all \(k<\omega\).
+
+Otherwise pick the minimal \((n+1)'>n\) where 
+\(A_{n+1}'=A_{(n+1)'}\setminus\bigcup_{m\leq n}A_m'\) is infinite.
+It follows that \(A_{n+1}'\subseteq A_{(n+1)'}\subseteq \bigcup_{m\leq n+1}A_m'\).
+By construction, \(\{A_n':n<\omega\}\) is a pairwise disjoint collection of
+members of \(\mc A\), and we may
+apply \(\alpha_{1.1}(\mc A,\mc A)\) to obtain \(B\in\mc A\) where
+\(A_n'\setminus B\) is finite for all \(n<\omega\).
+
+Finally let \(k<\omega\). If \(k=n'\) for some \(n<\omega\), then 
+\(A_k\setminus B=A_{n'}\setminus B\subseteq (\bigcup_{m\leq n}A_m')\setminus B\) 
+is finite.
+Otherwise, \(n'<k<(n+1)'\) for some \(n<\omega\).
+Then 
+\((A_k\setminus\bigcup_{m\leq n}A_m')\setminus B\subseteq A_k\setminus\bigcup_{m\leq n}A_m'\)
+is finite, and 
+\((A_k\cap\bigcup_{m\leq n}A_m')\setminus B\subseteq(\bigcup_{m\leq n}A_m')\setminus B\)
+is finite, showing \(A_k\setminus B\) is finite.
+\end{proof}
+
+
+TODO add discussion of \(\alpha_{1.5}\) here.
+
+For this paragraph we adopt the conventional assumption that
+\(\Gamma_{X,x}\) is restricted to countable sets.
+Nyikos showed a consistent example
+where \(\alpha_2(\Gamma_{X,x},\Gamma_{X,x})\) fails to imply
+\(\alpha_{1.5}(\Gamma_{X,x},\Gamma_{X,x})\), and a consistent example where
+\(\alpha_{1.5}(\Gamma_{X,x},\Gamma_{X,x})\) fails to imply
+\(\alpha_{1}(\Gamma_{X,x},\Gamma_{X,x})\) [cite Nyikos 92].
+On the other hand, Dow showed that \(\alpha_2(\Gamma_{X,x},\Gamma_{X,x})\)
+implies \(\alpha_{1}(\Gamma_{X,x},\Gamma_{X,x})\) in the Laver model
+for the Borel conjecture [cite Dow 1990]; the author conjectures
+that this model (specifically, the fact that
+every \(\omega\)-splitting family contains an \(\omega\)-splitting
+family of size less than \(\mathfrak b\) in this model) witnesses
+an affirmative answer to the following question.
+
+\begin{definition}
+A \(\Gamma\)-like collection is \term{strongly-\(\Gamma\)-like}
+if the collection is closed under finite unions and each member
+is countable.
+\end{definition}
+
+\begin{question}
+Let \(\mc A,\mc B\) be strongly-\(\Gamma\)-like
+and \(\mc B\subseteq\mc A\).
+Is it consistent that \(\alpha_2(\mc A,\mc B)\)
+implies \(\alpha_1(\mc A,\mc B)\)?
+\end{question}
+
+
 \section{Conclusion}
 
 We conclude with the following easy result, and a couple questions.
@@ -534,13 +690,18 @@ Noting that \(\plI\win G_1(\Gamma_X,\Gamma_X)\) if and only if
 \(\plI\win G_{fin}(\Gamma_X,\Gamma_X)\) [cite Kocinac], but
 the same is not true of \(G_\star(\Gamma_{X,x},\Gamma_{X,x})\)
 (i.e. there are \(\alpha_4\) spaces that are not \(\alpha_2\)
-[cite Arhangelskii]),
+[cite Shakhmatov convergence algebraic structure]),
 we also ask the following.
 
 \begin{question}
-Is there an elegant condition on \(\mc A,\mc B\) guaranteeing
+Is there a natural condition on \(\mc A,\mc B\) guaranteeing
 \(\plI\win G_1(\mc A,\mc B)\Rightarrow\plI\win G_{fin}(\mc A,\mc B)\)?
 \end{question}
+
+\section{Acknowledgements}
+
+The author would like to thank Dr. Alan Dow and Dr. Jared Holshouser
+for their discussions on the subject of the paper.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
