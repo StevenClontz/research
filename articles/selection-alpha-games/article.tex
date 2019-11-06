@@ -569,7 +569,7 @@ Given a family \(\{A_n:n<\omega\}\) of infinite sets, there exist infinite subse
 \(A_n'\subseteq A_n\) such that \(\{A_n':n<\omega\}\) is pairwise disjoint.
 \end{lemma}
 
-\begin{proposition}
+\begin{proposition}\label{pointOne}
 Let \(\mc A\) be \(\Gamma\)-like.
 For \(i\in\{2,3,4\}\), \(\alpha_i(\mc A,\mc B)\) is equivalent to
 \(\alpha_{i.1}(\mc A,\mc B)\).
@@ -590,29 +590,30 @@ It's also true that \(\alpha_1(\Gamma_{X,x},\Gamma_{X,x})\)
 is equivalent to \(\alpha_{1.1}(\Gamma_{X,x},\Gamma_{X,x})\),
 which is captured by the following theorem.
 
-\begin{proposition}
-Let \(\mc A\) be a \(\Gamma\)-like collection closed under finite unions.
-Then \(\alpha_1(\mc A,\mc A)\) is equivalent to
-\(\alpha_{1.1}(\mc A,\mc A)\).
-\end{proposition}
-
+\begin{theorem}
+Let \(\mc A\) be a \(\Gamma\)-like collection closed under finite unions
+and \(\mc A\subseteq\mc B\).
+Then \(\alpha_1(\mc A,\mc B)\) is equivalent to
+\(\alpha_{1.1}(\mc A,\mc B)\).
+\end{theorem}
+ 
 \begin{proof}
-Let \(A_n\in\mc A\) and assume \(\alpha_{1.1}(\mc A,\mc A)\).
+Let \(A_n\in\mc A\) and assume \(\alpha_{1.1}(\mc A,\mc B)\).
 To apply the assumption, we will define a pairwise disjoint
 collection \(\{A_n':n<\omega\}\). First let \(0'=0\) and \(A_0'=A_0\).
 Then suppose \(m'\geq m\) and \(A_m'\subseteq A_{m'}\subseteq\bigcup_{i\leq m}A_i'\) 
 are defined for all \(m\leq n\).
 
 If \(A_k\setminus\bigcup_{m\leq n}A_m'\) is finite for \(k>n'\), let
-\(B=\bigcup_{m\leq n'}A_m\in\mc A\). This \(B\) then witnesses 
-\(\alpha_1(\mc A,\mc A)\) since \(A_k\setminus B\) is finite for all \(k<\omega\).
+\(B=\bigcup_{m\leq n'}A_m\in\mc A\subseteq\mc B\). This \(B\) then witnesses 
+\(\alpha_1(\mc A,\mc B)\) since \(A_k\setminus B\) is finite for all \(k<\omega\).
 
 Otherwise pick the minimal \((n+1)'>n\) where 
 \(A_{n+1}'=A_{(n+1)'}\setminus\bigcup_{m\leq n}A_m'\) is infinite.
 It follows that \(A_{n+1}'\subseteq A_{(n+1)'}\subseteq \bigcup_{m\leq n+1}A_m'\).
 By construction, \(\{A_n':n<\omega\}\) is a pairwise disjoint collection of
 members of \(\mc A\), and we may
-apply \(\alpha_{1.1}(\mc A,\mc A)\) to obtain \(B\in\mc A\) where
+apply \(\alpha_{1.1}(\mc A,\mc B)\) to obtain \(B\in\mc B\) where
 \(A_n'\setminus B\) is finite for all \(n<\omega\).
 
 Finally let \(k<\omega\). If \(k=n'\) for some \(n<\omega\), then 
@@ -626,8 +627,55 @@ is finite, and
 is finite, showing \(A_k\setminus B\) is finite.
 \end{proof}
 
+Another fractional version of these \(\alpha\)-principles is given as
+\(\alpha_{1.5}\) in [Nyikos 92], defined in general as follows.
 
-TODO add discussion of \(\alpha_{1.5}\) here.
+\begin{definition}
+Let \(\alpha_{1.5}(\mc A,\mc B)\) be the assertion that when \(A_n\in\mc A\)
+and \(\{A_n:n<\omega\}\) is pairwise disjoint, then there exists \(B\in\mc B\)
+such that \(A_n\cap B\) is cofinite in \(A_n\) for infinitely-many \(n<\omega\).
+\end{definition}
+
+It's immediate from their definitions that 
+\(\alpha_{1.1}(\mc A,\mc B)\) implies \(\alpha_{1.5}(\mc A,\mc B)\), which
+implies \(\alpha_{3.1}(\mc A,\mc B)\).
+Nyikos originally showed that \(\alpha_{1.5}(\Gamma_{X,x},\Gamma_{X,x})\) implies
+\(\alpha_2(\Gamma_{X,x},\Gamma_{X,x})\); this result generalizes as follows.
+
+\begin{theorem}
+Let \(\mc A\) be a \(\Gamma\)-like collection closed under finite unions.
+Then \(\alpha_{1.5}(\mc A,\mc B)\) implies
+\(\alpha_{2}(\mc A,\mc B)\).
+\end{theorem}
+
+\begin{proof}
+We assume \(\alpha_{1.5}(\mc A,\mc B)\) and demonstrate
+\(\alpha_{2.1}(\mc A,\mc B)\), which is equivalent to
+\(\alpha_{2}(\mc A,\mc B)\) by Proposition \ref{pointOne}.
+So let \(A_n\in\mc A\) such that \(\{A_n:n<\omega\}\) is pairwise-disjoint.
+
+We may partition each \(A_n\) into \(\{A_{n,m}:m<\omega\}\) with
+\(A_{n,m}\in\mc A\) for all \(m<\omega\). 
+Let \(A_n'=\bigcup\{A_{i,j}:i+j=n\}\in\mc A\);
+since \(\{A_n':n<\omega\}\) is pairwise disjoint, we may apply
+\(\alpha_{1.5}(\mc A,\mc B)\) to obtain \(B\in\mc B\) where
+\(A_n'\cap B\) is cofinite in \(A_n'\) for infinitely-many \(n<\omega\).
+
+Then for \(n<\omega\), choose \(N\geq n\) with \(A_N'\cap B\) cofinite in \(A_N'\).
+Then \(A_{n,N-n}\subseteq A_N'\), 
+so \(A_{n,N-n}\cap B\) is cofinite in \(A_{n,N-n}\), in particular,
+\(A_{n,N-n}\cap B\) is infinite.
+Therefore \(A_n\cap B\) is infinite, and we have shown
+\(\alpha_{2.1}(\mc A,\mc B)\).
+\end{proof}
+
+\begin{corollary}
+Let \(\mc A\) be a \(\Gamma\)-like collection closed under finite unions.
+Then \(\alpha_x(\mc A,\mc B)\) implies \(\alpha_y(\mc A,\mc B)\) for
+\(1<x\leq y\). Additionally, if \(\mc A\subseteq\mc B\), then 
+\(\alpha_x(\mc A,\mc B)\) implies \(\alpha_y(\mc A,\mc B)\) for
+\(1\leq x\leq y\).
+\end{corollary}
 
 For this paragraph we adopt the conventional assumption that
 \(\Gamma_{X,x}\) is restricted to countable sets.
@@ -651,10 +699,9 @@ is countable.
 \end{definition}
 
 \begin{question}
-Let \(\mc A,\mc B\) be strongly-\(\Gamma\)-like
-and \(\mc B\subseteq\mc A\).
-Is it consistent that \(\alpha_2(\mc A,\mc B)\)
-implies \(\alpha_1(\mc A,\mc B)\)?
+Let \(\mc A\) be strongly-\(\Gamma\)-like.
+Is it consistent that \(\alpha_2(\mc A,\mc A)\)
+implies \(\alpha_1(\mc A,\mc A)\)?
 \end{question}
 
 
@@ -700,8 +747,8 @@ Is there a natural condition on \(\mc A,\mc B\) guaranteeing
 
 \section{Acknowledgements}
 
-The author would like to thank Dr. Alan Dow and Dr. Jared Holshouser
-for their discussions on the subject of the paper.
+The author would like to thank Alan Dow, Jared Holshouser,
+and Alexander Osipov for various discussions related to this paper.
 
 \bibliographystyle{plain}
 \bibliography{../../bibliography}
