@@ -1,0 +1,218 @@
+
+% Strategy uparrow shortcuts
+\newcommand{\win}{\uparrow}
+\newcommand{\conwin}{\underset{\text{con}}{\uparrow}}
+\newcommand{\prewin}{\underset{\text{pre}}{\uparrow}}
+\newcommand{\markwin}{\underset{\text{mark}}{\uparrow}}
+\newcommand{\tactwin}{\underset{\text{tact}}{\uparrow}}
+\newcommand{\kmarkwin}[1]{\underset{#1\text{-mark}}{\uparrow}}
+\newcommand{\ktactwin}[1]{\underset{#1\text{-tact}}{\uparrow}}
+\newcommand{\codewin}{\underset{\text{code}}{\uparrow}}
+\newcommand{\flexmarkwin}{\underset{\text{flexmark}}{\uparrow}}
+\newcommand{\semiflexmarkwin}{\underset{\text{semiflexmark}}{\uparrow}}
+\newcommand{\limitwin}{\underset{\text{limit}}{\uparrow}}
+\newcommand{\notwin}{\not\uparrow}
+\newcommand{\notconwin}{\underset{\text{con}}{\not\uparrow}}
+\newcommand{\notprewin}{\underset{\text{pre}}{\not\uparrow}}
+\newcommand{\notmarkwin}{\underset{\text{mark}}{\not\uparrow}}
+\newcommand{\nottactwin}{\underset{\text{tact}}{\not\uparrow}}
+\newcommand{\notkmarkwin}[1]{\underset{#1\text{-mark}}{\not\uparrow}}
+\newcommand{\notktactwin}[1]{\underset{#1\text{-tact}}{\not\uparrow}}
+\newcommand{\notcodewin}{\underset{\text{code}}{\not\uparrow}}
+\newcommand{\notflexmarkwin}{\underset{\text{flexmark}}{\not\uparrow}}
+\newcommand{\notsemiflexmarkwin}{\underset{\text{semiflexmark}}{\uparrow}}
+\newcommand{\notlimitwin}{\underset{\text{limit}}{\not\uparrow}}
+\newcommand{\plusMark}{+\mathrm{mark}}
+
+\newcommand{\oneptcomp}[1]{#1^\star} % deprecated
+\newcommand{\oneptlind}[1]{#1^\dagger} % deprecated
+\newcommand{\onePtComp}[1]{#1^\star}
+\newcommand{\onePtLind}[1]{L(#1)}
+
+
+% Games
+\newcommand{\gruConGame}[2]{Gru_{O,P}^{\to}\left({#1},{#2}\right)}
+\newcommand{\gruConGameHard}[2]{Gru_{O,P}^{\to,\star}\left({#1},{#2}\right)}
+\newcommand{\gruClusGame}[2]{Gru_{O,P}^{\leadsto}\left({#1},{#2}\right)}
+\newcommand{\gruClusGameHard}[2]{Gru_{O,P}^{\leadsto,\star}\left({#1},{#2}\right)}
+
+\newcommand{\gruKPGame}[1]{Gru_{K,P}\left({#1}\right)}
+\newcommand{\gruKLGame}[1]{Gru_{K,L}\left({#1}\right)}
+
+\newcommand{\cloPFGame}[1]{PtFin_{F,C}\left({#1}\right)}
+
+\newcommand{\menGame}[1]{Men_{C,F}\left({#1}\right)}
+\newcommand{\rothGame}[1]{Roth_{C,S}\left({#1}\right)}
+\newcommand{\rothAltGame}[1]{Roth_{P,O}\left({#1}\right)}
+
+\newcommand{\barmanDowFanGame}[2]{BD_{B,F}\left({#1},{#2}\right)}
+
+% deprecated, use Scheeper's name instead
+\newcommand{\cloFillStrictGame}[1]{Fill^{\cup,\subset}_{C,F}\left({#1}\right)}
+\newcommand{\cloFillGame}[1]{Fill^{\cup,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\cloFillInitialGame}[1]{Fill^{1,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\cloFillIntGame}[1]{Fill^{\cap}_{C,F}\left({#1}\right)}
+
+\newcommand{\schFillStrictGame}[1]{Sch^{\cup,\subset}_{C,F}\left({#1}\right)}
+\newcommand{\schFillGame}[1]{Sch^{\cup,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\schFillWeakGame}[1]{Sch^{\cup}_{C,F}\left({#1}\right)}
+\newcommand{\schFillInitialGame}[1]{Sch^{1,\subseteq}_{C,F}\left({#1}\right)}
+\newcommand{\schFillIntGame}[1]{Sch^{\cap}_{C,F}\left({#1}\right)}
+
+\newcommand{\schSelProp}[2]{S_{fin}(#1,#2)}
+\newcommand{\schSelGame}[2]{G_{fin}(#1,#2)}
+\newcommand{\sg}{\schSelGame}
+\newcommand{\schStrongSelProp}[2]{S_{1}(#1,#2)}
+\newcommand{\schStrongSelGame}[2]{G_{1}(#1,#2)}
+\newcommand{\ssg}{\schStrongSelGame}
+
+\newcommand{\bellUniGame}[1]{Bell_{D,P}^{\textrm{uni}}\left({#1}\right)}
+\newcommand{\bellConGame}[1]{Bell_{D,P}^{\to,\emptyset}\left({#1}\right)}
+\newcommand{\bellConHardGame}[1]{Bell_{D,P}^{\to,\emptyset,\star}\left({#1}\right)}
+\newcommand{\bellAbsConGame}[1]{Bell_{D,P}^{\to}\left({#1}\right)}
+\newcommand{\bellAbsConHardGame}[1]{Bell_{D,P}^{\to,\star}\left({#1}\right)}
+
+
+
+
+%deprecated, use SigmaPowers below
+\newcommand{\SigmaProdR}[1]{\Sigma\mathbb{R}^{#1}}
+\newcommand{\SigmaStarProdR}[1]{\Sigma^\star\mathbb{R}^{#1}}
+\newcommand{\SigmaProdTwo}[1]{\Sigma2^{#1}}
+\newcommand{\sigmaProdTwo}[1]{\sigma2^{#1}}
+
+\newcommand{\concat}{{^\frown}}
+\newcommand{\rest}{\restriction}
+\newcommand{\offset}{\downharpoonright} %deprecated
+\newcommand{\last}{\downharpoonright}
+
+\newcommand{\cl}[1]{\overline{#1}}
+
+\newcommand{\pow}[1]{\mc{P}(#1)}
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+\newcommand{\al}[1]{{#1}^*}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+
+\newcommand{\po}{\mathbb{P}}
+\newcommand{\pok}{\po_\kappa}
+
+\newcommand{\Lim}{\mathrm{Lim}}
+\newcommand{\Suc}{\mathrm{Suc}}
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\st}[2]{st\left(#1,#2\right)}
+
+\newcommand{\alcomp}{\al\parallel}
+
+\newcommand{\rank}{\textrm{rank}}
+\newcommand{\dom}{\textrm{dom}}
+
+\renewcommand{\mod}{\,\textrm{mod}}
+
+\newcommand{\zip}{\bowtie}
+\newcommand{\ran}[1]{\text{range}(#1)}
+
+\newcommand{\cf}[1]{\textrm{cf}(#1)}
+
+\newcommand{\alcompS}[1]{\mc A(#1)}
+\newcommand{\alcompSP}[1]{\mc A'(#1)}
+\newcommand{\splendidS}[1]{\mc S(#1)}
+\newcommand{\kurepaS}[1]{\mc K(#1)}
+
+
+\newcommand{\scish}{almost-$\sigma$-(relatively compact)}
+
+\usepackage{mathrsfs}
+\newcommand{\pl}[1]{\mathscr{#1}}
+\newcommand{\plI}{\mathrm{I}}
+\newcommand{\plII}{\mathrm{II}}
+
+
+\newcommand{\tuple}[1]{\left\langle #1\right\rangle}
+
+\newcommand{\term}{\textit}
+
+\newcommand{\setB}[2]{\left\{#1:#2\right\}}
+\newcommand{\setL}[1]{\left\{#1\right\}}
+
+\newcommand{\bakergame}[1]{{Bak}_{A,B}(#1)} % deprecated
+\newcommand{\bmgame}[1]{{BM}_{E,N}(#1)} % deprecated
+\newcommand{\bakerGame}[1]{{Bak}_{A,B}(#1)}
+\newcommand{\bmGame}[1]{{BM}_{E,N}(#1)}
+
+
+% http://tex.stackexchange.com/a/251107/79754
+\usepackage{amsmath}
+\usepackage{graphicx}
+\makeatletter
+\newcommand{\sumlower}{\mathop{\mathpalette\@sumlower{\,}}\slimits@}
+\newcommand{\@sumlower}[2]{%
+  \vphantom{\sum}%
+  \sbox\z@{$\m@th#1\sum$}%
+  \dimen@=\ht\z@ \advance\dimen@\dp\z@
+  \dimen\tw@=\wd\z@
+  \displaystyle\dimen@=.6\dimen@
+  \ifx#1\displaystyle\dimen@=.9\dimen@\fi
+  \ooalign{%
+    \hidewidth
+    $\vcenter{%
+     \vspace{.1\dimen@}%
+     \hbox{$\m@th\@demotestyle#1#2$\kern.3\dimen\tw@}%
+     \ifx#1\scriptstyle\kern-.25ex\fi}$\hidewidth\cr
+    $\vcenter{\hbox{%
+      \resizebox{!}{\dimen@}{$\m@th\sigma$}%
+    }\ifx#1\scriptstyle\kern-.25ex\fi}$\cr
+  }%
+}
+\newcommand\@demotestyle[1]{%
+  \ifx#1\displaystyle
+  \else
+    \ifx#1\textstyle
+      \scriptstyle
+    \else
+      \scriptscriptstyle
+    \fi
+  \fi
+}
+\newcommand{\sumstar}{\mathop{\sum\kern-1ex\star}\slimits@}
+\makeatother
+
+\newcommand{\SigmaProd}{\sum}
+\newcommand{\SigmaPower}[2]{{\Sigma#1^#2}}
+\newcommand{\SigmaPowerR}[1]{{\SigmaPower{\mathbb{R}}{#1}}}
+\newcommand{\SigmaPowerTwo}[1]{{\SigmaPower{2}{#1}}}
+
+\newcommand{\SigmaStarProd}{\sumstar}
+\newcommand{\SigmaStarPower}[2]{{\Sigma^\star#1^#2}}
+\newcommand{\SigmaStarPowerR}[1]{{\SigmaStarPower{\mathbb{R}}{#1}}}
+\newcommand{\SigmaStarPowerTwo}[1]{{\SigmaStarPower{2}{#1}}}
+
+\newcommand{\sigmaProd}{\sumlower}
+\newcommand{\sigmaPower}[2]{{\sigma#1^#2}}
+\newcommand{\sigmaPowerR}[1]{{\sigmaPower{\mathbb{R}}{#1}}}
+\newcommand{\sigmaPowerTwo}[1]{{\sigmaPower{2}{#1}}}
+
+\newcommand{\supp}{\textrm{supp}}
+
+\newcommand{\lexTimes}{\times_{\operatorname{lex}}}
+\newcommand{\glTimes}{\times_{\operatorname{gl}}}
+\newcommand{\inverseLimit}[1]{\varprojlim\<#1\>}
+
+
+\newcommand{\interior}{\operatorname{int}}
+\newcommand{\closure}{\operatorname{cl}}
+\newcommand{\boundary}{\operatorname{bd}}
+\newcommand{\exterior}{\operatorname{ext}}
+
+% For a QED-like ending...
+% \newcommand{\xqed}[1]{
+%   \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+%   \quad\hbox{\ensuremath{#1}}}
+% % \xqed{\lozenge}
