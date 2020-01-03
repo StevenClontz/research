@@ -126,19 +126,23 @@ many sequels), are selection games.
   and Player \(\plI\) wins otherwise.
 \end{definition}
 
-  For brevity, let 
+  Let \(\mc P(Z)=\{z:z\subseteq Z\}\) denote the power set of \(Z\),
+  so \(\{B_n:n<\omega\}\in\mc P(\bigcup\mc A)\) for any choices
+  \(B_n\in A_n\in\mc A\) made by the players.
+  Then for brevity, let 
   \[
     \schStrongSelGame{\mc A}{\neg \mc B}
       =
     \schStrongSelGame{\mc A}{\mc P\left(\bigcup \mc A\right)\setminus \mc B}
   .\]
-  That is, \(\plII\) wins in the case that \(\{B_n:n<\omega\}\not\in\mc B\),
+  That is, this is the analogous game where
+  \(\plII\) wins provided \(\{B_n:n<\omega\}\not\in\mc B\),
   and \(\plI\) wins otherwise.
 
-\begin{definition}
+\begin{notation}
   For a set \(X\), let \(\mathbf C(X)=\{f\in(\bigcup X)^X:x\in X\Rightarrow f(x)\in x\}\)
   be the collection of all choice functions on \(X\).
-\end{definition}
+\end{notation}
 
 \begin{definition}
   Write \(X\preceq Y\) if \(X\) is coinitial in \(Y\) with respect to \(\subseteq\);
@@ -163,11 +167,11 @@ throughout the literature to define dual selection games.
 
 We use the following conventions to describe strategies for playing games.
 
-\begin{definition}
-  For \(f\in B^A\) and \(X\subseteq A\), let \(f\rest X\) be the restrction of \(f\)
+\begin{notation}
+  For \(f\in B^A\) and \(X\subseteq A\), let \(f\rest X\) be the restriction of \(f\)
   to \(X\). In particular, for \(f\in B^\omega\) and \(n<\omega\), \(f\rest n\)
   describes the first \(n\) terms of the sequence \(f\).
-\end{definition}
+\end{notation}
 
 \begin{definition}
   A \term{strategy} for the first player \(\plI\) (resp. second player \(\plII\))
@@ -232,14 +236,14 @@ We also consider similar strategies that ignore the round number.
   during round \(n\).
 \end{definition}
 
-\begin{definition}
+\begin{notation}
   Write \(\plI\win G\) (resp. \(\plI\prewin G\), \(\plI\conwin G\)) 
   if player \(\plI\) has a winning
   strategy (resp. winning predetermined/constant strategy) for the game \(G\). Similarly,
   write \(\plII\win G\) (resp. \(\plII\markwin G\), \(\plII\tactwin G\)) 
   if player \(\plII\) has a winning
   strategy (resp. winning Markov/tactical strategy) for the game \(G\).
-\end{definition}
+\end{notation}
 
 Of course: 
 \[
@@ -255,7 +259,7 @@ In general, none of these implications (not even the middle \cite{MR0054922}) ca
 While predetermined and constant strategies are rarely explicitly studied in the literature,
 they are implicitly considered when studying the following well-known principles.
 
-\begin{definition}
+\begin{definition}[\cite{MR1378387}]
   The selection principle \(\schStrongSelProp{\mc A}{\mc B}\) asserts
   that for each sequence \(\setB{A_n}{n<\omega}\in[\mc A]^\omega\),
   there exist \(B_n\in A_n\) such that \(\setB{B_n}{n<\omega}\in\mc B\).
@@ -264,10 +268,11 @@ they are implicitly considered when studying the following well-known principles
 For example, if \(\mc O_X\) denotes the open covers of a space \(X\), 
 then \(\schStrongSelProp{\mc O_X}{\mc O_X}\) is the Rothberger covering property.
 
-\begin{definition}
+\begin{definition}[\cite{MR2363173}]
   The choice principle \(\binom{\mc A}{\mc B}^\kappa\) asserts
   that for each \(A\in \mc A\), there exists a subset
   \(B\subseteq A\) where \(|B|=\kappa\) and \(B\in\mc B\).
+  (When \(\kappa\) is omitted, the criterion \(|B|=\kappa\) is also omitted.)
 \end{definition}
 
 For example,
@@ -704,7 +709,7 @@ In the case that \(\mc B=D_X\), then \(\schStrongSelGame{\mc D_X}{\mc D_X}\) is 
 separability game introduced by Scheepers 
 in \cite{MR1711901}, and \(\schStrongSelGame{\mc T_X}{\neg\mc D_X}\) is the
 point-picking game of Berner and Juh\'asz defined in \cite{MR775687}. Scheepers showed that these
-were perfect-information dual in his paper.
+were perfect-information dual in \cite{MR1711901}.
 
 \begin{proposition}
   \(\mc T_{X,x}\) is a reflection of \(\Omega_{X,x}\).
@@ -775,7 +780,7 @@ Likewise \(\mc N_{X,[X]^1}=\mc P_X\) and \(\mc N_{X,[X]^{<\omega}}=\mc F_X\).
 \section{Open Questions}
 
 Let 
-\(\Gamma_X=\{\mc U\subseteq\mc T_X:\forall x\in X(\mc U\setminus\mc T_{X,x}\in[T_X]^{<\aleph_0})\}\). 
+\(\Gamma_X=\{\mc U\subseteq\mc T_X:\forall x\in X(\mc U\setminus\mc T_{X,x}\in[\mc T_X]^{<\aleph_0})\}\). 
 Such \(\gamma\)-covers are related to the convergent sequences of \(C_p(X)\) (that is,
 \(\Gamma_{C_p(X),\mathbf 0}\) as defined in Definition \ref{selectionSets}),
 see e.g. \cite{BUKOVSKY2019239}.
