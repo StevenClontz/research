@@ -5,6 +5,7 @@
 *.synctex.gz
 *.thm
 *.lof
+*.syncdb
 *.lot
 *.nlo
 *.toc
