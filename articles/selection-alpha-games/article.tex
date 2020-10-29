@@ -123,7 +123,8 @@ Such games are well-represented in the literature; see \cite{MR1378387}
 for example.
 We will also consider the similarly-defined games \(G_{<2}(\mc A,\mc B)\)
 (\(\plII\) chooses 0 or 1 points from each choice by \(\plI\)) and \(G_{cf}(\mc A,\mc B)\)
-(\(\plII\) chooses cofinitely-many points).
+(\(\plII\) chooses cofinitely-many points). We use \(G_\star(\mc A,\mc B)\)
+to denote an arbitrary selection game.
 
 \begin{definition}
   Let \(P\) be a player in a game \(G\). \(P\) has a \term{winning strategy}
@@ -135,7 +136,13 @@ We will also consider the similarly-defined games \(G_{<2}(\mc A,\mc B)\)
 \end{definition}
 
 We briefly note that the statement \(\plI\notprewin G_\star(\mc A,\mc B)\)
-is often denoted as the \term{selection principle} \(S_\star(\mc A,\mc B)\).
+is more often denoted as the \term{selection principle}
+\(S_\star(\mc A,\mc B)\). However, we will generally characterize
+results in terms of selection games rather than selection principles
+in order to emphasize the commonalities between the statements
+\(\plI\notwin G_\star(\mc A,\mc B)\) and
+\(\plI\notprewin G_\star(\mc A,\mc B)\).
+
 
 \begin{definition}
 Let \(\Gamma_{X,x}\) be the collection of non-trivial sequences \(S\subseteq X\) converging to \(x\),
@@ -213,7 +220,8 @@ first choose \(A_n'\in\mc A\) such that \(A_n'=\{a_{n,j}:j<\omega\}\subseteq A_n
 and \(A_{n,m}=\{a_{n,j}:m\leq j<\omega\}\in\mc A\).
 Finally choose
 some \(\theta:\omega\to\omega\) such that \(|\theta^{\leftarrow}(n)|=\aleph_0\) for
-each \(n<\omega\).
+each \(n<\omega\)
+(where \(\theta^{\leftarrow}\) denotes the inverse set map.
 
 Since playing \(A_{\theta(m),m}\) during round \(m\)
 does not define a winning strategy for \(\plI\) in
