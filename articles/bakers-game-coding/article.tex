@@ -1,0 +1,898 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\usepackage{../../clontzDefinitions}
+
+\renewcommand{\vec}{\mathbf}
+
+      \theoremstyle{plain}
+      \newtheorem{theorem}{Theorem}
+      \newtheorem{lemma}[theorem]{Lemma}
+      \newtheorem{corollary}[theorem]{Corollary}
+      \newtheorem{proposition}[theorem]{Proposition}
+      \newtheorem{conjecture}[theorem]{Conjecture}
+      \newtheorem{question}[theorem]{Question}
+      \newtheorem{claim}[theorem]{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem{definition}[theorem]{Definition}
+      \newtheorem{notation}[theorem]{Notation}
+      \newtheorem{example}[theorem]{Example}
+      \newtheorem{game}[theorem]{Game}
+
+      \theoremstyle{remark}
+      \newtheorem{remark}[theorem]{Remark}
+
+      \theoremstyle{plain}
+      \newtheorem*{theorem*}{Theorem}
+      \newtheorem*{lemma*}{Lemma}
+      \newtheorem*{corollary*}{Corollary}
+      \newtheorem*{proposition*}{Proposition}
+      \newtheorem*{conjecture*}{Conjecture}
+      \newtheorem*{question*}{Question}
+      \newtheorem*{claim*}{Claim}
+
+      \theoremstyle{definition}
+      \newtheorem*{definition*}{Definition}
+      \newtheorem*{example*}{Example}
+      \newtheorem*{game*}{Game}
+
+      \theoremstyle{remark}
+      \newtheorem*{remark*}{Remark}
+
+
+\usepackage{lineno}
+\linenumbers
+
+
+
+\begin{document}
+
+\title{Coding Strategies in Baker's Game}
+
+
+
+\author{Steven Clontz}
+\address{Department of Mathematics and Statistics,
+The University of South Alabama,
+Mobile, AL 36688}
+\email{sclontz@southalabama.edu}
+
+
+
+\keywords{Selection principle, selection game,
+limited information strategies}
+
+\subjclass[2010]{54D20, 54D45, 91A44}
+
+
+
+\begin{abstract}
+TODO
+\end{abstract}
+
+
+\maketitle
+
+
+
+
+\begin{abstract}
+TODO
+\end{abstract}
+
+
+\maketitle
+
+
+
+Let \(f^\leftarrow(y)=\setB{x\in A}{f(x)=y}\).
+
+\begin{proposition}\label{denseThreads}
+There exists a function \(f:\mathbb R\to\mathbb R^{<\omega}\) such that
+for each \(s\in\mathbb R^{<\omega}\), \(f^\leftarrow(s)\) is dense in \(\mathbb R\).
+\end{proposition}
+
+\begin{proof}
+Noting that \(|\mathbb R^{<\omega}|=|\mathbb R|=\mathfrak c\), we recall that
+\(\mathbb R\) may be partitioned into \(\mathfrak c\)-many parts, each dense in
+\(\mathbb R\) (e.g., the equivalence classes of \(x\sim y\) iff \(x-y\in\mathbb Q\)).
+We may then let \(f\) assign each equivalence class to a distinct sequence in
+\(\mathbb R^{<\omega}\).
+\end{proof}
+
+(We thank Lynne Yengulalp for
+suggesting the partition result that greatly simplified the preceding proof.)
+
+
+
+\begin{theorem}
+\(\plII\win G(W)\) if and only if \(\plII\codewin G(W)\).
+\end{theorem}
+\begin{proof}
+We need only show 
+\(\plII\notcodewin G(W)\) implies \(\plII\notwin G(W)\).
+Let \(\sigma\) be a perfect-information strategy for \(\plII\),
+and let \(f\) be given by Prop \ref{denseThreads}.
+
+First, we choose
+\[
+\tau(\tuple{a_0})\in
+\big(a_0,\sigma(\tuple{a_0})\big)\cap
+f^\leftarrow\big(\tuple{a_0}\big)
+\]
+that is, we guarantee \(a_0<\tau(\tuple{a_0})<\sigma(\tuple{a_0})\)
+and \(f\big(\tau(\tuple{a_0})\big)=\tuple{a_0}\).
+
+Given \(b_n,a_{n+1}\), define
+\(b_n'=\min\big(b_n,\sigma(f(b_n)\concat\tuple{a_{n+1}})\big)\),
+noting \(a_{n+1}<b_n'\). Now choose
+\[
+\tau(\tuple{b_n,a_{n+1}})\in
+\big(a_{n+1},b'\big)\cap
+f^\leftarrow\big(f(b_n)\concat\tuple{a_{n+1}}\big)
+\]
+that is, we guarantee
+\(a_{n+1}<\tau(\tuple{b_n,a_{n+1}})<b_n'\leq b_n\) and
+\(f\big(\tau(\tuple{b_n,a_{n+1}})\big)=f(b_n)\concat\tuple{a_{n+1}}\).
+
+Then \(\tau\) defines a coding strategy for \(\plII\); suppose it is
+defeated by \(\plI\) choosing \(a_n\) during round \(n\).
+
+Then if \(b_n\) is the move designated by \(\tau\) for player \(\plII\)
+during round \(n\), that is, \(b_0=\tau(\tuple{a_0})\) and
+\(b_{n+1}=\tau(\tuple{b_n,a_{n+1}})\),
+we have \(f(b_n)=\tuple{a_0,\dots,a_n}\).
+
+First, we see that
+\[a_0<a_1<\tau(\tuple{a_0})<\sigma(\tuple{a_0})\]
+
+And finally, we see that
+\[a_{n+1}<a_{n+2}<\tau(\tuple{b_n,a_{n+1}})<b_n'\leq
+\sigma(f(b_n)\concat\tuple{a_{n+1}})=\sigma(\tuple{a_0,\dots,a_{n+1}})\]
+
+Therefore we have shown that \(a_n\) is also a legal move against the
+perfect information strategy \(\sigma\) each round, and therefore
+\(\sigma\) is also not a winning strategy.
+\end{proof}
+
+
+\end{document}
+
+
+
+\section{TODO}
+
+\begin{definition}
+  An \term{\(\omega\)-length game} is a pair \(G=\<M,W\>\) such that
+  \(W\subseteq M^\omega\). The set \(M\) is the \term{moveset} of the game,
+  and the set \(W\) is the \term{payoff set} for the second player.
+\end{definition}
+
+In such a game \(G\), players \(\plI\)\end{proof}
+
+
+\end{document}
+
+
+
+\section{TODO}
+
+\begin{definition}
+  An \term{\(\omega\)-length game} is a pair \(G=\<M,W\>\) such that
+  \(W\subseteq M^\omega\). The set \(M\) is the \term{moveset} of the game,
+  and the set \(W\) is the \term{payoff set} for the second player.
+\end{definition}
+
+In such a game \(G\), players \(\plI\) and \(\plII\) alternate making choices
+\(a_n\in M\) and \(b_n\in M\) during each round \(n<\omega\), 
+and \(\plII\) wins the game if and only if \(\<a_0,b_0,a_1,b_1,\dots\>\in W\).
+
+Often when defining games, \(\plI\) and \(\plII\) alternate making choices
+\(a_n\in M\) and \(b_n\in M\) during each round \(n<\omega\), 
+and \(\plII\) wins the game if and only if \(\<a_0,b_0,a_1,b_1,\dots\>\in W\).
+
+Often when defining games, \(\plI\) and \(\plII\) are restricted to choosing
+from different movesets \(A,B\). Of course, this can be modeled with \(\<M,W\>\)
+by simply letting \(M=A\cup B\) and adding/removing sequences from \(W\)
+whenever player \(\plI\)/\(\plII\) makes the first ``illegal'' move.
+
+A class of such games heavily studied in the literature, particularly
+topology (see \cite{MR1378387} and its
+many sequels), are selection games.
+
+\begin{definition}
+  The \term{selection game} \(\schStrongSelGame{\mc A}{\mc B}\) 
+  is an \(\omega\)-length game involving Players \(\plI\) and \(\plII\). 
+  During round \(n\), \(\plI\) chooses
+  \(A_n\in\mc A\), followed by \(\plII\) choosing \(B_n\in A_n\).
+  Player \(\plII\) wins in the case that \(\{B_n:n<\omega\}\in\mc B\),
+  and Player \(\plI\) wins otherwise.
+\end{definition}
+
+  Let \(\mc P(Z)=\{z:z\subseteq Z\}\) denote the power set of \(Z\),
+  so \(\{B_n:n<\omega\}\in\mc P(\bigcup\mc A)\) for any choices
+  \(B_n\in A_n\in\mc A\) made by the players.
+  Then for brevity, let 
+  \[
+    \schStrongSelGame{\mc A}{\neg \mc B}
+      =
+    \schStrongSelGame{\mc A}{\mc P\left(\bigcup \mc A\right)\setminus \mc B}
+  .\]
+  That is, this is the analogous game where
+  \(\plII\) wins provided \(\{B_n:n<\omega\}\not\in\mc B\),
+  and \(\plI\) wins otherwise.
+
+\begin{notation}
+  For a set \(X\), let \(\mathbf C(X)=\{f\in(\bigcup X)^X:x\in X\Rightarrow f(x)\in x\}\)
+  be the collection of all choice functions on \(X\).
+\end{notation}
+
+\begin{definition}
+  Write \(X\preceq Y\) if \(X\) is coinitial in \(Y\) with respect to \(\subseteq\);
+  that is, \(X\subseteq Y\), and for all \(y\in Y\), there exists \(x\in X\) such that 
+  \(x\subseteq y\).
+
+  In the context of selection games, we will say \(\mc A'\) is a \term{selection basis}
+  for \(\mc A\) when \(\mc A'\preceq \mc A\).
+\end{definition}
+
+\begin{definition}
+  The set \(\mc R\) is said to be a \term{reflection} of the set \(\mc A\)
+  if \[\{\ran f:f\in\mathbf C(\mc R)\}\] is a selection basis for \(\mc A\).
+\end{definition}
+
+Put another way, \(\mc R\) is a reflection of \(\mc A\) if \(\ran f\in\mc A\) 
+for all \(f\in\mathbf C(\mc R)\), and for each \(A\in\mc A\) there exists
+\(f_A\in\mathbf C(\mc R)\) such that \(\ran{f_A}\subseteq A\).
+
+As we will see, reflections of selection sets are used frequently (but implicitly) 
+throughout the literature to define dual selection games.
+
+We use the following conventions to describe strategies for playing games.
+
+\begin{notation}
+  For \(f\in B^A\) and \(X\subseteq A\), let \(f\rest X\) be the restriction of \(f\)
+  to \(X\). In particular, for \(f\in B^\omega\) and \(n<\omega\), \(f\rest n\)
+  describes the first \(n\) terms of the sequence \(f\).
+\end{notation}
+
+\begin{definition}
+  A \term{strategy} for the first player \(\plI\) (resp. second player \(\plII\))
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M^{<\omega}\to M\). This strategy is said to be \term{winning} if
+  for all possible \term{attacks} \(\alpha\in M^\omega\) by their opponent,
+  where \(\alpha(n)\) is played by the opponent during round \(n\),
+  the player wins the game by playing \(\sigma(\alpha\rest n)\)
+  (resp. \(\sigma(\alpha\rest n+1)\)) during round \(n\).
+\end{definition}
+
+That is, a strategy is a rule that determines the moves of a player based upon
+all previous moves of the opponent. (It could also rely on all previous
+moves of the player using the strategy, since these can be reconstructed from
+the previous moves of the opponent and the strategy itself.)
+
+\begin{definition}
+  A \term{predetermined strategy} for the first player \(\plI\)
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:\omega\to M\). This strategy is said to be winning if
+  for all possible attacks \(\alpha\in M^\omega\) by their opponent,
+  the first player wins the game by playing \(\sigma(n)\)
+  during round \(n\).
+\end{definition}
+
+So a predetermined strategy ignores all moves of the opponent during the
+game (all moves were decided before the game began). Such strategies
+are also known as \(0\)-Markov strategies or \(0\)-Markov tactics.
+The following definition is similarly also known as a \(1\)-Markov strategy.
+
+\begin{definition}
+  A \term{Markov strategy} for the second player \(\plII\)
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M\times\omega\to M\). This strategy is said to be winning if
+  for all possible attacks \(\alpha\in M^\omega\) by their opponent,
+  the second player wins the game by playing \(\sigma(\alpha(n),n)\)
+  during round \(n\).
+\end{definition}
+
+So a Markov strategy may only consider the most recent move of the opponent,
+and the current round number. Note that unlike perfect-information or
+predetermined strategies, a Markov strategy cannot use knowledge of
+moves used previously by the player (since they depend on previous moves of
+the opponent that have been ``forgotten'').
+
+We also consider similar strategies that ignore the round number.
+
+\begin{definition}
+  A \term{constant strategy} for the first player \(\plI\)
+  in a game \(G\) with moveset \(M\) is simply a choice \(m\in M\).
+  This strategy is said to be winning if
+  for all possible attacks \(\alpha\in M^\omega\) by their opponent,
+  the first player wins the game by playing \(m\) during every round.
+\end{definition}
+
+\begin{definition}
+  A \term{tactical strategy} for the second player \(\plII\)
+  in a game \(G\) with moveset \(M\) is a function
+  \(\sigma:M\to M\). This strategy is said to be winning if
+  for all possible attacks \(\alpha\in M^\omega\) by their opponent,
+  the second player wins the game by playing \(\sigma(\alpha(n))\)
+  during round \(n\).
+\end{definition}
+
+\begin{notation}
+  Write \(\plI\win G\) (resp. \(\plI\prewin G\), \(\plI\conwin G\)) 
+  if player \(\plI\) has a winning
+  strategy (resp. winning predetermined/constant strategy) for the game \(G\). Similarly,
+  write \(\plII\win G\) (resp. \(\plII\markwin G\), \(\plII\tactwin G\)) 
+  if player \(\plII\) has a winning
+  strategy (resp. winning Markov/tactical strategy) for the game \(G\).
+\end{notation}
+
+Of course: 
+\[
+  \plII\tactwin G\Rightarrow 
+  \plII\markwin G\Rightarrow 
+  \plII\win G\Rightarrow 
+  \plI\notwin G\Rightarrow 
+  \plI\notprewin G\Rightarrow 
+  \plI\notconwin G
+.\]
+In general, none of these implications (not even the middle \cite{MR0054922}) can be reversed.
+
+While predetermined and constant strategies are rarely explicitly studied in the literature,
+they are implicitly considered when studying the following well-known principles.
+
+\begin{definition}[\cite{MR1378387}]
+  The selection principle \(\schStrongSelProp{\mc A}{\mc B}\) asserts
+  that for each sequence \(\setB{A_n}{n<\omega}\in[\mc A]^\omega\),
+  there exist \(B_n\in A_n\) such that \(\setB{B_n}{n<\omega}\in\mc B\).
+\end{definition}
+
+For example, if \(\mc O_X\) denotes the open covers of a space \(X\), 
+then \(\schStrongSelProp{\mc O_X}{\mc O_X}\) is the Rothberger covering property.
+
+\begin{definition}[\cite{MR2363173}]
+  The choice principle \(\binom{\mc A}{\mc B}^\kappa\) asserts
+  that for each \(A\in \mc A\), there exists a subset
+  \(B\subseteq A\) where \(|B|=\kappa\) and \(B\in\mc B\).
+  (When \(\kappa\) is omitted, the criterion \(|B|=\kappa\) is also omitted.)
+\end{definition}
+
+For example,
+\(\binom{\mc O_X}{\mc O_X}^\omega\) is the Lindel\"of covering property.
+
+\begin{proposition}
+  \(\schStrongSelProp{\mc A}{\mc B}\) is equivalent to
+  \(\plI\notprewin \schStrongSelGame{\mc A}{\mc B}\), and
+  \(\binom{\mc A}{\mc B}^\omega\) is equivalent to
+  \(\plI\notconwin \schStrongSelGame{\mc A}{\mc B}\).
+\end{proposition}
+
+\begin{proof}
+  The first equivalence is direct from their defintions.
+
+  To see the second,
+  assume \(\binom{\mc A}{\mc B}^\omega\). Then given a constant strategy
+  \(A\in\mc A\) for \(\plI\), \(\plII\) uses \(\binom{\mc A}{\mc B}^\omega\) to
+  choose \(B=\setB{b_n}{n<\omega}\subseteq A\) where \(B\in\mc B\); thus
+  playing \(b_n\) in round
+  \(n\) defeats \(\plI\)'s constant strategy.
+
+  Likewise, assuming 
+  \(\plI\notconwin \schStrongSelGame{\mc A}{\mc B}\), for each constant strategy
+  \(A\in\mc A\) for \(\plI\) there must be a counterattack playing \(b_n\in A\)
+  during each round \(n\) such that \(\setB{b_n}{n<\omega}\in\mc B\); this witnesses
+  \(\binom{\mc A}{\mc B}^\omega\).
+\end{proof}
+
+The goal of this paper is to characterize when two games are ``dual'' in the following
+senses.
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) defined for a topological space \(X\)
+  are \term{tactical information dual} if both
+  of the following hold.
+  \begin{itemize}
+    \item \(I\conwin G(X)\) if and only if \(II\tactwin H(X)\).
+    \item \(II\tactwin G(X)\) if and only if \(I\conwin H(X)\).
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) defined for a topological space \(X\)
+  are \term{Markov information dual} if both
+  of the following hold.
+  \begin{itemize}
+    \item \(I\prewin G(X)\) if and only if \(II\markwin H(X)\).
+    \item \(II\markwin G(X)\) if and only if \(I\prewin H(X)\).
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) defeind for a topological space \(X\)
+  are \term{perfect information dual} if both
+  of the following hold.
+  \begin{itemize}
+    \item \(I\win G(X)\) if and only if \(II\win H(X)\).
+    \item \(II\win G(X)\) if and only if \(I\win H(X)\).
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  A pair of games \(G(X),H(X)\) defined for a topological space \(X\)
+  are \term{dual} if they are tactial, Markov, and perfect information
+  dual.
+\end{definition}
+
+\section{Main Results}
+
+The following six theorems demonstrate that reflections characterize
+dual selection games for perfect information strategies and
+certain limited information strategies.
+
+For example,
+the duality of the Rothberger game \(\schStrongSelGame{\mc O_X}{\mc O_X}\)
+and the point-open game on \(X\) for perfect information strategies
+was first noted by Galvin in \cite{MR0493925}, and
+for Markov-information strategies by Clontz and Holshouser in
+\cite{CLONTZ2019106815}. These proofs may be generalized as follows.
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plI\conwin\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\tactwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(A\) witness 
+  \(\plI\conwin\schStrongSelGame{\mc A}{\mc B}\).
+  Since \(A\in\mc A\),
+  \(\ran{\tau}\subseteq A\)
+  for some \(\tau\in\mathbf C(\mc R)\). 
+  Suppose \(R_n\in \mc R\) for all \(n<\omega\).
+  Note that since \(A\) is winning and 
+  \(\tau(R_n)\in\ran{\tau}\subseteq A\),
+  \(\{\tau(R_n):n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+  \(\plII\tactwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness
+  \(\plII\tactwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Then \(\sigma\in\mathbf C(\mc R)\) and we may let
+  \(A=\ran{\sigma}\in\mc A\). 
+  Suppose that \(B_n\in A=\ran{\sigma}\) for
+  all \(n<\omega\). Choose \(R_n\in\mc R\) such that 
+  \(B_n=\sigma(R_n)\). Since \(\sigma\) is winning,
+  \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(A\) witnesses
+  \(\plI\conwin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plII\tactwin\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plI\conwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plII\tactwin\schStrongSelGame{\mc A}{\mc B}\).
+  Suppose that for each \(R\in\mc R\),
+  there was \(g(R)\in R\) such that for all \(A\in \mc A\),
+  \(\sigma(A)\not=g(R)\). Then \(g\in\mathbf C(\mc R)\)
+  and \(\ran g\in\mc A\),
+  thus \(\sigma(\ran g)\not=g(R)\) for all \(R\in\mc R\),
+  a contradiction.
+
+  So choose \(R\in\mc R\) such that for all \(r\in R\)
+  there exists \(A_r\in\mc A\) such that \(\sigma(A_r)=r\).
+  It follows that when \(r_n\in R\) for \(n<\omega\),
+  \(\{r_n:n<\omega\}=\{\sigma(A_{r_n}):n<\omega\}\in B\),
+  so \(R\) witnesses
+  \(\plI\conwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(R\) witness 
+  \(\plI\conwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Then \(R\in\mc R\), so for \(A\in\mc A\), let
+  \(f_A\in\mathbf C(\mc R)\) satisfy \(\ran{f_A}\subseteq A\),
+  and let \(\tau(A)=f_A(R)\in A\cap R\).
+  Then if \(A_n\in\mc A\) for \(n<\omega\), \(\tau(A_n)\in R\),
+  so \(\{\tau(A_n):n<\omega\}\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plII\tactwin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
+  Since \(\sigma(n)\in\mc A\),
+  \(\ran{f_n}\subseteq\sigma(n)\)
+  for some \(f_n\in\mathbf C(\mc R)\). So let
+  \(\tau(R,n)=f_n(R)\) for all \(R\in \mc R\) and \(n<\omega\).
+  Suppose \(R_n\in \mc R\) for all \(n<\omega\).
+  Note that since \(\sigma\) is winning and 
+  \(\tau(R_n,n)=f_n(R_n)\in\ran{f_n}\subseteq\sigma(n)\),
+  \(\{\tau(R_n,n):n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness
+  \(\plII\markwin\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Let \(f_n\in\mathbf C(\mc R)\) be defined by \(f_n(R)=\sigma(R,n)\),
+  and let \(\tau(n)=\ran{f_n}\in\mc A\). 
+  Suppose that \(B_n\in\tau(n)=\ran{f_n}\) for
+  all \(n<\omega\). Choose \(R_n\in\mc R\) such that 
+  \(B_n=f_n(R_n)=\sigma(R_n,n)\). Since \(\sigma\) is winning,
+  \(\{B_n:n<\omega\}\not\in\mc B\). Thus \(\tau\) witnesses
+  \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
+  Let \(n<\omega\). Suppose that for each \(R\in\mc R\),
+  there was \(g(R)\in R\) such that for all \(A\in \mc A\),
+  \(\sigma(A,n)\not=g(R)\). Then \(g\in\mathbf C(\mc R)\)
+  and \(\ran g\in\mc A\),
+  thus \(\sigma(\ran g,n)\not=g(R)\) for all \(R\in\mc R\),
+  a contradiction.
+
+  So choose \(\tau(n)\in\mc R\) such that for all \(r\in \tau(n)\)
+  there exists \(A_{r,n}\in\mc A\) such that \(\sigma(A_{r,n},n)=r\).
+  It follows that when \(r_n\in\tau(n)\) for \(n<\omega\),
+  \(\{r_n:n<\omega\}=\{\sigma(A_{r_n,n}):n<\omega\}\in B\),
+  so \(\tau\) witnesses
+  \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness 
+  \(\plI\prewin\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Then \(\sigma(n)\in\mc R\), so for \(A\in\mc A\), let
+  \(f_A\in\mathbf C(\mc R)\) satisfy \(\ran{f_A}\subseteq A\),
+  and let \(\tau(A,n)=f_A(\sigma(n))\in A\cap\sigma(n)\).
+  Then if \(A_n\in\mc A\) for \(n<\omega\), \(\tau(A_n,n)\in\sigma(n)\),
+  so \(\{\tau(A_n,n):n<\omega\}\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plI\win\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plI\win\schStrongSelGame{\mc A}{\mc B}\).
+  Let \(c(\emptyset)=\emptyset\). Suppose 
+  \(c(s)\in(\bigcup A)^{<\omega}\)
+  is defined for \(s\in\mc R^{<\omega}\). Since \(\sigma(c(s))\in\mc A\),
+  let \(f_s\in\mathbf C(\mc R)\) satisfy \(\ran{f_s}\subseteq\sigma(c(s))\),
+  and let \(c(s\concat\<R\>)=c(s)\concat\<f_s(R)\>\).
+  Then let \(c(\alpha)=\bigcup\{c(\alpha\rest n):n<\omega\}\)
+  for \(\alpha\in\mc R^\omega\), so
+  \[
+    c(\alpha)(n)
+      =
+    f_{\alpha\rest n}(\alpha(n))
+      \in
+    \ran{f_{\alpha\rest n}}
+      \subseteq
+    \sigma(c(\alpha\rest n))
+  \]
+  demonstrating that \(c(\alpha)\) is a legal attack against \(\sigma\).
+
+  Let \(\tau(s\concat\<R\>)=f_s(R)\). Consider the attack \(\alpha\in\mc R^\omega\)
+  against \(\tau\). Then since \(\sigma\) is winning and
+  \(
+    \tau(\alpha\rest n+1)=f_{\alpha\rest n}(\alpha(n))\in
+    \ran{f_{\alpha\rest n}}\subseteq\sigma(c(\alpha\rest n))
+  \), it follows that \(\{\tau(\alpha\rest n+1):n<\omega\}\not\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness
+  \(\plII\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+  For \(s\in \mc R^{<\omega}\), define \(f_s\in\mathbf C(\mc R)\)
+  by \(f_s(R)=\sigma(s\concat\<R\>)\). Let \(\tau(\emptyset)=\ran{f_\emptyset}\in\mc A\),
+  and for \(x\in\tau(\emptyset)\), choose \(R_{\<x\>}\in\mc R\) such that
+  \(x=f_{\emptyset}(R_{\<x\>})\) (for other \(x\in\bigcup A\), choose \(R_{\<x\>}\)
+  arbitrarily as it won't be used). Now let \(s\in(\bigcup A)^{<\omega}\),
+  and suppose \(R_{s\rest n\concat\<x\>}\in\mc R\) has been defined for
+  \(n\leq|s|\) and \(x\in\bigcup A\). 
+  Then let \(\tau(s\concat\<x\>)=\ran{f_{\<R_{s\rest 0},\dots,R_s,R_{s\concat\<x\>}\>}}\)
+  and for \(y\in\tau(s)\) choose \(R_{s\concat\<x,y\>}\) such that
+  \(x=f_{\<R_{s\rest 0},\dots,R_s,R_{s\concat\<x\>}\>}(R_{s\concat\<x,y\>})\) (and again,
+  choose \(R_{s\concat\<x,y\>}\) arbitrarily for other \(y\in\bigcup\mc A\) as it won't be used).
+
+  Then let \(\alpha\) attack \(\tau\), so
+  \(\alpha(n)\in\tau(\alpha\rest n)\) and thus 
+  \(\alpha(n)=f_{\<R_{\alpha\rest 0},\dots,R_{\alpha\rest n}\>}(R_{\alpha\rest n+1})
+  =\sigma(\<R_{\alpha\rest 0},\dots,R_{\alpha\rest n+1}\>)\).  Since \(\sigma\) is winning,
+  \(\{\sigma(\<R_{\alpha\rest 0},\dots,R_{\alpha\rest n+1}\>):n<\omega\}
+  =\{\alpha(n):n<\omega\}\not\in\mc B\).
+  Thus \(\tau\) witnesses
+  \(\plI\win\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\mc R\) be a reflection of \(\mc A\). 
+
+  Then
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\) if and only if
+  \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\sigma\) witness 
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
+  Let \(s\in(\bigcup A)^{<\omega}\) and assume \(a(s)\in\mc A^{|s|}\) is defined
+  (of course, \(a(\emptyset)=\emptyset\)).
+  Suppose for all \(R\in\mc R\) there existed \(f(R)\in R\) such that for all
+  \(A\in\mc A\), \(\sigma(a(s)\concat\<A\>)\not=f(R)\). Then
+  \(f\in\mathbf C(\mc R)\) and \(\ran{f}\in\mc A\), and thus 
+  \(\sigma(a(s)\concat\<\ran{f}\>)\not=f(R)\) for all \(R\in\mc R\), a contradiction.
+  So let \(\tau(s)\in\mc R\) satisfy for all \(x\in\tau(s)\) there exists
+  \(a(s\concat\<x\>)\in\mc A^{|s|+1}\) extending \(a(s)\) such that 
+  \(x=\sigma(a(s\concat\<x\>))\).
+
+  If \(\tau\) is attacked by \(\alpha\in(\bigcup R)^\omega\), then 
+  \(\alpha(n)\in\tau(\alpha\rest n)\). So \(\alpha(n)=\sigma(a(\alpha\rest n+1))\),
+  and since \(\sigma\) is winning, 
+  \(\{\sigma(a(\alpha\rest n+1)):n<\omega\}=\{\alpha(n):n<\omega\}\in\mc B\).
+  Therefore \(\tau\) witnesses
+  \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+
+  Now let \(\sigma\) witness
+  \(\plI\win\schStrongSelGame{\mc R}{\neg\mc B}\).
+  Let \(s\in\mc A^{<\omega}\), and suppose \(r(s)\in(\bigcup \mc R)^{|s|}\) is defined
+  (again, \(r(\emptyset)=\emptyset\)). For \(A\in\mc A\) choose \(f_A\in\mathbf C(\mc R)\)
+  where \(\ran{f_A}\subseteq A\), and let \(\tau(s\concat\<A\>)=f_A(\sigma(r(s)))\),
+  and let \(r(s\concat\<A\>)\) extend \(r(s)\) by letting
+  \(r(s\concat\<A\>)(|s|)=\tau(s\concat\<A\>)\).
+
+  If \(\tau\) is attacked by \(\alpha\in\mc A^\omega\), 
+  then since \(\tau(\alpha\rest n+1)=f_{\alpha(n)}(\sigma(r(\alpha\rest n))\in\alpha(n)\cap\sigma(r(\alpha\rest n))\)
+  and \(\sigma\) is winning, we conclude that \(\tau\) is a legal strategy and
+  \(\{\tau(\alpha\rest n+1):n<\omega\}\in\mc B\).
+  Therefore \(\tau\) witnesses
+  \(\plII\win\schStrongSelGame{\mc A}{\mc B}\).
+\end{proof}
+
+\begin{corollary}\label{mainResult}
+  If \(\mc R\) is a reflection of \(\mc A\),
+  then \(\schStrongSelGame{\mc A}{\mc B}\) and \(\schStrongSelGame{\mc R}{\neg\mc B}\)
+  are  dual.
+\end{corollary}
+
+\section{Applications of Reflections}
+
+\begin{definition}\label{selectionSets}
+  Let \(X\) be a topological space and \(\mc T_X\) be a chosen basis of nonempty sets for its topology.
+  \begin{itemize}
+    \item Let \(\mc T_{X,x} = \{U\in\mc T_X : x\in U\}\) be the local point-base at \(x\in X\).
+    \item Let \(\Omega_{X,x} = \{Y\subseteq X: \forall U\in\mc T_{X,x}(U\cap Y\not=\emptyset)\}\) be the fan at \(x\in X\).
+    \item Let \(\mc T_{X,F} = \{U\in\mc T_X : F\subseteq U\}\) be the local finite-base at \(F\in[X]^{<\aleph_0}\).
+    \item Let \(\mc O_X = \{\mc U\subseteq\mc T_X : \bigcup \mc U=X\}\) be the collection
+          of basic open covers of \(X\).
+    \item Let \(\mc P_X = \{\mc T_{X,x} : x\in X\}\) be the collection of local point-bases of \(X\).
+    \item Let \(\Omega_X = \{\mc U\subseteq\mc T_X : \forall F\in[X]^{<\aleph_0}\exists U\in\mc U(F\subseteq U)\}\)
+          be the collection of basic \(\omega\)-covers of \(X\).
+    \item Let \(\mc F_X = \{\mc T_{X,F} : F\in [X]^{<\aleph_0}\}\) be the collection of local finite-bases of \(X\).
+    \item Let \(\mc D_X = \{Y\subseteq X: \forall U\in\mc T_X(U\cap Y\not=\emptyset)\}\) be the collection of dense subsets of \(X\).
+    \item Let \(\Gamma_{X,x} = \{Y\subseteq X: \forall U\in\mc T_{X,x}(Y\setminus U\in[X]^{<\aleph_0})\}\) be the collection
+          of converging fans at \(x\in X\). (When intersected with \([X]^{\aleph_0}\), these are the non-trivial
+          sequences of \(X\) converging to \(x\).)
+  \end{itemize}
+\end{definition}
+
+%While these notions were defined in terms of a particular basis, the reader may verify the the following.
+%
+%\begin{proposition}
+%  Let \(\mc A'\) be a selection basis for \(\mc A\).
+%  \begin{itemize}
+%    \item \(\plI\win\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plI\win\schStrongSelGame{\mc A'}{\mc B}\).
+%    \item \(\plI\prewin\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plI\prewin\schStrongSelGame{\mc A'}{\mc B}\).
+%    \item \(\plII\win\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plII\win\schStrongSelGame{\mc A'}{\mc B}\).
+%    \item \(\plII\markwin\schStrongSelGame{\mc A}{\mc B}\Leftrightarrow\plII\markwin\schStrongSelGame{\mc A'}{\mc B}\).
+%  \end{itemize}
+%\end{proposition}
+%
+%\begin{proposition}
+%  Each selection set in Definition \ref{selectionSets} is a selection basis for the set
+%  defined by replacing \(\mc T_X\) with the set of all nonempty open sets in \(X\).
+%\end{proposition}
+%
+%As such, the choice of topological basis is irrelevant when playing selection games using these sets.
+
+We may now establish the following dual games.
+
+\begin{proposition}
+  \(\mc P_X\) is a reflection of \(\mc O_X\).
+\end{proposition}
+\begin{proof}
+  For every basic open cover \(\mc U\), the corresponding choice function \(f_{\mc U}\in\mathbf C(\mc P_X)\) is simply
+  the witness that for each \(\mc T_{X,x}\in\mc P_X\), there exists \(f_{\mc U}(\mc T_{X,x})\in\mc U\) such that
+  \(x\in f_{\mc U}(\mc T_{X,x})\).
+\end{proof}
+
+\begin{corollary}\label{coverSel1}
+  \(\schStrongSelGame{\mc O_X}{\mc B}\) and \(\schStrongSelGame{\mc P_X}{\neg\mc B}\) are dual.
+\end{corollary}
+
+In the case that \(\mc B=\mc O_X\), \(\schStrongSelGame{\mc O_X}{\mc O_X}\) is the well-known Rothberger game,
+and \(\schStrongSelGame{\mc P_X}{\neg\mc O_X}\) is isomorphic
+to the point-open game \(PO(X)\): \(\plI\) chooses points of \(X\), \(\plII\) chooses an open neighborhood
+of each chosen point, and \(\plI\) wins if \(\plII\)'s choices are a cover.
+So this encapsulates the classic result that the Rothberger game and
+point-open game are perfect-information dual \cite{MR0493925}, the more recent result that
+these games are Markov-information dual \cite{CLONTZ2019106815}, and the quickly verified fact that
+a Lindel\"of space \(X\) may be characterized as follows: for each neighborhood assignment (i.e.
+tactic for \(\plII\) in \(PO(X)\)) there exists a countable subset
+of \(X\) such that its neighborhoods cover the space.
+
+\begin{proposition}
+  \(\mc F_X\) is a reflection of \(\Omega_X\).
+\end{proposition}
+\begin{proof}
+  For every basic open \(\omega\)-cover \(\mc U\), the corresponding choice function \(f_{\mc U}\in\mathbf C(\mc F_X)\) is simply
+  the witness that for each \(\mc T_{X,F}\in\mc F_X\), there exists \(f_{\mc U}(\mc T_{X,F})\in\mc U\) such that
+  \(F\subseteq f_{\mc U}(\mc T_{X,F})\).
+\end{proof}
+
+\begin{corollary}\label{coverSel2}
+  \(\schStrongSelGame{\Omega_X}{\mc B}\) and \(\schStrongSelGame{\mc F_X}{\neg\mc B}\) are dual.
+\end{corollary}
+
+Note that in the case that \(\mc B=\Omega_X\), \(\schStrongSelGame{\Omega_X}{\Omega_X}\) is the Rothberger
+game played with \(\omega\)-covers, and \(\schStrongSelGame{\mc F_X}{\neg\Omega_X}\) is isomorphic
+to the \(\Omega\)-finite-open game \(\Omega FO(X)\): \(\plI\) chooses finite subsets of \(X\), \(\plII\) chooses an open neighborhood
+of each chosen finite set, and \(\plI\) wins if \(\plII\)'s choices are an \(\omega\)-cover.
+These games were directly shown to be Markov and perfect-information dual in \cite{CLONTZ2019106815}.
+
+\begin{proposition}
+  \(\mc T_X\) is a reflection of \(\mc D_X\).
+\end{proposition}
+\begin{proof}
+  For every dense \(D\), the corresponding choice function \(f_D\in\mathbf C(\mc T_X)\) is simply
+  the witness that for each \(U\in\mc T_X\), there exists \(f_D(U)\in U\cap D\).
+\end{proof}
+
+\begin{corollary}
+  \(\schStrongSelGame{\mc D_X}{\mc B}\) and \(\schStrongSelGame{\mc T_X}{\neg\mc B}\) are perfect-information
+  and Markov-information dual.
+\end{corollary}
+
+In the case that \(\mc B=\Omega_{X,x}\) for some \(x\in X\), \(\schStrongSelGame{\mc D_X}{\Omega_{X,x}}\) is
+the strong countable dense fan-tightness game at \(x\), see e.g. \cite{MR2678950}. \(\schStrongSelGame{\mc T_X}{\neg\Omega_{X,x}}\)
+is the game \(CL(X,x)\) first studied by Tkachuk in \cite{tkachukTwoPointGame}. Tkachuk showed in that paper
+that these games are perfect-information dual; Clontz and Holshouser previously showed these were Markov-information
+dual in the case that \(X=C_p(Y)\)  \cite{CLONTZ2019106815}.
+
+In the case that \(\mc B=D_X\), then \(\schStrongSelGame{\mc D_X}{\mc D_X}\) is the strong selective
+separability game introduced by Scheepers 
+in \cite{MR1711901}, and \(\schStrongSelGame{\mc T_X}{\neg\mc D_X}\) is the
+point-picking game of Berner and Juh\'asz defined in \cite{MR775687}. Scheepers showed that these
+were perfect-information dual in \cite{MR1711901}.
+
+\begin{proposition}
+  \(\mc T_{X,x}\) is a reflection of \(\Omega_{X,x}\).
+\end{proposition}
+\begin{proof}
+  For every set \(Y\) with limit point \(x\), the corresponding choice function \(f_Y\in\mathbf C(\mc T_{X,x})\) is simply
+  the witness that for each \(U\in\mc T_{X,x}\), there exists \(f_Y(U)\in U\cap Y\).
+\end{proof}
+
+\begin{corollary}
+  \(\schStrongSelGame{\Omega_{X,x}}{\mc B}\) and \(\schStrongSelGame{\mc T_{X,x}}{\neg\mc B}\) are dual.
+\end{corollary}
+
+In the case that \(\mc B=\Gamma_{X,x}\) for some \(x\in X\), \(\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\)
+is Gruenhage's \(W\) game \cite{MR0413049}. Its dual \(\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\) characterizes
+the strong Fr\'echet-Urysohn property \(\plI\notprewin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\) at \(x\),
+which now seen to be equivalent to \(\plII\notmarkwin\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\).
+This allows us to obtain the following result.
+
+\begin{corollary}
+  \(\plI\notprewin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\)
+  if and only if
+  \(\plI\notwin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\).
+\end{corollary} 
+\begin{proof}
+  As shown in \cite{MR510910},
+  \(\plII\notwin\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\) (i.e. \(X\) is \(w\) in the
+  terminology of that paper)
+  if and only if \(\plI\notprewin\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\).
+  The result follows as 
+  \(\schStrongSelGame{\mc T_{X,x}}{\neg\Gamma_{X,x}}\) and
+  \(\schStrongSelGame{\Omega_{X,x}}{\Gamma_{X,x}}\) are dual.
+\end{proof}
+
+For \(\mc B=\Omega_{X,x}\), \(\schStrongSelGame{\mc T_{X,x}}{\neg\Omega_{X,x}}\) is the variant of
+Gruenhage's \(W\) game for clustering. This game is now seen to be dual to the strong countable fan tightness game
+\(\schStrongSelGame{\Omega_{X,x}}{\Omega_{X,x}}\) at \(x\).
+
+We conclude by noting how Corollary \ref{mainResult}
+was used by the authors of \cite{MR3991109} to
+easily strengthen Propositions \ref{coverSel1} and \ref{coverSel2}
+while this paper was still in preparation.
+
+\begin{definition}
+Let \(\mc Q\) be a collection of subsets of a topological space \(X\).
+Then \(\mc O_{X,\mc Q}\) is the collection of basic open covers \(\mc U\) such that for
+each \(Q\in\mc Q\), there is \(U\in\mc U\) with \(Q\subseteq U\).
+Likewise, \(\mc N_{X,\mc Q}=\{\mc T_{X,Q}:Q\in\mc Q\}\) where each \(\mc T_{X,Q}\) collects all
+basic open sets \(U\) such that \(Q\subseteq U\). 
+\end{definition}
+
+In particular, \(\mc O_{X,[X]^1}=\mc O_X\) and \(\mc O_{X,[X]^{<\omega}}=\Omega_X\).
+Likewise \(\mc N_{X,[X]^1}=\mc P_X\) and \(\mc N_{X,[X]^{<\omega}}=\mc F_X\).
+
+\begin{theorem}[\cite{MR3991109}]
+  The games \(\schStrongSelGame{\mc O_{X,\mc Q}}{\mc B}\) and
+  \(\schStrongSelGame{\mc N_{X,\mc Q}}{\neg\mc B}\) are dual.
+\end{theorem}
+
+\begin{proof}
+  This is immediate as \(\mc N_{X,\mc Q}\) reflects \(\mc O_{X,\mc Q}\). 
+  To see this, for each
+  \(\mc U\in\mc O_{X,\mc Q}\), choose \(f_{\mc U}\in\mathbf C(\mc N_{X,\mc Q})\)
+  satisfying that for each \(\mc T_{X,Q}\in\mc N_{X,\mc Q}\), there exists
+  \(f_{\mc U}(\mc T_{X,Q})\in\mc U\) such that \(Q\subseteq f_{\mc U}(\mc T_{X,Q})\).
+\end{proof}
+
+\section{Open Questions}
+
+Let 
+\(\Gamma_X=\{\mc U\subseteq\mc T_X:\forall x\in X(\mc U\setminus\mc T_{X,x}\in[\mc T_X]^{<\aleph_0})\}\). 
+Such \(\gamma\)-covers are related to the convergent sequences of \(C_p(X)\) (that is,
+\(\Gamma_{C_p(X),\mathbf 0}\) as defined in Definition \ref{selectionSets}),
+see e.g. \cite{BUKOVSKY2019239}.
+
+\begin{question}
+  Does there exist a natural reflection for \(\Gamma_{X,x}\)
+  or \(\Gamma_X\)?
+\end{question} 
+
+The game \(\schSelGame{\mc A}{\mc B}\) is defined analogously to
+\(\schStrongSelGame{\mc A}{\mc B}\), except \(\plII\) may choose a finite subset each round
+rather than a single set.
+
+\begin{question}
+  Do there exist any duality results for \(\schSelGame{\mc A}{\mc B}\) similar to the technique
+  of reflections?
+\end{question}
+
+\section{Acknowledgements}
+
+Thanks to Prof. Jared Holshouser for his input during the writing of these results.
+
+\bibliographystyle{plain}
+\bibliography{../../bibliography}
+
+\end{document}
